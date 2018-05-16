@@ -8,6 +8,21 @@ authors:
   Matthew Leonawicz:
     href: http://leonawicz.github.io/
 
+reference:
+- title: Package
+  contents:
+  - rtrek
+- title: Datasets
+  contents:
+  - stSpecies
+  - stGeo
+  - stTiles
+- title: Helper functions
+  contents:
+  - st_datasets
+  - st_tiles
+  - tile_coords
+
 navbar:
   type: inverse
   right:
