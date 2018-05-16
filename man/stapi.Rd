@@ -34,5 +34,5 @@ library(dplyr)
 stapi("character", page_count = TRUE) # check first
 stapi("character", page = 2) \%>\% select(1:2)
 Q <- stapi("character", uid = "CHMA0000025118")
-str(Q)
+Q$character$episodes \%>\% select(uid, title, stardateFrom, stardateTo)
 }
