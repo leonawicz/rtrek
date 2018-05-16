@@ -1,7 +1,10 @@
 Package: rtrek
-Version: 0.0.1
+Version: 0.0.5
 Title: Datasets and Functions Relating to Star Trek
 Description: Provides datasets related to the Star Trek fictional universe and functions for working with the data.
+    The package interfaces with Wikipedia, Memory Alpha and Memory Beta to retrieve data, metadata and other information relating to Star Trek.
+    It also contains local datasets covering a variety of topics such as Star Trek universe species data, geopolitical data,
+    and datasets resulting from text mining analyses of Star Trek novels.
 Authors@R: person("Matthew", "Leonawicz", email = "mfleonawicz@alaska.edu", role = c("aut", "cre"))
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -16,6 +19,8 @@ Suggests:
     rmarkdown,
     covr
 Imports: 
-    dplyr
+    dplyr,
+    jsonlite,
+    purrr
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
