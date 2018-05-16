@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Species names and avatars, linked from Memory Alpha. — stSpecies • rtrek</title>
+<title>Return the url associated with a tile set — st_tiles • rtrek</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Species names and avatars, linked from Memory Alpha. — stSpecies" />
+<meta property="og:title" content="Return the url associated with a tile set — st_tiles" />
 
-<meta property="og:description" content="A data frame of with 7 rows and 2 columns." />
+<meta property="og:description" content="This function returns the url associated with a tile set matching id." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -163,31 +163,51 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Species names and avatars, linked from Memory Alpha.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/rtrek.R'><code>R/rtrek.R</code></a></small>
-    <div class="hidden name"><code>stSpecies.Rd</code></div>
+    <h1>Return the url associated with a tile set</h1>
+    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/tiles.R'><code>R/tiles.R</code></a></small>
+    <div class="hidden name"><code>st_tiles.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>A data frame of with 7 rows and 2 columns.</p>
+    <p>This function returns the url associated with a tile set matching <code>id</code>.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>stSpecies</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='fu'>st_tiles</span>(<span class='no'>id</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>id</th>
+      <td><p>character, name of map tile set ID. See <code><a href='stTiles.html'>stTiles</a></code>.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame</p>
+    <p>a character string.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Tile set data are stored in the <code><a href='stTiles.html'>stTiles</a></code> dataset. See for available IDs.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>st_tiles</span>(<span class='st'>"galaxy1"</span>)</div><div class='output co'>#&gt; [1] "https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
-          </ul>
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
