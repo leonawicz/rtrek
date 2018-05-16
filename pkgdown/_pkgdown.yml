@@ -17,11 +17,17 @@ reference:
   - stSpecies
   - stGeo
   - stTiles
+  - stBooks
+- title: API
+  contents:
+  - stapi
+  - stapi_options
 - title: Helper functions
   contents:
   - st_datasets
   - st_tiles
   - tile_coords
+  - st_book_series
 
 navbar:
   type: inverse
