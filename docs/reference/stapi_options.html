@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Simple CRS coordinates — tile_coords • rtrek</title>
+<title>List available STAPI entities — stapi_options • rtrek</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Simple CRS coordinates — tile_coords" />
+<meta property="og:title" content="List available STAPI entities — stapi_options" />
 
-<meta property="og:description" content="Convert (column, row) numbers to (x, y) coordinates for a given tile set." />
+<meta property="og:description" content="Currently, this function simply lists the available entities for the Star Trek API (STAPI). See stapi." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -163,60 +163,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Simple CRS coordinates</h1>
-    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/tiles.R'><code>R/tiles.R</code></a></small>
-    <div class="hidden name"><code>tile_coords.Rd</code></div>
+    <h1>List available STAPI entities</h1>
+    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/api.R'><code>R/api.R</code></a></small>
+    <div class="hidden name"><code>stapi_options.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Convert <code>(column, row)</code> numbers to <code>(x, y)</code> coordinates for a given tile set.</p>
+    <p>Currently, this function simply lists the available entities for the Star Trek API (STAPI). See <code>stapi</code>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>tile_coords</span>(<span class='no'>data</span>, <span class='no'>id</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>data</th>
-      <td><p>a data frame containing columns named <code>col</code> and <code>row</code>. These contain column-row number pairs defining matrix cells in tile set <code>id</code>. See details.</p></td>
-    </tr>
-    <tr>
-      <th>id</th>
-      <td><p>character, name of map tile set ID. See <code><a href='stTiles.html'>stTiles</a></code>.</p></td>
-    </tr>
-    </table>
-    
+    <pre class="usage"><span class='fu'>stapi_options</span>()</pre>
+        
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data frame.</p>
+    <p>a character vector.</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>This function converts column and row indices for an available map tile set matrix to coordinates that can be used in a Leaflet map. See <code><a href='stTiles.html'>stTiles</a></code> for available tile sets.</p>
-<p><code>data</code> cannot contain columns named <code>x</code> or <code>y</code>, which are reserved for the column-appended output data frame.</p>
-<p>Each tile set has a simple/non-geographical coordinate reference system (CRS). Respective coordinates are based on the dimensions of the source image used to generate each tile set.
-The same column and row pair will yield different map coordinates for different tile sets. Typical for matrices, columns are numbered increasing from left to right and rows increasing from top to bottom.
-The output of <code>tile_coords</code> is a typical Cartesian coordinate system, increasing from left to right and bottom to top.</p>
+    <div class='dont-index'><p><code>stapi</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>row</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>3222</span>, <span class='fl'>6445</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>4000</span>, <span class='fl'>8000</span>))
-<span class='fu'>tile_coords</span>(<span class='no'>d</span>, <span class='st'>"galaxy1"</span>)</div><div class='output co'>#&gt;    row  col        x          y
-#&gt; 1    0    0   0.0000    0.00000
-#&gt; 2 3222 4000 124.1272  -99.98448
-#&gt; 3 6445 8000 248.2545 -200.00000</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>stapi_options</span>()</div><div class='output co'>#&gt;  [1] "animal"             "astronomicalObject" "book"              
+#&gt;  [4] "bookCollection"     "bookSeries"         "character"         
+#&gt;  [7] "comicCollection"    "comics"             "comicSeries"       
+#&gt; [10] "comicStrip"         "common"             "common/panel"      
+#&gt; [13] "common/panel/admin" "company"            "conflict"          
+#&gt; [16] "element"            "episode"            "food"              
+#&gt; [19] "literature"         "location"           "magazine"          
+#&gt; [22] "magazineSeries"     "material"           "medicalCondition"  
+#&gt; [25] "movie"              "oauth/github"       "occupation"        
+#&gt; [28] "organization"       "performer"          "season"            
+#&gt; [31] "series"             "soundtrack"         "spacecraft"        
+#&gt; [34] "spacecraftClass"    "species"            "staff"             
+#&gt; [37] "technology"         "title"              "tradingCard"       
+#&gt; [40] "tradingCardDeck"    "tradingCardSet"     "videoGame"         
+#&gt; [43] "videoRelease"       "weapon"            </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
