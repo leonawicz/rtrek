@@ -1,3 +1,5 @@
+globalVariables(c(".data"))
+
 #' rtrek: Star Trek datasets and related R functions.
 #'
 #' The rtrek package contains a collection of Star Trek-themed datasets and R functions to assist with their use.
@@ -11,14 +13,21 @@ NULL
 #' A data frame of with 7 rows and 6 columns.
 #'
 #' @format A data frame
-"STgeo"
+"stGeo"
 
-#' Species name and avatars, linked from Memory Alpha.
+#' Species names and avatars, linked from Memory Alpha.
 #'
 #' A data frame of with 7 rows and 2 columns.
 #'
 #' @format A data frame
-"STspecies"
+"stSpecies"
+
+#' Available Star Trek map tile sets.
+#'
+#' A data frame of with 1 row and 8 columns.
+#'
+#' @format A data frame
+"stTiles"
 
 #' Available datasets
 #'
@@ -30,5 +39,8 @@ NULL
 #' @examples
 #' st_datasets()
 st_datasets <- function(){
-  c("STgeo", "STspecies")
+  dplyr::data_frame(
+    dataset = c("stGeo", "stSpecies", "stTiles"),
+    description = c("Simple CRS data associated with map tile sets.", "Basic intelligent species data.",
+                    "Available map tile sets."))
 }
