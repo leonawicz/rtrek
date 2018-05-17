@@ -1,3 +1,10 @@
+# rtrek 0.0.6
+
+* Added initial introduction vignette content.
+* Added anti-DDOS measures for API calls.
+* Minor fixes.
+* Updated unit tests.
+
 # rtrek 0.0.5
 
 * Added initial Star Trek data API functionality via STAPI wrapper.
