@@ -33,7 +33,7 @@ The `stBooks` dataset provides a moderately curated data frame of over `r nrow(s
 stbooks
 ```
 
-Some curation decisions were made in compiling the data frame for `rtrek` related to the inclusion of some metadata in additional to not being a completely exhasutive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, `rtrek` also offers a convenience function `st_book_series` to load the page in a browser tab auto-scrolled to a specific series of interest.
+Some curation decisions were made in compiling the data frame for `rtrek` related to the inclusion of some metadata in additional to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, `rtrek` also offers a convenience function `st_book_series` to load the page in a browser tab auto-scrolled to a specific series of interest.
 
 In order to use this function effectively, first call it with no arguments. It returns a table of available series abbreviations.
 
@@ -59,7 +59,7 @@ stTiles
 
 The list is scant at the moment, but more will come. One thing to keep in mind is these tile sets use a simple/non-geographical coordinate reference system (CRS). Clearly, they are not Earth-based, though they are spatial in more ways than one!
 
-Similar to game maps, there is a sense of space, but it is a simple catersian coordinate system and does not use geographic projections like you may be used to working with when analyzing spatial data or making Leaflet maps. This system is much simpler, but simpel does not necessarily mean easy!
+Similar to game maps, there is a sense of space, but it is a simple Cartesian coordinate system and does not use geographic projections like you may be used to working with when analyzing spatial data or making Leaflet maps. This system is much simpler, but simple does not necessarily mean easy!
 
 Inspect `stGeo`:
 
@@ -69,7 +69,7 @@ stGeo
 
 This is another small dataset containing locations of key planets in the Star Trek universe and a handful of associated variables. Notice the coordinates do not appear meaningful. There is no latitude and longitude. Instead there are row and column entries defining cells in a matrix. The matrix dimensions are defined by the pixel dimensions of source map for the `galaxy1` map tile set. Unless source maps for two different tile sets are of exactly the same dimensions, they yield two different coordinate reference systems. If you produce a new tile set, you then have to georeference any locations that you intend to display on it.
 
-This is not ideal, but it gets worse. Once you have locations' coordinates defined that map onto a particular tile set, the `leaflet` package does not work in these row and column grids. The `(col, row)` pairs need to be tranformed or projected into Leaflet space. Fortunately, this (so far) appears consistent and `rtrek` does this for you with `tile_coords`. It takes a data frame like `stGeo` wih columns named `col` and `row` as well as the name of an available Star Trek map tile set, and returns a data frame with new columns `x` and `y` that will map properly in a `leaflet` map built on that tile set.
+This is not ideal, but it gets worse. Once you have locations' coordinates defined that map onto a particular tile set, the `leaflet` package does not work in these row and column grids. The `(col, row)` pairs need to be transformed or projected into Leaflet space. Fortunately, this (so far) appears consistent and `rtrek` does this for you with `tile_coords`. It takes a data frame like `stGeo` with columns named `col` and `row` as well as the name of an available Star Trek map tile set, and returns a data frame with new columns `x` and `y` that will map properly in a `leaflet` map built on that tile set.
 
 ```{r tile_coords}
 tile_coords(stGeo, "galaxy1")
@@ -83,7 +83,7 @@ To use the words of the developers, the [STAPI](http://stapi.co/) is
 
 *the first public Star Trek API, accessible via REST and SOAP. It's an open source project, that anyone can contribute to. STAPI it's still an alpha version. There is lot of work of work behind, but a lot of work ahead, too. No API stability, in terms of contracts layout, database layout, as well as API availability, is guaranteed at this point.*
 
-Despite the important caveats, it is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between sucessive requests. The default anti-ddos measures in `rtrek` limit requests to one per second by default. You can update this global `rtrek` setting with `rtrek_options`, but only to be an even better neighbor. `rtrek` will not permit faster requests.
+Despite the important caveats, it is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-ddos measures in `rtrek` limit requests to one per second by default. You can update this global `rtrek` setting with `rtrek_options`, but only to be an even better neighbor. `rtrek` will not permit faster requests.
 
 ### STAPI entities
 
@@ -121,7 +121,7 @@ For the second call to `stapi`, return the page two results.
 stapi("character", page = 2)
 ```
 
-Character tables can be sparse. There are a lot of variables, many of which will contain missing data for rare, esoteric characters. Even for more popular characters about whom much more univsere lore has been uncovered, it still takes dedicated nerds to enter all the data in a database.
+Character tables can be sparse. There are a lot of variables, many of which will contain missing data for rare, esoteric characters. Even for more popular characters about whom much more universe lore has been uncovered, it still takes dedicated nerds to enter all the data in a database.
 
 When a dataset contains a `uid` column, this can be used subsequently to extract a satellite dataset about that particular observation returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q's `uid` to `stapi` and call the function one last time. When `uid` is no longer `NULL`, `stapi` knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.
 
