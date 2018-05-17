@@ -20,6 +20,7 @@ The `rtrek` package provides datasets related to the Star Trek fictional univers
 Package datasets in `rtrek` are somewhat eclectic and currently limited. To list all available package datasets with a short description, call `st_datasets`.
 
 ```{r pkg_data}
+library(rtrek)
 st_datasets()
 ```
 
@@ -30,7 +31,7 @@ In the current version of `rtrek` these datasets can be split into two groups: d
 The `stBooks` dataset provides a moderately curated data frame of over `r nrow(stBooks)` Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent `rtrek` update. `stBooks` is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.
 
 ```{r stBooks}
-stbooks
+stBooks
 ```
 
 Some curation decisions were made in compiling the data frame for `rtrek` related to the inclusion of some metadata in additional to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, `rtrek` also offers a convenience function `st_book_series` to load the page in a browser tab auto-scrolled to a specific series of interest.
@@ -73,6 +74,17 @@ This is not ideal, but it gets worse. Once you have locations' coordinates defin
 
 ```{r tile_coords}
 tile_coords(stGeo, "galaxy1")
+```
+
+Here is an example using the `galaxy1` map with `leaflet`.
+
+```{r leaflet, fig.width=8.82, fig.height=5.5, tidy=FALSE}
+library(leaflet)
+d <- tile_coords(stGeo, "galaxy1")
+tiles <- st_tiles("galaxy1")
+leaflet(d, options = leafletOptions(crs = leafletCRS("L.CRS.Simple"))) %>%
+  addTiles(tiles) %>% setView(108, -75, 2) %>%
+  addCircleMarkers(lng = ~x, lat = ~y, label = ~label, color = "white", radius = 20)
 ```
 
 The `stSpecies` dataset is just a small table that pairs species named in `stGeo` with representative thumbnail avatars from Memory Alpha. There is nothing map-related here, but these are used in this [example Shiny app](https://uasnap.shinyapps.io/stsc/).
