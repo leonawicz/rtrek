@@ -125,7 +125,7 @@ Character tables can be sparse. There are a lot of variables, many of which will
 
 When a dataset contains a `uid` column, this can be used subsequently to extract a satellite dataset about that particular observation returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q's `uid` to `stapi` and call the function one last time. When `uid` is no longer `NULL`, `stapi` knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.
 
-```{r stapi_search}
+```{r stapi_extract}
 Q <- "CHMA0000025118"
 Q <- stapi("character", uid = Q)
 
