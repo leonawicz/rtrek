@@ -13,7 +13,7 @@ test_that("st_book_series returns as expected", {
 
   Q <- stapi("character", uid = "CHMA0000025118")
   expect_is(Q, "list")
-  expect_equal(Q$character$name, "Q")
+  expect_equal(Q$name, "Q")
 
   expect_error(stapi("a"), "Invalid `id`.")
 

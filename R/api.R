@@ -55,7 +55,7 @@ stapi_options <- function() sort(.stapi_entities)
 #' stapi("character", page_count = TRUE) # check first
 #' stapi("character", page = 2) %>% select(1:2)
 #' Q <- stapi("character", uid = "CHMA0000025118")
-#' Q$character$episodes %>% select(uid, title, stardateFrom, stardateTo)
+#' Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
 stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
   if(!id %in% .stapi_entities) stop("Invalid `id`.")
   .antiddos("stapi")
@@ -64,6 +64,7 @@ stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
   if(!is.null(uid)){
     json <- jsonlite::fromJSON(uri)
     assign("stapi", Sys.time(), envir = rtrek_api_time)
+    if(is.list(json) & !is.data.frame(json) & length(json) == 1) json <- json[[1]]
     return(json)
   }
   json0 <- jsonlite::fromJSON(paste0(uri, "0&pageSize=100"))

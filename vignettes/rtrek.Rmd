@@ -142,7 +142,7 @@ Q <- "CHMA0000025118"
 Q <- stapi("character", uid = Q)
 
 library(dplyr)
-Q$character$episodes %>% select(uid, title, stardateFrom, stardateTo)
+Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
 ```
 The data returned on Q is actually a large list, included multiple data frame. For simplicity only a piece of it is shown above.
 
