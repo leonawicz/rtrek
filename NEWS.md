@@ -4,6 +4,7 @@
 * Added anti-DDOS measures for API calls.
 * Minor fixes.
 * Updated unit tests.
+* Updated readme.
 
 # rtrek 0.0.5
 
