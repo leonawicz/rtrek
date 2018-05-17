@@ -28,6 +28,10 @@ The universal ID \code{uid} can be supplied to retrieve a more specific subset o
 As part of a stepwise process, you can first use search mode.
 Then if the resulting data frame includes a \code{uid} column, you can make a second call to the function providing a specific \code{uid}.
 This puts \code{stapi} into extraction mode and will return satellite data associated with the unique entry from the original general sweep of the entity \code{id}.
+
+\code{rtrek} employs anti-DDOS measures. It will not perform an API call to STAPI more than once per second.
+To be an even better neighbor, you can increase this wait time using \code{options}, e.g. \code{options(rtrek_antiddos = 10)} to increase the minimum time between API calls to ten seconds.
+Values less than one are ignored (defaulting back to one second) and a warning will be thrown when making any API call if this is the case.
 }
 \examples{
 library(dplyr)
