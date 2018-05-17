@@ -12,3 +12,128 @@ knitr::opts_chunk$set(
   collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE, error = FALSE, tidy = TRUE
 )
 ```
+
+The `rtrek` package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. The package interfaces with Wikipedia, the Star Trek API (STAPI), Memory Alpha and Memory Beta to retrieve data, metadata and other information relating to Star Trek. It also contains local datasets covering a variety of topics such as Star Trek universe species data, geopolitical data, and datasets resulting from text mining analyses of Star Trek novels. This introduction provides a brief, example-driven overview of `rtrek`.
+
+## Local datasets
+
+Package datasets in `rtrek` are somewhat eclectic and currently limited. To list all available package datasets with a short description, call `st_datasets`.
+
+```{r pkg_data}
+st_datasets()
+```
+
+In the current version of `rtrek` these datasets can be split into two groups: datasets that support Star Trek-themed spatial maps and metadata relating to the vast compendium of officially licensed Star Trek novels.
+
+### Star Trek novels
+
+The `stBooks` dataset provides a moderately curated data frame of over `r nrow(stBooks)` Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent `rtrek` update. `stBooks` is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.
+
+```{r stBooks}
+stbooks
+```
+
+Some curation decisions were made in compiling the data frame for `rtrek` related to the inclusion of some metadata in additional to not being a completely exhasutive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, `rtrek` also offers a convenience function `st_book_series` to load the page in a browser tab auto-scrolled to a specific series of interest.
+
+In order to use this function effectively, first call it with no arguments. It returns a table of available series abbreviations.
+
+```{r st_book_series}
+st_book_series()
+```
+
+Then call it with a specific acronym ID and the page will load at the desired table entry.
+
+```{r st_book_series2, eval = FALSE}
+st_book_series("DS9")
+```
+
+This package data only graces the surface of Star Trek novels. A later section provides a brief introduction to Star Trek novel data compiled from text mining analyses of the actual book content. Unlike `stBooks` which is limited to a metadata overview, these other datasets contain quantifiable variables much more suitable to interesting statistical analysis.
+
+### Spatial maps
+
+The other datasets are currently in early stages of development and will be expanded further. `stTiles` is a data frame listing all available Star Trek-themed map tile sets along with metadata and attribution information. These map tiles can be used with the `leaflet` and `shiny` packages to make interactive maps situated in the Star Trek universe.
+
+```{r stTiles}
+stTiles
+```
+
+The list is scant at the moment, but more will come. One thing to keep in mind is these tile sets use a simple/non-geographical coordinate reference system (CRS). Clearly, they are not Earth-based, though they are spatial in more ways than one!
+
+Similar to game maps, there is a sense of space, but it is a simple catersian coordinate system and does not use geographic projections like you may be used to working with when analyzing spatial data or making Leaflet maps. This system is much simpler, but simpel does not necessarily mean easy!
+
+Inspect `stGeo`:
+
+```{r stGeo}
+stGeo
+```
+
+This is another small dataset containing locations of key planets in the Star Trek universe and a handful of associated variables. Notice the coordinates do not appear meaningful. There is no latitude and longitude. Instead there are row and column entries defining cells in a matrix. The matrix dimensions are defined by the pixel dimensions of source map for the `galaxy1` map tile set. Unless source maps for two different tile sets are of exactly the same dimensions, they yield two different coordinate reference systems. If you produce a new tile set, you then have to georeference any locations that you intend to display on it.
+
+This is not ideal, but it gets worse. Once you have locations' coordinates defined that map onto a particular tile set, the `leaflet` package does not work in these row and column grids. The `(col, row)` pairs need to be tranformed or projected into Leaflet space. Fortunately, this (so far) appears consistent and `rtrek` does this for you with `tile_coords`. It takes a data frame like `stGeo` wih columns named `col` and `row` as well as the name of an available Star Trek map tile set, and returns a data frame with new columns `x` and `y` that will map properly in a `leaflet` map built on that tile set.
+
+```{r tile_coords}
+tile_coords(stGeo, "galaxy1")
+```
+
+The `stSpecies` dataset is just a small table that pairs species named in `stGeo` with representative thumbnail avatars from Memory Alpha. There is nothing map-related here, but these are used in this [example Shiny app](https://uasnap.shinyapps.io/stsc/).
+
+## Star Trek API
+
+To use the words of the developers, the [STAPI](http://stapi.co/) is
+
+*the first public Star Trek API, accessible via REST and SOAP. It's an open source project, that anyone can contribute to. STAPI it's still an alpha version. There is lot of work of work behind, but a lot of work ahead, too. No API stability, in terms of contracts layout, database layout, as well as API availability, is guaranteed at this point.*
+
+Despite the important caveats, it is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between sucessive requests. The default anti-ddos measures in `rtrek` limit requests to one per second by default. You can update this global `rtrek` setting with `rtrek_options`, but only to be an even better neighbor. `rtrek` will not permit faster requests.
+
+### STAPI entities
+
+There a many fields, or entities, available in the API. To list them all, call `stapi_options`.
+
+```{r stapi_options}
+stapi_options()
+```
+
+These options are passed to `stapi` to perform a search using the API.
+
+### Accessing the API
+
+Using `stapi` should be thought of as a three part process:
+
+*    Determine how many pages of results exist for a particular entity search.
+*    Only after taking care to do the previous step, perform the search to return search results.
+*    If satellite data is needed on a unique observation in the search results, call `stapi` one more time referencing the specific observation.
+
+To determine how many pages of results exist for a given search, set `page_count = TRUE`. The impact on the API will be equivalent to only searching a single page of results. One page contains metadata including the total number of pages. Nothing is returned in this "safe mode", but the total number of search results available is printed to the console.
+
+Searching movies only returns one page of results. However, there are a lot of characters in the Star Trek universe. Check the total pages available for character search.
+
+```{r stapi_safe}
+stapi("character", page_count = TRUE)
+```
+
+And that is with 100 results per page!
+
+The default `page = 1` only returns the first page. This can be a vector. Return page two, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example below hard-codes his unique/universal ID.
+
+For the second call to `stapi`, return the page two results.
+
+```{r stapi_search}
+stapi("character", page = 2)
+```
+
+Character tables can be sparse. There are a lot of variables, many of which will contain missing data for rare, esoteric characters. Even for more popular characters about whom much more univsere lore has been uncovered, it still takes dedicated nerds to enter all the data in a database.
+
+When a dataset contains a `uid` column, this can be used subsequently to extract a satellite dataset about that particular observation returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q's `uid` to `stapi` and call the function one last time. When `uid` is no longer `NULL`, `stapi` knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.
+
+```{r stapi_search}
+Q <- "CHMA0000025118"
+Q <- stapi("character", uid = Q)
+
+library(dplyr)
+Q$character$episodes %>% select(uid, title, stardateFrom, stardateTo)
+```
+The data returned on Q is actually a large list, included multiple data frame. For simplicity only a piece of it is shown above.
+
+## Star Trek novel text ming
+
+*to be continued...*
