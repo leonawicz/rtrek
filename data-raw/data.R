@@ -2,8 +2,8 @@ library(dplyr)
 .species <- c("Human", "Romulan", "Klingon", "Breen", "Ferengi", "Cardassian", "Tholian")
 
 stGeo <- data_frame(
-  x = c(2196, 2615, 3310, 1004, 1431, 1342, 407),
-  y = c(2357, 1742, 3361, 939, 1996, 2841, 3866),
+  col = c(2196, 2615, 3310, 1004, 1431, 1342, 407),
+  row = c(2357, 1742, 3361, 939, 1996, 2841, 3866),
   label = c("Earth", "Romulus", "Qo'noS", "Breen", "Ferenginar", "Cardassia", "Tholia"),
   body = "Planet", category = "Homeworld",
   zone = c("United Federation of Planets", "Romulan Star Empire", "Klingon Empire", "Breen Confederacy",
@@ -34,4 +34,4 @@ stTiles <- data_frame(
   map_url = "https://archerxx.deviantart.com/art/Star-Trek-Star-Chart-316982311"
 )
 
-usethis::use_data(stGeo, stSpecies, stTiles)
+usethis::use_data(stGeo, stSpecies, stTiles, overwite = T)
