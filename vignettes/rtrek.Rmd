@@ -95,7 +95,7 @@ To use the words of the developers, the [STAPI](http://stapi.co/) is
 
 *the first public Star Trek API, accessible via REST and SOAP. It's an open source project, that anyone can contribute to. STAPI it's still an alpha version. There is lot of work of work behind, but a lot of work ahead, too. No API stability, in terms of contracts layout, database layout, as well as API availability, is guaranteed at this point.*
 
-Despite the important caveats, it is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-ddos measures in `rtrek` limit requests to one per second by default. You can update this global `rtrek` setting with `rtrek_options`, but only to be an even better neighbor. `rtrek` will not permit faster requests.
+Despite the important caveats, it is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DDOS measures in `rtrek` limit requests to one per second by default. You can update this global `rtrek` setting with `options`, e.g. `options(rtrek_antiddos = 10)` for a minimum ten second wait between API calls to be an even better neighbor. `rtrek` will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.
 
 ### STAPI entities
 
