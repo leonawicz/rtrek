@@ -1,3 +1,9 @@
+/* general formatting */
+p {
+  text-align: justify;
+}
+
+/* syntaxt highlighting */
 .fl      {color: #63B8FF;}
 .fu      {color: #00F5FF;} /* function */
 .ch,.st  {color: #7AC5CD;} /* string */
@@ -15,6 +21,85 @@
   color: #A9F3EE;
 }
 
-p {
-  text-align: justify;
+/* leaflet */
+.leaflet-container { background: #000000 !important; }
+.leaflet-popup-content-wrapper { border-radius: 4px !important; color: #ffffff !important; background-color: rgba(45, 45, 45, 0.9) !important; width: 540px; font-size: 16px; }
+.leaflet-popup { border-color: #888888 !important; }
+
+/* Stellar Cartography */
+.main-container {
+  max-width: 100% !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.parallax {
+  background-image: url("https://i2.wp.com/movies.trekcore.com/gallery/albums/generationshd/generationshd1021.jpg");
+  width: 100%;
+  height: 600px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 50px;
+}
+
+.parallax-image{
+  width: 150px;
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  -webkit-animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  -ms-animation: fadein 2s;
+  -o-animation: fadein 2s;
+  animation: fadein 2s;
+}
+
+@font-face {
+    font-family: 'sc-title-font';
+    src: url('https://raw.githubusercontent.com/leonawicz/trekfont/master/inst/fonts/StarNext.ttf') format('truetype');
+}
+
+.parallax-title{
+  position: absolute;
+  top: 70px;
+  left: 190px;
+  color: #ffffff;
+  font-family: "sc-title-font";
+  font-size: 4em;
+  -webkit-animation: fadein 2s;
+  -moz-animation: fadein 2s;
+  -ms-animation: fadein 2s;
+  -o-animation: fadein 2s;
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; color: #D0F8FF; }
+    to   { opacity: 1; color: #FFFFFF; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; color: #D0F8FF; }
+    to   { opacity: 1; color: #FFFFFF; }
 }
