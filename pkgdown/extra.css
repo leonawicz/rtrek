@@ -1,11 +1,20 @@
-.navbar-nav > li > a, .navbar-brand {
-  font-size: 14px !important;
-  text-transform: none !important;
-  font-weight: normal !important;
+.fl      {color: #63B8FF;}
+.fu      {color: #00F5FF;} /* function */
+.ch,.st  {color: #7AC5CD;} /* string */
+.kw      {color: #00FFFF;} /* keyword */
+.kw a    {color: #00CFFF;} /* keyword */
+.co      {color: #D0F8FF;} /* comment */
+
+.message { color: orange;   font-weight: bolder;}
+.error   { color: red;  font-weight: bolder;}
+.warning { color: purple; font-weight: bolder;
 }
 
-.nav a {
-  font-size: 12px !important;
-  text-transform: none !important;
-  font-weight: normal !important;
+.sourceCode .r, .examples, .usage {
+  background-color: #000030;
+  color: #A9F3EE;
+}
+
+p {
+  text-align: justify;
 }
