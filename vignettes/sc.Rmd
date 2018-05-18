@@ -44,7 +44,7 @@ label_opts <- list(
 
 ## Homeworlds
 
-#### This map highlights homeworlds of key species in the Star Trek universe.
+#### This map highlights key species homeworlds.
 
 ```{r map}
 div(style = "position: relative;",
