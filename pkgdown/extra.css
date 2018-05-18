@@ -56,25 +56,6 @@ p {
   animation: fadein 2s;
 }
 
-@font-face {
-    font-family: 'sc-title-font';
-    src: url('https://raw.githubusercontent.com/leonawicz/trekfont/master/inst/fonts/StarNext.ttf') format('truetype');
-}
-
-.parallax-title{
-  position: absolute;
-  top: 70px;
-  left: 190px;
-  color: #ffffff;
-  font-family: "sc-title-font";
-  font-size: 4em;
-  -webkit-animation: fadein 2s;
-  -moz-animation: fadein 2s;
-  -ms-animation: fadein 2s;
-  -o-animation: fadein 2s;
-  animation: fadein 2s;
-}
-
 @keyframes fadein {
   from { opacity: 0; }
   to   { opacity: 1; }
