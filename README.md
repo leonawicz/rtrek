@@ -11,8 +11,8 @@ The `rtrek` package provides datasets related to the Star Trek fictional univers
 
 *Note: This package is in alpha (and not just the quadrant). Breaking changes may occur.*
 
-Installation!
--------------
+Installation
+------------
 
 Install the development version pf `rtrek` from [GitHub](https://github.com/) with:
 
