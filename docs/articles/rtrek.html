@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.5</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.6</span>
       </span>
     </div>
 
@@ -125,7 +125,10 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
+      </header><script src="rtrek_files/htmlwidgets-1.2/htmlwidgets.js"></script><script src="rtrek_files/jquery-1.12.4/jquery.min.js"></script><link href="rtrek_files/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="rtrek_files/leaflet-1.3.1/leaflet.js"></script><link href="rtrek_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="rtrek_files/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="rtrek_files/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="rtrek_files/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="rtrek_files/leaflet-binding-2.0.0/leaflet.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Introduction to rtrek</h1>
@@ -138,10 +141,216 @@
 
     
     
+<p>The <code>rtrek</code> package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. The package interfaces with Wikipedia, the Star Trek API (STAPI), Memory Alpha and Memory Beta to retrieve data, metadata and other information relating to Star Trek. It also contains local datasets covering a variety of topics such as Star Trek universe species data, geopolitical data, and datasets resulting from text mining analyses of Star Trek novels. This introduction provides a brief, example-driven overview of <code>rtrek</code>.</p>
+<div id="local-datasets" class="section level2">
+<h2 class="hasAnchor">
+<a href="#local-datasets" class="anchor"></a>Local datasets</h2>
+<p>Package datasets in <code>rtrek</code> are somewhat eclectic and currently limited. To list all available package datasets with a short description, call <code>st_datasets</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rtrek)
+<span class="kw"><a href="../reference/st_datasets.html">st_datasets</a></span>()
+<span class="co">#&gt; # A tibble: 4 x 2</span>
+<span class="co">#&gt;   dataset   description                                   </span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;                                         </span>
+<span class="co">#&gt; 1 stGeo     Simple CRS data associated with map tile sets.</span>
+<span class="co">#&gt; 2 stSpecies Basic intelligent species data.               </span>
+<span class="co">#&gt; 3 stTiles   Available map tile sets.                      </span>
+<span class="co">#&gt; 4 stBooks   Star Trek novel meta data from Wikipedia.</span></code></pre></div>
+<p>In the current version of <code>rtrek</code> these datasets can be split into two groups: datasets that support Star Trek-themed spatial maps and metadata relating to the vast compendium of officially licensed Star Trek novels.</p>
+<div id="star-trek-novels" class="section level3">
+<h3 class="hasAnchor">
+<a href="#star-trek-novels" class="anchor"></a>Star Trek novels</h3>
+<p>The <code>stBooks</code> dataset provides a moderately curated data frame of over 715 Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent <code>rtrek</code> update. <code>stBooks</code> is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stBooks
+<span class="co">#&gt; # A tibble: 715 x 6</span>
+<span class="co">#&gt;    Series                   Title    Author   Number Timeframe Released   </span>
+<span class="co">#&gt;    &lt;chr&gt;                    &lt;chr&gt;    &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;      </span>
+<span class="co">#&gt;  1 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1967-01-01~</span>
+<span class="co">#&gt;  2 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1968-02-01~</span>
+<span class="co">#&gt;  3 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1969-04-01~</span>
+<span class="co">#&gt;  4 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1971-07-01~</span>
+<span class="co">#&gt;  5 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1972-02-01~</span>
+<span class="co">#&gt;  6 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1972-04-01~</span>
+<span class="co">#&gt;  7 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1972-07-01~</span>
+<span class="co">#&gt;  8 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1972-11-01~</span>
+<span class="co">#&gt;  9 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1973-08-01~</span>
+<span class="co">#&gt; 10 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1974-02-01~</span>
+<span class="co">#&gt; # ... with 705 more rows</span></code></pre></div>
+<p>Some curation decisions were made in compiling the data frame for <code>rtrek</code> related to the inclusion of some metadata in additional to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, <code>rtrek</code> also offers a convenience function <code>st_book_series</code> to load the page in a browser tab auto-scrolled to a specific series of interest.</p>
+<p>In order to use this function effectively, first call it with no arguments. It returns a table of available series abbreviations.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/st_book_series.html">st_book_series</a></span>()
+<span class="co">#&gt; # A tibble: 17 x 2</span>
+<span class="co">#&gt;    series                                abb       </span>
+<span class="co">#&gt;    &lt;chr&gt;                                 &lt;chr&gt;     </span>
+<span class="co">#&gt;  1 THe Original Series                   TOS       </span>
+<span class="co">#&gt;  2 The Next Generation                   TNG       </span>
+<span class="co">#&gt;  3 Deep Space Nine                       DS9       </span>
+<span class="co">#&gt;  4 Voyager                               VOY       </span>
+<span class="co">#&gt;  5 Enterprise                            ENT       </span>
+<span class="co">#&gt;  6 Discovery                             DSC       </span>
+<span class="co">#&gt;  7 New Frontier                          NF        </span>
+<span class="co">#&gt;  8 Stargazer                             SG        </span>
+<span class="co">#&gt;  9 IKS Gorkon/Klingon Empire             IKE       </span>
+<span class="co">#&gt; 10 Titan                                 TIT       </span>
+<span class="co">#&gt; 11 Vanguard                              VAN       </span>
+<span class="co">#&gt; 12 Seekers                               SKR       </span>
+<span class="co">#&gt; 13 Mini-series                           miniseries</span>
+<span class="co">#&gt; 14 Starfleet Corps of Engineers          SCE       </span>
+<span class="co">#&gt; 15 Department of Temporal Investigations DTI       </span>
+<span class="co">#&gt; 16 Mirror Universe                       MIR       </span>
+<span class="co">#&gt; 17 Starfleet Academy                     SFA</span></code></pre></div>
+<p>Then call it with a specific acronym ID and the page will load at the desired table entry.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/st_book_series.html">st_book_series</a></span>(<span class="st">"DS9"</span>)</code></pre></div>
+<p>This package data only graces the surface of Star Trek novels. A later section provides a brief introduction to Star Trek novel data compiled from text mining analyses of the actual book content. Unlike <code>stBooks</code> which is limited to a metadata overview, these other datasets contain quantifiable variables much more suitable to interesting statistical analysis.</p>
+</div>
+<div id="spatial-maps" class="section level3">
+<h3 class="hasAnchor">
+<a href="#spatial-maps" class="anchor"></a>Spatial maps</h3>
+<p>The other datasets are currently in early stages of development and will be expanded further. <code>stTiles</code> is a data frame listing all available Star Trek-themed map tile sets along with metadata and attribution information. These map tiles can be used with the <code>leaflet</code> and <code>shiny</code> packages to make interactive maps situated in the Star Trek universe.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stTiles
+<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt;   id      url    description width height tile_creator map_creator map_url</span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;  </span>
+<span class="co">#&gt; 1 galaxy1 https~ Geopolitic~  8000   6445 Matthew Leo~ Rob Archer  https:~</span></code></pre></div>
+<p>The list is scant at the moment, but more will come. One thing to keep in mind is these tile sets use a simple/non-geographical coordinate reference system (CRS). Clearly, they are not Earth-based, though they are spatial in more ways than one!</p>
+<p>Similar to game maps, there is a sense of space, but it is a simple Cartesian coordinate system and does not use geographic projections like you may be used to working with when analyzing spatial data or making Leaflet maps. This system is much simpler, but simple does not necessarily mean easy!</p>
+<p>Inspect <code>stGeo</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stGeo
+<span class="co">#&gt; # A tibble: 7 x 7</span>
+<span class="co">#&gt;     col   row label      body   category  zone                   species  </span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;    </span>
+<span class="co">#&gt; 1  2196  2357 Earth      Planet Homeworld United Federation of ~ Human    </span>
+<span class="co">#&gt; 2  2615  1742 Romulus    Planet Homeworld Romulan Star Empire    Romulan  </span>
+<span class="co">#&gt; 3  3310  3361 Qo'noS     Planet Homeworld Klingon Empire         Klingon  </span>
+<span class="co">#&gt; 4  1004   939 Breen      Planet Homeworld Breen Confederacy      Breen    </span>
+<span class="co">#&gt; 5  1431  1996 Ferenginar Planet Homeworld Ferengi Alliance       Ferengi  </span>
+<span class="co">#&gt; 6  1342  2841 Cardassia  Planet Homeworld Cardassian Union       Cardassi~</span>
+<span class="co">#&gt; 7   407  3866 Tholia     Planet Homeworld Tholian Assembly       Tholian</span></code></pre></div>
+<p>This is another small dataset containing locations of key planets in the Star Trek universe and a handful of associated variables. Notice the coordinates do not appear meaningful. There is no latitude and longitude. Instead there are row and column entries defining cells in a matrix. The matrix dimensions are defined by the pixel dimensions of source map for the <code>galaxy1</code> map tile set. Unless source maps for two different tile sets are of exactly the same dimensions, they yield two different coordinate reference systems. If you produce a new tile set, you then have to georeference any locations that you intend to display on it.</p>
+<p>This is not ideal, but it gets worse. Once you have locations’ coordinates defined that map onto a particular tile set, the <code>leaflet</code> package does not work in these row and column grids. The <code>(col, row)</code> pairs need to be transformed or projected into Leaflet space. Fortunately, this (so far) appears consistent and <code>rtrek</code> does this for you with <code>tile_coords</code>. It takes a data frame like <code>stGeo</code> with columns named <code>col</code> and <code>row</code> as well as the name of an available Star Trek map tile set, and returns a data frame with new columns <code>x</code> and <code>y</code> that will map properly in a <code>leaflet</code> map built on that tile set.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/tile_coords.html">tile_coords</a></span>(stGeo, <span class="st">"galaxy1"</span>)
+<span class="co">#&gt; # A tibble: 7 x 9</span>
+<span class="co">#&gt;     col   row label      body   category  zone        species     x      y</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1  2196  2357 Earth      Planet Homeworld United Fed~ Human    68.1  -73.1</span>
+<span class="co">#&gt; 2  2615  1742 Romulus    Planet Homeworld Romulan St~ Romulan  81.1  -54.1</span>
+<span class="co">#&gt; 3  3310  3361 Qo'noS     Planet Homeworld Klingon Em~ Klingon 103.  -104. </span>
+<span class="co">#&gt; 4  1004   939 Breen      Planet Homeworld Breen Conf~ Breen    31.2  -29.1</span>
+<span class="co">#&gt; 5  1431  1996 Ferenginar Planet Homeworld Ferengi Al~ Ferengi  44.4  -61.9</span>
+<span class="co">#&gt; 6  1342  2841 Cardassia  Planet Homeworld Cardassian~ Cardas~  41.6  -88.2</span>
+<span class="co">#&gt; 7   407  3866 Tholia     Planet Homeworld Tholian As~ Tholian  12.6 -120.</span></code></pre></div>
+<p>Here is an example using the <code>galaxy1</code> map with <code>leaflet</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(leaflet)
+d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tile_coords.html">tile_coords</a></span>(stGeo, <span class="st">"galaxy1"</span>)
+tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_tiles.html">st_tiles</a></span>(<span class="st">"galaxy1"</span>)
+<span class="kw">leaflet</span>(d, <span class="dt">options =</span> <span class="kw">leafletOptions</span>(<span class="dt">crs =</span> <span class="kw">leafletCRS</span>(<span class="st">"L.CRS.Simple"</span>))) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">addTiles</span>(tiles) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">setView</span>(<span class="dv">108</span>, <span class="op">-</span><span class="dv">75</span>, <span class="dv">2</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">addCircleMarkers</span>(<span class="dt">lng =</span> <span class="op">~</span>x, <span class="dt">lat =</span> <span class="op">~</span>y, <span class="dt">label =</span> <span class="op">~</span>label, <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">radius =</span> <span class="dv">20</span>)</code></pre></div>
+<div id="htmlwidget-b016d05af6261d052df1" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b016d05af6261d052df1">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.1419705197828,-54.0574088440652,-104.297905352987,-29.1388673390225,-61.9394879751746,-88.1613653995345,-119.968968192397],[68.1458494957331,81.1481768813033,102.715283165244,31.155934833204,44.4065166795966,41.644685802948,12.6299456943367],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-119.968968192397,-29.1388673390225],"lng":[12.6299456943367,102.715283165244]}},"evals":[],"jsHooks":[]}</script><p><br></p>
+<p>The <code>stSpecies</code> dataset is just a small table that pairs species named in <code>stGeo</code> with representative thumbnail avatars from Memory Alpha. There is nothing map-related here, but these are used in this <a href="https://uasnap.shinyapps.io/stsc/">example Shiny app</a>. It is similar to the one above, but a bit more interesting having markers to click on and display more information.</p>
+</div>
+</div>
+<div id="star-trek-api" class="section level2">
+<h2 class="hasAnchor">
+<a href="#star-trek-api" class="anchor"></a>Star Trek API</h2>
+<p>To use the words of the developers, the <a href="http://stapi.co/">STAPI</a> is</p>
+<p><em>the first public Star Trek API, accessible via REST and SOAP. It’s an open source project, that anyone can contribute to. STAPI it’s still an alpha version. There is lot of work of work behind, but a lot of work ahead, too. No API stability, in terms of contracts layout, database layout, as well as API availability, is guaranteed at this point.</em></p>
+<p>Despite the important caveats, it is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DDOS measures in <code>rtrek</code> limit requests to one per second by default. You can update this global <code>rtrek</code> setting with <code>options</code>, e.g. <code>options(rtrek_antiddos = 10)</code> for a minimum ten second wait between API calls to be an even better neighbor. <code>rtrek</code> will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.</p>
+<div id="stapi-entities" class="section level3">
+<h3 class="hasAnchor">
+<a href="#stapi-entities" class="anchor"></a>STAPI entities</h3>
+<p>There a many fields, or entities, available in the API. To list them all, call <code>stapi_options</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/stapi_options.html">stapi_options</a></span>()
+<span class="co">#&gt;  [1] "animal"             "astronomicalObject" "book"              </span>
+<span class="co">#&gt;  [4] "bookCollection"     "bookSeries"         "character"         </span>
+<span class="co">#&gt;  [7] "comicCollection"    "comics"             "comicSeries"       </span>
+<span class="co">#&gt; [10] "comicStrip"         "common"             "common/panel"      </span>
+<span class="co">#&gt; [13] "common/panel/admin" "company"            "conflict"          </span>
+<span class="co">#&gt; [16] "element"            "episode"            "food"              </span>
+<span class="co">#&gt; [19] "literature"         "location"           "magazine"          </span>
+<span class="co">#&gt; [22] "magazineSeries"     "material"           "medicalCondition"  </span>
+<span class="co">#&gt; [25] "movie"              "oauth/github"       "occupation"        </span>
+<span class="co">#&gt; [28] "organization"       "performer"          "season"            </span>
+<span class="co">#&gt; [31] "series"             "soundtrack"         "spacecraft"        </span>
+<span class="co">#&gt; [34] "spacecraftClass"    "species"            "staff"             </span>
+<span class="co">#&gt; [37] "technology"         "title"              "tradingCard"       </span>
+<span class="co">#&gt; [40] "tradingCardDeck"    "tradingCardSet"     "videoGame"         </span>
+<span class="co">#&gt; [43] "videoRelease"       "weapon"</span></code></pre></div>
+<p>These options are passed to <code>stapi</code> to perform a search using the API.</p>
+</div>
+<div id="accessing-the-api" class="section level3">
+<h3 class="hasAnchor">
+<a href="#accessing-the-api" class="anchor"></a>Accessing the API</h3>
+<p>Using <code>stapi</code> should be thought of as a three part process:</p>
+<ul>
+<li>Determine how many pages of results exist for a particular entity search.</li>
+<li>Only after taking care to do the previous step, perform the search to return search results.</li>
+<li>If satellite data is needed on a unique observation in the search results, call <code>stapi</code> one more time referencing the specific observation.</li>
+</ul>
+<p>To determine how many pages of results exist for a given search, set <code>page_count = TRUE</code>. The impact on the API will be equivalent to only searching a single page of results. One page contains metadata including the total number of pages. Nothing is returned in this “safe mode”, but the total number of search results available is printed to the console.</p>
+<p>Searching movies only returns one page of results. However, there are a lot of characters in the Star Trek universe. Check the total pages available for character search.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">page_count =</span> <span class="ot">TRUE</span>)
+<span class="co">#&gt; Total pages to retrieve all results: 62</span></code></pre></div>
+<p>And that is with 100 results per page!</p>
+<p>The default <code>page = 1</code> only returns the first page. This can be a vector. Return page two, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example below hard-codes his unique/universal ID.</p>
+<p>For the second call to <code>stapi</code>, return the page two results.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">page =</span> <span class="dv">2</span>)
+<span class="co">#&gt; # A tibble: 100 x 24</span>
+<span class="co">#&gt;    uid     name    gender yearOfBirth monthOfBirth dayOfBirth placeOfBirth</span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;int&gt;        &lt;int&gt;      &lt;int&gt; &lt;lgl&gt;       </span>
+<span class="co">#&gt;  1 CHMA00~ Fuller  M               NA           NA         NA NA          </span>
+<span class="co">#&gt;  2 CHMA00~ Burkus  M               NA           NA         NA NA          </span>
+<span class="co">#&gt;  3 CHMA00~ Masaka~ &lt;NA&gt;            NA           NA         NA NA          </span>
+<span class="co">#&gt;  4 CHMA00~ Thorne  M               NA           NA         NA NA          </span>
+<span class="co">#&gt;  5 CHMA00~ Ah-Kel  M               NA           NA         NA NA          </span>
+<span class="co">#&gt;  6 CHMA00~ Robert~ &lt;NA&gt;            NA           NA         NA NA          </span>
+<span class="co">#&gt;  7 CHMA00~ Q       M               NA           NA         NA NA          </span>
+<span class="co">#&gt;  8 CHMA00~ John D~ &lt;NA&gt;            NA           NA         NA NA          </span>
+<span class="co">#&gt;  9 CHMA00~ Louis ~ &lt;NA&gt;            NA           NA         NA NA          </span>
+<span class="co">#&gt; 10 CHMA00~ Marat ~ M               NA           NA         NA NA          </span>
+<span class="co">#&gt; # ... with 90 more rows, and 17 more variables: yearOfDeath &lt;int&gt;,</span>
+<span class="co">#&gt; #   monthOfDeath &lt;lgl&gt;, dayOfDeath &lt;lgl&gt;, placeOfDeath &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   height &lt;int&gt;, weight &lt;int&gt;, deceased &lt;lgl&gt;, bloodType &lt;chr&gt;,</span>
+<span class="co">#&gt; #   maritalStatus &lt;chr&gt;, serialNumber &lt;chr&gt;, hologramActivationDate &lt;chr&gt;,</span>
+<span class="co">#&gt; #   hologramStatus &lt;chr&gt;, hologramDateStatus &lt;lgl&gt;, hologram &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   fictionalCharacter &lt;lgl&gt;, mirror &lt;lgl&gt;, alternateReality &lt;lgl&gt;</span></code></pre></div>
+<p>Character tables can be sparse. There are a lot of variables, many of which will contain missing data for rare, esoteric characters. Even for more popular characters about whom much more universe lore has been uncovered, it still takes dedicated nerds to enter all the data in a database.</p>
+<p>When a dataset contains a <code>uid</code> column, this can be used subsequently to extract a satellite dataset about that particular observation returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q’s <code>uid</code> to <code>stapi</code> and call the function one last time. When <code>uid</code> is no longer <code>NULL</code>, <code>stapi</code> knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Q &lt;-<span class="st"> "CHMA0000025118"</span>
+Q &lt;-<span class="st"> </span><span class="kw"><a href="../reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">uid =</span> Q)
 
+<span class="kw">library</span>(dplyr)
+Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(uid, title, stardateFrom, stardateTo)
+<span class="co">#&gt;              uid                 title stardateFrom stardateTo</span>
+<span class="co">#&gt; 1 EPMA0000001458    All Good Things...      47988.0    47988.0</span>
+<span class="co">#&gt; 2 EPMA0000001329                 Q Who      42761.3    42761.3</span>
+<span class="co">#&gt; 3 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
+<span class="co">#&gt; 4 EPMA0000162588            Death Wish           NA         NA</span>
+<span class="co">#&gt; 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7</span>
+<span class="co">#&gt; 6 EPMA0000000845                Q-Less      46531.2    46531.2</span>
+<span class="co">#&gt; 7 EPMA0000000651              Tapestry           NA         NA</span>
+<span class="co">#&gt; 8 EPMA0000001413                True Q      46192.3    46192.3</span>
+<span class="co">#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</span></code></pre></div>
+<p>The data returned on Q is actually a large list, included multiple data frames. For simplicity only a piece of it is shown above.</p>
+</div>
+</div>
+<div id="star-trek-novel-text-ming" class="section level2">
+<h2 class="hasAnchor">
+<a href="#star-trek-novel-text-ming" class="anchor"></a>Star Trek novel text ming</h2>
+<p><em>to be continued…</em></p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#local-datasets">Local datasets</a></li>
+      <li><a href="#star-trek-api">Star Trek API</a></li>
+      <li><a href="#star-trek-novel-text-ming">Star Trek novel text ming</a></li>
+      </ul>
+</div>
       </div>
 
 </div>

@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.5</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.6</span>
       </span>
     </div>
 
@@ -203,16 +203,23 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>See <code>stapi_options</code> for all the currently available API entities. These are the IDs for dataset collections or categories passed to <code>id</code>.</p>
+    <p>See <code><a href='stapi_options.html'>stapi_options</a></code> for all the currently available API entities. These are the IDs for dataset collections or categories passed to <code>id</code>.</p>
 <p>The universal ID <code>uid</code> can be supplied to retrieve a more specific subset of data. By default, <code>uid = NULL</code> and <code>stapi</code> operates in search mode.
 As part of a stepwise process, you can first use search mode.
 Then if the resulting data frame includes a <code>uid</code> column, you can make a second call to the function providing a specific <code>uid</code>.
 This puts <code>stapi</code> into extraction mode and will return satellite data associated with the unique entry from the original general sweep of the entity <code>id</code>.</p>
+<p><code>rtrek</code> employs anti-DDOS measures. It will not perform an API call to STAPI more than once per second.
+To be an even better neighbor, you can increase this wait time using <code>options</code>, e.g. <code>options(rtrek_antiddos = 10)</code> to increase the minimum time between API calls to ten seconds.
+Values less than one are ignored (defaulting back to one second) and a warning will be thrown when making any API call if this is the case.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># check first</span></div><div class='output co'>#&gt; Total pages to retrieve all results: 62 </div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 100 x 2
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># check first</span></div><div class='output co'>#&gt; Total pages to retrieve all results: 62 </div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 100 x 2
 #&gt;    uid            name                  
 #&gt;    &lt;chr&gt;          &lt;chr&gt;                 
 #&gt;  1 CHMA0000016634 Fuller                
@@ -226,14 +233,14 @@ This puts <code>stapi</code> into extraction mode and will return satellite data
 #&gt;  9 CHMA0000057119 Louis of France       
 #&gt; 10 CHMA0000021854 Marat Kobar           
 #&gt; # ... with 90 more rows</div><div class='input'><span class='no'>Q</span> <span class='kw'>&lt;-</span> <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>uid</span> <span class='kw'>=</span> <span class='st'>"CHMA0000025118"</span>)
-<span class='no'>Q</span>$<span class='no'>character</span>$<span class='no'>episodes</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>uid</span>, <span class='no'>title</span>, <span class='no'>stardateFrom</span>, <span class='no'>stardateTo</span>)</div><div class='output co'>#&gt;              uid                 title stardateFrom stardateTo
+<span class='no'>Q</span>$<span class='no'>episodes</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>uid</span>, <span class='no'>title</span>, <span class='no'>stardateFrom</span>, <span class='no'>stardateTo</span>)</div><div class='output co'>#&gt;              uid                 title stardateFrom stardateTo
 #&gt; 1 EPMA0000001458    All Good Things...      47988.0    47988.0
 #&gt; 2 EPMA0000001329                 Q Who      42761.3    42761.3
 #&gt; 3 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7
 #&gt; 4 EPMA0000162588            Death Wish           NA         NA
 #&gt; 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7
-#&gt; 6 EPMA0000000651              Tapestry           NA         NA
-#&gt; 7 EPMA0000000845                Q-Less      46531.2    46531.2
+#&gt; 6 EPMA0000000845                Q-Less      46531.2    46531.2
+#&gt; 7 EPMA0000000651              Tapestry           NA         NA
 #&gt; 8 EPMA0000001413                True Q      46192.3    46192.3
 #&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</div></pre>
   </div>

@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rtrek</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.5</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.6</span>
       </span>
     </div>
 
@@ -137,16 +137,67 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="rtrek" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#rtrek" class="anchor"></a>rtrek</h1></div>
+<a href="#rtrek" class="anchor"></a>rtrek <a hef="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek.png?raw=true" _target="blank"><img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek-small.png?raw=true" style="margin-bottom:5px;" width="120" align="right"></a>
+</h1></div>
 
 <p>The <code>rtrek</code> package provides datasets related to the Star Trek fictional universe and functions to assist with the data. The package interfaces with Wikipedia, STAPI, Memory Alpha and Memory Beta to retrieve data, metadata and other information relating to Star Trek. It also contains local datasets covering a variety of topics such as Star Trek universe species data, geopolitical data, and datasets resulting from text mining analyses of Star Trek novels.</p>
-<p><em>Note: This package is a Work in progress.</em></p>
+<p style="text-align:center;">
+<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek_app1.png?raw=true" width="100%"></p>
+<p><em>Note: This package is in alpha (and not just the quadrant). Breaking changes may occur.</em></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<a href="#installation" class="anchor"></a>Installation<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width="320" style="float: right; padding-left: 10px; padding-bottom:5px;">
+</h2>
 <p>Install the development version pf <code>rtrek</code> from <a href="https://github.com/">GitHub</a> with:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
 devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"leonawicz/rtrek"</span>)</code></pre></div>
+<h2 style="padding-bottom:0px;">
+Example
+</h2>
+<h4 style="padding-top:50px;padding-bottom:0px;">
+Time to be good detectives. Good thing Data has R installed.
+</h4>
+<p>Use the Star Trek API (STAPI) to obtain information on the whereabouts and whenabouts of the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up. The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters. The second call grabs only page two results. The third call uses the universal/unique ID <code>uid</code> to retrieve data on Q. Think of these three successive uses of <code>stapi</code> as safe mode, search mode and extraction mode.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rtrek)
+<span class="kw">library</span>(dplyr)
+<span class="kw"><a href="reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">page_count =</span> <span class="ot">TRUE</span>)
+<span class="co">#&gt; Total pages to retrieve all results: 62</span>
+
+<span class="kw"><a href="reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">page =</span> <span class="dv">2</span>)
+<span class="co">#&gt; # A tibble: 100 x 24</span>
+<span class="co">#&gt;    uid     name    gender yearOfBirth monthOfBirth dayOfBirth placeOfBirth</span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;int&gt;        &lt;int&gt;      &lt;int&gt; &lt;lgl&gt;       </span>
+<span class="co">#&gt;  1 CHMA00~ Fuller  M               NA           NA         NA NA          </span>
+<span class="co">#&gt;  2 CHMA00~ Burkus  M               NA           NA         NA NA          </span>
+<span class="co">#&gt;  3 CHMA00~ Masaka~ &lt;NA&gt;            NA           NA         NA NA          </span>
+<span class="co">#&gt;  4 CHMA00~ Thorne  M               NA           NA         NA NA          </span>
+<span class="co">#&gt;  5 CHMA00~ Ah-Kel  M               NA           NA         NA NA          </span>
+<span class="co">#&gt;  6 CHMA00~ Robert~ &lt;NA&gt;            NA           NA         NA NA          </span>
+<span class="co">#&gt;  7 CHMA00~ Q       M               NA           NA         NA NA          </span>
+<span class="co">#&gt;  8 CHMA00~ John D~ &lt;NA&gt;            NA           NA         NA NA          </span>
+<span class="co">#&gt;  9 CHMA00~ Louis ~ &lt;NA&gt;            NA           NA         NA NA          </span>
+<span class="co">#&gt; 10 CHMA00~ Marat ~ M               NA           NA         NA NA          </span>
+<span class="co">#&gt; # ... with 90 more rows, and 17 more variables: yearOfDeath &lt;int&gt;,</span>
+<span class="co">#&gt; #   monthOfDeath &lt;lgl&gt;, dayOfDeath &lt;lgl&gt;, placeOfDeath &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   height &lt;int&gt;, weight &lt;int&gt;, deceased &lt;lgl&gt;, bloodType &lt;chr&gt;,</span>
+<span class="co">#&gt; #   maritalStatus &lt;chr&gt;, serialNumber &lt;chr&gt;, hologramActivationDate &lt;chr&gt;,</span>
+<span class="co">#&gt; #   hologramStatus &lt;chr&gt;, hologramDateStatus &lt;lgl&gt;, hologram &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   fictionalCharacter &lt;lgl&gt;, mirror &lt;lgl&gt;, alternateReality &lt;lgl&gt;</span>
+
+Q &lt;-<span class="st"> "CHMA0000025118"</span>  <span class="co">#unique ID</span>
+Q &lt;-<span class="st"> </span><span class="kw"><a href="reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">uid =</span> Q)
+Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(uid, title, stardateFrom, stardateTo)
+<span class="co">#&gt;              uid                 title stardateFrom stardateTo</span>
+<span class="co">#&gt; 1 EPMA0000001458    All Good Things...      47988.0    47988.0</span>
+<span class="co">#&gt; 2 EPMA0000001329                 Q Who      42761.3    42761.3</span>
+<span class="co">#&gt; 3 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
+<span class="co">#&gt; 4 EPMA0000162588            Death Wish           NA         NA</span>
+<span class="co">#&gt; 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7</span>
+<span class="co">#&gt; 6 EPMA0000000845                Q-Less      46531.2    46531.2</span>
+<span class="co">#&gt; 7 EPMA0000000651              Tapestry           NA         NA</span>
+<span class="co">#&gt; 8 EPMA0000001413                True Q      46192.3    46192.3</span>
+<span class="co">#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</span></code></pre></div>
+<p>Live long and prosper.</p>
 </div>
 </div>
   </div>
