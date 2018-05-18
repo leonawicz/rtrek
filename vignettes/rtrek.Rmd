@@ -148,6 +148,6 @@ Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
 ```
 The data returned on Q is actually a large list, included multiple data frames. For simplicity only a piece of it is shown above.
 
-## Star Trek novel text ming
+## Star Trek novel text mining
 
 *to be continued...*
