@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# rtrek
+# rtrek <a hef="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek.png?raw=true" _target="blank"><img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek-small.png?raw=true" style="margin-bottom:5px;" width="120" align="right"></a>
 
 [![Travis-CI Build Status](https://travis-ci.org/leonawicz/rtrek.svg?branch=master)](https://travis-ci.org/leonawicz/rtrek)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/rtrek?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/rtrek)
@@ -33,7 +33,13 @@ cat('<p style="text-align:center;"><img src="https://github.com/leonawicz/rtrek/
 
 *Note: This package is in alpha (and not just the quadrant). Breaking changes may occur.*
     
-## Installation
+```{r hill1, echo = FALSE, results = "asis", eval = is_md}
+cat('## Installation![](https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true)')
+```
+
+```{r hill2, echo = FALSE, results = "asis", eval = !is_md}
+cat('## Installation<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width=320 style="float: right; padding-left: 10px; padding-bottom:5px;">')
+```
 
 Install the development version pf `rtrek` from [GitHub](https://github.com/) with:
 
@@ -42,11 +48,19 @@ Install the development version pf `rtrek` from [GitHub](https://github.com/) wi
 devtools::install_github("leonawicz/rtrek")
 ```
 
-## Example
 
-Using the Star Trek API (STAPI) to obtain information on the whereabouts and whenabouts of the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up. The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters. The second call grabs only page two results. The third call uses the universal/unique ID `uid` to retrieve data on Q. Think of these three successive uses of `stapi` as safe mode, search mode and extraction mode.
 
-```{r ex}
+```{r ex_heading1, echo = FALSE, results = "asis", eval = is_md}
+cat('## Example\n\n####Time to be good detectives. Good thing Data has R installed.')
+```
+
+```{r ex_heading2, echo = FALSE, results = "asis", eval = !is_md}
+cat('<h2 style="padding-bottom:0px;">Example</h2><h4 style="padding-top:50px;padding-bottom:0px;">Time to be good detectives. Good thing Data has R installed.</h4>')
+```
+
+Use the Star Trek API (STAPI) to obtain information on the whereabouts and whenabouts of the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up. The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters. The second call grabs only page two results. The third call uses the universal/unique ID `uid` to retrieve data on Q. Think of these three successive uses of `stapi` as safe mode, search mode and extraction mode.
+
+```{r ex, thm = knitr::knit_theme$get("molokai")}
 library(rtrek)
 library(dplyr)
 stapi("character", page_count = TRUE)

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-rtrek
-=====
+rtrek <a hef="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek.png?raw=true" _target="blank"><img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek-small.png?raw=true" style="margin-bottom:5px;" width="120" align="right"></a>
+=============================================================================================================================================================================================================================================================================
 
 [![Travis-CI Build Status](https://travis-ci.org/leonawicz/rtrek.svg?branch=master)](https://travis-ci.org/leonawicz/rtrek) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/rtrek?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/rtrek) [![Coverage Status](https://img.shields.io/codecov/c/github/leonawicz/rtrek/master.svg)](https://codecov.io/github/leonawicz/rtrek?branch=master)
 
@@ -11,8 +11,8 @@ The `rtrek` package provides datasets related to the Star Trek fictional univers
 
 *Note: This package is in alpha (and not just the quadrant). Breaking changes may occur.*
 
-Installation
-------------
+Installation![](https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true)
+-------------------------------------------------------------------------------------------------------
 
 Install the development version pf `rtrek` from [GitHub](https://github.com/) with:
 
@@ -24,7 +24,9 @@ devtools::install_github("leonawicz/rtrek")
 Example
 -------
 
-Using the Star Trek API (STAPI) to obtain information on the whereabouts and whenabouts of the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up. The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters. The second call grabs only page two results. The third call uses the universal/unique ID `uid` to retrieve data on Q. Think of these three successive uses of `stapi` as safe mode, search mode and extraction mode.
+#### Time to be good detectives. Good thing Data has R installed.
+
+Use the Star Trek API (STAPI) to obtain information on the whereabouts and whenabouts of the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up. The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters. The second call grabs only page two results. The third call uses the universal/unique ID `uid` to retrieve data on Q. Think of these three successive uses of `stapi` as safe mode, search mode and extraction mode.
 
 ``` r
 library(rtrek)
