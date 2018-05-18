@@ -34,7 +34,7 @@ cat('<p style="text-align:center;"><img src="https://github.com/leonawicz/rtrek/
 *Note: This package is in alpha (and not just the quadrant). Breaking changes may occur.*
     
 ```{r hill1, echo = FALSE, results = "asis", eval = is_md}
-cat('## Installation![](https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true)')
+cat('## Installation!')
 ```
 
 ```{r hill2, echo = FALSE, results = "asis", eval = !is_md}
@@ -51,7 +51,7 @@ devtools::install_github("leonawicz/rtrek")
 
 
 ```{r ex_heading1, echo = FALSE, results = "asis", eval = is_md}
-cat('## Example\n\n####Time to be good detectives. Good thing Data has R installed.')
+cat('## Example')
 ```
 
 ```{r ex_heading2, echo = FALSE, results = "asis", eval = !is_md}
