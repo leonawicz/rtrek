@@ -16,7 +16,7 @@ p {
 .warning { color: purple; font-weight: bolder;
 }
 
-.sourceCode .r, .examples, .usage {
+.sourceCode .r, .examples, .usage, pre, pre code {
   background-color: #000030;
   color: #A9F3EE;
 }
