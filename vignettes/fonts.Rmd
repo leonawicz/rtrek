@@ -21,11 +21,18 @@ This function is only for previewing fonts.
 
 Brought to you by Worf, who has intercepted many messages in his time as security chief.
 
-```{r pkgs}
+```{r font1}
 library(rtrek)
 st_font()
+```
+
+```{r font2, eval=FALSE}
 st_font("Khan")
 ```
+
+<br/>
+
+<img src="https://raw.githubusercontent.com/leonawicz/rtrek/master/data-raw/images/font_preview.png" width="100%">
 
 Worf is here to guide your selections, though he has a bit of a one-track mind when it comes to Star Trek universe calligraphy.
 
