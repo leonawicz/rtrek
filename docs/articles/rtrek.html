@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.6</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.7</span>
       </span>
     </div>
 
@@ -44,12 +44,28 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fa fa-home"></span>
      
+    Home
   </a>
 </li>
 <li>
-  <a href="../articles/rtrek.html">Get started</a>
+  <a href="../articles/rtrek.html">Get Started</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/sc.html">Stellar Cartography</a>
+    </li>
+    <li>
+      <a href="../articles/fonts.html">Star Trek fonts</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
@@ -245,8 +261,8 @@ tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_ti
 <span class="kw">leaflet</span>(d, <span class="dt">options =</span> <span class="kw">leafletOptions</span>(<span class="dt">crs =</span> <span class="kw">leafletCRS</span>(<span class="st">"L.CRS.Simple"</span>))) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addTiles</span>(tiles) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">setView</span>(<span class="dv">108</span>, <span class="op">-</span><span class="dv">75</span>, <span class="dv">2</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addCircleMarkers</span>(<span class="dt">lng =</span> <span class="op">~</span>x, <span class="dt">lat =</span> <span class="op">~</span>y, <span class="dt">label =</span> <span class="op">~</span>label, <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">radius =</span> <span class="dv">20</span>)</code></pre></div>
-<div id="htmlwidget-90e713918d35823747e2" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-90e713918d35823747e2">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.1419705197828,-54.0574088440652,-104.297905352987,-29.1388673390225,-61.9394879751746,-88.1613653995345,-119.968968192397],[68.1458494957331,81.1481768813033,102.715283165244,31.155934833204,44.4065166795966,41.644685802948,12.6299456943367],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-119.968968192397,-29.1388673390225],"lng":[12.6299456943367,102.715283165244]}},"evals":[],"jsHooks":[]}</script><p><br></p>
+<div id="htmlwidget-58e60783b7c464ee4bfe" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-58e60783b7c464ee4bfe">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.1419705197828,-54.0574088440652,-104.297905352987,-29.1388673390225,-61.9394879751746,-88.1613653995345,-119.968968192397],[68.1458494957331,81.1481768813033,102.715283165244,31.155934833204,44.4065166795966,41.644685802948,12.6299456943367],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-119.968968192397,-29.1388673390225],"lng":[12.6299456943367,102.715283165244]}},"evals":[],"jsHooks":[]}</script><p><br></p>
 <p>The <code>stSpecies</code> dataset is just a small table that pairs species named in <code>stGeo</code> with representative thumbnail avatars from Memory Alpha. There is nothing map-related here, but these are used in this <a href="https://uasnap.shinyapps.io/stsc/">example Shiny app</a>. It is similar to the one above, but a bit more interesting having markers to click on and display more information.</p>
 </div>
 </div>
@@ -327,8 +343,8 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
 <span class="co">#&gt; 3 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
 <span class="co">#&gt; 4 EPMA0000162588            Death Wish           NA         NA</span>
 <span class="co">#&gt; 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7</span>
-<span class="co">#&gt; 6 EPMA0000000845                Q-Less      46531.2    46531.2</span>
-<span class="co">#&gt; 7 EPMA0000000651              Tapestry           NA         NA</span>
+<span class="co">#&gt; 6 EPMA0000000651              Tapestry           NA         NA</span>
+<span class="co">#&gt; 7 EPMA0000000845                Q-Less      46531.2    46531.2</span>
 <span class="co">#&gt; 8 EPMA0000001413                True Q      46192.3    46192.3</span>
 <span class="co">#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</span></code></pre></div>
 <p>The data returned on Q is actually a large list, included multiple data frames. For simplicity only a piece of it is shown above.</p>
