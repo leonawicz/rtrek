@@ -14,3 +14,4 @@
 ^\.travis\.yml$
 ^codecov\.yml$
 ^vignettes/sc.Rmd$
+^vignettes/fonts.Rmd$
