@@ -1,11 +1,11 @@
 # Inject parallax into body of Stellar Cartography web page, remove title div
 .post_proc_html <- function(id = "sc"){
   font_title <- "@font-face {
-    font-family: 'sc-h2-font';
+    font-family: 'sc-title-font';
     src: url('https://raw.githubusercontent.com/leonawicz/trekfont/master/inst/fonts/FederationStarfleet.ttf') format('truetype');
   }\n"
   font_subtitle <- "@font-face {
-    font-family: 'sc-h2-font';
+    font-family: 'sc-subtitle-font';
   src: url('https://raw.githubusercontent.com/leonawicz/trekfont/master/inst/fonts/FederationDS9Title.ttf') format('truetype');
   }\n"
   font_h2 <- "@font-face {
@@ -13,7 +13,7 @@
   src: url('https://raw.githubusercontent.com/leonawicz/trekfont/master/inst/fonts/FederationDS9Title.ttf') format('truetype');
   }\n"
   font_h4 <- "@font-face {
-    font-family: 'sc-h2-font';
+    font-family: 'sc-h4-font';
     src: url('https://raw.githubusercontent.com/leonawicz/trekfont/master/inst/fonts/Federation.ttf') format('truetype');
   }\n"
 
@@ -46,8 +46,8 @@
   }\n'
 
   sc <- paste0(
-    '<style>body {background-color: #222222; color: #ffffff; } h2 {font-family: "sc-h2-font"; } h4 {font-family: "sc-h4-font"; }</style>\n',
-    font_title, font_subtitle, font_h2, font_h4, par_title, par_subtile,
+    '<style>body {background-color: #222222; color: #ffffff; } h2 {font-family: "sc-h2-font"; } h4 {font-family: "sc-h4-font"; }\n',
+    font_title, font_subtitle, font_h2, font_h4, par_title, par_subtitle, '</style>',
     '<div class="main-container">\n  <div class="parallax">\n    ',
     '<a href="https://github.com/leonawicz/rtrek/">\n      ',
     '<h1 class="parallax-title"><span style="padding-right: 50px;">Stellar Cartography</span></h1>',
