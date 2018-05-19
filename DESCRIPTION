@@ -30,6 +30,8 @@ Suggests:
 Imports: 
     dplyr,
     jsonlite,
-    purrr
+    purrr,
+Remotes:
+    leonawicz/trekfont
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
