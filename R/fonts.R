@@ -39,7 +39,6 @@ st_font <- function(family){
   x <- "The Quick Brown Fox Jumps Over The Lazy Dog."
   x <- c(tolower(x), x, toupper(x))
   x2 <- '"Captain, this font is strong.\nI recommend extreme caution."'
-  whr <- ncol(.worf) / nrow(.worf)
   showtext::showtext_auto()
   ggplot2::ggplot() + ggplot2::theme_gray(base_family = "stfont") +
     ggplot2::theme(plot.margin = grid::unit(c(2, 4, 2, 2), "mm")) +
