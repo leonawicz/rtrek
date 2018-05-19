@@ -18,10 +18,10 @@ reference:
   - stGeo
   - stTiles
   - stBooks
+  - stapiEntities
 - title: API
   contents:
   - stapi
-  - stapi_options
 - title: Helper functions
   contents:
   - st_datasets
