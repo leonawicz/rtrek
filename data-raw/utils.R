@@ -70,15 +70,15 @@
 
 build_site <- function(id = "sc"){
   pkgdown::build_site()
-  .post_proc_html(id = id)
+  if(id %in% c("sc")) .post_proc_html(id = id)
 }
 
 build_articles <- function(id = "sc"){
   pkgdown::build_article(id)
-  .post_proc_html(id = id)
+  if(id %in% c("sc")) .post_proc_html(id = id)
 }
 
 build_article <- function(id = "sc"){
   pkgdown::build_articles()
-  .post_proc_html(id = id)
+  if(id %in% c("sc")) .post_proc_html(id = id)
 }
