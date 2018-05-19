@@ -4,10 +4,12 @@
 \alias{st_font}
 \title{Preview Star Trek fonts}
 \usage{
-st_font(family)
+st_font(family, size = 11)
 }
 \arguments{
 \item{family}{character, font family.}
+
+\item{size, }{numeric, font size passed to ggplot.}
 }
 \value{
 a character vector, or a plot side effect. See details.
@@ -21,8 +23,8 @@ If \code{family} is missing, it will return a vector of all available font famil
 In RStudio on Windows the font may not show in the RStudio graphics device. Try using the regular R GUI.
 }
 \examples{
-library(showtext)
-showtect_auto()
-st_font()
-st_font("Federation")
+if(all(c("trekfont", "showtext", "ggplot2") \%in\% installed.packages())){
+  st_font()
+}
+\dontrun{st_font("Federation")} # should be run in an interactive session
 }
