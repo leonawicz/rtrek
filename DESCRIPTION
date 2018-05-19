@@ -1,5 +1,5 @@
 Package: rtrek
-Version: 0.0.7
+Version: 0.0.8
 Title: Datasets and Functions Relating to Star Trek
 Description: Provides datasets related to the Star Trek fictional universe and functions for working with the data.
     It interfaces with Wikipedia (<https://www.wikipedia.org/>), the Star Trek API (STAPI) (<http://stapi.co/>), 

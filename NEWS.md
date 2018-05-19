@@ -1,3 +1,11 @@
+# rtrek 0.0.8
+
+* Added more robust testing of API entity searches.
+* Minor refactor of `stapi` internals and addition of `stapiEntities` dataset.
+* Added optional (non-dependent) association with `trekfont` package with a function `st_font` to list and preview fonts from that package.
+* Updated documentation.
+* Minor fixes.
+
 # rtrek 0.0.7
 
 * Added additional vignettes.
