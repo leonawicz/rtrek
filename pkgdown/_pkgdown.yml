@@ -28,6 +28,7 @@ reference:
   - st_tiles
   - tile_coords
   - st_book_series
+  - st_font
 
 navbar:
   type: inverse
