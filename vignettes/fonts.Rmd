@@ -1,0 +1,34 @@
+---
+title: "Star Trek fonts"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Star Trek fonts}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE)
+```
+
+The `trekfont` package contains 107 Star Trek fonts. These are not part of `rtrek` but `rtrek` offers a convenient function `st_font` for previewing them.
+
+Since accessing these fonts can easily be done directly and doing so is also not a significant purpose of `rtrek`, this function is only useful if you choose to install optional packages not otherwise required for `rtrek`.
+These include `showtext`, `ggplot2`, and of course `trekfont`. As long as you have these packages installed, you do not need to load them explicitly in order to use `st_font`.
+
+If you call `st_font` without passing the `family` argument, it will return a vector of all available font families.It does so with the font file extensions removed, in contrast to `trekfont::trekfonts`.
+This function is only for previewing fonts.
+
+Brought to you by Worf, who has intercepted many messages in his time as security chief.
+
+```{r pkgs}
+library(rtrek)
+st_font()
+st_font("Khan")
+```
+
+Worf is here to guide your selections, though he has a bit of a one-track mind when it comes to Star Trek universe calligraphy.
+
+The RStudio graphics device in Windows may not show the fonts. It is recommended you use the regular R GUI.
+
+This font previewer does just that. If you want to install and use fonts from `trekfont`, just do so using `sysfonts` and `showtext`. See these packages for details.
