@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Available Star Trek map tile sets. — stTiles • rtrek</title>
+<title>Star Trek API entities. — stapiEntities • rtrek</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,12 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Available Star Trek map tile sets. — stTiles" />
+<meta property="og:title" content="Star Trek API entities. — stapiEntities" />
 
-<meta property="og:description" content="A data frame with 1 row and 8 columns." />
+<meta property="og:description" content="A data frame with 40 rows and 4 columns listing the available STAPI entity IDs that can be passed to stapi, along with additional metadata regarding the content returned form an API call to each entity.
+This data frame helps you see what you will obtain from API calls beforehand.
+Every entity search returns a tibble data frame, with varying numbers of columns and different names depending on the entity content.
+There is also one nested column containing the column names of the data frame returned for each entity. This can be inspected directly for specific entities or stapiEntities can be unnested with a function like tidyr::unnest." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -179,22 +182,29 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Available Star Trek map tile sets.</h1>
+    <h1>Star Trek API entities.</h1>
     <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>stTiles.Rd</code></div>
+    <div class="hidden name"><code>stapiEntities.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>A data frame with 1 row and 8 columns.</p>
+    <p>A data frame with 40 rows and 4 columns listing the available STAPI entity IDs that can be passed to <code><a href='stapi.html'>stapi</a></code>, along with additional metadata regarding the content returned form an API call to each entity.
+This data frame helps you see what you will obtain from API calls beforehand.
+Every entity search returns a tibble data frame, with varying numbers of columns and different names depending on the entity content.
+There is also one nested column containing the column names of the data frame returned for each entity. This can be inspected directly for specific entities or <code>stapiEntities</code> can be unnested with a function like <code><a href='http://www.rdocumentation.org/packages/tidyr/topics/unnest'>tidyr::unnest</a></code>.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>stTiles</span></pre>
+    <pre class="usage"><span class='no'>stapiEntities</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>A data frame</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='stapi.html'>stapi</a></code></p></div>
     
 
   </div>
@@ -203,6 +213,8 @@
     <ul class="nav nav-pills nav-stacked">
       
       <li><a href="#format">Format</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

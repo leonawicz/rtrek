@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.7</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.8</span>
       </span>
     </div>
 
@@ -164,13 +164,14 @@
 <p>Package datasets in <code>rtrek</code> are somewhat eclectic and currently limited. To list all available package datasets with a short description, call <code>st_datasets</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rtrek)
 <span class="kw"><a href="../reference/st_datasets.html">st_datasets</a></span>()
-<span class="co">#&gt; # A tibble: 4 x 2</span>
-<span class="co">#&gt;   dataset   description                                   </span>
-<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;                                         </span>
-<span class="co">#&gt; 1 stGeo     Simple CRS data associated with map tile sets.</span>
-<span class="co">#&gt; 2 stSpecies Basic intelligent species data.               </span>
-<span class="co">#&gt; 3 stTiles   Available map tile sets.                      </span>
-<span class="co">#&gt; 4 stBooks   Star Trek novel meta data from Wikipedia.</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 5 x 2</span>
+<span class="co">#&gt;   dataset       description                                   </span>
+<span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;                                         </span>
+<span class="co">#&gt; 1 stGeo         Simple CRS data associated with map tile sets.</span>
+<span class="co">#&gt; 2 stSpecies     Basic intelligent species data.               </span>
+<span class="co">#&gt; 3 stTiles       Available map tile sets.                      </span>
+<span class="co">#&gt; 4 stBooks       Star Trek novel meta data from Wikipedia.     </span>
+<span class="co">#&gt; 5 stapiEntities Star Trek API (STAPI) categories</span></code></pre></div>
 <p>In the current version of <code>rtrek</code> these datasets can be split into two groups: datasets that support Star Trek-themed spatial maps and metadata relating to the vast compendium of officially licensed Star Trek novels.</p>
 <div id="star-trek-novels" class="section level3">
 <h3 class="hasAnchor">
@@ -261,8 +262,8 @@ tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_ti
 <span class="kw">leaflet</span>(d, <span class="dt">options =</span> <span class="kw">leafletOptions</span>(<span class="dt">crs =</span> <span class="kw">leafletCRS</span>(<span class="st">"L.CRS.Simple"</span>))) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addTiles</span>(tiles) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">setView</span>(<span class="dv">108</span>, <span class="op">-</span><span class="dv">75</span>, <span class="dv">2</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addCircleMarkers</span>(<span class="dt">lng =</span> <span class="op">~</span>x, <span class="dt">lat =</span> <span class="op">~</span>y, <span class="dt">label =</span> <span class="op">~</span>label, <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">radius =</span> <span class="dv">20</span>)</code></pre></div>
-<div id="htmlwidget-58e60783b7c464ee4bfe" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-58e60783b7c464ee4bfe">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.1419705197828,-54.0574088440652,-104.297905352987,-29.1388673390225,-61.9394879751746,-88.1613653995345,-119.968968192397],[68.1458494957331,81.1481768813033,102.715283165244,31.155934833204,44.4065166795966,41.644685802948,12.6299456943367],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-119.968968192397,-29.1388673390225],"lng":[12.6299456943367,102.715283165244]}},"evals":[],"jsHooks":[]}</script><p><br></p>
+<div id="htmlwidget-8cef95c745f6c0cf568c" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8cef95c745f6c0cf568c">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.1419705197828,-54.0574088440652,-104.297905352987,-29.1388673390225,-61.9394879751746,-88.1613653995345,-119.968968192397],[68.1458494957331,81.1481768813033,102.715283165244,31.155934833204,44.4065166795966,41.644685802948,12.6299456943367],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-119.968968192397,-29.1388673390225],"lng":[12.6299456943367,102.715283165244]}},"evals":[],"jsHooks":[]}</script><p><br></p>
 <p>The <code>stSpecies</code> dataset is just a small table that pairs species named in <code>stGeo</code> with representative thumbnail avatars from Memory Alpha. There is nothing map-related here, but these are used in this <a href="https://uasnap.shinyapps.io/stsc/">example Shiny app</a>. It is similar to the one above, but a bit more interesting having markers to click on and display more information.</p>
 </div>
 </div>
@@ -275,24 +276,23 @@ tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_ti
 <div id="stapi-entities" class="section level3">
 <h3 class="hasAnchor">
 <a href="#stapi-entities" class="anchor"></a>STAPI entities</h3>
-<p>There a many fields, or entities, available in the API. To list them all, call <code>stapi_options</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/stapi_options.html">stapi_options</a></span>()
-<span class="co">#&gt;  [1] "animal"             "astronomicalObject" "book"              </span>
-<span class="co">#&gt;  [4] "bookCollection"     "bookSeries"         "character"         </span>
-<span class="co">#&gt;  [7] "comicCollection"    "comics"             "comicSeries"       </span>
-<span class="co">#&gt; [10] "comicStrip"         "common"             "common/panel"      </span>
-<span class="co">#&gt; [13] "common/panel/admin" "company"            "conflict"          </span>
-<span class="co">#&gt; [16] "element"            "episode"            "food"              </span>
-<span class="co">#&gt; [19] "literature"         "location"           "magazine"          </span>
-<span class="co">#&gt; [22] "magazineSeries"     "material"           "medicalCondition"  </span>
-<span class="co">#&gt; [25] "movie"              "oauth/github"       "occupation"        </span>
-<span class="co">#&gt; [28] "organization"       "performer"          "season"            </span>
-<span class="co">#&gt; [31] "series"             "soundtrack"         "spacecraft"        </span>
-<span class="co">#&gt; [34] "spacecraftClass"    "species"            "staff"             </span>
-<span class="co">#&gt; [37] "technology"         "title"              "tradingCard"       </span>
-<span class="co">#&gt; [40] "tradingCardDeck"    "tradingCardSet"     "videoGame"         </span>
-<span class="co">#&gt; [43] "videoRelease"       "weapon"</span></code></pre></div>
-<p>These options are passed to <code>stapi</code> to perform a search using the API.</p>
+<p>There a many fields, or entities, available in the API. The available IDs can be found in this table:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stapiEntities
+<span class="co">#&gt; # A tibble: 40 x 4</span>
+<span class="co">#&gt;    id              class   ncol colnames  </span>
+<span class="co">#&gt;    &lt;chr&gt;           &lt;chr&gt;  &lt;int&gt; &lt;list&gt;    </span>
+<span class="co">#&gt;  1 company         tbl_df    19 &lt;chr [19]&gt;</span>
+<span class="co">#&gt;  2 comicStrip      tbl_df    12 &lt;chr [12]&gt;</span>
+<span class="co">#&gt;  3 organization    tbl_df    14 &lt;chr [14]&gt;</span>
+<span class="co">#&gt;  4 soundtrack      tbl_df     4 &lt;chr [4]&gt; </span>
+<span class="co">#&gt;  5 character       tbl_df    24 &lt;chr [24]&gt;</span>
+<span class="co">#&gt;  6 literature      tbl_df     8 &lt;chr [8]&gt; </span>
+<span class="co">#&gt;  7 magazine        tbl_df    10 &lt;chr [10]&gt;</span>
+<span class="co">#&gt;  8 videoRelease    tbl_df    30 &lt;chr [30]&gt;</span>
+<span class="co">#&gt;  9 animal          tbl_df     7 &lt;chr [7]&gt; </span>
+<span class="co">#&gt; 10 comicCollection tbl_df    14 &lt;chr [14]&gt;</span>
+<span class="co">#&gt; # ... with 30 more rows</span></code></pre></div>
+<p>These ID values are passed to <code>stapi</code> to perform a search using the API. The other columns provide some information about the object returned from a search. All entity searches return tibble data frames. You can inspect or unnest the column names of each table returned from every available entity search so you can see beforehand what variables are associated with each entity.</p>
 </div>
 <div id="accessing-the-api" class="section level3">
 <h3 class="hasAnchor">
