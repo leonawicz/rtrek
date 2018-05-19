@@ -76,4 +76,7 @@ stBooksId <- distinct(x, id) %>% slice(-c(2:8, 21:29)) %>%
 stBooks <- select(x, -id)
 
 usethis::use_data(stBooks)
-usethis::use_data(stBooksId, internal = TRUE)
+
+library(jpeg)
+.worf <- readJPEG("data-raw/images/worf.jpg") # add to internal
+usethis::use_data(stBooksId, .worf, internal = TRUE)
