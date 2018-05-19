@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 The `rtrek` package provides datasets related to the Star Trek fictional universe and functions to assist with the data. It interfaces with [Wikipedia](https://www.wikipedia.org/), [STAPI](http://stapi.co/), [Memory Alpha](http://memory-alpha.wikia.com/wiki/Portal:Main) and [Memory Beta](http://memory-beta.wikia.com/wiki/Main_Page) to retrieve data, metadata and other information relating to Star Trek. It also contains local datasets covering a variety of topics such as Star Trek universe species data, geopolitical data, and summary datasets resulting from text mining analyses of Star Trek novels. The package also provides functions for working with data from other Star Trek-related R data packages containing larger datasets not stored in `rtrek`.
 
-*Note: This package is in alpha (and not just the quadrant). Breaking changes may occur.*
+*Note: This package is in beta (and not just the quadrant). Breaking changes may occur.*
 
 ```{r is_md, echo = FALSE}
 is_md <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "markdown_github-ascii_identifiers"
