@@ -23,7 +23,9 @@ Suggests:
     rmarkdown,
     covr,
     leaflet,
-    lintr
+    lintr,
+    ggplot2,
+    showtext
 Imports: 
     dplyr,
     jsonlite,
