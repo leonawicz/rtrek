@@ -9,6 +9,6 @@
 stTiles
 }
 \description{
-A data frame of with 1 row and 8 columns.
+A data frame with 1 row and 8 columns.
 }
 \keyword{datasets}

@@ -17,7 +17,8 @@ test_that("st_book_series returns as expected", {
 
   expect_error(stapi("a"), "Invalid `id`.")
 
-  expect_is(stapi_options(), "character")
+  expect_is(stapiEntities, "tbl_df")
+  expect_is(attr(stapiEntities, "ignored columns"), "character")
 })
 
 test_that("rtrek_antiddos option is set on load and checked", {

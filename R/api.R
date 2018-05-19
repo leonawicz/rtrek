@@ -1,37 +1,10 @@
-.stapi_entities <- c(
-  "company", "comicStrip", "organization", "soundtrack", "character", "common/panel",
-  "literature", "magazine", "videoRelease", "animal", "comicCollection", "staff",
-  "common", "title", "astronomicalObject", "element", "common/panel/admin", "tradingCard",
-  "comics", "tradingCardDeck", "magazineSeries", "videoGame", "technology", "comicSeries",
-  "movie", "performer", "weapon", "episode", "season", "bookSeries", "conflict", "location",
-  "spacecraftClass", "material", "species", "occupation", "bookCollection", "medicalCondition",
-  "food", "tradingCardSet", "oauth/github", "book", "spacecraft", "series"
-)
-
-.stapi_dropcols <- c(
-  paste0("title", c("Bulgarian", "Catalan", "ChineseTraditional", "German",
-                    "Italian", "Japanese", "Polish", "Russian", "Serbian", "Spanish"))
-)
-
-#' List available STAPI entities
-#'
-#' Currently, this function simply lists the available entities for the Star Trek API (STAPI). See \code{\link{stapi}}.
-#'
-#' @return a character vector.
-#' @export
-#' @seealso \code{\link{stapi}}
-#'
-#' @examples
-#' stapi_options()
-stapi_options <- function() sort(.stapi_entities)
-
 # nolint start
 
 #' Retrieve Star Trek data from STAPI
 #'
 #' Retrieve Star Trek data from the Star Trek API (STAPI).
 #'
-#' See \code{\link{stapi_options}} for all the currently available API entities. These are the IDs for dataset collections or categories passed to \code{id}.
+#' See \code{\link{stapiEntities}} for all the currently available API entities. These are the IDs for dataset collections or categories passed to \code{id}.
 #'
 #' The universal ID \code{uid} can be supplied to retrieve a more specific subset of data. By default, \code{uid = NULL} and \code{stapi} operates in search mode.
 #' As part of a stepwise process, you can first use search mode.
@@ -57,7 +30,7 @@ stapi_options <- function() sort(.stapi_entities)
 #' Q <- stapi("character", uid = "CHMA0000025118")
 #' Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
 stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
-  if(!id %in% .stapi_entities) stop("Invalid `id`.")
+  if(!id %in% rtrek::stapiEntities$id) stop("Invalid `id`.")
   .antiddos("stapi")
   type <- if(is.null(uid)) "/search?pageNumber=" else paste0("?uid=", uid)
   uri <- paste0("http://stapi.co/api/v1/rest/", id, type)
@@ -87,7 +60,7 @@ stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
     d <- json0
   }
   assign("stapi", Sys.time(), envir = rtrek_api_time)
-  idx <- match(.stapi_dropcols, names(d))
+  idx <- match(attr(rtrek::stapiEntities, "ignored columns"), names(d))
   if(length(idx)) d <- dplyr::select(d, -idx)
   dplyr::tbl_df(d)
 }

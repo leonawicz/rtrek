@@ -9,6 +9,6 @@
 stSpecies
 }
 \description{
-A data frame of with 7 rows and 2 columns.
+A data frame with 7 rows and 2 columns.
 }
 \keyword{datasets}

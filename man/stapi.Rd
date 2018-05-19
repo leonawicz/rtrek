@@ -22,7 +22,7 @@ a data frame in search mode, a list in extraction mode, and nothing is returned 
 Retrieve Star Trek data from the Star Trek API (STAPI).
 }
 \details{
-See \code{\link{stapi_options}} for all the currently available API entities. These are the IDs for dataset collections or categories passed to \code{id}.
+See \code{\link{stapiEntities}} for all the currently available API entities. These are the IDs for dataset collections or categories passed to \code{id}.
 
 The universal ID \code{uid} can be supplied to retrieve a more specific subset of data. By default, \code{uid = NULL} and \code{stapi} operates in search mode.
 As part of a stepwise process, you can first use search mode.

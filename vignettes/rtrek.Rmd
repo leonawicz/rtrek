@@ -101,13 +101,13 @@ Despite the important caveats, it is highly functional. Please do not abuse the 
 
 ### STAPI entities
 
-There a many fields, or entities, available in the API. To list them all, call `stapi_options`.
+There a many fields, or entities, available in the API. The available IDs can be found in this table:
 
-```{r stapi_options}
-stapi_options()
+```{r stapiEntities}
+stapiEntities
 ```
 
-These options are passed to `stapi` to perform a search using the API.
+These ID values are passed to `stapi` to perform a search using the API. The other columns provide some information about the object returned from a search. All entity searches return tibble data frames. You can inspect or unnest the column names of each table returned from every available entity search so you can see beforehand what variables are associated with each entity.
 
 ### Accessing the API
 

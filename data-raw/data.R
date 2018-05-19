@@ -1,4 +1,6 @@
 library(dplyr)
+
+# minor package datasets
 .species <- c("Human", "Romulan", "Klingon", "Breen", "Ferengi", "Cardassian", "Tholian")
 
 stGeo <- data_frame(
@@ -34,4 +36,37 @@ stTiles <- data_frame(
   map_url = "https://archerxx.deviantart.com/art/Star-Trek-Star-Chart-316982311"
 )
 
-usethis::use_data(stGeo, stSpecies, stTiles, overwite = T)
+# create table of STAPI entity info
+entities <- c(
+  "company", "comicStrip", "organization", "soundtrack", "character",
+  "literature", "magazine", "videoRelease", "animal", "comicCollection", "staff",
+  "title", "astronomicalObject", "element", "tradingCard",
+  "comics", "tradingCardDeck", "magazineSeries", "videoGame", "technology", "comicSeries",
+  "movie", "performer", "weapon", "episode", "season", "bookSeries", "conflict", "location",
+  "spacecraftClass", "material", "species", "occupation", "bookCollection", "medicalCondition",
+  "food", "tradingCardSet", "book", "spacecraft", "series"
+)
+
+dropcols <- c(
+  paste0("title", c("Bulgarian", "Catalan", "ChineseTraditional", "German",
+                    "Italian", "Japanese", "Polish", "Russian", "Serbian", "Spanish"))
+)
+
+library(purrr)
+x <- vector("list", length(entities))
+names(x) <- entities
+for(i in seq_along(x)){
+  print(paste("Attempting", entities[i]))
+  x[[i]] <- stapi(entities[i])
+}
+
+all(map_chr(x, ~class(.x)[1]) == "tbl_df") # check all are data frames
+all(map_lgl(x, ~"uid" %in% names(.x))) # check all have uid column
+
+stapiEntities <- data_frame(
+  id = entities, class = map_chr(x, ~class(.x)[1]), ncol = map_int(x, ncol), colnames = map(x, names)
+)
+attr(stapiEntities, "ignored columns") <- dropcols
+
+# save datasets
+usethis::use_data(stGeo, stSpecies, stTiles, stapiEntities)
