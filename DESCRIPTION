@@ -26,6 +26,7 @@ Suggests:
     lintr,
     ggplot2,
     showtext,
+    sysfonts,
     trekfont
 Imports: 
     dplyr,
