@@ -28,3 +28,18 @@ test_that("rtrek_antiddos option is set on load and checked", {
   expect_warning(stapi("character", page = 2), wrn)
   options(rtrek_antiddos = 1)
 })
+
+# local testing only
+test_that("STAPI entity information has not substantially changed", {
+  # always skip this test in remote testing
+  skip_on_appveyor()
+  skip_on_travis()
+  skip_on_cran()
+
+  # comment out this line to run local test; does not need to be run every time
+  skip("This test is only run locally and does not need to be run often.")
+
+  x <- purrr::map(stapiEntities$id, stapi)
+  expect_true(all(purrr::map_chr(x, ~class(.x)[1]) == "tbl_df"))
+  expect_true(all(purrr::map_lgl(x, ~"uid" %in% names(.x))))
+})
