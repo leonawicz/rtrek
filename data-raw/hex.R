@@ -3,7 +3,7 @@ library(hexSticker)
 library(memery)
 pkg <- basename(getwd())
 out <- paste0(c("data-raw/images/"), pkg, c(".png", "-small.png"))
-sysfonts::font_add(family = "tng", "data-raw/Star Next.ttf")
+sysfonts::font_add(family = "tng", system.file("fonts/StarNext.ttf", package = "trekfont"))
 meme("data-raw/images/ufp0.png", "R", "data-raw/images/hexsubplot.png", size = 13,
      label_pos = list(w = 1, h = 1, x = 0.43, y = 0.5), family = "tng", col = "#98F5FFDD", shadow = "transparent")
 
