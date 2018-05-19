@@ -37,7 +37,7 @@ cat('![](https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek_ap
 cat('<p style="text-align:center;"><img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek_app1.png?raw=true" width="100%"></p>')
 ```
 
-*Image: Example [Leaflet map](https://leonawicz.github.io/rtrek/articles/sc.html) using non-geographic Star Trek map tilies.*
+*Image: Example [Leaflet map](https://leonawicz.github.io/rtrek/articles/sc.html) using non-geographic Star Trek map tiles.*
 
 <br/>
 <br/>

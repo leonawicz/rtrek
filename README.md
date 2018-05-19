@@ -11,7 +11,7 @@ The `rtrek` package provides datasets related to the Star Trek fictional univers
 
 ![](https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek_app1.png?raw=true)
 
-*Image: Example [Leaflet map](https://leonawicz.github.io/rtrek/articles/sc.html) using non-geographic Star Trek map tilies.*
+*Image: Example [Leaflet map](https://leonawicz.github.io/rtrek/articles/sc.html) using non-geographic Star Trek map tiles.*
 
 <br/> <br/>
 
