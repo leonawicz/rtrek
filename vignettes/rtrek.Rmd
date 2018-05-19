@@ -89,7 +89,7 @@ leaflet(d, options = leafletOptions(crs = leafletCRS("L.CRS.Simple"))) %>%
 
 <br/>
 
-The `stSpecies` dataset is just a small table that pairs species named in `stGeo` with representative thumbnail avatars from Memory Alpha. There is nothing map-related here, but these are used in this [example Shiny app](https://uasnap.shinyapps.io/stsc/). It is similar to the one above, but a bit more interesting having markers to click on and display more information.
+The `stSpecies` dataset is just a small table that pairs species named in `stGeo` with representative thumbnail avatars from Memory Alpha. There is nothing map-related here, but these are used in this [Stellar Cartography](https://leonawicz.github.io/rtrek/articles/sc.html) example. It is similar to the one above, but a bit more interesting having markers to click on and display more information.
 
 ## Star Trek API
 
