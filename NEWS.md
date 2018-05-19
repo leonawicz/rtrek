@@ -1,3 +1,12 @@
+# rtrek 0.0.7
+
+* Added additional vignettes.
+* Optional integration with `trekfont` package.
+* Improved website, including initial version of Stellar Cartography page.
+* Update data.
+* Minor fixes.
+* Updated readme and docs.
+
 # rtrek 0.0.6
 
 * Added initial introduction vignette content.
