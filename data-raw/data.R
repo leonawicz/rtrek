@@ -37,7 +37,7 @@ stTiles <- data_frame(
 )
 
 # create table of STAPI entity info
-entities <- c(
+entities <- sort(c(
   "company", "comicStrip", "organization", "soundtrack", "character",
   "literature", "magazine", "videoRelease", "animal", "comicCollection", "staff",
   "title", "astronomicalObject", "element", "tradingCard",
@@ -45,7 +45,7 @@ entities <- c(
   "movie", "performer", "weapon", "episode", "season", "bookSeries", "conflict", "location",
   "spacecraftClass", "material", "species", "occupation", "bookCollection", "medicalCondition",
   "food", "tradingCardSet", "book", "spacecraft", "series"
-)
+))
 
 dropcols <- c(
   paste0("title", c("Bulgarian", "Catalan", "ChineseTraditional", "German",
