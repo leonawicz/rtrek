@@ -24,8 +24,6 @@ library(rtrek)
 st_datasets()
 ```
 
-In the current version of `rtrek` these datasets can be split into two groups: datasets that support Star Trek-themed spatial maps and metadata relating to the vast compendium of officially licensed Star Trek novels.
-
 ### Star Trek novels
 
 The `stBooks` dataset provides a moderately curated data frame of over `r nrow(stBooks)` Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent `rtrek` update. `stBooks` is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.
@@ -34,7 +32,7 @@ The `stBooks` dataset provides a moderately curated data frame of over `r nrow(s
 stBooks
 ```
 
-Some curation decisions were made in compiling the data frame for `rtrek` related to the inclusion of some metadata in additional to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, `rtrek` also offers a convenience function `st_book_series` to load the page in a browser tab auto-scrolled to a specific series of interest.
+Some curation decisions were made in compiling the data frame for `rtrek` related to the inclusion of some metadata in addition to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, `rtrek` also offers a convenience function `st_book_series` to load the page in a browser tab auto-scrolled to a specific series of interest.
 
 In order to use this function effectively, first call it with no arguments. It returns a table of available series abbreviations.
 
@@ -95,9 +93,9 @@ The `stSpecies` dataset is just a small table that pairs species named in `stGeo
 
 To use the words of the developers, the [STAPI](http://stapi.co/) is
 
-*the first public Star Trek API, accessible via REST and SOAP. It's an open source project, that anyone can contribute to. STAPI it's still an alpha version. There is lot of work of work behind, but a lot of work ahead, too. No API stability, in terms of contracts layout, database layout, as well as API availability, is guaranteed at this point.*
+*the first public Star Trek API, accessible via REST and SOAP. It's an open source project, that anyone can contribute to.*
 
-Despite the important caveats, it is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DDOS measures in `rtrek` limit requests to one per second by default. You can update this global `rtrek` setting with `options`, e.g. `options(rtrek_antiddos = 10)` for a minimum ten second wait between API calls to be an even better neighbor. `rtrek` will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.
+The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DDOS measures in `rtrek` limit requests to one per second. You can update this global `rtrek` setting with `options`, e.g. `options(rtrek_antiddos = 10)` for a minimum ten second wait between API calls to be an even better neighbor. `rtrek` will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.
 
 ### STAPI entities
 
@@ -127,9 +125,7 @@ stapi("character", page_count = TRUE)
 
 And that is with 100 results per page!
 
-The default `page = 1` only returns the first page. This can be a vector. Return page two, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example below hard-codes his unique/universal ID.
-
-For the second call to `stapi`, return the page two results.
+The default `page = 1` only returns the first page. `page` can be a vector, e.g. `page = 1:62`. Results from multi-page searches are automatically combined into a single, constant data frame output. For the second call to `stapi`, return only page two here, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example further below hard-codes his unique/universal ID.
 
 ```{r stapi_search}
 stapi("character", page = 2)
@@ -137,7 +133,7 @@ stapi("character", page = 2)
 
 Character tables can be sparse. There are a lot of variables, many of which will contain missing data for rare, esoteric characters. Even for more popular characters about whom much more universe lore has been uncovered, it still takes dedicated nerds to enter all the data in a database.
 
-When a dataset contains a `uid` column, this can be used subsequently to extract a satellite dataset about that particular observation returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q's `uid` to `stapi` and call the function one last time. When `uid` is no longer `NULL`, `stapi` knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.
+When a dataset contains a `uid` column, this can be used subsequently to extract a satellite dataset about that particular observation that was returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q's `uid` to `stapi` and call the function one last time. When `uid` is no longer `NULL`, `stapi` knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.
 
 ```{r stapi_extract}
 Q <- "CHMA0000025118"
@@ -146,7 +142,7 @@ Q <- stapi("character", uid = Q)
 library(dplyr)
 Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
 ```
-The data returned on Q is actually a large list, included multiple data frames. For simplicity only a piece of it is shown above.
+The data returned on Q is actually a large list, including multiple data frames. For simplicity only a piece of it is shown above.
 
 ## Star Trek novel text mining
 

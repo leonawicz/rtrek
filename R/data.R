@@ -52,6 +52,6 @@ st_datasets <- function(){
   dplyr::data_frame(
     dataset = c("stGeo", "stSpecies", "stTiles", "stBooks", "stapiEntities"),
     description = c("Simple CRS data associated with map tile sets.", "Basic intelligent species data.",
-                    "Available map tile sets.", "Star Trek novel meta data from Wikipedia.",
+                    "Available map tile sets.", "Star Trek novel metadata from Wikipedia.",
                     "Star Trek API (STAPI) categories"))
 }
