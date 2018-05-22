@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • rtrek</title>
+<title>Pipe — %&gt;% • rtrek</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   <script src="../extra.js"></script>
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Pipe — %&gt;%" />
+
+<meta property="og:description" content="rtrek exports the the pipe operator, %&gt;%, from magrittr." />
+<meta name="twitter:card" content="summary" />
 
 
 <!-- mathjax -->
@@ -55,7 +58,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -177,140 +180,27 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Pipe</h1>
+    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/rtrek.R'><code>R/rtrek.R</code></a></small>
+    <div class="hidden name"><code>pipe.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>rtrek exports the the pipe operator, <code>%&gt;%</code>, from magrittr.</p>
+    
+    </div>
 
-    <colgroup>
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+        
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-package" class="hasAnchor"><a href="#section-package" class="anchor"></a>Package</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="rtrek.html">rtrek</a></code> </p>
-        </td>
-        <td><p>rtrek: Star Trek datasets and related R functions.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="stSpecies.html">stSpecies</a></code> </p>
-        </td>
-        <td><p>Species names and avatars, linked from Memory Alpha.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="stGeo.html">stGeo</a></code> </p>
-        </td>
-        <td><p>Raster grid location data for stellar cartographic map tile set 1.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="stTiles.html">stTiles</a></code> </p>
-        </td>
-        <td><p>Available Star Trek map tile sets.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="stBooks.html">stBooks</a></code> </p>
-        </td>
-        <td><p>Star Trek novel metadata.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="stapiEntities.html">stapiEntities</a></code> </p>
-        </td>
-        <td><p>Star Trek API entities.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-api" class="hasAnchor"><a href="#section-api" class="anchor"></a>API</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="stapi.html">stapi()</a></code> </p>
-        </td>
-        <td><p>Retrieve Star Trek data from STAPI</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-helper-functions" class="hasAnchor"><a href="#section-helper-functions" class="anchor"></a>Helper functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="st_datasets.html">st_datasets()</a></code> </p>
-        </td>
-        <td><p>Available datasets</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="st_tiles.html">st_tiles()</a></code> </p>
-        </td>
-        <td><p>Return the url associated with a tile set</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="tile_coords.html">tile_coords()</a></code> </p>
-        </td>
-        <td><p>Simple CRS coordinates</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="st_book_series.html">st_book_series()</a></code> </p>
-        </td>
-        <td><p>Go to Wikipedia entry for a specific book series</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="st_font.html">st_font()</a></code> </p>
-        </td>
-        <td><p>Preview Star Trek fonts</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="pipe.html">%>%</a></code> </p>
-        </td>
-        <td><p>Pipe</p></td>
-      </tr>
-    </tbody>
-    </table>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-package">Package</a></li>
-      <li><a href="#section-datasets">Datasets</a></li>
-      <li><a href="#section-api">API</a></li>
-      <li><a href="#section-helper-functions">Helper functions</a></li>
-    </ul>
+                </ul>
+
   </div>
 </div>
 

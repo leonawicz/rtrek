@@ -10,7 +10,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Introduction to rtrek">
+<script src="../extra.js"></script><meta property="og:title" content="Introduction to rtrek">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -60,9 +60,6 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/sc.html">Stellar Cartography</a>
-    </li>
-    <li>
       <a href="../articles/fonts.html">Star Trek fonts</a>
     </li>
   </ul>
@@ -75,6 +72,12 @@
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="../articles/sc.html">Stellar Cartography</a>
+</li>
+<li>
+  <a href="../articles/ten-forward.html">Ten Forward</a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Online
@@ -261,8 +264,8 @@ tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_ti
 <span class="kw">leaflet</span>(d, <span class="dt">options =</span> <span class="kw">leafletOptions</span>(<span class="dt">crs =</span> <span class="kw">leafletCRS</span>(<span class="st">"L.CRS.Simple"</span>))) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addTiles</span>(tiles) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">setView</span>(<span class="dv">108</span>, <span class="op">-</span><span class="dv">75</span>, <span class="dv">2</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addCircleMarkers</span>(<span class="dt">lng =</span> <span class="op">~</span>x, <span class="dt">lat =</span> <span class="op">~</span>y, <span class="dt">label =</span> <span class="op">~</span>label, <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">radius =</span> <span class="dv">20</span>)</code></pre></div>
-<div id="htmlwidget-c02ad36ddca069b0dd02" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c02ad36ddca069b0dd02">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.1419705197828,-54.0574088440652,-104.297905352987,-29.1388673390225,-61.9394879751746,-88.1613653995345,-119.968968192397],[68.1458494957331,81.1481768813033,102.715283165244,31.155934833204,44.4065166795966,41.644685802948,12.6299456943367],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-119.968968192397,-29.1388673390225],"lng":[12.6299456943367,102.715283165244]}},"evals":[],"jsHooks":[]}</script><p><br></p>
+<div id="htmlwidget-89c500c4273ee2d339fc" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-89c500c4273ee2d339fc">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.1419705197828,-54.0574088440652,-104.297905352987,-29.1388673390225,-61.9394879751746,-88.1613653995345,-119.968968192397],[68.1458494957331,81.1481768813033,102.715283165244,31.155934833204,44.4065166795966,41.644685802948,12.6299456943367],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-119.968968192397,-29.1388673390225],"lng":[12.6299456943367,102.715283165244]}},"evals":[],"jsHooks":[]}</script><p><br></p>
 <p>The <code>stSpecies</code> dataset is just a small table that pairs species named in <code>stGeo</code> with representative thumbnail avatars from Memory Alpha. There is nothing map-related here, but these are used in this <a href="https://leonawicz.github.io/rtrek/articles/sc.html">Stellar Cartography</a> example. It is similar to the one above, but a bit more interesting having markers to click on and display more information.</p>
 </div>
 </div>

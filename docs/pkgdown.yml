@@ -5,6 +5,7 @@ articles:
   fonts: fonts.html
   rtrek: rtrek.html
   sc: sc.html
+  ten-forward: ten-forward.html
 urls:
   reference: http://leonawicz.github.io//reference
   article: http://leonawicz.github.io//articles

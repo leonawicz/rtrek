@@ -4,6 +4,9 @@
     <loc>http://leonawicz.github.io//index.html</loc>
   </url>
   <url>
+    <loc>http://leonawicz.github.io//reference/pipe.html</loc>
+  </url>
+  <url>
     <loc>http://leonawicz.github.io//reference/rtrek.html</loc>
   </url>
   <url>
@@ -47,5 +50,8 @@
   </url>
   <url>
     <loc>http://leonawicz.github.io//articles/sc.html</loc>
+  </url>
+  <url>
+    <loc>http://leonawicz.github.io//articles/ten-forward.html</loc>
   </url>
 </urlset>
