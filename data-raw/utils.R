@@ -4,6 +4,10 @@
     font-family: 'sc-title-font';
     src: url('https://raw.githubusercontent.com/leonawicz/trekfont/master/inst/fonts/FederationStarfleet.ttf') format('truetype');
   }\n"
+  font_title2 <- "@font-face {
+    font-family: 'sc-title2-font';
+    src: url('https://raw.githubusercontent.com/leonawicz/trekfont/master/inst/fonts/StarNext.ttf') format('truetype');
+  }\n"
   font_subtitle <- "@font-face {
     font-family: 'sc-subtitle-font';
   src: url('https://raw.githubusercontent.com/leonawicz/trekfont/master/inst/fonts/FederationDS9Title.ttf') format('truetype');
@@ -31,6 +35,20 @@
     animation: fadein 2s;
   }\n'
 
+  par_title2 <- '\n.parallax-title{
+    position: absolute;
+    top: 70px;
+    left: 190px;
+    color: #ffffff;
+      font-family: "sc-title2-font";
+    font-size: 4em;
+    -webkit-animation: fadein 2s;
+    -moz-animation: fadein 2s;
+    -ms-animation: fadein 2s;
+    -o-animation: fadein 2s;
+    animation: fadein 2s;
+  }\n'
+
   par_subtitle <- '\n.parallax-subtitle{
     position: absolute;
     top: 600px;
@@ -46,7 +64,8 @@
   }\n'
 
   sc <- paste0(
-    '<style>body {background-color: #222222; color: #ffffff; } h2 {font-family: "sc-h2-font"; } h4 {font-family: "sc-h4-font"; }\n',
+    '<style>body { background-color: #222222; color: #ffffff; } h2 {font-family: "sc-h2-font"; } h4 {font-family: "sc-h4-font"; }\n',
+    '.parallax { background-image: url("https://i2.wp.com/movies.trekcore.com/gallery/albums/generationshd/generationshd1021.jpg"); }\n',
     font_title, font_subtitle, font_h2, font_h4, par_title, par_subtitle, '</style>',
     '<div class="main-container">\n  <div class="parallax">\n    ',
     '<a href="https://github.com/leonawicz/rtrek/">\n      ',
@@ -55,8 +74,19 @@
     '<img class="parallax-image" ',
     'src="https://raw.githubusercontent.com/leonawicz/rtrek/master/data-raw/images/rtrek-small.png">',
     '\n    </a>\n  </div>\n</div>')
-  x <- switch(id, sc = sc)
-  file <- switch(id, sc = "docs/articles/sc.html")
+  tf <- paste0(
+    '<style>body { background-color: #222222; color: #ffffff; } h2 {font-family: "sc-h2-font"; } h4 {font-family: "sc-h4-font"; }\n',
+    '.parallax { background-image: url("https://vignette.wikia.nocookie.net/memoryalpha/images/6/68/Ten_Forward_%28overview%29.jpg/revision/latest?cb=20121210232354&path-prefix=en"); }\n',
+    font_title2, font_subtitle, font_h2, font_h4, par_title2, par_subtitle, '</style>',
+    '<div class="main-container">\n  <div class="parallax">\n    ',
+    '<a href="https://github.com/leonawicz/rtrek/">\n      ',
+    '<h1 class="parallax-title"><span style="padding-right: 50px;">Ten Forward</span></h1>',
+    '<h1 class="parallax-subtitle"><span style="padding-right: 50px;">Matthew Leonawicz ◆ R Developer</span></h1>',
+    '<img class="parallax-image" ',
+    'src="https://raw.githubusercontent.com/leonawicz/rtrek/master/data-raw/images/rtrek-small.png">',
+    '\n    </a>\n  </div>\n</div>')
+  x <- switch(id, sc = sc, tf = tf)
+  file <- switch(id, sc = "docs/articles/sc.html", tf = "docs/articles/ten-forward.html")
   l <- readLines(file)
   idx <- grep("<div class=\"page-header toc-ignore\">", l)
   idx2 <- grep("</div>", l)
@@ -68,17 +98,19 @@
   invisible()
 }
 
-build_site <- function(id = "sc"){
+build_site <- function(){
   pkgdown::build_site()
-  if(id %in% c("sc")) .post_proc_html(id = id)
+  .post_proc_html(id = "sc")
+  .post_proc_html(id = "tf")
 }
 
-build_articles <- function(id = "sc"){
+build_articles <- function(){
   pkgdown::build_article(id)
-  if(id %in% c("sc")) .post_proc_html(id = id)
+  .post_proc_html(id = "sc")
+  .post_proc_html(id = "tf")
 }
 
 build_article <- function(id = "sc"){
   pkgdown::build_articles()
-  if(id %in% c("sc")) .post_proc_html(id = id)
+  .post_proc_html(id = id)
 }
