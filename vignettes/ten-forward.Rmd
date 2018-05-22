@@ -1,0 +1,30 @@
+---
+title: "Ten Forward"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Ten Forward}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, error = FALSE)
+```
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+## Welcome to the Ten Forward lounge
+
+#### Mingle with the ship's complement.
+
+This page is a work in progress.
+
+<div id="picard" class="st-tweets" style="height:280px;">
+<h2 style="padding-top:0px;padding-bottom:0px;margin:0px;">Captain Picard</h2><p style="margin:0px;padding-left:6px;font-size:0.8em;"><a href="https://twitter.com/PicardTips">@PicardTips</a></p>
+<div style="padding:10px;float:left;"><img src="https://pbs.twimg.com/profile_images/416337864809402368/iSHIA4Zt_400x400.jpeg" style="border-radius:4px;border-color:#ffffff;border-size:10px;padding:0px;" height=180 width=180 ></div><h4></h4>
+</div>
+
+<a class="twitter-timeline" data-width="400" data-height="400" data-theme="dark" href="https://twitter.com/PicardTips?ref_src=twsrc%5Etfw">Tweets by PicardTips</a>
+<a class="twitter-timeline" data-width="400" data-height="400" data-theme="dark" href="https://twitter.com/WorfEmail?ref_src=twsrc%5Etfw">Tweets by WorfEmail</a>
+<a class="twitter-timeline" data-width="400" data-height="400" data-theme="dark" href="https://twitter.com/RikerGoogling?ref_src=twsrc%5Etfw">Tweets by RikerGoogling</a>
