@@ -15,3 +15,4 @@
 ^codecov\.yml$
 ^vignettes/sc.Rmd$
 ^vignettes/fonts.Rmd$
+^vignettes/ten-forward.Rmd$
