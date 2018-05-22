@@ -29,6 +29,7 @@ Suggests:
     sysfonts,
     trekfont
 Imports: 
+    magrittr,
     dplyr,
     jsonlite,
     purrr,
