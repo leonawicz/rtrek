@@ -26,7 +26,7 @@ p {
 .leaflet-popup-content-wrapper { border-radius: 4px !important; color: #ffffff !important; background-color: rgba(45, 45, 45, 0.9) !important; width: 540px; font-size: 16px; }
 .leaflet-popup { border-color: #888888 !important; }
 
-/* Stellar Cartography */
+/* Stellar Cartography and Ten Forward */
 .main-container {
   max-width: 100% !important;
   margin-left: auto;
@@ -34,7 +34,6 @@ p {
 }
 
 .parallax {
-  background-image: url("https://i2.wp.com/movies.trekcore.com/gallery/albums/generationshd/generationshd1021.jpg");
   width: 100%;
   height: 600px;
   background-attachment: fixed;
@@ -83,4 +82,13 @@ p {
 @-o-keyframes fadein {
     from { opacity: 0; color: #D0F8FF; }
     to   { opacity: 1; color: #FFFFFF; }
+}
+
+.st-tweets {
+  background-color: rgba(255, 48, 48, 0.3);
+  color: #FFFFFF;
+  padding: 10px;
+  border-color: #FFFFFF;
+  border-radius: 4px;
+  font-size: 16pt;
 }

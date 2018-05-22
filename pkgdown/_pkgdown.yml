@@ -29,6 +29,7 @@ reference:
   - tile_coords
   - st_book_series
   - st_font
+  - starts_with("%")
 
 navbar:
   type: inverse
@@ -40,8 +41,6 @@ navbar:
       href: "articles/rtrek.html"
     - text: "Articles"
       menu:
-        - text: "Stellar Cartography"
-          href: "articles/sc.html"
         - text: "Star Trek fonts"
           href: "articles/fonts.html"
     - text: "Reference"
@@ -49,6 +48,10 @@ navbar:
     - text: "Changelog"
       href: "news/index.html"
   right:
+    - text: "Stellar Cartography"
+      href: "articles/sc.html"
+    - text: "Ten Forward"
+      href: "articles/ten-forward.html"
     - text: "Online"
       menu:
         - text: "GitHub"
