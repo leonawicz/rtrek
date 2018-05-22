@@ -9,3 +9,13 @@ globalVariables(c(".data"))
 #' @docType package
 #' @name rtrek
 NULL
+
+#' Pipe
+#'
+#' rtrek exports the the pipe operator, \code{\%>\%}, from magrittr.
+#'
+#' @importFrom magrittr %>%
+#' @name %>%
+#' @rdname pipe
+#' @export
+NULL
