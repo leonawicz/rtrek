@@ -137,6 +137,11 @@ $.getJSON('https://raw.githubusercontent.com/leonawicz/rtrek/master/data-raw/twe
       imgsrc = "https://pbs.twimg.com/profile_images/955154912316452865/E5ev1QCv_400x400.jpg";
       tweetbg = "rgba(223, 0, 0, 0.3)";
       break;
+    case "Odo_constable":
+      display_name = "Constable Odo";
+      imgsrc = "https://pbs.twimg.com/profile_images/960635361792790528/DeSIdWu0_400x400.jpg";
+      tweetbg = "rgba(255, 127, 36, 0.3)";
+      break;
     case "RealElimGarak":
       display_name = "Elim Garek";
 		  imgsrc = "https://pbs.twimg.com/profile_images/831623685652021248/Ba_KKb-L_400x400.jpg";
@@ -145,13 +150,13 @@ $.getJSON('https://raw.githubusercontent.com/leonawicz/rtrek/master/data-raw/twe
     case "realRealDukat":
       display_name = "Gul Dukat";
 		  imgsrc = "https://pbs.twimg.com/profile_images/819467910825418752/vGiM7-H1_400x400.jpg";
-		  tweetbg = "rgba(45, 45, 45, 0.3)";
+		  tweetbg = "rgba(0, 153, 246, 0.3)";
       break;
-    case "realGulDukat":
-      display_name = "Gul Dukat's personal Twitter";
-		  imgsrc = "https://pbs.twimg.com/profile_images/825456314855804928/sITu31PR_400x400.jpg";
-		  tweetbg = "rgba(255, 127, 36, 0.3)";
-      break;
+    //case "realGulDukat":
+    //  display_name = "Gul Dukat's personal Twitter";
+		//  imgsrc = "https://pbs.twimg.com/profile_images/825456314855804928/sITu31PR_400x400.jpg";
+		//  tweetbg = "rgba(90, 90, 90, 0.3)";
+    //  break;
     case "itsvicfontaine":
       display_name = "Vic Fontaine";
 		  imgsrc = "https://pbs.twimg.com/profile_images/929951687606804480/Apc1bkfy_400x400.jpg";
