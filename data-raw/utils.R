@@ -69,7 +69,7 @@
 
   sc <- paste0(
     '<style>body { background-color: #222222; color: #ffffff; } h2 {font-family: "sc-h2-font"; } h4 {font-family: "sc-h4-font"; }\n',
-    '.parallax { background-image: url("https://i2.wp.com/movies.trekcore.com/gallery/albums/generationshd/generationshd1021.jpg"); }\n',
+    '.parallax { background-image: url("https://raw.githubusercontent.com/leonawicz/rtrek/master/data-raw/images/sc.jpg"); }\n',
     font_title, font_subtitle, font_h2, font_h4, par_title, par_subtitle, '</style>',
     '<div class="main-container">\n  <div class="parallax">\n    ',
     '<a href="https://github.com/leonawicz/rtrek/">\n      ',
