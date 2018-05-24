@@ -150,7 +150,7 @@ update_local_tweets <- function(users, file, n = 3200){
     for(i in seq_along(x$screen_name)) last[[x$screen_name[i]]] <- x$status_id[i]
   }
   d2 <- purrr::map2(users, last, ~rtweet::get_timeline(.x, n = n, since_id = .y)) %>% dplyr::bind_rows()
-  if(nrow(d2) > 0) d2 <- dplyr::filter(d2, !is_retweet)
+  if(nrow(d2) > 0) d2 <- dplyr::filter(d2, is.na(reply_to_status_id) & !is_retweet)
   if(nrow(d2) == 0) return(d)
   d2 <- dplyr::select(d2, c(1:5, 7, 13:14))
   d <- dplyr::bind_rows(d2, d)
