@@ -1,8 +1,8 @@
 ---
-title: "Ten Forward"
+title: "R & R... & R"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Ten Forward}
+  %\VignetteIndexEntry{R & R... & R}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
