@@ -1,3 +1,10 @@
+# rtrek 0.0.9
+
+* Remove remote `trekfont` now that it is available on CRAN.
+* Prepare GitHub accessible external datasets that serve package web pages.
+* Updated documentation, webste. Add to "fun pages" (R & R), which are only part of website "vignettes", not package vignettes.
+* Minor fixes.
+
 # rtrek 0.0.8
 
 * Added more robust testing of API entity searches.
