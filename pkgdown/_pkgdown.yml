@@ -50,8 +50,8 @@ navbar:
   right:
     - text: "Stellar Cartography"
       href: "articles/sc.html"
-    - text: "Ten Forward"
-      href: "articles/ten-forward.html"
+    - text: "R & R... & R"
+      href: "articles/rr.html"
     - text: "Online"
       menu:
         - text: "GitHub"
