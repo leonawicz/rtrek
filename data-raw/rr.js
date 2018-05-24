@@ -2,7 +2,7 @@ var tngtweets;
 $.getJSON('https://raw.githubusercontent.com/leonawicz/rtrek/master/data-raw/tweet-data/tngtweets_cleaned.json', function (json) {
   tngtweets = json;
   var tng_n = tngtweets.length
-  var i = 0;
+  var i = Math.floor(Math.random()*tng_n);
   var display_name = "";
   var sname = "";
   var prev_sname = "";
@@ -118,7 +118,7 @@ var ds9tweets;
 $.getJSON('https://raw.githubusercontent.com/leonawicz/rtrek/master/data-raw/tweet-data/ds9tweets_cleaned.json', function (json) {
   ds9tweets = json;
   var ds9_n = ds9tweets.length
-  var i = 0;
+  var i = Math.floor(Math.random()*ds9_n);
   var display_name = "";
   var sname = "";
   var prev_sname = "";
