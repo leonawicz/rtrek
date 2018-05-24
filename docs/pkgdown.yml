@@ -3,9 +3,9 @@ pkgdown: 1.0.0
 pkgdown_sha: ~
 articles:
   fonts: fonts.html
+  rr: rr.html
   rtrek: rtrek.html
   sc: sc.html
-  ten-forward: ten-forward.html
 urls:
   reference: http://leonawicz.github.io//reference
   article: http://leonawicz.github.io//articles

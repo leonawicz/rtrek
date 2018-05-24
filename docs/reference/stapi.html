@@ -29,7 +29,7 @@
 
 
   <link href="../extra.css" rel="stylesheet">
-  <script src="../extra.js"></script>
+  
 <meta property="og:title" content="Retrieve Star Trek data from STAPI — stapi" />
 
 <meta property="og:description" content="Retrieve Star Trek data from the Star Trek API (STAPI)." />
@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.8</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.9</span>
       </span>
     </div>
 
@@ -111,7 +111,7 @@
   <a href="../articles/sc.html">Stellar Cartography</a>
 </li>
 <li>
-  <a href="../articles/ten-forward.html">Ten Forward</a>
+  <a href="../articles/rr.html">R &amp; R... &amp; R</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -233,8 +233,12 @@ Values less than one are ignored (defaulting back to one second) and a warning w
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># check first</span></div><div class='output co'>#&gt; Total pages to retrieve all results: 62 </div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 100 x 2
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># check first</span></div><div class='output co'>#&gt; Total pages to retrieve all results: 62 </div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 100 x 2
 #&gt;    uid            name                  
 #&gt;    &lt;chr&gt;          &lt;chr&gt;                 
 #&gt;  1 CHMA0000016634 Fuller                
