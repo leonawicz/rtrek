@@ -24,15 +24,15 @@ ds92_cleaned <- tame_tweets(ds92, accounts = users_ds9)
 dn <- group_by(ds92_cleaned, screen_name) %>% count()
 dn
 
-set.seed(1)
-ds92_cleaned2 <- group_by(ds92_cleaned, screen_name) %>%
+set.seed(47)
+ds92_cleaned2 <- filter(ds92_cleaned, screen_name != "realGulDukat") %>% group_by(screen_name) %>%
   sample_n(dn$n[dn$screen_name == "realRealDukat"], replace = TRUE) %>% distinct() %>%
   mutate(text = gsub("&amp;", "&", text))
 
 tng_json <- jsonlite::toJSON(tng2)
 ds9_json <- jsonlite::toJSON(ds92)
 tng2_cleaned_json <- jsonlite::toJSON(tng2_cleaned)
-ds92_cleaned_json <- jsonlite::toJSON(ds92_cleaned)
+ds92_cleaned_json <- jsonlite::toJSON(ds92_cleaned2)
 
 sink(file = jsonfile[1]); cat(tng_json); sink()
 sink(file = jsonfile[2]); cat(ds9_json); sink()
