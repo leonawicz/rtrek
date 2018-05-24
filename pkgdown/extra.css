@@ -26,7 +26,7 @@ p {
 .leaflet-popup-content-wrapper { border-radius: 4px !important; color: #ffffff !important; background-color: rgba(45, 45, 45, 0.9) !important; width: 540px; font-size: 16px; }
 .leaflet-popup { border-color: #888888 !important; }
 
-/* Stellar Cartography and Ten Forward */
+/* Stellar Cartography and R&R */
 .main-container {
   max-width: 100% !important;
   margin-left: auto;
@@ -84,8 +84,8 @@ p {
     to   { opacity: 1; color: #FFFFFF; }
 }
 
-.st-tweets {
-  background-color: rgba(255, 48, 48, 0.3);
+.st-tweets, .st-tweets2 {
+  background-color: rgba(223, 0, 0, 0.3);
   color: #FFFFFF;
   padding: 10px;
   border-color: #FFFFFF;
@@ -95,13 +95,13 @@ p {
   width:100%;
 }
 
-.st-tweets h2 {
+.st-tweets h2, .st-tweets2 h2 {
   padding-top: 0px;
   padding-bottom: 0px;
   margin: 0px;
 }
 
-.st-tweets p {
+.st-tweets p, .st-tweets2 p {
   margin: 0px;
   padding-left: 6px;
   font-size: 0.8em;
