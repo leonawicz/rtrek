@@ -102,7 +102,6 @@
   file <- switch(id, sc = "docs/articles/sc.html", rr = "docs/articles/rr.html")
   l <- readLines(file)
   if(id == "rr"){
-    file.copy("data-raw/tweet-data/tngtweets.json", "docs/tngtweets.json", overwrite = TRUE)
     idx <- grep("</header>", l) - 1
     idx2 <- grep("<footer>", l)
     if(id == "rr") rr_content <- c(rr_content, rr2, rr2_content)
