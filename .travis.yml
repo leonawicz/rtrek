@@ -4,8 +4,5 @@ language: R
 sudo: false
 cache: packages
 
-r_github_packages:
- - leonawicz/trekfont
-
 after_success:
     - Rscript -e 'covr::codecov()'
