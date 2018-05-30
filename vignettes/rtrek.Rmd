@@ -17,7 +17,7 @@ The `rtrek` package provides datasets related to the Star Trek fictional univers
 
 ## Local datasets
 
-Package datasets in `rtrek` are somewhat eclectic and currently limited. To list all available package datasets with a short description, call `st_datasets`.
+Package datasets in `rtrek` are somewhat eclectic and currently limited. They will expand with further package development. To list all available package datasets with a short description, call `st_datasets`.
 
 ```{r pkg_data}
 library(rtrek)
@@ -50,7 +50,7 @@ This package data only graces the surface of Star Trek novels. A later section p
 
 ### Spatial maps
 
-The other datasets are currently in early stages of development and will be expanded further. `stTiles` is a data frame listing all available Star Trek-themed map tile sets along with metadata and attribution information. These map tiles can be used with the `leaflet` and `shiny` packages to make interactive maps situated in the Star Trek universe.
+The `stTiles` data frame shows all available Star Trek-themed map tile sets along with metadata and attribution information. These map tiles can be used with the `leaflet` and `shiny` packages to make interactive maps situated in the Star Trek universe.
 
 ```{r stTiles}
 stTiles
@@ -66,28 +66,33 @@ Inspect `stGeo`:
 stGeo
 ```
 
-This is another small dataset containing locations of key planets in the Star Trek universe and a handful of associated variables. Notice the coordinates do not appear meaningful. There is no latitude and longitude. Instead there are row and column entries defining cells in a matrix. The matrix dimensions are defined by the pixel dimensions of source map for the `galaxy1` map tile set. Unless source maps for two different tile sets are of exactly the same dimensions, they yield two different coordinate reference systems. If you produce a new tile set, you then have to georeference any locations that you intend to display on it.
+This is another small dataset containing locations of key planets in the Star Trek universe. Notice the coordinates do not appear meaningful. There is no latitude and longitude. Instead there are row and column entries defining cells in a matrix. The matrix dimensions are defined by the pixel dimensions of source map that was used to create each tile set.
 
-This is not ideal, but it gets worse. Once you have locations' coordinates defined that map onto a particular tile set, the `leaflet` package does not work in these row and column grids. The `(col, row)` pairs need to be transformed or projected into Leaflet space. Fortunately, this (so far) appears consistent and `rtrek` does this for you with `tile_coords`. It takes a data frame like `stGeo` with columns named `col` and `row` as well as the name of an available Star Trek map tile set, and returns a data frame with new columns `x` and `y` that will map properly in a `leaflet` map built on that tile set.
+The coordinates are also not consistent. Source maps differ significantly. Even if they had identical pixel dimensions, which they do not, each artist's visual rendering of the fictional universe will place locations differently in space. In this sense, every tile set has a unique coordinate reference system. For each new tile set produced, all locations of interest must be georeferenced again.
+
+This is not ideal, but it gets worse. Once you have locations' coordinates defined that map onto a particular tile set, the `leaflet` package does not work in these row and column grids. The `(col, row)` pairs need to be transformed or projected into Leaflet space. Fortunately, `rtrek` does this part for you with `tile_coords`. It takes a data frame like one returned by `st_tiles_data` with columns named `col` and `row`, as well as the name of an available Star Trek map tile set. It returns a data frame with new columns `x` and `y` that will map properly in a `leaflet` map built on that tile set.
 
 ```{r tile_coords}
-tile_coords(stGeo, "galaxy1")
+id <- "galaxy1"
+(d <- st_tiles_data(id))
+(d <- tile_coords(d, id))
 ```
 
-Here is an example using the `galaxy1` map with `leaflet`.
+Here is an example using the `galaxy1` map with `leaflet`. The `st_tiles` function is used to link to the tile provider.
 
 ```{r leaflet, fig.width=8.82, fig.height=5.5, tidy=FALSE}
 library(leaflet)
-d <- tile_coords(stGeo, "galaxy1")
 tiles <- st_tiles("galaxy1")
 leaflet(d, options = leafletOptions(crs = leafletCRS("L.CRS.Simple"))) %>%
   addTiles(tiles) %>% setView(108, -75, 2) %>%
-  addCircleMarkers(lng = ~x, lat = ~y, label = ~label, color = "white", radius = 20)
+  addCircleMarkers(lng = ~x, lat = ~y, label = ~loc, color = "white", radius = 20)
 ```
 
 <br/>
 
-The `stSpecies` dataset is just a small table that pairs species named in `stGeo` with representative thumbnail avatars from Memory Alpha. There is nothing map-related here, but these are used in this [Stellar Cartography](https://leonawicz.github.io/rtrek/articles/sc.html) example. It is similar to the one above, but a bit more interesting having markers to click on and display more information.
+The `stSpecies` dataset is just a small table that pairs species named with representative thumbnail avatars, mostly pulled from the Memory Alpha website. There is nothing map-related here, but these are used in this [Stellar Cartography](https://leonawicz.github.io/rtrek/articles/sc.html) example. It is similar to the Leaflet example above, but a bit more interesting, with markers to click on and information displays.
+
+In the course of the above map-related examples, a few functions have also been introduced. `st_tiles` takes an `id` argument that is mapped to the available tile sets in `stTiles` and returns the relevant URL. `st_tiles_data` takes the same `id` argument and returns a simple example data frame containing ancillary data related to the available locations from `stGeo`. The result is always the same except that the grid cells for locations change with respect to the chosen tile set. Finally, `tile_coords` can be applied to one of these data frames to add `x` and `y` columns for a CRS that Leaflet will understand.
 
 ## Star Trek API
 
