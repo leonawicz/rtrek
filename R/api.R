@@ -15,7 +15,7 @@
 #' To be an even better neighbor, you can increase this wait time using \code{options}, e.g. \code{options(rtrek_antiddos = 10)} to increase the minimum time between API calls to ten seconds.
 #' Values less than one are ignored (defaulting back to one second) and a warning will be thrown when making any API call if this is the case.
 #'
-#' Currently STAPI contains primarly real world data such as episode air dates, movie metadata, or production company information. Fictional world data is secondary and more limited.
+#' Currently STAPI contains primarily real world data such as episode air dates, movie metadata, or production company information. Fictional world data is secondary and more limited.
 #'
 #' @param id character, name of STAPI entity. See details.
 #' @param page integer vector, defaults to first page.

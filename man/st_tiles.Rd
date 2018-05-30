@@ -21,3 +21,6 @@ Tile set data are stored in the \code{\link{stTiles}} dataset. See for available
 \examples{
 st_tiles("galaxy1")
 }
+\seealso{
+\code{\link{stTiles}}, \code{\link{st_tiles_data}}
+}

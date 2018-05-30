@@ -1,20 +1,20 @@
-#' Raster grid location data for stellar cartographic map tile set 1.
+#' Raster grid location data for stellar cartographic map tile sets.
 #'
-#' A data frame of with 7 rows and 6 columns.
+#' A data frame of with 18 rows and 4 columns. This data frame has an ID column for map tile set, a column of location names, and columns of respective column and row number of each location per map tile set.
 #'
 #' @format A data frame
 "stGeo"
 
-#' Species names and avatars, linked from Memory Alpha.
+#' Species names and avatars, linked primarily from Memory Alpha.
 #'
-#' A data frame with 7 rows and 2 columns.
+#' A data frame with 9 rows and 2 columns.
 #'
 #' @format A data frame
 "stSpecies"
 
 #' Available Star Trek map tile sets.
 #'
-#' A data frame with 1 row and 8 columns.
+#' A data frame with 2 row and 8 columns.
 #'
 #' @format A data frame
 "stTiles"
@@ -51,7 +51,7 @@
 st_datasets <- function(){
   dplyr::data_frame(
     dataset = c("stGeo", "stSpecies", "stTiles", "stBooks", "stapiEntities"),
-    description = c("Simple CRS data associated with map tile sets.", "Basic intelligent species data.",
+    description = c("Map tile set locations of interest.", "Basic intelligent species data.",
                     "Available map tile sets.", "Star Trek novel metadata from Wikipedia.",
                     "Star Trek API (STAPI) categories"))
 }

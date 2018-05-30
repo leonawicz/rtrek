@@ -3,12 +3,12 @@
 \docType{data}
 \name{stSpecies}
 \alias{stSpecies}
-\title{Species names and avatars, linked from Memory Alpha.}
+\title{Species names and avatars, linked primarily from Memory Alpha.}
 \format{A data frame}
 \usage{
 stSpecies
 }
 \description{
-A data frame with 7 rows and 2 columns.
+A data frame with 9 rows and 2 columns.
 }
 \keyword{datasets}

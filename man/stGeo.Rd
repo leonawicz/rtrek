@@ -3,12 +3,12 @@
 \docType{data}
 \name{stGeo}
 \alias{stGeo}
-\title{Raster grid location data for stellar cartographic map tile set 1.}
+\title{Raster grid location data for stellar cartographic map tile sets.}
 \format{A data frame}
 \usage{
 stGeo
 }
 \description{
-A data frame of with 7 rows and 6 columns.
+A data frame of with 18 rows and 4 columns. This data frame has an ID column for map tile set, a column of location names, and columns of respective column and row number of each location per map tile set.
 }
 \keyword{datasets}
