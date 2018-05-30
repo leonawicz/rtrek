@@ -26,9 +26,8 @@ tile_coords <- function(data, id){
   x <- dplyr::slice(rtrek::stTiles, .data[["id"]] == id0)
   w <- x$width
   h <- x$height
-  r <- w / h
-  center <- c(200 * r, -200)
-  dplyr::mutate(data, x = center[1] * col / w, y = center[2] * row / h)
+  r <- h / w
+  dplyr::mutate(data, x = 250 * col / w, y = -250 * r * row / h)
 }
 
 #' Return the url associated with a tile set
@@ -41,10 +40,30 @@ tile_coords <- function(data, id){
 #'
 #' @return a character string.
 #' @export
+#' @seealso \code{\link{stTiles}}, \code{\link{st_tiles_data}}
 #'
 #' @examples
 #' st_tiles("galaxy1")
 st_tiles <- function(id){
   x <- rtrek::stTiles
   x$url[x$id == id]
+}
+
+#' Ancillary location data for map tiles
+#'
+#' Obtain a table of ancillary data associated with various locations of interest, given a specific map tile set ID.
+#'
+#' This function returns a small example data frame of location-specific data along with grid cell coordinates that are specific to the requested map tile set ID.
+#'
+#' @param id character, name of a map tile set.
+#'
+#' @return a data frame
+#' @export
+#' @seealso \code{\link{stTiles}}, \code{\link{st_tiles}}
+#'
+#' @examples
+#' st_tiles_data("galaxy2")
+st_tiles_data <- function(id){
+  dplyr::filter(rtrek::stGeo, .data[["id"]] == !! id) %>%
+    dplyr::mutate(body = "Planet", category = "Homeworld", zone = .st_zone, species = .st_species)
 }
