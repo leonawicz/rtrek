@@ -117,6 +117,13 @@
   if(id == "rr"){
     idx <- grep("</body>", l)
     l[idx] <- paste0("</div>\n", l[idx])
+  } else {
+    idx <- grep("<div class=\"col-md-9 contents\">", l)
+    l[idx] <- gsub("col-md-9", "col-md-12", l[idx])
+    idx <- grep("<div class=\"col-md-3 hidden-xs hidden-sm\" id=\"sidebar\">", l)
+    idx2 <- grep("</div>", l)
+    idx <- idx:(idx2[idx2 > idx][2])
+    l <- l[-c(idx, idx + 1)]
   }
   writeLines(l, file)
   invisible()

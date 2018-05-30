@@ -20,10 +20,9 @@ library(rtrek)
 ```
 
 ```{r map_setup}
-tiles <- st_tiles("galaxy1")
-d <- stGeo %>% mutate(color = c("#87CEFF", "#C0FF3E", "#FF3030", "#BF3EFF", "#7FFFD4", "#FF1493", "#FFB90F")) %>%
-  tile_coords("galaxy1")
+clrs <- c("#87CEFF", "#C0FF3E", "#FF3030", "#BF3EFF", "#7FFFD4", "#FF1493", "#FFB90F", "#CD6839", "#698B22")
 info_colors <- c("rgba(45, 45, 45, 0.9)", "#888888", "#ffffff")
+ids <- c("galaxy1", "galaxy2")
 
 eq_popup <- function(x, y){
   logo <- y$avatar[match(y$species, x$species)]
@@ -40,26 +39,55 @@ label_opts <- list(
   "background-color" = info_colors[1],
   "font-size" = "16px", "font-style" = "bold", "color" = info_colors[3], "border-color" = info_colors[2],
   "border-size" = "10px", "border-radius" = "4px")
+
+img_style <- "position:absolute; top:10px; right:10px; height:100px; width:65px; padding:5px; z-index:500; background-color:rgba(255, 185, 15, 0.75); border-radius: 4px;"
+sf_logo <- "C:/github/rtrek/data-raw/images/stlogo-white.png"
 ```
 
 ## Homeworlds
 
 #### This map highlights key species homeworlds.
 
-```{r map}
-div(style = "position: relative;",
-  img(src = knitr::image_uri("C:/github/rtrek/data-raw/images/stlogo-white.png"), alt = "logo", height = 100, width = 65,
-    style = "position:absolute; top:10px; right:10px; height:100px; width:65px; padding:5px; z-index:500; background-color:rgba(255, 185, 15, 0.75); border-radius: 4px;"),
+```{r map1_setup}
+id <- ids[1]
+tiles <- st_tiles(id)
+d <- st_tiles_data(id) %>% mutate(color = clrs) %>% tile_coords(id)
+```
 
+```{r map1}
+div(style = "position: relative;", img(src = knitr::image_uri(sf_logo), alt = "logo", height = 100, width = 65, style = img_style),
   leaflet(options = leafletOptions(crs = leafletCRS("L.CRS.Simple"), minZoom = 0, maxZoom = 7, attributionControl = FALSE), width = "100%", height = "600px") %>% 
     addTiles(urlTemplate = tiles) %>% setView(108, -75, 2) %>%
     addFullscreenControl() %>% addMiniMap(tiles = tiles, toggleDisplay = TRUE) %>%
     addPulseMarkers(data = d, lng = ~x, lat = ~y, icon = makePulseIcon(heartbeat = 1, color = ~color, iconSize = 16), 
                     popup = eq_popup(d, stSpecies), popupOptions = pop_opts,
-                    label = ~label, labelOptions = labelOptions(style = label_opts))
+                    label = ~loc, labelOptions = labelOptions(style = label_opts))
 )
 ```
 
 <p><em>Base map tiles generated from source map <a href="https://archerxx.deviantart.com/art/Star-Trek-Star-Chart-316982311">Star trek Star Chart</a> by <a href="https://archerxx.deviantart.com/">Rob Archer</a>.</em></p>
+
+## Homeworlds 2
+
+#### Same locations, different coordinate reference system.
+
+```{r map2_setup}
+id <- ids[2]
+tiles <- st_tiles(id)
+d <- st_tiles_data(id) %>% mutate(color = clrs) %>% tile_coords(id)
+```
+
+```{r map2}
+div(style = "position: relative;", img(src = knitr::image_uri(sf_logo), alt = "logo", height = 100, width = 65, style = img_style),
+  leaflet(options = leafletOptions(crs = leafletCRS("L.CRS.Simple"), minZoom = 0, maxZoom = 7, attributionControl = FALSE), width = "100%", height = "600px") %>% 
+    addTiles(urlTemplate = tiles) %>% setView(71, -60, 3) %>%
+    addFullscreenControl() %>% addMiniMap(tiles = tiles, toggleDisplay = TRUE) %>%
+    addPulseMarkers(data = d, lng = ~x, lat = ~y, icon = makePulseIcon(heartbeat = 1, color = ~color, iconSize = 16), 
+                    popup = eq_popup(d, stSpecies), popupOptions = pop_opts,
+                    label = ~loc, labelOptions = labelOptions(style = label_opts))
+)
+```
+
+<p><em>Base map tiles generated from source map <a href="http://sttff.net/AST_MAP.html">AST MAP</a>.</em></p>
 
 ## More soon...
