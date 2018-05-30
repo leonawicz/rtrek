@@ -1,3 +1,11 @@
+# rtrek 0.1.0
+
+* Refactored some functions and datasets.
+* Added connection to new map tile set, `galaxy2`.
+* Add two more species/homeworlds to example data.
+* Updated documentation.
+* Added and updated unit tests.
+
 # rtrek 0.0.9
 
 * Remove remote `trekfont` now that it is available on CRAN.
