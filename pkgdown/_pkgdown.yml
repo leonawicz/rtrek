@@ -26,6 +26,7 @@ reference:
   contents:
   - st_datasets
   - st_tiles
+  - st_tiles_data
   - tile_coords
   - st_book_series
   - st_font
