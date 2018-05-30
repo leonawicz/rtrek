@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.9</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
       </span>
     </div>
 
@@ -164,16 +164,16 @@
 <div id="local-datasets" class="section level2">
 <h2 class="hasAnchor">
 <a href="#local-datasets" class="anchor"></a>Local datasets</h2>
-<p>Package datasets in <code>rtrek</code> are somewhat eclectic and currently limited. To list all available package datasets with a short description, call <code>st_datasets</code>.</p>
+<p>Package datasets in <code>rtrek</code> are somewhat eclectic and currently limited. They will expand with further package development. To list all available package datasets with a short description, call <code>st_datasets</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rtrek)
 <span class="kw"><a href="../reference/st_datasets.html">st_datasets</a></span>()
 <span class="co">#&gt; # A tibble: 5 x 2</span>
-<span class="co">#&gt;   dataset       description                                   </span>
-<span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;                                         </span>
-<span class="co">#&gt; 1 stGeo         Simple CRS data associated with map tile sets.</span>
-<span class="co">#&gt; 2 stSpecies     Basic intelligent species data.               </span>
-<span class="co">#&gt; 3 stTiles       Available map tile sets.                      </span>
-<span class="co">#&gt; 4 stBooks       Star Trek novel metadata from Wikipedia.      </span>
+<span class="co">#&gt;   dataset       description                             </span>
+<span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;                                   </span>
+<span class="co">#&gt; 1 stGeo         Map tile set locations of interest.     </span>
+<span class="co">#&gt; 2 stSpecies     Basic intelligent species data.         </span>
+<span class="co">#&gt; 3 stTiles       Available map tile sets.                </span>
+<span class="co">#&gt; 4 stBooks       Star Trek novel metadata from Wikipedia.</span>
 <span class="co">#&gt; 5 stapiEntities Star Trek API (STAPI) categories</span></code></pre></div>
 <div id="star-trek-novels" class="section level3">
 <h3 class="hasAnchor">
@@ -224,49 +224,78 @@
 <div id="spatial-maps" class="section level3">
 <h3 class="hasAnchor">
 <a href="#spatial-maps" class="anchor"></a>Spatial maps</h3>
-<p>The other datasets are currently in early stages of development and will be expanded further. <code>stTiles</code> is a data frame listing all available Star Trek-themed map tile sets along with metadata and attribution information. These map tiles can be used with the <code>leaflet</code> and <code>shiny</code> packages to make interactive maps situated in the Star Trek universe.</p>
+<p>The <code>stTiles</code> data frame shows all available Star Trek-themed map tile sets along with metadata and attribution information. These map tiles can be used with the <code>leaflet</code> and <code>shiny</code> packages to make interactive maps situated in the Star Trek universe.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stTiles
-<span class="co">#&gt; # A tibble: 1 x 8</span>
+<span class="co">#&gt; # A tibble: 2 x 8</span>
 <span class="co">#&gt;   id      url    description width height tile_creator map_creator map_url</span>
 <span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;  </span>
-<span class="co">#&gt; 1 galaxy1 https~ Geopolitic~  8000   6445 Matthew Leo~ Rob Archer  https:~</span></code></pre></div>
+<span class="co">#&gt; 1 galaxy1 https~ Geopolitic~  8000   6445 Matthew Leo~ Rob Archer  https:~</span>
+<span class="co">#&gt; 2 galaxy2 https~ Geopolitic~  5000   4000 Matthew Leo~ &lt;NA&gt;        http:/~</span></code></pre></div>
 <p>The list is scant at the moment, but more will come. One thing to keep in mind is these tile sets use a simple/non-geographical coordinate reference system (CRS). Clearly, they are not Earth-based, though they are spatial in more ways than one!</p>
 <p>Similar to game maps, there is a sense of space, but it is a simple Cartesian coordinate system and does not use geographic projections like you may be used to working with when analyzing spatial data or making Leaflet maps. This system is much simpler, but simple does not necessarily mean easy!</p>
 <p>Inspect <code>stGeo</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stGeo
-<span class="co">#&gt; # A tibble: 7 x 7</span>
-<span class="co">#&gt;     col   row label      body   category  zone                   species  </span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;    </span>
-<span class="co">#&gt; 1  2196  2357 Earth      Planet Homeworld United Federation of ~ Human    </span>
-<span class="co">#&gt; 2  2615  1742 Romulus    Planet Homeworld Romulan Star Empire    Romulan  </span>
-<span class="co">#&gt; 3  3310  3361 Qo'noS     Planet Homeworld Klingon Empire         Klingon  </span>
-<span class="co">#&gt; 4  1004   939 Breen      Planet Homeworld Breen Confederacy      Breen    </span>
-<span class="co">#&gt; 5  1431  1996 Ferenginar Planet Homeworld Ferengi Alliance       Ferengi  </span>
-<span class="co">#&gt; 6  1342  2841 Cardassia  Planet Homeworld Cardassian Union       Cardassi~</span>
-<span class="co">#&gt; 7   407  3866 Tholia     Planet Homeworld Tholian Assembly       Tholian</span></code></pre></div>
-<p>This is another small dataset containing locations of key planets in the Star Trek universe and a handful of associated variables. Notice the coordinates do not appear meaningful. There is no latitude and longitude. Instead there are row and column entries defining cells in a matrix. The matrix dimensions are defined by the pixel dimensions of source map for the <code>galaxy1</code> map tile set. Unless source maps for two different tile sets are of exactly the same dimensions, they yield two different coordinate reference systems. If you produce a new tile set, you then have to georeference any locations that you intend to display on it.</p>
-<p>This is not ideal, but it gets worse. Once you have locations’ coordinates defined that map onto a particular tile set, the <code>leaflet</code> package does not work in these row and column grids. The <code>(col, row)</code> pairs need to be transformed or projected into Leaflet space. Fortunately, this (so far) appears consistent and <code>rtrek</code> does this for you with <code>tile_coords</code>. It takes a data frame like <code>stGeo</code> with columns named <code>col</code> and <code>row</code> as well as the name of an available Star Trek map tile set, and returns a data frame with new columns <code>x</code> and <code>y</code> that will map properly in a <code>leaflet</code> map built on that tile set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/tile_coords.html">tile_coords</a></span>(stGeo, <span class="st">"galaxy1"</span>)
-<span class="co">#&gt; # A tibble: 7 x 9</span>
-<span class="co">#&gt;     col   row label      body   category  zone        species     x      y</span>
-<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt; 1  2196  2357 Earth      Planet Homeworld United Fed~ Human    68.1  -73.1</span>
-<span class="co">#&gt; 2  2615  1742 Romulus    Planet Homeworld Romulan St~ Romulan  81.1  -54.1</span>
-<span class="co">#&gt; 3  3310  3361 Qo'noS     Planet Homeworld Klingon Em~ Klingon 103.  -104. </span>
-<span class="co">#&gt; 4  1004   939 Breen      Planet Homeworld Breen Conf~ Breen    31.2  -29.1</span>
-<span class="co">#&gt; 5  1431  1996 Ferenginar Planet Homeworld Ferengi Al~ Ferengi  44.4  -61.9</span>
-<span class="co">#&gt; 6  1342  2841 Cardassia  Planet Homeworld Cardassian~ Cardas~  41.6  -88.2</span>
-<span class="co">#&gt; 7   407  3866 Tholia     Planet Homeworld Tholian As~ Tholian  12.6 -120.</span></code></pre></div>
-<p>Here is an example using the <code>galaxy1</code> map with <code>leaflet</code>.</p>
+<span class="co">#&gt; # A tibble: 18 x 4</span>
+<span class="co">#&gt;    id      loc          col   row</span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 galaxy1 Earth       2196  2357</span>
+<span class="co">#&gt;  2 galaxy1 Romulus     2615  1742</span>
+<span class="co">#&gt;  3 galaxy1 Qo'noS      3310  3361</span>
+<span class="co">#&gt;  4 galaxy1 Breen       1004   939</span>
+<span class="co">#&gt;  5 galaxy1 Ferenginar  1431  1996</span>
+<span class="co">#&gt;  6 galaxy1 Cardassia   1342  2841</span>
+<span class="co">#&gt;  7 galaxy1 Tholia       407  3866</span>
+<span class="co">#&gt;  8 galaxy1 Tzenketh    1553  2557</span>
+<span class="co">#&gt;  9 galaxy1 Talar       1039  3489</span>
+<span class="co">#&gt; 10 galaxy2 Earth       2201  1595</span>
+<span class="co">#&gt; 11 galaxy2 Romulus     2514  1178</span>
+<span class="co">#&gt; 12 galaxy2 Qo'noS      3197  2303</span>
+<span class="co">#&gt; 13 galaxy2 Breen       1228  1181</span>
+<span class="co">#&gt; 14 galaxy2 Ferenginar  2026   886</span>
+<span class="co">#&gt; 15 galaxy2 Cardassia   1543  1903</span>
+<span class="co">#&gt; 16 galaxy2 Tholia       713  2971</span>
+<span class="co">#&gt; 17 galaxy2 Tzenketh    1734  1721</span>
+<span class="co">#&gt; 18 galaxy2 Talar       1338  2368</span></code></pre></div>
+<p>This is another small dataset containing locations of key planets in the Star Trek universe. Notice the coordinates do not appear meaningful. There is no latitude and longitude. Instead there are row and column entries defining cells in a matrix. The matrix dimensions are defined by the pixel dimensions of source map that was used to create each tile set.</p>
+<p>The coordinates are also not consistent. Source maps differ significantly. Even if they had identical pixel dimensions, which they do not, each artist’s visual rendering of the fictional universe will place locations differently in space. In this sense, every tile set has a unique coordinate reference system. For each new tile set produced, all locations of interest must be georeferenced again.</p>
+<p>This is not ideal, but it gets worse. Once you have locations’ coordinates defined that map onto a particular tile set, the <code>leaflet</code> package does not work in these row and column grids. The <code>(col, row)</code> pairs need to be transformed or projected into Leaflet space. Fortunately, <code>rtrek</code> does this part for you with <code>tile_coords</code>. It takes a data frame like one returned by <code>st_tiles_data</code> with columns named <code>col</code> and <code>row</code>, as well as the name of an available Star Trek map tile set. It returns a data frame with new columns <code>x</code> and <code>y</code> that will map properly in a <code>leaflet</code> map built on that tile set.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">id &lt;-<span class="st"> "galaxy1"</span>
+(d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_tiles_data.html">st_tiles_data</a></span>(id))
+<span class="co">#&gt; # A tibble: 9 x 8</span>
+<span class="co">#&gt;   id      loc          col   row body   category  zone            species </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;   </span>
+<span class="co">#&gt; 1 galaxy1 Earth       2196  2357 Planet Homeworld United Federat~ Human   </span>
+<span class="co">#&gt; 2 galaxy1 Romulus     2615  1742 Planet Homeworld Romulan Star E~ Romulan </span>
+<span class="co">#&gt; 3 galaxy1 Qo'noS      3310  3361 Planet Homeworld Klingon Empire  Klingon </span>
+<span class="co">#&gt; 4 galaxy1 Breen       1004   939 Planet Homeworld Breen Confeder~ Breen   </span>
+<span class="co">#&gt; 5 galaxy1 Ferenginar  1431  1996 Planet Homeworld Ferengi Allian~ Ferengi </span>
+<span class="co">#&gt; 6 galaxy1 Cardassia   1342  2841 Planet Homeworld Cardassian Uni~ Cardass~</span>
+<span class="co">#&gt; 7 galaxy1 Tholia       407  3866 Planet Homeworld Tholian Assemb~ Tholian </span>
+<span class="co">#&gt; 8 galaxy1 Tzenketh    1553  2557 Planet Homeworld Tzenkethi Coal~ Tzenket~</span>
+<span class="co">#&gt; 9 galaxy1 Talar       1039  3489 Planet Homeworld Talarian Repub~ Talarian</span>
+(d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tile_coords.html">tile_coords</a></span>(d, id))
+<span class="co">#&gt; # A tibble: 9 x 10</span>
+<span class="co">#&gt;   id      loc          col   row body  category zone  species     x      y</span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 galaxy1 Earth       2196  2357 Plan~ Homewor~ Unit~ Human    68.6  -73.7</span>
+<span class="co">#&gt; 2 galaxy1 Romulus     2615  1742 Plan~ Homewor~ Romu~ Romulan  81.7  -54.4</span>
+<span class="co">#&gt; 3 galaxy1 Qo'noS      3310  3361 Plan~ Homewor~ Klin~ Klingon 103.  -105. </span>
+<span class="co">#&gt; 4 galaxy1 Breen       1004   939 Plan~ Homewor~ Bree~ Breen    31.4  -29.3</span>
+<span class="co">#&gt; 5 galaxy1 Ferenginar  1431  1996 Plan~ Homewor~ Fere~ Ferengi  44.7  -62.4</span>
+<span class="co">#&gt; 6 galaxy1 Cardassia   1342  2841 Plan~ Homewor~ Card~ Cardas~  41.9  -88.8</span>
+<span class="co">#&gt; 7 galaxy1 Tholia       407  3866 Plan~ Homewor~ Thol~ Tholian  12.7 -121. </span>
+<span class="co">#&gt; 8 galaxy1 Tzenketh    1553  2557 Plan~ Homewor~ Tzen~ Tzenke~  48.5  -79.9</span>
+<span class="co">#&gt; 9 galaxy1 Talar       1039  3489 Plan~ Homewor~ Tala~ Talari~  32.5 -109.</span></code></pre></div>
+<p>Here is an example using the <code>galaxy1</code> map with <code>leaflet</code>. The <code>st_tiles</code> function is used to link to the tile provider.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(leaflet)
-d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tile_coords.html">tile_coords</a></span>(stGeo, <span class="st">"galaxy1"</span>)
 tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_tiles.html">st_tiles</a></span>(<span class="st">"galaxy1"</span>)
 <span class="kw">leaflet</span>(d, <span class="dt">options =</span> <span class="kw">leafletOptions</span>(<span class="dt">crs =</span> <span class="kw">leafletCRS</span>(<span class="st">"L.CRS.Simple"</span>))) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addTiles</span>(tiles) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">setView</span>(<span class="dv">108</span>, <span class="op">-</span><span class="dv">75</span>, <span class="dv">2</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">addCircleMarkers</span>(<span class="dt">lng =</span> <span class="op">~</span>x, <span class="dt">lat =</span> <span class="op">~</span>y, <span class="dt">label =</span> <span class="op">~</span>label, <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">radius =</span> <span class="dv">20</span>)</code></pre></div>
-<div id="htmlwidget-d6891815dc5e0d73b028" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d6891815dc5e0d73b028">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.1419705197828,-54.0574088440652,-104.297905352987,-29.1388673390225,-61.9394879751746,-88.1613653995345,-119.968968192397],[68.1458494957331,81.1481768813033,102.715283165244,31.155934833204,44.4065166795966,41.644685802948,12.6299456943367],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-119.968968192397,-29.1388673390225],"lng":[12.6299456943367,102.715283165244]}},"evals":[],"jsHooks":[]}</script><p><br></p>
-<p>The <code>stSpecies</code> dataset is just a small table that pairs species named in <code>stGeo</code> with representative thumbnail avatars from Memory Alpha. There is nothing map-related here, but these are used in this <a href="https://leonawicz.github.io/rtrek/articles/sc.html">Stellar Cartography</a> example. It is similar to the one above, but a bit more interesting having markers to click on and display more information.</p>
+<span class="st">  </span><span class="kw">addCircleMarkers</span>(<span class="dt">lng =</span> <span class="op">~</span>x, <span class="dt">lat =</span> <span class="op">~</span>y, <span class="dt">label =</span> <span class="op">~</span>loc, <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">radius =</span> <span class="dv">20</span>)</code></pre></div>
+<div id="htmlwidget-034a5f149c63084e765c" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-034a5f149c63084e765c">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.65625,-54.4375,-105.03125,-29.34375,-62.375,-88.78125,-120.8125,-79.90625,-109.03125],[68.625,81.71875,103.4375,31.375,44.71875,41.9375,12.71875,48.53125,32.46875],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia","Tzenketh","Talar"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-120.8125,-29.34375],"lng":[12.71875,103.4375]}},"evals":[],"jsHooks":[]}</script><p><br></p>
+<p>The <code>stSpecies</code> dataset is just a small table that pairs species named with representative thumbnail avatars, mostly pulled from the Memory Alpha website. There is nothing map-related here, but these are used in this <a href="https://leonawicz.github.io/rtrek/articles/sc.html">Stellar Cartography</a> example. It is similar to the Leaflet example above, but a bit more interesting, with markers to click on and information displays.</p>
+<p>In the course of the above map-related examples, a few functions have also been introduced. <code>st_tiles</code> takes an <code>id</code> argument that is mapped to the available tile sets in <code>stTiles</code> and returns the relevant URL. <code>st_tiles_data</code> takes the same <code>id</code> argument and returns a simple example data frame containing ancillary data related to the available locations from <code>stGeo</code>. The result is always the same except that the grid cells for locations change with respect to the chosen tile set. Finally, <code>tile_coords</code> can be applied to one of these data frames to add <code>x</code> and <code>y</code> columns for a CRS that Leaflet will understand.</p>
 </div>
 </div>
 <div id="star-trek-api" class="section level2">
@@ -344,8 +373,8 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
 <span class="co">#&gt; 3 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
 <span class="co">#&gt; 4 EPMA0000162588            Death Wish           NA         NA</span>
 <span class="co">#&gt; 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7</span>
-<span class="co">#&gt; 6 EPMA0000000651              Tapestry           NA         NA</span>
-<span class="co">#&gt; 7 EPMA0000000845                Q-Less      46531.2    46531.2</span>
+<span class="co">#&gt; 6 EPMA0000000845                Q-Less      46531.2    46531.2</span>
+<span class="co">#&gt; 7 EPMA0000000651              Tapestry           NA         NA</span>
 <span class="co">#&gt; 8 EPMA0000001413                True Q      46192.3    46192.3</span>
 <span class="co">#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</span></code></pre></div>
 <p>The data returned on Q is actually a large list, including multiple data frames. For simplicity only a piece of it is shown above.</p>

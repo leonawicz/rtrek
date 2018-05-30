@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>License • rtrek</title>
+<title>Ancillary location data for map tiles — st_tiles_data • rtrek</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -22,15 +22,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script>
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
+<script src="../pkgdown.js"></script>
 
 
 
-  <link href="extra.css" rel="stylesheet">
+  <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="License" />
+<meta property="og:title" content="Ancillary location data for map tiles — st_tiles_data" />
+
+<meta property="og:description" content="Obtain a table of ancillary data associated with various locations of interest, given a specific map tile set ID." />
+<meta name="twitter:card" content="summary" />
 
 
 <!-- mathjax -->
@@ -55,7 +58,7 @@
   </head>
 
   <body>
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -66,7 +69,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">rtrek</a>
+        <a class="navbar-link" href="../index.html">rtrek</a>
         <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
       </span>
     </div>
@@ -74,14 +77,14 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fa fa-home"></span>
      
     Home
   </a>
 </li>
 <li>
-  <a href="articles/rtrek.html">Get Started</a>
+  <a href="../articles/rtrek.html">Get Started</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -91,24 +94,24 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/fonts.html">Star Trek fonts</a>
+      <a href="../articles/fonts.html">Star Trek fonts</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="news/index.html">Changelog</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="articles/sc.html">Stellar Cartography</a>
+  <a href="../articles/sc.html">Stellar Cartography</a>
 </li>
 <li>
-  <a href="articles/rr.html">R &amp; R... &amp; R</a>
+  <a href="../articles/rr.html">R &amp; R... &amp; R</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -177,19 +180,73 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>License</h1>
+    <h1>Ancillary location data for map tiles</h1>
+    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/tiles.R'><code>R/tiles.R</code></a></small>
+    <div class="hidden name"><code>st_tiles_data.Rd</code></div>
     </div>
 
-<pre>YEAR: 2018
-COPYRIGHT HOLDER: Matthew Leonawicz
-</pre>
+    <div class="ref-description">
+    
+    <p>Obtain a table of ancillary data associated with various locations of interest, given a specific map tile set ID.</p>
+    
+    </div>
+
+    <pre class="usage"><span class='fu'>st_tiles_data</span>(<span class='no'>id</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>id</th>
+      <td><p>character, name of a map tile set.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a data frame</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function returns a small example data frame of location-specific data along with grid cell coordinates that are specific to the requested map tile set ID.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='stTiles.html'>stTiles</a></code>, <code><a href='st_tiles.html'>st_tiles</a></code></p></div>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>st_tiles_data</span>(<span class='st'>"galaxy2"</span>)</div><div class='output co'>#&gt; # A tibble: 9 x 8
+#&gt;   id      loc          col   row body   category  zone                 species 
+#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;                &lt;chr&gt;   
+#&gt; 1 galaxy2 Earth       2201  1595 Planet Homeworld United Federation o~ Human   
+#&gt; 2 galaxy2 Romulus     2514  1178 Planet Homeworld Romulan Star Empire  Romulan 
+#&gt; 3 galaxy2 Qo'noS      3197  2303 Planet Homeworld Klingon Empire       Klingon 
+#&gt; 4 galaxy2 Breen       1228  1181 Planet Homeworld Breen Confederacy    Breen   
+#&gt; 5 galaxy2 Ferenginar  2026   886 Planet Homeworld Ferengi Alliance     Ferengi 
+#&gt; 6 galaxy2 Cardassia   1543  1903 Planet Homeworld Cardassian Union     Cardass~
+#&gt; 7 galaxy2 Tholia       713  2971 Planet Homeworld Tholian Assembly     Tholian 
+#&gt; 8 galaxy2 Tzenketh    1734  1721 Planet Homeworld Tzenkethi Coalition  Tzenket~
+#&gt; 9 galaxy2 Talar       1338  2368 Planet Homeworld Talarian Republic    Talarian</div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
-
 </div>
-
 
       <footer>
       <div class="copyright">

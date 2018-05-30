@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.9</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
       </span>
     </div>
 
@@ -230,12 +230,16 @@ This puts <code>stapi</code> into extraction mode and will return satellite data
 <p><code>rtrek</code> employs anti-DDOS measures. It will not perform an API call to STAPI more than once per second.
 To be an even better neighbor, you can increase this wait time using <code>options</code>, e.g. <code>options(rtrek_antiddos = 10)</code> to increase the minimum time between API calls to ten seconds.
 Values less than one are ignored (defaulting back to one second) and a warning will be thrown when making any API call if this is the case.</p>
-<p>Currently STAPI contains primarly real world data such as episode air dates, movie metadata, or production company information. Fictional world data is secondary and more limited.</p>
+<p>Currently STAPI contains primarily real world data such as episode air dates, movie metadata, or production company information. Fictional world data is secondary and more limited.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># check first</span></div><div class='output co'>#&gt; Total pages to retrieve all results: 62 </div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 100 x 2
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># check first</span></div><div class='output co'>#&gt; Total pages to retrieve all results: 62 </div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 100 x 2
 #&gt;    uid            name                  
 #&gt;    &lt;chr&gt;          &lt;chr&gt;                 
 #&gt;  1 CHMA0000016634 Fuller                
@@ -255,8 +259,8 @@ Values less than one are ignored (defaulting back to one second) and a warning w
 #&gt; 3 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7
 #&gt; 4 EPMA0000162588            Death Wish           NA         NA
 #&gt; 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7
-#&gt; 6 EPMA0000000651              Tapestry           NA         NA
-#&gt; 7 EPMA0000000845                Q-Less      46531.2    46531.2
+#&gt; 6 EPMA0000000845                Q-Less      46531.2    46531.2
+#&gt; 7 EPMA0000000651              Tapestry           NA         NA
 #&gt; 8 EPMA0000001413                True Q      46192.3    46192.3
 #&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</div></pre>
   </div>

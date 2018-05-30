@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.9</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
       </span>
     </div>
 
@@ -223,10 +223,10 @@ The output of <code>tile_coords</code> is a typical Cartesian coordinate system,
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>row</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>3222</span>, <span class='fl'>6445</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>4000</span>, <span class='fl'>8000</span>))
-<span class='fu'>tile_coords</span>(<span class='no'>d</span>, <span class='st'>"galaxy1"</span>)</div><div class='output co'>#&gt;    row  col        x          y
-#&gt; 1    0    0   0.0000    0.00000
-#&gt; 2 3222 4000 124.1272  -99.98448
-#&gt; 3 6445 8000 248.2545 -200.00000</div></pre>
+<span class='fu'>tile_coords</span>(<span class='no'>d</span>, <span class='st'>"galaxy1"</span>)</div><div class='output co'>#&gt;    row  col   x         y
+#&gt; 1    0    0   0    0.0000
+#&gt; 2 3222 4000 125 -100.6875
+#&gt; 3 6445 8000 250 -201.4062</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
