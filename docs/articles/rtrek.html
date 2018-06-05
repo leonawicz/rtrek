@@ -167,19 +167,20 @@
 <p>Package datasets in <code>rtrek</code> are somewhat eclectic and currently limited. They will expand with further package development. To list all available package datasets with a short description, call <code>st_datasets</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rtrek)
 <span class="kw"><a href="../reference/st_datasets.html">st_datasets</a></span>()
-<span class="co">#&gt; # A tibble: 5 x 2</span>
+<span class="co">#&gt; # A tibble: 6 x 2</span>
 <span class="co">#&gt;   dataset       description                             </span>
 <span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;                                   </span>
 <span class="co">#&gt; 1 stGeo         Map tile set locations of interest.     </span>
 <span class="co">#&gt; 2 stSpecies     Basic intelligent species data.         </span>
 <span class="co">#&gt; 3 stTiles       Available map tile sets.                </span>
-<span class="co">#&gt; 4 stBooks       Star Trek novel metadata from Wikipedia.</span>
-<span class="co">#&gt; 5 stapiEntities Star Trek API (STAPI) categories</span></code></pre></div>
+<span class="co">#&gt; 4 stBooks       Star Trek novel metadata.               </span>
+<span class="co">#&gt; 5 stBooksWP     Star Trek novel metadata from Wikipedia.</span>
+<span class="co">#&gt; 6 stapiEntities Star Trek API (STAPI) categories</span></code></pre></div>
 <div id="star-trek-novels" class="section level3">
 <h3 class="hasAnchor">
 <a href="#star-trek-novels" class="anchor"></a>Star Trek novels</h3>
-<p>The <code>stBooks</code> dataset provides a moderately curated data frame of over 715 Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent <code>rtrek</code> update. <code>stBooks</code> is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stBooks
+<p>The <code>stBooksWP</code> dataset provides a moderately curated data frame of over 715 Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent <code>rtrek</code> update. <code>stBooksWP</code> is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stBooksWP
 <span class="co">#&gt; # A tibble: 715 x 6</span>
 <span class="co">#&gt;    Series                   Title    Author   Number Timeframe Released   </span>
 <span class="co">#&gt;    &lt;chr&gt;                    &lt;chr&gt;    &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;      </span>
@@ -219,7 +220,7 @@
 <span class="co">#&gt; 17 Starfleet Academy                     SFA</span></code></pre></div>
 <p>Then call it with a specific acronym ID and the page will load at the desired table entry.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/st_book_series.html">st_book_series</a></span>(<span class="st">"DS9"</span>)</code></pre></div>
-<p>This package data only graces the surface of Star Trek novels. A later section provides a brief introduction to Star Trek novel data compiled from text mining analyses of the actual book content. Unlike <code>stBooks</code> which is limited to a metadata overview, these other datasets contain quantifiable variables much more suitable to interesting statistical analysis.</p>
+<p>This package data only graces the surface of Star Trek novels. A later section provides a brief introduction to Star Trek novel data compiled from text mining analyses of the actual book content. Unlike <code>stBooksWP</code>, which is limited to a metadata overview, these other datasets contain quantifiable variables much more suitable to interesting statistical analysis.</p>
 </div>
 <div id="spatial-maps" class="section level3">
 <h3 class="hasAnchor">
@@ -292,8 +293,8 @@ tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_ti
 <span class="kw">leaflet</span>(d, <span class="dt">options =</span> <span class="kw">leafletOptions</span>(<span class="dt">crs =</span> <span class="kw">leafletCRS</span>(<span class="st">"L.CRS.Simple"</span>))) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addTiles</span>(tiles) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">setView</span>(<span class="dv">108</span>, <span class="op">-</span><span class="dv">75</span>, <span class="dv">2</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addCircleMarkers</span>(<span class="dt">lng =</span> <span class="op">~</span>x, <span class="dt">lat =</span> <span class="op">~</span>y, <span class="dt">label =</span> <span class="op">~</span>loc, <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">radius =</span> <span class="dv">20</span>)</code></pre></div>
-<div id="htmlwidget-034a5f149c63084e765c" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-034a5f149c63084e765c">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.65625,-54.4375,-105.03125,-29.34375,-62.375,-88.78125,-120.8125,-79.90625,-109.03125],[68.625,81.71875,103.4375,31.375,44.71875,41.9375,12.71875,48.53125,32.46875],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia","Tzenketh","Talar"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-120.8125,-29.34375],"lng":[12.71875,103.4375]}},"evals":[],"jsHooks":[]}</script><p><br></p>
+<div id="htmlwidget-833bf0799374505d50a7" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-833bf0799374505d50a7">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.65625,-54.4375,-105.03125,-29.34375,-62.375,-88.78125,-120.8125,-79.90625,-109.03125],[68.625,81.71875,103.4375,31.375,44.71875,41.9375,12.71875,48.53125,32.46875],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia","Tzenketh","Talar"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-120.8125,-29.34375],"lng":[12.71875,103.4375]}},"evals":[],"jsHooks":[]}</script><p><br></p>
 <p>The <code>stSpecies</code> dataset is just a small table that pairs species named with representative thumbnail avatars, mostly pulled from the Memory Alpha website. There is nothing map-related here, but these are used in this <a href="https://leonawicz.github.io/rtrek/articles/sc.html">Stellar Cartography</a> example. It is similar to the Leaflet example above, but a bit more interesting, with markers to click on and information displays.</p>
 <p>In the course of the above map-related examples, a few functions have also been introduced. <code>st_tiles</code> takes an <code>id</code> argument that is mapped to the available tile sets in <code>stTiles</code> and returns the relevant URL. <code>st_tiles_data</code> takes the same <code>id</code> argument and returns a simple example data frame containing ancillary data related to the available locations from <code>stGeo</code>. The result is always the same except that the grid cells for locations change with respect to the chosen tile set. Finally, <code>tile_coords</code> can be applied to one of these data frames to add <code>x</code> and <code>y</code> columns for a CRS that Leaflet will understand.</p>
 </div>
@@ -383,7 +384,25 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
 <div id="star-trek-novel-text-mining" class="section level2">
 <h2 class="hasAnchor">
 <a href="#star-trek-novel-text-mining" class="anchor"></a>Star Trek novel text mining</h2>
-<p><em>to be continued…</em></p>
+<p>This section will be continued in a future version of <code>rtrek</code>. For now what is available is a dataset <code>stBooks</code> that compliments the <code>stBooksWP</code> dataset seen earlier. <code>stBooks</code> has a similar number of metadata entries for Star Trek books and there is considerable overlap between the two datasets. However, there are also considerable differences in entries as well as formatting.</p>
+<p>This dataset represents metadata parsed, imperfectly but painstakingly thoroughly, from actual Star Trek books. Compared to <code>stBooksWP</code>, which represents a scraping of Wikipedia information on Star Trek books, <code>stBooks</code> contains several different fields, including more useful fields for analysts such as the number of words and chapters in a book.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stBooks
+<span class="co">#&gt; # A tibble: 743 x 11</span>
+<span class="co">#&gt;    title  creator date  publisher identifier series subseries nchap  nword</span>
+<span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;</span>
+<span class="co">#&gt;  1 The M~ Gene R~ 1979~ Simon an~ 978074341~ The O~ TOS 01 -~    30  54522</span>
+<span class="co">#&gt;  2 Dread~ Diane ~ 1986~ Pocket B~ 978074341~ The O~ TOS 29 -~    15  58867</span>
+<span class="co">#&gt;  3 Battl~ Diane ~ 1986~ Simon an~ 978074341~ The O~ TOS 31 -~    13  80159</span>
+<span class="co">#&gt;  4 The T~ Barbar~ 1988~ Simon an~ 978074341~ The O~ TOS 41 -~    13  71465</span>
+<span class="co">#&gt;  5 Home ~ Dana K~ 1990~ Simon an~ 978074342~ The O~ TOS 52 -~    52  68778</span>
+<span class="co">#&gt;  6 Ghost~ Barbar~ 1991~ Simon an~ 0743420047 The O~ TOS 53 -~    21  80103</span>
+<span class="co">#&gt;  7 First~ Diane ~ 1995~ Pocket B~ 978074342~ The O~ TOS 75 -~    45 110913</span>
+<span class="co">#&gt;  8 The A~ Dayton~ 2002~ Pocket B~ 978074346~ The O~ TOS - Th~     1   7439</span>
+<span class="co">#&gt;  9 World~ Judith~ 2003~ Pocket B~ 0743488148 The O~ TOS - Wo~    64 207246</span>
+<span class="co">#&gt; 10 Duty,~ Noveli~ 2004~ Pocket B~ 978074349~ The O~ TOS - Du~    42 196779</span>
+<span class="co">#&gt; # ... with 733 more rows, and 2 more variables: nchar &lt;int&gt;,</span>
+<span class="co">#&gt; #   dedication &lt;chr&gt;</span></code></pre></div>
+<p>Obviously, licensed book content itself cannot be shared as data, so it is not possible to provide capability in <code>rtrek</code> to enable analysts to perform their own unique text mining analyses on Star Trek novel corpura. However, future versions of <code>rtrek</code> will include more summary datasets that will aim to represent more intersting variables. Just a couple examples could be the relative frequency of popular characters’ names per book, or a senitment analysis, or any other set of interesting metrics that could be used to inform suggested reading lists of various tiles or books by particular authors with a favored style or focus.</p>
 </div>
   </div>
 

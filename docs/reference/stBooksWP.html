@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • rtrek</title>
+<title>Star Trek novel metadata from Wikipedia. — stBooksWP • rtrek</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Star Trek novel metadata from Wikipedia. — stBooksWP" />
+
+<meta property="og:description" content="A data frame with 715 rows and 6 columns containing metadata on Star Trek novels and other books taken from the primary Wikipedia page: https://en.wikipedia.org/wiki/List_of_Star_Trek_novels.
+The data frame contains most of the novels but is not comprehensive, containing only the most easily scraped HTML table data, and may be out of date temporarily whenever new novels are published." />
+<meta name="twitter:card" content="summary" />
 
 
 <!-- mathjax -->
@@ -55,7 +59,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -179,111 +183,47 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/leonawicz/rtrek/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Star Trek novel metadata from Wikipedia.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>stBooksWP.Rd</code></div>
     </div>
 
-    <div id="rtrek-0-1-0" class="section level1">
-<h1 class="page-header">
-<a href="#rtrek-0-1-0" class="anchor"></a>rtrek 0.1.0</h1>
-<ul>
-<li>Refactored some functions and datasets.</li>
-<li>Added new <code>stBooks</code> dataset, renamed previous <code>stBooks</code> to <code>stBooksWP</code>.</li>
-<li>Added connection to new map tile set, <code>galaxy2</code>.</li>
-<li>Add two more species/homeworlds to example data.</li>
-<li>Updated documentation.</li>
-<li>Added and updated unit tests.</li>
-</ul>
-</div>
-    <div id="rtrek-0-0-9" class="section level1">
-<h1 class="page-header">
-<a href="#rtrek-0-0-9" class="anchor"></a>rtrek 0.0.9</h1>
-<ul>
-<li>Remove remote <code>trekfont</code> now that it is available on CRAN.</li>
-<li>Prepare GitHub accessible external datasets that serve package web pages.</li>
-<li>Updated documentation, webste. Add to “fun pages” (R &amp; R), which are only part of website “vignettes”, not package vignettes.</li>
-<li>Minor fixes.</li>
-</ul>
-</div>
-    <div id="rtrek-0-0-8" class="section level1">
-<h1 class="page-header">
-<a href="#rtrek-0-0-8" class="anchor"></a>rtrek 0.0.8</h1>
-<ul>
-<li>Added more robust testing of API entity searches.</li>
-<li>Minor refactor of <code>stapi</code> internals and addition of <code>stapiEntities</code> dataset.</li>
-<li>Added optional (non-dependent) association with <code>trekfont</code> package with a function <code>st_font</code> to list and preview fonts from that package.</li>
-<li>Updated documentation.</li>
-<li>Minor fixes.</li>
-</ul>
-</div>
-    <div id="rtrek-0-0-7" class="section level1">
-<h1 class="page-header">
-<a href="#rtrek-0-0-7" class="anchor"></a>rtrek 0.0.7</h1>
-<ul>
-<li>Added additional vignettes.</li>
-<li>Optional integration with <code>trekfont</code> package.</li>
-<li>Improved website, including initial version of Stellar Cartography page.</li>
-<li>Update data.</li>
-<li>Minor fixes.</li>
-<li>Updated readme and docs.</li>
-</ul>
-</div>
-    <div id="rtrek-0-0-6" class="section level1">
-<h1 class="page-header">
-<a href="#rtrek-0-0-6" class="anchor"></a>rtrek 0.0.6</h1>
-<ul>
-<li>Added initial introduction vignette content.</li>
-<li>Added anti-DDOS measures for API calls.</li>
-<li>Minor fixes.</li>
-<li>Updated unit tests.</li>
-<li>Updated readme.</li>
-</ul>
-</div>
-    <div id="rtrek-0-0-5" class="section level1">
-<h1 class="page-header">
-<a href="#rtrek-0-0-5" class="anchor"></a>rtrek 0.0.5</h1>
-<ul>
-<li>Added initial Star Trek data API functionality via STAPI wrapper.</li>
-<li>Updated documentation.</li>
-<li>Added unit tests.</li>
-<li>Added moderately curated data frame of Star Trek novels metadata scraped from Wikipedia.</li>
-<li>Added convenience function for accessing specific Wikipedia entries in browser.</li>
-</ul>
-</div>
-    <div id="rtrek-0-0-1" class="section level1">
-<h1 class="page-header">
-<a href="#rtrek-0-0-1" class="anchor"></a>rtrek 0.0.1</h1>
-<ul>
-<li>Added minimal data and functions.</li>
-<li>Added basic unit tests.</li>
-<li>Updated documentation, improved dataset and object curation.</li>
-</ul>
-</div>
-    <div id="rtrek-0-0-0-9000" class="section level1">
-<h1 class="page-header">
-<a href="#rtrek-0-0-0-9000" class="anchor"></a>rtrek 0.0.0.9000</h1>
-<ul>
-<li>Added initial package scaffolding.</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    
+    <p>A data frame with 715 rows and 6 columns containing metadata on Star Trek novels and other books taken from the primary Wikipedia page: https://en.wikipedia.org/wiki/List_of_Star_Trek_novels.
+The data frame contains most of the novels but is not comprehensive, containing only the most easily scraped HTML table data, and may be out of date temporarily whenever new novels are published.</p>
+    
+    </div>
 
+    <pre class="usage"><span class='no'>stBooksWP</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>There is considerable overlap in titles between <code>stBooksWP</code> and <code>stBooks</code>, but also a considerable number of unique entries.
+For example, the old novelizations by James Blish of the Original Series episodes are not found in <code>stBooks</code>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='st_book_series.html'>st_book_series</a></code>, <code><a href='stBooks.html'>stBooks</a></code></p></div>
+    
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#rtrek-0-1-0">0.1.0</a></li>
-        <li><a href="#rtrek-0-0-9">0.0.9</a></li>
-        <li><a href="#rtrek-0-0-8">0.0.8</a></li>
-        <li><a href="#rtrek-0-0-7">0.0.7</a></li>
-        <li><a href="#rtrek-0-0-6">0.0.6</a></li>
-        <li><a href="#rtrek-0-0-5">0.0.5</a></li>
-        <li><a href="#rtrek-0-0-1">0.0.1</a></li>
-        <li><a href="#rtrek-0-0-0-9000">0.0.0.9000</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      
+      <li><a href="#format">Format</a></li>
 
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+          </ul>
+
+  </div>
 </div>
 
       <footer>
