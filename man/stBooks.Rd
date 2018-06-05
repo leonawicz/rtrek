@@ -9,10 +9,18 @@
 stBooks
 }
 \description{
-A data frame with 715 rows and 6 columns containing metadata on Star Trek novels and other books taken from the primary Wikipedia page: https://en.wikipedia.org/wiki/List_of_Star_Trek_novels.
-The data frame contains most of the novels but is not comprehensive, containing only the most easily scraped HTML table data, and may be out of date temporarily whenever new novels are published.
+A data frame with 743 rows and 11 columns containing metadata on Star Trek novels and other books taken from original books.
+The data frame contains most of the novels but is not comprehensive and may be out of date temporarily whenever new novels are published.
+}
+\details{
+There is considerable overlap in titles between \code{stBooksWP} and \code{stBooks}, but also a considerable number of unique entries.
+For example, the old novelizations by James Blish of the Original Series episodes are not found in \code{stBooks}. This dataset only goes back as far as 1979.
+
+However, \code{stBooks} contains a number of additional columns providing metadata about each book that could only be parsed from books and not from the Wikipedia page that serves as the source for \code{stBooksWP}.
+These columns include the number of characters, words and chapters in a book. There may be some irregularities or erroneous entries based on the imperfect methods use to compile the metadata,
+but it is overall an accurate dataset.
 }
 \seealso{
-\code{\link{st_book_series}}
+\code{\link{st_book_series}}, \code{\link{stBooksWP}}
 }
 \keyword{datasets}

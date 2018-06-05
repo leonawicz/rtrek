@@ -73,7 +73,7 @@ stBooksId <- distinct(x, id) %>% slice(-c(2:8, 21:29)) %>%
                "Starfleet Academy"),
     abb = c("TOS", "TNG", "DS9", "VOY", "ENT", "DSC", "NF", "SG", "IKE", "TIT", "VAN", "SKR", "miniseries", "SCE", "DTI", "MIR", "SFA")
   )
-stBooks <- select(x, -id)
+stBooksWP <- select(x, -id)
 
 saveRDS(stBooksId, "data-raw/internal/stBooksId.rds")
-usethis::use_data(stBooks)
+usethis::use_data(stBooksWP)

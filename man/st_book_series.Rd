@@ -14,12 +14,12 @@ opens a browser tab, nothing is returned unless \code{id} is not provided, in wh
 }
 \description{
 This function opens a browser tab to the main Wikipedia entry for all Star Trek novels automatically scrolled to the section pertaining to \code{id}.
-To see the available IDs, call \code{st_book_series} with no arguments.
+To see the available IDs, call \code{st_book_series} with no arguments. The Wikipedia page is the one that serves as the source for the \code{stBooksWP} dataset.
 }
 \examples{
 st_book_series()
 st_book_series("DS9")
 }
 \seealso{
-\code{\link{stBooks}}
+\code{\link{stBooksWP}}
 }

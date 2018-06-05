@@ -1,6 +1,7 @@
 # rtrek 0.1.0
 
 * Refactored some functions and datasets.
+* Added new `stBooks` dataset, renamed previous `stBooks` to `stBooksWP`.
 * Added connection to new map tile set, `galaxy2`.
 * Add two more species/homeworlds to example data.
 * Updated documentation.
