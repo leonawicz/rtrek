@@ -38,7 +38,7 @@ stSpecies <- data_frame(
 
 stTiles <- data_frame(
   id = .tile_ids,
-  url = paste0("https://leonawicz.github.io/tiles/data/", c("st1", "st2"), "/{z}/{x}/{y}.png"),
+  url = paste0("https://leonawicz.github.io/tiles/", c("st1", "st2"), "/tiles/{z}/{x}/{y}.png"),
   description = rep("Geopolitical galaxy map", 2),
   width = c(8000, 5000),
   height = c(6445, 4000),

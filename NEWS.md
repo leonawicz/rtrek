@@ -1,6 +1,6 @@
 # rtrek 0.1.0.9000
 
-* Next developement version. No changes yet.
+* Updated tile set URLs.
 
 # rtrek 0.1.0 (Release date: 2018-06-06)
 
