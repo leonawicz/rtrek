@@ -1,4 +1,8 @@
-# rtrek 0.1.0
+# rtrek 0.1.0.9000
+
+* Next developement version. No changes yet.
+
+# rtrek 0.1.0 (Release date: 2018-06-06)
 
 * Refactored some functions and datasets.
 * Added new `stBooks` dataset, renamed previous `stBooks` to `stBooksWP`.
