@@ -8,8 +8,8 @@
 <title>Datasets and Functions Relating to Star Trek • rtrek</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Datasets and Functions Relating to Star Trek">
 <meta property="og:description" content="Provides datasets related to the Star Trek fictional universe and functions for working with the data.
     The package also provides access to real world datasets based on the televised series and other related licensed media productions.
@@ -188,27 +188,27 @@ Time to be good detectives. Good thing Data has R installed.
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rtrek)
 <span class="kw">library</span>(dplyr)
 <span class="kw"><a href="reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">page_count =</span> <span class="ot">TRUE</span>)
-<span class="co">#&gt; Total pages to retrieve all results: 62</span>
+<span class="co">#&gt; Total pages to retrieve all results: 64</span>
 
 <span class="kw"><a href="reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">page =</span> <span class="dv">2</span>)
 <span class="co">#&gt; # A tibble: 100 x 24</span>
-<span class="co">#&gt;    uid     name    gender yearOfBirth monthOfBirth dayOfBirth placeOfBirth</span>
-<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;int&gt;        &lt;int&gt;      &lt;int&gt; &lt;lgl&gt;       </span>
-<span class="co">#&gt;  1 CHMA00~ Fuller  M               NA           NA         NA NA          </span>
-<span class="co">#&gt;  2 CHMA00~ Burkus  M               NA           NA         NA NA          </span>
-<span class="co">#&gt;  3 CHMA00~ Masaka~ &lt;NA&gt;            NA           NA         NA NA          </span>
-<span class="co">#&gt;  4 CHMA00~ Thorne  M               NA           NA         NA NA          </span>
-<span class="co">#&gt;  5 CHMA00~ Ah-Kel  M               NA           NA         NA NA          </span>
-<span class="co">#&gt;  6 CHMA00~ Robert~ &lt;NA&gt;            NA           NA         NA NA          </span>
-<span class="co">#&gt;  7 CHMA00~ Q       M               NA           NA         NA NA          </span>
-<span class="co">#&gt;  8 CHMA00~ John D~ &lt;NA&gt;            NA           NA         NA NA          </span>
-<span class="co">#&gt;  9 CHMA00~ Louis ~ &lt;NA&gt;            NA           NA         NA NA          </span>
-<span class="co">#&gt; 10 CHMA00~ Marat ~ M               NA           NA         NA NA          </span>
+<span class="co">#&gt;    uid      name   gender yearOfBirth monthOfBirth dayOfBirth placeOfBirth</span>
+<span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;int&gt; &lt;lgl&gt;        &lt;lgl&gt;      &lt;chr&gt;       </span>
+<span class="co">#&gt;  1 CHMA000~ Stevi~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  2 CHMA000~ Yeggie M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  3 CHMA000~ Arex   M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  4 CHMA000~ Joseph M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  5 CHMA000~ J. Zi~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  6 CHMA000~ Doyle  M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  7 CHMA000~ Butler M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  8 CHMA000~ Lito   M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  9 CHMA000~ B. Mo~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt; 10 CHMA000~ Anna ~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
 <span class="co">#&gt; # ... with 90 more rows, and 17 more variables: yearOfDeath &lt;int&gt;,</span>
 <span class="co">#&gt; #   monthOfDeath &lt;lgl&gt;, dayOfDeath &lt;lgl&gt;, placeOfDeath &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   height &lt;int&gt;, weight &lt;int&gt;, deceased &lt;lgl&gt;, bloodType &lt;chr&gt;,</span>
-<span class="co">#&gt; #   maritalStatus &lt;chr&gt;, serialNumber &lt;chr&gt;, hologramActivationDate &lt;chr&gt;,</span>
-<span class="co">#&gt; #   hologramStatus &lt;chr&gt;, hologramDateStatus &lt;lgl&gt;, hologram &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   height &lt;int&gt;, weight &lt;int&gt;, deceased &lt;lgl&gt;, bloodType &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   maritalStatus &lt;chr&gt;, serialNumber &lt;chr&gt;, hologramActivationDate &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   hologramStatus &lt;lgl&gt;, hologramDateStatus &lt;lgl&gt;, hologram &lt;lgl&gt;,</span>
 <span class="co">#&gt; #   fictionalCharacter &lt;lgl&gt;, mirror &lt;lgl&gt;, alternateReality &lt;lgl&gt;</span>
 
 Q &lt;-<span class="st"> "CHMA0000025118"</span>  <span class="co">#unique ID</span>
@@ -217,13 +217,13 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
 <span class="co">#&gt;              uid                 title stardateFrom stardateTo</span>
 <span class="co">#&gt; 1 EPMA0000001458    All Good Things...      47988.0    47988.0</span>
 <span class="co">#&gt; 2 EPMA0000001329                 Q Who      42761.3    42761.3</span>
-<span class="co">#&gt; 3 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
-<span class="co">#&gt; 4 EPMA0000162588            Death Wish           NA         NA</span>
-<span class="co">#&gt; 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7</span>
+<span class="co">#&gt; 3 EPMA0000001377                  Qpid      44741.9    44741.9</span>
+<span class="co">#&gt; 4 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
+<span class="co">#&gt; 5 EPMA0000000651              Tapestry           NA         NA</span>
 <span class="co">#&gt; 6 EPMA0000000845                Q-Less      46531.2    46531.2</span>
-<span class="co">#&gt; 7 EPMA0000000651              Tapestry           NA         NA</span>
+<span class="co">#&gt; 7 EPMA0000162588            Death Wish           NA         NA</span>
 <span class="co">#&gt; 8 EPMA0000001413                True Q      46192.3    46192.3</span>
-<span class="co">#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</span></code></pre></div>
+<span class="co">#&gt; 9 EPMA0000001510    The Q and the Grey      50384.2    50392.7</span></code></pre></div>
 <p>Live long and prosper.</p>
 </div>
 </div>

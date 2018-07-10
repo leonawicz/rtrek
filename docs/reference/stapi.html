@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -34,6 +36,7 @@
 
 <meta property="og:description" content="Retrieve Star Trek data from the Star Trek API (STAPI)." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -234,31 +237,35 @@ Values less than one are ignored (defaulting back to one second) and a warning w
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># check first</span></div><div class='output co'>#&gt; Total pages to retrieve all results: 62 </div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 100 x 2
-#&gt;    uid            name                  
-#&gt;    &lt;chr&gt;          &lt;chr&gt;                 
-#&gt;  1 CHMA0000016634 Fuller                
-#&gt;  2 CHMA0000022998 Burkus                
-#&gt;  3 CHMA0000214779 Masaka's city         
-#&gt;  4 CHMA0000040790 Thorne                
-#&gt;  5 CHMA0000024856 Ah-Kel                
-#&gt;  6 CHMA0000171279 Robert Justman Raymond
-#&gt;  7 CHMA0000025118 Q                     
-#&gt;  8 CHMA0000069349 John Dwyer            
-#&gt;  9 CHMA0000057119 Louis of France       
-#&gt; 10 CHMA0000021854 Marat Kobar           
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: 'dplyr'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># check first</span></div><div class='output co'>#&gt; Total pages to retrieve all results: 64 </div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 100 x 2
+#&gt;    uid            name         
+#&gt;    &lt;chr&gt;          &lt;chr&gt;        
+#&gt;  1 CHMA0000042544 Stevie Wonder
+#&gt;  2 CHMA0000018397 Yeggie       
+#&gt;  3 CHMA0000007954 Arex         
+#&gt;  4 CHMA0000026438 Joseph       
+#&gt;  5 CHMA0000232412 J. Zimmerman 
+#&gt;  6 CHMA0000014055 Doyle        
+#&gt;  7 CHMA0000012951 Butler       
+#&gt;  8 CHMA0000048382 Lito         
+#&gt;  9 CHMA0000190073 B. Mooneyham 
+#&gt; 10 CHMA0000171058 Anna Dixon   
 #&gt; # ... with 90 more rows</div><div class='input'><span class='no'>Q</span> <span class='kw'>&lt;-</span> <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>uid</span> <span class='kw'>=</span> <span class='st'>"CHMA0000025118"</span>)
 <span class='no'>Q</span>$<span class='no'>episodes</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>uid</span>, <span class='no'>title</span>, <span class='no'>stardateFrom</span>, <span class='no'>stardateTo</span>)</div><div class='output co'>#&gt;              uid                 title stardateFrom stardateTo
 #&gt; 1 EPMA0000001458    All Good Things...      47988.0    47988.0
 #&gt; 2 EPMA0000001329                 Q Who      42761.3    42761.3
-#&gt; 3 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7
-#&gt; 4 EPMA0000162588            Death Wish           NA         NA
-#&gt; 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7
+#&gt; 3 EPMA0000001377                  Qpid      44741.9    44741.9
+#&gt; 4 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7
+#&gt; 5 EPMA0000000651              Tapestry           NA         NA
 #&gt; 6 EPMA0000000845                Q-Less      46531.2    46531.2
-#&gt; 7 EPMA0000000651              Tapestry           NA         NA
+#&gt; 7 EPMA0000162588            Death Wish           NA         NA
 #&gt; 8 EPMA0000001413                True Q      46192.3    46192.3
-#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</div></pre>
+#&gt; 9 EPMA0000001510    The Q and the Grey      50384.2    50392.7</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -8,8 +8,8 @@
 <title>Introduction to rtrek • rtrek</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Introduction to rtrek">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -147,7 +147,7 @@
       </header><script src="rtrek_files/htmlwidgets-1.2/htmlwidgets.js"></script><script src="rtrek_files/jquery-1.12.4/jquery.min.js"></script><link href="rtrek_files/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="rtrek_files/leaflet-1.3.1/leaflet.js"></script><link href="rtrek_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="rtrek_files/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="rtrek_files/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="rtrek_files/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="rtrek_files/leaflet-binding-2.0.0/leaflet.js"></script><div class="row">
+<script src="rtrek_files/leaflet-binding-2.0.1/leaflet.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Introduction to rtrek</h1>
@@ -293,8 +293,8 @@ tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_ti
 <span class="kw">leaflet</span>(d, <span class="dt">options =</span> <span class="kw">leafletOptions</span>(<span class="dt">crs =</span> <span class="kw">leafletCRS</span>(<span class="st">"L.CRS.Simple"</span>))) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addTiles</span>(tiles) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">setView</span>(<span class="dv">108</span>, <span class="op">-</span><span class="dv">75</span>, <span class="dv">2</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addCircleMarkers</span>(<span class="dt">lng =</span> <span class="op">~</span>x, <span class="dt">lat =</span> <span class="op">~</span>y, <span class="dt">label =</span> <span class="op">~</span>loc, <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">radius =</span> <span class="dv">20</span>)</code></pre></div>
-<div id="htmlwidget-af5593a56783c21c0d34" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-af5593a56783c21c0d34">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/data/st1/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.65625,-54.4375,-105.03125,-29.34375,-62.375,-88.78125,-120.8125,-79.90625,-109.03125],[68.625,81.71875,103.4375,31.375,44.71875,41.9375,12.71875,48.53125,32.46875],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia","Tzenketh","Talar"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-120.8125,-29.34375],"lng":[12.71875,103.4375]}},"evals":[],"jsHooks":[]}</script><p><br></p>
+<div id="htmlwidget-cc65d78d6f44a658b15f" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cc65d78d6f44a658b15f">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/st1/tiles/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.65625,-54.4375,-105.03125,-29.34375,-62.375,-88.78125,-120.8125,-79.90625,-109.03125],[68.625,81.71875,103.4375,31.375,44.71875,41.9375,12.71875,48.53125,32.46875],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia","Tzenketh","Talar"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-120.8125,-29.34375],"lng":[12.71875,103.4375]}},"evals":[],"jsHooks":[]}</script><p><br></p>
 <p>The <code>stSpecies</code> dataset is just a small table that pairs species named with representative thumbnail avatars, mostly pulled from the Memory Alpha website. There is nothing map-related here, but these are used in this <a href="https://leonawicz.github.io/rtrek/articles/sc.html">Stellar Cartography</a> example. It is similar to the Leaflet example above, but a bit more interesting, with markers to click on and information displays.</p>
 <p>In the course of the above map-related examples, a few functions have also been introduced. <code>st_tiles</code> takes an <code>id</code> argument that is mapped to the available tile sets in <code>stTiles</code> and returns the relevant URL. <code>st_tiles_data</code> takes the same <code>id</code> argument and returns a simple example data frame containing ancillary data related to the available locations from <code>stGeo</code>. The result is always the same except that the grid cells for locations change with respect to the chosen tile set. Finally, <code>tile_coords</code> can be applied to one of these data frames to add <code>x</code> and <code>y</code> columns for a CRS that Leaflet will understand.</p>
 </div>
@@ -338,28 +338,28 @@ tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_ti
 <p>To determine how many pages of results exist for a given search, set <code>page_count = TRUE</code>. The impact on the API will be equivalent to only searching a single page of results. One page contains metadata including the total number of pages. Nothing is returned in this “safe mode”, but the total number of search results available is printed to the console.</p>
 <p>Searching movies only returns one page of results. However, there are a lot of characters in the Star Trek universe. Check the total pages available for character search.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">page_count =</span> <span class="ot">TRUE</span>)
-<span class="co">#&gt; Total pages to retrieve all results: 62</span></code></pre></div>
+<span class="co">#&gt; Total pages to retrieve all results: 64</span></code></pre></div>
 <p>And that is with 100 results per page!</p>
 <p>The default <code>page = 1</code> only returns the first page. <code>page</code> can be a vector, e.g. <code>page = 1:62</code>. Results from multi-page searches are automatically combined into a single, constant data frame output. For the second call to <code>stapi</code>, return only page two here, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example further below hard-codes his unique/universal ID.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">page =</span> <span class="dv">2</span>)
 <span class="co">#&gt; # A tibble: 100 x 24</span>
-<span class="co">#&gt;    uid     name    gender yearOfBirth monthOfBirth dayOfBirth placeOfBirth</span>
-<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;int&gt;        &lt;int&gt;      &lt;int&gt; &lt;lgl&gt;       </span>
-<span class="co">#&gt;  1 CHMA00~ Fuller  M               NA           NA         NA NA          </span>
-<span class="co">#&gt;  2 CHMA00~ Burkus  M               NA           NA         NA NA          </span>
-<span class="co">#&gt;  3 CHMA00~ Masaka~ &lt;NA&gt;            NA           NA         NA NA          </span>
-<span class="co">#&gt;  4 CHMA00~ Thorne  M               NA           NA         NA NA          </span>
-<span class="co">#&gt;  5 CHMA00~ Ah-Kel  M               NA           NA         NA NA          </span>
-<span class="co">#&gt;  6 CHMA00~ Robert~ &lt;NA&gt;            NA           NA         NA NA          </span>
-<span class="co">#&gt;  7 CHMA00~ Q       M               NA           NA         NA NA          </span>
-<span class="co">#&gt;  8 CHMA00~ John D~ &lt;NA&gt;            NA           NA         NA NA          </span>
-<span class="co">#&gt;  9 CHMA00~ Louis ~ &lt;NA&gt;            NA           NA         NA NA          </span>
-<span class="co">#&gt; 10 CHMA00~ Marat ~ M               NA           NA         NA NA          </span>
+<span class="co">#&gt;    uid      name   gender yearOfBirth monthOfBirth dayOfBirth placeOfBirth</span>
+<span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;int&gt; &lt;lgl&gt;        &lt;lgl&gt;      &lt;chr&gt;       </span>
+<span class="co">#&gt;  1 CHMA000~ Stevi~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  2 CHMA000~ Yeggie M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  3 CHMA000~ Arex   M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  4 CHMA000~ Joseph M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  5 CHMA000~ J. Zi~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  6 CHMA000~ Doyle  M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  7 CHMA000~ Butler M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  8 CHMA000~ Lito   M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  9 CHMA000~ B. Mo~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt; 10 CHMA000~ Anna ~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
 <span class="co">#&gt; # ... with 90 more rows, and 17 more variables: yearOfDeath &lt;int&gt;,</span>
 <span class="co">#&gt; #   monthOfDeath &lt;lgl&gt;, dayOfDeath &lt;lgl&gt;, placeOfDeath &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   height &lt;int&gt;, weight &lt;int&gt;, deceased &lt;lgl&gt;, bloodType &lt;chr&gt;,</span>
-<span class="co">#&gt; #   maritalStatus &lt;chr&gt;, serialNumber &lt;chr&gt;, hologramActivationDate &lt;chr&gt;,</span>
-<span class="co">#&gt; #   hologramStatus &lt;chr&gt;, hologramDateStatus &lt;lgl&gt;, hologram &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   height &lt;int&gt;, weight &lt;int&gt;, deceased &lt;lgl&gt;, bloodType &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   maritalStatus &lt;chr&gt;, serialNumber &lt;chr&gt;, hologramActivationDate &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   hologramStatus &lt;lgl&gt;, hologramDateStatus &lt;lgl&gt;, hologram &lt;lgl&gt;,</span>
 <span class="co">#&gt; #   fictionalCharacter &lt;lgl&gt;, mirror &lt;lgl&gt;, alternateReality &lt;lgl&gt;</span></code></pre></div>
 <p>Character tables can be sparse. There are a lot of variables, many of which will contain missing data for rare, esoteric characters. Even for more popular characters about whom much more universe lore has been uncovered, it still takes dedicated nerds to enter all the data in a database.</p>
 <p>When a dataset contains a <code>uid</code> column, this can be used subsequently to extract a satellite dataset about that particular observation that was returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q’s <code>uid</code> to <code>stapi</code> and call the function one last time. When <code>uid</code> is no longer <code>NULL</code>, <code>stapi</code> knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.</p>
@@ -371,13 +371,13 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
 <span class="co">#&gt;              uid                 title stardateFrom stardateTo</span>
 <span class="co">#&gt; 1 EPMA0000001458    All Good Things...      47988.0    47988.0</span>
 <span class="co">#&gt; 2 EPMA0000001329                 Q Who      42761.3    42761.3</span>
-<span class="co">#&gt; 3 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
-<span class="co">#&gt; 4 EPMA0000162588            Death Wish           NA         NA</span>
-<span class="co">#&gt; 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7</span>
+<span class="co">#&gt; 3 EPMA0000001377                  Qpid      44741.9    44741.9</span>
+<span class="co">#&gt; 4 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
+<span class="co">#&gt; 5 EPMA0000000651              Tapestry           NA         NA</span>
 <span class="co">#&gt; 6 EPMA0000000845                Q-Less      46531.2    46531.2</span>
-<span class="co">#&gt; 7 EPMA0000000651              Tapestry           NA         NA</span>
+<span class="co">#&gt; 7 EPMA0000162588            Death Wish           NA         NA</span>
 <span class="co">#&gt; 8 EPMA0000001413                True Q      46192.3    46192.3</span>
-<span class="co">#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</span></code></pre></div>
+<span class="co">#&gt; 9 EPMA0000001510    The Q and the Grey      50384.2    50392.7</span></code></pre></div>
 <p>The data returned on Q is actually a large list, including multiple data frames. For simplicity only a piece of it is shown above.</p>
 </div>
 </div>
