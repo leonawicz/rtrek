@@ -13,6 +13,10 @@ knitr::opts_chunk$set(
 
 # rtrek <a hef="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek.png?raw=true" _target="blank"><img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek-small.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="120" align="right"></a>
 
+<br/>
+**Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/)<br/>
+**License:** [MIT](https://opensource.org/licenses/MIT)<br/>
+
 [![CRAN status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek)
 [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek) 
 [![Rdoc](http://www.rdocumentation.org/badges/version/rtrek)](http://www.rdocumentation.org/packages/rtrek)
@@ -48,6 +52,12 @@ cat('## Installation')
 
 ```{r hill2, echo = FALSE, results = "asis", eval = !is_md}
 cat('## Installation<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width=320 style="float: right; padding-left: 10px; padding-bottom:5px;">')
+```
+
+Install `rtrek` from CRAN with:
+
+``` r
+install.packages("rtrek")
 ```
 
 Install the development version of `rtrek` from [GitHub](https://github.com/) with:
