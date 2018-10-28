@@ -64,16 +64,18 @@ for(i in 2:6) x[[i]]$Series <- paste0("The_Original_Series - ", x[[i]]$Series)
 x[[31]] <- slice(x[[31]], -1) %>% mutate(Series = paste0("TNG Starfleet Academy - ", Series))
 x <- bind_rows(x) %>% select(Series, Title, Author, Number, Timeframe, Released, id) %>%
   mutate(Released = gsub("^[0]+|-0000", "", Released))
+names(x) <- tolower(names(x))
 
-stBooksId <- distinct(x, id) %>% slice(-c(2:8, 21:29)) %>%
+stBooksId <- distinct(x, id) %>% slice(-c(2:8, 21:23, 25:28)) %>%
   mutate(
-    series = c("THe Original Series", "The Next Generation", "Deep Space Nine", "Voyager", "Enterprise", "Discovery",
-               "New Frontier", "Stargazer", "IKS Gorkon/Klingon Empire", "Titan", "Vanguard", "Seekers", "Mini-series",
-               "Starfleet Corps of Engineers", "Department of Temporal Investigations", "Mirror Universe",
-               "Starfleet Academy"),
-    abb = c("TOS", "TNG", "DS9", "VOY", "ENT", "DSC", "NF", "SG", "IKE", "TIT", "VAN", "SKR", "miniseries", "SCE", "DTI", "MIR", "SFA")
-  )
-stBooksWP <- select(x, -id)
+    series = c("The Original Series", "The Next Generation", "Deep Space Nine", "Voyager", "Enterprise", "Discovery",
+               "New Frontier", "Stargazer", "IKS Gorkon/Klingon Empire", "Titan", "Vanguard", "Seekers", "Miniseries",
+               "The Lost Era", "Prometheus",  "Starfleet Corps of Engineers", "Department of Temporal Investigations",
+               "Mirror Universe", "Starfleet Academy"),
+    abb = c("TOS", "TNG", "DS9", "VOY", "ENT", "DSC", "NF", "SGZ", "KE", "TTN", "VAN", "SKR",
+            "miniseries", "TLE", "PRO", "SCE", "DTI", "MIR", "SA")
+  ) %>% arrange(series)
+stBooksWiki <- select(x, -id)
 
 saveRDS(stBooksId, "data-raw/internal/stBooksId.rds")
-usethis::use_data(stBooksWP)
+usethis::use_data(stBooksWiki)
