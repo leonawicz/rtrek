@@ -1,8 +1,16 @@
-# rtrek 0.1.0.9000
+# rtrek 0.2.0
 
+* Added new datasets, mainly to timelines: `tlBooks`, `tlEvents`, `tlFootnotes`. Also added `stSeries` names and abbreviations table.
+* Renamed `st_book_series` and `stBooksWP` to `st_books_wiki` and `stBooksWiki`, respectively.
 * Updated tile set URLs.
+* Updated `stBooks` dataset. This data frame now has better formatting, greater consistency, duplicates removed, and contains more entries than before. It is still incomplete and imperfect, but much improved over the previous version.
+* Updated `stBooksWiki` dataset. Updated column names for consistency.
+* Updates the acronyms used in the package for consistency.
+* Update unit tests.
+* Updated function documentation.
+* Updated various vignette sections. Added new section relating to timeline datasets.
 
-# rtrek 0.1.0 (Release date: 2018-06-06)
+# rtrek 0.1.0
 
 * Refactored some functions and datasets.
 * Added new `stBooks` dataset, renamed previous `stBooks` to `stBooksWP`.
