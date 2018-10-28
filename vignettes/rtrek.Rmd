@@ -13,42 +13,62 @@ knitr::opts_chunk$set(
 )
 ```
 
-The `rtrek` package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. The package interfaces with Wikipedia, the Star Trek API (STAPI), Memory Alpha and Memory Beta to retrieve data, metadata and other information relating to Star Trek. It also contains local datasets covering a variety of topics such as Star Trek universe species data, geopolitical data, and datasets resulting from text mining analyses of Star Trek novels. This introduction provides a brief, example-driven overview of `rtrek`.
+This introductory vignette provides a brief, example-driven overview of `rtrek`.
 
 ## Local datasets
 
-Package datasets in `rtrek` are somewhat eclectic and currently limited. They will expand with further package development. To list all available package datasets with a short description, call `st_datasets`.
+The `rtrek` package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. The package interfaces with Wikipedia, the Star Trek API (STAPI), Memory Alpha and Memory Beta to retrieve data, metadata and other information relating to Star Trek, though much of this remains under active development. 
+
+The package also contains local datasets covering a variety of topics such as Star Trek universe species data, geopolitical data, and datasets resulting from text mining analyses of Star Trek novels.
 
 ```{r pkg_data}
 library(rtrek)
 st_datasets()
 ```
 
-### Star Trek novels
+At this time, several of the datasets are very small and are only included in the package in order to demonstrate some very basic examples and they are not particularly useful or interesting beyond this purpose. However, `rtek` now includes more sizable curated datasets relating the compendium of licensed, published Star Trek literature and multiple versions of Star Trek fictional universe historical timelines.
 
-The `stBooksWP` dataset provides a moderately curated data frame of over `r nrow(stBooksWP)` Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent `rtrek` update. `stBooksWP` is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.
+Package datasets in `rtrek` are somewhat eclectic and currently limited. They will expand with further package development. To list all available package datasets with a short description, call `st_datasets`.
 
-```{r stBooksWP}
-stBooksWP
+## Star Trek novels
+
+The `stBooksWiki` dataset provides a moderately curated data frame of over `r nrow(stBooksWiki)` Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent `rtrek` update. `stBooksWiki` is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.
+
+```{r stBooksWiki}
+stBooksWiki
 ```
 
-Some curation decisions were made in compiling the data frame for `rtrek` related to the inclusion of some metadata in addition to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, `rtrek` also offers a convenience function `st_book_series` to load the page in a browser tab auto-scrolled to a specific series of interest.
+Some curation decisions were made in compiling the data frame for `rtrek` related to the inclusion of some metadata in addition to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, `rtrek` also offers a convenience function `st_books_wiki` to load the page in a browser tab auto-scrolled to a specific series of interest.
 
 In order to use this function effectively, first call it with no arguments. It returns a table of available series abbreviations.
 
-```{r st_book_series}
-st_book_series()
+```{r st_books_wiki}
+st_books_wiki()
 ```
 
 Then call it with a specific acronym ID and the page will load at the desired table entry.
 
-```{r st_book_series2, eval = FALSE}
-st_book_series("DS9")
+```{r st_books_wiki2, eval = FALSE}
+st_books_wiki("DS9")
 ```
 
-This package data only graces the surface of Star Trek novels. A later section provides a brief introduction to Star Trek novel data compiled from text mining analyses of the actual book content. Unlike `stBooksWP`, which is limited to a metadata overview, these other datasets contain quantifiable variables much more suitable to interesting statistical analysis.
+This package data only graces the surface of Star Trek novels. A later section provides a brief introduction to Star Trek novel data compiled from text mining analyses of the actual book content. Unlike `stBooksWiki`, which is limited to a metadata overview, these other datasets contain quantifiable variables much more suitable to interesting statistical analysis.
 
-### Spatial maps
+A potentially more detailed and comprehensive Star Trek book metadata table is `stBooks`, which is informed and curated from directly parsing Star Trek e-book metadata rather than parsing third party website content.
+
+```{r stBooks}
+stBooks
+```
+
+This dataset is discussed further in the section below on e-book text mining.
+
+Before moving on, it is worth mentioning a helpful table for mapping between series names and their abbreviations used throughout this package (and in the Star Trek community in general).
+
+```{r stSeries}
+stSeries
+```
+
+## Spatial maps
 
 The `stTiles` data frame shows all available Star Trek-themed map tile sets along with metadata and attribution information. These map tiles can be used with the `leaflet` and `shiny` packages to make interactive maps situated in the Star Trek universe.
 
@@ -94,9 +114,65 @@ The `stSpecies` dataset is just a small table that pairs species named with repr
 
 In the course of the above map-related examples, a few functions have also been introduced. `st_tiles` takes an `id` argument that is mapped to the available tile sets in `stTiles` and returns the relevant URL. `st_tiles_data` takes the same `id` argument and returns a simple example data frame containing ancillary data related to the available locations from `stGeo`. The result is always the same except that the grid cells for locations change with respect to the chosen tile set. Finally, `tile_coords` can be applied to one of these data frames to add `x` and `y` columns for a CRS that Leaflet will understand.
 
+## Historical timeline
+
+Fictional universe historical timeline data is an exciting type of in-universe Star Trek data to have at your fingertips to play around with and explore.
+
+It is also difficult to compile. Many people have labored away intensely over the years compiling various attempts at integrated, internally consistent, accurate timelines of Star Trek universe lore. Some have turned out more successful than others.
+
+As of `rtrek` `v0.2.0` the rudimentary beginnings of what will ideally eventually become an up to date and comprehensive timeline dataset are now underway in the form of two different flavors of timeline datasets.
+
+### Novel-driven timeline
+
+One is based on published works, mostly consisting of novels, as well as television series and movies, all placed in chronological order.
+
+```{r tlBooks}
+tlBooks
+```
+
+### Event-driven timeline
+
+The other is an event-driven timeline that consists of textual entries referencing historically significant events, situated chronologically in the timeline.
+
+```{r tlEvents}
+tlEvents
+```
+
+The two datasets are quite different in their focus and compliment one another.
+
+### Footnotes
+
+One column these two timeline data frames share in common is the `footnote` column, which you can see only contains ID values for entries which have a footnote. The `tlFootnotes` dataset can be referenced or joined by `footnote` to one of the other tables. Footnotes tend to be long strings of text and not associated with most timeline entries, so they are kept in a separate table.
+
+```{r tlFootnotes}
+tlFootnotes
+```
+
+### Timeline data details and caveats
+
+`tlBooks` is novel-driven, meaning that the timeline entries (rows) provide a chronologically ordered list of licensed Star Trek novels. This timeline is helpful for figuring out when stories are set and the relative order in which they occur, but it does not provide any description of events transpiring in the universe.
+
+While this data is very informative, it is many years out of date, being last updated in October of 2006. It is also necessarily speculative. Settings are determined based in part on what is interpreted to be the intention of a given author for a given story.
+
+Nevertheless, it still represents possibly the highest quality representation of the chronological ordering of Star Trek fiction that combines episodes and movies with written works. The concurrent timeline of Star Trek TV episodes and movies are interleaved with the novels and other stories, anthologies and other written fiction. This provides fuller context resulting in a much richer timeline.
+
+`tlEvents` is event-driven, meaning that the timeline entries (rows) provide chronologically ordered historical events from the Star Trek universe.
+
+This timeline was recreated from [this timeline](http://www.maplenet.net/~trowbridge/timeline.htm), which has surprisingly not been lost from the internet yet. As with `tlBooks`, this timeline is quite out of date. In fact it is at least somewhat more out of date than `tlBooks`, its last content update appearing to be no later than 2005. This timeline is also more problematic than the other, and less relevant moving forward. Its updating essentially ceased  as the other began. See the link for more details.
+
+However, it is included because unlike `tlBooks`, which is a timeline of production titles, this timeline dataset is event-driven. While it may now be erroneous in places even independent from being out of date, it is useful for its informative textual entries referencing historically significant events in Star Trek lore.
+
+In summary, these datasets have much value, but they should be used with the awareness that they are necessarily imperfect ans speculative, notably outdated, and `tlEvents` in particular is less able to stand the test of time as the Star Trek universe moves forward with new publications and productions.
+
+It should also be noted that while it may be tempting to merge these two data frames, this is not advisable if it is important to maintain chronological order. It is generally safe to assume that multiple entries within a single year are listed in a sensible order in cases where it may matter, within-year entries do not have specific, unique within-year dates. They are ordinal only. It is not possible to merge entries from both tables for a specific year and know how the combined set of entries should be ordered- unless you already know everything about Star Trek, in which case please craft the ultimate timeline in a universal file format that can be easily digested by a computer.
+
 ## Star Trek API
 
-To use the words of the developers, the [STAPI](http://stapi.co/) is
+Now that you have seen an overview of available `rtrek` datasets and some associated functions, it is time to turn attention to external datasets. The [Star Trek API (STAPI)](http://stapi.co/)is a particularly useful data source. 
+
+Keep in mind that STAPI focuses more on providing real world data associated with Star Trek (e.g., when did episode X first air on television?) than on fictional universe data, but it contains both and the database holdings will grow with time.
+
+To use the words of the developers, the STAPI is
 
 *the first public Star Trek API, accessible via REST and SOAP. It's an open source project, that anyone can contribute to.*
 
@@ -151,12 +227,20 @@ The data returned on Q is actually a large list, including multiple data frames.
 
 ## Star Trek novel text mining
 
-This section will be continued in a future version of `rtrek`. For now what is available is a dataset `stBooks` that compliments the `stBooksWP` dataset seen earlier. `stBooks` has a similar number of metadata entries for Star Trek books and there is considerable overlap between the two datasets. However, there are also considerable differences in entries as well as formatting.
+This section will be continued in a future version of `rtrek`. For now what is available is a dataset `stBooks` that compliments the `stBooksWiki` dataset seen earlier. `stBooks` has a similar number of metadata entries for Star Trek books and there is considerable overlap between the two datasets. However, there are also considerable differences in entries as well as formatting.
 
-This dataset represents metadata parsed, imperfectly but painstakingly thoroughly, from actual Star Trek books. Compared to `stBooksWP`, which represents a scraping of Wikipedia information on Star Trek books, `stBooks` contains several different fields, including more useful fields for analysts such as the number of words and chapters in a book.
+This dataset represents metadata parsed, imperfectly but painstakingly and thoroughly, from actual Star Trek books. Compared to `stBooksWiki`, which represents a scraping of Wikipedia information on Star Trek books, `stBooks` contains several different fields, including more useful fields for analysts such as the number of words and chapters in a book.
 
-```{r stBooks}
+```{r stBooks2}
 stBooks
 ```
 
-Obviously, licensed book content itself cannot be shared as data, so it is not possible to provide capability in `rtrek` to enable analysts to perform their own unique text mining analyses on Star Trek novel corpura. However, future versions of `rtrek` will include more summary datasets that will aim to represent more intersting variables. Just a couple examples could be the relative frequency of popular characters' names per book, or a senitment analysis, or any other set of interesting metrics that could be used to inform suggested reading lists of various tiles or books by particular authors with a favored style or focus.
+Obviously, verbatim licensed book content itself cannot be shared, so it is not possible to provide capability in `rtrek` to enable analysts to perform their own unique text mining analyses on Star Trek novel corpora. However, future versions of `rtrek` will include more summary datasets that will aim to represent more interesting variables. 
+
+A couple examples could be:
+
+*    the relative frequency of popular characters' names per book.
+*    a sentiment analysis; are some series darker than other?
+*    relative lengths of books by series, author, or publication date; are there changes over time?
+
+or any other set of interesting metrics that could be used to, for example, inform suggested reading lists of various titles, or books by particular authors with a favored style or focus.
