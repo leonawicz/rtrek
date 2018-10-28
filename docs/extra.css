@@ -3,6 +3,10 @@ p {
   text-align: justify;
 }
 
+td p {
+  text-align: left;
+}
+
 /* syntaxt highlighting */
 .fl      {color: #63B8FF;}
 .fu      {color: #00F5FF;} /* function */

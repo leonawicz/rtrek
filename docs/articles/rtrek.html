@@ -36,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
       </span>
     </div>
 
@@ -144,10 +144,10 @@
 <!--/.navbar -->
 
       
-      </header><script src="rtrek_files/htmlwidgets-1.2/htmlwidgets.js"></script><script src="rtrek_files/jquery-1.12.4/jquery.min.js"></script><link href="rtrek_files/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+      </header><script src="rtrek_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="rtrek_files/jquery-1.12.4/jquery.min.js"></script><link href="rtrek_files/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="rtrek_files/leaflet-1.3.1/leaflet.js"></script><link href="rtrek_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="rtrek_files/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="rtrek_files/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="rtrek_files/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="rtrek_files/leaflet-binding-2.0.1/leaflet.js"></script><div class="row">
+<script src="rtrek_files/leaflet-binding-2.0.2/leaflet.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Introduction to rtrek</h1>
@@ -160,78 +160,122 @@
 
     
     
-<p>The <code>rtrek</code> package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. The package interfaces with Wikipedia, the Star Trek API (STAPI), Memory Alpha and Memory Beta to retrieve data, metadata and other information relating to Star Trek. It also contains local datasets covering a variety of topics such as Star Trek universe species data, geopolitical data, and datasets resulting from text mining analyses of Star Trek novels. This introduction provides a brief, example-driven overview of <code>rtrek</code>.</p>
+<p>This introductory vignette provides a brief, example-driven overview of <code>rtrek</code>.</p>
 <div id="local-datasets" class="section level2">
 <h2 class="hasAnchor">
 <a href="#local-datasets" class="anchor"></a>Local datasets</h2>
-<p>Package datasets in <code>rtrek</code> are somewhat eclectic and currently limited. They will expand with further package development. To list all available package datasets with a short description, call <code>st_datasets</code>.</p>
+<p>The <code>rtrek</code> package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. The package interfaces with Wikipedia, the Star Trek API (STAPI), Memory Alpha and Memory Beta to retrieve data, metadata and other information relating to Star Trek, though much of this remains under active development.</p>
+<p>The package also contains local datasets covering a variety of topics such as Star Trek universe species data, geopolitical data, and datasets resulting from text mining analyses of Star Trek novels.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rtrek)
 <span class="kw"><a href="../reference/st_datasets.html">st_datasets</a></span>()
-<span class="co">#&gt; # A tibble: 6 x 2</span>
-<span class="co">#&gt;   dataset       description                             </span>
-<span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;                                   </span>
-<span class="co">#&gt; 1 stGeo         Map tile set locations of interest.     </span>
-<span class="co">#&gt; 2 stSpecies     Basic intelligent species data.         </span>
-<span class="co">#&gt; 3 stTiles       Available map tile sets.                </span>
-<span class="co">#&gt; 4 stBooks       Star Trek novel metadata.               </span>
-<span class="co">#&gt; 5 stBooksWP     Star Trek novel metadata from Wikipedia.</span>
-<span class="co">#&gt; 6 stapiEntities Star Trek API (STAPI) categories</span></code></pre></div>
-<div id="star-trek-novels" class="section level3">
-<h3 class="hasAnchor">
-<a href="#star-trek-novels" class="anchor"></a>Star Trek novels</h3>
-<p>The <code>stBooksWP</code> dataset provides a moderately curated data frame of over 715 Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent <code>rtrek</code> update. <code>stBooksWP</code> is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stBooksWP
-<span class="co">#&gt; # A tibble: 715 x 6</span>
-<span class="co">#&gt;    Series                   Title    Author   Number Timeframe Released   </span>
-<span class="co">#&gt;    &lt;chr&gt;                    &lt;chr&gt;    &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;      </span>
-<span class="co">#&gt;  1 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1967-01-01~</span>
-<span class="co">#&gt;  2 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1968-02-01~</span>
-<span class="co">#&gt;  3 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1969-04-01~</span>
-<span class="co">#&gt;  4 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1971-07-01~</span>
-<span class="co">#&gt;  5 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1972-02-01~</span>
-<span class="co">#&gt;  6 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1972-04-01~</span>
-<span class="co">#&gt;  7 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1972-07-01~</span>
-<span class="co">#&gt;  8 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1972-11-01~</span>
-<span class="co">#&gt;  9 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1973-08-01~</span>
-<span class="co">#&gt; 10 The_Original_Series - B~ Star Tr~ James B~     NA &lt;NA&gt;      1974-02-01~</span>
-<span class="co">#&gt; # ... with 705 more rows</span></code></pre></div>
-<p>Some curation decisions were made in compiling the data frame for <code>rtrek</code> related to the inclusion of some metadata in addition to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, <code>rtrek</code> also offers a convenience function <code>st_book_series</code> to load the page in a browser tab auto-scrolled to a specific series of interest.</p>
+<span class="co">#&gt; # A tibble: 10 x 2</span>
+<span class="co">#&gt;    dataset       description                             </span>
+<span class="co">#&gt;    &lt;chr&gt;         &lt;chr&gt;                                   </span>
+<span class="co">#&gt;  1 stGeo         Map tile set locations of interest.     </span>
+<span class="co">#&gt;  2 stSpecies     Basic intelligent species data.         </span>
+<span class="co">#&gt;  3 stTiles       Available map tile sets.                </span>
+<span class="co">#&gt;  4 stBooks       Star Trek novel metadata.               </span>
+<span class="co">#&gt;  5 stBooksWiki   Star Trek novel metadata from Wikipedia.</span>
+<span class="co">#&gt;  6 stSeries      Names and acronyms of Star Trek series  </span>
+<span class="co">#&gt;  7 stapiEntities Star Trek API (STAPI) categories        </span>
+<span class="co">#&gt;  8 tlBooks       Novel-based timeline dataset            </span>
+<span class="co">#&gt;  9 tlEvents      Event-based timeline dataset            </span>
+<span class="co">#&gt; 10 tlFootnotes   Timeline dataset footnotes</span></code></pre></div>
+<p>At this time, several of the datasets are very small and are only included in the package in order to demonstrate some very basic examples and they are not particularly useful or interesting beyond this purpose. However, <code>rtek</code> now includes more sizable curated datasets relating the compendium of licensed, published Star Trek literature and multiple versions of Star Trek fictional universe historical timelines.</p>
+<p>Package datasets in <code>rtrek</code> are somewhat eclectic and currently limited. They will expand with further package development. To list all available package datasets with a short description, call <code>st_datasets</code>.</p>
+</div>
+<div id="star-trek-novels" class="section level2">
+<h2 class="hasAnchor">
+<a href="#star-trek-novels" class="anchor"></a>Star Trek novels</h2>
+<p>The <code>stBooksWiki</code> dataset provides a moderately curated data frame of over 719 Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent <code>rtrek</code> update. <code>stBooksWiki</code> is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stBooksWiki
+<span class="co">#&gt; # A tibble: 719 x 6</span>
+<span class="co">#&gt;    series                      title    author   number timeframe released</span>
+<span class="co">#&gt;    &lt;chr&gt;                       &lt;chr&gt;    &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;   </span>
+<span class="co">#&gt;  1 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Jan 1967</span>
+<span class="co">#&gt;  2 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1968</span>
+<span class="co">#&gt;  3 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Apr 1969</span>
+<span class="co">#&gt;  4 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Jul 1971</span>
+<span class="co">#&gt;  5 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1972</span>
+<span class="co">#&gt;  6 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Apr 1972</span>
+<span class="co">#&gt;  7 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Jul 1972</span>
+<span class="co">#&gt;  8 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Nov 1972</span>
+<span class="co">#&gt;  9 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Aug 1973</span>
+<span class="co">#&gt; 10 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1974</span>
+<span class="co">#&gt; # ... with 709 more rows</span></code></pre></div>
+<p>Some curation decisions were made in compiling the data frame for <code>rtrek</code> related to the inclusion of some metadata in addition to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, <code>rtrek</code> also offers a convenience function <code>st_books_wiki</code> to load the page in a browser tab auto-scrolled to a specific series of interest.</p>
 <p>In order to use this function effectively, first call it with no arguments. It returns a table of available series abbreviations.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/st_book_series.html">st_book_series</a></span>()
-<span class="co">#&gt; # A tibble: 17 x 2</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/st_books_wiki.html">st_books_wiki</a></span>()
+<span class="co">#&gt; # A tibble: 19 x 2</span>
 <span class="co">#&gt;    series                                abb       </span>
 <span class="co">#&gt;    &lt;chr&gt;                                 &lt;chr&gt;     </span>
-<span class="co">#&gt;  1 THe Original Series                   TOS       </span>
-<span class="co">#&gt;  2 The Next Generation                   TNG       </span>
-<span class="co">#&gt;  3 Deep Space Nine                       DS9       </span>
-<span class="co">#&gt;  4 Voyager                               VOY       </span>
-<span class="co">#&gt;  5 Enterprise                            ENT       </span>
-<span class="co">#&gt;  6 Discovery                             DSC       </span>
-<span class="co">#&gt;  7 New Frontier                          NF        </span>
-<span class="co">#&gt;  8 Stargazer                             SG        </span>
-<span class="co">#&gt;  9 IKS Gorkon/Klingon Empire             IKE       </span>
-<span class="co">#&gt; 10 Titan                                 TIT       </span>
-<span class="co">#&gt; 11 Vanguard                              VAN       </span>
-<span class="co">#&gt; 12 Seekers                               SKR       </span>
-<span class="co">#&gt; 13 Mini-series                           miniseries</span>
-<span class="co">#&gt; 14 Starfleet Corps of Engineers          SCE       </span>
-<span class="co">#&gt; 15 Department of Temporal Investigations DTI       </span>
-<span class="co">#&gt; 16 Mirror Universe                       MIR       </span>
-<span class="co">#&gt; 17 Starfleet Academy                     SFA</span></code></pre></div>
+<span class="co">#&gt;  1 Deep Space Nine                       DS9       </span>
+<span class="co">#&gt;  2 Department of Temporal Investigations DTI       </span>
+<span class="co">#&gt;  3 Discovery                             DSC       </span>
+<span class="co">#&gt;  4 Enterprise                            ENT       </span>
+<span class="co">#&gt;  5 IKS Gorkon/Klingon Empire             KE        </span>
+<span class="co">#&gt;  6 Miniseries                            miniseries</span>
+<span class="co">#&gt;  7 Mirror Universe                       MIR       </span>
+<span class="co">#&gt;  8 New Frontier                          NF        </span>
+<span class="co">#&gt;  9 Prometheus                            PRO       </span>
+<span class="co">#&gt; 10 Seekers                               SKR       </span>
+<span class="co">#&gt; 11 Starfleet Academy                     SA        </span>
+<span class="co">#&gt; 12 Starfleet Corps of Engineers          SCE       </span>
+<span class="co">#&gt; 13 Stargazer                             SGZ       </span>
+<span class="co">#&gt; 14 The Lost Era                          TLE       </span>
+<span class="co">#&gt; 15 The Next Generation                   TNG       </span>
+<span class="co">#&gt; 16 The Original Series                   TOS       </span>
+<span class="co">#&gt; 17 Titan                                 TTN       </span>
+<span class="co">#&gt; 18 Vanguard                              VAN       </span>
+<span class="co">#&gt; 19 Voyager                               VOY</span></code></pre></div>
 <p>Then call it with a specific acronym ID and the page will load at the desired table entry.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/st_book_series.html">st_book_series</a></span>(<span class="st">"DS9"</span>)</code></pre></div>
-<p>This package data only graces the surface of Star Trek novels. A later section provides a brief introduction to Star Trek novel data compiled from text mining analyses of the actual book content. Unlike <code>stBooksWP</code>, which is limited to a metadata overview, these other datasets contain quantifiable variables much more suitable to interesting statistical analysis.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/st_books_wiki.html">st_books_wiki</a></span>(<span class="st">"DS9"</span>)</code></pre></div>
+<p>This package data only graces the surface of Star Trek novels. A later section provides a brief introduction to Star Trek novel data compiled from text mining analyses of the actual book content. Unlike <code>stBooksWiki</code>, which is limited to a metadata overview, these other datasets contain quantifiable variables much more suitable to interesting statistical analysis.</p>
+<p>A potentially more detailed and comprehensive Star Trek book metadata table is <code>stBooks</code>, which is informed and curated from directly parsing Star Trek e-book metadata rather than parsing third party website content.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stBooks
+<span class="co">#&gt; # A tibble: 783 x 11</span>
+<span class="co">#&gt;    title author date  publisher identifier series subseries nchap  nword</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;</span>
+<span class="co">#&gt;  1 Star~ Alan ~ 2009~ Simon an~ 1439163391 AV     &lt;NA&gt;         18  74821</span>
+<span class="co">#&gt;  2 Star~ Rick ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    14  38298</span>
+<span class="co">#&gt;  3 Star~ Rudy ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    31  50896</span>
+<span class="co">#&gt;  4 Star~ Rick ~ 2011~ Simon Sp~ 978144241~ AV     Starflee~    13  37272</span>
+<span class="co">#&gt;  5 Star~ Alan ~ 2012~ Simon Sp~ 978144242~ AV     Starflee~    30  59871</span>
+<span class="co">#&gt;  6 Star~ Alan ~ 2013~ Gallery ~ 978147671~ AV     &lt;NA&gt;         17 143694</span>
+<span class="co">#&gt;  7 Capt~ James~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         21  93212</span>
+<span class="co">#&gt;  8 Capt~ Macke~ 1998~ Pocket B~ 978074345~ CT     &lt;NA&gt;         26  75215</span>
+<span class="co">#&gt;  9 Capt~ Chris~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         34  76508</span>
+<span class="co">#&gt; 10 The ~ John ~ 2000~ Pocket B~ 978074340~ CT     &lt;NA&gt;        176 424038</span>
+<span class="co">#&gt; # ... with 773 more rows, and 2 more variables: nchar &lt;int&gt;,</span>
+<span class="co">#&gt; #   dedication &lt;chr&gt;</span></code></pre></div>
+<p>This dataset is discussed further in the section below on e-book text mining.</p>
+<p>Before moving on, it is worth mentioning a helpful table for mapping between series names and their abbreviations used throughout this package (and in the Star Trek community in general).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stSeries
+<span class="co">#&gt; # A tibble: 35 x 3</span>
+<span class="co">#&gt;    id              abb   type  </span>
+<span class="co">#&gt;    &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt; </span>
+<span class="co">#&gt;  1 Abramsverse     AV    series</span>
+<span class="co">#&gt;  2 Challenger      CHA   series</span>
+<span class="co">#&gt;  3 Deep Space Nine DS9   series</span>
+<span class="co">#&gt;  4 Discovery       DSC   series</span>
+<span class="co">#&gt;  5 Enterprise      ENT   series</span>
+<span class="co">#&gt;  6 Klingon Empire  KE    series</span>
+<span class="co">#&gt;  7 Miscellaneous   MISC  series</span>
+<span class="co">#&gt;  8 New Frontier    NF    series</span>
+<span class="co">#&gt;  9 Prometheus      PRO   series</span>
+<span class="co">#&gt; 10 Seekers         SKR   series</span>
+<span class="co">#&gt; # ... with 25 more rows</span></code></pre></div>
 </div>
-<div id="spatial-maps" class="section level3">
-<h3 class="hasAnchor">
-<a href="#spatial-maps" class="anchor"></a>Spatial maps</h3>
+<div id="spatial-maps" class="section level2">
+<h2 class="hasAnchor">
+<a href="#spatial-maps" class="anchor"></a>Spatial maps</h2>
 <p>The <code>stTiles</code> data frame shows all available Star Trek-themed map tile sets along with metadata and attribution information. These map tiles can be used with the <code>leaflet</code> and <code>shiny</code> packages to make interactive maps situated in the Star Trek universe.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stTiles
 <span class="co">#&gt; # A tibble: 2 x 8</span>
-<span class="co">#&gt;   id      url    description width height tile_creator map_creator map_url</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;  </span>
-<span class="co">#&gt; 1 galaxy1 https~ Geopolitic~  8000   6445 Matthew Leo~ Rob Archer  https:~</span>
-<span class="co">#&gt; 2 galaxy2 https~ Geopolitic~  5000   4000 Matthew Leo~ &lt;NA&gt;        http:/~</span></code></pre></div>
+<span class="co">#&gt;   id     url    description width height tile_creator map_creator map_url </span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;   </span>
+<span class="co">#&gt; 1 galax~ https~ Geopolitic~  8000   6445 Matthew Leo~ Rob Archer  https:/~</span>
+<span class="co">#&gt; 2 galax~ https~ Geopolitic~  5000   4000 Matthew Leo~ &lt;NA&gt;        http://~</span></code></pre></div>
 <p>The list is scant at the moment, but more will come. One thing to keep in mind is these tile sets use a simple/non-geographical coordinate reference system (CRS). Clearly, they are not Earth-based, though they are spatial in more ways than one!</p>
 <p>Similar to game maps, there is a sense of space, but it is a simple Cartesian coordinate system and does not use geographic projections like you may be used to working with when analyzing spatial data or making Leaflet maps. This system is much simpler, but simple does not necessarily mean easy!</p>
 <p>Inspect <code>stGeo</code>:</p>
@@ -263,46 +307,129 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">id &lt;-<span class="st"> "galaxy1"</span>
 (d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_tiles_data.html">st_tiles_data</a></span>(id))
 <span class="co">#&gt; # A tibble: 9 x 8</span>
-<span class="co">#&gt;   id      loc          col   row body   category  zone            species </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;           &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 galaxy1 Earth       2196  2357 Planet Homeworld United Federat~ Human   </span>
-<span class="co">#&gt; 2 galaxy1 Romulus     2615  1742 Planet Homeworld Romulan Star E~ Romulan </span>
-<span class="co">#&gt; 3 galaxy1 Qo'noS      3310  3361 Planet Homeworld Klingon Empire  Klingon </span>
-<span class="co">#&gt; 4 galaxy1 Breen       1004   939 Planet Homeworld Breen Confeder~ Breen   </span>
-<span class="co">#&gt; 5 galaxy1 Ferenginar  1431  1996 Planet Homeworld Ferengi Allian~ Ferengi </span>
-<span class="co">#&gt; 6 galaxy1 Cardassia   1342  2841 Planet Homeworld Cardassian Uni~ Cardass~</span>
-<span class="co">#&gt; 7 galaxy1 Tholia       407  3866 Planet Homeworld Tholian Assemb~ Tholian </span>
-<span class="co">#&gt; 8 galaxy1 Tzenketh    1553  2557 Planet Homeworld Tzenkethi Coal~ Tzenket~</span>
-<span class="co">#&gt; 9 galaxy1 Talar       1039  3489 Planet Homeworld Talarian Repub~ Talarian</span>
+<span class="co">#&gt;   id      loc        col   row body   category zone               species </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;              &lt;chr&gt;   </span>
+<span class="co">#&gt; 1 galaxy1 Earth     2196  2357 Planet Homewor~ United Federation~ Human   </span>
+<span class="co">#&gt; 2 galaxy1 Romulus   2615  1742 Planet Homewor~ Romulan Star Empi~ Romulan </span>
+<span class="co">#&gt; 3 galaxy1 Qo'noS    3310  3361 Planet Homewor~ Klingon Empire     Klingon </span>
+<span class="co">#&gt; 4 galaxy1 Breen     1004   939 Planet Homewor~ Breen Confederacy  Breen   </span>
+<span class="co">#&gt; 5 galaxy1 Ferengi~  1431  1996 Planet Homewor~ Ferengi Alliance   Ferengi </span>
+<span class="co">#&gt; 6 galaxy1 Cardass~  1342  2841 Planet Homewor~ Cardassian Union   Cardass~</span>
+<span class="co">#&gt; 7 galaxy1 Tholia     407  3866 Planet Homewor~ Tholian Assembly   Tholian </span>
+<span class="co">#&gt; 8 galaxy1 Tzenketh  1553  2557 Planet Homewor~ Tzenkethi Coaliti~ Tzenket~</span>
+<span class="co">#&gt; 9 galaxy1 Talar     1039  3489 Planet Homewor~ Talarian Republic  Talarian</span>
 (d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tile_coords.html">tile_coords</a></span>(d, id))
 <span class="co">#&gt; # A tibble: 9 x 10</span>
-<span class="co">#&gt;   id      loc          col   row body  category zone  species     x      y</span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 galaxy1 Earth       2196  2357 Plan~ Homewor~ Unit~ Human    68.6  -73.7</span>
-<span class="co">#&gt; 2 galaxy1 Romulus     2615  1742 Plan~ Homewor~ Romu~ Romulan  81.7  -54.4</span>
-<span class="co">#&gt; 3 galaxy1 Qo'noS      3310  3361 Plan~ Homewor~ Klin~ Klingon 103.  -105. </span>
-<span class="co">#&gt; 4 galaxy1 Breen       1004   939 Plan~ Homewor~ Bree~ Breen    31.4  -29.3</span>
-<span class="co">#&gt; 5 galaxy1 Ferenginar  1431  1996 Plan~ Homewor~ Fere~ Ferengi  44.7  -62.4</span>
-<span class="co">#&gt; 6 galaxy1 Cardassia   1342  2841 Plan~ Homewor~ Card~ Cardas~  41.9  -88.8</span>
-<span class="co">#&gt; 7 galaxy1 Tholia       407  3866 Plan~ Homewor~ Thol~ Tholian  12.7 -121. </span>
-<span class="co">#&gt; 8 galaxy1 Tzenketh    1553  2557 Plan~ Homewor~ Tzen~ Tzenke~  48.5  -79.9</span>
-<span class="co">#&gt; 9 galaxy1 Talar       1039  3489 Plan~ Homewor~ Tala~ Talari~  32.5 -109.</span></code></pre></div>
+<span class="co">#&gt;   id     loc      col   row body   category zone      species     x      y</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 galax~ Earth   2196  2357 Planet Homewor~ United F~ Human    68.6  -73.7</span>
+<span class="co">#&gt; 2 galax~ Romul~  2615  1742 Planet Homewor~ Romulan ~ Romulan  81.7  -54.4</span>
+<span class="co">#&gt; 3 galax~ Qo'noS  3310  3361 Planet Homewor~ Klingon ~ Klingon 103.  -105. </span>
+<span class="co">#&gt; 4 galax~ Breen   1004   939 Planet Homewor~ Breen Co~ Breen    31.4  -29.3</span>
+<span class="co">#&gt; 5 galax~ Feren~  1431  1996 Planet Homewor~ Ferengi ~ Ferengi  44.7  -62.4</span>
+<span class="co">#&gt; 6 galax~ Carda~  1342  2841 Planet Homewor~ Cardassi~ Cardas~  41.9  -88.8</span>
+<span class="co">#&gt; 7 galax~ Tholia   407  3866 Planet Homewor~ Tholian ~ Tholian  12.7 -121. </span>
+<span class="co">#&gt; 8 galax~ Tzenk~  1553  2557 Planet Homewor~ Tzenketh~ Tzenke~  48.5  -79.9</span>
+<span class="co">#&gt; 9 galax~ Talar   1039  3489 Planet Homewor~ Talarian~ Talari~  32.5 -109.</span></code></pre></div>
 <p>Here is an example using the <code>galaxy1</code> map with <code>leaflet</code>. The <code>st_tiles</code> function is used to link to the tile provider.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(leaflet)
 tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_tiles.html">st_tiles</a></span>(<span class="st">"galaxy1"</span>)
 <span class="kw">leaflet</span>(d, <span class="dt">options =</span> <span class="kw">leafletOptions</span>(<span class="dt">crs =</span> <span class="kw">leafletCRS</span>(<span class="st">"L.CRS.Simple"</span>))) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addTiles</span>(tiles) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">setView</span>(<span class="dv">108</span>, <span class="op">-</span><span class="dv">75</span>, <span class="dv">2</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">addCircleMarkers</span>(<span class="dt">lng =</span> <span class="op">~</span>x, <span class="dt">lat =</span> <span class="op">~</span>y, <span class="dt">label =</span> <span class="op">~</span>loc, <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">radius =</span> <span class="dv">20</span>)</code></pre></div>
-<div id="htmlwidget-72b2ff8bb16531e11e77" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-72b2ff8bb16531e11e77">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/st1/tiles/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.65625,-54.4375,-105.03125,-29.34375,-62.375,-88.78125,-120.8125,-79.90625,-109.03125],[68.625,81.71875,103.4375,31.375,44.71875,41.9375,12.71875,48.53125,32.46875],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia","Tzenketh","Talar"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-120.8125,-29.34375],"lng":[12.71875,103.4375]}},"evals":[],"jsHooks":[]}</script><p><br></p>
+<div id="htmlwidget-4406c38752091519cffe" style="width:846.72px;height:528px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4406c38752091519cffe">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/st1/tiles/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.65625,-54.4375,-105.03125,-29.34375,-62.375,-88.78125,-120.8125,-79.90625,-109.03125],[68.625,81.71875,103.4375,31.375,44.71875,41.9375,12.71875,48.53125,32.46875],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia","Tzenketh","Talar"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-120.8125,-29.34375],"lng":[12.71875,103.4375]}},"evals":[],"jsHooks":[]}</script><p><br></p>
 <p>The <code>stSpecies</code> dataset is just a small table that pairs species named with representative thumbnail avatars, mostly pulled from the Memory Alpha website. There is nothing map-related here, but these are used in this <a href="https://leonawicz.github.io/rtrek/articles/sc.html">Stellar Cartography</a> example. It is similar to the Leaflet example above, but a bit more interesting, with markers to click on and information displays.</p>
 <p>In the course of the above map-related examples, a few functions have also been introduced. <code>st_tiles</code> takes an <code>id</code> argument that is mapped to the available tile sets in <code>stTiles</code> and returns the relevant URL. <code>st_tiles_data</code> takes the same <code>id</code> argument and returns a simple example data frame containing ancillary data related to the available locations from <code>stGeo</code>. The result is always the same except that the grid cells for locations change with respect to the chosen tile set. Finally, <code>tile_coords</code> can be applied to one of these data frames to add <code>x</code> and <code>y</code> columns for a CRS that Leaflet will understand.</p>
+</div>
+<div id="historical-timeline" class="section level2">
+<h2 class="hasAnchor">
+<a href="#historical-timeline" class="anchor"></a>Historical timeline</h2>
+<p>Fictional universe historical timeline data is an exciting type of in-universe Star Trek data to have at your fingertips to play around with and explore.</p>
+<p>It is also difficult to compile. Many people have labored away intensely over the years compiling various attempts at integrated, internally consistent, accurate timelines of Star Trek universe lore. Some have turned out more successful than others.</p>
+<p>As of <code>rtrek</code> <code>v0.2.0</code> the rudimentary beginnings of what will ideally eventually become an up to date and comprehensive timeline dataset are now underway in the form of two different flavors of timeline datasets.</p>
+<div id="novel-driven-timeline" class="section level3">
+<h3 class="hasAnchor">
+<a href="#novel-driven-timeline" class="anchor"></a>Novel-driven timeline</h3>
+<p>One is based on published works, mostly consisting of novels, as well as television series and movies, all placed in chronological order.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tlBooks
+<span class="co">#&gt; # A tibble: 2,122 x 14</span>
+<span class="co">#&gt;       year title series anthology format number novelization setting</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;   &lt;int&gt; &lt;lgl&gt;        &lt;chr&gt;  </span>
+<span class="co">#&gt;  1 -5.00e9 The ~ TNG    &lt;NA&gt;      book       47 FALSE        second~</span>
+<span class="co">#&gt;  2 -5.00e9 Spoc~ TOS    &lt;NA&gt;      book       NA FALSE        second~</span>
+<span class="co">#&gt;  3 -4.00e9 Reci~ TNG    SNW       story      NA FALSE        second~</span>
+<span class="co">#&gt;  4 -3.50e9 All ~ TNG    &lt;NA&gt;      book       NA TRUE         second~</span>
+<span class="co">#&gt;  5 -2.50e9 The ~ TNG    &lt;NA&gt;      book       47 FALSE        second~</span>
+<span class="co">#&gt;  6 -1.00e9 The ~ TNG    &lt;NA&gt;      book       48 FALSE        second~</span>
+<span class="co">#&gt;  7 -4.45e8 The ~ VOY    &lt;NA&gt;      book        2 FALSE        second~</span>
+<span class="co">#&gt;  8 -6.40e7 Firs~ TOS    &lt;NA&gt;      book       75 FALSE        second~</span>
+<span class="co">#&gt;  9 -5.00e5 Spoc~ TOS    &lt;NA&gt;      book       NA FALSE        second~</span>
+<span class="co">#&gt; 10 -3.08e5 The ~ VOY    &lt;NA&gt;      book        2 FALSE        second~</span>
+<span class="co">#&gt; # ... with 2,112 more rows, and 6 more variables: stardate_start &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   stardate_end &lt;dbl&gt;, detailed_date &lt;chr&gt;, section &lt;chr&gt;,</span>
+<span class="co">#&gt; #   primary_entry_year &lt;int&gt;, footnote &lt;int&gt;</span></code></pre></div>
+</div>
+<div id="event-driven-timeline" class="section level3">
+<h3 class="hasAnchor">
+<a href="#event-driven-timeline" class="anchor"></a>Event-driven timeline</h3>
+<p>The other is an event-driven timeline that consists of textual entries referencing historically significant events, situated chronologically in the timeline.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tlEvents
+<span class="co">#&gt; # A tibble: 1,241 x 6</span>
+<span class="co">#&gt;        year setting  series source             info               footnote</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;              &lt;chr&gt;                 &lt;int&gt;</span>
+<span class="co">#&gt;  1  -4.00e9 seconda~ SNW    Reciprocity - SNW~ ~4 billion years ~       NA</span>
+<span class="co">#&gt;  2  -4.00e9 primary  SNW    The Beginning - S~ ~4 billion years ~        1</span>
+<span class="co">#&gt;  3  -6.40e7 time tr~ TOS    First Frontier - ~ ~64 million years~       NA</span>
+<span class="co">#&gt;  4  -2.78e4 seconda~ DS9    Horn And Ivory - ~ ~27800 BC. Backst~       NA</span>
+<span class="co">#&gt;  5  -2.70e3 inferred TOS    Yesterday's Son -~ ~2700 BC. Birth o~       NA</span>
+<span class="co">#&gt;  6  -3.00e2 seconda~ &lt;NA&gt;   Spock's World - V~ ~300 BC. Early Vu~       NA</span>
+<span class="co">#&gt;  7  -7.90e1 seconda~ &lt;NA&gt;   Spock's World - V~ Birth of Surak, s~       NA</span>
+<span class="co">#&gt;  8  -7.00e1 seconda~ TNG    The Devil's Heart~ ~70 BC. Stef is c~        2</span>
+<span class="co">#&gt;  9  -3.30e1 seconda~ &lt;NA&gt;   Spock's World - V~ Surak discovers h~       NA</span>
+<span class="co">#&gt; 10  -2.20e1 seconda~ TOS    Rihannsu 2: The R~ Vulcans make firs~       NA</span>
+<span class="co">#&gt; # ... with 1,231 more rows</span></code></pre></div>
+<p>The two datasets are quite different in their focus and compliment one another.</p>
+</div>
+<div id="footnotes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#footnotes" class="anchor"></a>Footnotes</h3>
+<p>One column these two timeline data frames share in common is the <code>footnote</code> column, which you can see only contains ID values for entries which have a footnote. The <code>tlFootnotes</code> dataset can be referenced or joined by <code>footnote</code> to one of the other tables. Footnotes tend to be long strings of text and not associated with most timeline entries, so they are kept in a separate table.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tlFootnotes
+<span class="co">#&gt; # A tibble: 605 x 3</span>
+<span class="co">#&gt;    id       id text                                                       </span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;int&gt; &lt;chr&gt;                                                      </span>
+<span class="co">#&gt;  1 book      1 This chapter chronicles the period from the formation of t~</span>
+<span class="co">#&gt;  2 book      2 "The time and manner of Borg origins are entirely speculat~</span>
+<span class="co">#&gt;  3 book      3 This chapter chronicles the period from Surak's birth unti~</span>
+<span class="co">#&gt;  4 book      4 As a vision, this may be historically unreliable. The even~</span>
+<span class="co">#&gt;  5 book      5 This chapter chronicles the period from the Ahkh War (agai~</span>
+<span class="co">#&gt;  6 book      6 "The date of the Awakening is around 2000 years prior to \~</span>
+<span class="co">#&gt;  7 book      7 This chapter chronicles the period from S'task's Declarati~</span>
+<span class="co">#&gt;  8 book      8 This chapter chronicles the journey of the Rihannsu Travel~</span>
+<span class="co">#&gt;  9 book      9 These chapters chronicle the period beginning 25.86 real-t~</span>
+<span class="co">#&gt; 10 book     10 This chapter chronicles the period from the Settlement unt~</span>
+<span class="co">#&gt; # ... with 595 more rows</span></code></pre></div>
+</div>
+<div id="timeline-data-details-and-caveats" class="section level3">
+<h3 class="hasAnchor">
+<a href="#timeline-data-details-and-caveats" class="anchor"></a>Timeline data details and caveats</h3>
+<p><code>tlBooks</code> is novel-driven, meaning that the timeline entries (rows) provide a chronologically ordered list of licensed Star Trek novels. This timeline is helpful for figuring out when stories are set and the relative order in which they occur, but it does not provide any description of events transpiring in the universe.</p>
+<p>While this data is very informative, it is many years out of date, being last updated in October of 2006. It is also necessarily speculative. Settings are determined based in part on what is interpreted to be the intention of a given author for a given story.</p>
+<p>Nevertheless, it still represents possibly the highest quality representation of the chronological ordering of Star Trek fiction that combines episodes and movies with written works. The concurrent timeline of Star Trek TV episodes and movies are interleaved with the novels and other stories, anthologies and other written fiction. This provides fuller context resulting in a much richer timeline.</p>
+<p><code>tlEvents</code> is event-driven, meaning that the timeline entries (rows) provide chronologically ordered historical events from the Star Trek universe.</p>
+<p>This timeline was recreated from <a href="http://www.maplenet.net/~trowbridge/timeline.htm">this timeline</a>, which has surprisingly not been lost from the internet yet. As with <code>tlBooks</code>, this timeline is quite out of date. In fact it is at least somewhat more out of date than <code>tlBooks</code>, its last content update appearing to be no later than 2005. This timeline is also more problematic than the other, and less relevant moving forward. Its updating essentially ceased as the other began. See the link for more details.</p>
+<p>However, it is included because unlike <code>tlBooks</code>, which is a timeline of production titles, this timeline dataset is event-driven. While it may now be erroneous in places even independent from being out of date, it is useful for its informative textual entries referencing historically significant events in Star Trek lore.</p>
+<p>In summary, these datasets have much value, but they should be used with the awareness that they are necessarily imperfect ans speculative, notably outdated, and <code>tlEvents</code> in particular is less able to stand the test of time as the Star Trek universe moves forward with new publications and productions.</p>
+<p>It should also be noted that while it may be tempting to merge these two data frames, this is not advisable if it is important to maintain chronological order. It is generally safe to assume that multiple entries within a single year are listed in a sensible order in cases where it may matter, within-year entries do not have specific, unique within-year dates. They are ordinal only. It is not possible to merge entries from both tables for a specific year and know how the combined set of entries should be ordered- unless you already know everything about Star Trek, in which case please craft the ultimate timeline in a universal file format that can be easily digested by a computer.</p>
 </div>
 </div>
 <div id="star-trek-api" class="section level2">
 <h2 class="hasAnchor">
 <a href="#star-trek-api" class="anchor"></a>Star Trek API</h2>
-<p>To use the words of the developers, the <a href="http://stapi.co/">STAPI</a> is</p>
+<p>Now that you have seen an overview of available <code>rtrek</code> datasets and some associated functions, it is time to turn attention to external datasets. The <a href="http://stapi.co/">Star Trek API (STAPI)</a>is a particularly useful data source.</p>
+<p>Keep in mind that STAPI focuses more on providing real world data associated with Star Trek (e.g., when did episode X first air on television?) than on fictional universe data, but it contains both and the database holdings will grow with time.</p>
+<p>To use the words of the developers, the STAPI is</p>
 <p><em>the first public Star Trek API, accessible via REST and SOAP. It’s an open source project, that anyone can contribute to.</em></p>
 <p>The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DDOS measures in <code>rtrek</code> limit requests to one per second. You can update this global <code>rtrek</code> setting with <code>options</code>, e.g. <code>options(rtrek_antiddos = 10)</code> for a minimum ten second wait between API calls to be an even better neighbor. <code>rtrek</code> will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.</p>
 <div id="stapi-entities" class="section level3">
@@ -343,18 +470,18 @@ tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_ti
 <p>The default <code>page = 1</code> only returns the first page. <code>page</code> can be a vector, e.g. <code>page = 1:62</code>. Results from multi-page searches are automatically combined into a single, constant data frame output. For the second call to <code>stapi</code>, return only page two here, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example further below hard-codes his unique/universal ID.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">page =</span> <span class="dv">2</span>)
 <span class="co">#&gt; # A tibble: 100 x 24</span>
-<span class="co">#&gt;    uid      name   gender yearOfBirth monthOfBirth dayOfBirth placeOfBirth</span>
-<span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;int&gt; &lt;lgl&gt;        &lt;lgl&gt;      &lt;chr&gt;       </span>
-<span class="co">#&gt;  1 CHMA000~ Stevi~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
-<span class="co">#&gt;  2 CHMA000~ Yeggie M               NA NA           NA         &lt;NA&gt;        </span>
-<span class="co">#&gt;  3 CHMA000~ Arex   M               NA NA           NA         &lt;NA&gt;        </span>
-<span class="co">#&gt;  4 CHMA000~ Joseph M               NA NA           NA         &lt;NA&gt;        </span>
-<span class="co">#&gt;  5 CHMA000~ J. Zi~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
-<span class="co">#&gt;  6 CHMA000~ Doyle  M               NA NA           NA         &lt;NA&gt;        </span>
-<span class="co">#&gt;  7 CHMA000~ Butler M               NA NA           NA         &lt;NA&gt;        </span>
-<span class="co">#&gt;  8 CHMA000~ Lito   M               NA NA           NA         &lt;NA&gt;        </span>
-<span class="co">#&gt;  9 CHMA000~ B. Mo~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
-<span class="co">#&gt; 10 CHMA000~ Anna ~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;    uid   name  gender yearOfBirth monthOfBirth dayOfBirth placeOfBirth</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;        &lt;int&gt; &lt;lgl&gt;        &lt;lgl&gt;      &lt;chr&gt;       </span>
+<span class="co">#&gt;  1 CHMA~ Stev~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  2 CHMA~ Yegg~ M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  3 CHMA~ Arex  M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  4 CHMA~ Jose~ M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  5 CHMA~ J. Z~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  6 CHMA~ Doyle M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  7 CHMA~ Butl~ M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  8 CHMA~ Lito  M               NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt;  9 CHMA~ B. M~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
+<span class="co">#&gt; 10 CHMA~ Anna~ &lt;NA&gt;            NA NA           NA         &lt;NA&gt;        </span>
 <span class="co">#&gt; # ... with 90 more rows, and 17 more variables: yearOfDeath &lt;int&gt;,</span>
 <span class="co">#&gt; #   monthOfDeath &lt;lgl&gt;, dayOfDeath &lt;lgl&gt;, placeOfDeath &lt;lgl&gt;,</span>
 <span class="co">#&gt; #   height &lt;int&gt;, weight &lt;int&gt;, deceased &lt;lgl&gt;, bloodType &lt;lgl&gt;,</span>
@@ -384,25 +511,32 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
 <div id="star-trek-novel-text-mining" class="section level2">
 <h2 class="hasAnchor">
 <a href="#star-trek-novel-text-mining" class="anchor"></a>Star Trek novel text mining</h2>
-<p>This section will be continued in a future version of <code>rtrek</code>. For now what is available is a dataset <code>stBooks</code> that compliments the <code>stBooksWP</code> dataset seen earlier. <code>stBooks</code> has a similar number of metadata entries for Star Trek books and there is considerable overlap between the two datasets. However, there are also considerable differences in entries as well as formatting.</p>
-<p>This dataset represents metadata parsed, imperfectly but painstakingly thoroughly, from actual Star Trek books. Compared to <code>stBooksWP</code>, which represents a scraping of Wikipedia information on Star Trek books, <code>stBooks</code> contains several different fields, including more useful fields for analysts such as the number of words and chapters in a book.</p>
+<p>This section will be continued in a future version of <code>rtrek</code>. For now what is available is a dataset <code>stBooks</code> that compliments the <code>stBooksWiki</code> dataset seen earlier. <code>stBooks</code> has a similar number of metadata entries for Star Trek books and there is considerable overlap between the two datasets. However, there are also considerable differences in entries as well as formatting.</p>
+<p>This dataset represents metadata parsed, imperfectly but painstakingly and thoroughly, from actual Star Trek books. Compared to <code>stBooksWiki</code>, which represents a scraping of Wikipedia information on Star Trek books, <code>stBooks</code> contains several different fields, including more useful fields for analysts such as the number of words and chapters in a book.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stBooks
-<span class="co">#&gt; # A tibble: 743 x 11</span>
-<span class="co">#&gt;    title  creator date  publisher identifier series subseries nchap  nword</span>
-<span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;</span>
-<span class="co">#&gt;  1 The M~ Gene R~ 1979~ Simon an~ 978074341~ The O~ TOS 01 -~    30  54522</span>
-<span class="co">#&gt;  2 Dread~ Diane ~ 1986~ Pocket B~ 978074341~ The O~ TOS 29 -~    15  58867</span>
-<span class="co">#&gt;  3 Battl~ Diane ~ 1986~ Simon an~ 978074341~ The O~ TOS 31 -~    13  80159</span>
-<span class="co">#&gt;  4 The T~ Barbar~ 1988~ Simon an~ 978074341~ The O~ TOS 41 -~    13  71465</span>
-<span class="co">#&gt;  5 Home ~ Dana K~ 1990~ Simon an~ 978074342~ The O~ TOS 52 -~    52  68778</span>
-<span class="co">#&gt;  6 Ghost~ Barbar~ 1991~ Simon an~ 0743420047 The O~ TOS 53 -~    21  80103</span>
-<span class="co">#&gt;  7 First~ Diane ~ 1995~ Pocket B~ 978074342~ The O~ TOS 75 -~    45 110913</span>
-<span class="co">#&gt;  8 The A~ Dayton~ 2002~ Pocket B~ 978074346~ The O~ TOS - Th~     1   7439</span>
-<span class="co">#&gt;  9 World~ Judith~ 2003~ Pocket B~ 0743488148 The O~ TOS - Wo~    64 207246</span>
-<span class="co">#&gt; 10 Duty,~ Noveli~ 2004~ Pocket B~ 978074349~ The O~ TOS - Du~    42 196779</span>
-<span class="co">#&gt; # ... with 733 more rows, and 2 more variables: nchar &lt;int&gt;,</span>
+<span class="co">#&gt; # A tibble: 783 x 11</span>
+<span class="co">#&gt;    title author date  publisher identifier series subseries nchap  nword</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;</span>
+<span class="co">#&gt;  1 Star~ Alan ~ 2009~ Simon an~ 1439163391 AV     &lt;NA&gt;         18  74821</span>
+<span class="co">#&gt;  2 Star~ Rick ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    14  38298</span>
+<span class="co">#&gt;  3 Star~ Rudy ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    31  50896</span>
+<span class="co">#&gt;  4 Star~ Rick ~ 2011~ Simon Sp~ 978144241~ AV     Starflee~    13  37272</span>
+<span class="co">#&gt;  5 Star~ Alan ~ 2012~ Simon Sp~ 978144242~ AV     Starflee~    30  59871</span>
+<span class="co">#&gt;  6 Star~ Alan ~ 2013~ Gallery ~ 978147671~ AV     &lt;NA&gt;         17 143694</span>
+<span class="co">#&gt;  7 Capt~ James~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         21  93212</span>
+<span class="co">#&gt;  8 Capt~ Macke~ 1998~ Pocket B~ 978074345~ CT     &lt;NA&gt;         26  75215</span>
+<span class="co">#&gt;  9 Capt~ Chris~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         34  76508</span>
+<span class="co">#&gt; 10 The ~ John ~ 2000~ Pocket B~ 978074340~ CT     &lt;NA&gt;        176 424038</span>
+<span class="co">#&gt; # ... with 773 more rows, and 2 more variables: nchar &lt;int&gt;,</span>
 <span class="co">#&gt; #   dedication &lt;chr&gt;</span></code></pre></div>
-<p>Obviously, licensed book content itself cannot be shared as data, so it is not possible to provide capability in <code>rtrek</code> to enable analysts to perform their own unique text mining analyses on Star Trek novel corpura. However, future versions of <code>rtrek</code> will include more summary datasets that will aim to represent more intersting variables. Just a couple examples could be the relative frequency of popular characters’ names per book, or a senitment analysis, or any other set of interesting metrics that could be used to inform suggested reading lists of various tiles or books by particular authors with a favored style or focus.</p>
+<p>Obviously, verbatim licensed book content itself cannot be shared, so it is not possible to provide capability in <code>rtrek</code> to enable analysts to perform their own unique text mining analyses on Star Trek novel corpora. However, future versions of <code>rtrek</code> will include more summary datasets that will aim to represent more interesting variables.</p>
+<p>A couple examples could be:</p>
+<ul>
+<li>the relative frequency of popular characters’ names per book.</li>
+<li>a sentiment analysis; are some series darker than other?</li>
+<li>relative lengths of books by series, author, or publication date; are there changes over time?</li>
+</ul>
+<p>or any other set of interesting metrics that could be used to, for example, inform suggested reading lists of various titles, or books by particular authors with a favored style or focus.</p>
 </div>
   </div>
 
@@ -412,6 +546,9 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#local-datasets">Local datasets</a></li>
+      <li><a href="#star-trek-novels">Star Trek novels</a></li>
+      <li><a href="#spatial-maps">Spatial maps</a></li>
+      <li><a href="#historical-timeline">Historical timeline</a></li>
       <li><a href="#star-trek-api">Star Trek API</a></li>
       <li><a href="#star-trek-novel-text-mining">Star Trek novel text mining</a></li>
       </ul>
