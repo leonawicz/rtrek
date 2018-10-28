@@ -5,3 +5,6 @@
 docs/clone_notes.html
 inst/doc
 data-raw/keys.R
+data-raw/support_files
+data-raw/*.rds
+data-raw/internal
