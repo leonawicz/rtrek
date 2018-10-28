@@ -92,3 +92,26 @@ library(jpeg)
 stBooksId <- readRDS("data-raw/internal/stBooksId.rds")
 
 usethis::use_data(stBooksId, .worf, .st_species, .st_zone, internal = TRUE)
+
+series_abb <- c("AV", "CHA", "DS9", "DSC", "ENT", "KE", "MISC", "NF", "PRO", "SKR", "SV",
+                "SCE", "SGZ", "ST", "TAS", "TLE", "TNG", "TOS", "TTN","VAN", "VOY")
+series <- c("Abramsverse", "Challenger", "Deep Space Nine", "Discovery", "Enterprise",
+            "Klingon Empire", "Miscellaneous", "New Frontier", "Prometheus", "Seekers", "Shatnerverse",
+            "Starfleet Corps of Engineers", "Stargazer", "All-Series/Crossover",
+            "The Animated Series", "The Lost Era", "The Next Generation",
+            "The Original Series", "Titan", "Vanguard", "Voyager")
+anth_abb <- c("CON", "DS", "EL", "NL", "PAC", "SNW", "CT", "TLOD", "TNV", "TNV2", "TODW", "WLB", "YA")
+anth <- c(
+  c("Constellations", "Distant Shores", "Enterprise Logs", "New Frontier: No Limits",
+    "Deep Space Nine: Prophecy and Change", "Strange New Worlds", "Tales from the Captain's Table",
+    "The Lives of Dax", "The New Voyages", "The New Voyages 2", "Tales of the Dominion War",
+    "Gateways: What Lay Beyond"), "Young Adult Book")
+other_abb <- c("REF")
+other <- c("Reference")
+stSeries <- data_frame(
+  id = c(series, anth, other),
+  abb = c(series_abb, anth_abb, other_abb),
+  type = rep(c("series", "anthology", "other"), times = c(length(series), length(anth), length(other)))
+)
+
+usethis::use_data(stSeries)
