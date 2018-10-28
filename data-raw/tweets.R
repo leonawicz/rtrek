@@ -1,7 +1,8 @@
+library(trekdata)
 library(rtweet)
 library(dplyr)
 source("data-raw/keys.R") # untracked
-source("data-raw/utils.R")
+
 create_token(app = keys$app, consumer_key = keys$consumer_key, consumer_secret = keys$consumer_secret,
              access_token = keys$access_token, access_secret = keys$access_secret)
 
