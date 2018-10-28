@@ -17,9 +17,13 @@ reference:
   - stSpecies
   - stGeo
   - stTiles
+  - stSeries
   - stBooks
-  - stBooksWP
+  - stBooksWiki
   - stapiEntities
+  - tlBooks
+  - tlEvents
+  - tlFootnotes
 - title: API
   contents:
   - stapi
@@ -29,7 +33,7 @@ reference:
   - st_tiles
   - st_tiles_data
   - tile_coords
-  - st_book_series
+  - st_books_wiki
   - st_font
   - starts_with("%")
 
