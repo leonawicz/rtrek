@@ -3,7 +3,7 @@ context("api")
 library(dplyr)
 qid <- "CHMA0000025118"
 
-test_that("st_book_series returns as expected", {
+test_that("stapi returns as expected", {
   expect_is(stapi("character", page_count = TRUE), "NULL")
 
   d <- stapi("character", page = 2)

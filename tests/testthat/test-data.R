@@ -4,16 +4,16 @@ d <- st_datasets()
 
 test_that("dataset list returns as expected", {
   expect_is(d, "data.frame")
-  expect_equal(dim(d), c(6, 2))
+  expect_equal(dim(d), c(10, 2))
 })
 
-d <- st_book_series()
+d <- st_books_wiki()
 
-test_that("st_book_series returns as expected", {
+test_that("st_books_wiki returns as expected", {
   expect_is(d, "data.frame")
-  expect_equal(dim(d), c(17, 2))
+  expect_equal(dim(d), c(19, 2))
 
   skip_on_cran()
   skip_on_travis()
-  expect_is(st_book_series("DS9"), "NULL")
+  expect_is(st_books_wiki("DS9"), "NULL")
 })
