@@ -9,18 +9,19 @@
 stBooks
 }
 \description{
-A data frame with 743 rows and 11 columns containing metadata on Star Trek novels and other books taken from original books.
+A data frame with 783 rows and 11 columns containing metadata on Star Trek novels and other books taken directly from original books.
 The data frame contains most of the novels but is not comprehensive and may be out of date temporarily whenever new novels are published.
+It is largely complete through the end of 2017, though some older entries are still missing.
 }
 \details{
-There is considerable overlap in titles between \code{stBooksWP} and \code{stBooks}, but also a considerable number of unique entries.
-For example, the old novelizations by James Blish of the Original Series episodes are not found in \code{stBooks}. This dataset only goes back as far as 1979.
-
-However, \code{stBooks} contains a number of additional columns providing metadata about each book that could only be parsed from books and not from the Wikipedia page that serves as the source for \code{stBooksWP}.
+\code{stBooks} contains a number of additional columns providing metadata about each book that could only be parsed directly from books and not from the Wikipedia page that serves as the source for \code{stBooksWiki}.
 These columns include the number of characters, words and chapters in a book. There may be some irregularities or erroneous entries based on the imperfect methods use to compile the metadata,
 but it is overall an accurate dataset.
+
+The \code{nchap} column is largely accurate, but imperfect. Some entries suggest a book has hundreds of chapters, but the parser is not perfect at determining what constitutes a chapter.
+However, many of the books with high numbers of chapters are not erroneous but rather indicate a reference book rather than a novel, or an omnibus or anthology.
 }
 \seealso{
-\code{\link{st_book_series}}, \code{\link{stBooksWP}}
+\code{\link{stSeries}}, \code{\link{stBooksWiki}}
 }
 \keyword{datasets}
