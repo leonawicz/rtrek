@@ -15,7 +15,7 @@ meaning that the timeline entries (rows) provide a chronologically ordered list 
 \details{
 Specifically, this curated dataset includes data derived from historical timeline information in the appendix of the Star Trek reference manual, Voyages of the Imagination,
 which provides information on the large collection of licensed Star Trek literature.
-The authors note that the original timeline includes "novels, short stories, eBooks, novelizations, Simon & Schuster Audio original audio books, Minstrel Books young adult books, and classic novels from Bantam and Ballentine Books, published through October 2006."
+The authors note that the original timeline includes "novels, short stories, eBooks, novelizations, Simon & Schuster Audio original audio books, Minstrel Books young adult books, and classic novels from Bantam and Ballantine Books, published through October 2006."
 
 While this data is very informative, it is clearly many years out of date. It is also necessarily speculative.
 Settings are determined based in part on what is interpreted to be the intention of a given author for a given production.
