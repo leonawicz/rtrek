@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-rtrek <a hef="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek.png?raw=true" _target="blank"><img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek-small.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="120" align="right"></a>
-==============================================================================================================================================================================================================================================================================================
+rtrek <a hef="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek.png?raw=true" _target="blank"><img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek-small.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="130" height="150" align="right"></a>
+===========================================================================================================================================================================================================================================================================================================
 
-<br/> **Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/)<br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
+**Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/) <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget"> <image class="orcid" src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" height="16"></a> [![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/rtrek) <br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
-[![CRAN status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek) [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek) [![Rdoc](http://www.rdocumentation.org/badges/version/rtrek)](http://www.rdocumentation.org/packages/rtrek) [![Travis-CI Build Status](https://travis-ci.org/leonawicz/rtrek.svg?branch=master)](https://travis-ci.org/leonawicz/rtrek) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/rtrek?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/rtrek) [![Coverage Status](https://img.shields.io/codecov/c/github/leonawicz/rtrek/master.svg)](https://codecov.io/github/leonawicz/rtrek?branch=master) [![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/rtrek)
+[![CRAN status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek) [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek) [![Rdoc](http://www.rdocumentation.org/badges/version/rtrek)](http://www.rdocumentation.org/packages/rtrek) [![Travis-CI Build Status](https://travis-ci.org/leonawicz/rtrek.svg?branch=master)](https://travis-ci.org/leonawicz/rtrek) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/rtrek?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/rtrek) [![Coverage Status](https://img.shields.io/codecov/c/github/leonawicz/rtrek/master.svg)](https://codecov.io/github/leonawicz/rtrek?branch=master)
 
 The `rtrek` package provides datasets related to the Star Trek fictional universe and functions to assist with the data. It interfaces with [Wikipedia](https://www.wikipedia.org/), [STAPI](http://stapi.co/), [Memory Alpha](http://memory-alpha.wikia.com/wiki/Portal:Main) and [Memory Beta](http://memory-beta.wikia.com/wiki/Main_Page) to retrieve data, metadata and other information relating to Star Trek. It also contains local sample datasets covering a variety of topics such as Star Trek universe species data, geopolitical data, and summary datasets resulting from text mining analyses of Star Trek novels. The package also provides functions for working with data from other Star Trek-related R data packages containing larger datasets not stored in `rtrek`.
 
@@ -15,7 +15,7 @@ The `rtrek` package provides datasets related to the Star Trek fictional univers
 
 *Image: Example [Leaflet map](https://leonawicz.github.io/rtrek/articles/sc.html) using non-geographic Star Trek map tiles.*
 
-<br/> <br/>
+<br/>
 
 Installation
 ------------
@@ -36,8 +36,6 @@ devtools::install_github("leonawicz/rtrek")
 Example
 -------
 
-<br/>
-
 Use the Star Trek API (STAPI) to obtain information on the whereabouts and whenabouts of the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up. The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters. The second call grabs only page two results. The third call uses the universal/unique ID `uid` to retrieve data on Q. Think of these three successive uses of `stapi` as safe mode, search mode and extraction mode.
 
 ``` r
@@ -48,18 +46,18 @@ stapi("character", page_count = TRUE)
 
 stapi("character", page = 2)
 #> # A tibble: 100 x 24
-#>    uid      name   gender yearOfBirth monthOfBirth dayOfBirth placeOfBirth
-#>    <chr>    <chr>  <chr>        <int> <lgl>        <lgl>      <chr>       
-#>  1 CHMA000~ Stevi~ <NA>            NA NA           NA         <NA>        
-#>  2 CHMA000~ Yeggie M               NA NA           NA         <NA>        
-#>  3 CHMA000~ Arex   M               NA NA           NA         <NA>        
-#>  4 CHMA000~ Joseph M               NA NA           NA         <NA>        
-#>  5 CHMA000~ J. Zi~ <NA>            NA NA           NA         <NA>        
-#>  6 CHMA000~ Doyle  M               NA NA           NA         <NA>        
-#>  7 CHMA000~ Butler M               NA NA           NA         <NA>        
-#>  8 CHMA000~ Lito   M               NA NA           NA         <NA>        
-#>  9 CHMA000~ B. Mo~ <NA>            NA NA           NA         <NA>        
-#> 10 CHMA000~ Anna ~ <NA>            NA NA           NA         <NA>        
+#>    uid   name  gender yearOfBirth monthOfBirth dayOfBirth placeOfBirth
+#>    <chr> <chr> <chr>        <int> <lgl>        <lgl>      <chr>       
+#>  1 CHMA~ Stev~ <NA>            NA NA           NA         <NA>        
+#>  2 CHMA~ Yegg~ M               NA NA           NA         <NA>        
+#>  3 CHMA~ Arex  M               NA NA           NA         <NA>        
+#>  4 CHMA~ Jose~ M               NA NA           NA         <NA>        
+#>  5 CHMA~ J. Z~ <NA>            NA NA           NA         <NA>        
+#>  6 CHMA~ Doyle M               NA NA           NA         <NA>        
+#>  7 CHMA~ Butl~ M               NA NA           NA         <NA>        
+#>  8 CHMA~ Lito  M               NA NA           NA         <NA>        
+#>  9 CHMA~ B. M~ <NA>            NA NA           NA         <NA>        
+#> 10 CHMA~ Anna~ <NA>            NA NA           NA         <NA>        
 #> # ... with 90 more rows, and 17 more variables: yearOfDeath <int>,
 #> #   monthOfDeath <lgl>, dayOfDeath <lgl>, placeOfDeath <lgl>,
 #> #   height <int>, weight <int>, deceased <lgl>, bloodType <lgl>,
