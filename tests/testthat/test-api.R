@@ -11,8 +11,8 @@ test_that("stapi returns as expected", {
   d3 <- stapi("character", page = 1)
   d4 <- stapi("character", page = 1:2)
   dl <- list(d, d2, d3, d4)
-  purrr::walk(dl, ~expect_is(.x, "tbl_df"))
-  purrr::walk(dl, c(100, 200, 100, 200), ~expect_equal(nrow(.x), .y))
+  for(i in dl) expect_is(i, "tbl_df")
+  for(i in seq_along(dl)) expect_equal(nrow(dl[[i]]), c(100, 200, 100, 200)[i])
 
   Q <- stapi("character", uid = qid)
   expect_is(Q, "list")
@@ -30,7 +30,7 @@ test_that("rtrek_antiddos option is set on load and checked", {
   wrn <- "`rtrek_antiddos` setting in `options` is less than one and will be ignored.\n"
   expect_warning(stapi("character", page = 2), wrn)
   options(rtrek_antiddos = 5) # trigger Sys.sleep
-  x <- purrr::map(1:2, stapi("character", uid = qid))
+  x <- lapply(1:2, function(x) stapi("character", uid = qid))
   expect_identical(x[[1]], x[[2]])
   options(rtrek_antiddos = 1)
 })
@@ -45,7 +45,7 @@ test_that("STAPI entity information has not substantially changed", {
   # comment out this line to run local test; does not need to be run every time
   skip("This test is only run locally and does not need to be run often.")
 
-  x <- purrr::map(stapiEntities$id, stapi)
-  expect_true(all(purrr::map_chr(x, ~class(.x)[1]) == "tbl_df"))
-  expect_true(all(purrr::map_lgl(x, ~"uid" %in% names(.x))))
+  x <- lapply(stapiEntities$id, stapi)
+  expect_true(all(sapply(x, function(x) class(x)[1] == "tbl_df")))
+  expect_true(all(sapply(x, function(x) "uid" %in% names(x))))
 })

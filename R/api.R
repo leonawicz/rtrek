@@ -53,8 +53,8 @@ stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
   if(total_pages != 1 && (length(page) != 1 || page != 1)){
     include_page1 <- 1 %in% page
     page <- page[page != 1]
-    json <- purrr::map(page, ~jsonlite::flatten(
-      jsonlite::fromJSON(paste0(uri, .x, "&pageSize=100"))[[3]], recursive = TRUE)
+    json <- lapply(page, function(x) jsonlite::flatten(
+      jsonlite::fromJSON(paste0(uri, x, "&pageSize=100"))[[3]], recursive = TRUE)
     )
     if(include_page1) json <- c(list(json0), json)
     d <- dplyr::bind_rows(json)

@@ -32,7 +32,6 @@ Suggests:
 Imports: 
     magrittr,
     dplyr,
-    jsonlite,
-    purrr
+    jsonlite
 VignetteBuilder: knitr
 RoxygenNote: 6.1.0
