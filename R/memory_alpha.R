@@ -1,113 +1,180 @@
 #' Memory Alpha API
 #'
-#' Access data from Memory Alpha (\url{http://memory-alpha.wikia.com}).
+#' Access Star Trek content from Memory Alpha (\url{http://memory-alpha.wikia.com}).
 #'
-#' Access data from Memory Alpha web pages using a category ID.
-#' Subcategories are accessed by appending the specific subcategory's ID to \code{id} with a \code{:} separator.
-#' Available top-level category IDs and associated subcategory options for \code{by} can be found by calling \code{mem_alpha} with no arguments.
-#' See examples.
+#' @details
+#' The content returned is always a data frame. The structure changes slightly depending on the nature of the endpoint,
+#' but results from different endpoints can be merged easily.
 #'
-#' The content returned is always a data frame (except when calling with no arguments).
-#' When the \code{id} request refers to a category, the data frame contains the names and associated URLs of entries in the category.
-#' Note that the URLs are relative. To visit a URL directly, append \code{http://memory-alpha.wikia.com/}.
+#' \subsection{Portals}{
+#' At the highest level, passing \code{enpoind = "portals"} returns a data frame listing the available Memory Alpha portals supported by \code{rtrek}.
+#' A column of relative URLs is also included for reference, but can be ignored.
+#' }
 #'
-#' When the \code{id} request refers to a terminal content page rather than a category page,
-#' the data frame contains the main text and other data associated with the entry.
+#' \subsection{Portal Categories}{
+#' In all other cases, the endpoint string must begin with one of the valid portal IDs.
+#' Passing only the ID returns a data frame with IDs and relative URLs associated with the available categories in the specific portal.
+#' There are two additional columns, \code{group} and \code{subgroup}, that may provide additional grouping context for the entry IDs in larger tables.
+#' As with the relative URLs, you do not have to make explicit use of these variables.
+#' \cr\cr
+#' Selecting a specific category within a portal is done by appending the portal ID in \code{endpoint} with the category ID, separated by a forward slash.
+#' You can append nested subcategory IDs with forward slashes, provided they subcategories exist.
+#' }
 #'
-#' @param id character, category ID. See details.
-#' @param by character, describes how terminal pages are grouped by subcategories.
+#' \subsection{Articles}{
+#' When the endpoint is neither a top-level portal or one of a portal's categories (or subcategories, if available), it is an article.
+#' An article is a terminal node, meaning you cannot nest further. An article will be any entry whose URL does not begin with \code{Category:}.
+#' In this case, the content returned is still a data frame for consistency, but differs substantially from the results of non-terminal endpoints.
+#' \cr\cr
+#' Memory Alpha is not a database containing convenient tables. Articles comprise the bulk of what Memory Alpha has to offer.
+#' They are not completely unstructured text, but are loosely structured.
+#' Some assumptions are made and \code{memory_alpha} returns a data frame containing article text and links.
+#' It is up to the user what to do with this information, e.g., performing text analyses.
+#' }
 #'
-#' @return a data frame.
+#' \subsection{Additional notes}{
+#' The \code{url} column included in results for context uses relative paths to save space. The full URLs all begin the same.
+#' To visit a URL directly, prepend it with \code{http://memory-alpha.wikia.com/wiki/}.
+#' \cr\cr
+#' Also note that once you know the relative URL for an article, e.g., \code{"Worf"},
+#' you do not need to traverse through one of the portals using an \code{endpoint} string to retrieve its content.
+#' You can instead use \code{ma_article("Worf")}.
+#' \cr\cr
+#' \code{memory_alpha} provides an overview perspective on how content available at Memory Alpha is organized and can be searched for through
+#' a variety of hierarchical layouts. And in some cases this structure that can be obtained in table form can be useful as data or metadata
+#' in itself. Alternatively, \code{ma_article} is focused exclusively on pulling back content from known articles.
+#' }
+#'
+#' @param endpoint character, See details.
+#'
+#' @return a data frame
+#' @export
+#' @seealso \code{\link{ma_article}}
+#'
+#' @examples
+#' memory_alpha("portals") # show available portals
+#' memory_alpha("people") # show portal categories for People portal
+#' memory_alpha("people/Klingons") # show people in Klingons subcategory
+#' memory_alpha("people/Klingons/Worf") # return terminal article content
+memory_alpha <- function(endpoint){
+  x <- .ma_portals
+  if(endpoint == "portals") return(x)
+  ep <- strsplit(endpoint, "/")[[1]]
+  if(ep[1] %in% x$id){
+    d <- do.call(paste0("ma_portal_", ep[1]), list())
+  } else {
+    stop("Invalid enpoint: portal ID.", call. = FALSE)
+  }
+  if(length(ep) == 1) return(d)
+  ma_select(d, ep[-1], "id")
+}
+
+ma_portal_df <- function(portal, nodes = c("table", "span, a"), start_node_index = 1,
+                         end_node_index = NULL, subgroups = FALSE, slice = NULL){
+  x <- ma_base_add(ma_portal_url(portal)) %>% xml2::read_html() %>% rvest::html_nodes(nodes[1])
+  if(is.null(end_node_index)) end_node_index <- length(x)
+  idx <- start_node_index:end_node_index
+  if(portal == "technology"){
+    x <- list(rvest::html_nodes(x[idx], "span, b, a"))
+  } else {
+    x <- purrr::map(x[idx], ~rvest::html_children(.x) %>% rvest::html_nodes(nodes[2]))
+  }
+  if(!is.null(slice)) x <- x[slice]
+  x1 <- purrr::map(x, ~rvest::html_text(.x))
+  x2 <- purrr::map(x, ~ma_href(.x))
+  .f <- function(x, y){
+    x[!is.na(y)] <- NA
+    trimws(as.character(x))
+  }
+  if(subgroups){
+    d <- purrr::map2(x1, x2, ~dplyr::data_frame(
+      id = .x[-1], url = .y[-1], group = trimws(.x[1]), subgroup = .f(.x, .y)[-1]) %>%
+        tidyr::fill(.data[["subgroup"]]) %>% dplyr::filter(!is.na(.data[["url"]]))
+    ) %>% dplyr::bind_rows()
+  } else {
+    d <- purrr::map2(x1, x2, ~dplyr::data_frame(
+      id = .x, url = .y, group = .f(.x, .y)) %>%
+        tidyr::fill(.data[["group"]]) %>% dplyr::filter(!is.na(.data[["url"]]))
+    ) %>% dplyr::bind_rows()
+  }
+  if(portal == "technology") d <- ma_portal_technology_cleanup(d)
+  d
+}
+
+ma_portal_df <- memoise::memoise(ma_portal_df)
+
+ma_portal_alternate <- function(nodes = c("table", "span, b, a"), start_node_index = 5,
+                                end_node_index = NULL, subgroups = TRUE, slice = NULL){
+  ma_portal_df("alternate", nodes, start_node_index, end_node_index, subgroups, slice)
+}
+
+ma_portal_people <- function(nodes = c("table", "span, a"), start_node_index = 3,
+                             end_node_index = NULL, subgroups = FALSE, slice = NULL){
+  ma_portal_df("people", nodes, start_node_index, end_node_index, subgroups, slice)
+}
+
+ma_portal_science <- function(nodes = c("table", "span, a"), start_node_index = 2,
+                              end_node_index = NULL, subgroups = FALSE, slice = 1){
+  ma_portal_df("science", nodes, start_node_index, end_node_index, subgroups, slice)
+}
+
+ma_portal_society <- function(nodes = c("td", "span, a"), start_node_index = 4,
+                              end_node_index = NULL, subgroups = FALSE, slice = c(1, 5)){
+  ma_portal_df("society", nodes, start_node_index, end_node_index, subgroups, slice)
+}
+
+ma_portal_technology <- function(nodes = c("h2, table", "span, b, a"), start_node_index = 4,
+                                 end_node_index = 7, subgroups = FALSE, slice = NULL){
+  ma_portal_df("technology", nodes, start_node_index, end_node_index, subgroups, slice)
+}
+
+#' Read Memory Alpha article
+#'
+#' @param url character, article URL. Expects package-style short URL. See examples.
+#' @param browse logical, also open \code{url} in browser.
+#' @param data_format \code{"xml"} or \code{"df"}. A list is returned containing the character string title, and a data object as an XML nodelist or a data frame.
+#'
+#' @return a character string of article HTML.
 #' @export
 #'
 #' @examples
-#' # show available top-level category IDs and associated subcategory options
-#' mem_alpha()
+#' \dontrun{ma_article("Worf")}
+ma_article <- function(url, browse = FALSE, data_format = c("xml_nodelist", "data_frame")){
+  data_format <- match.arg(data_format)
+  url <- ma_base_add(url)
+  x <- xml2::read_html(url)
+  title <- rvest::html_node(x, ".page-header__title") %>% rvest::html_text()
+  x <- rvest::html_nodes(x, ".WikiaArticle")
+  p <- rvest::html_nodes(x, "h2,p,.image")
+  if(browse) utils::browseURL(url)
+  list(title, p)
+}
+
+#' Memory Alpha site search
 #'
-#' # people by species category
-#' mem_alpha("people", by = "species")
+#' Perform a Memory Alpha site search.
 #'
-#' # subcategories and main pages under Klingon people-by-species subcategory
-#' mem_alpha("people:Klingons", by = "species")
-mem_alpha <- function(id, by = NULL){
-  if(missing(id)) return(dplyr::select(ma_urls, -.data[["url"]]))
-  base_id <- ma_base_get(id)
-  if(!base_id %in% ma_urls$id) stop("Invalid `id`")
-  if(is.null(by)) by <- dplyr::filter(ma_urls, .data[["id"]] == base_id)$by[1]
-  url <- ma_url(base_id, by)
-  ma_dispatch(id, by, url)
-}
-
-ma_people <- function(id, by, url){
-  id <- strsplit(id, ":")[[1]]
-  #grp <- html_nodes(x, ".mw-headline") %>% html_attr("id")
-  x <- xml2::read_html(ma_base_add(url)) %>% rvest::html_nodes("td")
-  txt <- rvest::html_text(x)
-  tbl_idx <- switch(by, # switch statements because mixed tables in web page
-                    species = grep("By species", txt)[1],
-                    organization = grep("By organization", txt)[1],
-                    occupation = grep("By occupation", txt)[1],
-                    "ship/station" = grep("By ship or station", txt)[1],
-                    origin = grep("By origin", txt)[1]
-                    )
-  x <- x[tbl_idx] %>% rvest::html_nodes("td") %>% rvest::html_nodes("a")
-  x <- switch(by,
-              species = x,
-              organization = x[1:grep("Other organizations", x)],
-              occupation = x[(grep("Other organizations", x) + 1):grep("Other occupations", x)],
-              "ship/station" = x[1:grep("Other ships and stations", x)],
-              origin = x[(grep("Other ships and stations", x) + 1):length(x)]
-              )
-  d <- dplyr::data_frame(rvest::html_text(x), ma_href(x)) %>% stats::setNames(c(by, "url"))
-  if(length(id) == 1) return(d) # category lookup
-
-  # category provided
-  url <- dplyr::filter(d, grepl(id[2], .data[[by]], ignore.case = TRUE))$url
-  dplyr::bind_rows(
-    ma_all_pages(id[2], url, "#mw-subcategories"),
-    ma_all_pages(id[2], url, "#mw-pages"))
-}
-
-ma_urls <- dplyr::data_frame(
-  id = c(rep("people", 5)),
-  url = c(
-    rep("wiki/Portal:People", 5)
-  ),
-  by = c("species", "organization", "occupation", "ship/station", "alternate reality")
-)
-
-ma_base_url <- "http://memory-alpha.wikia.com"
-ma_base_add <- function(x) file.path(ma_base_url, x)
-ma_base_strip <- function(x) gsub(ma_base_url, "", x)
-ma_base_get <- function(x) strsplit(x, ":")[[1]][1]
-
-ma_url <- function(id, by){
-  d <- dplyr::filter(ma_urls, .data[["id"]] == id)$url[1]
-}
-
-ma_dispatch <- function(id, by, url){
-  base_id <- ma_base_get(id)
-  .f <- switch(
-    base_id,
-    people = ma_people
-  )
-  .f(id, by, url)
-}
-
-ma_href <- function(x){
-  gsub("^/", "", rvest::html_attr(x, "href"))
-}
-
-ma_all_pages <- function(id, url, node, d0 = NULL){
-  x <- xml2::read_html(ma_base_add(url)) %>% rvest::html_nodes(node) %>% rvest::html_nodes("a")
-  txt <- rvest::html_text(x)
-  url <- ma_href(x)
-  d <- dplyr::data_frame(txt, url) %>% stats::setNames(c(id, "url"))
-  if(!is.null(d0)) d <- dplyr::bind_rows(d0, d)
-  idx <- grep("next 200", txt)
-  if(!length(idx)){
-    dplyr::filter(d, !grepl("(previous|next) 200", .data[[id]]))
-  } else {
-    Recall(id, url[idx[1]], node, d)
-  }
+#' This function returns a data frame containing the title, truncated text preview, and relative URL for the first page of search results.
+#' It does not recursively collate search results through subsequent pages of results.
+#' There could be an unexpectedly high number of pages of results depending on the search query.
+#' Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview.
+#'
+#' @param text character, search query.
+#' @param browse logical, open search results page in browser.
+#'
+#' @return a data frame
+#' @export
+#'
+#' @examples
+#' ma_search("Worf")
+ma_search <- function(text, browse = FALSE){
+  url <- paste0(ma_base_add("Special:Search?query="), gsub("\\s+", "+", text))
+  x <- xml2::read_html(url) %>% rvest::html_node(".Results")
+  x2 <- x %>% rvest::html_nodes("h1 > a")
+  title <- rvest::html_text(x2)
+  url <- ma_href(x2)
+  text <- rvest::html_nodes(x, "article") %>% rvest::html_text() %>% strsplit("(\n|\t)+") %>%
+    sapply("[", 3)
+  if(browse) utils::browseURL(url)
+  dplyr::data_frame(title = title, text = text, url = url)
 }
