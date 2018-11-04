@@ -88,3 +88,7 @@ Reference
 ---------
 
 [Complete package reference and function documentation](https://leonawicz.github.io/rtrek/)
+
+------------------------------------------------------------------------
+
+Please note that the `rtrek` project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
