@@ -143,12 +143,17 @@ ma_portal_technology <- function(nodes = c("h2, table", "span, b, a"), start_nod
 #' @export
 #'
 #' @examples
-#' \dontrun{ma_article("Worf")}
+#' \dontrun{ma_article("Azetbur")}
 ma_article <- function(url, content_format = c("xml", "character"),
                        content_nodes = c("h2", "h3", "p", "b", "ul"), browse = FALSE){
   content_format <- match.arg(content_format)
   url <- ma_base_add(url)
-  x <- xml2::read_html(url)
+  con <- url(url)
+  x <- tryCatch(
+    xml2::read_html(con),
+    error = function(e) stop("Article not found.", call. = FALSE),
+    finally = close(con)
+  )
   title <- rvest::html_node(x, ".page-header__title") %>% rvest::html_text()
   cats <- ma_article_categories(x)
   x <- rvest::html_nodes(x, ".WikiaArticle > #mw-content-text") %>% rvest::html_children()

@@ -20,7 +20,7 @@ ma_select <- function(d, ep, .id){
       dplyr::bind_rows()
   } else {
     if(length(ep) > 1) stop(paste0("Invalid enpoint: ", ep[1],
-                                   " is an article but `endpoint` does not terminate here."))
+                                   " is an article but `endpoint` does not terminate here."), call. = FALSE)
     d <- ma_article(url, browse = FALSE)
   }
   ep <- ep[-1]
