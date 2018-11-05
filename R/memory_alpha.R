@@ -63,7 +63,7 @@ memory_alpha <- function(endpoint){
   if(ep[1] %in% x$id){
     d <- do.call(paste0("ma_portal_", ep[1]), list())
   } else {
-    stop("Invalid enpoint: portal ID.", call. = FALSE)
+    stop("Invalid endpoint: portal ID.", call. = FALSE)
   }
   if(length(ep) == 1) return(d)
   ma_select(d, ep[-1], "id")
@@ -148,11 +148,9 @@ ma_article <- function(url, content_format = c("xml", "character"),
                        content_nodes = c("h2", "h3", "p", "b", "ul"), browse = FALSE){
   content_format <- match.arg(content_format)
   url <- ma_base_add(url)
-  con <- url(url)
-  x <- tryCatch(
-    xml2::read_html(con),
-    error = function(e) stop("Article not found.", call. = FALSE),
-    finally = close(con)
+  tryCatch(
+    x <- xml2::read_html(url),
+    error = function(e) stop("Article not found.", call. = FALSE)
   )
   title <- rvest::html_node(x, ".page-header__title") %>% rvest::html_text()
   cats <- ma_article_categories(x)
