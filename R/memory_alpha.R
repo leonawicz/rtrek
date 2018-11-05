@@ -130,24 +130,33 @@ ma_portal_technology <- function(nodes = c("h2, table", "span, b, a"), start_nod
 
 #' Read Memory Alpha article
 #'
-#' @param url character, article URL. Expects package-style short URL. See examples.
-#' @param browse logical, also open \code{url} in browser.
-#' @param data_format \code{"xml"} or \code{"df"}. A list is returned containing the character string title, and a data object as an XML nodelist or a data frame.
+#' Read Memory Alpha article content and metadata.
 #'
-#' @return a character string of article HTML.
+#' Article content is returned in a nested, tidy data frame.
+#'
+#' @param url character, article URL. Expects package-style short URL. See examples.
+#' @param content_format character, the format of the article main text, \code{"xml"} or \code{"character"}.
+#' @param content_nodes character, which top-level nodes in the article main text to retain.
+#' @param browse logical, also open \code{url} in browser.
+#'
+#' @return a nested data frame
 #' @export
 #'
 #' @examples
 #' \dontrun{ma_article("Worf")}
-ma_article <- function(url, browse = FALSE, data_format = c("xml_nodelist", "data_frame")){
-  data_format <- match.arg(data_format)
+ma_article <- function(url, content_format = c("xml", "character"),
+                       content_nodes = c("h2", "h3", "p", "b", "ul"), browse = FALSE){
+  content_format <- match.arg(content_format)
   url <- ma_base_add(url)
   x <- xml2::read_html(url)
   title <- rvest::html_node(x, ".page-header__title") %>% rvest::html_text()
-  x <- rvest::html_nodes(x, ".WikiaArticle")
-  p <- rvest::html_nodes(x, "h2,p,.image")
+  cats <- ma_article_categories(x)
+  x <- rvest::html_nodes(x, ".WikiaArticle > #mw-content-text") %>% rvest::html_children()
+  aside <- ma_article_aside(x)
+  content <- x[which(rvest::html_name(x) %in% content_nodes)]
+  if(content_format == "character") content <-  gsub(" Edit$", "", rvest::html_text(content))
   if(browse) utils::browseURL(url)
-  list(title, p)
+  dplyr::data_frame(title = title, content = list(content), metadata = list(aside), categories = list(cats))
 }
 
 #' Memory Alpha site search

@@ -4,21 +4,26 @@
 \alias{ma_article}
 \title{Read Memory Alpha article}
 \usage{
-ma_article(url, browse = FALSE, data_format = c("xml_nodelist",
-  "data_frame"))
+ma_article(url, content_format = c("xml", "character"),
+  content_nodes = c("h2", "h3", "p", "b", "ul"), browse = FALSE)
 }
 \arguments{
 \item{url}{character, article URL. Expects package-style short URL. See examples.}
 
-\item{browse}{logical, also open \code{url} in browser.}
+\item{content_format}{character, the format of the article main text, \code{"xml"} or \code{"character"}.}
 
-\item{data_format}{\code{"xml"} or \code{"df"}. A list is returned containing the character string title, and a data object as an XML nodelist or a data frame.}
+\item{content_nodes}{character, which top-level nodes in the article main text to retain.}
+
+\item{browse}{logical, also open \code{url} in browser.}
 }
 \value{
-a character string of article HTML.
+a nested data frame
 }
 \description{
-Read Memory Alpha article
+Read Memory Alpha article content and metadata.
+}
+\details{
+Article content is returned in a nested, tidy data frame.
 }
 \examples{
 \dontrun{ma_article("Worf")}

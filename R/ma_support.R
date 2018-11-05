@@ -21,7 +21,7 @@ ma_select <- function(d, ep, .id){
   } else {
     if(length(ep) > 1) stop(paste0("Invalid enpoint: ", ep[1],
                                    " is an article but `endpoint` does not terminate here."))
-    d <- ma_article(url, browse = FALSE, data_format = "data_frame")
+    d <- ma_article(url, browse = FALSE)
   }
   ep <- ep[-1]
   if(!length(ep)) return(d)
@@ -38,6 +38,7 @@ ma_category_pages <- function(id, url, node, d0 = NULL){
   d <- dplyr::data_frame(txt, url) %>% stats::setNames(c(id, "url"))
   if(!is.null(d0)) d <- dplyr::bind_rows(d0, d)
   idx <- grep("next 200", txt)
+  Sys.sleep(1)
   if(!length(idx)){
     dplyr::filter(d, !grepl("(previous|next) 200", .data[[id]]))
   } else {
@@ -56,4 +57,29 @@ ma_portal_technology_cleanup <- function(d){
                 id = ifelse(grepl("^-[A-Z]$", .data[["id"]]),
                             gsub("\\(|\\)", "", gsub("_", " ", .data[["url"]])), .data[["id"]])
   )
+}
+
+ma_article_categories <- function(x){
+  x <- rvest::html_node(x, "#articleCategories") %>% rvest::html_nodes("li span a")
+  x <- x[!grepl(".*Category:Memory_Alpha_pages_with.*", x)]
+  url <- ma_href(x)
+  x <- rvest::html_text(x)
+  dplyr::data_frame(categories = x, url = url)
+}
+
+ma_article_aside <- function(x){
+  x <- x[[which(rvest::html_name(x) == "aside")[1]]]
+  cols <- rvest::html_nodes(x, ".pi-data-label") %>% rvest::html_text()
+  cols <- gsub(":$", "", cols)
+  cols <- gsub("\\s", "_", cols)
+  x <- rvest::html_nodes(x, ".pi-data-value")
+  vals <- purrr::map(x, ~{
+    x <- xml2::xml_contents(.x) %>% rvest::html_text()
+    x[x %in% c("", " ")] <- "|"
+    x <- gsub("\\)", "\\)|", x)
+    x <- gsub("[|]+$", "", gsub("[|]+", "|", paste0(x, collapse = "")))
+    x <- gsub(", [|]|,[|]", "|", x)
+    x
+  }) %>% stats::setNames(cols)
+  dplyr::as_data_frame(vals)
 }
