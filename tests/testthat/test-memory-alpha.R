@@ -16,6 +16,10 @@ test_that("memory_alpha returns as expected", {
   expect_equal(ncol(d), 3)
   expect_equal(names(d), grp[1:3])
 
+  d <- memory_alpha("series")
+  expect_equal(ncol(d), 3)
+  expect_equal(names(d), grp[1:3])
+
   d <- memory_alpha("society")
   expect_equal(ncol(d), 3)
   expect_equal(names(d), grp[1:3])
@@ -23,6 +27,12 @@ test_that("memory_alpha returns as expected", {
   d <- memory_alpha("technology")
   expect_equal(ncol(d), 3)
   expect_equal(names(d), grp[1:3])
+
+  d <- memory_alpha("series/Deep Space Nine")
+  expect_equal(dim(d), c(1, 4))
+  expect_equal(names(d), c("title", "content", "metadata", "categories"))
+  expect_equal(as.character(sapply(d, class)), c("character", rep("list", 3)))
+  expect_is(d$content[[1]], "xml_nodeset")
 
   d <- memory_alpha("people/Klingons")
   expect_equal(ncol(d), 2)

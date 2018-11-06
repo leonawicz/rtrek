@@ -1,6 +1,7 @@
 .ma_portals <- dplyr::data_frame(
-  id = c("alternate", "people", "science", "society", "technology"),
-  url = paste0("Portal:", c("Alternate_Reality", "People", "Science", "Society_and_Culture", "Technology"))
+  id = c("alternate", "people", "science", "series", "society", "technology"),
+  url = paste0("Portal:", c("Alternate_Reality", "People", "Science",
+                            "TV_and_films", "Society_and_Culture", "Technology"))
 )
 
 ma_portal_url <- function(id) .ma_portals$url[.ma_portals$id == id]
@@ -59,6 +60,10 @@ ma_portal_technology_cleanup <- function(d){
   )
 }
 
+ma_portal_series_cleanup <- function(d){
+  dplyr::mutate(d, id = gsub("^Star Trek( [IV]+|)(:|)( The | )(.*)", "\\4", .data[["id"]]))
+}
+
 ma_article_categories <- function(x){
   x <- rvest::html_node(x, "#articleCategories") %>% rvest::html_nodes("li span a")
   x <- x[!grepl(".*Category:Memory_Alpha_pages_with.*", x)]
@@ -68,11 +73,16 @@ ma_article_categories <- function(x){
 }
 
 ma_article_aside <- function(x){
-  x <- x[[which(rvest::html_name(x) == "aside")[1]]]
+  x <- x[[which(rvest::html_name(x) == "aside")[1]]] %>% rvest::html_children()
+  x <- x[which(rvest::html_name(x) == "div")]
   cols <- rvest::html_nodes(x, ".pi-data-label") %>% rvest::html_text()
   cols <- gsub(":$", "", cols)
   cols <- gsub("\\s", "_", cols)
   x <- rvest::html_nodes(x, ".pi-data-value")
+  if(length(x) != length(cols)){
+    warning("Summary card cannot be parsed. Metadata column will not NULL.")
+    return()
+  }
   vals <- purrr::map(x, ~{
     x <- xml2::xml_contents(.x) %>% rvest::html_text()
     x[x %in% c("", " ")] <- "|"

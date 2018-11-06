@@ -76,6 +76,8 @@ ma_portal_df <- function(portal, nodes = c("table", "span, a"), start_node_index
   idx <- start_node_index:end_node_index
   if(portal == "technology"){
     x <- list(rvest::html_nodes(x[idx], "span, b, a"))
+  } else if(portal == "series"){
+    x <- list(x)
   } else {
     x <- purrr::map(x[idx], ~rvest::html_children(.x) %>% rvest::html_nodes(nodes[2]))
   }
@@ -98,6 +100,7 @@ ma_portal_df <- function(portal, nodes = c("table", "span, a"), start_node_index
     ) %>% dplyr::bind_rows()
   }
   if(portal == "technology") d <- ma_portal_technology_cleanup(d)
+  if(portal == "series") d <- ma_portal_series_cleanup(d)
   d
 }
 
@@ -116,6 +119,11 @@ ma_portal_people <- function(nodes = c("table", "span, a"), start_node_index = 3
 ma_portal_science <- function(nodes = c("table", "span, a"), start_node_index = 2,
                               end_node_index = NULL, subgroups = FALSE, slice = 1){
   ma_portal_df("science", nodes, start_node_index, end_node_index, subgroups, slice)
+}
+
+ma_portal_series <- function(nodes = c("h2, td p i b a, td b a", ""), start_node_index = 1,
+                              end_node_index = NULL, subgroups = FALSE, slice = NULL){
+  ma_portal_df("series", nodes, start_node_index, end_node_index, subgroups, slice)
 }
 
 ma_portal_society <- function(nodes = c("td", "span, a"), start_node_index = 4,
