@@ -80,7 +80,7 @@ ma_article_aside <- function(x){
   cols <- gsub("\\s", "_", cols)
   x <- rvest::html_nodes(x, ".pi-data-value")
   if(length(x) != length(cols)){
-    warning("Summary card cannot be parsed. Metadata column will not NULL.")
+    warning("Summary card cannot be parsed. Metadata column will be NULL.")
     return()
   }
   vals <- purrr::map(x, ~{
