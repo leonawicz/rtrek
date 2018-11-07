@@ -10,12 +10,17 @@ globalVariables(c(".data"))
 #' @name rtrek
 NULL
 
-#' Pipe
+#' Pipe operator
 #'
-#' rtrek exports the the pipe operator, \code{\%>\%}, from magrittr.
+#' See \code{magrittr::\link[magrittr]{\%>\%}} for details.
 #'
-#' @importFrom magrittr %>%
 #' @name %>%
 #' @rdname pipe
+#' @keywords internal
 #' @export
+#' @importFrom magrittr %>%
+#' @usage lhs \%>\% rhs
+NULL
+
+#' @importFrom tibble tibble
 NULL

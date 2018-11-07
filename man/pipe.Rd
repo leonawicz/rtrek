@@ -2,7 +2,11 @@
 % Please edit documentation in R/rtrek.R
 \name{\%>\%}
 \alias{\%>\%}
-\title{Pipe}
-\description{
-rtrek exports the the pipe operator, \code{\%>\%}, from magrittr.
+\title{Pipe operator}
+\usage{
+lhs \%>\% rhs
 }
+\description{
+See \code{magrittr::\link[magrittr]{\%>\%}} for details.
+}
+\keyword{internal}

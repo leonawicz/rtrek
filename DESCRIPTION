@@ -36,6 +36,7 @@ Imports:
     xml2,
     rvest,
     purrr,
-    memoise
+    memoise,
+    tibble
 VignetteBuilder: knitr
 RoxygenNote: 6.1.0
