@@ -94,6 +94,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/stapi.html">Star Trek API (STAPI)</a>
+    </li>
+    <li>
+      <a href="../articles/memory-alpha.html">Memory Alpha</a>
+    </li>
+    <li>
+      <a href="../articles/memory-beta.html">Memory Beta</a>
+    </li>
+    <li>
       <a href="../articles/fonts.html">Star Trek fonts</a>
     </li>
   </ul>
@@ -191,15 +200,23 @@
 <a href="#rtrek-0-2-0" class="anchor"></a>rtrek 0.2.0<small> Unreleased </small>
 </h1>
 <ul>
+<li>Added an initial version of an API function <code>memory_alpha</code> along with a collection of internal support functions for accessing Star Trek data from web portals available on the Memory Alpha website.
+<ul>
+<li>Internal portal functions that return data from portal and portal category web pages, and which may run recursively when necessary to compile complete content over multiple pages, are memoized.</li>
+<li>Functions like <code>ma_article</code>, which return article content from a terminal endpoint are not memoized.</li>
+</ul>
+</li>
+<li>Added <code>ma_search</code> function.</li>
 <li>Added new datasets, mainly to timelines: <code>tlBooks</code>, <code>tlEvents</code>, <code>tlFootnotes</code>. Also added <code>stSeries</code> names and abbreviations table.</li>
 <li>Renamed <code>st_book_series</code> and <code>stBooksWP</code> to <code>st_books_wiki</code> and <code>stBooksWiki</code>, respectively.</li>
 <li>Updated tile set URLs.</li>
 <li>Updated <code>stBooks</code> dataset. This data frame now has better formatting, greater consistency, duplicates removed, and contains more entries than before. It is still incomplete and imperfect, but much improved over the previous version.</li>
 <li>Updated <code>stBooksWiki</code> dataset. Updated column names for consistency.</li>
 <li>Updates the acronyms used in the package for consistency.</li>
-<li>Update unit tests.</li>
+<li>Update unit tests, added unit tests for Memory Alpha functions.</li>
 <li>Updated function documentation.</li>
-<li>Updated various vignette sections. Added new section relating to timeline datasets.</li>
+<li>Updated introduction vignette sections. Added new section relating to timeline datasets.</li>
+<li>Added three new vignettes for each of the three API options: STAPI, Memory Alpha,and Memory Beta (in progress).</li>
 </ul>
 </div>
     <div id="rtrek-0-1-0" class="section level1">

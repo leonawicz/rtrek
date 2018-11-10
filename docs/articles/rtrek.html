@@ -60,6 +60,15 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/stapi.html">Star Trek API (STAPI)</a>
+    </li>
+    <li>
+      <a href="../articles/memory-alpha.html">Memory Alpha</a>
+    </li>
+    <li>
+      <a href="../articles/memory-beta.html">Memory Beta</a>
+    </li>
+    <li>
       <a href="../articles/fonts.html">Star Trek fonts</a>
     </li>
   </ul>
@@ -505,8 +514,14 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
 <span class="co">#&gt; 7 EPMA0000162588            Death Wish           NA         NA</span>
 <span class="co">#&gt; 8 EPMA0000001413                True Q      46192.3    46192.3</span>
 <span class="co">#&gt; 9 EPMA0000001510    The Q and the Grey      50384.2    50392.7</span></code></pre></div>
-<p>The data returned on Q is actually a large list, including multiple data frames. For simplicity only a piece of it is shown above.</p>
+<p>The data returned on Q is actually a large list, including multiple data frames. For simplicity only a piece of it is shown above. For more examples, see the STAPI <a href="https://leonawicz.github.io/rtrek/articles/stapi.html">vignette</a>.</p>
 </div>
+</div>
+<div id="pseudo-apis" class="section level2">
+<h2 class="hasAnchor">
+<a href="#pseudo-apis" class="anchor"></a>Pseudo-APIs</h2>
+<p>Some functions in <code>rtrek</code> provide an API-<em>like</em> interface to online Star Trek-related data. Specifically, parsing data from the Memory Alpha and Memory Beta websites. These sites do not provide APIs. Therefore the only option is to read pages into R and parse the html. Behind the scenes this is done using the <code>xml2</code> and <code>rvest</code> packages, but from the user perspective it is presented as passing an API endpoint string to a function.</p>
+<p>Currently, <code>memory_alpha</code> is available in <code>rtrek</code>. This is the main function associated with accessing data from Memory Alpha. For details and examples on this and its companion functions, see the Memory Alpha <a href="https://leonawicz.github.io/rtrek/articles/memory-alpha.html">vignette</a>. Functions for Memory Beta are not yet available but will be in the next package version.</p>
 </div>
 <div id="star-trek-novel-text-mining" class="section level2">
 <h2 class="hasAnchor">
@@ -550,6 +565,7 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
       <li><a href="#spatial-maps">Spatial maps</a></li>
       <li><a href="#historical-timeline">Historical timeline</a></li>
       <li><a href="#star-trek-api">Star Trek API</a></li>
+      <li><a href="#pseudo-apis">Pseudo-APIs</a></li>
       <li><a href="#star-trek-novel-text-mining">Star Trek novel text mining</a></li>
       </ul>
 </div>

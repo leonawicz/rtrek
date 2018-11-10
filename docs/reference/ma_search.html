@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Star Trek event-based timeline. — tlEvents • rtrek</title>
+<title>Memory Alpha site search — ma_search • rtrek</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -32,11 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Star Trek event-based timeline. — tlEvents" />
+<meta property="og:title" content="Memory Alpha site search — ma_search" />
 
-<meta property="og:description" content="A data frame with 1241 rows and 6 columns containing Star Trek timeline data. This dataset is event-driven,
-meaning that the timeline entries (rows) provide chronologically ordered historical events from the Star Trek universe.
-See the tlEvents dataset for an event-driven timeline." />
+<meta property="og:description" content="Perform a Memory Alpha site search." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -196,51 +194,71 @@ See the tlEvents dataset for an event-driven timeline." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Star Trek event-based timeline.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>tlEvents.Rd</code></div>
+    <h1>Memory Alpha site search</h1>
+    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/memory_alpha.R'><code>R/memory_alpha.R</code></a></small>
+    <div class="hidden name"><code>ma_search.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>A data frame with 1241 rows and 6 columns containing Star Trek timeline data. This dataset is event-driven,
-meaning that the timeline entries (rows) provide chronologically ordered historical events from the Star Trek universe.
-See the <code>tlEvents</code> dataset for an event-driven timeline.</p>
+    <p>Perform a Memory Alpha site search.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>tlEvents</span></pre>
-        
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <pre class="usage"><span class='fu'>ma_search</span>(<span class='no'>text</span>, <span class='kw'>browse</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>text</th>
+      <td><p>character, search query.</p></td>
+    </tr>
+    <tr>
+      <th>browse</th>
+      <td><p>logical, open search results page in browser.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame</p>
+    <p>a data frame</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This timeline was recreated from the timeline found at <a href='http://www.maplenet.net/~trowbridge/timeline.htm'>http://www.maplenet.net/~trowbridge/timeline.htm</a>.
-As with <code>tlBooks</code>, this timeline is quite out of date. In fact it is at least somewhat more out of date than <code>tlBooks</code>.
-This timeline is also more problematic than the other, and less relevant moving forward. Its updating essentially ceased  as the other began.
-See the URL for more details.</p>
-<p>However, it is included because unlike <code>tlBooks</code>, which is a timeline of production titles, this timeline dataset is event-driven.
-While it may now be erroneous in places even independent from being out of date,
-it is useful for its informative textual entries referencing historically significant events in Star Trek lore.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='tlBooks.html'>tlBooks</a></code> <code><a href='tlFootnotes.html'>tlFootnotes</a></code></p></div>
+    <p>This function returns a data frame containing the title, truncated text preview, and relative URL for the first page of search results.
+It does not recursively collate search results through subsequent pages of results.
+There could be an unexpectedly high number of pages of results depending on the search query.
+Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>ma_search</span>(<span class='st'>"Worf"</span>)</div><div class='output co'>#&gt; # A tibble: 25 x 3
+#&gt;    title                 text                              url                 
+#&gt;    &lt;chr&gt;                 &lt;chr&gt;                             &lt;chr&gt;               
+#&gt;  1 Worf                  http://memory-alpha.wikia.com/wi~ Worf                
+#&gt;  2 Worf (mirror)         http://memory-alpha.wikia.com/wi~ Worf_(mirror)       
+#&gt;  3 Worf (Colonel)        http://memory-alpha.wikia.com/wi~ Worf_(Colonel)      
+#&gt;  4 Worf Special          http://memory-alpha.wikia.com/wi~ Worf_Special        
+#&gt;  5 Worf's First Adventu~ http://memory-alpha.wikia.com/wi~ Worf%27s_First_Adve~
+#&gt;  6 Worf - Return to Gra~ http://memory-alpha.wikia.com/wi~ Worf_-_Return_to_Gr~
+#&gt;  7 Personal log, Worf    http://memory-alpha.wikia.com/wi~ Personal_log,_Worf  
+#&gt;  8 Worf - Return to Gra~ http://memory-alpha.wikia.com/wi~ Worf_-_Return_to_Gr~
+#&gt;  9 Worf - Return to Gra~ http://memory-alpha.wikia.com/wi~ Worf_-_Return_to_Gr~
+#&gt; 10 Alexander Rozhenko    http://memory-alpha.wikia.com/wi~ Alexander_Rozhenko  
+#&gt; # ... with 15 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#format">Format</a></li>
+      <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

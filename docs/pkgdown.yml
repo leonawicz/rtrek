@@ -3,9 +3,12 @@ pkgdown: 1.1.0
 pkgdown_sha: ~
 articles:
   fonts: fonts.html
+  memory-alpha: memory-alpha.html
+  memory-beta: memory-beta.html
   rr: rr.html
   rtrek: rtrek.html
   sc: sc.html
+  stapi: stapi.html
 urls:
   reference: http://leonawicz.github.io//reference
   article: http://leonawicz.github.io//articles

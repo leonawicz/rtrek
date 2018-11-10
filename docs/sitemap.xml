@@ -4,6 +4,15 @@
     <loc>http://leonawicz.github.io//index.html</loc>
   </url>
   <url>
+    <loc>http://leonawicz.github.io//reference/ma_article.html</loc>
+  </url>
+  <url>
+    <loc>http://leonawicz.github.io//reference/ma_search.html</loc>
+  </url>
+  <url>
+    <loc>http://leonawicz.github.io//reference/memory_alpha.html</loc>
+  </url>
+  <url>
     <loc>http://leonawicz.github.io//reference/pipe.html</loc>
   </url>
   <url>
@@ -64,6 +73,12 @@
     <loc>http://leonawicz.github.io//articles/fonts.html</loc>
   </url>
   <url>
+    <loc>http://leonawicz.github.io//articles/memory-alpha.html</loc>
+  </url>
+  <url>
+    <loc>http://leonawicz.github.io//articles/memory-beta.html</loc>
+  </url>
+  <url>
     <loc>http://leonawicz.github.io//articles/rr.html</loc>
   </url>
   <url>
@@ -71,5 +86,8 @@
   </url>
   <url>
     <loc>http://leonawicz.github.io//articles/sc.html</loc>
+  </url>
+  <url>
+    <loc>http://leonawicz.github.io//articles/stapi.html</loc>
   </url>
 </urlset>
