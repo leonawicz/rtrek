@@ -125,7 +125,7 @@ ggplot(eps_count, aes(factor(name, levels = name[order(n)]), n)) +
   theme_minimal(base_size = 28) + 
   theme(plot.title = element_text(family = "StarNext"), line = eb, axis.text.x = eb) +
   scale_x_discrete(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0)) +
-  labs(x = "Character", y = "Number of episodes", title = "TNG episode appearances") +
+  labs(x = "Character", y = "Number of episodes", title = "TNG EPISODE APPEARANCES") +
   geom_text(aes(label = n), color = "white", size = 10, hjust = 1.5)
 ```
 
