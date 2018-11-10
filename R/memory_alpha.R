@@ -165,7 +165,7 @@ ma_article <- function(url, content_format = c("xml", "character"),
   x <- rvest::html_nodes(x, ".WikiaArticle > #mw-content-text") %>% rvest::html_children()
   aside <- ma_article_aside(x)
   content <- x[which(rvest::html_name(x) %in% content_nodes)]
-  if(content_format == "character") content <-  gsub("Edit$", "", ma_text(content))
+  if(content_format == "character") content <- gsub(" Edit$", "", ma_text(content))
   if(browse) utils::browseURL(url)
   dplyr::data_frame(title = title, content = list(content), metadata = list(aside), categories = list(cats))
 }
