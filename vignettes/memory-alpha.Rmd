@@ -12,6 +12,7 @@ set.seed(1)
 knitr::opts_chunk$set(
   collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE, error = FALSE, tidy = TRUE
 )
+library(rtrek)
 ```
 
 The `rtrek` package includes some Star Trek datasets, but much more data is available outside the package. You can access other Star Trek data through various APIs.
