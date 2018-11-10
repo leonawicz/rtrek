@@ -79,7 +79,9 @@ ma_article_categories <- function(x){
 }
 
 ma_article_aside <- function(x){
-  x <- x[[which(rvest::html_name(x) == "aside")[1]]] %>% rvest::html_children()
+  idx <- which(rvest::html_name(x) == "aside")
+  if(!length(idx)) return()
+  x <- x[[idx[1]]] %>% rvest::html_children()
   x <- x[which(rvest::html_name(x) == "div")]
   cols <- rvest::html_nodes(x, ".pi-data-label") %>% ma_text()
   cols <- gsub(":$", "", cols)

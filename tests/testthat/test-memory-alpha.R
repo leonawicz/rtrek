@@ -54,6 +54,9 @@ test_that("ma_article returns as expected", {
   expect_error(ma_article("x"), "Article not found.")
   closeAllConnections()
 
+  expect_equal(ncol(memory_alpha("people/Acamarians")), 2)
+  expect_is(ma_article("Star_Trek")$metadata[[1]], "NULL")
+
   d0 <- memory_alpha("people/Klingons/Azetbur")
   d <- ma_article("Azetbur")
   expect_equal(unlist(d0), unlist(d))
