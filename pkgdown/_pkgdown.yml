@@ -50,6 +50,12 @@ navbar:
       href: "articles/rtrek.html"
     - text: "Articles"
       menu:
+        - text: "Star Trek API (STAPI)"
+          href: "articles/stapi.html"
+        - text: "Memory Alpha"
+          href: "articles/memory-alpha.html"
+        - text: "Memory Beta"
+          href: "articles/memory-beta.html"
         - text: "Star Trek fonts"
           href: "articles/fonts.html"
     - text: "Reference"

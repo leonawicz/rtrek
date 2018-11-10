@@ -1,0 +1,31 @@
+---
+title: "Memory Beta"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Memory Beta}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+set.seed(1)
+knitr::opts_chunk$set(
+  collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE, error = FALSE, tidy = TRUE
+)
+```
+
+*Note: Memory Beta accessor functions are not available yet. This webpage is a placeholder and content will be added later when package functionality is in place. I had fun developing the Memory Alpha functions, but I am incredibly excited to work on the Memory Beta side next! Stay tuned.*
+
+The `rtrek` package includes some Star Trek datasets, but much more data is available outside the package. You can access other Star Trek data through various APIs.
+
+Technically, there is only one formal API: the Star Trek API (STAPI). `rtrek` has functions to assist with making calls to this API in order to access specific data. See the STAPI [vignette](https://leonawicz.github.io/rtrek/articles/stapi.html) for details. 
+
+The focus of this vignette is on accessing data from Memory Beta. `rtrek` interfaces with and extracts information from the [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) websites. Neither of these sites actually expose an API, but functions in `rtrek` with querying these websites in an API-like manner. For working with Memory Alpha content, see the respective [vignette](https://leonawicz.github.io/rtrek/articles/memory-alpha.html).
+
+## The rtrek Memory Beta API
+
+Memory Beta is a website that hosts information on all things relating to officially licensed Star Trek productions, for example novels, comics, etc. These are official, but this is not the same and canon. For a canon-only focus, see Memory Alpha.
+
+When talking about using `rtrek` to access data from Memory Beta, the term data is used loosely. It would be just as accurate to say information, content or text. While the site contains a vast amount of information, it is not structured in tidy tables like a data scientist would love to conveniently encounter. Memory Beta is a wiki and can be thought of as similar to an encyclopedia. The bulk of its pages consist of articles. While some of these may have interesting html tables contained within, the site largely offers textual data.
+
+Since Memory Beta does not offer an API, the API-like interfacing provided by `rtrek` is just a collection of wrappers around web page scraping. In terms of what the relevant functions bring back from Memory Beta, there are real limitations on the level of generality and quality of formatting that can be achieved across such a massive and diverse collection of articles.

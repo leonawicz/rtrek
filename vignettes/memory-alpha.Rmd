@@ -1,0 +1,97 @@
+---
+title: "Memory Alpha"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Memory Alpha}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+set.seed(1)
+knitr::opts_chunk$set(
+  collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE, error = FALSE, tidy = TRUE
+)
+```
+
+The `rtrek` package includes some Star Trek datasets, but much more data is available outside the package. You can access other Star Trek data through various APIs.
+
+Technically, there is only one formal API: the Star Trek API (STAPI). `rtrek` has functions to assist with making calls to this API in order to access specific data. See the STAPI [vignette](https://leonawicz.github.io/rtrek/articles/stapi.html) for details. 
+
+The focus of this vignette is on accessing data from Memory Alpha. `rtrek` interfaces with and extracts information from the [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) websites. Neither of these sites actually expose an API, but functions in `rtrek` with querying these websites in an API-like manner. For working with Memory Beta content, see the respective [vignette](https://leonawicz.github.io/rtrek/articles/memory-beta.html).
+
+## The rtrek Memory Alpha API
+
+Memory Alpha is a website that hosts information on all things relating to official canon Star Trek. This strictly pertains to the television series and movies. There are many other officially licensed Star Trek productions, e.g., the many hundreds of novels, but these are not technically canon even though they are often treated as much by many fans. For a broader, licensed works focus, see Memory Beta.
+
+When talking about using `rtrek` to access data from Memory Alpha, the term data is used loosely. It would be just as accurate to say information, content or text. While the site contains a vast amount of information, it is not structured in tidy tables like a data scientist would love to conveniently encounter. Memory Alpha is a wiki and can be thought of as similar to an encyclopedia. The bulk of its pages consist of articles. While some of these may have interesting html tables contained within, the site largely offers textual data.
+
+Since Memory Alpha does not offer an API, the API-like interfacing provided by `rtrek` is just a collection of wrappers around web page scraping. In terms of what the relevant functions bring back from Memory Alpha, there are real limitations on the level of generality and quality of formatting that can be achieved across such a massive and diverse collection of articles.
+
+### Memory Alpha portals
+
+There are six Memory Alpha web portals available. To see them, call the main function for Memory Alpha access, `memory_alpha`, and pass it `portals` as the API endpoint.
+
+```{r ma_portals}
+memory_alpha("portals")
+```
+
+The data frame returned provides each portal ID and respective "short URL". These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with `http://memory-alpha.wikia.com/wiki/`.
+
+In this special case where `endpoint = "portals"`, this table is returned from the package itself because it is already known. The available portals are fixed. There is no accessing of Memory Alpha yet. The URLs shown are also not needed by the user, but are provided alongside the IDs for context.
+
+### Using a portal
+
+When using a specific portal at the highest level (portal ID only), the returned data frame contains information about searchable categories available in the portal.
+
+```{r ma_categories}
+memory_alpha("people")
+```
+
+Again, there are `id` and `url` columns. There is also a `group` (and potentially a `subgroup`) column. This is only to provide meaningful context for the values in the `id` column if relevant for a given portal; `group` is not used for anything and the user can ignore it.
+
+The above call does involve reaching out to Memory Alpha. While the portals are stable, it is expected that content within is regularly updated. Remember that this is not a real API. Since one is not available, what is really going on behind the scenes is the use of `xml2` and `rvest` for web page harvesting.
+
+Some portals have terminal endpoints - in Memory Alpha these are the written articles - at the top level, but typically the top level results for a portal are categories. You can always differentiate categories from articles by the URL, which will begin with `Category:` in the former case.
+
+Descending through subcategories is done by appending their `id` values, separated by a forward slash `/`.
+
+```{r ma_categories2}
+memory_alpha("people/Klingons")
+
+memory_alpha("people/Klingons/Worf")
+```
+
+Note the change in the structure of the final output, which is an article. This is the end of this particular road The result is still a data frame, but now has only one row, the article.
+
+The columns include a text `title` and three nested datasets. `content` contains an `xml_nodeset` object left (mostly) unadulterated by `memory_alpha`. This contains the article's main content section, including ordered content from a default set of html tags. For more control over article content, see `ma_article` in the next section. `metadata` contains a nested data frame of content parsed from the summary card that appears in the top right corner of articles. If this fails to parse for a given article, `NULL` is returned. `categories` returns a data frame containing categories in which the article topic falls under and their respective URLs.
+
+### Articles
+
+If you already know the article `id`, You can obtain an article directly using `ma_article` instead of going through an endpoint with `memory_alpha` that terminates in the same `id`. This also offers additional options to control what tags are included in the returned result and whether that result is the original `xml_nodeset` object or a character vector of only the extracted text. In either case, work is left to the user to do what they intend such as text analysis.
+
+```{r ma_article}
+worf <- ma_article("Worf", content_format = "character", content_nodes = c("h2", "h3"))
+worf
+x$content[[1]] # Worf article section headings
+```
+
+If `browse = TRUE` the article page also launches in the browser.
+
+### Search
+
+You can perform a Memory Alpha site search using `ma_search`. This returns a data frame of search results content, including title, truncated text preview, and short URL for the first page of search results. 
+
+It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with `ma_article`, setting `browse = TRUE` opens the page in the browser.
+
+```{r ma_search}
+ma_search("Guinan")
+```
+
+### Caveats
+
+Memory Alpha contains almost 50,000 pages at the time of this `rtrek` version. It is possible that some articles may have idiosyncratic structure that could make them inaccessible by these `rtrek` functions. 
+
+Since this package version is also the first to offer this brand new functionality - and as mentioned, Memory Alpha does not offer a real stable API, leading to a less reliable web-scraping approach, it is unknown what the likelihood is at this time of breaking changes occurring during updates to Memory Alpha by its maintainers.
+
+Jolan Tru.
