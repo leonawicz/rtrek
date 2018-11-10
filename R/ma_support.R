@@ -10,6 +10,8 @@ ma_base_url <- "http://memory-alpha.wikia.com/wiki"
 
 ma_base_add <- function(x) file.path(ma_base_url, x)
 
+ma_text <- function(x) trimws(rvest::html_text(x))
+
 ma_href <- function(x) gsub(".*wiki/", "", rvest::html_attr(x, "href"))
 
 # Recursively collate category pages and/or articles for nested endpoint
@@ -17,8 +19,7 @@ ma_select <- function(d, ep, .id){
   url <- dplyr::filter(d, .data[[.id]] == ep[1])$url
   if(!length(url)) stop(paste0("Invalid endpoint: ", ep[1], "."), call. = FALSE)
   if(grepl("^Category:", url)){
-    d <- purrr::map(c("#mw-subcategories", "#mw-pages"), ~ma_category_pages(ep[1], url, .x)) %>%
-      dplyr::bind_rows()
+    d <- ma_category_pages(ep[1], url, c(".category-page__members", ".category-page__pagination"))
   } else {
     if(length(ep) > 1) stop(paste0("Invalid enpoint: ", ep[1],
                                    " is an article but `endpoint` does not terminate here."), call. = FALSE)
@@ -32,18 +33,23 @@ ma_select <- function(d, ep, .id){
 ma_select <- memoise::memoise(ma_select)
 
 # Recursively collate all subcategories or articles for a given category's page(s)
-ma_category_pages <- function(id, url, node, d0 = NULL){
-  x <- xml2::read_html(ma_base_add(url)) %>% rvest::html_nodes(node) %>% rvest::html_nodes("a")
-  txt <- rvest::html_text(x)
-  url <- ma_href(x)
+ma_category_pages <- function(id, url, nodes, d0 = NULL){
+  x <- xml2::read_html(ma_base_add(url))
+  x1 <- rvest::html_nodes(x, nodes[1]) %>% rvest::html_nodes("a")
+  txt <- ma_text(x1)
+  url <- ma_href(x1)
   d <- dplyr::data_frame(txt, url) %>% stats::setNames(c(id, "url"))
   if(!is.null(d0)) d <- dplyr::bind_rows(d0, d)
-  idx <- grep("next 200", txt)
-  Sys.sleep(1)
+
+  x <- rvest::html_nodes(x, nodes[2]) %>% rvest::html_nodes("a")
+  if(!length(x)) return(d)
+  txt <- ma_text(x)
+  url <- ma_href(x)
+  idx <- grep("^(\\n|\\t)+Next(\\n|\\t)+$", txt)
   if(!length(idx)){
-    dplyr::filter(d, !grepl("(previous|next) 200", .data[[id]]))
+    d
   } else {
-    Recall(id, url[idx[1]], node, d)
+    Recall(id, url[idx[1]], nodes, d)
   }
 }
 
@@ -68,14 +74,14 @@ ma_article_categories <- function(x){
   x <- rvest::html_node(x, "#articleCategories") %>% rvest::html_nodes("li span a")
   x <- x[!grepl(".*Category:Memory_Alpha_pages_with.*", x)]
   url <- ma_href(x)
-  x <- rvest::html_text(x)
+  x <- ma_text(x)
   dplyr::data_frame(categories = x, url = url)
 }
 
 ma_article_aside <- function(x){
   x <- x[[which(rvest::html_name(x) == "aside")[1]]] %>% rvest::html_children()
   x <- x[which(rvest::html_name(x) == "div")]
-  cols <- rvest::html_nodes(x, ".pi-data-label") %>% rvest::html_text()
+  cols <- rvest::html_nodes(x, ".pi-data-label") %>% ma_text()
   cols <- gsub(":$", "", cols)
   cols <- gsub("\\s", "_", cols)
   x <- rvest::html_nodes(x, ".pi-data-value")
@@ -84,7 +90,7 @@ ma_article_aside <- function(x){
     return()
   }
   vals <- purrr::map(x, ~{
-    x <- xml2::xml_contents(.x) %>% rvest::html_text()
+    x <- xml2::xml_contents(.x) %>% ma_text()
     x[x %in% c("", " ")] <- "|"
     x <- gsub("\\)", "\\)|", x)
     x <- gsub("[|]+$", "", gsub("[|]+", "|", paste0(x, collapse = "")))

@@ -82,7 +82,7 @@ ma_portal_df <- function(portal, nodes = c("table", "span, a"), start_node_index
     x <- purrr::map(x[idx], ~rvest::html_children(.x) %>% rvest::html_nodes(nodes[2]))
   }
   if(!is.null(slice)) x <- x[slice]
-  x1 <- purrr::map(x, ~rvest::html_text(.x))
+  x1 <- purrr::map(x, ~ma_text(.x))
   x2 <- purrr::map(x, ~ma_href(.x))
   .f <- function(x, y){
     x[!is.na(y)] <- NA
@@ -160,12 +160,12 @@ ma_article <- function(url, content_format = c("xml", "character"),
     x <- xml2::read_html(url),
     error = function(e) stop("Article not found.", call. = FALSE)
   )
-  title <- rvest::html_node(x, ".page-header__title") %>% rvest::html_text()
+  title <- rvest::html_node(x, ".page-header__title") %>% ma_text()
   cats <- ma_article_categories(x)
   x <- rvest::html_nodes(x, ".WikiaArticle > #mw-content-text") %>% rvest::html_children()
   aside <- ma_article_aside(x)
   content <- x[which(rvest::html_name(x) %in% content_nodes)]
-  if(content_format == "character") content <-  gsub(" Edit$", "", rvest::html_text(content))
+  if(content_format == "character") content <-  gsub("Edit$", "", ma_text(content))
   if(browse) utils::browseURL(url)
   dplyr::data_frame(title = title, content = list(content), metadata = list(aside), categories = list(cats))
 }
@@ -191,9 +191,9 @@ ma_search <- function(text, browse = FALSE){
   url <- paste0(ma_base_add("Special:Search?query="), gsub("\\s+", "+", text))
   x <- xml2::read_html(url) %>% rvest::html_node(".Results")
   x2 <- x %>% rvest::html_nodes("h1 > a")
-  title <- rvest::html_text(x2)
+  title <- ma_text(x2)
   url <- ma_href(x2)
-  text <- rvest::html_nodes(x, "article") %>% rvest::html_text() %>% strsplit("(\n|\t)+") %>%
+  text <- rvest::html_nodes(x, "article") %>% ma_text() %>% strsplit("(\n|\t)+") %>%
     sapply("[", 3)
   if(browse) utils::browseURL(url)
   dplyr::data_frame(title = title, text = text, url = url)
