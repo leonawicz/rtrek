@@ -37,6 +37,7 @@ Imports:
     rvest,
     purrr,
     memoise,
-    tibble
+    tibble,
+    tidyr
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
