@@ -74,7 +74,7 @@ If you already know the article `id`, You can obtain an article directly using `
 ```{r ma_article}
 worf <- ma_article("Worf", content_format = "character", content_nodes = c("h2", "h3"))
 worf
-x$content[[1]] # Worf article section headings
+worf$content[[1]] # Worf article section headings
 ```
 
 If `browse = TRUE` the article page also launches in the browser.
