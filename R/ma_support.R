@@ -45,7 +45,7 @@ ma_category_pages <- function(id, url, nodes, d0 = NULL){
   if(!length(x)) return(d)
   txt <- ma_text(x)
   url <- ma_href(x)
-  idx <- grep("^(\\n|\\t)+Next(\\n|\\t)+$", txt)
+  idx <- grep("^Next$", txt)
   if(!length(idx)){
     d
   } else {
