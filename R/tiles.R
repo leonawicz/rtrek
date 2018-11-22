@@ -20,8 +20,8 @@
 #' d <- data.frame(row = c(0, 3222, 6445), col = c(0, 4000, 8000))
 #' tile_coords(d, "galaxy1")
 tile_coords <- function(data, id){
-  if(!all(c("row", "col") %in% names(data))) stop("`data` must contain columns named `col` and `row`")
-  if(any(c("x", "y") %in% names(data))) stop("`data` cannot contain columns named `x` or `y`")
+  if(!all(c("row", "col") %in% names(data))) stop("`data` must contain columns named `col` and `row`", call. = FALSE)
+  if(any(c("x", "y") %in% names(data))) stop("`data` cannot contain columns named `x` or `y`", call. = FALSE)
   id0 <- id
   x <- dplyr::slice(rtrek::stTiles, .data[["id"]] == id0)
   w <- x$width

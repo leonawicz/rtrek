@@ -32,7 +32,7 @@
 #' Q <- stapi("character", uid = "CHMA0000025118")
 #' Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
 stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
-  if(!id %in% rtrek::stapiEntities$id) stop("Invalid `id`.")
+  if(!id %in% rtrek::stapiEntities$id) stop("Invalid `id`.", call. = FALSE)
   .antiddos("stapi")
   type <- if(is.null(uid)) "/search?pageNumber=" else paste0("?uid=", uid)
   uri <- paste0("http://stapi.co/api/v1/rest/", id, type)
