@@ -10,6 +10,6 @@ articles:
   sc: sc.html
   stapi: stapi.html
 urls:
-  reference: http://leonawicz.github.io//reference
-  article: http://leonawicz.github.io//articles
+  reference: https://leonawicz.github.io/rtrek/reference
+  article: https://leonawicz.github.io/rtrek/articles
 

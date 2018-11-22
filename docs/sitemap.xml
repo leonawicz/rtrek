@@ -1,93 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://leonawicz.github.io//index.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/index.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/ma_article.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/ma_article.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/ma_search.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/ma_image.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/memory_alpha.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/ma_search.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/pipe.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/memory_alpha.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/rtrek.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/stapi.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/rtrek.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/stapiEntities.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/stapi.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/stBooks.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/stapiEntities.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/stBooksWiki.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/stBooks.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/stGeo.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/stBooksWiki.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/stSeries.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/stGeo.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/stSpecies.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/stSeries.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/stTiles.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/stSpecies.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/st_books_wiki.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/stTiles.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/st_datasets.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/st_books_wiki.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/st_font.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/st_datasets.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/st_tiles.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/st_font.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/st_tiles_data.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/st_tiles.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/tile_coords.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/st_tiles_data.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/tlBooks.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/tile_coords.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/tlEvents.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/tlBooks.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/tlFootnotes.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/tlEvents.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//articles/fonts.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/reference/tlFootnotes.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//articles/memory-alpha.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/articles/fonts.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//articles/memory-beta.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/articles/memory-alpha.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//articles/rr.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/articles/memory-beta.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//articles/rtrek.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/articles/rr.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//articles/sc.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/articles/rtrek.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//articles/stapi.html</loc>
+    <loc>https://leonawicz.github.io/rtrek/articles/sc.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/articles/stapi.html</loc>
   </url>
 </urlset>

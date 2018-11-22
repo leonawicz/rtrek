@@ -175,9 +175,10 @@
 <p>Memory Alpha is a website that hosts information on all things relating to official canon Star Trek. This strictly pertains to the television series and movies. There are many other officially licensed Star Trek productions, e.g., the many hundreds of novels, but these are not technically canon even though they are often treated as much by many fans. For a broader, licensed works focus, see Memory Beta.</p>
 <p>When talking about using <code>rtrek</code> to access data from Memory Alpha, the term data is used loosely. It would be just as accurate to say information, content or text. While the site contains a vast amount of information, it is not structured in tidy tables like a data scientist would love to conveniently encounter. Memory Alpha is a wiki and can be thought of as similar to an encyclopedia. The bulk of its pages consist of articles. While some of these may have interesting html tables contained within, the site largely offers textual data.</p>
 <p>Since Memory Alpha does not offer an API, the API-like interfacing provided by <code>rtrek</code> is just a collection of wrappers around web page scraping. In terms of what the relevant functions bring back from Memory Alpha, there are real limitations on the level of generality and quality of formatting that can be achieved across such a massive and diverse collection of articles.</p>
-<div id="memory-alpha-portals" class="section level3">
-<h3 class="hasAnchor">
-<a href="#memory-alpha-portals" class="anchor"></a>Memory Alpha portals</h3>
+</div>
+<div id="memory-alpha-portals" class="section level2">
+<h2 class="hasAnchor">
+<a href="#memory-alpha-portals" class="anchor"></a>Memory Alpha portals</h2>
 <p>There are six Memory Alpha web portals available. To see them, call the main function for Memory Alpha access, <code>memory_alpha</code>, and pass it <code>portals</code> as the API endpoint.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"portals"</span>)
 <span class="co">#&gt; # A tibble: 6 x 2</span>
@@ -192,9 +193,9 @@
 <p>The data frame returned provides each portal ID and respective “short URL”. These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with <code>http://memory-alpha.wikia.com/wiki/</code>.</p>
 <p>In this special case where <code>endpoint = "portals"</code>, this table is returned from the package itself because it is already known. The available portals are fixed. There is no accessing of Memory Alpha yet. The URLs shown are also not needed by the user, but are provided alongside the IDs for context.</p>
 </div>
-<div id="using-a-portal" class="section level3">
-<h3 class="hasAnchor">
-<a href="#using-a-portal" class="anchor"></a>Using a portal</h3>
+<div id="using-a-portal" class="section level2">
+<h2 class="hasAnchor">
+<a href="#using-a-portal" class="anchor"></a>Using a portal</h2>
 <p>When using a specific portal at the highest level (portal ID only), the returned data frame contains information about searchable categories available in the portal.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people"</span>)
 <span class="co">#&gt; # A tibble: 101 x 3</span>
@@ -239,9 +240,9 @@
 <p>Note the change in the structure of the final output, which is an article. This is the end of this particular road The result is still a data frame, but now has only one row, the article.</p>
 <p>The columns include a text <code>title</code> and three nested datasets. <code>content</code> contains an <code>xml_nodeset</code> object left (mostly) unadulterated by <code>memory_alpha</code>. This contains the article’s main content section, including ordered content from a default set of html tags. For more control over article content, see <code>ma_article</code> in the next section. <code>metadata</code> contains a nested data frame of content parsed from the summary card that appears in the top right corner of articles. If this fails to parse for a given article, <code>NULL</code> is returned. <code>categories</code> returns a data frame containing categories in which the article topic falls under and their respective URLs.</p>
 </div>
-<div id="articles" class="section level3">
-<h3 class="hasAnchor">
-<a href="#articles" class="anchor"></a>Articles</h3>
+<div id="articles" class="section level2">
+<h2 class="hasAnchor">
+<a href="#articles" class="anchor"></a>Articles</h2>
 <p>If you already know the article <code>id</code>, You can obtain an article directly using <code>ma_article</code> instead of going through an endpoint with <code>memory_alpha</code> that terminates in the same <code>id</code>. This also offers additional options to control what tags are included in the returned result and whether that result is the original <code>xml_nodeset</code> object or a character vector of only the extracted text. In either case, work is left to the user to do what they intend such as text analysis.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">worf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ma_article.html">ma_article</a></span>(<span class="st">"Worf"</span>, <span class="dt">content_format =</span> <span class="st">"character"</span>, <span class="dt">content_nodes =</span> <span class="kw">c</span>(<span class="st">"h2"</span>, 
     <span class="st">"h3"</span>))
@@ -291,9 +292,71 @@ worf<span class="op">$</span>content[[<span class="dv">1</span>]]  <span class="
 <span class="co">#&gt; [38] "External links"</span></code></pre></div>
 <p>If <code>browse = TRUE</code> the article page also launches in the browser.</p>
 </div>
-<div id="search" class="section level3">
-<h3 class="hasAnchor">
-<a href="#search" class="anchor"></a>Search</h3>
+<div id="images" class="section level2">
+<h2 class="hasAnchor">
+<a href="#images" class="anchor"></a>Images</h2>
+<p>Full resolution source images can be downloaded and imported into R using <code>ma_image</code> if you know the short URL. The easiest way to find URLs is by using a Memory Alpha portal. In the example below, the Memory Alpha images category under Klingons is selected. Look for a picture that includes Worf but also Data. Since the category column name is so long, use the <code>url</code> column; it’s almost the same.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+klingons &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons/Category:Memory Alpha images (Klingons)"</span>)
+klingons
+<span class="co">#&gt; # A tibble: 1,172 x 2</span>
+<span class="co">#&gt;    `Category:Memory Alpha images (Klin~ url                               </span>
+<span class="co">#&gt;    &lt;chr&gt;                                &lt;chr&gt;                             </span>
+<span class="co">#&gt;  1 File:Age of ascension pain sticks.j~ File:Age_of_ascension_pain_sticks~</span>
+<span class="co">#&gt;  2 File:Ajilon Prime Klingon 1.jpg      File:Ajilon_Prime_Klingon_1.jpg   </span>
+<span class="co">#&gt;  3 File:Ajilon Prime Klingon 2.jpg      File:Ajilon_Prime_Klingon_2.jpg   </span>
+<span class="co">#&gt;  4 File:Ajilon Prime Klingons.jpg       File:Ajilon_Prime_Klingons.jpg    </span>
+<span class="co">#&gt;  5 File:Ak'voh.jpg                      File:Ak%27voh.jpg                 </span>
+<span class="co">#&gt;  6 File:Alexander and K'mtar.jpg        File:Alexander_and_K%27mtar.jpg   </span>
+<span class="co">#&gt;  7 File:Alexander at the kot'baval fes~ File:Alexander_at_the_kot%27baval~</span>
+<span class="co">#&gt;  8 File:Alexander Rozhenko, 2367.jpg    File:Alexander_Rozhenko,_2367.jpg </span>
+<span class="co">#&gt;  9 File:Alexander Rozhenko, 2370.jpg    File:Alexander_Rozhenko,_2370.jpg </span>
+<span class="co">#&gt; 10 File:Alexander Rozhenko, 2374.jpg    File:Alexander_Rozhenko,_2374.jpg </span>
+<span class="co">#&gt; # ... with 1,162 more rows</span>
+
+worf_data &lt;-<span class="st"> </span><span class="kw">filter</span>(klingons, <span class="kw">grepl</span>(<span class="st">"Worf"</span>, url) <span class="op">&amp;</span><span class="st"> </span><span class="kw">grepl</span>(<span class="st">"Data"</span>, url))
+worf_data
+<span class="co">#&gt; # A tibble: 5 x 2</span>
+<span class="co">#&gt;   `Category:Memory Alpha images (Klingo~ url                              </span>
+<span class="co">#&gt;   &lt;chr&gt;                                  &lt;chr&gt;                            </span>
+<span class="co">#&gt; 1 File:Data tries talking to Worf.jpg    File:Data_tries_talking_to_Worf.~</span>
+<span class="co">#&gt; 2 File:Data, Picard and Worf, 2375.jpg   File:Data,_Picard_and_Worf,_2375~</span>
+<span class="co">#&gt; 3 File:La Forge, Data, Riker, Worf, and~ File:La_Forge,_Data,_Riker,_Worf~</span>
+<span class="co">#&gt; 4 File:Picard Data and Worf on Iconia.j~ File:Picard_Data_and_Worf_on_Ico~</span>
+<span class="co">#&gt; 5 File:Worf carries Data through portal~ File:Worf_carries_Data_through_p~</span></code></pre></div>
+<p><em>Qapla’</em>! This provides several results.</p>
+<p>Note that you can use the full <code>memory_alpha</code> API endpoint string on this terminal page, treating it like an article (i.e., not a category page). There is not much to return other than perhaps the category entries attached to the image. A simpler option is to use the short URL with <code>ma_article</code> to achieve the same result.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons/Category:Memory Alpha images (Klingons)/File:Data tries talking to Worf.jpg"</span>)
+x
+<span class="co">#&gt; # A tibble: 1 x 4</span>
+<span class="co">#&gt;   title                         content           metadata categories     </span>
+<span class="co">#&gt;   &lt;chr&gt;                         &lt;list&gt;            &lt;list&gt;   &lt;list&gt;         </span>
+<span class="co">#&gt; 1 Data tries talking to Worf.j~ &lt;S3: xml_nodeset&gt; &lt;NULL&gt;   &lt;tibble [4 x 2~</span>
+
+x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ma_article.html">ma_article</a></span>(<span class="st">"File:Data_tries_talking_to_Worf.jpg"</span>)
+x
+<span class="co">#&gt; # A tibble: 1 x 4</span>
+<span class="co">#&gt;   title                         content           metadata categories     </span>
+<span class="co">#&gt;   &lt;chr&gt;                         &lt;list&gt;            &lt;list&gt;   &lt;list&gt;         </span>
+<span class="co">#&gt; 1 Data tries talking to Worf.j~ &lt;S3: xml_nodeset&gt; &lt;NULL&gt;   &lt;tibble [4 x 2~</span>
+
+x<span class="op">$</span>categories
+<span class="co">#&gt; [[1]]</span>
+<span class="co">#&gt; # A tibble: 4 x 2</span>
+<span class="co">#&gt;   categories                           url                                </span>
+<span class="co">#&gt;   &lt;chr&gt;                                &lt;chr&gt;                              </span>
+<span class="co">#&gt; 1 Memory Alpha remastered files by pr~ Category:Memory_Alpha_remastered_f~</span>
+<span class="co">#&gt; 2 Memory Alpha fair use images         Category:Memory_Alpha_fair_use_ima~</span>
+<span class="co">#&gt; 3 Memory Alpha images (Androids)       Category:Memory_Alpha_images_(Andr~</span>
+<span class="co">#&gt; 4 Memory Alpha images (Klingons)       Category:Memory_Alpha_images_(Klin~</span></code></pre></div>
+<p>Of course, the likely intent is to obtain the image file itself when working with image file “article” pages. Use <code>ma_image</code> for this. It returns a ggplot object of the downloaded image file.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ma_image.html">ma_image</a></span>(worf_data<span class="op">$</span>url[<span class="dv">1</span>])</code></pre></div>
+<p><img src="memory-alpha_files/figure-html/ma_image3-1.png" width="700"></p>
+<p><code>ma_image</code> can take the additional arguments, <code>keep = TRUE</code> to retain the downloaded image file, and <code>file</code> to specify the output filename if you do not want it to be derived from the short URL. If you need more control over the plot, set <code>keep = TRUE</code> and then load the image file into R directly to plot separately as needed.</p>
+</div>
+<div id="search" class="section level2">
+<h2 class="hasAnchor">
+<a href="#search" class="anchor"></a>Search</h2>
 <p>You can perform a Memory Alpha site search using <code>ma_search</code>. This returns a data frame of search results content, including title, truncated text preview, and short URL for the first page of search results.</p>
 <p>It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with <code>ma_article</code>, setting <code>browse = TRUE</code> opens the page in the browser.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ma_search.html">ma_search</a></span>(<span class="st">"Guinan"</span>)
@@ -312,13 +375,12 @@ worf<span class="op">$</span>content[[<span class="dv">1</span>]]  <span class="
 <span class="co">#&gt; 10 Delovian soufflé   http://memory-alpha.wikia.com/wik~ Delovian_souffl%~</span>
 <span class="co">#&gt; # ... with 15 more rows</span></code></pre></div>
 </div>
-<div id="caveats" class="section level3">
-<h3 class="hasAnchor">
-<a href="#caveats" class="anchor"></a>Caveats</h3>
+<div id="caveats" class="section level2">
+<h2 class="hasAnchor">
+<a href="#caveats" class="anchor"></a>Caveats</h2>
 <p>Memory Alpha contains almost 50,000 pages at the time of this <code>rtrek</code> version. It is possible that some articles may have idiosyncratic structure that could make them inaccessible by these <code>rtrek</code> functions.</p>
 <p>Since this package version is also the first to offer this brand new functionality - and as mentioned, Memory Alpha does not offer a real stable API, leading to a less reliable web-scraping approach, it is unknown what the likelihood is at this time of breaking changes occurring during updates to Memory Alpha by its maintainers.</p>
-<p>Jolan Tru.</p>
-</div>
+<p><em>Jolan Tru</em>.</p>
 </div>
   </div>
 
@@ -328,6 +390,12 @@ worf<span class="op">$</span>content[[<span class="dv">1</span>]]  <span class="
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#the-rtrek-memory-alpha-api">The rtrek Memory Alpha API</a></li>
+      <li><a href="#memory-alpha-portals">Memory Alpha portals</a></li>
+      <li><a href="#using-a-portal">Using a portal</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="#images">Images</a></li>
+      <li><a href="#search">Search</a></li>
+      <li><a href="#caveats">Caveats</a></li>
       </ul>
 </div>
       </div>
@@ -336,7 +404,7 @@ worf<span class="op">$</span>content[[<span class="dv">1</span>]]  <span class="
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://leonawicz.github.io/">Matthew Leonawicz</a>.</p>
+  <p>Developed by <a href="https://leonawicz.github.io/">Matthew Leonawicz</a>.</p>
 </div>
 
 <div class="pkgdown">
