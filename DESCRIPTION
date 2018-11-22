@@ -35,6 +35,7 @@ Imports:
     jsonlite,
     xml2,
     rvest,
+    jpeg,
     purrr,
     memoise,
     tibble,
