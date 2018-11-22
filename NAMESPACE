@@ -2,6 +2,7 @@
 
 export("%>%")
 export(ma_article)
+export(ma_image)
 export(ma_search)
 export(memory_alpha)
 export(st_books_wiki)

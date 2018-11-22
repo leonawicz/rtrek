@@ -70,3 +70,16 @@ test_that("ma_search returns as expected", {
   expect_equal(ncol(d), 3)
   expect_equal(names(d), c("title", "text", "url"))
 })
+
+test_that("ma_image and related calls all return as expected", {
+  ep <- "File:Ajilon Prime Klingon 1.jpg"
+  file <- gsub(" ", "_", ep)
+  x1 <- memory_alpha(paste0("people/Klingons/Category:Memory Alpha images (Klingons)/", ep))
+  x2 <- ma_article(file)
+  expect_is(x1, "tbl_df")
+  expect_identical(x1$categories, x2$categories)
+  expect_equal(dim(x1$categories[[1]]), c(4, 2))
+
+  x1 <- ma_image(file)
+  expect_is(x1, "ggplot")
+})

@@ -198,3 +198,37 @@ ma_search <- function(text, browse = FALSE){
   if(browse) utils::browseURL(url)
   dplyr::data_frame(title = title, text = text, url = url)
 }
+
+#' Memory Alpha images
+#'
+#' Download a Memory Alpha image and return a ggplot object.
+#'
+#' By default the downloaded file is not retained (\code{keep = FALSE}). The filename is derived from \code{url} if \code{file} is not provided.
+#' Whether or not the output file is kept, a ggplot object of the image is returned.
+#'
+#' @param url character, the short url of the image, for example as returned by \code{memory_alpha}. See example.
+#' @param file character, output file name. Optional. See details.
+#' @param keep logical, if \code{FALSE} (default) then \code{file} is only temporary.
+#'
+#' @return a ggplot object
+#' @export
+#'
+#' @examples
+#' \dontrun{ma_image("File:Gowron_attempts_to_recruit_Worf.jpg")}
+ma_image <- function(url, file, keep = FALSE){
+  x <- xml2::read_html(ma_base_add(url)) %>% rvest::html_nodes(".fullMedia .internal")
+  idx <- which(ma_text(x) == "original file")
+  if(!length(idx)) stop("Source file not accessible.", call. = FALSE)
+  url2 <- ma_href(x)[idx]
+  if(missing(file)) file <- gsub(" ", "_", gsub("^File:", "", url))
+  file <- gsub("jpeg$", "jpg", file)
+  utils::download.file(url2, method = "curl", file, quiet = TRUE)
+  x <- jpeg::readJPEG(file)
+  if(!keep) unlink(file, recursive = TRUE, force = TRUE)
+
+  asp <- dim(x)[1] / dim(x)[2]
+  x <- grid::rasterGrob(x, interpolate = TRUE)
+  ggplot2::ggplot(geom = "blank") +
+    ggplot2::annotation_custom(x, xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf) +
+    ggplot2::theme(aspect.ratio = asp)
+}
