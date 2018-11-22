@@ -1,4 +1,4 @@
-url: http://leonawicz.github.io/
+url: http://leonawicz.github.io/rtrek/
 
 template:
   params:
@@ -29,6 +29,7 @@ reference:
   - stapi
   - memory_alpha
   - ma_article
+  - ma_image
   - ma_search
 - title: Helper functions
   contents:
