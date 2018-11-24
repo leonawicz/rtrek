@@ -5,4 +5,4 @@ sudo: false
 cache: packages
 
 after_success:
-    - Rscript -e 'covr::codecov(function_exclusions = "\\.onLoad$", line_exclusions = list("R/novels.R" = 20:21, "R/api.R" = 80, "R/memory_alpha.R" = c(169, 198, 221), "R/fonts.R" = c(22:23, 26:27, 30:31)))'
+    - Rscript -e 'covr::codecov(function_exclusions = "\\.onLoad$", line_exclusions = list("R/novels.R" = 20:21, "R/api.R" = 80, "R/memory_alpha.R" = c(169, 198, 221), "R/memory_beta.R" = c(110, 139, 162), "R/fonts.R" = c(22:23, 26:27, 30:31)))'
