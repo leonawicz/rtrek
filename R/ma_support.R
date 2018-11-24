@@ -14,6 +14,10 @@ ma_text <- function(x) trimws(rvest::html_text(x))
 
 ma_href <- function(x) gsub(".*wiki/", "", rvest::html_attr(x, "href"))
 
+ma_strip_prefix <- function(x){
+  gsub("^Category:|^File:", "", x)
+}
+
 # Recursively collate category pages and/or articles for nested endpoint
 ma_select <- function(d, ep, .id){
   url <- dplyr::filter(d, .data[[.id]] == ep[1])$url
@@ -36,7 +40,7 @@ ma_select <- memoise::memoise(ma_select)
 ma_category_pages <- function(id, url, nodes, d0 = NULL){
   x <- xml2::read_html(ma_base_add(url))
   x1 <- rvest::html_nodes(x, nodes[1]) %>% rvest::html_nodes("a")
-  txt <- ma_text(x1)
+  txt <- ma_text(x1) %>% ma_strip_prefix()
   url <- ma_href(x1)
   d <- dplyr::data_frame(txt, url) %>% stats::setNames(c(id, "url"))
   if(!is.null(d0)) d <- dplyr::bind_rows(d0, d)

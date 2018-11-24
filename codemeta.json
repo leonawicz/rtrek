@@ -117,18 +117,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "ggplot2",
-      "name": "ggplot2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "showtext",
       "name": "showtext",
       "provider": {
@@ -233,6 +221,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "jpeg",
+      "name": "jpeg",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=jpeg"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
       "provider": {
@@ -242,6 +242,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=purrr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "ggplot2",
+      "name": "ggplot2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
     },
     {
       "@type": "SoftwareApplication",
@@ -278,11 +290,23 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "downloader",
+      "name": "downloader",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=downloader"
     }
   ],
   "releaseNotes": "https://github.com/leonawicz/rtrek/blob/master/NEWS.md",
   "readme": "https://github.com/leonawicz/rtrek/blob/master/README.md",
-  "fileSize": "490.04KB",
+  "fileSize": "492.604KB",
   "contIntegration": [
     "https://travis-ci.org/leonawicz/rtrek",
     "https://ci.appveyor.com/project/leonawicz/rtrek",

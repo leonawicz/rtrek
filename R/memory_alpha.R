@@ -49,7 +49,7 @@
 #'
 #' @return a data frame
 #' @export
-#' @seealso \code{\link{ma_article}}
+#' @seealso \code{\link{ma_article}}, \code{\link{memory_beta}}
 #'
 #' @examples
 #' memory_alpha("portals") # show available portals
@@ -192,11 +192,11 @@ ma_search <- function(text, browse = FALSE){
   x <- xml2::read_html(url) %>% rvest::html_node(".Results")
   x2 <- x %>% rvest::html_nodes("h1 > a")
   title <- ma_text(x2)
-  url <- ma_href(x2)
+  url2 <- ma_href(x2)
   text <- rvest::html_nodes(x, "article") %>% ma_text() %>% strsplit("(\n|\t)+") %>%
     sapply("[", 3)
   if(browse) utils::browseURL(url)
-  dplyr::data_frame(title = title, text = text, url = url)
+  dplyr::data_frame(title = title, text = text, url = url2)
 }
 
 #' Memory Alpha images
@@ -222,7 +222,7 @@ ma_image <- function(url, file, keep = FALSE){
   url2 <- ma_href(x)[idx]
   if(missing(file)) file <- gsub(" ", "_", gsub("^File:", "", url))
   file <- gsub("jpeg$", "jpg", file)
-  utils::download.file(url2, method = "curl", file, quiet = TRUE)
+  downloader::download(url2, destfile = file, quiet = TRUE, mode = "wb")
   x <- jpeg::readJPEG(file)
   if(!keep) unlink(file, recursive = TRUE, force = TRUE)
 

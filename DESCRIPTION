@@ -25,7 +25,6 @@ Suggests:
     covr,
     leaflet,
     lintr,
-    ggplot2,
     showtext,
     sysfonts,
     trekfont
@@ -37,8 +36,10 @@ Imports:
     rvest,
     jpeg,
     purrr,
+    ggplot2,
     memoise,
     tibble,
-    tidyr
+    tidyr,
+    downloader
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
