@@ -31,6 +31,10 @@ reference:
   - ma_article
   - ma_image
   - ma_search
+  - memory_beta
+  - mb_article
+  - mb_image
+  - mb_search
 - title: Helper functions
   contents:
   - st_datasets

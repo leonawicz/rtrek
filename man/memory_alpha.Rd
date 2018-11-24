@@ -65,5 +65,5 @@ memory_alpha("people/Klingons") # show people in Klingons subcategory
 memory_alpha("people/Klingons/Worf") # return terminal article content
 }
 \seealso{
-\code{\link{ma_article}}
+\code{\link{ma_article}}, \code{\link{memory_beta}}
 }
