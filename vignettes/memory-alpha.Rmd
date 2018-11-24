@@ -85,7 +85,7 @@ Full resolution source images can be downloaded and imported into R using `ma_im
 
 ```{r ma_image}
 library(dplyr)
-klingons <- memory_alpha("people/Klingons/Category:Memory Alpha images (Klingons)")
+klingons <- memory_alpha("people/Klingons/Memory Alpha images (Klingons)")
 klingons
 
 worf_data <- filter(klingons, grepl("Worf", url) & grepl("Data", url))
@@ -98,7 +98,7 @@ Note that you can use the full `memory_alpha` API endpoint string on this termin
 A simpler option is to use the short URL with `ma_article` to achieve the same result.
 
 ```{r ma_image2}
-x <- memory_alpha("people/Klingons/Category:Memory Alpha images (Klingons)/File:Data tries talking to Worf.jpg")
+x <- memory_alpha("people/Klingons/Memory Alpha images (Klingons)/Data tries talking to Worf.jpg")
 x
 
 x <- ma_article("File:Data_tries_talking_to_Worf.jpg")
@@ -129,6 +129,6 @@ ma_search("Guinan")
 
 Memory Alpha contains almost 50,000 pages at the time of this `rtrek` version. It is possible that some articles may have idiosyncratic structure that could make them inaccessible by these `rtrek` functions. 
 
-Since this package version is also the first to offer this brand new functionality - and as mentioned, Memory Alpha does not offer a real stable API, leading to a less reliable web-scraping approach, it is unknown what the likelihood is at this time of breaking changes occurring during updates to Memory Alpha by its maintainers.
+Since this package version is also the first to offer this brand new functionality - and as mentioned, Memory Alpha does not offer an API, leading to a less reliable web-scraping approach, it is unknown what the likelihood is at this time of breaking changes occurring during updates to Memory Alpha by its maintainers.
 
 *Jolan Tru*.
