@@ -16,13 +16,15 @@ mb_text <- function(x) trimws(rvest::html_text(x))
 mb_href <- function(x) gsub(".*wiki/", "", rvest::html_attr(x, "href"))
 
 mb_strip_prefix <- function(x){
-  gsub("^Category:|^File:", "", x)
+  x2 <- gsub("^Category:|^File:", "", x)
+  if(length(unique(x2)) < length(unique(x))) x else x2
 }
 
 # Recursively collate category pages and/or articles for nested endpoint
 mb_select <- function(d, ep, .id){
   url <- dplyr::filter(d, .data[[.id]] == ep[1])$url
   if(!length(url)) stop(paste0("Invalid endpoint: ", ep[1], "."), call. = FALSE)
+  print(url)
   if(grepl("^Category:", url)){
     d <- mb_category_pages(ep[1], url, c(".category-page__members", ".category-page__pagination"))
   } else {
