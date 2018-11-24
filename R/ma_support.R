@@ -15,7 +15,7 @@ ma_text <- function(x) trimws(rvest::html_text(x))
 ma_href <- function(x) gsub(".*wiki/", "", rvest::html_attr(x, "href"))
 
 ma_strip_prefix <- function(x){
-  gsub("^Category:|^File:", "", x)
+  x2 <- gsub("^Category:|^File:", "", x)
   if(length(unique(x2)) < length(unique(x))) x else x2
 }
 
