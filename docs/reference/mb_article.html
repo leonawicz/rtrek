@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Simple CRS coordinates — tile_coords • rtrek</title>
+<title>Read Memory Beta article — mb_article • rtrek</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Simple CRS coordinates — tile_coords" />
+<meta property="og:title" content="Read Memory Beta article — mb_article" />
 
-<meta property="og:description" content="Convert (column, row) numbers to (x, y) coordinates for a given tile set." />
+<meta property="og:description" content="Read Memory Beta article content and metadata." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -196,51 +196,55 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Simple CRS coordinates</h1>
-    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/tiles.R'><code>R/tiles.R</code></a></small>
-    <div class="hidden name"><code>tile_coords.Rd</code></div>
+    <h1>Read Memory Beta article</h1>
+    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/memory_beta.R'><code>R/memory_beta.R</code></a></small>
+    <div class="hidden name"><code>mb_article.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Convert <code>(column, row)</code> numbers to <code>(x, y)</code> coordinates for a given tile set.</p>
+    <p>Read Memory Beta article content and metadata.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>tile_coords</span>(<span class='no'>data</span>, <span class='no'>id</span>)</pre>
+    <pre class="usage"><span class='fu'>mb_article</span>(<span class='no'>url</span>, <span class='kw'>content_format</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"xml"</span>, <span class='st'>"character"</span>),
+  <span class='kw'>content_nodes</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"h2"</span>, <span class='st'>"h3"</span>, <span class='st'>"h4"</span>, <span class='st'>"p"</span>, <span class='st'>"b"</span>, <span class='st'>"ul"</span>, <span class='st'>"dl"</span>, <span class='st'>"table"</span>),
+  <span class='kw'>browse</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>a data frame containing columns named <code>col</code> and <code>row</code>. These contain column-row number pairs defining matrix cells in tile set <code>id</code>. See details.</p></td>
+      <th>url</th>
+      <td><p>character, article URL. Expects package-style short URL. See examples.</p></td>
     </tr>
     <tr>
-      <th>id</th>
-      <td><p>character, name of map tile set ID. See <code><a href='stTiles.html'>stTiles</a></code>.</p></td>
+      <th>content_format</th>
+      <td><p>character, the format of the article main text, <code>"xml"</code> or <code>"character"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>content_nodes</th>
+      <td><p>character, which top-level nodes in the article main text to retain.</p></td>
+    </tr>
+    <tr>
+      <th>browse</th>
+      <td><p>logical, also open <code>url</code> in browser.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data frame.</p>
+    <p>a nested data frame</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function converts column and row indices for an available map tile set matrix to coordinates that can be used in a Leaflet map. See <code><a href='stTiles.html'>stTiles</a></code> for available tile sets.</p>
-<p><code>data</code> cannot contain columns named <code>x</code> or <code>y</code>, which are reserved for the column-appended output data frame.</p>
-<p>Each tile set has a simple/non-geographical coordinate reference system (CRS). Respective coordinates are based on the dimensions of the source image used to generate each tile set.
-The same column and row pair will yield different map coordinates for different tile sets. Typical for matrices, columns are numbered increasing from left to right and rows increasing from top to bottom.
-The output of <code>tile_coords</code> is a typical Cartesian coordinate system, increasing from left to right and bottom to top.</p>
+    <p>Article content is returned in a nested, tidy data frame.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>row</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>3222</span>, <span class='fl'>6445</span>), <span class='kw'>col</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>4000</span>, <span class='fl'>8000</span>))
-<span class='fu'>tile_coords</span>(<span class='no'>d</span>, <span class='st'>"galaxy1"</span>)</div><div class='output co'>#&gt;    row  col   x         y
-#&gt; 1    0    0   0    0.0000
-#&gt; 2 3222 4000 125 -100.6875
-#&gt; 3 6445 8000 250 -201.4062</div></pre>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>mb_article</span>(<span class='st'>"Azetbur"</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -12,6 +12,7 @@ set.seed(1)
 knitr::opts_chunk$set(
   collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE, error = FALSE, tidy = TRUE
 )
+library(rtrek)
 ```
 
 *Note: Memory Beta accessor functions are not available yet. This webpage is a placeholder and content will be added later when package functionality is in place. I had fun developing the Memory Alpha functions, but I am incredibly excited to work on the Memory Beta side next! Stay tuned.*
