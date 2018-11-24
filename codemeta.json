@@ -306,7 +306,7 @@
   ],
   "releaseNotes": "https://github.com/leonawicz/rtrek/blob/master/NEWS.md",
   "readme": "https://github.com/leonawicz/rtrek/blob/master/README.md",
-  "fileSize": "492.604KB",
+  "fileSize": "493.262KB",
   "contIntegration": [
     "https://travis-ci.org/leonawicz/rtrek",
     "https://ci.appveyor.com/project/leonawicz/rtrek",
