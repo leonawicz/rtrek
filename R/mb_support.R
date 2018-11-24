@@ -5,8 +5,6 @@
                             "Politics", "Science", "Starships", "Technology", "Timeline"))
 )
 
-mb_portal_url <- function(id) .mb_portals$url[.mb_portals$id == id]
-
 mb_base_url <- "http://memory-beta.wikia.com/wiki"
 
 mb_base_add <- function(x) file.path(mb_base_url, x)
