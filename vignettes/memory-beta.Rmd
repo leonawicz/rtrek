@@ -29,3 +29,123 @@ Memory Beta is a website that hosts information on all things relating to offici
 When talking about using `rtrek` to access data from Memory Beta, the term data is used loosely. It would be just as accurate to say information, content or text. While the site contains a vast amount of information, it is not structured in tidy tables like a data scientist would love to conveniently encounter. Memory Beta is a wiki and can be thought of as similar to an encyclopedia. The bulk of its pages consist of articles. While some of these may have interesting html tables contained within, the site largely offers textual data.
 
 Since Memory Beta does not offer an API, the API-like interfacing provided by `rtrek` is just a collection of wrappers around web page scraping. In terms of what the relevant functions bring back from Memory Beta, there are real limitations on the level of generality and quality of formatting that can be achieved across such a massive and diverse collection of articles.
+
+## Memory Beta portals
+
+There are eleven Memory Beta web portals available. To see them, call the main function for Memory Alpha access, `memory_beta`, and pass it `portals` as the API endpoint.
+
+```{r mb_portals}
+memory_beta("portals")
+```
+
+The data frame returned provides each portal ID and respective "short URL". These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with `http://memory-beta.wikia.com/wiki/`.
+
+In this special case where `endpoint = "portals"`, this table is returned from the package itself because it is already known. The available portals are fixed. There is no accessing of Memory Beta yet. The URLs shown are also not needed by the user, but are provided alongside the IDs for context.
+
+### Contrast with Memory Alpha
+
+In contrast to the results of `memory_alpha("portals")`, notice that each `url` entry begins with `Category:` rather than `Portal`. The Memory Beta website does not explicitly offer "portals" like the Memory Alpha site. For consistency from the perspective of `rtrek`, several high-level categories features on the main page of Memory Beta are treated as portals.
+
+Memory Beta is structured very similarly to Memory alpha, but also more consistently. The structural differences in content returned across some portals accessed by `memory_alpha` are not seen when obtaining data with `memory_beta`. This can make working with Memory Beta data a smoother experience. 
+
+One exception to the between-portal consistency is with the final portal in the above list, `timeline`. This "portal" option has been specially created from the `rtrek` side for pulling Memory Beta timeline data, which on the Memory Beta side is not as uniformly arranged as `rtrek` makes it appear.
+
+## Using a portal
+
+When using a specific portal at the highest level (portal ID only), the returned data frame contains information about searchable categories available in the portal.
+
+```{r mb_categories}
+memory_beta("characters")
+```
+
+Again, there are `id` and `url` columns. Unlike with high-level `memory_alpha` results, there are no `group` or `subgroup` columns. These are not applicable given the simpler structure and more consistent content structure of category and article pages at Memory Beta.
+
+The above call does involve reaching out to Memory Beta. While the portals are stable, it is expected that content within is regularly updated. Remember that this is not a real API. Since one is not available, what is really going on behind the scenes is the use of `xml2` and `rvest` for web page harvesting.
+
+Some portals have terminal endpoints - in Memory Beta these are the written articles - at the top level, but typically the top level results for a portal are categories. You can always differentiate categories from articles by the URL, which will begin with `Category:` in the former case.
+
+Descending through subcategories is done by appending their `id` values, separated by a forward slash `/`. Notice that compared to Memory Alpha, classification and resulting hierarchical organization can be more detailed for similar content.
+
+```{r mb_categories2}
+x <- "characters/Characters by races and cultures/Klingonoids/Klingons"
+memory_beta(x)
+
+memory_beta(paste0(x, "/Worf, son of Mogh"))
+```
+
+Note the change in the structure of the final output, which is an article. This is the end of this particular road The result is still a data frame, but now has only one row, the article.
+
+The columns include a text `title` and three nested datasets. `content` contains an `xml_nodeset` object left (mostly) unadulterated by `memory_beta`. This contains the article's main content section, including ordered content from a default set of html tags. For more control over article content, see `mb_article` in the next section. `metadata` contains a nested data frame of content parsed from the summary card that appears in the top right corner of articles. If this fails to parse for a given article, `NULL` is returned. `categories` returns a data frame containing categories in which the article topic falls under and their respective URLs.
+
+## Articles
+
+If you already know the article `id`, You can obtain an article directly using `mb_article` instead of going through an endpoint with `memory_beta` that terminates in the same `id`. This also offers additional options to control what tags are included in the returned result and whether that result is the original `xml_nodeset` object or a character vector of only the extracted text. In either case, work is left to the user to do what they intend such as text analysis.
+
+```{r mb_article}
+worf <- mb_article("Worf,_son_of_Mogh", content_format = "character", content_nodes = c("h2", "h3"))
+worf
+worf$content[[1]] # Worf article section headings
+```
+
+If `browse = TRUE` the article page also launches in the browser.
+
+## Images
+
+Full resolution source images can be downloaded and imported into R using `mb_image` if you know the short URL. The easiest way to find URLs is by using a Memory Beta portal. In the example below, the Memory Beta images category under Klingons is selected. 
+
+The same example used in the Memory Alpha vignette cannot be duplicated here. Memory Beta does not contain as many images from the television series or movies as Memory Alpha. This is because Memory Beta focuses on licensed works in general and does not need to duplicate everything that is already documented at Memory Alpha.
+
+This time, look for a picture that includes Worf but also Jadzia. Since the category column name is so long, use the `url` column; it's almost the same.
+
+```{r mb_image}
+library(dplyr)
+x <- "characters/Memory Beta images (characters)/Memory Beta images (Worf)"
+worf <- memory_beta(x)
+worf
+
+worf_jadzia <- filter(worf, grepl("Jadzia", url))
+worf_jadzia
+```
+
+*Qapla'*! One result found.
+
+Note that you can use the full `memory_beta` API endpoint string on this terminal page, treating it like an article (i.e., not a category page). There is not much to return other than perhaps the category entries attached to the image.
+A simpler option is to use the short URL with `mb_article` to achieve the same result.
+
+```{r mb_image2}
+x <- memory_beta(paste0(x, "/Jadzia and Worf on Risa.jpg"))
+x
+
+x <- mb_article("File:Jadzia_and_Worf_on_Risa.jpg")
+x
+
+x$categories
+```
+
+This provides quite a bit of metadata about the particular photo.
+
+Of course, the likely intent is to obtain the image file itself when working with image file "article" pages. Use `ma_image` for this. It returns a ggplot object of the downloaded image file.
+
+```{r mb_image3}
+mb_image(worf_jadzia$url[1])
+```
+
+`mb_image` can take the additional arguments, `keep = TRUE` to retain the downloaded image file, and `file` to specify the output filename if you do not want it to be derived from the short URL. If you need more control over the plot, set `keep = TRUE` and then load the image file into R directly to plot separately as needed.
+
+## Search
+
+You can perform a Memory Beta site search using `mb_search`. This returns a data frame of search results content, including title, truncated text preview, and short URL for the first page of search results. 
+
+It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with `mb_article`, setting `browse = TRUE` opens the page in the browser.
+
+```{r ma_search}
+mb_search("Guinan")
+```
+
+## Caveats
+
+Memory Beta contains over 50,000 pages at the time of this `rtrek` version. It is possible that some articles may have idiosyncratic structure that could make them inaccessible by these `rtrek` functions. 
+
+Since this package version is also the first to offer this brand new functionality - and as mentioned, Memory Beta does not offer an API, leading to a less reliable web-scraping approach, it is unknown what the likelihood is at this time of breaking changes occurring during updates to Memory Beta by its maintainers.
+
+*Jolan Tru*.
