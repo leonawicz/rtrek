@@ -1,8 +1,8 @@
 .mb_portals <- dplyr::data_frame(
   id = c("books", "comics", "characters", "culture", "games", "geography",
-         "politics", "science", "starships", "technology"),
+         "politics", "science", "starships", "technology", "timeline"),
   url = paste0("Category:", c("Books", "Comics", "Characters", "Culture", "Games", "Geography",
-                            "Politics", "Science", "Starships", "Technology"))
+                            "Politics", "Science", "Starships", "Technology", "Timeline"))
 )
 
 mb_portal_url <- function(id) .mb_portals$url[.mb_portals$id == id]
