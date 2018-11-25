@@ -121,7 +121,7 @@ x$categories
 
 This provides quite a bit of metadata about the particular photo.
 
-Of course, the likely intent is to obtain the image file itself when working with image file "article" pages. Use `ma_image` for this. It returns a ggplot object of the downloaded image file.
+Of course, the likely intent is to obtain the image file itself when working with image file "article" pages. Use `mb_image` for this. It returns a ggplot object of the downloaded image file.
 
 ```{r mb_image3}
 mb_image(worf_jadzia$url[1])
@@ -143,7 +143,7 @@ You can perform a Memory Beta site search using `mb_search`. This returns a data
 
 It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with `mb_article`, setting `browse = TRUE` opens the page in the browser.
 
-```{r ma_search}
+```{r mb_search}
 mb_search("Guinan")
 ```
 
