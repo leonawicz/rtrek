@@ -15,8 +15,6 @@ knitr::opts_chunk$set(
 library(rtrek)
 ```
 
-*Note: Memory Beta accessor functions are not available yet. This webpage is a placeholder and content will be added later when package functionality is in place. I had fun developing the Memory Alpha functions, but I am incredibly excited to work on the Memory Beta side next! Stay tuned.*
-
 The `rtrek` package includes some Star Trek datasets, but much more data is available outside the package. You can access other Star Trek data through various APIs.
 
 Technically, there is only one formal API: the Star Trek API (STAPI). `rtrek` has functions to assist with making calls to this API in order to access specific data. See the STAPI [vignette](https://leonawicz.github.io/rtrek/articles/stapi.html) for details. 
@@ -33,7 +31,7 @@ Since Memory Beta does not offer an API, the API-like interfacing provided by `r
 
 ## Memory Beta portals
 
-There are eleven Memory Beta web portals available. To see them, call the main function for Memory Alpha access, `memory_beta`, and pass it `portals` as the API endpoint.
+To see the available Memory Beta portals, call the main function for Memory Beta access, `memory_beta`, and pass it `portals` as the API endpoint.
 
 ```{r mb_portals}
 memory_beta("portals")
@@ -45,11 +43,9 @@ In this special case where `endpoint = "portals"`, this table is returned from t
 
 ### Contrast with Memory Alpha
 
-In contrast to the results of `memory_alpha("portals")`, notice that each `url` entry begins with `Category:` rather than `Portal`. The Memory Beta website does not explicitly offer "portals" like the Memory Alpha site. For consistency from the perspective of `rtrek`, several high-level categories features on the main page of Memory Beta are treated as portals.
+In contrast to the results of `memory_alpha("portals")`, notice that each `url` entry begins with `Category:` rather than `Portal`. The Memory Beta website does not explicitly offer "portals" like the Memory Alpha site. For consistency from the perspective of `rtrek`, several top-level categories at Memory Beta are treated as portals. The `timeline` portal is a special case. It is a shorthand for the `timeline` subcategory at `culture/history/timeline`.
 
 Memory Beta is structured very similarly to Memory alpha, but also more consistently. The structural differences in content returned across some portals accessed by `memory_alpha` are not seen when obtaining data with `memory_beta`. This can make working with Memory Beta data a smoother experience. 
-
-One exception to the between-portal consistency is with the final portal in the above list, `timeline`. This "portal" option has been specially created from the `rtrek` side for pulling Memory Beta timeline data, which on the Memory Beta side is not as uniformly arranged as `rtrek` makes it appear.
 
 ## Using a portal
 
@@ -133,6 +129,12 @@ mb_image(worf_jadzia$url[1])
 
 `mb_image` can take the additional arguments, `keep = TRUE` to retain the downloaded image file, and `file` to specify the output filename if you do not want it to be derived from the short URL. If you need more control over the plot, set `keep = TRUE` and then load the image file into R directly to plot separately as needed.
 
+## Memory Beta timeline
+
+In the exampels above, you see the distinction between using `mb_image` to grab images and using `memory_beta` to navigate and parse image file page content more generally. Similarly, `mb_timeline` is a special function that extracts curated timeline from Memory Beta, in contrast to using the `memory_beta("timeline")` portal with various endpoints to parse site pages. `mb_timeline` focuses specifically on the Memory Beta chronology/timeline tables on various Memory Beta pages. This is a heplful function to have because Memory Beta timeline data is not as uniformly arranged as `mb_timeline` makes it appear.
+
+[According to Memory Beta](http://memory-beta.wikia.com/wiki/Memory_Beta_Chronology), this timeline provides a *"chronological guide to all stories and established events that have taken place in the Star Trek universe. The timeline includes stories from episodes, comics, novels, and games. Note: The timeline is largely based on the Pocket Books Timeline but also includes stories from comic and games and break downs of multi-timeframed episodes which the Pocket Timeline does not include."*
+    
 ## Search
 
 You can perform a Memory Beta site search using `mb_search`. This returns a data frame of search results content, including title, truncated text preview, and short URL for the first page of search results. 
