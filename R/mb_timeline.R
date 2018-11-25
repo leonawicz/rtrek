@@ -46,7 +46,7 @@ mb_timeline <- function(){
   if(stories) ds <- dplyr::filter(d, .data[["id"]] == "Stories")
   d <- dplyr::filter(d, .data[["id"]] != "Stories")
 
-  d$notes = sapply(d$node, mb_text)
+  d$notes <- sapply(d$node, mb_text)
   d <- dplyr::select(d, -.data[["node"]]) %>% dplyr::filter(.data[["notes"]] != "")
   d <- .mb_fix_date_in_notes(d)
   if(nrow(d) == 0) d <- NULL
