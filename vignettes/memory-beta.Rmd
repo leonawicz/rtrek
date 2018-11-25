@@ -134,7 +134,9 @@ mb_image(worf_jadzia$url[1])
 In the examples above, you see the distinction between using `mb_image` to grab images and using `memory_beta` to navigate and parse image file page content more generally. Similarly, `mb_timeline` is a special function that extracts curated timeline from Memory Beta, in contrast to using the `memory_beta("timeline")` portal with various endpoints to parse site pages. `mb_timeline` focuses specifically on the Memory Beta chronology/timeline tables on various Memory Beta pages. This is a helpful function to have because Memory Beta timeline data is not as uniformly arranged as `mb_timeline` makes it appear.
 
 [According to Memory Beta](http://memory-beta.wikia.com/wiki/Memory_Beta_Chronology), this timeline provides a *"chronological guide to all stories and established events that have taken place in the Star Trek universe. The timeline includes stories from episodes, comics, novels, and games. Note: The timeline is largely based on the Pocket Books Timeline but also includes stories from comic and games and break downs of multi-timeframed episodes which the Pocket Timeline does not include."*
-    
+
+*`mb_timeline` under active development. Check back soon.*
+
 ## Search
 
 You can perform a Memory Beta site search using `mb_search`. This returns a data frame of search results content, including title, truncated text preview, and short URL for the first page of search results. 
