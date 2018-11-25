@@ -1,3 +1,39 @@
+#' Memory Beta timeline
+#'
+#' Access curated data frames containing Star Trek timeline data.
+#'
+#' The timeline data is from the \href{http://memory-beta.wikia.com/wiki/Memory_Beta_Chronology}{Memory Beta Chronology}.
+#'
+#' \code{x} can be a numeric vector of years, e.g. \code{x = 2371:2364}. This should only be used if you know (or can safely assume) a year exists as a page on Memory Beta. Check there first if unsure.
+#' \code{x} may otherwise be scalar character. This can be a specific decade in the form, e.g., \code{"2370s"}. If a decade, it must fall in the range from \code{"1900s"} through \code{"2490s"}.
+#' The decade option pulls back data from the decade page entry, or if individual year pages exist within the given decade, it will pull the data for each existing year.
+#'
+#' Special values: For the more distant past or future, use the character options \code{x = "past"} or \code{x = "future"}.
+#' \code{x = "main"} will pull from the main part of the timeline, 1900 - 2499. \code{x = "complete"} combines past, main, and future in order.
+#'
+#' The distant past and future have few entries, and thus few pages. However, both of these last two options, \code{"main"} and \code{complete},
+#' must download a large number of pages. For this reason, \code{rtrek} employs anti-DDOS measures to prevent an unwitting user from making too many requests too quickly from Memory Beta.
+#' The function would otherwise be far faster. However, to be a friendly neighbor in the cosmos, \code{rtrek} enforces a minimum one-second wait between timeline requests.
+#' This can lead to downloading the full timeline to take ten minutes or so even if you have a fast connection; most of the time it takes is spent waiting patiently.
+#'
+#' Also, like other functions that work with Memory Alpha and Memory Beta data, \code{mb_timeline} wraps around internal functions that are sensibly memoized.
+#' This means that if you make the same call twice in your R session, you won't have to wait at all, because the result is chached in memory.
+#' The call will appear to run instantaneously the second time around, but that's because nothing is happening other than returning the chached result from the initial call.
+#'
+#' @param x numeric or character, description of the desired timeline window. See details.
+#'
+#' @return a list of two data frames
+#' @export
+#'
+#' @examples
+#' mb_timeline(2360)
+#' \dontrun{
+#' mb_timeline("2360s")
+#' mb_timeline("past")
+#' mb_timeline("future")
+#' mb_timeline("main")
+#' mb_timeline("complete")
+#' }
 mb_timeline <- function(x){
   if(is.numeric(x)){
     purrr::map(as.character(x), .mb_tl_list) %>% purrr::transpose() %>% purrr::map(dplyr::bind_rows)
@@ -8,7 +44,7 @@ mb_timeline <- function(x){
     if(grepl("^\\d\\d\\d\\ds$", x)){
       if(x < "1900s" | x > "2490s")
         stop(paste("`x` must be in the range '1900s' - '2490s'.",
-                   "For distant past/future use x = 'past'/x = 'future'."), call. = FALSE)
+                   "For distant past or future use x = 'past' or x = 'future'."), call. = FALSE)
       mb_tl_by_decade_year(min = x, max = x)
     } else {
       if(!x %in% c("main", "past", "future", "complete"))

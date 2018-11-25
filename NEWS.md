@@ -6,6 +6,7 @@
 * Added `ma_search` function for using the Memory Alpha site search via URL parameters.
 * Added `ma_image` function for downloading source images from Memory Alpha and loading into R as ggplot objects.
 * Added an initial version of an API function `memory_beta` and other `mb_*` Memory Beta analogs to Memory Alpha website functions.
+* Added `mb_timeline` for working with data from the Memory Beta Chronology.
 * Added new datasets, mainly to timelines: `tlBooks`, `tlEvents`, `tlFootnotes`. Also added `stSeries` names and abbreviations table.
 * Renamed `st_book_series` and `stBooksWP` to `st_books_wiki` and `stBooksWiki`, respectively.
 * Updated tile set URLs.

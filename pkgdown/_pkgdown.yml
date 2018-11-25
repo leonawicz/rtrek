@@ -35,6 +35,7 @@ reference:
   - mb_article
   - mb_image
   - mb_search
+  - mb_timeline
 - title: Helper functions
   contents:
   - st_datasets
