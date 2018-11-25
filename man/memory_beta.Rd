@@ -26,7 +26,7 @@ but for consistency in \code{rtrek}, several high level categories on Memory Bet
 See \code{\link{memory_alpha}} for comparison.
 \cr\cr
 Also, Memory Beta has a very similar site structure to Memory Alpha. This makes the code that interfaces with both very similar.
-Memory Beta is also offers a simpler, more consistent site structure than Memory Alpha, leading to fewer (handled and unhandled) content edge cases.
+Memory Beta also offers a simpler, more consistent site structure than Memory Alpha, leading to fewer (handled and unhandled) content edge cases.
 }
 
 \subsection{Portal Categories}{
@@ -54,9 +54,9 @@ It is up to the user what to do with this information, e.g., performing text ana
 The \code{url} column included in results for context uses relative paths to save space. The full URLs all begin the same.
 To visit a URL directly, prepend it with \code{http://memory-beta.wikia.com/wiki/}.
 \cr\cr
-Also note that once you know the relative URL for an article, e.g., \code{"Worf"},
+Also note that once you know the relative URL for an article, e.g., \code{"Worf,_son_of_Mogh"},
 you do not need to traverse through one of the portals using an \code{endpoint} string to retrieve its content.
-You can instead use \code{mb_article("Worf")}.
+You can instead use \code{mb_article("Worf,_son_of_Mogh")}.
 \cr\cr
 \code{memory_beta} provides an overview perspective on how content available at Memory Beta is organized and can be searched for through
 a variety of hierarchical layouts. And in some cases this structure that can be obtained in table form can be useful as data or metadata
