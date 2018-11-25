@@ -50,7 +50,10 @@ mb_timeline <- function(x){
       if(!x %in% c("main", "past", "future", "complete"))
         stop(paste("`x` must be numeric years, e.g., 2371:2374, or character decade, e.g. '2370s',",
                     "or one of 'main', 'past', 'future' or 'complete'."), call. = FALSE)
-      switch(x, main = mb_tl_by_decade_year(), past = mb_tl_past(), future = mb_tl_future(), complete = mb_tl_complete())
+      switch(x, main = mb_tl_by_decade_year(),
+             past = mb_tl_past(),
+             future = mb_tl_future(),
+             complete = mb_tl_complete())
     }
   }
 }
