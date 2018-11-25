@@ -1,8 +1,8 @@
 .mb_portals <- dplyr::data_frame(
-  id = c("books", "comics", "characters", "culture", "games", "geography",
-         "politics", "science", "starships", "technology", "timeline"),
-  url = paste0("Category:", c("Books", "Comics", "Characters", "Culture", "Games", "Geography",
-                            "Politics", "Science", "Starships", "Technology", "Timeline"))
+  id = c("books", "comics", "characters", "culture", "games", "geography", "locations",
+         "materials", "politics", "science", "starships", "technology", "timeline"),
+  url = paste0("Category:", c("Books", "Comics", "Characters", "Culture", "Games", "Geography", "Locations",
+                            "Materials_and_Substances", "Politics", "Science", "Starships", "Technology", "Timeline"))
 )
 
 mb_base_url <- "http://memory-beta.wikia.com/wiki"
