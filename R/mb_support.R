@@ -22,7 +22,6 @@ mb_strip_prefix <- function(x){
 mb_select <- function(d, ep, .id){
   url <- dplyr::filter(d, .data[[.id]] == ep[1])$url
   if(!length(url)) stop(paste0("Invalid endpoint: ", ep[1], "."), call. = FALSE)
-  print(url)
   if(grepl("^Category:", url)){
     d <- mb_category_pages(ep[1], url, c(".category-page__members", ".category-page__pagination"))
   } else {
