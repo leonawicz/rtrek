@@ -232,9 +232,6 @@
 <p>Descending through subcategories is done by appending their <code>id</code> values, separated by a forward slash <code>/</code>. Notice that compared to Memory Alpha, classification and resulting hierarchical organization can be more detailed for similar content.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> "characters/Characters by races and cultures/Klingonoids/Klingons"</span>
 <span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(x)
-<span class="co">#&gt; [1] "Category:Characters_by_races_and_cultures"</span>
-<span class="co">#&gt; [1] "Category:Klingonoids"</span>
-<span class="co">#&gt; [1] "Category:Klingons"</span>
 <span class="co">#&gt; # A tibble: 1,066 x 2</span>
 <span class="co">#&gt;    Klingons                         url                               </span>
 <span class="co">#&gt;    &lt;chr&gt;                            &lt;chr&gt;                             </span>
@@ -251,10 +248,6 @@
 <span class="co">#&gt; # ... with 1,056 more rows</span>
 
 <span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(x, <span class="st">"/Worf, son of Mogh"</span>))
-<span class="co">#&gt; [1] "Category:Characters_by_races_and_cultures"</span>
-<span class="co">#&gt; [1] "Category:Klingonoids"</span>
-<span class="co">#&gt; [1] "Category:Klingons"</span>
-<span class="co">#&gt; [1] "Worf,_son_of_Mogh"</span>
 <span class="co">#&gt; # A tibble: 1 x 4</span>
 <span class="co">#&gt;   title             content           metadata categories       </span>
 <span class="co">#&gt;   &lt;chr&gt;             &lt;list&gt;            &lt;list&gt;   &lt;list&gt;           </span>
@@ -300,8 +293,6 @@ worf<span class="op">$</span>content[[<span class="dv">1</span>]]  <span class="
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)
 x &lt;-<span class="st"> "characters/Memory Beta images (characters)/Memory Beta images (Worf)"</span>
 worf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(x)
-<span class="co">#&gt; [1] "Category:Memory_Beta_images_(characters)"</span>
-<span class="co">#&gt; [1] "Category:Memory_Beta_images_(Worf)"</span>
 worf
 <span class="co">#&gt; # A tibble: 32 x 2</span>
 <span class="co">#&gt;    `Memory Beta images (Worf)` url                             </span>
@@ -327,9 +318,6 @@ worf_jadzia
 <p><em>Qapla’</em>! One result found.</p>
 <p>Note that you can use the full <code>memory_beta</code> API endpoint string on this terminal page, treating it like an article (i.e., not a category page). There is not much to return other than perhaps the category entries attached to the image. A simpler option is to use the short URL with <code>mb_article</code> to achieve the same result.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(x, <span class="st">"/Jadzia and Worf on Risa.jpg"</span>))
-<span class="co">#&gt; [1] "Category:Memory_Beta_images_(characters)"</span>
-<span class="co">#&gt; [1] "Category:Memory_Beta_images_(Worf)"</span>
-<span class="co">#&gt; [1] "File:Jadzia_and_Worf_on_Risa.jpg"</span>
 x
 <span class="co">#&gt; # A tibble: 1 x 4</span>
 <span class="co">#&gt;   title                       content           metadata categories       </span>
@@ -360,7 +348,7 @@ x<span class="op">$</span>categories
 <span class="co">#&gt; 10 Memory Beta images (Starfleet com~ Category:Memory_Beta_images_(Starfl~</span>
 <span class="co">#&gt; 11 Memory Beta images (Paramount ima~ Category:Memory_Beta_images_(Paramo~</span></code></pre></div>
 <p>This provides quite a bit of metadata about the particular photo.</p>
-<p>Of course, the likely intent is to obtain the image file itself when working with image file “article” pages. Use <code>ma_image</code> for this. It returns a ggplot object of the downloaded image file.</p>
+<p>Of course, the likely intent is to obtain the image file itself when working with image file “article” pages. Use <code>mb_image</code> for this. It returns a ggplot object of the downloaded image file.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/mb_image.html">mb_image</a></span>(worf_jadzia<span class="op">$</span>url[<span class="dv">1</span>])</code></pre></div>
 <p><img src="memory-beta_files/figure-html/mb_image3-1.png" width="700"></p>
 <p><code>mb_image</code> can take the additional arguments, <code>keep = TRUE</code> to retain the downloaded image file, and <code>file</code> to specify the output filename if you do not want it to be derived from the short URL. If you need more control over the plot, set <code>keep = TRUE</code> and then load the image file into R directly to plot separately as needed.</p>
@@ -370,6 +358,7 @@ x<span class="op">$</span>categories
 <a href="#memory-beta-timeline" class="anchor"></a>Memory Beta timeline</h2>
 <p>In the examples above, you see the distinction between using <code>mb_image</code> to grab images and using <code>memory_beta</code> to navigate and parse image file page content more generally. Similarly, <code>mb_timeline</code> is a special function that extracts curated timeline from Memory Beta, in contrast to using the <code><a href="../reference/memory_beta.html">memory_beta("timeline")</a></code> portal with various endpoints to parse site pages. <code>mb_timeline</code> focuses specifically on the Memory Beta chronology/timeline tables on various Memory Beta pages. This is a helpful function to have because Memory Beta timeline data is not as uniformly arranged as <code>mb_timeline</code> makes it appear.</p>
 <p><a href="http://memory-beta.wikia.com/wiki/Memory_Beta_Chronology">According to Memory Beta</a>, this timeline provides a <em>“chronological guide to all stories and established events that have taken place in the Star Trek universe. The timeline includes stories from episodes, comics, novels, and games. Note: The timeline is largely based on the Pocket Books Timeline but also includes stories from comic and games and break downs of multi-timeframed episodes which the Pocket Timeline does not include.”</em></p>
+<p><em><code>mb_timeline</code> under active development. Check back soon.</em></p>
 </div>
 <div id="search" class="section level2">
 <h2 class="hasAnchor">
