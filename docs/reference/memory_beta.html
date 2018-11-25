@@ -233,7 +233,7 @@ but for consistency in <code>rtrek</code>, several high level categories on Memo
 See <code><a href='memory_alpha.html'>memory_alpha</a></code> for comparison.
 <br /><br />
 Also, Memory Beta has a very similar site structure to Memory Alpha. This makes the code that interfaces with both very similar.
-Memory Beta is also offers a simpler, more consistent site structure than Memory Alpha, leading to fewer (handled and unhandled) content edge cases.
+Memory Beta also offers a simpler, more consistent site structure than Memory Alpha, leading to fewer (handled and unhandled) content edge cases.
     <h3>Portal Categories</h3>
     In all other cases, the endpoint string must begin with one of the valid portal IDs.
 Passing only the ID returns a data frame with IDs and relative URLs associated with the available categories in the specific portal.
@@ -255,9 +255,9 @@ It is up to the user what to do with this information, e.g., performing text ana
     The <code>url</code> column included in results for context uses relative paths to save space. The full URLs all begin the same.
 To visit a URL directly, prepend it with <code>http://memory-beta.wikia.com/wiki/</code>.
 <br /><br />
-Also note that once you know the relative URL for an article, e.g., <code>"Worf"</code>,
+Also note that once you know the relative URL for an article, e.g., <code>"Worf,_son_of_Mogh"</code>,
 you do not need to traverse through one of the portals using an <code>endpoint</code> string to retrieve its content.
-You can instead use <code><a href='mb_article.html'>mb_article("Worf")</a></code>.
+You can instead use <code><a href='mb_article.html'>mb_article("Worf,_son_of_Mogh")</a></code>.
 <br /><br />
 <code>memory_beta</code> provides an overview perspective on how content available at Memory Beta is organized and can be searched for through
 a variety of hierarchical layouts. And in some cases this structure that can be obtained in table form can be useful as data or metadata
@@ -269,22 +269,25 @@ in itself. Alternatively, <code>mb_article</code> is focused exclusively on pull
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>memory_beta</span>(<span class='st'>"portals"</span>) <span class='co'># show available portals</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 11 x 2</span><span>
-#&gt;    id         url                
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              
-#&gt; </span><span style='color: #555555;'> 1</span><span> books      Category:Books     
-#&gt; </span><span style='color: #555555;'> 2</span><span> comics     Category:Comics    
-#&gt; </span><span style='color: #555555;'> 3</span><span> characters Category:Characters
-#&gt; </span><span style='color: #555555;'> 4</span><span> culture    Category:Culture   
-#&gt; </span><span style='color: #555555;'> 5</span><span> games      Category:Games     
-#&gt; </span><span style='color: #555555;'> 6</span><span> geography  Category:Geography 
-#&gt; </span><span style='color: #555555;'> 7</span><span> politics   Category:Politics  
-#&gt; </span><span style='color: #555555;'> 8</span><span> science    Category:Science   
-#&gt; </span><span style='color: #555555;'> 9</span><span> starships  Category:Starships 
-#&gt; </span><span style='color: #555555;'>10</span><span> technology Category:Technology
-#&gt; </span><span style='color: #555555;'>11</span><span> timeline   Category:Timeline  </div><div class='input'><span class='no'>endpoint</span> <span class='kw'>&lt;-</span> <span class='st'>"characters/Characters by races and cultures/Klingonoids/Klingons"</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>memory_beta</span>(<span class='no'>endpoint</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/grep'>grep</a></span>(<span class='st'>"Worf"</span>, <span class='no'>x</span>$<span class='no'>Klingons</span>), ]
+    <pre class="examples"><div class='input'><span class='fu'>memory_beta</span>(<span class='st'>"portals"</span>) <span class='co'># show available portals</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 13 x 2</span><span>
+#&gt;    id         url                              
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                            
+#&gt; </span><span style='color: #555555;'> 1</span><span> books      Category:Books                   
+#&gt; </span><span style='color: #555555;'> 2</span><span> comics     Category:Comics                  
+#&gt; </span><span style='color: #555555;'> 3</span><span> characters Category:Characters              
+#&gt; </span><span style='color: #555555;'> 4</span><span> culture    Category:Culture                 
+#&gt; </span><span style='color: #555555;'> 5</span><span> games      Category:Games                   
+#&gt; </span><span style='color: #555555;'> 6</span><span> geography  Category:Geography               
+#&gt; </span><span style='color: #555555;'> 7</span><span> locations  Category:Locations               
+#&gt; </span><span style='color: #555555;'> 8</span><span> materials  Category:Materials_and_substances
+#&gt; </span><span style='color: #555555;'> 9</span><span> politics   Category:Politics                
+#&gt; </span><span style='color: #555555;'>10</span><span> science    Category:Science                 
+#&gt; </span><span style='color: #555555;'>11</span><span> starships  Category:Starships               
+#&gt; </span><span style='color: #555555;'>12</span><span> technology Category:Technology              
+#&gt; </span><span style='color: #555555;'>13</span><span> timeline   Category:Timeline                </div><div class='input'><span class='no'>endpoint</span> <span class='kw'>&lt;-</span> <span class='st'>"characters/Characters by races and cultures/Klingonoids/Klingons"</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>memory_beta</span>(<span class='no'>endpoint</span>)</div><div class='output co'>#&gt; [1] "Category:Characters_by_races_and_cultures"
+#&gt; [1] "Category:Klingonoids"
+#&gt; [1] "Category:Klingons"</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/grep'>grep</a></span>(<span class='st'>"Worf"</span>, <span class='no'>x</span>$<span class='no'>Klingons</span>), ]
 <span class='no'>x</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 2</span><span>
 #&gt;   Klingons             url                  
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                
@@ -292,7 +295,10 @@ in itself. Alternatively, <code>mb_article</code> is focused exclusively on pull
 #&gt; </span><span style='color: #555555;'>2</span><span> Mogh, son of Worf    Mogh,_son_of_Worf    
 #&gt; </span><span style='color: #555555;'>3</span><span> Worf (mirror)        Worf_(mirror)        
 #&gt; </span><span style='color: #555555;'>4</span><span> Worf, father of Mogh Worf,_father_of_Mogh 
-#&gt; </span><span style='color: #555555;'>5</span><span> Worf, son of Mogh    Worf,_son_of_Mogh    </div><div class='input'><span class='fu'>memory_beta</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='no'>endpoint</span>, <span class='st'>"/Worf, son of Mogh"</span>)) <span class='co'># return terminal article content</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 4</span><span>
+#&gt; </span><span style='color: #555555;'>5</span><span> Worf, son of Mogh    Worf,_son_of_Mogh    </div><div class='input'><span class='fu'>memory_beta</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span>(<span class='no'>endpoint</span>, <span class='st'>"/Worf, son of Mogh"</span>)) <span class='co'># return terminal article content</span></div><div class='output co'>#&gt; [1] "Category:Characters_by_races_and_cultures"
+#&gt; [1] "Category:Klingonoids"
+#&gt; [1] "Category:Klingons"
+#&gt; [1] "Worf,_son_of_Mogh"</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 4</span><span>
 #&gt;   title             content           metadata categories       
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>           
 #&gt; </span><span style='color: #555555;'>1</span><span> Worf, son of Mogh </span><span style='color: #555555;'>&lt;S3: xml_nodeset&gt;</span><span> </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>   </span><span style='color: #555555;'>&lt;tibble [32 x 2]&gt;</span><span></div></span></pre>
