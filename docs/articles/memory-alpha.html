@@ -237,7 +237,7 @@
 <span class="co">#&gt; # A tibble: 1 x 4</span>
 <span class="co">#&gt;   title content           metadata          categories       </span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;list&gt;            &lt;list&gt;            &lt;list&gt;           </span>
-<span class="co">#&gt; 1 Worf  &lt;S3: xml_nodeset&gt; &lt;tibble [1 x 15]&gt; &lt;tibble [11 x 2]&gt;</span></code></pre></div>
+<span class="co">#&gt; 1 Worf  &lt;S3: xml_nodeset&gt; &lt;tibble [1 x 16]&gt; &lt;tibble [11 x 2]&gt;</span></code></pre></div>
 <p>Note the change in the structure of the final output, which is an article. This is the end of this particular road The result is still a data frame, but now has only one row, the article.</p>
 <p>The columns include a text <code>title</code> and three nested datasets. <code>content</code> contains an <code>xml_nodeset</code> object left (mostly) unadulterated by <code>memory_alpha</code>. This contains the article’s main content section, including ordered content from a default set of html tags. For more control over article content, see <code>ma_article</code> in the next section. <code>metadata</code> contains a nested data frame of content parsed from the summary card that appears in the top right corner of articles. If this fails to parse for a given article, <code>NULL</code> is returned. <code>categories</code> returns a data frame containing categories in which the article topic falls under and their respective URLs.</p>
 </div>
@@ -251,7 +251,7 @@ worf
 <span class="co">#&gt; # A tibble: 1 x 4</span>
 <span class="co">#&gt;   title content    metadata          categories       </span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;list&gt;     &lt;list&gt;            &lt;list&gt;           </span>
-<span class="co">#&gt; 1 Worf  &lt;chr [38]&gt; &lt;tibble [1 x 15]&gt; &lt;tibble [11 x 2]&gt;</span>
+<span class="co">#&gt; 1 Worf  &lt;chr [38]&gt; &lt;tibble [1 x 16]&gt; &lt;tibble [11 x 2]&gt;</span>
 worf<span class="op">$</span>content[[<span class="dv">1</span>]]  <span class="co"># Worf article section headings</span>
 <span class="co">#&gt;  [1] "Early life"                         </span>
 <span class="co">#&gt;  [2] "The Rozhenkos"                      </span>
