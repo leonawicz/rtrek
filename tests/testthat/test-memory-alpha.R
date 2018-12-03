@@ -28,7 +28,8 @@ test_that("memory_alpha returns as expected", {
   expect_equal(ncol(d), 3)
   expect_equal(names(d), grp[1:3])
 
-  d <- memory_alpha("series/Deep Space Nine")
+  expect_warning(d <- memory_alpha("series/Deep Space Nine"),
+                 "Summary card cannot be parsed. Metadata column will be NULL.")
   expect_equal(dim(d), c(1, 4))
   expect_equal(names(d), c("title", "content", "metadata", "categories"))
   expect_equal(as.character(sapply(d, class)), c("character", rep("list", 3)))
