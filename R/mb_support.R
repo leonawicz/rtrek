@@ -71,7 +71,7 @@ mb_article_aside <- function(x){
   idx <- which(rvest::html_name(x) == "aside")
   if(!length(idx)) return()
   x <- x[[idx[1]]] %>% rvest::html_children()
-  x <- x[which(rvest::html_name(x) == "div")]
+  img <- .mb_aside_image(x)
   cols <- rvest::html_nodes(x, ".pi-data-label") %>% mb_text()
   cols <- gsub(":$", "", cols)
   cols <- gsub("\\s", "_", cols)
@@ -88,5 +88,16 @@ mb_article_aside <- function(x){
     x <- gsub(", [|]|,[|]", "|", x)
     x
   }) %>% stats::setNames(cols)
-  dplyr::as_data_frame(vals)
+  d <- dplyr::as_data_frame(vals)
+  dplyr::mutate(d, Image = img)
+}
+
+.mb_aside_image <- function(x){
+  idx <- which(rvest::html_name(x) == "figure")[1]
+  if(!length(idx)) return(as.character(NA))
+  x <- rvest::html_nodes(x[idx], ".image-thumbnail") %>% mb_href()
+  x <- strsplit(x, "/")[[1]]
+  idx <- grep("\\.jpg", x, ignore.case = TRUE)
+  if(!length(idx)) return(as.character(NA))
+  paste0("File:", x[idx])
 }
