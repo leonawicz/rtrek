@@ -44,7 +44,7 @@ reference:
   - tile_coords
   - st_books_wiki
   - st_font
-  - starts_with("%")
+  - "%>%"
 
 navbar:
   type: inverse
