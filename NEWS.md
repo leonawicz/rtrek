@@ -13,7 +13,7 @@
 * Updated `stBooks` dataset. This data frame now has better formatting, greater consistency, duplicates removed, and contains more entries than before. It is still incomplete and imperfect, but much improved over the previous version.
 * Updated `stBooksWiki` dataset. Updated column names for consistency.
 * Updates the acronyms used in the package for consistency.
-* Update unit tests, added unit tests for Memory Alpha functions.
+* Update unit tests, added unit tests for Memory Alpha  and Memory Beta functions.
 * Updated function documentation.
 * Updated introduction vignette sections. Added new section relating to timeline datasets.
 * Added three new vignettes for each of the three API options: STAPI, Memory Alpha,and Memory Beta (in progress).
