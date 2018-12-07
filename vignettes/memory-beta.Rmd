@@ -131,11 +131,65 @@ mb_image(worf_jadzia$url[1])
 
 ## Memory Beta timeline
 
-In the examples above, you see the distinction between using `mb_image` to grab images and using `memory_beta` to navigate and parse image file page content more generally. Similarly, `mb_timeline` is a special function that extracts curated timeline from Memory Beta, in contrast to using the `memory_beta("timeline")` portal with various endpoints to parse site pages. `mb_timeline` focuses specifically on the Memory Beta chronology/timeline tables on various Memory Beta pages. This is a helpful function to have because Memory Beta timeline data is not as uniformly arranged as `mb_timeline` makes it appear.
+In the examples above, you see the distinction between using `mb_image` to grab images and using `memory_beta` to navigate and parse image file page content more generally. Similarly, `mb_timeline` is a special function that specifically extracts and curates timeline data from Memory Beta, in contrast to using the `memory_beta("timeline")` portal with various endpoints to parse site pages for general content. `mb_timeline` focuses specifically on the Memory Beta chronology/timeline tables on various Memory Beta pages. This is a helpful function to have because Memory Beta timeline data is not as uniformly arranged on Memory Beta as `mb_timeline` makes it appear.
 
 [According to Memory Beta](http://memory-beta.wikia.com/wiki/Memory_Beta_Chronology), this timeline provides a *"chronological guide to all stories and established events that have taken place in the Star Trek universe. The timeline includes stories from episodes, comics, novels, and games. Note: The timeline is largely based on the Pocket Books Timeline but also includes stories from comic and games and break downs of multi-timeframed episodes which the Pocket Timeline does not include."*
 
-*`mb_timeline` under active development. Check back soon.*
+### Import timeline data
+
+Obtaining timeline data is straightforward:
+
+```{r timeline}
+x <- mb_timeline(2360)
+x$events
+x$stories
+```
+
+#### Timeline of historical events
+
+`mb_timeline` returns a list of two data frames. The first contains notable historical events and has the following columns:
+
+* `period` is the year or other time period.
+* Events may have different `id` values if the entries fall under different section headings on Memory Beta. 
+* `date` may be filled in with more specific dates, provided they exist.
+* The `notes` entries typically have citations, but these are not included in the output currently.
+
+#### Published stories chronology
+
+The stories data frame represents a timeline of published stories. Since this is timeline data, stories are in chronological order, not publication date order. The stories data frame includes:
+
+* Story title and article page short URL.
+* The collection (miniseries or anthology) a story occurs in if applicable and URL.
+* The relevant section, e.g., chapters of a book, a story occurs in.
+* The context. Often missing but sometimes available. This indicates something about the setting such as time travel or alternate timeline.
+* The series a story belongs to.
+* A specific date.
+* The type of media such, e.g., a novel or short story.
+* Any available notes about a story.
+* The short URL to the full size original image that is the source for a story image thumbnail (if available).
+
+Either events or stories may be `NULL` if for a given year no entries exist, respectively.
+
+### Different ways to import timeline data
+
+There are several ways to use `mb_timeline`, based around how the timeline data is organized on Memory Beta. You saw one way above, requesting data for the year 2360. Data can be requested for:
+
+* specific year(s), e.g., `mb_timeline(2360)` or `mb_timeline(2360:2364)`. Note these are integers. All other options are character.
+* a specific decade, appending an `s` to the decade, e.g., `mb_timeline("2360s")`.
+* `mb_timeline("past")` returns timeline data only for the "distant past" section of the timeline.
+* `mb_timeline("future")` returns timeline data only for the "distant future" section of the timeline.
+* `mb_timeline("main")` returns timeline data only for the main section of the timeline. This is everything except for the distant past and future sections.
+* `mb_timeline("complete")` returns the complete timeline, including past, main and future sections.
+
+### Details
+
+As with `stapi`, `mb_timeline` enforces a minimum one-second wait between any page requests. It could be read much faster but this measure forces users to be good neighbors. It is also recommended to try the function on a single year to see if the the results are what you expect and need before wasting time pulling the complete timeline. Note that using `complete` (or `main`, which is almost the same since `past` and `future` are relatively small) can take over ten minutes due to the enforced wait time.
+
+This function is also memoized, meaning its results are cached in memory for each specific call. This prevents wastefully making an identical call twice in the same R session. If you do, the cached result is returned instantly. You will not see the progress printed to the console because the function is not actually called again.
+
+When passing integer years to `mb_timeline` this is the only case where the argument can be a vector. All other options are scalar, including decade. You cannot request multiple decades with `c("2360s", "2370s")`. If this is what you want, use `mb_timeline(2360:2379)`.
+
+The year (or other period for `past` and `future`) is printed to the console as `mb_timeline` progresses through timeline data for each time step. Set `details = FALSE` to suppress this.
 
 ## Search
 
