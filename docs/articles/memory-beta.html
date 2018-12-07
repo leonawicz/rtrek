@@ -6,12 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Memory Beta • rtrek</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Memory Beta">
 <meta property="og:description" content="">
+<meta property="og:image" content="https://leonawicz.github.io/rtrek/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -232,20 +239,20 @@
 <p>Descending through subcategories is done by appending their <code>id</code> values, separated by a forward slash <code>/</code>. Notice that compared to Memory Alpha, classification and resulting hierarchical organization can be more detailed for similar content.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> "characters/Characters by races and cultures/Klingonoids/Klingons"</span>
 <span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(x)
-<span class="co">#&gt; # A tibble: 1,066 x 2</span>
+<span class="co">#&gt; # A tibble: 1,067 x 2</span>
 <span class="co">#&gt;    Klingons                         url                               </span>
 <span class="co">#&gt;    &lt;chr&gt;                            &lt;chr&gt;                             </span>
 <span class="co">#&gt;  1 Klingon                          Klingon                           </span>
-<span class="co">#&gt;  2 Kring's battle cruiser personnel Kring%27s_battle_cruiser_personnel</span>
-<span class="co">#&gt;  3 Unnamed Klingons                 Unnamed_Klingons                  </span>
-<span class="co">#&gt;  4 Aakan                            Aakan                             </span>
-<span class="co">#&gt;  5 Aak'Torr                         Aak%27Torr                        </span>
-<span class="co">#&gt;  6 Abbakh                           Abbakh                            </span>
-<span class="co">#&gt;  7 Adon, son of Gorath              Adon,_son_of_Gorath               </span>
-<span class="co">#&gt;  8 Adrokos                          Adrokos                           </span>
-<span class="co">#&gt;  9 Aek-Nor                          Aek-Nor                           </span>
-<span class="co">#&gt; 10 A'enn Thalman                    A%27enn_Thalman                   </span>
-<span class="co">#&gt; # ... with 1,056 more rows</span>
+<span class="co">#&gt;  2 Klingon (mirror)                 Klingon_(mirror)                  </span>
+<span class="co">#&gt;  3 Kring's battle cruiser personnel Kring%27s_battle_cruiser_personnel</span>
+<span class="co">#&gt;  4 Unnamed Klingons                 Unnamed_Klingons                  </span>
+<span class="co">#&gt;  5 Aakan                            Aakan                             </span>
+<span class="co">#&gt;  6 Aak'Torr                         Aak%27Torr                        </span>
+<span class="co">#&gt;  7 Abbakh                           Abbakh                            </span>
+<span class="co">#&gt;  8 Adon, son of Gorath              Adon,_son_of_Gorath               </span>
+<span class="co">#&gt;  9 Adrokos                          Adrokos                           </span>
+<span class="co">#&gt; 10 Aek-Nor                          Aek-Nor                           </span>
+<span class="co">#&gt; # ... with 1,057 more rows</span>
 
 <span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(x, <span class="st">"/Worf, son of Mogh"</span>))
 <span class="co">#&gt; # A tibble: 1 x 4</span>
@@ -356,9 +363,96 @@ x<span class="op">$</span>categories
 <div id="memory-beta-timeline" class="section level2">
 <h2 class="hasAnchor">
 <a href="#memory-beta-timeline" class="anchor"></a>Memory Beta timeline</h2>
-<p>In the examples above, you see the distinction between using <code>mb_image</code> to grab images and using <code>memory_beta</code> to navigate and parse image file page content more generally. Similarly, <code>mb_timeline</code> is a special function that extracts curated timeline from Memory Beta, in contrast to using the <code><a href="../reference/memory_beta.html">memory_beta("timeline")</a></code> portal with various endpoints to parse site pages. <code>mb_timeline</code> focuses specifically on the Memory Beta chronology/timeline tables on various Memory Beta pages. This is a helpful function to have because Memory Beta timeline data is not as uniformly arranged as <code>mb_timeline</code> makes it appear.</p>
+<p>In the examples above, you see the distinction between using <code>mb_image</code> to grab images and using <code>memory_beta</code> to navigate and parse image file page content more generally. Similarly, <code>mb_timeline</code> is a special function that specifically extracts and curates timeline data from Memory Beta, in contrast to using the <code><a href="../reference/memory_beta.html">memory_beta("timeline")</a></code> portal with various endpoints to parse site pages for general content. <code>mb_timeline</code> focuses specifically on the Memory Beta chronology/timeline tables on various Memory Beta pages. This is a helpful function to have because Memory Beta timeline data is not as uniformly arranged on Memory Beta as <code>mb_timeline</code> makes it appear.</p>
 <p><a href="http://memory-beta.wikia.com/wiki/Memory_Beta_Chronology">According to Memory Beta</a>, this timeline provides a <em>“chronological guide to all stories and established events that have taken place in the Star Trek universe. The timeline includes stories from episodes, comics, novels, and games. Note: The timeline is largely based on the Pocket Books Timeline but also includes stories from comic and games and break downs of multi-timeframed episodes which the Pocket Timeline does not include.”</em></p>
-<p><em><code>mb_timeline</code> under active development. Check back soon.</em></p>
+<div id="import-timeline-data" class="section level3">
+<h3 class="hasAnchor">
+<a href="#import-timeline-data" class="anchor"></a>Import timeline data</h3>
+<p>Obtaining timeline data is straightforward:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/mb_timeline.html">mb_timeline</a></span>(<span class="dv">2360</span>)
+<span class="co">#&gt; 2360</span>
+x<span class="op">$</span>events
+<span class="co">#&gt; # A tibble: 11 x 4</span>
+<span class="co">#&gt;    period id               date  notes                                    </span>
+<span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;                                    </span>
+<span class="co">#&gt;  1 2360   Events           &lt;NA&gt;  Quark opens a bar on Terok Nor. [1]      </span>
+<span class="co">#&gt;  2 2360   Conflicts        &lt;NA&gt;  Kalisi Reyar designs and completes a gri~</span>
+<span class="co">#&gt;  3 2360   Federation_poli~ &lt;NA&gt;  Pahkwa-thanh is admitted into the Federa~</span>
+<span class="co">#&gt;  4 2360   Cardassian_poli~ &lt;NA&gt;  Miras Vara has taken the leadership of t~</span>
+<span class="co">#&gt;  5 2360   Cardassian_poli~ &lt;NA&gt;  Natima Lang and Gaten Russol join the ca~</span>
+<span class="co">#&gt;  6 2360   Romulan_politics &lt;NA&gt;  Vreenak is elected.[2]                   </span>
+<span class="co">#&gt;  7 2360   Promotions_and_~ &lt;NA&gt;  Data is promoted to Lieutenant Commander~</span>
+<span class="co">#&gt;  8 2360   Promotions_and_~ &lt;NA&gt;  Joseph Carey graduates from Starfleet Ac~</span>
+<span class="co">#&gt;  9 2360   Births_and_deat~ &lt;NA&gt;  Skrain Dukat's son Mekor is born. [citat~</span>
+<span class="co">#&gt; 10 2360   Births_and_deat~ &lt;NA&gt;  Caylem's wife dies in a Mokra prison.[2] </span>
+<span class="co">#&gt; 11 2360   Births_and_deat~ &lt;NA&gt;  Dekon Elig dies attempting to escape the~</span>
+x<span class="op">$</span>stories
+<span class="co">#&gt; # A tibble: 6 x 11</span>
+<span class="co">#&gt;   title title_url colleciton collection_url section context series date </span>
+<span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;</span>
+<span class="co">#&gt; 1 The ~ The_Buri~ &lt;NA&gt;       &lt;NA&gt;           Chapte~ &lt;NA&gt;    The N~ 2360 </span>
+<span class="co">#&gt; 2 The ~ The_Buri~ &lt;NA&gt;       &lt;NA&gt;           Chapte~ &lt;NA&gt;    The N~ 2360~</span>
+<span class="co">#&gt; 3 Cata~ Catalyst~ &lt;NA&gt;       &lt;NA&gt;           &lt;NA&gt;    &lt;NA&gt;    The L~ 2360 </span>
+<span class="co">#&gt; 4 Lefl~ Lefler%2~ No Limits  No_Limits      Twelft~ &lt;NA&gt;    New F~ 2360~</span>
+<span class="co">#&gt; 5 A St~ A_Stitch~ &lt;NA&gt;       &lt;NA&gt;           Part 2~ &lt;NA&gt;    Deep ~ 2360 </span>
+<span class="co">#&gt; 6 Dawn~ Dawn_of_~ Terok Nor  Star_Trek:_Te~ Prolog~ &lt;NA&gt;    Deep ~ 2360 </span>
+<span class="co">#&gt; # ... with 3 more variables: media &lt;chr&gt;, notes &lt;chr&gt;, image_url &lt;chr&gt;</span></code></pre></div>
+<div id="timeline-of-historical-events" class="section level4">
+<h4 class="hasAnchor">
+<a href="#timeline-of-historical-events" class="anchor"></a>Timeline of historical events</h4>
+<p><code>mb_timeline</code> returns a list of two data frames. The first contains notable historical events and has the following columns:</p>
+<ul>
+<li>
+<code>period</code> is the year or other time period.</li>
+<li>Events may have different <code>id</code> values if the entries fall under different section headings on Memory Beta.</li>
+<li>
+<code>date</code> may be filled in with more specific dates, provided they exist.</li>
+<li>The <code>notes</code> entries typically have citations, but these are not included in the output currently.</li>
+</ul>
+</div>
+<div id="published-stories-chronology" class="section level4">
+<h4 class="hasAnchor">
+<a href="#published-stories-chronology" class="anchor"></a>Published stories chronology</h4>
+<p>The stories data frame represents a timeline of published stories. Since this is timeline data, stories are in chronological order, not publication date order. The stories data frame includes:</p>
+<ul>
+<li>Story title and article page short URL.</li>
+<li>The collection (miniseries or anthology) a story occurs in if applicable and URL.</li>
+<li>The relevant section, e.g., chapters of a book, a story occurs in.</li>
+<li>The context. Often missing but sometimes available. This indicates something about the setting such as time travel or alternate timeline.</li>
+<li>The series a story belongs to.</li>
+<li>A specific date.</li>
+<li>The type of media such, e.g., a novel or short story.</li>
+<li>Any available notes about a story.</li>
+<li>The short URL to the full size original image that is the source for a story image thumbnail (if available).</li>
+</ul>
+<p>Either events or stories may be <code>NULL</code> if for a given year no entries exist, respectively.</p>
+</div>
+</div>
+<div id="different-ways-to-import-timeline-data" class="section level3">
+<h3 class="hasAnchor">
+<a href="#different-ways-to-import-timeline-data" class="anchor"></a>Different ways to import timeline data</h3>
+<p>There are several ways to use <code>mb_timeline</code>, based around how the timeline data is organized on Memory Beta. You saw one way above, requesting data for the year 2360. Data can be requested for:</p>
+<ul>
+<li>specific year(s), e.g., <code><a href="../reference/mb_timeline.html">mb_timeline(2360)</a></code> or <code><a href="../reference/mb_timeline.html">mb_timeline(2360:2364)</a></code>. Note these are integers. All other options are character.</li>
+<li>a specific decade, appending an <code>s</code> to the decade, e.g., <code><a href="../reference/mb_timeline.html">mb_timeline("2360s")</a></code>.</li>
+<li>
+<code><a href="../reference/mb_timeline.html">mb_timeline("past")</a></code> returns timeline data only for the “distant past” section of the timeline.</li>
+<li>
+<code><a href="../reference/mb_timeline.html">mb_timeline("future")</a></code> returns timeline data only for the “distant future” section of the timeline.</li>
+<li>
+<code><a href="../reference/mb_timeline.html">mb_timeline("main")</a></code> returns timeline data only for the main section of the timeline. This is everything except for the distant past and future sections.</li>
+<li>
+<code><a href="../reference/mb_timeline.html">mb_timeline("complete")</a></code> returns the complete timeline, including past, main and future sections.</li>
+</ul>
+</div>
+<div id="details" class="section level3">
+<h3 class="hasAnchor">
+<a href="#details" class="anchor"></a>Details</h3>
+<p>As with <code>stapi</code>, <code>mb_timeline</code> enforces a minimum one-second wait between any page requests. It could be read much faster but this measure forces users to be good neighbors. It is also recommended to try the function on a single year to see if the the results are what you expect and need before wasting time pulling the complete timeline. Note that using <code>complete</code> (or <code>main</code>, which is almost the same since <code>past</code> and <code>future</code> are relatively small) can take over ten minutes due to the enforced wait time.</p>
+<p>This function is also memoized, meaning its results are cached in memory for each specific call. This prevents wastefully making an identical call twice in the same R session. If you do, the cached result is returned instantly. You will not see the progress printed to the console because the function is not actually called again.</p>
+<p>When passing integer years to <code>mb_timeline</code> this is the only case where the argument can be a vector. All other options are scalar, including decade. You cannot request multiple decades with <code><a href="https://www.rdocumentation.org/packages/base/topics/c">c("2360s", "2370s")</a></code>. If this is what you want, use <code><a href="../reference/mb_timeline.html">mb_timeline(2360:2379)</a></code>.</p>
+<p>The year (or other period for <code>past</code> and <code>future</code>) is printed to the console as <code>mb_timeline</code> progresses through timeline data for each time step. Set <code>details = FALSE</code> to suppress this.</p>
+</div>
 </div>
 <div id="search" class="section level2">
 <h2 class="hasAnchor">
@@ -415,7 +509,7 @@ x<span class="op">$</span>categories
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
 </div>
