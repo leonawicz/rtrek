@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-rtrek <a hef="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek.png?raw=true" _target="blank"><img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek-small.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="130" height="150" align="right"></a>
-===========================================================================================================================================================================================================================================================================================================
+rtrek <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
+============================================================================================================
 
 **Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/) <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget"> <image class="orcid" src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" height="16"></a> [![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/rtrek) <br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
@@ -33,8 +33,12 @@ Install the development version of `rtrek` from [GitHub](https://github.com/) wi
 devtools::install_github("leonawicz/rtrek")
 ```
 
-Example
--------
+Examples
+--------
+
+These are just a few examples to help you jump right in. See the package articles for more.
+
+### STAPI
 
 Use the Star Trek API (STAPI) to obtain information on the whereabouts and whenabouts of the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up. The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters. The second call grabs only page two results. The third call uses the universal/unique ID `uid` to retrieve data on Q. Think of these three successive uses of `stapi` as safe mode, search mode and extraction mode.
 
@@ -78,6 +82,49 @@ Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
 #> 7 EPMA0000162588            Death Wish           NA         NA
 #> 8 EPMA0000001413                True Q      46192.3    46192.3
 #> 9 EPMA0000001510    The Q and the Grey      50384.2    50392.7
+```
+
+### Memory Alpha
+
+Obtain content and metadata from the article about Spock on Memory Alpha:
+
+``` r
+x <- ma_article("Spock")
+x
+#> # A tibble: 1 x 4
+#>   title content           metadata          categories       
+#>   <chr> <list>            <list>            <list>           
+#> 1 Spock <S3: xml_nodeset> <tibble [1 x 17]> <tibble [14 x 2]>
+x$metadata[[1]]$Born
+#> [1] "January 6, 2230 (stardate 2230.06)|ShiKahr, Vulcan"
+```
+
+### Memory Beta
+
+Spock was born in 2230. Obtain a subset of the Star Trek universe historical timeline for that year:
+
+``` r
+mb_timeline(2230)
+#> $events
+#> # A tibble: 5 x 4
+#>   period id            date  notes                                        
+#>   <chr>  <chr>         <chr> <chr>                                        
+#> 1 2230   Events        <NA>  Argelius II  and Betelgeuse become members o~
+#> 2 2230   Births_and_D~ <NA>  Spock is born deep within a cave in Vulcan's~
+#> 3 2230   Births_and_D~ <NA>  George Samuel Kirk, Jr. is born.[5]          
+#> 4 2230   Births_and_D~ <NA>  David Rabin is born.[6]                      
+#> 5 2230   Births_and_D~ <NA>  Roy John Moss is born.[7]                    
+#> 
+#> $stories
+#> # A tibble: 5 x 11
+#>   title title_url colleciton collection_url section context series date 
+#>   <chr> <chr>     <chr>      <chr>          <chr>   <chr>   <chr>  <chr>
+#> 1 Burn~ Burning_~ <NA>       <NA>           Chapte~ <NA>    The O~ 2230 
+#> 2 Star~ Star_Tre~ <NA>       <NA>           Chapte~ <NA>    The O~ 2230 
+#> 3 IDW ~ IDW_Star~ Star Trek~ Star_Trek_(ID~ 2230 f~ <NA>    The O~ 2230 
+#> 4 Star~ Star_Tre~ <NA>       <NA>           Chapte~ <NA>    The O~ 2230 
+#> 5 Sarek Sarek_(n~ <NA>       <NA>           Chapte~ <NA>    The O~ 12 N~
+#> # ... with 3 more variables: media <chr>, notes <chr>, image_url <chr>
 ```
 
 Live long and prosper.
