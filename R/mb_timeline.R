@@ -229,10 +229,11 @@ decade_year_pages <- memoise::memoise(decade_year_pages)
   section <- purrr::map_chr(title_nodes, ~{
     x <- rvest::html_nodes(.x, "small") %>% xml2::xml_contents()
     idx <- which(rvest::html_name(x) == "text")
-    if(length(idx)) x <- paste0(mb_text(x[idx]), collapse = "; ") else return(as.character(NA))
-    x <- x[!x %in% c("(", ")", ":")]
-    if(!length(x)) x <- as.character(NA)
-    x
+    if(!length(idx)) return(as.character(NA))
+    x <- x[idx]
+    x <- x[grepl("[A-Za-z0-9]", mb_text(x))]
+    if(!length(x)) return(as.character(NA))
+    if(length(x) == 1) mb_text(x) else paste0(mb_text(x), collapse = "; ")
   })
 
   context <- purrr::map_chr(title_nodes, ~{

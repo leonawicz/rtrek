@@ -10,7 +10,7 @@ ma_base_url <- "http://memory-alpha.wikia.com/wiki"
 
 ma_base_add <- function(x) file.path(ma_base_url, x)
 
-ma_text <- function(x) trimws(rvest::html_text(x))
+ma_text <- function(x, trim = TRUE) rvest::html_text(x, trim = trim)
 
 ma_href <- function(x) gsub(".*wiki/", "", rvest::html_attr(x, "href"))
 
@@ -97,12 +97,15 @@ ma_article_aside <- function(x){
     return()
   }
   vals <- purrr::map(x, ~{
-    x <- xml2::xml_contents(.x) %>% ma_text()
+    x <- xml2::xml_contents(.x) %>% ma_text(trim = FALSE)
     x[x %in% c("", " ")] <- "|"
     x <- gsub("\\)", "\\)|", x)
-    x <- gsub("[|]+$", "", gsub("[|]+", "|", paste0(x, collapse = "")))
+    x <- gsub("[|]+$", "", paste0(x, collapse = ""))
     x <- gsub(", [|]|,[|]", "|", x)
-    x
+    x <- gsub("[|](, | |,)", "|", x)
+    x <- gsub("[|]+", "|", x)
+    x <- gsub("[ ]+", " ", x)
+    trimws(x)
   }) %>% stats::setNames(cols)
   d <- dplyr::as_data_frame(vals)
   dplyr::mutate(d, Image = img)
