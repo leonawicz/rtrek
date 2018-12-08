@@ -89,6 +89,7 @@ mb_article_aside <- function(x){
     x <- gsub("[|](, | |,)", "|", x)
     x <- gsub("[|]+", "|", x)
     x <- gsub("[ ]+", " ", x)
+    x <- gsub("^[|]", "", x)
     trimws(x)
   }) %>% stats::setNames(cols)
   d <- dplyr::as_data_frame(vals)
