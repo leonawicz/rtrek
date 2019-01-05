@@ -1,6 +1,10 @@
 context("Memory Alpha")
 
+unavail <- "Internet resources currently unavailable."
+soc <- !has_internet("http://memory-alpha.wikia.com/")
+
 test_that("memory_alpha returns as expected", {
+  if(soc) skip(unavail)
   expect_identical(memory_alpha("portals"), .ma_portals)
 
   grp <- c("id", "url", "group", "subgroup")
@@ -52,6 +56,7 @@ test_that("memory_alpha returns as expected", {
 })
 
 test_that("ma_article returns as expected", {
+  if(soc) skip(unavail)
   expect_error(ma_article("x"), "Article not found.")
   closeAllConnections()
 
@@ -67,12 +72,14 @@ test_that("ma_article returns as expected", {
 })
 
 test_that("ma_search returns as expected", {
+  if(soc) skip(unavail)
   d <- ma_search("Worf")
   expect_equal(ncol(d), 3)
   expect_equal(names(d), c("title", "text", "url"))
 })
 
 test_that("ma_image and related calls all return as expected", {
+  if(soc) skip(unavail)
   file <- "File:Ajilon_Prime_Klingon_1.jpg"
   ep <- gsub("File:", "", gsub("_", " ", file))
   x1 <- memory_alpha(paste0("people/Klingons/Memory Alpha images (Klingons)/", ep))

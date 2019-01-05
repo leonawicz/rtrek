@@ -60,9 +60,11 @@ in itself. Alternatively, \code{ma_article} is focused exclusively on pulling ba
 }
 \examples{
 memory_alpha("portals") # show available portals
-memory_alpha("people") # show portal categories for People portal
-memory_alpha("people/Klingons") # show people in Klingons subcategory
-memory_alpha("people/Klingons/Worf") # return terminal article content
+if(has_internet()){
+  memory_alpha("people") # show portal categories for People portal
+  memory_alpha("people/Klingons") # show people in Klingons subcategory
+  memory_alpha("people/Klingons/Worf") # return terminal article content
+}
 }
 \seealso{
 \code{\link{ma_article}}, \code{\link{memory_beta}}

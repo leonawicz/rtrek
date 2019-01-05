@@ -26,7 +26,7 @@
 #' @export
 #'
 #' @examples
-#' mb_timeline(2360)
+#' if(has_internet()) mb_timeline(2360)
 #' \dontrun{
 #' mb_timeline("2360s")
 #' mb_timeline("past")

@@ -1,9 +1,13 @@
 context("api")
 
+unavail <- "Internet resources currently unavailable."
+soc <- !has_internet("http://stapi.co")
+
 library(dplyr)
 qid <- "CHMA0000025118"
 
 test_that("stapi returns as expected", {
+  if(soc) skip(unavail)
   expect_is(stapi("character", page_count = TRUE), "NULL")
 
   d <- stapi("character", page = 2)
@@ -25,6 +29,7 @@ test_that("stapi returns as expected", {
 })
 
 test_that("rtrek_antiddos option is set on load and checked", {
+  if(soc) skip(unavail)
   expect_equal(getOption("rtrek_antiddos"), 1)
   options(rtrek_antiddos = 0)
   wrn <- "`rtrek_antiddos` setting in `options` is less than one and will be ignored.\n"

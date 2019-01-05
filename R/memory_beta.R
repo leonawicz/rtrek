@@ -59,10 +59,12 @@
 #' @examples
 #' memory_beta("portals") # show available portals
 #' endpoint <- "characters/Characters by races and cultures/Klingonoids/Klingons"
-#' x <- memory_beta(endpoint)
-#' x <- x[grep("Worf", x$Klingons), ]
-#' x
-#' memory_beta(paste0(endpoint, "/Worf, son of Mogh")) # return terminal article content
+#' if(has_internet()){
+#'   x <- memory_beta(endpoint)
+#'   x <- x[grep("Worf", x$Klingons), ]
+#'   x
+#'   memory_beta(paste0(endpoint, "/Worf, son of Mogh")) # return terminal article content
+#' }
 memory_beta <- function(endpoint){
   x <- .mb_portals
   if(endpoint == "portals") return(x)
@@ -127,7 +129,7 @@ mb_article <- function(url, content_format = c("xml", "character"),
 #' @export
 #'
 #' @examples
-#' mb_search("Worf")
+#' if(has_internet()) mb_search("Worf")
 mb_search <- function(text, browse = FALSE){
   url <- paste0(mb_base_add("Special:Search?query="), gsub("\\s+", "+", text))
   x <- xml2::read_html(url) %>% rvest::html_node(".Results")

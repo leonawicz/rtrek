@@ -13,7 +13,7 @@
 #' @seealso \code{\link{stBooksWiki}} \code{\link{stSeries}}
 #'
 #' @examples
-#' st_books_wiki("DS9")
+#' \dontrun{st_books_wiki("DS9")}
 st_books_wiki <- function(id){
   x <- stBooksId
   if(missing(id)) return(dplyr::select(x, -.data[["id"]]))

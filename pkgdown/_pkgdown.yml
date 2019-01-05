@@ -44,6 +44,7 @@ reference:
   - tile_coords
   - st_books_wiki
   - st_font
+  - has_internet
   - "%>%"
 
 navbar:

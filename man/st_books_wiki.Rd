@@ -21,7 +21,7 @@ The search IDs available in \code{st_books_wiki} do not represent an exhaustive 
 For a more complete set of Star Trek series, miniseries and anthology names and acronyms, see the \code{\link{stSeries}} dataset.
 }
 \examples{
-st_books_wiki("DS9")
+\dontrun{st_books_wiki("DS9")}
 }
 \seealso{
 \code{\link{stBooksWiki}} \code{\link{stSeries}}

@@ -53,9 +53,11 @@
 #'
 #' @examples
 #' memory_alpha("portals") # show available portals
-#' memory_alpha("people") # show portal categories for People portal
-#' memory_alpha("people/Klingons") # show people in Klingons subcategory
-#' memory_alpha("people/Klingons/Worf") # return terminal article content
+#' if(has_internet()){
+#'   memory_alpha("people") # show portal categories for People portal
+#'   memory_alpha("people/Klingons") # show people in Klingons subcategory
+#'   memory_alpha("people/Klingons/Worf") # return terminal article content
+#' }
 memory_alpha <- function(endpoint){
   x <- .ma_portals
   if(endpoint == "portals") return(x)
@@ -186,7 +188,7 @@ ma_article <- function(url, content_format = c("xml", "character"),
 #' @export
 #'
 #' @examples
-#' ma_search("Worf")
+#' if(has_internet()) ma_search("Worf")
 ma_search <- function(text, browse = FALSE){
   url <- paste0(ma_base_add("Special:Search?query="), gsub("\\s+", "+", text))
   x <- xml2::read_html(url) %>% rvest::html_node(".Results")
