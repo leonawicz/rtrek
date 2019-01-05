@@ -228,9 +228,9 @@ The data returned on Q is actually a large list, including multiple data frames.
 
 ## Pseudo-APIs
 
-Some functions in `rtrek` provide an API-*like* interface to online Star Trek-related data. Specifically, parsing data from the Memory Alpha and Memory Beta websites. These sites do not provide APIs. Therefore the only option is to read pages into R and parse the html. Behind the scenes this is done using the `xml2` and `rvest` packages, but from the user perspective it is presented as passing an API endpoint string to a function.
+Some functions in `rtrek` provide an API-*like* interface to online Star Trek-related data. Specifically, parsing data from the [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) websites. These sites do not provide APIs. Therefore the only option is to read pages into R and parse the html. Behind the scenes this is done using the `xml2` and `rvest` packages, but from the user perspective it is presented as passing an API endpoint string to a function.
 
-Currently, `memory_alpha` is available in `rtrek`. This is the main function associated with accessing data from Memory Alpha. For details and examples on this and its companion functions, see the Memory Alpha [vignette](https://leonawicz.github.io/rtrek/articles/memory-alpha.html). Functions for Memory Beta are not yet available but will be in the next package version.
+`memory_alpha` and `memory_beta`, as well as several other related functions, are available in `rtrek`. These functions access data from Memory Alpha and Memory Beta. For details and examples on these functions, see the Memory Alpha . [vignette](https://leonawicz.github.io/rtrek/articles/memory-alpha.html) and the Memory Beta [vignette](https://leonawicz.github.io/rtrek/articles/memory-beta.html).
 
 ## Star Trek novel text mining
 
@@ -244,10 +244,10 @@ stBooks
 
 Obviously, verbatim licensed book content itself cannot be shared, so it is not possible to provide capability in `rtrek` to enable analysts to perform their own unique text mining analyses on Star Trek novel corpora. However, future versions of `rtrek` will include more summary datasets that will aim to represent more interesting variables. 
 
-A couple examples could be:
+A few examples could be:
 
 *    the relative frequency of popular characters' names per book.
-*    a sentiment analysis; are some series darker than other?
+*    a sentiment analysis; are some series darker than others?
 *    relative lengths of books by series, author, or publication date; are there changes over time?
 
-or any other set of interesting metrics that could be used to, for example, inform suggested reading lists of various titles, or books by particular authors with a favored style or focus.
+or any other set of interesting metrics that could be used, for example, to inform suggested reading lists of various titles, or books by particular authors with a favored style or focus.
