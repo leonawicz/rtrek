@@ -210,7 +210,7 @@ $.getJSON('https://raw.githubusercontent.com/leonawicz/rtrek/master/data-raw/twe
   	$('.st-tweets2 a').text("@" + sname);
   	$('.st-tweets2 img').attr('src', imgsrc);
   	$('.st-tweets2').css("background-color", tweetbg);
-    setInterval(tweetTimer, 8500);
+    setInterval(tweetTimer, 10000);
   });
 
 });
