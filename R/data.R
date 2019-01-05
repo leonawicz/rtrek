@@ -99,7 +99,7 @@
 #' meaning that the timeline entries (rows) provide chronologically ordered historical events from the Star Trek universe.
 #' See the \code{tlEvents} dataset for an event-driven timeline.
 #'
-#' This timeline was recreated from the timeline found at \url{http://www.maplenet.net/~trowbridge/timeline.htm}.
+#' This timeline was recreated from the timeline found at \code{http://www.maplenet.net/~trowbridge/timeline.htm}.
 #' As with \code{tlBooks}, this timeline is quite out of date. In fact it is at least somewhat more out of date than \code{tlBooks}.
 #' This timeline is also more problematic than the other, and less relevant moving forward. Its updating essentially ceased  as the other began.
 #' See the URL for more details.
