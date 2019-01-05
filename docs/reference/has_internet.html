@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Memory Alpha API — memory_alpha • rtrek</title>
+<title>Check for interent connection — has_internet • rtrek</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -39,9 +39,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Memory Alpha API — memory_alpha" />
+<meta property="og:title" content="Check for interent connection — has_internet" />
 
-<meta property="og:description" content="Access Star Trek content from Memory Alpha (http://memory-alpha.wikia.com)." />
+<meta property="og:description" content="A basic check for internet connectivity." />
 
 <meta property="og:image" content="https://leonawicz.github.io/rtrek/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -205,90 +205,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Memory Alpha API</h1>
-    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/memory_alpha.R'><code>R/memory_alpha.R</code></a></small>
-    <div class="hidden name"><code>memory_alpha.Rd</code></div>
+    <h1>Check for interent connection</h1>
+    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/api.R'><code>R/api.R</code></a></small>
+    <div class="hidden name"><code>has_internet.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Access Star Trek content from Memory Alpha (<a href='http://memory-alpha.wikia.com'>http://memory-alpha.wikia.com</a>).</p>
+    <p>A basic check for internet connectivity.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>memory_alpha</span>(<span class='no'>endpoint</span>)</pre>
+    <pre class="usage"><span class='fu'>has_internet</span>(<span class='kw'>url</span> <span class='kw'>=</span> <span class='st'>"https://www.google.com"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>endpoint</th>
-      <td><p>character, See details.</p></td>
+      <th>url</th>
+      <td><p>character.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a data frame</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The content returned is always a data frame. The structure changes slightly depending on the nature of the endpoint,
-but results from different endpoints can be merged easily.</p>
-<h3>Portals</h3>
-    At the highest level, passing <code>enpoind = "portals"</code> returns a data frame listing the available Memory Alpha portals supported by <code>rtrek</code>.
-A column of relative URLs is also included for reference, but can be ignored.
-    <h3>Portal Categories</h3>
-    In all other cases, the endpoint string must begin with one of the valid portal IDs.
-Passing only the ID returns a data frame with IDs and relative URLs associated with the available categories in the specific portal.
-There are two additional columns, <code>group</code> and <code>subgroup</code>, that may provide additional grouping context for the entry IDs in larger tables.
-As with the relative URLs, you do not have to make explicit use of these variables.
-<br /><br />
-Selecting a specific category within a portal is done by appending the portal ID in <code>endpoint</code> with the category ID, separated by a forward slash.
-You can append nested subcategory IDs with forward slashes, provided they subcategories exist.
-    <h3>Articles</h3>
-    When the endpoint is neither a top-level portal or one of a portal's categories (or subcategories, if available), it is an article.
-An article is a terminal node, meaning you cannot nest further. An article will be any entry whose URL does not begin with <code>Category:</code>.
-In this case, the content returned is still a data frame for consistency, but differs substantially from the results of non-terminal endpoints.
-<br /><br />
-Memory Alpha is not a database containing convenient tables. Articles comprise the bulk of what Memory Alpha has to offer.
-They are not completely unstructured text, but are loosely structured.
-Some assumptions are made and <code>memory_alpha</code> returns a data frame containing article text and links.
-It is up to the user what to do with this information, e.g., performing text analyses.
-    <h3>Additional notes</h3>
-    The <code>url</code> column included in results for context uses relative paths to save space. The full URLs all begin the same.
-To visit a URL directly, prepend it with <code>http://memory-alpha.wikia.com/wiki/</code>.
-<br /><br />
-Also note that once you know the relative URL for an article, e.g., <code>"Worf"</code>,
-you do not need to traverse through one of the portals using an <code>endpoint</code> string to retrieve its content.
-You can instead use <code><a href='ma_article.html'>ma_article("Worf")</a></code>.
-<br /><br />
-<code>memory_alpha</code> provides an overview perspective on how content available at Memory Alpha is organized and can be searched for through
-a variety of hierarchical layouts. And in some cases this structure that can be obtained in table form can be useful as data or metadata
-in itself. Alternatively, <code>ma_article</code> is focused exclusively on pulling back content from known articles.
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='ma_article.html'>ma_article</a></code>, <code><a href='memory_beta.html'>memory_beta</a></code></p></div>
+    <p>logical</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>memory_alpha</span>(<span class='st'>"portals"</span>) <span class='co'># show available portals</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 2</span><span>
-#&gt;   id         url                       
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                     
-#&gt; </span><span style='color: #555555;'>1</span><span> alternate  Portal:Alternate_Reality  
-#&gt; </span><span style='color: #555555;'>2</span><span> people     Portal:People             
-#&gt; </span><span style='color: #555555;'>3</span><span> science    Portal:Science            
-#&gt; </span><span style='color: #555555;'>4</span><span> series     Portal:TV_and_films       
-#&gt; </span><span style='color: #555555;'>5</span><span> society    Portal:Society_and_Culture
-#&gt; </span><span style='color: #555555;'>6</span><span> technology Portal:Technology         </div><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='has_internet.html'>has_internet</a></span>()){
-  <span class='fu'>memory_alpha</span>(<span class='st'>"people"</span>) <span class='co'># show portal categories for People portal</span>
-  <span class='fu'>memory_alpha</span>(<span class='st'>"people/Klingons"</span>) <span class='co'># show people in Klingons subcategory</span>
-  <span class='fu'>memory_alpha</span>(<span class='st'>"people/Klingons/Worf"</span>) <span class='co'># return terminal article content</span>
-}</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 4</span><span>
-#&gt;   title content           metadata          categories       
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>           
-#&gt; </span><span style='color: #555555;'>1</span><span> Worf  </span><span style='color: #555555;'>&lt;S3: xml_nodeset&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [1 x 16]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [11 x 2]&gt;</span><span></div></span></pre>
+    <pre class="examples"><div class='input'><span class='fu'>has_internet</span>()</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -296,10 +241,6 @@ in itself. Alternatively, <code>ma_article</code> is focused exclusively on pull
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

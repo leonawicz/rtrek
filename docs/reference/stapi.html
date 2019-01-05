@@ -264,21 +264,12 @@ Values less than one are ignored (defaulting back to one second) and a warning w
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># check first</span></div><div class='output co'>#&gt; Total pages to retrieve all results: 64 </div><div class='input'><span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 100 x 2</span><span>
-#&gt;    uid            name         
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        
-#&gt; </span><span style='color: #555555;'> 1</span><span> CHMA0000042544 Stevie Wonder
-#&gt; </span><span style='color: #555555;'> 2</span><span> CHMA0000018397 Yeggie       
-#&gt; </span><span style='color: #555555;'> 3</span><span> CHMA0000007954 Arex         
-#&gt; </span><span style='color: #555555;'> 4</span><span> CHMA0000026438 Joseph       
-#&gt; </span><span style='color: #555555;'> 5</span><span> CHMA0000232412 J. Zimmerman 
-#&gt; </span><span style='color: #555555;'> 6</span><span> CHMA0000014055 Doyle        
-#&gt; </span><span style='color: #555555;'> 7</span><span> CHMA0000012951 Butler       
-#&gt; </span><span style='color: #555555;'> 8</span><span> CHMA0000048382 Lito         
-#&gt; </span><span style='color: #555555;'> 9</span><span> CHMA0000190073 B. Mooneyham 
-#&gt; </span><span style='color: #555555;'>10</span><span> CHMA0000171058 Anna Dixon   
-#&gt; </span><span style='color: #555555;'># ... with 90 more rows</span><span></div><div class='input'><span class='no'>Q</span> <span class='kw'>&lt;-</span> <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>uid</span> <span class='kw'>=</span> <span class='st'>"CHMA0000025118"</span>)
-<span class='no'>Q</span>$<span class='no'>episodes</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>uid</span>, <span class='no'>title</span>, <span class='no'>stardateFrom</span>, <span class='no'>stardateTo</span>)</div><div class='output co'>#&gt;              uid                 title stardateFrom stardateTo
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='has_internet.html'>has_internet</a></span>()){
+  <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># check first</span>
+  <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)
+  <span class='no'>Q</span> <span class='kw'>&lt;-</span> <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>uid</span> <span class='kw'>=</span> <span class='st'>"CHMA0000025118"</span>)
+  <span class='no'>Q</span>$<span class='no'>episodes</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>uid</span>, <span class='no'>title</span>, <span class='no'>stardateFrom</span>, <span class='no'>stardateTo</span>)
+}</div><div class='output co'>#&gt; Total pages to retrieve all results: 64 </div><div class='output co'>#&gt;              uid                 title stardateFrom stardateTo
 #&gt; 1 EPMA0000001458    All Good Things...      47988.0    47988.0
 #&gt; 2 EPMA0000001329                 Q Who      42761.3    42761.3
 #&gt; 3 EPMA0000001377                  Qpid      44741.9    44741.9
@@ -287,7 +278,7 @@ Values less than one are ignored (defaulting back to one second) and a warning w
 #&gt; 6 EPMA0000000845                Q-Less      46531.2    46531.2
 #&gt; 7 EPMA0000162588            Death Wish           NA         NA
 #&gt; 8 EPMA0000001413                True Q      46192.3    46192.3
-#&gt; 9 EPMA0000001510    The Q and the Grey      50384.2    50392.7</div></span></pre>
+#&gt; 9 EPMA0000001510    The Q and the Grey      50384.2    50392.7</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

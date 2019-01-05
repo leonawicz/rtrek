@@ -207,18 +207,18 @@
 <p>The <code>stBooksWiki</code> dataset provides a moderately curated data frame of over 719 Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent <code>rtrek</code> update. <code>stBooksWiki</code> is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stBooksWiki
 <span class="co">#&gt; # A tibble: 719 x 6</span>
-<span class="co">#&gt;    series                      title    author   number timeframe released</span>
-<span class="co">#&gt;    &lt;chr&gt;                       &lt;chr&gt;    &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;   </span>
-<span class="co">#&gt;  1 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Jan 1967</span>
-<span class="co">#&gt;  2 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1968</span>
-<span class="co">#&gt;  3 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Apr 1969</span>
-<span class="co">#&gt;  4 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Jul 1971</span>
-<span class="co">#&gt;  5 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1972</span>
-<span class="co">#&gt;  6 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Apr 1972</span>
-<span class="co">#&gt;  7 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Jul 1972</span>
-<span class="co">#&gt;  8 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Nov 1972</span>
-<span class="co">#&gt;  9 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Aug 1973</span>
-<span class="co">#&gt; 10 The_Original_Series - Bant~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1974</span>
+<span class="co">#&gt;    series                       title    author   number timeframe released</span>
+<span class="co">#&gt;    &lt;chr&gt;                        &lt;chr&gt;    &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;   </span>
+<span class="co">#&gt;  1 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Jan 1967</span>
+<span class="co">#&gt;  2 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1968</span>
+<span class="co">#&gt;  3 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Apr 1969</span>
+<span class="co">#&gt;  4 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Jul 1971</span>
+<span class="co">#&gt;  5 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1972</span>
+<span class="co">#&gt;  6 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Apr 1972</span>
+<span class="co">#&gt;  7 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Jul 1972</span>
+<span class="co">#&gt;  8 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Nov 1972</span>
+<span class="co">#&gt;  9 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Aug 1973</span>
+<span class="co">#&gt; 10 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1974</span>
 <span class="co">#&gt; # ... with 709 more rows</span></code></pre></div>
 <p>Some curation decisions were made in compiling the data frame for <code>rtrek</code> related to the inclusion of some metadata in addition to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, <code>rtrek</code> also offers a convenience function <code>st_books_wiki</code> to load the page in a browser tab auto-scrolled to a specific series of interest.</p>
 <p>In order to use this function effectively, first call it with no arguments. It returns a table of available series abbreviations.</p>
@@ -289,10 +289,10 @@
 <p>The <code>stTiles</code> data frame shows all available Star Trek-themed map tile sets along with metadata and attribution information. These map tiles can be used with the <code>leaflet</code> and <code>shiny</code> packages to make interactive maps situated in the Star Trek universe.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">stTiles
 <span class="co">#&gt; # A tibble: 2 x 8</span>
-<span class="co">#&gt;   id     url    description width height tile_creator map_creator map_url </span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 galax~ https~ Geopolitic~  8000   6445 Matthew Leo~ Rob Archer  https:/~</span>
-<span class="co">#&gt; 2 galax~ https~ Geopolitic~  5000   4000 Matthew Leo~ &lt;NA&gt;        http://~</span></code></pre></div>
+<span class="co">#&gt;   id     url     description width height tile_creator map_creator map_url </span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;   </span>
+<span class="co">#&gt; 1 galax~ https:~ Geopolitic~  8000   6445 Matthew Leo~ Rob Archer  https:/~</span>
+<span class="co">#&gt; 2 galax~ https:~ Geopolitic~  5000   4000 Matthew Leo~ &lt;NA&gt;        http://~</span></code></pre></div>
 <p>The list is scant at the moment, but more will come. One thing to keep in mind is these tile sets use a simple/non-geographical coordinate reference system (CRS). Clearly, they are not Earth-based, though they are spatial in more ways than one!</p>
 <p>Similar to game maps, there is a sense of space, but it is a simple Cartesian coordinate system and does not use geographic projections like you may be used to working with when analyzing spatial data or making Leaflet maps. This system is much simpler, but simple does not necessarily mean easy!</p>
 <p>Inspect <code>stGeo</code>:</p>
@@ -324,30 +324,30 @@
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">id &lt;-<span class="st"> "galaxy1"</span>
 (d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_tiles_data.html">st_tiles_data</a></span>(id))
 <span class="co">#&gt; # A tibble: 9 x 8</span>
-<span class="co">#&gt;   id      loc        col   row body   category zone               species </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;              &lt;chr&gt;   </span>
-<span class="co">#&gt; 1 galaxy1 Earth     2196  2357 Planet Homewor~ United Federation~ Human   </span>
-<span class="co">#&gt; 2 galaxy1 Romulus   2615  1742 Planet Homewor~ Romulan Star Empi~ Romulan </span>
-<span class="co">#&gt; 3 galaxy1 Qo'noS    3310  3361 Planet Homewor~ Klingon Empire     Klingon </span>
-<span class="co">#&gt; 4 galaxy1 Breen     1004   939 Planet Homewor~ Breen Confederacy  Breen   </span>
-<span class="co">#&gt; 5 galaxy1 Ferengi~  1431  1996 Planet Homewor~ Ferengi Alliance   Ferengi </span>
-<span class="co">#&gt; 6 galaxy1 Cardass~  1342  2841 Planet Homewor~ Cardassian Union   Cardass~</span>
-<span class="co">#&gt; 7 galaxy1 Tholia     407  3866 Planet Homewor~ Tholian Assembly   Tholian </span>
-<span class="co">#&gt; 8 galaxy1 Tzenketh  1553  2557 Planet Homewor~ Tzenkethi Coaliti~ Tzenket~</span>
-<span class="co">#&gt; 9 galaxy1 Talar     1039  3489 Planet Homewor~ Talarian Republic  Talarian</span>
+<span class="co">#&gt;   id      loc        col   row body   category  zone               species </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;              &lt;chr&gt;   </span>
+<span class="co">#&gt; 1 galaxy1 Earth     2196  2357 Planet Homeworld United Federation~ Human   </span>
+<span class="co">#&gt; 2 galaxy1 Romulus   2615  1742 Planet Homeworld Romulan Star Empi~ Romulan </span>
+<span class="co">#&gt; 3 galaxy1 Qo'noS    3310  3361 Planet Homeworld Klingon Empire     Klingon </span>
+<span class="co">#&gt; 4 galaxy1 Breen     1004   939 Planet Homeworld Breen Confederacy  Breen   </span>
+<span class="co">#&gt; 5 galaxy1 Ferengi~  1431  1996 Planet Homeworld Ferengi Alliance   Ferengi </span>
+<span class="co">#&gt; 6 galaxy1 Cardass~  1342  2841 Planet Homeworld Cardassian Union   Cardass~</span>
+<span class="co">#&gt; 7 galaxy1 Tholia     407  3866 Planet Homeworld Tholian Assembly   Tholian </span>
+<span class="co">#&gt; 8 galaxy1 Tzenketh  1553  2557 Planet Homeworld Tzenkethi Coaliti~ Tzenket~</span>
+<span class="co">#&gt; 9 galaxy1 Talar     1039  3489 Planet Homeworld Talarian Republic  Talarian</span>
 (d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tile_coords.html">tile_coords</a></span>(d, id))
 <span class="co">#&gt; # A tibble: 9 x 10</span>
-<span class="co">#&gt;   id     loc      col   row body   category zone      species     x      y</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 galax~ Earth   2196  2357 Planet Homewor~ United F~ Human    68.6  -73.7</span>
-<span class="co">#&gt; 2 galax~ Romul~  2615  1742 Planet Homewor~ Romulan ~ Romulan  81.7  -54.4</span>
-<span class="co">#&gt; 3 galax~ Qo'noS  3310  3361 Planet Homewor~ Klingon ~ Klingon 103.  -105. </span>
-<span class="co">#&gt; 4 galax~ Breen   1004   939 Planet Homewor~ Breen Co~ Breen    31.4  -29.3</span>
-<span class="co">#&gt; 5 galax~ Feren~  1431  1996 Planet Homewor~ Ferengi ~ Ferengi  44.7  -62.4</span>
-<span class="co">#&gt; 6 galax~ Carda~  1342  2841 Planet Homewor~ Cardassi~ Cardas~  41.9  -88.8</span>
-<span class="co">#&gt; 7 galax~ Tholia   407  3866 Planet Homewor~ Tholian ~ Tholian  12.7 -121. </span>
-<span class="co">#&gt; 8 galax~ Tzenk~  1553  2557 Planet Homewor~ Tzenketh~ Tzenke~  48.5  -79.9</span>
-<span class="co">#&gt; 9 galax~ Talar   1039  3489 Planet Homewor~ Talarian~ Talari~  32.5 -109.</span></code></pre></div>
+<span class="co">#&gt;   id     loc       col   row body  category zone       species     x      y</span>
+<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 galax~ Earth    2196  2357 Plan~ Homewor~ United Fe~ Human    68.6  -73.7</span>
+<span class="co">#&gt; 2 galax~ Romulus  2615  1742 Plan~ Homewor~ Romulan S~ Romulan  81.7  -54.4</span>
+<span class="co">#&gt; 3 galax~ Qo'noS   3310  3361 Plan~ Homewor~ Klingon E~ Klingon 103.  -105. </span>
+<span class="co">#&gt; 4 galax~ Breen    1004   939 Plan~ Homewor~ Breen Con~ Breen    31.4  -29.3</span>
+<span class="co">#&gt; 5 galax~ Fereng~  1431  1996 Plan~ Homewor~ Ferengi A~ Ferengi  44.7  -62.4</span>
+<span class="co">#&gt; 6 galax~ Cardas~  1342  2841 Plan~ Homewor~ Cardassia~ Cardas~  41.9  -88.8</span>
+<span class="co">#&gt; 7 galax~ Tholia    407  3866 Plan~ Homewor~ Tholian A~ Tholian  12.7 -121. </span>
+<span class="co">#&gt; 8 galax~ Tzenke~  1553  2557 Plan~ Homewor~ Tzenkethi~ Tzenke~  48.5  -79.9</span>
+<span class="co">#&gt; 9 galax~ Talar    1039  3489 Plan~ Homewor~ Talarian ~ Talari~  32.5 -109.</span></code></pre></div>
 <p>Here is an example using the <code>galaxy1</code> map with <code>leaflet</code>. The <code>st_tiles</code> function is used to link to the tile provider.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(leaflet)
 tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_tiles.html">st_tiles</a></span>(<span class="st">"galaxy1"</span>)
@@ -393,18 +393,18 @@ tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_ti
 <p>The other is an event-driven timeline that consists of textual entries referencing historically significant events, situated chronologically in the timeline.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tlEvents
 <span class="co">#&gt; # A tibble: 1,241 x 6</span>
-<span class="co">#&gt;        year setting  series source             info               footnote</span>
-<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;              &lt;chr&gt;                 &lt;int&gt;</span>
-<span class="co">#&gt;  1  -4.00e9 seconda~ SNW    Reciprocity - SNW~ ~4 billion years ~       NA</span>
-<span class="co">#&gt;  2  -4.00e9 primary  SNW    The Beginning - S~ ~4 billion years ~        1</span>
-<span class="co">#&gt;  3  -6.40e7 time tr~ TOS    First Frontier - ~ ~64 million years~       NA</span>
-<span class="co">#&gt;  4  -2.78e4 seconda~ DS9    Horn And Ivory - ~ ~27800 BC. Backst~       NA</span>
-<span class="co">#&gt;  5  -2.70e3 inferred TOS    Yesterday's Son -~ ~2700 BC. Birth o~       NA</span>
-<span class="co">#&gt;  6  -3.00e2 seconda~ &lt;NA&gt;   Spock's World - V~ ~300 BC. Early Vu~       NA</span>
-<span class="co">#&gt;  7  -7.90e1 seconda~ &lt;NA&gt;   Spock's World - V~ Birth of Surak, s~       NA</span>
-<span class="co">#&gt;  8  -7.00e1 seconda~ TNG    The Devil's Heart~ ~70 BC. Stef is c~        2</span>
-<span class="co">#&gt;  9  -3.30e1 seconda~ &lt;NA&gt;   Spock's World - V~ Surak discovers h~       NA</span>
-<span class="co">#&gt; 10  -2.20e1 seconda~ TOS    Rihannsu 2: The R~ Vulcans make firs~       NA</span>
+<span class="co">#&gt;        year setting  series source             info                footnote</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;              &lt;chr&gt;                  &lt;int&gt;</span>
+<span class="co">#&gt;  1  -4.00e9 seconda~ SNW    Reciprocity - SNW~ ~4 billion years a~       NA</span>
+<span class="co">#&gt;  2  -4.00e9 primary  SNW    The Beginning - S~ ~4 billion years a~        1</span>
+<span class="co">#&gt;  3  -6.40e7 time tr~ TOS    First Frontier - ~ ~64 million years ~       NA</span>
+<span class="co">#&gt;  4  -2.78e4 seconda~ DS9    Horn And Ivory - ~ ~27800 BC. Backsto~       NA</span>
+<span class="co">#&gt;  5  -2.70e3 inferred TOS    Yesterday's Son -~ ~2700 BC. Birth of~       NA</span>
+<span class="co">#&gt;  6  -3.00e2 seconda~ &lt;NA&gt;   Spock's World - V~ ~300 BC. Early Vul~       NA</span>
+<span class="co">#&gt;  7  -7.90e1 seconda~ &lt;NA&gt;   Spock's World - V~ Birth of Surak, so~       NA</span>
+<span class="co">#&gt;  8  -7.00e1 seconda~ TNG    The Devil's Heart~ ~70 BC. Stef is cr~        2</span>
+<span class="co">#&gt;  9  -3.30e1 seconda~ &lt;NA&gt;   Spock's World - V~ Surak discovers hi~       NA</span>
+<span class="co">#&gt; 10  -2.20e1 seconda~ TOS    Rihannsu 2: The R~ Vulcans make first~       NA</span>
 <span class="co">#&gt; # ... with 1,231 more rows</span></code></pre></div>
 <p>The two datasets are quite different in their focus and compliment one another.</p>
 </div>
@@ -414,18 +414,18 @@ tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_ti
 <p>One column these two timeline data frames share in common is the <code>footnote</code> column, which you can see only contains ID values for entries which have a footnote. The <code>tlFootnotes</code> dataset can be referenced or joined by <code>footnote</code> to one of the other tables. Footnotes tend to be long strings of text and not associated with most timeline entries, so they are kept in a separate table.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tlFootnotes
 <span class="co">#&gt; # A tibble: 605 x 3</span>
-<span class="co">#&gt;    id       id text                                                       </span>
-<span class="co">#&gt;    &lt;chr&gt; &lt;int&gt; &lt;chr&gt;                                                      </span>
-<span class="co">#&gt;  1 book      1 This chapter chronicles the period from the formation of t~</span>
-<span class="co">#&gt;  2 book      2 "The time and manner of Borg origins are entirely speculat~</span>
-<span class="co">#&gt;  3 book      3 This chapter chronicles the period from Surak's birth unti~</span>
-<span class="co">#&gt;  4 book      4 As a vision, this may be historically unreliable. The even~</span>
-<span class="co">#&gt;  5 book      5 This chapter chronicles the period from the Ahkh War (agai~</span>
-<span class="co">#&gt;  6 book      6 "The date of the Awakening is around 2000 years prior to \~</span>
-<span class="co">#&gt;  7 book      7 This chapter chronicles the period from S'task's Declarati~</span>
-<span class="co">#&gt;  8 book      8 This chapter chronicles the journey of the Rihannsu Travel~</span>
-<span class="co">#&gt;  9 book      9 These chapters chronicle the period beginning 25.86 real-t~</span>
-<span class="co">#&gt; 10 book     10 This chapter chronicles the period from the Settlement unt~</span>
+<span class="co">#&gt;    id       id text                                                        </span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;int&gt; &lt;chr&gt;                                                       </span>
+<span class="co">#&gt;  1 book      1 This chapter chronicles the period from the formation of th~</span>
+<span class="co">#&gt;  2 book      2 "The time and manner of Borg origins are entirely speculati~</span>
+<span class="co">#&gt;  3 book      3 This chapter chronicles the period from Surak's birth until~</span>
+<span class="co">#&gt;  4 book      4 As a vision, this may be historically unreliable. The event~</span>
+<span class="co">#&gt;  5 book      5 This chapter chronicles the period from the Ahkh War (again~</span>
+<span class="co">#&gt;  6 book      6 "The date of the Awakening is around 2000 years prior to \"~</span>
+<span class="co">#&gt;  7 book      7 This chapter chronicles the period from S'task's Declaratio~</span>
+<span class="co">#&gt;  8 book      8 This chapter chronicles the journey of the Rihannsu Travele~</span>
+<span class="co">#&gt;  9 book      9 These chapters chronicle the period beginning 25.86 real-ti~</span>
+<span class="co">#&gt; 10 book     10 This chapter chronicles the period from the Settlement unti~</span>
 <span class="co">#&gt; # ... with 595 more rows</span></code></pre></div>
 </div>
 <div id="timeline-data-details-and-caveats" class="section level3">
@@ -528,8 +528,8 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
 <div id="pseudo-apis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#pseudo-apis" class="anchor"></a>Pseudo-APIs</h2>
-<p>Some functions in <code>rtrek</code> provide an API-<em>like</em> interface to online Star Trek-related data. Specifically, parsing data from the Memory Alpha and Memory Beta websites. These sites do not provide APIs. Therefore the only option is to read pages into R and parse the html. Behind the scenes this is done using the <code>xml2</code> and <code>rvest</code> packages, but from the user perspective it is presented as passing an API endpoint string to a function.</p>
-<p>Currently, <code>memory_alpha</code> is available in <code>rtrek</code>. This is the main function associated with accessing data from Memory Alpha. For details and examples on this and its companion functions, see the Memory Alpha <a href="https://leonawicz.github.io/rtrek/articles/memory-alpha.html">vignette</a>. Functions for Memory Beta are not yet available but will be in the next package version.</p>
+<p>Some functions in <code>rtrek</code> provide an API-<em>like</em> interface to online Star Trek-related data. Specifically, parsing data from the <a href="http://memory-alpha.wikia.com/">Memory Alpha</a> and <a href="http://memory-beta.wikia.com/">Memory Beta</a> websites. These sites do not provide APIs. Therefore the only option is to read pages into R and parse the html. Behind the scenes this is done using the <code>xml2</code> and <code>rvest</code> packages, but from the user perspective it is presented as passing an API endpoint string to a function.</p>
+<p><code>memory_alpha</code> and <code>memory_beta</code>, as well as several other related functions, are available in <code>rtrek</code>. These functions access data from Memory Alpha and Memory Beta. For details and examples on these functions, see the Memory Alpha . <a href="https://leonawicz.github.io/rtrek/articles/memory-alpha.html">vignette</a> and the Memory Beta <a href="https://leonawicz.github.io/rtrek/articles/memory-beta.html">vignette</a>.</p>
 </div>
 <div id="star-trek-novel-text-mining" class="section level2">
 <h2 class="hasAnchor">
@@ -553,13 +553,13 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
 <span class="co">#&gt; # ... with 773 more rows, and 2 more variables: nchar &lt;int&gt;,</span>
 <span class="co">#&gt; #   dedication &lt;chr&gt;</span></code></pre></div>
 <p>Obviously, verbatim licensed book content itself cannot be shared, so it is not possible to provide capability in <code>rtrek</code> to enable analysts to perform their own unique text mining analyses on Star Trek novel corpora. However, future versions of <code>rtrek</code> will include more summary datasets that will aim to represent more interesting variables.</p>
-<p>A couple examples could be:</p>
+<p>A few examples could be:</p>
 <ul>
 <li>the relative frequency of popular characters’ names per book.</li>
-<li>a sentiment analysis; are some series darker than other?</li>
+<li>a sentiment analysis; are some series darker than others?</li>
 <li>relative lengths of books by series, author, or publication date; are there changes over time?</li>
 </ul>
-<p>or any other set of interesting metrics that could be used to, for example, inform suggested reading lists of various titles, or books by particular authors with a favored style or focus.</p>
+<p>or any other set of interesting metrics that could be used, for example, to inform suggested reading lists of various titles, or books by particular authors with a favored style or focus.</p>
 </div>
   </div>
 

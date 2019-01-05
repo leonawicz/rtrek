@@ -239,7 +239,7 @@
 <p>Descending through subcategories is done by appending their <code>id</code> values, separated by a forward slash <code>/</code>. Notice that compared to Memory Alpha, classification and resulting hierarchical organization can be more detailed for similar content.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> "characters/Characters by races and cultures/Klingonoids/Klingons"</span>
 <span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(x)
-<span class="co">#&gt; # A tibble: 1,067 x 2</span>
+<span class="co">#&gt; # A tibble: 1,074 x 2</span>
 <span class="co">#&gt;    Klingons                         url                               </span>
 <span class="co">#&gt;    &lt;chr&gt;                            &lt;chr&gt;                             </span>
 <span class="co">#&gt;  1 Klingon                          Klingon                           </span>
@@ -252,7 +252,7 @@
 <span class="co">#&gt;  8 Adon, son of Gorath              Adon,_son_of_Gorath               </span>
 <span class="co">#&gt;  9 Adrokos                          Adrokos                           </span>
 <span class="co">#&gt; 10 Aek-Nor                          Aek-Nor                           </span>
-<span class="co">#&gt; # ... with 1,057 more rows</span>
+<span class="co">#&gt; # ... with 1,064 more rows</span>
 
 <span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(x, <span class="st">"/Worf, son of Mogh"</span>))
 <span class="co">#&gt; # A tibble: 1 x 4</span>
@@ -341,19 +341,19 @@ x
 x<span class="op">$</span>categories
 <span class="co">#&gt; [[1]]</span>
 <span class="co">#&gt; # A tibble: 11 x 2</span>
-<span class="co">#&gt;    categories                         url                                 </span>
-<span class="co">#&gt;    &lt;chr&gt;                              &lt;chr&gt;                               </span>
-<span class="co">#&gt;  1 Memory Beta images (episode image~ Category:Memory_Beta_images_(episod~</span>
-<span class="co">#&gt;  2 Memory Beta images (DS9 episode i~ Category:Memory_Beta_images_(DS9_ep~</span>
-<span class="co">#&gt;  3 Memory Beta images (DS9 season 5 ~ Category:Memory_Beta_images_(DS9_se~</span>
-<span class="co">#&gt;  4 Memory Beta images (Klingons)      Category:Memory_Beta_images_(Klingo~</span>
-<span class="co">#&gt;  5 Memory Beta images (Worf)          Category:Memory_Beta_images_(Worf)  </span>
-<span class="co">#&gt;  6 Memory Beta images (Trill)         Category:Memory_Beta_images_(Trill) </span>
-<span class="co">#&gt;  7 Memory Beta images (Jadzia)        Category:Memory_Beta_images_(Jadzia)</span>
-<span class="co">#&gt;  8 Memory Beta images (24th century ~ Category:Memory_Beta_images_(24th_c~</span>
-<span class="co">#&gt;  9 Memory Beta images (Deep Space 9 ~ Category:Memory_Beta_images_(Deep_S~</span>
-<span class="co">#&gt; 10 Memory Beta images (Starfleet com~ Category:Memory_Beta_images_(Starfl~</span>
-<span class="co">#&gt; 11 Memory Beta images (Paramount ima~ Category:Memory_Beta_images_(Paramo~</span></code></pre></div>
+<span class="co">#&gt;    categories                          url                                 </span>
+<span class="co">#&gt;    &lt;chr&gt;                               &lt;chr&gt;                               </span>
+<span class="co">#&gt;  1 Memory Beta images (episode images) Category:Memory_Beta_images_(episod~</span>
+<span class="co">#&gt;  2 Memory Beta images (DS9 episode im~ Category:Memory_Beta_images_(DS9_ep~</span>
+<span class="co">#&gt;  3 Memory Beta images (DS9 season 5 i~ Category:Memory_Beta_images_(DS9_se~</span>
+<span class="co">#&gt;  4 Memory Beta images (Klingons)       Category:Memory_Beta_images_(Klingo~</span>
+<span class="co">#&gt;  5 Memory Beta images (Worf)           Category:Memory_Beta_images_(Worf)  </span>
+<span class="co">#&gt;  6 Memory Beta images (Trill)          Category:Memory_Beta_images_(Trill) </span>
+<span class="co">#&gt;  7 Memory Beta images (Jadzia)         Category:Memory_Beta_images_(Jadzia)</span>
+<span class="co">#&gt;  8 Memory Beta images (24th century S~ Category:Memory_Beta_images_(24th_c~</span>
+<span class="co">#&gt;  9 Memory Beta images (Deep Space 9 p~ Category:Memory_Beta_images_(Deep_S~</span>
+<span class="co">#&gt; 10 Memory Beta images (Starfleet comm~ Category:Memory_Beta_images_(Starfl~</span>
+<span class="co">#&gt; 11 Memory Beta images (Paramount imag~ Category:Memory_Beta_images_(Paramo~</span></code></pre></div>
 <p>This provides quite a bit of metadata about the particular photo.</p>
 <p>Of course, the likely intent is to obtain the image file itself when working with image file “article” pages. Use <code>mb_image</code> for this. It returns a ggplot object of the downloaded image file.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/mb_image.html">mb_image</a></span>(worf_jadzia<span class="op">$</span>url[<span class="dv">1</span>])</code></pre></div>
@@ -373,19 +373,19 @@ x<span class="op">$</span>categories
 <span class="co">#&gt; 2360</span>
 x<span class="op">$</span>events
 <span class="co">#&gt; # A tibble: 11 x 4</span>
-<span class="co">#&gt;    period id               date  notes                                    </span>
-<span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;                                    </span>
-<span class="co">#&gt;  1 2360   Events           &lt;NA&gt;  Quark opens a bar on Terok Nor. [1]      </span>
-<span class="co">#&gt;  2 2360   Conflicts        &lt;NA&gt;  Kalisi Reyar designs and completes a gri~</span>
-<span class="co">#&gt;  3 2360   Federation_poli~ &lt;NA&gt;  Pahkwa-thanh is admitted into the Federa~</span>
-<span class="co">#&gt;  4 2360   Cardassian_poli~ &lt;NA&gt;  Miras Vara has taken the leadership of t~</span>
-<span class="co">#&gt;  5 2360   Cardassian_poli~ &lt;NA&gt;  Natima Lang and Gaten Russol join the ca~</span>
-<span class="co">#&gt;  6 2360   Romulan_politics &lt;NA&gt;  Vreenak is elected.[2]                   </span>
-<span class="co">#&gt;  7 2360   Promotions_and_~ &lt;NA&gt;  Data is promoted to Lieutenant Commander~</span>
-<span class="co">#&gt;  8 2360   Promotions_and_~ &lt;NA&gt;  Joseph Carey graduates from Starfleet Ac~</span>
-<span class="co">#&gt;  9 2360   Births_and_deat~ &lt;NA&gt;  Skrain Dukat's son Mekor is born. [citat~</span>
-<span class="co">#&gt; 10 2360   Births_and_deat~ &lt;NA&gt;  Caylem's wife dies in a Mokra prison.[2] </span>
-<span class="co">#&gt; 11 2360   Births_and_deat~ &lt;NA&gt;  Dekon Elig dies attempting to escape the~</span>
+<span class="co">#&gt;    period id               date  notes                                     </span>
+<span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;                                     </span>
+<span class="co">#&gt;  1 2360   Events           &lt;NA&gt;  Quark opens a bar on Terok Nor. [1]       </span>
+<span class="co">#&gt;  2 2360   Conflicts        &lt;NA&gt;  Kalisi Reyar designs and completes a grid~</span>
+<span class="co">#&gt;  3 2360   Federation_poli~ &lt;NA&gt;  Pahkwa-thanh is admitted into the Federat~</span>
+<span class="co">#&gt;  4 2360   Cardassian_poli~ &lt;NA&gt;  Miras Vara has taken the leadership of th~</span>
+<span class="co">#&gt;  5 2360   Cardassian_poli~ &lt;NA&gt;  Natima Lang and Gaten Russol join the car~</span>
+<span class="co">#&gt;  6 2360   Romulan_politics &lt;NA&gt;  Vreenak is elected.[2]                    </span>
+<span class="co">#&gt;  7 2360   Promotions_and_~ &lt;NA&gt;  Data is promoted to Lieutenant Commander.~</span>
+<span class="co">#&gt;  8 2360   Promotions_and_~ &lt;NA&gt;  Joseph Carey graduates from Starfleet Aca~</span>
+<span class="co">#&gt;  9 2360   Births_and_deat~ &lt;NA&gt;  Skrain Dukat's son Mekor is born. [citati~</span>
+<span class="co">#&gt; 10 2360   Births_and_deat~ &lt;NA&gt;  Caylem's wife dies in a Mokra prison.[2]  </span>
+<span class="co">#&gt; 11 2360   Births_and_deat~ &lt;NA&gt;  Dekon Elig dies attempting to escape the ~</span>
 x<span class="op">$</span>stories
 <span class="co">#&gt; # A tibble: 6 x 11</span>
 <span class="co">#&gt;   title title_url colleciton collection_url section context series date </span>
@@ -461,18 +461,18 @@ x<span class="op">$</span>stories
 <p>It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with <code>mb_article</code>, setting <code>browse = TRUE</code> opens the page in the browser.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/mb_search.html">mb_search</a></span>(<span class="st">"Guinan"</span>)
 <span class="co">#&gt; # A tibble: 25 x 3</span>
-<span class="co">#&gt;    title              text                               url              </span>
-<span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;                              &lt;chr&gt;            </span>
-<span class="co">#&gt;  1 Guinan             http://memory-beta.wikia.com/wiki~ Guinan           </span>
-<span class="co">#&gt;  2 Guinan (mirror)    http://memory-beta.wikia.com/wiki~ Guinan_(mirror)  </span>
-<span class="co">#&gt;  3 One of Forty-seven http://memory-beta.wikia.com/wiki~ One_of_Forty-sev~</span>
-<span class="co">#&gt;  4 Nova Kron          http://memory-beta.wikia.com/wiki~ Nova_Kron        </span>
-<span class="co">#&gt;  5 Together Again, f~ http://memory-beta.wikia.com/wiki~ Together_Again,_~</span>
-<span class="co">#&gt;  6 Goblet             http://memory-beta.wikia.com/wiki~ Goblet           </span>
-<span class="co">#&gt;  7 Jeparly Station    http://memory-beta.wikia.com/wiki~ Jeparly_Station  </span>
-<span class="co">#&gt;  8 Morgen (mirror)    http://memory-beta.wikia.com/wiki~ Morgen_(mirror)  </span>
-<span class="co">#&gt;  9 Devil's Brew       http://memory-beta.wikia.com/wiki~ Devil%27s_Brew   </span>
-<span class="co">#&gt; 10 Nectar             http://memory-beta.wikia.com/wiki~ Nectar           </span>
+<span class="co">#&gt;    title               text                              url               </span>
+<span class="co">#&gt;    &lt;chr&gt;               &lt;chr&gt;                             &lt;chr&gt;             </span>
+<span class="co">#&gt;  1 Guinan              http://memory-beta.wikia.com/wik~ Guinan            </span>
+<span class="co">#&gt;  2 Guinan (mirror)     http://memory-beta.wikia.com/wik~ Guinan_(mirror)   </span>
+<span class="co">#&gt;  3 One of Forty-seven  http://memory-beta.wikia.com/wik~ One_of_Forty-seven</span>
+<span class="co">#&gt;  4 Nova Kron           http://memory-beta.wikia.com/wik~ Nova_Kron         </span>
+<span class="co">#&gt;  5 Together Again, fo~ http://memory-beta.wikia.com/wik~ Together_Again,_f~</span>
+<span class="co">#&gt;  6 Goblet              http://memory-beta.wikia.com/wik~ Goblet            </span>
+<span class="co">#&gt;  7 Jeparly Station     http://memory-beta.wikia.com/wik~ Jeparly_Station   </span>
+<span class="co">#&gt;  8 Morgen (mirror)     http://memory-beta.wikia.com/wik~ Morgen_(mirror)   </span>
+<span class="co">#&gt;  9 Devil's Brew        http://memory-beta.wikia.com/wik~ Devil%27s_Brew    </span>
+<span class="co">#&gt; 10 Nectar              http://memory-beta.wikia.com/wik~ Nectar            </span>
 <span class="co">#&gt; # ... with 15 more rows</span></code></pre></div>
 </div>
 <div id="caveats" class="section level2">

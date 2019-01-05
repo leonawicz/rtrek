@@ -307,56 +307,56 @@ worf<span class="op">$</span>content[[<span class="dv">1</span>]]  <span class="
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)
 klingons &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons/Memory Alpha images (Klingons)"</span>)
 klingons
-<span class="co">#&gt; # A tibble: 1,176 x 2</span>
-<span class="co">#&gt;    `Memory Alpha images (Klingons)`   url                                 </span>
-<span class="co">#&gt;    &lt;chr&gt;                              &lt;chr&gt;                               </span>
-<span class="co">#&gt;  1 Age of ascension pain sticks.jpg   File:Age_of_ascension_pain_sticks.j~</span>
-<span class="co">#&gt;  2 Ajilon Prime Klingon 1.jpg         File:Ajilon_Prime_Klingon_1.jpg     </span>
-<span class="co">#&gt;  3 Ajilon Prime Klingon 2.jpg         File:Ajilon_Prime_Klingon_2.jpg     </span>
-<span class="co">#&gt;  4 Ajilon Prime Klingons.jpg          File:Ajilon_Prime_Klingons.jpg      </span>
-<span class="co">#&gt;  5 Ak'voh.jpg                         File:Ak%27voh.jpg                   </span>
-<span class="co">#&gt;  6 Alexander and K'mtar.jpg           File:Alexander_and_K%27mtar.jpg     </span>
-<span class="co">#&gt;  7 Alexander at the kot'baval festiv~ File:Alexander_at_the_kot%27baval_f~</span>
-<span class="co">#&gt;  8 Alexander Rozhenko, 2367.jpg       File:Alexander_Rozhenko,_2367.jpg   </span>
-<span class="co">#&gt;  9 Alexander Rozhenko, 2370.jpg       File:Alexander_Rozhenko,_2370.jpg   </span>
-<span class="co">#&gt; 10 Alexander Rozhenko, 2374.jpg       File:Alexander_Rozhenko,_2374.jpg   </span>
-<span class="co">#&gt; # ... with 1,166 more rows</span>
+<span class="co">#&gt; # A tibble: 1,179 x 2</span>
+<span class="co">#&gt;    `Memory Alpha images (Klingons)`   url                                  </span>
+<span class="co">#&gt;    &lt;chr&gt;                              &lt;chr&gt;                                </span>
+<span class="co">#&gt;  1 Age of ascension pain sticks.jpg   File:Age_of_ascension_pain_sticks.jpg</span>
+<span class="co">#&gt;  2 Ajilon Prime Klingon 1.jpg         File:Ajilon_Prime_Klingon_1.jpg      </span>
+<span class="co">#&gt;  3 Ajilon Prime Klingon 2.jpg         File:Ajilon_Prime_Klingon_2.jpg      </span>
+<span class="co">#&gt;  4 Ajilon Prime Klingons.jpg          File:Ajilon_Prime_Klingons.jpg       </span>
+<span class="co">#&gt;  5 Ak'voh.jpg                         File:Ak%27voh.jpg                    </span>
+<span class="co">#&gt;  6 Alexander and K'mtar.jpg           File:Alexander_and_K%27mtar.jpg      </span>
+<span class="co">#&gt;  7 Alexander at the kot'baval festiv~ File:Alexander_at_the_kot%27baval_fe~</span>
+<span class="co">#&gt;  8 Alexander Rozhenko, 2367.jpg       File:Alexander_Rozhenko,_2367.jpg    </span>
+<span class="co">#&gt;  9 Alexander Rozhenko, 2370.jpg       File:Alexander_Rozhenko,_2370.jpg    </span>
+<span class="co">#&gt; 10 Alexander Rozhenko, 2374.jpg       File:Alexander_Rozhenko,_2374.jpg    </span>
+<span class="co">#&gt; # ... with 1,169 more rows</span>
 
 worf_data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(klingons, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"Worf"</span>, url) <span class="op">&amp;</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"Data"</span>, url))
 worf_data
 <span class="co">#&gt; # A tibble: 5 x 2</span>
-<span class="co">#&gt;   `Memory Alpha images (Klingons)`      url                               </span>
-<span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;                             </span>
-<span class="co">#&gt; 1 Data tries talking to Worf.jpg        File:Data_tries_talking_to_Worf.j~</span>
-<span class="co">#&gt; 2 Data, Picard and Worf, 2375.jpg       File:Data,_Picard_and_Worf,_2375.~</span>
-<span class="co">#&gt; 3 La Forge, Data, Riker, Worf, and Pic~ File:La_Forge,_Data,_Riker,_Worf,~</span>
-<span class="co">#&gt; 4 Picard Data and Worf on Iconia.jpg    File:Picard_Data_and_Worf_on_Icon~</span>
-<span class="co">#&gt; 5 Worf carries Data through portal.jpg  File:Worf_carries_Data_through_po~</span></code></pre></div>
+<span class="co">#&gt;   `Memory Alpha images (Klingons)`      url                                </span>
+<span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;                              </span>
+<span class="co">#&gt; 1 Data tries talking to Worf.jpg        File:Data_tries_talking_to_Worf.jpg</span>
+<span class="co">#&gt; 2 Data, Picard and Worf, 2375.jpg       File:Data,_Picard_and_Worf,_2375.j~</span>
+<span class="co">#&gt; 3 La Forge, Data, Riker, Worf, and Pic~ File:La_Forge,_Data,_Riker,_Worf,_~</span>
+<span class="co">#&gt; 4 Picard Data and Worf on Iconia.jpg    File:Picard_Data_and_Worf_on_Iconi~</span>
+<span class="co">#&gt; 5 Worf carries Data through portal.jpg  File:Worf_carries_Data_through_por~</span></code></pre></div>
 <p><em>Qapla’</em>! This provides several results.</p>
 <p>Note that you can use the full <code>memory_alpha</code> API endpoint string on this terminal page, treating it like an article (i.e., not a category page). There is not much to return other than perhaps the category entries attached to the image. A simpler option is to use the short URL with <code>ma_article</code> to achieve the same result.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons/Memory Alpha images (Klingons)/Data tries talking to Worf.jpg"</span>)
 x
 <span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title                         content           metadata categories     </span>
-<span class="co">#&gt;   &lt;chr&gt;                         &lt;list&gt;            &lt;list&gt;   &lt;list&gt;         </span>
-<span class="co">#&gt; 1 Data tries talking to Worf.j~ &lt;S3: xml_nodeset&gt; &lt;NULL&gt;   &lt;tibble [4 x 2~</span>
+<span class="co">#&gt;   title                          content           metadata categories     </span>
+<span class="co">#&gt;   &lt;chr&gt;                          &lt;list&gt;            &lt;list&gt;   &lt;list&gt;         </span>
+<span class="co">#&gt; 1 Data tries talking to Worf.jpg &lt;S3: xml_nodeset&gt; &lt;NULL&gt;   &lt;tibble [4 x 2~</span>
 
 x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ma_article.html">ma_article</a></span>(<span class="st">"File:Data_tries_talking_to_Worf.jpg"</span>)
 x
 <span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title                         content           metadata categories     </span>
-<span class="co">#&gt;   &lt;chr&gt;                         &lt;list&gt;            &lt;list&gt;   &lt;list&gt;         </span>
-<span class="co">#&gt; 1 Data tries talking to Worf.j~ &lt;S3: xml_nodeset&gt; &lt;NULL&gt;   &lt;tibble [4 x 2~</span>
+<span class="co">#&gt;   title                          content           metadata categories     </span>
+<span class="co">#&gt;   &lt;chr&gt;                          &lt;list&gt;            &lt;list&gt;   &lt;list&gt;         </span>
+<span class="co">#&gt; 1 Data tries talking to Worf.jpg &lt;S3: xml_nodeset&gt; &lt;NULL&gt;   &lt;tibble [4 x 2~</span>
 
 x<span class="op">$</span>categories
 <span class="co">#&gt; [[1]]</span>
 <span class="co">#&gt; # A tibble: 4 x 2</span>
-<span class="co">#&gt;   categories                           url                                </span>
-<span class="co">#&gt;   &lt;chr&gt;                                &lt;chr&gt;                              </span>
-<span class="co">#&gt; 1 Memory Alpha remastered files by pr~ Category:Memory_Alpha_remastered_f~</span>
-<span class="co">#&gt; 2 Memory Alpha fair use images         Category:Memory_Alpha_fair_use_ima~</span>
-<span class="co">#&gt; 3 Memory Alpha images (Androids)       Category:Memory_Alpha_images_(Andr~</span>
-<span class="co">#&gt; 4 Memory Alpha images (Klingons)       Category:Memory_Alpha_images_(Klin~</span></code></pre></div>
+<span class="co">#&gt;   categories                            url                                </span>
+<span class="co">#&gt;   &lt;chr&gt;                                 &lt;chr&gt;                              </span>
+<span class="co">#&gt; 1 Memory Alpha remastered files by pro~ Category:Memory_Alpha_remastered_f~</span>
+<span class="co">#&gt; 2 Memory Alpha fair use images          Category:Memory_Alpha_fair_use_ima~</span>
+<span class="co">#&gt; 3 Memory Alpha images (Androids)        Category:Memory_Alpha_images_(Andr~</span>
+<span class="co">#&gt; 4 Memory Alpha images (Klingons)        Category:Memory_Alpha_images_(Klin~</span></code></pre></div>
 <p>Of course, the likely intent is to obtain the image file itself when working with image file “article” pages. Use <code>ma_image</code> for this. It returns a ggplot object of the downloaded image file.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ma_image.html">ma_image</a></span>(worf_data<span class="op">$</span>url[<span class="dv">1</span>])</code></pre></div>
 <p><img src="memory-alpha_files/figure-html/ma_image3-1.png" width="700"></p>
@@ -369,18 +369,18 @@ x<span class="op">$</span>categories
 <p>It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with <code>ma_article</code>, setting <code>browse = TRUE</code> opens the page in the browser.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/ma_search.html">ma_search</a></span>(<span class="st">"Guinan"</span>)
 <span class="co">#&gt; # A tibble: 25 x 3</span>
-<span class="co">#&gt;    title              text                               url              </span>
-<span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;                              &lt;chr&gt;            </span>
-<span class="co">#&gt;  1 Guinan             http://memory-alpha.wikia.com/wik~ Guinan           </span>
-<span class="co">#&gt;  2 Francis Guinan     http://memory-alpha.wikia.com/wik~ Francis_Guinan   </span>
-<span class="co">#&gt;  3 Unnamed El-Aurians http://memory-alpha.wikia.com/wik~ Unnamed_El-Auria~</span>
-<span class="co">#&gt;  4 Unnamed individua~ http://memory-alpha.wikia.com/wik~ Unnamed_individu~</span>
-<span class="co">#&gt;  5 Prometheus         http://memory-alpha.wikia.com/wik~ Prometheus       </span>
-<span class="co">#&gt;  6 Ashanti            http://memory-alpha.wikia.com/wik~ Ashanti          </span>
-<span class="co">#&gt;  7 Nova Kron          http://memory-alpha.wikia.com/wik~ Nova_Kron        </span>
-<span class="co">#&gt;  8 Royal blue         http://memory-alpha.wikia.com/wik~ Royal_blue       </span>
-<span class="co">#&gt;  9 Fin (anatomy)      http://memory-alpha.wikia.com/wik~ Fin_(anatomy)    </span>
-<span class="co">#&gt; 10 Delovian soufflé   http://memory-alpha.wikia.com/wik~ Delovian_souffl%~</span>
+<span class="co">#&gt;    title              text                                url              </span>
+<span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;                               &lt;chr&gt;            </span>
+<span class="co">#&gt;  1 Guinan             http://memory-alpha.wikia.com/wiki~ Guinan           </span>
+<span class="co">#&gt;  2 Francis Guinan     http://memory-alpha.wikia.com/wiki~ Francis_Guinan   </span>
+<span class="co">#&gt;  3 Unnamed El-Aurians http://memory-alpha.wikia.com/wiki~ Unnamed_El-Auria~</span>
+<span class="co">#&gt;  4 Unnamed individua~ http://memory-alpha.wikia.com/wiki~ Unnamed_individu~</span>
+<span class="co">#&gt;  5 Prometheus         http://memory-alpha.wikia.com/wiki~ Prometheus       </span>
+<span class="co">#&gt;  6 Ashanti            http://memory-alpha.wikia.com/wiki~ Ashanti          </span>
+<span class="co">#&gt;  7 Nova Kron          http://memory-alpha.wikia.com/wiki~ Nova_Kron        </span>
+<span class="co">#&gt;  8 Royal blue         http://memory-alpha.wikia.com/wiki~ Royal_blue       </span>
+<span class="co">#&gt;  9 Fin (anatomy)      http://memory-alpha.wikia.com/wiki~ Fin_(anatomy)    </span>
+<span class="co">#&gt; 10 Delovian soufflé   http://memory-alpha.wikia.com/wiki~ Delovian_souffl%~</span>
 <span class="co">#&gt; # ... with 15 more rows</span></code></pre></div>
 </div>
 <div id="caveats" class="section level2">
