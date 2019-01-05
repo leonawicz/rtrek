@@ -85,7 +85,7 @@ stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
   wait
 }
 
-#' Check for interent connection
+#' Check for internet connection
 #'
 #' A basic check for internet connectivity.
 #'

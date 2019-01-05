@@ -2,7 +2,7 @@
 % Please edit documentation in R/api.R
 \name{has_internet}
 \alias{has_internet}
-\title{Check for interent connection}
+\title{Check for internet connection}
 \usage{
 has_internet(url = "https://www.google.com")
 }
