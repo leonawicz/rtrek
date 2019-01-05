@@ -16,7 +16,8 @@
 * Update unit tests, added unit tests for Memory Alpha  and Memory Beta functions.
 * Updated function documentation.
 * Updated introduction vignette sections. Added new section relating to timeline datasets.
-* Added three new vignettes for each of the three API options: STAPI, Memory Alpha,and Memory Beta (in progress).
+* Added three new vignettes for each of the three API options: STAPI, Memory Alpha, and Memory Beta.
+* Minor bug fixes.
 
 # rtrek 0.1.0
 

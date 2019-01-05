@@ -105,15 +105,16 @@ Spock was born in 2230. Obtain a subset of the Star Trek universe historical tim
 
 ``` r
 mb_timeline(2230)
+#> 2230
 #> $events
 #> # A tibble: 5 x 4
-#>   period id            date  notes                                        
-#>   <chr>  <chr>         <chr> <chr>                                        
-#> 1 2230   Events        <NA>  Argelius II  and Betelgeuse become members o~
-#> 2 2230   Births_and_D~ <NA>  Spock is born deep within a cave in Vulcan's~
-#> 3 2230   Births_and_D~ <NA>  George Samuel Kirk, Jr. is born.[5]          
-#> 4 2230   Births_and_D~ <NA>  David Rabin is born.[6]                      
-#> 5 2230   Births_and_D~ <NA>  Roy John Moss is born.[7]                    
+#>   period id            date  notes                                         
+#>   <chr>  <chr>         <chr> <chr>                                         
+#> 1 2230   Events        <NA>  Argelius II  and Betelgeuse become members of~
+#> 2 2230   Births_and_D~ <NA>  Spock is born deep within a cave in Vulcan's ~
+#> 3 2230   Births_and_D~ <NA>  George Samuel Kirk, Jr. is born.[5]           
+#> 4 2230   Births_and_D~ <NA>  David Rabin is born.[6]                       
+#> 5 2230   Births_and_D~ <NA>  Roy John Moss is born.[7]                     
 #> 
 #> $stories
 #> # A tibble: 5 x 11
