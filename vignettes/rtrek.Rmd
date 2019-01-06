@@ -157,9 +157,7 @@ While this data is very informative, it is many years out of date, being last up
 
 Nevertheless, it still represents possibly the highest quality representation of the chronological ordering of Star Trek fiction that combines episodes and movies with written works. The concurrent timeline of Star Trek TV episodes and movies are interleaved with the novels and other stories, anthologies and other written fiction. This provides fuller context resulting in a much richer timeline.
 
-`tlEvents` is event-driven, meaning that the timeline entries (rows) provide chronologically ordered historical events from the Star Trek universe.
-
-This timeline was recreated from [this timeline](http://www.maplenet.net/~trowbridge/timeline.htm), which has surprisingly not been lost from the internet yet. As with `tlBooks`, this timeline is quite out of date. In fact it is at least somewhat more out of date than `tlBooks`, its last content update appearing to be no later than 2005. This timeline is also more problematic than the other, and less relevant moving forward. Its updating essentially ceased  as the other began. See the link for more details.
+`tlEvents` is event-driven, meaning that the timeline entries (rows) provide chronologically ordered historical events from the Star Trek universe. As with `tlBooks`, this timeline is quite out of date. In fact it is at least somewhat more out of date than `tlBooks`, its last content update appearing to be no later than 2005. This timeline is also more problematic than the other, and less relevant moving forward. Its updating essentially ceased  as the other began.
 
 However, it is included because unlike `tlBooks`, which is a timeline of production titles, this timeline dataset is event-driven. While it may now be erroneous in places even independent from being out of date, it is useful for its informative textual entries referencing historically significant events in Star Trek lore.
 
