@@ -266,9 +266,9 @@ Values less than one are ignored (defaulting back to one second) and a warning w
 #&gt; <span class='message'></span>
 #&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='has_internet.html'>has_internet</a></span>()){
   <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page_count</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='co'># check first</span>
-  <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)
+  <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)
   <span class='no'>Q</span> <span class='kw'>&lt;-</span> <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>uid</span> <span class='kw'>=</span> <span class='st'>"CHMA0000025118"</span>)
-  <span class='no'>Q</span>$<span class='no'>episodes</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>uid</span>, <span class='no'>title</span>, <span class='no'>stardateFrom</span>, <span class='no'>stardateTo</span>)
+  <span class='no'>Q</span>$<span class='no'>episodes</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>uid</span>, <span class='no'>title</span>, <span class='no'>stardateFrom</span>, <span class='no'>stardateTo</span>)
 }</div><div class='output co'>#&gt; Total pages to retrieve all results: 64 </div><div class='output co'>#&gt;              uid                 title stardateFrom stardateTo
 #&gt; 1 EPMA0000001458    All Good Things...      47988.0    47988.0
 #&gt; 2 EPMA0000001329                 Q Who      42761.3    42761.3
