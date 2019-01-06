@@ -97,9 +97,8 @@
 #'
 #' A data frame with 1241 rows and 6 columns containing Star Trek timeline data. This dataset is event-driven,
 #' meaning that the timeline entries (rows) provide chronologically ordered historical events from the Star Trek universe.
-#' See the \code{tlEvents} dataset for an event-driven timeline.
+#' See the \code{tlBooks} dataset for an novel-driven timeline.
 #'
-#' This timeline was recreated from the timeline found at \code{http://www.maplenet.net/~trowbridge/timeline.htm}.
 #' As with \code{tlBooks}, this timeline is quite out of date. In fact it is at least somewhat more out of date than \code{tlBooks}.
 #' This timeline is also more problematic than the other, and less relevant moving forward. Its updating essentially ceased as the other began.
 #'
