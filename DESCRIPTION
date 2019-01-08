@@ -3,8 +3,8 @@ Version: 0.2.0
 Title: Datasets and Functions Relating to Star Trek
 Description: Provides datasets related to the Star Trek fictional universe and functions for working with the data.
     The package also provides access to real world datasets based on the televised series and other related licensed media productions.
-    It interfaces with Wikipedia (<https://www.wikipedia.org/>), the Star Trek API (STAPI) (<http://stapi.co/>), 
-    Memory Alpha (<http://memory-alpha.wikia.com/wiki/Portal:Main>), and Memory Beta (<http://memory-beta.wikia.com/wiki/Main_Page>) 
+    It interfaces with the Star Trek API (STAPI) (<http://stapi.co/>), 
+    Memory Alpha (<http://memory-alpha.wikia.com/>), and Memory Beta (<http://memory-beta.wikia.com/>) 
     to retrieve data, metadata and other information relating to Star Trek.
     It also contains local datasets covering a variety of topics such as Star Trek universe species data, geopolitical data,
     and summary datasets resulting from text mining analyses of Star Trek novels. 
