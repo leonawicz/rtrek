@@ -6,7 +6,11 @@
 \alias{rtrek-package}
 \title{rtrek: Star Trek datasets and related R functions.}
 \description{
-The rtrek package contains a collection of Star Trek-themed datasets and R functions to assist with their use.
-The package interfaces with Wikipedia, Memory Alpha and Memory Beta to retrieve data, metadata and other information relating to the Star Trek fictional universe.
-It also contains local datasets covering a variety of topics such as Star Trek universe species data, geopolitical data, and datasets resulting from text mining analyses of Star Trek novels.
+The \code{rtrek} package contains a collection of Star Trek-themed datasets and R functions to assist with their use.
+The package interfaces with the Star Trek API (STAPI), Memory Alpha and Memory Beta to retrieve data, metadata and other information relating to the Star Trek fictional universe.
+}
+\details{
+The package also contains several local datasets covering a variety of topics such as Star Trek timeline data, universe species data and geopolitical data.
+Some of these are more information rich, while others are toy examples useful for simple demonstrations. The bulk of Star Trek data is accessed from external sources by API.
+A future version of \code{rtrek} will also include summary datasets resulting from text mining analyses of Star Trek novels.
 }

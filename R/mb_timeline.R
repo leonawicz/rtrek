@@ -17,8 +17,8 @@
 #' This can lead to downloading the full timeline to take ten minutes or so even if you have a fast connection; most of the time it takes is spent waiting patiently.
 #'
 #' Also, like other functions that work with Memory Alpha and Memory Beta data, \code{mb_timeline} wraps around internal functions that are sensibly memoized.
-#' This means that if you make the same call twice in your R session, you won't have to wait at all, because the result is chached in memory.
-#' The call will appear to run instantaneously the second time around, but that's because nothing is happening other than returning the chached result from the initial call.
+#' This means that if you make the same call twice in your R session, you won't have to wait at all, because the result is cached in memory.
+#' The call will appear to run instantaneously the second time around, but that's because nothing is happening other than returning the cached result from the initial call.
 #'
 #' @param x numeric or character, description of the desired timeline window. See details.
 #'
