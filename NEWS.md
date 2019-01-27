@@ -1,3 +1,8 @@
+# rtrek 0.2.1
+
+* Fixed errors in `stBooks` dataset where the number of words per book was calculated incorrectly.
+* Documentation updates.
+
 # rtrek 0.2.0
 
 * Added an initial version of an API function `memory_alpha` along with a collection of internal support functions for accessing Star Trek data from web portals available on the Memory Alpha website.

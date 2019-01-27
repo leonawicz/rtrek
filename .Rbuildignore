@@ -1,3 +1,4 @@
+^CRAN-RELEASE$
 ^codemeta\.json$
 ^CODE_OF_CONDUCT\.md$
 ^.*\.Rproj$
@@ -21,3 +22,4 @@
 ^vignettes/stapi.Rmd$
 ^vignettes/memory-alpha.Rmd$
 ^vignettes/memory-beta.Rmd$
+^vignettes/ex-word-count.Rmd$

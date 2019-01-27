@@ -1,0 +1,112 @@
+---
+title: "Word counts"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Word counts}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", warning = FALSE, message = FALSE, out.width = "100%", fig.height = 6)
+```
+
+These examples explore the word counts of published Star Trek novels from 1967 through 2017 based on the `stBooks` dataset.
+
+First, load packages to assist with data manipulation and plotting.
+
+```{r packages}
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+library(ggrepel)
+library(gridExtra)
+library(rtrek) # use >= v0.2.1 for more accurate word count data
+```
+
+Look for trends in word count through time for select series: The Next Generation, Deep Space Nine, and Voyager. Mutating the `date` and `nword` columns facilitates a better plot.
+Retain outliers in general, but drop any titles containing the word "Omnibus" because these are known to be larger books containing multiple individual novels. Inspect the data.
+
+```{r ex1_data}
+keep_series <- c("TNG", "DS9", "VOY")
+x <- mutate(stBooks, date = decimal_date(as.Date(date)), nword = nword / 1000) %>% 
+  filter(series %in% keep_series & !grepl("Omnibus", title))
+
+arrange(x, nword)
+```
+
+Create a plot, separating each series in a different panel rather than using color to differentiate them.
+
+```{r ex1_plot}
+clrs <- c("cornflowerblue", "orange", "purple")
+ggplot(x, aes(date, nword, color = series, fill = series)) + 
+  geom_point(color = "black", shape = 21, size = 3) + 
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Star Trek novel word count", subtitle = "By publication date and selected series", 
+       x = "Publication date", y = "Word count (Thousand words)") +
+  theme_minimal() + scale_color_manual(values = clrs) + scale_fill_manual(values = clrs) + 
+  scale_x_continuous(breaks = seq(1987, 2018, by = 3) + 0.5, labels = seq(1987, 2018, by = 3))
+```
+
+Look at the marginal change through time in average word count (pool all three series) with a simple linear model.
+
+```{r lm1}
+summary(lm(nword ~ date, data = x))
+```
+
+There is about a 40% increase in average word count per novel across the three series from the the first TNG novel in 1987 through 2017. In the case of the Voyager novels, however, the average word count approximately doubles and does so over a short production run. It is worth noting that as word count has trended upward noticeably, novels from these series have also been published less frequently. If you have read many of these book in paperback form, both the oldest and the more recent ones, this should not be a surprising result. Many of the newer releases have notably more pages and smaller font than the novels from the earlier years.
+
+In this next example, consider all books from all series available in `stBooks`, with the exception of Omnibus editions and those falling into the reference category. This example looks at cumulative total word count over time for all the selected books. For plot labeling purposes, this time divide the word count by one million.
+
+```{r ex2_data}
+x <- mutate(stBooks, date = decimal_date(as.Date(date)), nword = nword / 1e6) %>% 
+  filter(series != "REF" & !grepl("Omnibus", title)) %>% 
+  arrange(date) %>% 
+  mutate(total_words = cumsum(nword))
+
+x
+```
+
+The plot will be labeled with series abbreviations, so a key is needed for clarity. In order to label points on the plot marking the onset of a new novel series, take the first entry in the data frame for each series. A bit of theme customization is required for the table grid object that will display the key as an inset figure.
+
+```{r ex_data2}
+tab_theme <- gridExtra::ttheme_default(
+  core = list(fg_params = list(cex = 0.5), padding = unit(c(2, 2), "mm")), 
+  colhead = list(fg_params = list(cex = 0.5)))
+
+series <- group_by(x, series) %>% slice(1) %>% ungroup() %>%
+  inner_join(stSeries, by = c("series" = "abb")) %>% 
+  select(series, id, date, total_words)
+
+series
+
+key <- bind_rows(series, tibble(series = "YA-", id = "Young adult books")) %>% 
+  mutate(id = gsub(" Anthology", "", id)) %>% 
+  select(1:2) %>%
+  setNames(c("Label", "Onset of book series")) %>%
+  tableGrob(rows = NULL, theme = tab_theme)
+```
+
+Finally, create the plot.
+
+```{r ex2_plot}
+brks <- c(1967, seq(1970, 2015, by = 5), 2018)
+
+ggplot(x, aes(date, total_words)) + 
+  geom_step(size = 1, color = "gray30") +
+  geom_point(data = series, shape = 21, fill = "#FF3030", size = 3) + 
+  geom_label_repel(data = series, aes(label = series), color = "white", fill = "#FF3030CC", 
+                   segment.color = "black", fontface = "bold", label.size = NA) +
+  labs(title = "Star Trek novel cumulative word count", 
+       subtitle = "By publication date, excluding reference and omnibus titles", 
+       x = "Publication date", 
+       y = "Cumulative word count (Million words)") +
+  theme_minimal() +
+  scale_x_continuous(expand = c(0, 0), breaks = brks + 0.5, labels = brks) + 
+  scale_y_continuous(expand = c(0, 0)) +
+  coord_cartesian(xlim = c(1966.5, 2019)) +
+  annotation_custom(key, xmin = 2007, ymax = 35)
+```
+
+The golden age of licensed Star Trek novel publishing is clear. The 1990s and 2000s saw the creation of many new series as well of regular publication of new novels from existing ones. The current trajectory appears similar to the early 1990s, at least in terms of total words written.
+
