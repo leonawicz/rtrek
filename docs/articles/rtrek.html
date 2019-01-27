@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -78,6 +78,11 @@
     </li>
     <li>
       <a href="../articles/fonts.html">Star Trek fonts</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Examples</li>
+    <li>
+      <a href="../articles/ex-word-count.html">Novels: word ount</a>
     </li>
   </ul>
 </li>
@@ -253,16 +258,16 @@
 <span class="co">#&gt; # A tibble: 783 x 11</span>
 <span class="co">#&gt;    title author date  publisher identifier series subseries nchap  nword</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;</span>
-<span class="co">#&gt;  1 Star~ Alan ~ 2009~ Simon an~ 1439163391 AV     &lt;NA&gt;         18  74821</span>
-<span class="co">#&gt;  2 Star~ Rick ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    14  38298</span>
-<span class="co">#&gt;  3 Star~ Rudy ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    31  50896</span>
-<span class="co">#&gt;  4 Star~ Rick ~ 2011~ Simon Sp~ 978144241~ AV     Starflee~    13  37272</span>
-<span class="co">#&gt;  5 Star~ Alan ~ 2012~ Simon Sp~ 978144242~ AV     Starflee~    30  59871</span>
-<span class="co">#&gt;  6 Star~ Alan ~ 2013~ Gallery ~ 978147671~ AV     &lt;NA&gt;         17 143694</span>
-<span class="co">#&gt;  7 Capt~ James~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         21  93212</span>
-<span class="co">#&gt;  8 Capt~ Macke~ 1998~ Pocket B~ 978074345~ CT     &lt;NA&gt;         26  75215</span>
-<span class="co">#&gt;  9 Capt~ Chris~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         34  76508</span>
-<span class="co">#&gt; 10 The ~ John ~ 2000~ Pocket B~ 978074340~ CT     &lt;NA&gt;        176 424038</span>
+<span class="co">#&gt;  1 Star~ Alan ~ 2009~ Simon an~ 1439163391 AV     &lt;NA&gt;         18  77035</span>
+<span class="co">#&gt;  2 Star~ Rick ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    14  40129</span>
+<span class="co">#&gt;  3 Star~ Rudy ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    31  52547</span>
+<span class="co">#&gt;  4 Star~ Rick ~ 2011~ Simon Sp~ 978144241~ AV     Starflee~    13  39495</span>
+<span class="co">#&gt;  5 Star~ Alan ~ 2012~ Simon Sp~ 978144242~ AV     Starflee~    30  62030</span>
+<span class="co">#&gt;  6 Star~ Alan ~ 2013~ Gallery ~ 978147671~ AV     &lt;NA&gt;         17  77438</span>
+<span class="co">#&gt;  7 Capt~ James~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         21  95110</span>
+<span class="co">#&gt;  8 Capt~ Macke~ 1998~ Pocket B~ 978074345~ CT     &lt;NA&gt;         26  76392</span>
+<span class="co">#&gt;  9 Capt~ Chris~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         34  78678</span>
+<span class="co">#&gt; 10 The ~ John ~ 2000~ Pocket B~ 978074340~ CT     &lt;NA&gt;        176 436682</span>
 <span class="co">#&gt; # ... with 773 more rows, and 2 more variables: nchar &lt;int&gt;,</span>
 <span class="co">#&gt; #   dedication &lt;chr&gt;</span></code></pre></div>
 <p>This dataset is discussed further in the section below on e-book text mining.</p>
@@ -539,16 +544,16 @@ Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st
 <span class="co">#&gt; # A tibble: 783 x 11</span>
 <span class="co">#&gt;    title author date  publisher identifier series subseries nchap  nword</span>
 <span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;</span>
-<span class="co">#&gt;  1 Star~ Alan ~ 2009~ Simon an~ 1439163391 AV     &lt;NA&gt;         18  74821</span>
-<span class="co">#&gt;  2 Star~ Rick ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    14  38298</span>
-<span class="co">#&gt;  3 Star~ Rudy ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    31  50896</span>
-<span class="co">#&gt;  4 Star~ Rick ~ 2011~ Simon Sp~ 978144241~ AV     Starflee~    13  37272</span>
-<span class="co">#&gt;  5 Star~ Alan ~ 2012~ Simon Sp~ 978144242~ AV     Starflee~    30  59871</span>
-<span class="co">#&gt;  6 Star~ Alan ~ 2013~ Gallery ~ 978147671~ AV     &lt;NA&gt;         17 143694</span>
-<span class="co">#&gt;  7 Capt~ James~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         21  93212</span>
-<span class="co">#&gt;  8 Capt~ Macke~ 1998~ Pocket B~ 978074345~ CT     &lt;NA&gt;         26  75215</span>
-<span class="co">#&gt;  9 Capt~ Chris~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         34  76508</span>
-<span class="co">#&gt; 10 The ~ John ~ 2000~ Pocket B~ 978074340~ CT     &lt;NA&gt;        176 424038</span>
+<span class="co">#&gt;  1 Star~ Alan ~ 2009~ Simon an~ 1439163391 AV     &lt;NA&gt;         18  77035</span>
+<span class="co">#&gt;  2 Star~ Rick ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    14  40129</span>
+<span class="co">#&gt;  3 Star~ Rudy ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    31  52547</span>
+<span class="co">#&gt;  4 Star~ Rick ~ 2011~ Simon Sp~ 978144241~ AV     Starflee~    13  39495</span>
+<span class="co">#&gt;  5 Star~ Alan ~ 2012~ Simon Sp~ 978144242~ AV     Starflee~    30  62030</span>
+<span class="co">#&gt;  6 Star~ Alan ~ 2013~ Gallery ~ 978147671~ AV     &lt;NA&gt;         17  77438</span>
+<span class="co">#&gt;  7 Capt~ James~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         21  95110</span>
+<span class="co">#&gt;  8 Capt~ Macke~ 1998~ Pocket B~ 978074345~ CT     &lt;NA&gt;         26  76392</span>
+<span class="co">#&gt;  9 Capt~ Chris~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         34  78678</span>
+<span class="co">#&gt; 10 The ~ John ~ 2000~ Pocket B~ 978074340~ CT     &lt;NA&gt;        176 436682</span>
 <span class="co">#&gt; # ... with 773 more rows, and 2 more variables: nchar &lt;int&gt;,</span>
 <span class="co">#&gt; #   dedication &lt;chr&gt;</span></code></pre></div>
 <p>Obviously, verbatim licensed book content itself cannot be shared, so it is not possible to provide capability in <code>rtrek</code> to enable analysts to perform their own unique text mining analyses on Star Trek novel corpora. However, future versions of <code>rtrek</code> will include more summary datasets that will aim to represent more interesting variables.</p>

@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -78,6 +78,11 @@
     </li>
     <li>
       <a href="../articles/fonts.html">Star Trek fonts</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Examples</li>
+    <li>
+      <a href="../articles/ex-word-count.html">Novels: word ount</a>
     </li>
   </ul>
 </li>
@@ -301,20 +306,20 @@ worf<span class="op">$</span>content[[<span class="dv">1</span>]]  <span class="
 x &lt;-<span class="st"> "characters/Memory Beta images (characters)/Memory Beta images (Worf)"</span>
 worf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(x)
 worf
-<span class="co">#&gt; # A tibble: 32 x 2</span>
+<span class="co">#&gt; # A tibble: 36 x 2</span>
 <span class="co">#&gt;    `Memory Beta images (Worf)` url                             </span>
 <span class="co">#&gt;    &lt;chr&gt;                       &lt;chr&gt;                           </span>
 <span class="co">#&gt;  1 Akvoh.jpg                   File:Akvoh.jpg                  </span>
 <span class="co">#&gt;  2 Apocalypse Rising.jpg       File:Apocalypse_Rising.jpg      </span>
 <span class="co">#&gt;  3 Barassociation.jpg          File:Barassociation.jpg         </span>
-<span class="co">#&gt;  4 Conundrum.jpg               File:Conundrum.jpg              </span>
-<span class="co">#&gt;  5 Ds9finale crew.jpg          File:Ds9finale_crew.jpg         </span>
-<span class="co">#&gt;  6 EaFcrew.jpg                 File:EaFcrew.jpg                </span>
-<span class="co">#&gt;  7 EaFcrewUK.jpg               File:EaFcrewUK.jpg              </span>
-<span class="co">#&gt;  8 TNGVHScoll-crew.jpg         File:TNGVHScoll-crew.jpg        </span>
-<span class="co">#&gt;  9 Jadzia and Worf on Risa.jpg File:Jadzia_and_Worf_on_Risa.jpg</span>
-<span class="co">#&gt; 10 Lt. Jr. Worf.jpg            File:Lt._Jr._Worf.jpg           </span>
-<span class="co">#&gt; # ... with 22 more rows</span>
+<span class="co">#&gt;  4 Clues.jpg                   File:Clues.jpg                  </span>
+<span class="co">#&gt;  5 Conundrum.jpg               File:Conundrum.jpg              </span>
+<span class="co">#&gt;  6 Ds9finale crew.jpg          File:Ds9finale_crew.jpg         </span>
+<span class="co">#&gt;  7 EaFcrew.jpg                 File:EaFcrew.jpg                </span>
+<span class="co">#&gt;  8 EaFcrewUK.jpg               File:EaFcrewUK.jpg              </span>
+<span class="co">#&gt;  9 TNGVHScoll-crew.jpg         File:TNGVHScoll-crew.jpg        </span>
+<span class="co">#&gt; 10 Jadzia and Worf on Risa.jpg File:Jadzia_and_Worf_on_Risa.jpg</span>
+<span class="co">#&gt; # ... with 26 more rows</span>
 
 worf_jadzia &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(worf, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"Jadzia"</span>, url))
 worf_jadzia
@@ -463,16 +468,16 @@ x<span class="op">$</span>stories
 <span class="co">#&gt; # A tibble: 25 x 3</span>
 <span class="co">#&gt;    title               text                              url               </span>
 <span class="co">#&gt;    &lt;chr&gt;               &lt;chr&gt;                             &lt;chr&gt;             </span>
-<span class="co">#&gt;  1 Guinan              http://memory-beta.wikia.com/wik~ Guinan            </span>
-<span class="co">#&gt;  2 Guinan (mirror)     http://memory-beta.wikia.com/wik~ Guinan_(mirror)   </span>
-<span class="co">#&gt;  3 One of Forty-seven  http://memory-beta.wikia.com/wik~ One_of_Forty-seven</span>
-<span class="co">#&gt;  4 Nova Kron           http://memory-beta.wikia.com/wik~ Nova_Kron         </span>
-<span class="co">#&gt;  5 Together Again, fo~ http://memory-beta.wikia.com/wik~ Together_Again,_f~</span>
-<span class="co">#&gt;  6 Goblet              http://memory-beta.wikia.com/wik~ Goblet            </span>
-<span class="co">#&gt;  7 Jeparly Station     http://memory-beta.wikia.com/wik~ Jeparly_Station   </span>
-<span class="co">#&gt;  8 Morgen (mirror)     http://memory-beta.wikia.com/wik~ Morgen_(mirror)   </span>
-<span class="co">#&gt;  9 Devil's Brew        http://memory-beta.wikia.com/wik~ Devil%27s_Brew    </span>
-<span class="co">#&gt; 10 Nectar              http://memory-beta.wikia.com/wik~ Nectar            </span>
+<span class="co">#&gt;  1 Guinan              https://memory-beta.fandom.com/w~ Guinan            </span>
+<span class="co">#&gt;  2 Guinan (mirror)     https://memory-beta.wikia.com/wi~ Guinan_(mirror)   </span>
+<span class="co">#&gt;  3 One of Forty-seven  https://memory-beta.wikia.com/wi~ One_of_Forty-seven</span>
+<span class="co">#&gt;  4 Nova Kron           https://memory-beta.wikia.com/wi~ Nova_Kron         </span>
+<span class="co">#&gt;  5 Together Again, fo~ https://memory-beta.wikia.com/wi~ Together_Again,_f~</span>
+<span class="co">#&gt;  6 Goblet              https://memory-beta.wikia.com/wi~ Goblet            </span>
+<span class="co">#&gt;  7 Jeparly Station     https://memory-beta.wikia.com/wi~ Jeparly_Station   </span>
+<span class="co">#&gt;  8 Morgen (mirror)     https://memory-beta.wikia.com/wi~ Morgen_(mirror)   </span>
+<span class="co">#&gt;  9 Devil's Brew        https://memory-beta.wikia.com/wi~ Devil%27s_Brew    </span>
+<span class="co">#&gt; 10 Nectar              https://memory-beta.wikia.com/wi~ Nectar            </span>
 <span class="co">#&gt; # ... with 15 more rows</span></code></pre></div>
 </div>
 <div id="caveats" class="section level2">

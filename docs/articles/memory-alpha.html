@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -78,6 +78,11 @@
     </li>
     <li>
       <a href="../articles/fonts.html">Star Trek fonts</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Examples</li>
+    <li>
+      <a href="../articles/ex-word-count.html">Novels: word ount</a>
     </li>
   </ul>
 </li>
@@ -307,7 +312,7 @@ worf<span class="op">$</span>content[[<span class="dv">1</span>]]  <span class="
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)
 klingons &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons/Memory Alpha images (Klingons)"</span>)
 klingons
-<span class="co">#&gt; # A tibble: 1,175 x 2</span>
+<span class="co">#&gt; # A tibble: 1,177 x 2</span>
 <span class="co">#&gt;    `Memory Alpha images (Klingons)`   url                                  </span>
 <span class="co">#&gt;    &lt;chr&gt;                              &lt;chr&gt;                                </span>
 <span class="co">#&gt;  1 Age of ascension pain sticks.jpg   File:Age_of_ascension_pain_sticks.jpg</span>
@@ -320,7 +325,7 @@ klingons
 <span class="co">#&gt;  8 Alexander Rozhenko, 2367.jpg       File:Alexander_Rozhenko,_2367.jpg    </span>
 <span class="co">#&gt;  9 Alexander Rozhenko, 2370.jpg       File:Alexander_Rozhenko,_2370.jpg    </span>
 <span class="co">#&gt; 10 Alexander Rozhenko, 2374.jpg       File:Alexander_Rozhenko,_2374.jpg    </span>
-<span class="co">#&gt; # ... with 1,165 more rows</span>
+<span class="co">#&gt; # ... with 1,167 more rows</span>
 
 worf_data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(klingons, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"Worf"</span>, url) <span class="op">&amp;</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"Data"</span>, url))
 worf_data
@@ -371,16 +376,16 @@ x<span class="op">$</span>categories
 <span class="co">#&gt; # A tibble: 25 x 3</span>
 <span class="co">#&gt;    title              text                                url              </span>
 <span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;                               &lt;chr&gt;            </span>
-<span class="co">#&gt;  1 Guinan             http://memory-alpha.wikia.com/wiki~ Guinan           </span>
-<span class="co">#&gt;  2 Francis Guinan     http://memory-alpha.wikia.com/wiki~ Francis_Guinan   </span>
-<span class="co">#&gt;  3 Unnamed El-Aurians http://memory-alpha.wikia.com/wiki~ Unnamed_El-Auria~</span>
-<span class="co">#&gt;  4 Unnamed individua~ http://memory-alpha.wikia.com/wiki~ Unnamed_individu~</span>
-<span class="co">#&gt;  5 Prometheus         http://memory-alpha.wikia.com/wiki~ Prometheus       </span>
-<span class="co">#&gt;  6 Ashanti            http://memory-alpha.wikia.com/wiki~ Ashanti          </span>
-<span class="co">#&gt;  7 Nova Kron          http://memory-alpha.wikia.com/wiki~ Nova_Kron        </span>
-<span class="co">#&gt;  8 Royal blue         http://memory-alpha.wikia.com/wiki~ Royal_blue       </span>
-<span class="co">#&gt;  9 Fin (anatomy)      http://memory-alpha.wikia.com/wiki~ Fin_(anatomy)    </span>
-<span class="co">#&gt; 10 Delovian soufflé   http://memory-alpha.wikia.com/wiki~ Delovian_souffl%~</span>
+<span class="co">#&gt;  1 Guinan             https://memory-alpha.fandom.com/wi~ Guinan           </span>
+<span class="co">#&gt;  2 Francis Guinan     https://memory-alpha.wikia.com/wik~ Francis_Guinan   </span>
+<span class="co">#&gt;  3 Unnamed El-Aurians https://memory-alpha.wikia.com/wik~ Unnamed_El-Auria~</span>
+<span class="co">#&gt;  4 Unnamed individua~ https://memory-alpha.wikia.com/wik~ Unnamed_individu~</span>
+<span class="co">#&gt;  5 Prometheus         https://memory-alpha.fandom.com/wi~ Prometheus       </span>
+<span class="co">#&gt;  6 Ashanti            https://memory-alpha.wikia.com/wik~ Ashanti          </span>
+<span class="co">#&gt;  7 Nova Kron          https://memory-alpha.wikia.com/wik~ Nova_Kron        </span>
+<span class="co">#&gt;  8 Royal blue         https://memory-alpha.wikia.com/wik~ Royal_blue       </span>
+<span class="co">#&gt;  9 Fin (anatomy)      https://memory-alpha.wikia.com/wik~ Fin_(anatomy)    </span>
+<span class="co">#&gt; 10 Delovian soufflé   https://memory-alpha.wikia.com/wik~ Delovian_souffl%~</span>
 <span class="co">#&gt; # ... with 15 more rows</span></code></pre></div>
 </div>
 <div id="caveats" class="section level2">
