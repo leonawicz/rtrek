@@ -1,4 +1,4 @@
-.ma_portals <- dplyr::data_frame(
+.ma_portals <- dplyr::tibble(
   id = c("alternate", "people", "science", "series", "society", "technology"),
   url = paste0("Portal:", c("Alternate_Reality", "People", "Science",
                             "TV_and_films", "Society_and_Culture", "Technology"))
@@ -43,7 +43,7 @@ ma_category_pages <- function(id, url, nodes, d0 = NULL){
   x1 <- rvest::html_nodes(x, nodes[1]) %>% rvest::html_nodes("a")
   txt <- ma_text(x1) %>% ma_strip_prefix()
   url <- ma_href(x1)
-  d <- dplyr::data_frame(txt, url) %>% stats::setNames(c(id, "url"))
+  d <- dplyr::tibble(txt, url) %>% stats::setNames(c(id, "url"))
   if(!is.null(d0)) d <- dplyr::bind_rows(d0, d)
 
   x <- rvest::html_nodes(x, nodes[2]) %>% rvest::html_nodes("a")
@@ -80,7 +80,7 @@ ma_article_categories <- function(x){
   x <- x[!grepl(".*Category:Memory_Alpha_pages_with.*", x)]
   url <- ma_href(x)
   x <- ma_text(x)
-  dplyr::data_frame(categories = x, url = url)
+  dplyr::tibble(categories = x, url = url)
 }
 
 ma_article_aside <- function(x){
@@ -108,7 +108,7 @@ ma_article_aside <- function(x){
     x <- gsub("^[|]", "", x)
     trimws(x)
   }) %>% stats::setNames(cols)
-  d <- dplyr::as_data_frame(vals)
+  d <- tibble::as_tibble(vals)
   dplyr::mutate(d, Image = img)
 }
 

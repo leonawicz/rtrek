@@ -91,12 +91,12 @@ ma_portal_df <- function(portal, nodes = c("table", "span, a"), start_node_index
     trimws(as.character(x))
   }
   if(subgroups){
-    d <- purrr::map2(x1, x2, ~dplyr::data_frame(
+    d <- purrr::map2(x1, x2, ~dplyr::tibble(
       id = .x[-1], url = .y[-1], group = trimws(.x[1]), subgroup = .f(.x, .y)[-1]) %>%
         tidyr::fill(.data[["subgroup"]]) %>% dplyr::filter(!is.na(.data[["url"]]))
     ) %>% dplyr::bind_rows()
   } else {
-    d <- purrr::map2(x1, x2, ~dplyr::data_frame(
+    d <- purrr::map2(x1, x2, ~dplyr::tibble(
       id = .x, url = .y, group = .f(.x, .y)) %>%
         tidyr::fill(.data[["group"]]) %>% dplyr::filter(!is.na(.data[["url"]]))
     ) %>% dplyr::bind_rows()
@@ -169,7 +169,7 @@ ma_article <- function(url, content_format = c("xml", "character"),
   content <- x[which(rvest::html_name(x) %in% content_nodes)]
   if(content_format == "character") content <- gsub(" Edit$", "", ma_text(content))
   if(browse) utils::browseURL(url)
-  dplyr::data_frame(title = title, content = list(content), metadata = list(aside), categories = list(cats))
+  dplyr::tibble(title = title, content = list(content), metadata = list(aside), categories = list(cats))
 }
 
 #' Memory Alpha site search
@@ -198,7 +198,7 @@ ma_search <- function(text, browse = FALSE){
   text <- rvest::html_nodes(x, "article") %>% ma_text() %>% strsplit("(\n|\t)+") %>%
     sapply("[", 3)
   if(browse) utils::browseURL(url)
-  dplyr::data_frame(title = title, text = text, url = url2)
+  dplyr::tibble(title = title, text = text, url = url2)
 }
 
 #' Memory Alpha images

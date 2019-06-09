@@ -1,3 +1,8 @@
+# rtrek 0.2.2
+
+* Minor updates related to dplyr/tibble.
+* Documentation updates.
+
 # rtrek 0.2.1
 
 * Fixed errors in `stBooks` dataset where the number of words per book was calculated incorrectly.

@@ -7,13 +7,13 @@ library(dplyr)
               "Ferengi Alliance", "Cardassian Union", "Tholian Assembly", "Tzenkethi Coalition", "Talarian Republic")
 .tile_ids <- c("galaxy1", "galaxy2")
 
-.gc01 <- data_frame(
+.gc01 <- tibble(
   id = .tile_ids[1],
   loc = .st_locs,
   col = c(2196, 2615, 3310, 1004, 1431, 1342, 407, 1553, 1039),
   row = c(2357, 1742, 3361, 939, 1996, 2841, 3866, 2557, 3489)
 )
-.gc02 <- data_frame(
+.gc02 <- tibble(
   id = .tile_ids[2],
   loc = .st_locs,
   col = c(2201, 2514, 3197, 1228, 2026, 1543, 713,  1734, 1338),
@@ -21,7 +21,7 @@ library(dplyr)
 )
 stGeo <- bind_rows(.gc01, .gc02)
 
-stSpecies <- data_frame(
+stSpecies <- tibble(
   species = .st_species,
   avatar = c(paste0("https://vignette.wikia.nocookie.net/memoryalpha/images/", c(
     "7/77/Hoshi_Sato%2C_2154.jpg/revision/latest/scale-to-width-down/350?cb=20120409224834",
@@ -36,7 +36,7 @@ stSpecies <- data_frame(
   "https://pwimages-a.akamaihd.net/arc/b1/c9/b1c942a7297c22abf5e375a9f60217681505520656.jpg")
 )
 
-stTiles <- data_frame(
+stTiles <- tibble(
   id = .tile_ids,
   url = paste0("https://leonawicz.github.io/tiles/", c("st1", "st2"), "/tiles/{z}/{x}/{y}.png"),
   description = rep("Geopolitical galaxy map", 2),
@@ -77,7 +77,7 @@ for(i in seq_along(x)){
 all(map_chr(x, ~class(.x)[1]) == "tbl_df") # check all are data frames
 all(map_lgl(x, ~"uid" %in% names(.x))) # check all have uid column
 
-stapiEntities <- data_frame(
+stapiEntities <- tibble(
   id = entities, class = map_chr(x, ~class(.x)[1]), ncol = map_int(x, ncol), colnames = map(x, names)
 )
 attr(stapiEntities, "ignored columns") <- dropcols
@@ -108,7 +108,7 @@ anth <- c(
     "Gateways: What Lay Beyond"), "Young Adult Book")
 other_abb <- c("REF")
 other <- c("Reference")
-stSeries <- data_frame(
+stSeries <- tibble(
   id = c(series, anth, other),
   abb = c(series_abb, anth_abb, other_abb),
   type = rep(c("series", "anthology", "other"), times = c(length(series), length(anth), length(other)))

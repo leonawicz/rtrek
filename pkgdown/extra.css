@@ -11,6 +11,7 @@ td p {
 .fl      {color: #63B8FF;}
 .fu      {color: #00F5FF;} /* function */
 .fu a    {color: #00F5FF;}
+code.sourceCode.r a    {color: #00FFFF;}
 .ch,.st  {color: #7AC5CD;} /* string */
 .kw      {color: #00FFFF;} /* keyword */
 .kw a    {color: #00CFFF;}

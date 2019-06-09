@@ -128,7 +128,7 @@
 #' @examples
 #' st_datasets()
 st_datasets <- function(){
-  dplyr::data_frame(
+  dplyr::tibble(
     dataset = c("stGeo", "stSpecies", "stTiles",
                 "stBooks", "stBooksWiki", "stSeries",
                 "stapiEntities",

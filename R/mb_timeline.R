@@ -152,7 +152,7 @@ decade_year_pages <- memoise::memoise(decade_year_pages)
     ids <- ids[1:(idx - 1)]
   }
 
-  d <- tibble::data_frame(period = gsub("_", " ", url), id = ids) %>%
+  d <- tibble::tibble(period = gsub("_", " ", url), id = ids) %>%
     tidyr::fill(!!"id")
   idx <- !grepl("^cite|^Connections|^Appendices|^References|^External|^toc$", d$id)
   d <- dplyr::filter(d, idx)
@@ -240,7 +240,7 @@ decade_year_pages <- memoise::memoise(decade_year_pages)
     x <- rvest::html_nodes(.x, "small > b") %>% mb_text()
     ifelse(length(x), x, as.character(NA))
   })
-  tibble::data_frame(title = title_lab, title_url = title_url, colleciton = ms_lab, collection_url = ms_url,
+  tibble::tibble(title = title_lab, title_url = title_url, colleciton = ms_lab, collection_url = ms_url,
                      section = section, context = context)
 }
 

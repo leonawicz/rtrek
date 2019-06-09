@@ -24,7 +24,7 @@ x <- x %>% purrr::map(~({
     d <- mutate(d, Title = gsub("†", "", Title))
     mutate_if(d, is.character, trimws)
   } else {
-    data_frame(heading = html_name(.x), Series = gsub("\\[edit\\]", "", html_text(.x)),
+    tibble(heading = html_name(.x), Series = gsub("\\[edit\\]", "", html_text(.x)),
                id = html_nodes(.x, "span") %>% html_attr("id") %>% na.omit() %>% `[`(1)) %>%
       mutate_if(is.character, trimws)
   }

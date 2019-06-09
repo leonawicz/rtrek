@@ -110,7 +110,7 @@ mb_article <- function(url, content_format = c("xml", "character"),
   content <- x[which(rvest::html_name(x) %in% content_nodes)]
   if(content_format == "character") content <- gsub("(.*[ A-Za-z])(Edit$)", "\\1", mb_text(content))
   if(browse) utils::browseURL(url)
-  dplyr::data_frame(title = title, content = list(content), metadata = list(aside), categories = list(cats))
+  dplyr::tibble(title = title, content = list(content), metadata = list(aside), categories = list(cats))
 }
 
 #' Memory Beta site search
@@ -139,7 +139,7 @@ mb_search <- function(text, browse = FALSE){
   text <- rvest::html_nodes(x, "article") %>% mb_text() %>% strsplit("(\n|\t)+") %>%
     sapply("[", 3)
   if(browse) utils::browseURL(url)
-  dplyr::data_frame(title = title, text = text, url = url2)
+  dplyr::tibble(title = title, text = text, url = url2)
 }
 
 #' Memory Beta images

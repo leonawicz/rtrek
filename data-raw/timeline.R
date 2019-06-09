@@ -12,7 +12,7 @@ tlBooks <- tl_entries(txt) %>% bind_rows()
 
 tlEvents <- readr::read_csv("data-raw/st-timeline-2.csv")
 idx <- which(!is.na(tlEvents$note))
-tlEventNotes <- data_frame(id = seq_along(idx), text = tlEvents$note[idx])
+tlEventNotes <- tibble(id = seq_along(idx), text = tlEvents$note[idx])
 tlEvents$note <- as.integer(NA)
 tlEvents$note[idx] <- seq_along(idx)
 tlEvents <- rename(tlEvents, year = date, footnote = note) %>% select(c(1:3, 6:4))

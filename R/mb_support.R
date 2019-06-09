@@ -1,4 +1,4 @@
-.mb_portals <- dplyr::data_frame(
+.mb_portals <- dplyr::tibble(
   id = c("books", "comics", "characters", "culture", "games", "geography", "locations",
          "materials", "politics", "science", "starships", "technology", "timeline"),
   url = paste0("Category:", c("Books", "Comics", "Characters", "Culture", "Games", "Geography", "Locations",
@@ -42,7 +42,7 @@ mb_category_pages <- function(id, url, nodes, d0 = NULL){
   x1 <- rvest::html_nodes(x, nodes[1]) %>% rvest::html_nodes("a")
   txt <- mb_text(x1) %>% mb_strip_prefix()
   url <- mb_href(x1)
-  d <- dplyr::data_frame(txt, url) %>% stats::setNames(c(id, "url"))
+  d <- dplyr::tibble(txt, url) %>% stats::setNames(c(id, "url"))
   if(!is.null(d0)) d <- dplyr::bind_rows(d0, d)
 
   x <- rvest::html_nodes(x, nodes[2]) %>% rvest::html_nodes("a")
@@ -64,7 +64,7 @@ mb_article_categories <- function(x){
   x <- x[!grepl(".*Category:Memory_Beta_pages_with.*", x)]
   url <- mb_href(x)
   x <- mb_text(x)
-  dplyr::data_frame(categories = x, url = url)
+  dplyr::tibble(categories = x, url = url)
 }
 
 mb_article_aside <- function(x){
@@ -92,7 +92,7 @@ mb_article_aside <- function(x){
     x <- gsub("^[|]", "", x)
     trimws(x)
   }) %>% stats::setNames(cols)
-  d <- dplyr::as_data_frame(vals)
+  d <- tibble::as_tibble(vals)
   dplyr::mutate(d, Image = img)
 }
 
