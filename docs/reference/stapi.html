@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -140,57 +140,6 @@
 </li>
 <li>
   <a href="../articles/rr.html">R &amp; R... &amp; R</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Online
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="https://github.com/leonawicz">
-        <span class="fa fa-github fa-lg"></span>
-         
-        GitHub
-      </a>
-    </li>
-    <li>
-      <a href="https://twitter.com/leonawicz">
-        <span class="fa fa-twitter fa-lg"></span>
-         
-        Twitter
-      </a>
-    </li>
-    <li>
-      <a href="https://www.linkedin.com/in/leonawicz">
-        <span class="fa fa-linkedin fa-lg"></span>
-         
-        LinkedIn
-      </a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/user/StatisticsWithR">
-        <span class="fa fa-youtube fa-lg"></span>
-         
-        YouTube
-      </a>
-    </li>
-    <li>
-      <a href="https://plus.google.com/+StatisticsWithR/posts">
-        <span class="fa fa-google-plus fa-lg"></span>
-         
-        Google+
-      </a>
-    </li>
-    <li>
-      <a href="https://leonawicz.github.io/blog/">
-        <span class="fa fa-pencil-square-o fa-lg"></span>
-         
-        Blog
-      </a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="https://github.com/leonawicz/rtrek">
@@ -274,16 +223,16 @@ Values less than one are ignored (defaulting back to one second) and a warning w
   <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>page</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='fl'>1</span>:<span class='fl'>2</span>)
   <span class='no'>Q</span> <span class='kw'>&lt;-</span> <span class='fu'>stapi</span>(<span class='st'>"character"</span>, <span class='kw'>uid</span> <span class='kw'>=</span> <span class='st'>"CHMA0000025118"</span>)
   <span class='no'>Q</span>$<span class='no'>episodes</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>uid</span>, <span class='no'>title</span>, <span class='no'>stardateFrom</span>, <span class='no'>stardateTo</span>)
-}</div><div class='output co'>#&gt; Total pages to retrieve all results: 64 </div><div class='output co'>#&gt;              uid                 title stardateFrom stardateTo
+}</div><div class='output co'>#&gt; Total pages to retrieve all results: 66 </div><div class='output co'>#&gt;              uid                 title stardateFrom stardateTo
 #&gt; 1 EPMA0000001458    All Good Things...      47988.0    47988.0
-#&gt; 2 EPMA0000001329                 Q Who      42761.3    42761.3
-#&gt; 3 EPMA0000001377                  Qpid      44741.9    44741.9
-#&gt; 4 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7
-#&gt; 5 EPMA0000000651              Tapestry           NA         NA
-#&gt; 6 EPMA0000000845                Q-Less      46531.2    46531.2
+#&gt; 2 EPMA0000000845                Q-Less      46531.2    46531.2
+#&gt; 3 EPMA0000001329                 Q Who      42761.3    42761.3
+#&gt; 4 EPMA0000000651              Tapestry           NA         NA
+#&gt; 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7
+#&gt; 6 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7
 #&gt; 7 EPMA0000162588            Death Wish           NA         NA
 #&gt; 8 EPMA0000001413                True Q      46192.3    46192.3
-#&gt; 9 EPMA0000001510    The Q and the Grey      50384.2    50392.7</div></pre>
+#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

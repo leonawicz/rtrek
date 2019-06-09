@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
       </span>
     </div>
 
@@ -100,57 +100,6 @@
 <li>
   <a href="../articles/rr.html">R &amp; R... &amp; R</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Online
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="https://github.com/leonawicz">
-        <span class="fa fa-github fa-lg"></span>
-         
-        GitHub
-      </a>
-    </li>
-    <li>
-      <a href="https://twitter.com/leonawicz">
-        <span class="fa fa-twitter fa-lg"></span>
-         
-        Twitter
-      </a>
-    </li>
-    <li>
-      <a href="https://www.linkedin.com/in/leonawicz">
-        <span class="fa fa-linkedin fa-lg"></span>
-         
-        LinkedIn
-      </a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/user/StatisticsWithR">
-        <span class="fa fa-youtube fa-lg"></span>
-         
-        YouTube
-      </a>
-    </li>
-    <li>
-      <a href="https://plus.google.com/+StatisticsWithR/posts">
-        <span class="fa fa-google-plus fa-lg"></span>
-         
-        Google+
-      </a>
-    </li>
-    <li>
-      <a href="https://leonawicz.github.io/blog/">
-        <span class="fa fa-pencil-square-o fa-lg"></span>
-         
-        Blog
-      </a>
-    </li>
-  </ul>
-</li>
 <li>
   <a href="https://github.com/leonawicz/rtrek">
     <span class="fa fa-github fa-lg"></span>
@@ -183,8 +132,8 @@
 <p>Since accessing these fonts can easily be done directly and doing so is also not a significant purpose of <code>rtrek</code>, this function is only useful if you choose to install optional packages not otherwise required for <code>rtrek</code>. These include <code>showtext</code>, <code>ggplot2</code>, and of course <code>trekfont</code>. As long as you have these packages installed, you do not need to load them explicitly in order to use <code>st_font</code>.</p>
 <p>If you call <code>st_font</code> without passing the <code>family</code> argument, it will return a vector of all available font families.It does so with the font file extensions removed, in contrast to <code><a href="https://www.rdocumentation.org/packages/trekfont/topics/trekfonts">trekfont::trekfonts</a></code>. This function is only for previewing fonts.</p>
 <p>Brought to you by Worf, who has intercepted many messages in his time as security chief.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rtrek)
-<span class="kw"><a href="../reference/st_font.html">st_font</a></span>()</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rtrek)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="../reference/st_font.html">st_font</a></span>()</a></code></pre></div>
 <pre><code>##   [1] "AmarilloUSAF"                 "Ba'ku"                       
 ##   [3] "BernyKlingon"                 "Borg"                        
 ##   [5] "CorporateURW"                 "Crillee"                     
@@ -239,7 +188,7 @@
 ## [103] "Trill"                        "Venetian301BT"               
 ## [105] "Vidiian"                      "VothSTVoyager"               
 ## [107] "ZiganTradOkudeska"</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/st_font.html">st_font</a></span>(<span class="st">"Khan"</span>)</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="../reference/st_font.html">st_font</a></span>(<span class="st">"Khan"</span>)</a></code></pre></div>
 <p><br></p>
 <p><img src="https://raw.githubusercontent.com/leonawicz/rtrek/master/data-raw/images/font_preview.png" width="100%"></p>
 <p>Worf is here to guide your selections, though he has a bit of a one-track mind when it comes to Star Trek universe calligraphy.</p>
