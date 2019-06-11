@@ -7,7 +7,7 @@ output: github_document
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE, comment = "#>", fig.path = "man/figures/README-",
-  message = FALSE, warning = FALSE, error = FALSE, tidy = TRUE
+  message = FALSE, warning = FALSE, error = FALSE
 )
 ```
 
@@ -64,8 +64,8 @@ install.packages("rtrek")
 Install the development version of `rtrek` from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("leonawicz/rtrek")
+# install.packages("remotes")
+remotes::install_github("leonawicz/rtrek")
 ```
 
 ```{r ex_heading1, echo = FALSE, results = "asis", eval = is_md}

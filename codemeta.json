@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/leonawicz/rtrek",
   "issueTracker": "https://github.com/leonawicz/rtrek/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.2",
+    "version": "3.6.0",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.2 (2018-12-20)",
+  "runtimePlatform": "R version 3.6.0 (2019-04-26)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -306,11 +306,14 @@
   ],
   "releaseNotes": "https://github.com/leonawicz/rtrek/blob/master/NEWS.md",
   "readme": "https://github.com/leonawicz/rtrek/blob/master/README.md",
-  "fileSize": "562.047KB",
+  "fileSize": "562.076KB",
   "contIntegration": [
     "https://travis-ci.org/leonawicz/rtrek",
     "https://ci.appveyor.com/project/leonawicz/rtrek",
     "https://codecov.io/github/leonawicz/rtrek?branch=master"
   ],
-  "relatedLink": "https://CRAN.R-project.org/package=rtrek"
+  "relatedLink": "https://CRAN.R-project.org/package=rtrek",
+  "contributor": {},
+  "copyrightHolder": {},
+  "funder": {}
 }
