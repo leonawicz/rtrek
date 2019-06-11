@@ -16,7 +16,7 @@ LazyData: true
 ByteCompile: true
 URL: https://github.com/leonawicz/rtrek
 BugReports: https://github.com/leonawicz/rtrek/issues
-Depends: R (>= 2.1.0)
+Depends: R (>= 2.10)
 Suggests:
     testthat,
     knitr,
