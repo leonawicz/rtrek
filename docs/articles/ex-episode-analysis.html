@@ -169,7 +169,7 @@
 <a class="sourceLine" id="cb1-35" title="35"><span class="co">#&gt; 10           8 Angle emphas~ &lt;NA&gt;          &lt;NA&gt;        Data      Difficult~</span></a>
 <a class="sourceLine" id="cb1-36" title="36"><span class="co">#&gt; # ... with 806 more rows</span></a></code></pre></div>
 <p>Consider TNG episodes. A rough estimate of the relative amount of speaking parts can be obtained by counting up the lines for each character. A better measure would be an estimate of word count taken from each spoken line. Calculate these statistics by season and episode as well as character.</p>
-<p>Also remove unneeded columns. As is common in text analysis, even a clean dataset may need further preparation for a specific task. In this case it is important to strip references to things such as voiceover <code>(V.o.)</code> from the <code>character</code> column.</p>
+<p>Also remove unneeded columns. As is common in text analysis, even a clean dataset may need further preparation for a specific task. In this case it is important to strip references to things such as voice over <code>(V.o.)</code> from the <code>character</code> column.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">pat &lt;-<span class="st"> "('s</span><span class="ch">\\</span><span class="st">s|</span><span class="ch">\\</span><span class="st">s</span><span class="ch">\\</span><span class="st">(|</span><span class="ch">\\</span><span class="st">sV</span><span class="ch">\\</span><span class="st">.).*"</span></a>
 <a class="sourceLine" id="cb2-2" title="2">x &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(scriptData, format <span class="op">==</span><span class="st"> "episode"</span> <span class="op">&amp;</span><span class="st"> </span>series <span class="op">==</span><span class="st"> "TNG"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="st">  </span><span class="kw">unnest</span>(text) <span class="op">%&gt;%</span></a>
@@ -194,7 +194,8 @@
 <a class="sourceLine" id="cb2-22" title="22"><span class="co">#&gt;  9      1 11001001 Data                31   361</span></a>
 <a class="sourceLine" id="cb2-23" title="23"><span class="co">#&gt; 10      1 11001001 Drummer              2    22</span></a>
 <a class="sourceLine" id="cb2-24" title="24"><span class="co">#&gt; # ... with 2,848 more rows</span></a></code></pre></div>
-<p>Focus on the top eight characters.</p>
+<p>Another limitation of using lines is that they may not always mimic the natural breaks in spoken lines in the episodes. While word count here is simply estimated by breaking text on spaces, it is likely more representative than the line count.</p>
+<p>Next, focus on the top eight characters.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">totals &lt;-<span class="st"> </span><span class="kw">group_by</span>(x, character) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">lines =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(lines), <span class="dt">words =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(words)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(words)) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">top_n</span>(<span class="dv">8</span>)</a>
@@ -275,18 +276,18 @@
 <a class="sourceLine" id="cb6-7" title="7"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">lines =</span> <span class="kw">n</span>(), <span class="dt">words =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unlist">unlist</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/strsplit">strsplit</a></span>(line, <span class="st">" "</span>))))</a>
 <a class="sourceLine" id="cb6-8" title="8"></a>
 <a class="sourceLine" id="cb6-9" title="9">avg &lt;-<span class="st"> </span><span class="kw">group_by</span>(x, series, character) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-10" title="10"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">lines =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(lines), <span class="dt">words =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(words)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">lines =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(lines), <span class="dt">words =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(words), <span class="dt">n_episodes =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-11" title="11"><span class="st">  </span><span class="kw">arrange</span>(character, series) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ungroup</span>()</a>
 <a class="sourceLine" id="cb6-12" title="12">avg<span class="op">$</span>character &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">gsub</a></span>(<span class="st">"O'brien"</span>, <span class="st">"O'Brien"</span>, avg<span class="op">$</span>character)</a>
 <a class="sourceLine" id="cb6-13" title="13"></a>
 <a class="sourceLine" id="cb6-14" title="14">avg</a>
-<a class="sourceLine" id="cb6-15" title="15"><span class="co">#&gt; # A tibble: 4 x 4</span></a>
-<a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt;   series character lines words</span></a>
-<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt; 1 DS9    O'Brien    34.5  364.</span></a>
-<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt; 2 TNG    O'Brien    11.6  117.</span></a>
-<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt; 3 DS9    Worf       22.2  227.</span></a>
-<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt; 4 TNG    Worf       24.2  208.</span></a>
+<a class="sourceLine" id="cb6-15" title="15"><span class="co">#&gt; # A tibble: 4 x 5</span></a>
+<a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt;   series character lines words n_episodes</span></a>
+<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt;      &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt; 1 DS9    O'Brien    34.5  364.        159</span></a>
+<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt; 2 TNG    O'Brien    11.6  117.         44</span></a>
+<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt; 3 DS9    Worf       22.2  227.        100</span></a>
+<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt; 4 TNG    Worf       24.2  208.        175</span></a>
 <a class="sourceLine" id="cb6-22" title="22"></a>
 <a class="sourceLine" id="cb6-23" title="23">id &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rev">rev</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/unique">unique</a></span>(avg<span class="op">$</span>character))</a>
 <a class="sourceLine" id="cb6-24" title="24">chr &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">factor</a></span>(avg<span class="op">$</span>character, <span class="dt">levels =</span> id)</a>
@@ -303,7 +304,8 @@
 <a class="sourceLine" id="cb6-35" title="35"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb6-36" title="36"><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dv">18</span>)</a></code></pre></div>
 <p><img src="ex-episode-analysis_files/figure-html/ep6-1.png" width="1152"></p>
-<p>Starfleet promotions in rank aside, Worf did not even quite receive a 10% pay bump in terms of average spoken words per episode. On the other hand, O’Brien had an increase of 211%, or more than triple the average number of spoken words per episode when moving from the Enterprise to Deep Space Nine. All things considered, take the transfer. But on spoken words alone, O’Brien was clearly favored. The squeaky wheel gets the grease.</p>
+<p>This calculation accounts for the number of episodes each character has speaking lines in. TNG episodes missing O’Brien after DS9 began and DS9 episodes missing Worf before he joined the show are not counted against them. It does not account for episodes where a character may appear in an episode but without any speaking lines, which should drop their averages. However, this is rare (if it occurs at all?).</p>
+<p>The results are interesting. Starfleet promotions in rank aside, Worf did not even quite receive a 10% pay bump in terms of average spoken words per episode. On the other hand, O’Brien had an increase of 211%, or more than triple the average number of spoken words per episode when moving from the Enterprise to Deep Space Nine. All things considered, take the transfer. But on spoken words alone, O’Brien was clearly favored. The squeaky wheel gets the grease.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -31,7 +31,7 @@ scriptData$text[[81]]
 
 Consider TNG episodes. A rough estimate of the relative amount of speaking parts can be obtained by counting up the lines for each character. A better measure would be an estimate of word count taken from each spoken line. Calculate these statistics by season and episode as well as character.
 
-Also remove unneeded columns. As is common in text analysis, even a clean dataset may need further preparation for a specific task. In this case it is important to strip references to things such as voiceover `(V.o.)` from the `character` column.
+Also remove unneeded columns. As is common in text analysis, even a clean dataset may need further preparation for a specific task. In this case it is important to strip references to things such as voice over `(V.o.)` from the `character` column.
 
 ```{r ep2}
 pat <- "('s\\s|\\s\\(|\\sV\\.).*"
@@ -45,7 +45,9 @@ x <- filter(scriptData, format == "episode" & series == "TNG") %>%
 x
 ```
 
-Focus on the top eight characters.
+Another limitation of using lines is that they may not always mimic the natural breaks in spoken lines in the episodes. While word count here is simply estimated by breaking text on spaces, it is likely more representative than the line count.
+
+Next, focus on the top eight characters.
 
 ```{r ep3}
 totals <- group_by(x, character) %>% 
@@ -113,7 +115,7 @@ x <- filter(scriptData, format == "episode" & series %in% c("TNG", "DS9")) %>%
   summarize(lines = n(), words = length(unlist(strsplit(line, " "))))
 
 avg <- group_by(x, series, character) %>% 
-  summarize(lines = mean(lines), words = mean(words)) %>% 
+  summarize(lines = mean(lines), words = mean(words), n_episodes = n()) %>% 
   arrange(character, series) %>% ungroup()
 avg$character <- gsub("O'brien", "O'Brien", avg$character)
 
@@ -135,4 +137,6 @@ ggplot(avg, aes(character, words, fill = series)) +
   theme_minimal(18)
 ```
 
-Starfleet promotions in rank aside, Worf did not even quite receive a 10% pay bump in terms of average spoken words per episode. On the other hand, O'Brien had an increase of 211%, or more than triple the average number of spoken words per episode when moving from the Enterprise to Deep Space Nine. All things considered, take the transfer. But on spoken words alone, O'Brien was clearly favored. The squeaky wheel gets the grease.
+This calculation accounts for the number of episodes each character has speaking lines in. TNG episodes missing O'Brien after DS9 began and DS9 episodes missing Worf before he joined the show are not counted against them. It does not account for episodes where a character may appear in an episode but without any speaking lines, which should drop their averages. However, this is rare (if it occurs at all?).
+
+The results are interesting. Starfleet promotions in rank aside, Worf did not even quite receive a 10% pay bump in terms of average spoken words per episode. On the other hand, O'Brien had an increase of 211%, or more than triple the average number of spoken words per episode when moving from the Enterprise to Deep Space Nine. All things considered, take the transfer. But on spoken words alone, O'Brien was clearly favored. The squeaky wheel gets the grease.
