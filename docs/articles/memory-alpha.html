@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
       </span>
     </div>
 
@@ -82,7 +82,10 @@
     <li class="divider">
     <li class="dropdown-header">Examples</li>
     <li>
-      <a href="../articles/ex-word-count.html">Novels: word ount</a>
+      <a href="../articles/ex-word-count.html">Novels: word count</a>
+    </li>
+    <li>
+      <a href="../articles/ex-episode-analysis.html">Episodes: spoken lines</a>
     </li>
   </ul>
 </li>
@@ -260,7 +263,7 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb5-2" title="2">klingons &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons/Memory Alpha images (Klingons)"</span>)</a>
 <a class="sourceLine" id="cb5-3" title="3">klingons</a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; # A tibble: 1,200 x 2</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; # A tibble: 1,199 x 2</span></a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;    `Memory Alpha images (Klingons)`   url                                  </span></a>
 <a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;    &lt;chr&gt;                              &lt;chr&gt;                                </span></a>
 <a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;  1 Age of ascension pain sticks.jpg   File:Age_of_ascension_pain_sticks.jpg</span></a>
@@ -273,7 +276,7 @@
 <a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  8 Alexander Rozhenko, 2370.jpg       File:Alexander_Rozhenko,_2370.jpg    </span></a>
 <a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  9 Alexander Rozhenko, 2374.jpg       File:Alexander_Rozhenko,_2374.jpg    </span></a>
 <a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; 10 Alexander Shane.jpg                File:Alexander_Shane.jpg             </span></a>
-<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; # ... with 1,190 more rows</span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; # ... with 1,189 more rows</span></a>
 <a class="sourceLine" id="cb5-18" title="18"></a>
 <a class="sourceLine" id="cb5-19" title="19">worf_data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(klingons, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"Worf"</span>, url) <span class="op">&amp;</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"Data"</span>, url))</a>
 <a class="sourceLine" id="cb5-20" title="20">worf_data</a>

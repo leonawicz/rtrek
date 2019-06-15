@@ -1,7 +1,8 @@
-pandoc: '2.6'
+pandoc: 2.7.2
 pkgdown: 1.3.0
 pkgdown_sha: ~
 articles:
+  ex-episode-analysis: ex-episode-analysis.html
   ex-word-count: ex-word-count.html
   fonts: fonts.html
   memory-alpha: memory-alpha.html
