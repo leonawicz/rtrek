@@ -167,7 +167,7 @@ It should also be noted that while it may be tempting to merge these two data fr
 
 ## Star Trek API
 
-Now that you have seen an overview of available `rtrek` datasets and some associated functions, it is time to turn attention to external datasets. The [Star Trek API (STAPI)](http://stapi.co/)is a particularly useful data source. 
+Now that you have seen an overview of available `rtrek` datasets and some associated functions, it is time to turn attention to external datasets. The [Star Trek API (STAPI)](http://stapi.co/) is a particularly useful data source. 
 
 Keep in mind that STAPI focuses more on providing real world data associated with Star Trek (e.g., when did episode X first air on television?) than on fictional universe data, but it contains both and the database holdings will grow with time.
 

@@ -1,0 +1,138 @@
+---
+title: "Episode analysis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Episode analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+set.seed(1)
+knitr::opts_chunk$set(
+  collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE, error = FALSE,
+  fig.width = 12, fig.height = 7
+)
+library(rtrek)
+```
+
+A curated data frame of metadata and text variables derived from episode and movie transcripts can be downloaded with `st_transcripts`. The format is one episode per row. There are metadata columns and list column of nested text variables.
+
+```{r ep1}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(ggrepel)
+
+(scriptData <- st_transcripts())
+
+scriptData$text[[81]]
+```
+
+Consider TNG episodes. A rough estimate of the relative amount of speaking parts can be obtained by counting up the lines for each character. A better measure would be an estimate of word count taken from each spoken line. Calculate these statistics by season and episode as well as character.
+
+Also remove unneeded columns. As is common in text analysis, even a clean dataset may need further preparation for a specific task. In this case it is important to strip references to things such as voiceover `(V.o.)` from the `character` column.
+
+```{r ep2}
+pat <- "('s\\s|\\s\\(|\\sV\\.).*"
+x <- filter(scriptData, format == "episode" & series == "TNG") %>% 
+  unnest(text) %>%
+  select(season, title, character, line) %>%
+  mutate(character = gsub(pat, "", character)) %>%
+  group_by(season, title, character) %>%
+  summarize(lines = n(), words = length(unlist(strsplit(line, " "))))
+
+x
+```
+
+Focus on the top eight characters.
+
+```{r ep3}
+totals <- group_by(x, character) %>% 
+  summarize(lines = sum(lines), words = sum(words)) %>% 
+  arrange(desc(words)) %>% top_n(8)
+
+totals
+```
+
+By the way, look at the total estimated lines and words spoken by each character. These are of course rough estimates. Nevertheless, it is interesting to see that Picard has nearly twice as much to say as the next most talkative character on the show, the Android, Data. It must be all those impromptu diplomatic speeches.
+
+```{r ep4}
+id <- totals$character
+chr <- factor(totals$character, levels = id)
+uniform_colors <- c("#a71313", "#c1c730", "#2b53a7")
+ulev <- c("Command", "Operations", "Science")
+uniform <- factor(ulev[c(1, 2, 1, 2, 3, 3, 2, 3)], levels = ulev)
+totals <- mutate(totals, character = chr, uniform = uniform)
+
+ggplot(totals, aes(character, words, fill = uniform)) + 
+  geom_col(color = NA, show.legend = FALSE) + 
+  scale_fill_manual(values = uniform_colors) +
+  geom_text(aes(label = paste0(round(words / 1000), "K")), 
+            size = 10, color = "white", vjust = 1.5) + 
+  scale_x_discrete(expand = c(0, 0)) + 
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_minimal(18)
+```
+
+What is each character's biggest episode per season in terms of estimated spoken words?
+
+```{r ep5}
+biggest <- filter(x, character %in% id) %>% 
+  mutate(character = factor(character, levels = id)) %>%
+  group_by(season, character) %>%
+  summarize(title = title[which.max(words)], words = max(words)) %>%
+  arrange(character)
+
+biggest
+
+biggest <- mutate(biggest, winner = character[which.max(words)],
+                  ymn = min(words), ymx = max(words)) %>% ungroup() %>%
+  mutate(uniform = factor(uniform[match(biggest$character, id)], levels = ulev))
+
+ggplot(biggest, aes(season, words)) + 
+  geom_linerange(aes(ymin = ymn, ymax = ymx)) +
+  geom_point(aes(fill = uniform), shape = 21, size = 2, show.legend = FALSE) + 
+  scale_fill_manual(values = uniform_colors) +
+  geom_text_repel(aes(label = paste0(title, " (", character, ")")), 
+                  size = 2.3, hjust = -0.1, direction = "y", min.segment.length = 0.65) + 
+  scale_x_continuous(breaks = 1:7, labels = 1:7, expand = expand_scale(0, c(0.1, 0.8))) +
+  theme_minimal(18) + theme(panel.grid.minor = element_blank())
+
+```
+
+Finally, look at both Worf and O'Brien, making a comparison between TNG and DS9 in terms of their prominence.
+
+```{r ep6}
+x <- filter(scriptData, format == "episode" & series %in% c("TNG", "DS9")) %>% 
+  unnest(text) %>%
+  select(series, season, title, character, line) %>%
+  mutate(character = gsub(pat, "", character)) %>%
+  filter(character %in% c("Worf", "O'brien")) %>%
+  group_by(series, title, character) %>%
+  summarize(lines = n(), words = length(unlist(strsplit(line, " "))))
+
+avg <- group_by(x, series, character) %>% 
+  summarize(lines = mean(lines), words = mean(words)) %>% 
+  arrange(character, series) %>% ungroup()
+avg$character <- gsub("O'brien", "O'Brien", avg$character)
+
+avg
+
+id <- rev(unique(avg$character))
+chr <- factor(avg$character, levels = id)
+avg <- mutate(avg, series = factor(series, levels = c("TNG", "DS9")), character = chr)
+
+ggplot(avg, aes(character, words, fill = series)) + 
+  geom_col(color = NA, show.legend = FALSE, position = position_dodge()) + 
+  scale_fill_manual(values = c("dodgerblue", "orange")) +
+  geom_text(aes(label = paste0(series, ": ", round(words))), 
+            size = 10, color = "white", vjust = 1.5, 
+            position = position_dodge(width = 0.9)) + 
+  labs(y = "Average words per episode") +
+  scale_x_discrete(expand = c(0, 0)) + 
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_minimal(18)
+```
+
+Starfleet promotions in rank aside, Worf did not even quite receive a 10% pay bump in terms of average spoken words per episode. On the other hand, O'Brien had an increase of 211%, or more than triple the average number of spoken words per episode when moving from the Enterprise to Deep Space Nine. All things considered, take the transfer. But on spoken words alone, O'Brien was clearly favored. The squeaky wheel gets the grease.

@@ -36,6 +36,7 @@ reference:
   - mb_image
   - mb_search
   - mb_timeline
+  - st_transcripts
 - title: Helper functions
   contents:
   - st_datasets
@@ -67,8 +68,10 @@ navbar:
           href: "articles/fonts.html"
         - text: "---------"
         - text: "Examples"
-        - text: "Novels: word ount"
+        - text: "Novels: word count"
           href: "articles/ex-word-count.html"
+        - text: "Episodes: spoken lines"
+          href: "articles/ex-episode-analysis.html"
     - text: "Reference"
       href: "reference/index.html"
     - text: "Changelog"
