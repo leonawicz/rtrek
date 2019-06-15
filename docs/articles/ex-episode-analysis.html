@@ -131,7 +131,10 @@
 
     
     
-<p>A curated data frame of metadata and text variables derived from episode and movie transcripts can be downloaded with <code>st_transcripts</code>. The format is one episode per row. There are metadata columns and list column of nested text variables.</p>
+<div id="importing-transcript-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#importing-transcript-data" class="anchor"></a>Importing transcript data</h2>
+<p>A curated data frame of metadata and text variables derived from episode and movie transcripts can be downloaded with <code>st_transcripts</code>. The format is one episode per row. There are metadata columns and a list column of nested text variables.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyr)</a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
@@ -168,6 +171,10 @@
 <a class="sourceLine" id="cb1-34" title="34"><span class="co">#&gt;  9           7 Angle emphas~ As picard tu~ &lt;NA&gt;        Picard    You will ~</span></a>
 <a class="sourceLine" id="cb1-35" title="35"><span class="co">#&gt; 10           8 Angle emphas~ &lt;NA&gt;          &lt;NA&gt;        Data      Difficult~</span></a>
 <a class="sourceLine" id="cb1-36" title="36"><span class="co">#&gt; # ... with 806 more rows</span></a></code></pre></div>
+</div>
+<div id="basic-tng-summary" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basic-tng-summary" class="anchor"></a>Basic TNG summary</h2>
 <p>Consider TNG episodes. A rough estimate of the relative amount of speaking parts can be obtained by counting up the lines for each character. A better measure would be an estimate of word count taken from each spoken line. Calculate these statistics by season and episode as well as character.</p>
 <p>Also remove unneeded columns. As is common in text analysis, even a clean dataset may need further preparation for a specific task. In this case it is important to strip references to things such as voice over <code>(V.o.)</code> from the <code>character</code> column.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">pat &lt;-<span class="st"> "('s</span><span class="ch">\\</span><span class="st">s|</span><span class="ch">\\</span><span class="st">s</span><span class="ch">\\</span><span class="st">(|</span><span class="ch">\\</span><span class="st">sV</span><span class="ch">\\</span><span class="st">.).*"</span></a>
@@ -195,6 +202,9 @@
 <a class="sourceLine" id="cb2-23" title="23"><span class="co">#&gt; 10      1 11001001 Drummer              2    22</span></a>
 <a class="sourceLine" id="cb2-24" title="24"><span class="co">#&gt; # ... with 2,848 more rows</span></a></code></pre></div>
 <p>Another limitation of using lines is that they may not always mimic the natural breaks in spoken lines in the episodes. While word count here is simply estimated by breaking text on spaces, it is likely more representative than the line count.</p>
+<div id="total-spoken-words" class="section level3">
+<h3 class="hasAnchor">
+<a href="#total-spoken-words" class="anchor"></a>Total spoken words</h3>
 <p>Next, focus on the top eight characters.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">totals &lt;-<span class="st"> </span><span class="kw">group_by</span>(x, character) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">lines =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(lines), <span class="dt">words =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/sum">sum</a></span>(words)) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -229,6 +239,10 @@
 <a class="sourceLine" id="cb4-14" title="14"><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">expand =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>, <span class="dv">0</span>)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb4-15" title="15"><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dv">18</span>)</a></code></pre></div>
 <p><img src="ex-episode-analysis_files/figure-html/ep4-1.png" width="1152"></p>
+</div>
+<div id="prominent-roles" class="section level3">
+<h3 class="hasAnchor">
+<a href="#prominent-roles" class="anchor"></a>Prominent roles</h3>
 <p>What is each character’s biggest episode per season in terms of estimated spoken words?</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">biggest &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(x, character <span class="op">%in%</span><span class="st"> </span>id) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">factor</a></span>(character, <span class="dt">levels =</span> id)) <span class="op">%&gt;%</span></a>
@@ -266,6 +280,11 @@
 <a class="sourceLine" id="cb5-34" title="34"><span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>, <span class="dt">labels =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>, <span class="dt">expand =</span> <span class="kw">expand_scale</span>(<span class="dv">0</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="fl">0.1</span>, <span class="fl">0.8</span>))) <span class="op">+</span></a>
 <a class="sourceLine" id="cb5-35" title="35"><span class="st">  </span><span class="kw">theme_minimal</span>(<span class="dv">18</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>())</a></code></pre></div>
 <p><img src="ex-episode-analysis_files/figure-html/ep5-1.png" width="1152"></p>
+</div>
+</div>
+<div id="transferring-from-tng-to-ds9" class="section level2">
+<h2 class="hasAnchor">
+<a href="#transferring-from-tng-to-ds9" class="anchor"></a>Transferring from TNG to DS9</h2>
 <p>Finally, look at both Worf and O’Brien, making a comparison between TNG and DS9 in terms of their prominence.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">x &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(scriptData, format <span class="op">==</span><span class="st"> "episode"</span> <span class="op">&amp;</span><span class="st"> </span>series <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"TNG"</span>, <span class="st">"DS9"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-2" title="2"><span class="st">  </span><span class="kw">unnest</span>(text) <span class="op">%&gt;%</span></a>
@@ -306,9 +325,19 @@
 <p><img src="ex-episode-analysis_files/figure-html/ep6-1.png" width="1152"></p>
 <p>This calculation accounts for the number of episodes each character has speaking lines in. TNG episodes missing O’Brien after DS9 began and DS9 episodes missing Worf before he joined the show are not counted against them. It does not account for episodes where a character may appear in an episode but without any speaking lines, which should drop their averages. However, this is rare (if it occurs at all?).</p>
 <p>The results are interesting. Starfleet promotions in rank aside, Worf did not even quite receive a 10% pay bump in terms of average spoken words per episode. On the other hand, O’Brien had an increase of 211%, or more than triple the average number of spoken words per episode when moving from the Enterprise to Deep Space Nine. All things considered, take the transfer. But on spoken words alone, O’Brien was clearly favored. The squeaky wheel gets the grease.</p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#importing-transcript-data">Importing transcript data</a></li>
+      <li><a href="#basic-tng-summary">Basic TNG summary</a></li>
+      <li><a href="#transferring-from-tng-to-ds9">Transferring from TNG to DS9</a></li>
+      </ul>
+</div>
       </div>
 
 </div>

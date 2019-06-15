@@ -16,7 +16,9 @@ knitr::opts_chunk$set(
 library(rtrek)
 ```
 
-A curated data frame of metadata and text variables derived from episode and movie transcripts can be downloaded with `st_transcripts`. The format is one episode per row. There are metadata columns and list column of nested text variables.
+## Importing transcript data
+
+A curated data frame of metadata and text variables derived from episode and movie transcripts can be downloaded with `st_transcripts`. The format is one episode per row. There are metadata columns and a list column of nested text variables.
 
 ```{r ep1}
 library(dplyr)
@@ -28,6 +30,8 @@ library(ggrepel)
 
 scriptData$text[[81]]
 ```
+
+## Basic TNG summary
 
 Consider TNG episodes. A rough estimate of the relative amount of speaking parts can be obtained by counting up the lines for each character. A better measure would be an estimate of word count taken from each spoken line. Calculate these statistics by season and episode as well as character.
 
@@ -46,6 +50,8 @@ x
 ```
 
 Another limitation of using lines is that they may not always mimic the natural breaks in spoken lines in the episodes. While word count here is simply estimated by breaking text on spaces, it is likely more representative than the line count.
+
+### Total spoken words
 
 Next, focus on the top eight characters.
 
@@ -77,6 +83,8 @@ ggplot(totals, aes(character, words, fill = uniform)) +
   theme_minimal(18)
 ```
 
+### Prominent roles
+
 What is each character's biggest episode per season in terms of estimated spoken words?
 
 ```{r ep5}
@@ -102,6 +110,8 @@ ggplot(biggest, aes(season, words)) +
   theme_minimal(18) + theme(panel.grid.minor = element_blank())
 
 ```
+
+## Transferring from TNG to DS9
 
 Finally, look at both Worf and O'Brien, making a comparison between TNG and DS9 in terms of their prominence.
 
