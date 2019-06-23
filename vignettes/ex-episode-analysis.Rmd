@@ -68,7 +68,7 @@ By the way, look at the total estimated lines and words spoken by each character
 ```{r ep4}
 id <- totals$character
 chr <- factor(totals$character, levels = id)
-uniform_colors <- c("#a71313", "#c1c730", "#2b53a7")
+uniform_colors <- c("#5B1414", "#AD722C", "#1A6384")
 ulev <- c("Command", "Operations", "Science")
 uniform <- factor(ulev[c(1, 2, 1, 2, 3, 3, 2, 3)], levels = ulev)
 totals <- mutate(totals, character = chr, uniform = uniform)
@@ -147,6 +147,12 @@ ggplot(avg, aes(character, words, fill = series)) +
   theme_minimal(18)
 ```
 
-This calculation accounts for the number of episodes each character has speaking lines in. TNG episodes missing O'Brien after DS9 began and DS9 episodes missing Worf before he joined the show are not counted against them. It does not account for episodes where a character may appear in an episode but without any speaking lines, which should drop their averages. However, this is rare (if it occurs at all?).
+This is a simple exploration of the data, but the results are interesting. Starfleet promotions in rank aside, Worf did not even quite receive a 10% pay bump in terms of average spoken words per episode. On the other hand, O'Brien had an increase of 211%, or more than triple the average number of spoken words per episode when moving from the Enterprise to Deep Space Nine. All things considered, take the transfer. But on spoken words alone, O'Brien was clearly favored. The squeaky wheel gets the grease.
 
-The results are interesting. Starfleet promotions in rank aside, Worf did not even quite receive a 10% pay bump in terms of average spoken words per episode. On the other hand, O'Brien had an increase of 211%, or more than triple the average number of spoken words per episode when moving from the Enterprise to Deep Space Nine. All things considered, take the transfer. But on spoken words alone, O'Brien was clearly favored. The squeaky wheel gets the grease.
+### Considerations
+
+This calculation accounts for the number of episodes each character has speaking lines in. For example, TNG episodes missing O'Brien after DS9 began and DS9 episodes missing Worf before he joined the show are not counted against them.
+
+It does not account for episodes where a character may appear in an episode, but without any speaking lines, which should drop their averages. However, this is rare and, if anything, I would expect it to exacerbate the difference seen here rather than diminish it. I'm just guessing there may have been some early TNG episodes where O'Brien was shown but never spoke.
+
+A more rigorous approach that I may show in a subsequent example would be to join this transcript data with episode casting data from STAPI so that there is no need to rely on speaking lines in transcripts to guess at whether someone was featured in an episode.
