@@ -1,6 +1,7 @@
 # rtrek 0.2.5
 
 * Added `st_transcripts` for importing datasets based on episode and movie transcripts containing metadata and variables for analysis of scenes, character presence, dialog, sentiment.
+* Added basic ggplot2 themes.
 
 # rtrek 0.2.2
 

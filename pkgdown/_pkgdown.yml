@@ -47,6 +47,9 @@ reference:
   - st_font
   - has_internet
   - "%>%"
+- title: Plots
+  contents:
+  - theme_rtrek
 
 navbar:
   type: inverse
