@@ -27,7 +27,7 @@ theme_rtrek_dark <- function(base_size = 11, base_family = "", base_line_size = 
                          clr = c("#FFFFFF", "#FFFFFF", "#555555", "#555555", "#FFFFFF", "#EEEEEE")){
   ggplot2::theme_gray(base_size, base_family, base_line_size, base_rect_size) +
     ggplot2::theme(plot.background = ggplot2::element_rect(fill = clr[1]),
-                   panel.background = element_rect(fill = clr[2]),
+                   panel.background = ggplot2::element_rect(fill = clr[2]),
                    panel.grid = ggplot2::element_line(color = clr[6]),
                    legend.background = ggplot2::element_rect(color = clr[1], fill = clr[1]),
                    text = ggplot2::element_text(color = clr[4]),
