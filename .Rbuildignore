@@ -24,3 +24,4 @@
 ^vignettes/memory-beta.Rmd$
 ^vignettes/ex-word-count.Rmd$
 ^vignettes/ex-episode-analysis.Rmd$
+^README\.html$

@@ -15,7 +15,7 @@ NULL
 
 #' Pipe operator
 #'
-#' See \code{magrittr::\link[magrittr]{\%>\%}} for details.
+#' See the \code{magrittr} package for details.
 #'
 #' @name %>%
 #' @rdname pipe

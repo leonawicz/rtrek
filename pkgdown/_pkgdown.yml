@@ -45,6 +45,7 @@ reference:
   - st_tiles_data
   - tile_coords
   - st_books_wiki
+  - st_logo
   - st_font
   - has_internet
   - "%>%"

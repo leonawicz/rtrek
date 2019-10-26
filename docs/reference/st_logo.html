@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pipe operator — %&gt;% • rtrek</title>
+<title>Star Trek logos — st_logo • rtrek</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -44,8 +44,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Pipe operator — %&gt;%" />
-<meta property="og:description" content="See the magrittr package for details." />
+<meta property="og:title" content="Star Trek logos — st_logo" />
+<meta property="og:description" content="Download an image of a Star Trek logo and return a ggplot object." />
 <meta property="og:image" content="https://leonawicz.github.io/rtrek/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -167,23 +167,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pipe operator</h1>
-    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/rtrek.R'><code>R/rtrek.R</code></a></small>
-    <div class="hidden name"><code>pipe.Rd</code></div>
+    <h1>Star Trek logos</h1>
+    <small class="dont-index">Source: <a href='https://github.com/leonawicz/rtrek/blob/master/R/logos.R'><code>R/logos.R</code></a></small>
+    <div class="hidden name"><code>st_logo.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>See the <code>magrittr</code> package for details.</p>
+    <p>Download an image of a Star Trek logo and return a ggplot object.</p>
     </div>
 
-    <pre class="usage"><span class='no'>lhs</span> <span class='kw'>%&gt;%</span> <span class='no'>rhs</span></pre>
+    <pre class="usage"><span class='fu'>st_logo</span>(<span class='no'>url</span>, <span class='no'>file</span>, <span class='kw'>keep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>url</th>
+      <td><p>character, the url of the image, must be one from the dataset <code><a href='stLogos.html'>stLogos</a></code>. See example.</p></td>
+    </tr>
+    <tr>
+      <th>file</th>
+      <td><p>character, output file name. Optional. See details.</p></td>
+    </tr>
+    <tr>
+      <th>keep</th>
+      <td><p>logical, if <code>FALSE</code> (default) then <code>file</code> is only temporary.</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>a ggplot object</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>By default the downloaded file is not retained (<code>keep = FALSE</code>). The filename is derived from <code>url</code> if <code>file</code> is not provided. These files are all .gif.
+Whether or not the output file is kept, a ggplot object of the image is returned.
+For more information on attribution, see <code><a href='stLogos.html'>stLogos</a></code>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='stLogos.html'>stLogos</a></code></p></div>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>st_logo</span>(<span class='no'>stLogos</span>$<span class='no'>url</span>[<span class='fl'>1</span>])</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

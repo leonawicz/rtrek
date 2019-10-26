@@ -23,7 +23,6 @@ Suggests:
     rmarkdown,
     covr,
     leaflet,
-    lintr,
     showtext,
     sysfonts,
     trekfont

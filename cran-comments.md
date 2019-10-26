@@ -15,5 +15,5 @@
 ## Downstream dependencies
 
 I have also run R CMD check on downstream dependencies of rtrek 
-(https://github.com/leonawicz/rtrek/blob/master/revdep/checks.rds). 
+(https://github.com/leonawicz/rtrek/blob/master/revdep/). 
 All packages passed.

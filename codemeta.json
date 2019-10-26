@@ -105,18 +105,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "lintr",
-      "name": "lintr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=lintr"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "showtext",
       "name": "showtext",
       "provider": {
@@ -306,7 +294,6 @@
   ],
   "releaseNotes": "https://github.com/leonawicz/rtrek/blob/master/NEWS.md",
   "readme": "https://github.com/leonawicz/rtrek/blob/master/README.md",
-  "fileSize": "1138.746KB",
   "contIntegration": [
     "https://travis-ci.org/leonawicz/rtrek",
     "https://ci.appveyor.com/project/leonawicz/rtrek",
