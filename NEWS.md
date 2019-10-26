@@ -2,6 +2,8 @@
 
 * Added `st_transcripts` for importing datasets based on episode and movie transcripts containing metadata and variables for analysis of scenes, character presence, dialog, sentiment.
 * Added basic ggplot2 themes.
+* Added `stLogos` metadata dataset and related `st_logo` function.
+* Minor bug fixes and documentation updates.
 
 # rtrek 0.2.2
 
@@ -70,7 +72,7 @@
 # rtrek 0.0.6
 
 * Added initial introduction vignette content.
-* Added anti-DDOS measures for API calls.
+* Added anti-DOS measures for API calls.
 * Minor fixes.
 * Updated unit tests.
 * Updated readme.

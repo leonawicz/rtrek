@@ -11,8 +11,8 @@
 #' Then if the resulting data frame includes a \code{uid} column, you can make a second call to the function providing a specific \code{uid}.
 #' This puts \code{stapi} into extraction mode and will return satellite data associated with the unique entry from the original general sweep of the entity \code{id}.
 #'
-#' \code{rtrek} employs anti-DDOS measures. It will not perform an API call to STAPI more than once per second.
-#' To be an even better neighbor, you can increase this wait time using \code{options}, e.g. \code{options(rtrek_antiddos = 10)} to increase the minimum time between API calls to ten seconds.
+#' \code{rtrek} employs anti-DOS measures. It will not perform an API call to STAPI more than once per second.
+#' To be an even better neighbor, you can increase this wait time using \code{options}, e.g. \code{options(rtrek_antidos = 10)} to increase the minimum time between API calls to ten seconds.
 #' Values less than one are ignored (defaulting back to one second) and a warning will be thrown when making any API call if this is the case.
 #'
 #' Currently STAPI contains primarily real world data such as episode air dates, movie metadata, or production company information. Fictional world data is secondary and more limited.
@@ -35,7 +35,7 @@
 #' }
 stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
   if(!id %in% rtrek::stapiEntities$id) stop("Invalid `id`.", call. = FALSE)
-  .antiddos("stapi")
+  .antidos("stapi")
   type <- if(is.null(uid)) "/search?pageNumber=" else paste0("?uid=", uid)
   uri <- paste0("http://stapi.co/api/v1/rest/", id, type)
   if(!is.null(uid)){
@@ -71,10 +71,10 @@ stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
 
 # nolint end
 
-.antiddos <- function(x, sec = getOption("rtrek_antiddos", 1)){
+.antidos <- function(x, sec = getOption("rtrek_antidos", 1)){
   if(sec < 1){
     sec <- 1
-    warning("`rtrek_antiddos` setting in `options` is less than one and will be ignored.\n")
+    warning("`rtrek_antidos` setting in `options` is less than one and will be ignored.\n")
   }
   wait <- 0
   if(!is.null(rtrek_api_time[[x]])){

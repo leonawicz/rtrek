@@ -115,3 +115,17 @@ stSeries <- tibble(
 )
 
 usethis::use_data(stSeries)
+
+# Star Trek logos metadata
+cats <- c("federation", "starfleet", "ships", "major", "minor", "historical")
+url <- "http://www.st-minutiae.com/resources/logos"
+urls <- paste0(url, "/gallery-", cats, ".html")
+f <- function(cats, urls){
+  x <- xml2::read_html(urls) %>% html_nodes(".gallery figure")
+  img_cap <- rvest::html_nodes(x, "figcaption") %>% rvest::html_text()
+  urls <- file.path(dirname(urls), rvest::html_nodes(x, "a") %>% rvest::html_attr("href"))
+  tibble::tibble(category = cats, description = img_cap, url = urls)
+}
+stLogos <- purrr::map2_dfr(cats, urls, f)
+
+usethis::use_data(stLogos)

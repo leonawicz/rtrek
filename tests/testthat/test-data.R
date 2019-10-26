@@ -4,7 +4,7 @@ d <- st_datasets()
 
 test_that("dataset list returns as expected", {
   expect_is(d, "data.frame")
-  expect_equal(dim(d), c(10, 2))
+  expect_equal(dim(d), c(11, 2))
 })
 
 d <- st_books_wiki()

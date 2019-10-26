@@ -13,8 +13,9 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Introduction to rtrek">
 <meta property="og:description" content="">
@@ -118,7 +119,8 @@
 <!--/.navbar -->
 
       
-      </header><script src="rtrek_files/htmlwidgets-1.3/htmlwidgets.js"></script><script src="rtrek_files/jquery-1.12.4/jquery.min.js"></script><link href="rtrek_files/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+
+      </header><script src="rtrek_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="rtrek_files/jquery-1.12.4/jquery.min.js"></script><link href="rtrek_files/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="rtrek_files/leaflet-1.3.1/leaflet.js"></script><link href="rtrek_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="rtrek_files/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="rtrek_files/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="rtrek_files/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
 <script src="rtrek_files/leaflet-binding-2.0.2/leaflet.js"></script><div class="row">
@@ -140,9 +142,9 @@
 <a href="#local-datasets" class="anchor"></a>Local datasets</h2>
 <p>The <code>rtrek</code> package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. It interfaces with the <a href="http://stapi.co/">Star Trek API</a> (STAPI), <a href="http://memory-alpha.wikia.com/">Memory Alpha</a> and <a href="http://memory-beta.wikia.com/">Memory Beta</a> to retrieve data, metadata and other information relating to Star Trek.</p>
 <p>The package also contains several local datasets covering a variety of topics such as Star Trek timeline data, universe species data and geopolitical data. Some of these are more information rich, while others are toy examples useful for simple demonstrations. The bulk of Star Trek data is accessed from external sources by API. A future version of <code>rtrek</code> will also include summary datasets resulting from text mining analyses of Star Trek novels.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(rtrek)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(rtrek)</a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="kw"><a href="../reference/st_datasets.html">st_datasets</a></span>()</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co">#&gt; # A tibble: 10 x 2</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">#&gt; # A tibble: 11 x 2</span></a>
 <a class="sourceLine" id="cb1-4" title="4"><span class="co">#&gt;    dataset       description                             </span></a>
 <a class="sourceLine" id="cb1-5" title="5"><span class="co">#&gt;    &lt;chr&gt;         &lt;chr&gt;                                   </span></a>
 <a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt;  1 stGeo         Map tile set locations of interest.     </span></a>
@@ -152,9 +154,10 @@
 <a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt;  5 stBooksWiki   Star Trek novel metadata from Wikipedia.</span></a>
 <a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt;  6 stSeries      Names and acronyms of Star Trek series  </span></a>
 <a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt;  7 stapiEntities Star Trek API (STAPI) categories        </span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;  8 tlBooks       Novel-based timeline dataset            </span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt;  9 tlEvents      Event-based timeline dataset            </span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; 10 tlFootnotes   Timeline dataset footnotes</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;  8 stLogos       Metadata for various Star Trek logos    </span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt;  9 tlBooks       Novel-based timeline dataset            </span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; 10 tlEvents      Event-based timeline dataset            </span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; 11 tlFootnotes   Timeline dataset footnotes</span></a></code></pre></div>
 <p>At this time, several of the datasets are very small and are only included in the package in order to demonstrate some very basic examples and they are not particularly useful or interesting beyond this purpose. However, <code>rtek</code> now includes more sizable curated datasets relating the compendium of licensed, published Star Trek literature and multiple versions of Star Trek fictional universe historical timelines.</p>
 <p>Package datasets in <code>rtrek</code> are somewhat eclectic and currently limited. They will expand with further package development. To list all available package datasets with a short description, call <code>st_datasets</code>.</p>
 </div>
@@ -306,7 +309,7 @@
 <a class="sourceLine" id="cb9-26" title="26"><span class="co">#&gt; 8 galax~ Tzenke~  1553  2557 Plan~ Homewor~ Tzenkethi~ Tzenke~  48.5  -79.9</span></a>
 <a class="sourceLine" id="cb9-27" title="27"><span class="co">#&gt; 9 galax~ Talar    1039  3489 Plan~ Homewor~ Talarian ~ Talari~  32.5 -109.</span></a></code></pre></div>
 <p>Here is an example using the <code>galaxy1</code> map with <code>leaflet</code>. The <code>st_tiles</code> function is used to link to the tile provider.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(leaflet)</a>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(leaflet)</a>
 <a class="sourceLine" id="cb10-2" title="2">tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_tiles.html">st_tiles</a></span>(<span class="st">"galaxy1"</span>)</a>
 <a class="sourceLine" id="cb10-3" title="3"><span class="kw">leaflet</span>(d, <span class="dt">options =</span> <span class="kw">leafletOptions</span>(<span class="dt">crs =</span> <span class="kw">leafletCRS</span>(<span class="st">"L.CRS.Simple"</span>))) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb10-4" title="4"><span class="st">  </span><span class="kw">addTiles</span>(tiles) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">setView</span>(<span class="dv">108</span>, <span class="dv">-75</span>, <span class="dv">2</span>) <span class="op">%&gt;%</span></a>
@@ -404,25 +407,25 @@
 <p>Keep in mind that STAPI focuses more on providing real world data associated with Star Trek (e.g., when did episode X first air on television?) than on fictional universe data, but it contains both and the database holdings will grow with time.</p>
 <p>To use the words of the developers, the STAPI is</p>
 <p><em>the first public Star Trek API, accessible via REST and SOAP. It’s an open source project, that anyone can contribute to.</em></p>
-<p>The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DDOS measures in <code>rtrek</code> limit requests to one per second. You can update this global <code>rtrek</code> setting with <code>options</code>, e.g. <code><a href="https://www.rdocumentation.org/packages/base/topics/options">options(rtrek_antiddos = 10)</a></code> for a minimum ten second wait between API calls to be an even better neighbor. <code>rtrek</code> will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.</p>
+<p>The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DOS measures in <code>rtrek</code> limit requests to one per second. You can update this global <code>rtrek</code> setting with <code>options</code>, e.g. <code><a href="https://rdrr.io/r/base/options.html">options(rtrek_antidos = 10)</a></code> for a minimum ten second wait between API calls to be an even better neighbor. <code>rtrek</code> will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.</p>
 <div id="stapi-entities" class="section level3">
 <h3 class="hasAnchor">
 <a href="#stapi-entities" class="anchor"></a>STAPI entities</h3>
 <p>There a many fields, or entities, available in the API. The available IDs can be found in this table:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">stapiEntities</a>
 <a class="sourceLine" id="cb14-2" title="2"><span class="co">#&gt; # A tibble: 40 x 4</span></a>
-<a class="sourceLine" id="cb14-3" title="3"><span class="co">#&gt;    id                 class   ncol colnames  </span></a>
-<a class="sourceLine" id="cb14-4" title="4"><span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;  &lt;int&gt; &lt;list&gt;    </span></a>
-<a class="sourceLine" id="cb14-5" title="5"><span class="co">#&gt;  1 animal             tbl_df     7 &lt;chr [7]&gt; </span></a>
-<a class="sourceLine" id="cb14-6" title="6"><span class="co">#&gt;  2 astronomicalObject tbl_df     5 &lt;chr [5]&gt; </span></a>
-<a class="sourceLine" id="cb14-7" title="7"><span class="co">#&gt;  3 book               tbl_df    24 &lt;chr [24]&gt;</span></a>
-<a class="sourceLine" id="cb14-8" title="8"><span class="co">#&gt;  4 bookCollection     tbl_df    10 &lt;chr [10]&gt;</span></a>
-<a class="sourceLine" id="cb14-9" title="9"><span class="co">#&gt;  5 bookSeries         tbl_df    11 &lt;chr [11]&gt;</span></a>
-<a class="sourceLine" id="cb14-10" title="10"><span class="co">#&gt;  6 character          tbl_df    24 &lt;chr [24]&gt;</span></a>
-<a class="sourceLine" id="cb14-11" title="11"><span class="co">#&gt;  7 comicCollection    tbl_df    14 &lt;chr [14]&gt;</span></a>
-<a class="sourceLine" id="cb14-12" title="12"><span class="co">#&gt;  8 comics             tbl_df    15 &lt;chr [15]&gt;</span></a>
-<a class="sourceLine" id="cb14-13" title="13"><span class="co">#&gt;  9 comicSeries        tbl_df    15 &lt;chr [15]&gt;</span></a>
-<a class="sourceLine" id="cb14-14" title="14"><span class="co">#&gt; 10 comicStrip         tbl_df    12 &lt;chr [12]&gt;</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="co">#&gt;    id                 class   ncol colnames    </span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;  &lt;int&gt; &lt;named list&gt;</span></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="co">#&gt;  1 animal             tbl_df     7 &lt;chr [7]&gt;   </span></a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="co">#&gt;  2 astronomicalObject tbl_df     5 &lt;chr [5]&gt;   </span></a>
+<a class="sourceLine" id="cb14-7" title="7"><span class="co">#&gt;  3 book               tbl_df    24 &lt;chr [24]&gt;  </span></a>
+<a class="sourceLine" id="cb14-8" title="8"><span class="co">#&gt;  4 bookCollection     tbl_df    10 &lt;chr [10]&gt;  </span></a>
+<a class="sourceLine" id="cb14-9" title="9"><span class="co">#&gt;  5 bookSeries         tbl_df    11 &lt;chr [11]&gt;  </span></a>
+<a class="sourceLine" id="cb14-10" title="10"><span class="co">#&gt;  6 character          tbl_df    24 &lt;chr [24]&gt;  </span></a>
+<a class="sourceLine" id="cb14-11" title="11"><span class="co">#&gt;  7 comicCollection    tbl_df    14 &lt;chr [14]&gt;  </span></a>
+<a class="sourceLine" id="cb14-12" title="12"><span class="co">#&gt;  8 comics             tbl_df    15 &lt;chr [15]&gt;  </span></a>
+<a class="sourceLine" id="cb14-13" title="13"><span class="co">#&gt;  9 comicSeries        tbl_df    15 &lt;chr [15]&gt;  </span></a>
+<a class="sourceLine" id="cb14-14" title="14"><span class="co">#&gt; 10 comicStrip         tbl_df    12 &lt;chr [12]&gt;  </span></a>
 <a class="sourceLine" id="cb14-15" title="15"><span class="co">#&gt; # ... with 30 more rows</span></a></code></pre></div>
 <p>These ID values are passed to <code>stapi</code> to perform a search using the API. The other columns provide some information about the object returned from a search. All entity searches return tibble data frames. You can inspect or unnest the column names of each table returned from every available entity search so you can see beforehand what variables are associated with each entity.</p>
 </div>
@@ -466,7 +469,7 @@
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">Q &lt;-<span class="st"> "CHMA0000025118"</span></a>
 <a class="sourceLine" id="cb17-2" title="2">Q &lt;-<span class="st"> </span><span class="kw"><a href="../reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">uid =</span> Q)</a>
 <a class="sourceLine" id="cb17-3" title="3"></a>
-<a class="sourceLine" id="cb17-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb17-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb17-5" title="5">Q<span class="op">$</span>episodes <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(uid, title, stardateFrom, stardateTo)</a>
 <a class="sourceLine" id="cb17-6" title="6"><span class="co">#&gt;              uid                 title stardateFrom stardateTo</span></a>
 <a class="sourceLine" id="cb17-7" title="7"><span class="co">#&gt; 1 EPMA0000001458    All Good Things...      47988.0    47988.0</span></a>
@@ -485,7 +488,7 @@
 <h2 class="hasAnchor">
 <a href="#pseudo-apis" class="anchor"></a>Pseudo-APIs</h2>
 <p>Some functions in <code>rtrek</code> provide an API-<em>like</em> interface to online Star Trek-related data. Specifically, parsing data from the <a href="http://memory-alpha.wikia.com/">Memory Alpha</a> and <a href="http://memory-beta.wikia.com/">Memory Beta</a> websites. These sites do not provide APIs. Therefore the only option is to read pages into R and parse the html. Behind the scenes this is done using the <code>xml2</code> and <code>rvest</code> packages, but from the user perspective it is presented as passing an API endpoint string to a function.</p>
-<p><code>memory_alpha</code> and <code>memory_beta</code>, as well as several other related functions, are available in <code>rtrek</code>. These functions access data from Memory Alpha and Memory Beta. For details and examples on these functions, see the Memory Alpha . <a href="https://leonawicz.github.io/rtrek/articles/memory-alpha.html">vignette</a> and the Memory Beta <a href="https://leonawicz.github.io/rtrek/articles/memory-beta.html">vignette</a>.</p>
+<p><code>memory_alpha</code> and <code>memory_beta</code>, as well as several other related functions, are available in <code>rtrek</code>. These functions access data from Memory Alpha and Memory Beta. For details and examples on these functions, see the Memory Alpha <a href="https://leonawicz.github.io/rtrek/articles/memory-alpha.html">vignette</a> and the Memory Beta <a href="https://leonawicz.github.io/rtrek/articles/memory-beta.html">vignette</a>.</p>
 </div>
 <div id="star-trek-novel-text-mining" class="section level2">
 <h2 class="hasAnchor">
@@ -520,6 +523,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -538,17 +542,20 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by <a href="https://leonawicz.github.io/">Matthew Leonawicz</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>

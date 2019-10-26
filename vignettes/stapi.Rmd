@@ -33,7 +33,7 @@ To use the words of the developers, the STAPI is
 
 *the first public Star Trek API, accessible via REST and SOAP. It's an open source project, that anyone can contribute to.*
 
-The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DDOS measures in `rtrek` limit requests to one per second. You can update this global `rtrek` setting with `options`, e.g. `options(rtrek_antiddos = 10)` for a minimum ten second wait between API calls to be an even better neighbor. `rtrek` will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.
+The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DDOS measures in `rtrek` limit requests to one per second. You can update this global `rtrek` setting with `options`, e.g. `options(rtrek_antidos = 10)` for a minimum ten second wait between API calls to be an even better neighbor. `rtrek` will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.
 
 ### STAPI entities
 
@@ -66,7 +66,8 @@ And that is with 100 results per page!
 The default `page = 1` only returns the first page. `page` can be a vector, e.g. `page = 1:62`. Results from multi-page searches are automatically combined into a single, constant data frame output. For the second call to `stapi`, return only page two here, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example further below hard-codes his unique/universal ID.
 
 ```{r stapi_search}
-stapi("character", page = 2)
+library(dplyr)
+stapi("character", page = 1) %>% select(uid, name)
 ```
 
 Character tables can be sparse. There are a lot of variables, many of which will contain missing data for rare, esoteric characters. Even for more popular characters about whom much more universe lore has been uncovered, it still takes dedicated nerds to enter all the data in a database.
@@ -77,7 +78,6 @@ When a dataset contains a `uid` column, this can be used subsequently to extract
 Q <- "CHMA0000025118"
 Q <- stapi("character", uid = Q)
 
-library(dplyr)
 q_eps <- Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
 q_eps
 ```
@@ -99,7 +99,7 @@ characters
 
 This returns the main crew members who remained a part of the show from beginning to end. However, Dr. Beverly Crusher was away during season two. Below, inspect how many episodes each character, or actor, appeared in. `uid` is again needed, this time for each character.
 
-Note that this requires making seven API calls, one for each character ID. The anti-ddos measures in `rtrek` will force a one-second minimum wait between each call in the event that the individual calls actually return results faster than this, so the code below will take at least seven seconds to complete.
+Note that this requires making seven API calls, one for each character ID. The anti-DOS measures in `rtrek` will force a one-second minimum wait between each call in the event that the individual calls actually return results faster than this, so the code below will take at least seven seconds to complete.
 
 Add a fun, gratuitous Star Trek-themed plot. Make it so.
 

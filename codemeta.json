@@ -14,10 +14,10 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.0",
+    "version": "3.6.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.0 (2019-04-26)",
+  "runtimePlatform": "R version 3.6.1 (2019-07-05)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -306,7 +306,7 @@
   ],
   "releaseNotes": "https://github.com/leonawicz/rtrek/blob/master/NEWS.md",
   "readme": "https://github.com/leonawicz/rtrek/blob/master/README.md",
-  "fileSize": "564.372KB",
+  "fileSize": "1138.746KB",
   "contIntegration": [
     "https://travis-ci.org/leonawicz/rtrek",
     "https://ci.appveyor.com/project/leonawicz/rtrek",
@@ -315,5 +315,6 @@
   "relatedLink": "https://CRAN.R-project.org/package=rtrek",
   "contributor": {},
   "copyrightHolder": {},
-  "funder": {}
+  "funder": {},
+  "developmentStatus": "http://www.repostatus.org/#active"
 }

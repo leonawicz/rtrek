@@ -175,7 +175,7 @@ To use the words of the developers, the STAPI is
 
 *the first public Star Trek API, accessible via REST and SOAP. It's an open source project, that anyone can contribute to.*
 
-The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DDOS measures in `rtrek` limit requests to one per second. You can update this global `rtrek` setting with `options`, e.g. `options(rtrek_antiddos = 10)` for a minimum ten second wait between API calls to be an even better neighbor. `rtrek` will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.
+The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DOS measures in `rtrek` limit requests to one per second. You can update this global `rtrek` setting with `options`, e.g. `options(rtrek_antidos = 10)` for a minimum ten second wait between API calls to be an even better neighbor. `rtrek` will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.
 
 ### STAPI entities
 
@@ -228,7 +228,7 @@ The data returned on Q is actually a large list, including multiple data frames.
 
 Some functions in `rtrek` provide an API-*like* interface to online Star Trek-related data. Specifically, parsing data from the [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) websites. These sites do not provide APIs. Therefore the only option is to read pages into R and parse the html. Behind the scenes this is done using the `xml2` and `rvest` packages, but from the user perspective it is presented as passing an API endpoint string to a function.
 
-`memory_alpha` and `memory_beta`, as well as several other related functions, are available in `rtrek`. These functions access data from Memory Alpha and Memory Beta. For details and examples on these functions, see the Memory Alpha . [vignette](https://leonawicz.github.io/rtrek/articles/memory-alpha.html) and the Memory Beta [vignette](https://leonawicz.github.io/rtrek/articles/memory-beta.html).
+`memory_alpha` and `memory_beta`, as well as several other related functions, are available in `rtrek`. These functions access data from Memory Alpha and Memory Beta. For details and examples on these functions, see the Memory Alpha [vignette](https://leonawicz.github.io/rtrek/articles/memory-alpha.html) and the Memory Beta [vignette](https://leonawicz.github.io/rtrek/articles/memory-beta.html).
 
 ## Star Trek novel text mining
 

@@ -39,7 +39,8 @@ mb_select <- memoise::memoise(mb_select)
 # Recursively collate all subcategories or articles for a given category's page(s)
 mb_category_pages <- function(id, url, nodes, d0 = NULL){
   x <- xml2::read_html(mb_base_add(url))
-  x1 <- rvest::html_nodes(x, nodes[1]) %>% rvest::html_nodes("a")
+  x1 <- rvest::html_nodes(x, nodes[1]) %>% rvest::html_nodes("ul a")
+  x1 <- x1[grepl("class=\"category-page__member-link\"", x1)]
   txt <- mb_text(x1) %>% mb_strip_prefix()
   url <- mb_href(x1)
   d <- dplyr::tibble(txt, url) %>% stats::setNames(c(id, "url"))

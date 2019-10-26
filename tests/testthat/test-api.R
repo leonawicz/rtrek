@@ -28,16 +28,16 @@ test_that("stapi returns as expected", {
   expect_is(attr(stapiEntities, "ignored columns"), "character")
 })
 
-test_that("rtrek_antiddos option is set on load and checked", {
+test_that("rtrek_antidos option is set on load and checked", {
   if(soc) skip(unavail)
-  expect_equal(getOption("rtrek_antiddos"), 1)
-  options(rtrek_antiddos = 0)
-  wrn <- "`rtrek_antiddos` setting in `options` is less than one and will be ignored.\n"
+  expect_equal(getOption("rtrek_antidos"), 1)
+  options(rtrek_antidos = 0)
+  wrn <- "`rtrek_antidos` setting in `options` is less than one and will be ignored.\n"
   expect_warning(stapi("character", page = 2), wrn)
-  options(rtrek_antiddos = 5) # trigger Sys.sleep
+  options(rtrek_antidos = 5) # trigger Sys.sleep
   x <- lapply(1:2, function(x) stapi("character", uid = qid))
   expect_identical(x[[1]], x[[2]])
-  options(rtrek_antiddos = 1)
+  options(rtrek_antidos = 1)
 })
 
 # local testing only

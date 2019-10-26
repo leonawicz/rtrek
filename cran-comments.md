@@ -1,6 +1,6 @@
 ## Test environments
-* local Windows 10 install, R 3.6.0
-* ubuntu 14.04 (on travis-ci), R 3.6.0
+* local Windows 10 install, R 3.6.1
+* ubuntu 14.04 (on travis-ci), R 3.6.1
 * win-builder (devel and release)
 * R-hub (devtools::check_rhub())
 
@@ -10,7 +10,7 @@
 
 ## This is an update release.
 
-* Minor updates related to package dependencies.
+* Minor updates.
 
 ## Downstream dependencies
 

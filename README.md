@@ -9,17 +9,22 @@
 [![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/rtrek)
 <br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
-[![CRAN
-status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek)
-[![CRAN
-downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek)
-[![Rdoc](http://www.rdocumentation.org/badges/version/rtrek)](http://www.rdocumentation.org/packages/rtrek)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Travis-CI Build
 Status](https://travis-ci.org/leonawicz/rtrek.svg?branch=master)](https://travis-ci.org/leonawicz/rtrek)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/rtrek?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/rtrek)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/leonawicz/rtrek/master.svg)](https://codecov.io/github/leonawicz/rtrek?branch=master)
+
+[![CRAN
+status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek)
+[![CRAN
+downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek)
+[![Github
+Stars](https://img.shields.io/github/stars/leonawicz/rtrek.svg?style=social&label=Github)](https://github.com/leonawicz/rtrek)
 
 The `rtrek` package provides datasets related to the Star Trek fictional
 universe and functions for working with those datasets. It interfaces
@@ -28,6 +33,15 @@ Alpha](http://memory-alpha.wikia.com/) and [Memory
 Beta](http://memory-beta.wikia.com/) to retrieve data, metadata and
 other information relating to Star Trek.
 
+<hr>
+
+*If you enjoy my R community contributions, consider* ***[buying me a
+coffee in Ko-fi](https://ko-fi.com/leonawicz)*** *(or through PayPal
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DHMC76S85GJCY&source=url"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" /></a>)
+so I can keep developing and maintaining this and other packages :)*
+
+<hr>
+
 The package also contains several local datasets covering a variety of
 topics such as Star Trek timeline data, universe species data and
 geopolitical data. Some of these are more information rich, while others
@@ -35,9 +49,6 @@ are toy examples useful for simple demonstrations. The bulk of Star Trek
 data is accessed from external sources by API. A future version of
 `rtrek` will also include summary datasets resulting from text mining
 analyses of Star Trek novels.
-
-*Note: This package is in beta (and not just the quadrant). Breaking
-changes may occur.*
 
 <p style="text-align:center;">
 
@@ -53,14 +64,13 @@ non-geographic Star Trek map tiles.*
 
 ## Installation<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width=320 style="float: right; padding-left: 10px; padding-bottom:5px;">
 
-Install `rtrek` from CRAN with:
+Install the CRAN release of `rtrek` with
 
 ``` r
 install.packages("rtrek")
 ```
 
-Install the development version of `rtrek` from
-[GitHub](https://github.com/) with:
+Install the development version from GitHub with
 
 ``` r
 # install.packages("remotes")
@@ -100,26 +110,21 @@ library(dplyr)
 stapi("character", page_count = TRUE)
 #> Total pages to retrieve all results: 66
 
-stapi("character", page = 2)
-#> # A tibble: 100 x 24
-#>    uid   name  gender yearOfBirth monthOfBirth dayOfBirth placeOfBirth
-#>    <chr> <chr> <chr>        <int>        <int>      <int> <chr>       
-#>  1 CHMA~ Robe~ <NA>            NA           NA         NA <NA>        
-#>  2 CHMA~ Romu~ <NA>            NA           NA         NA <NA>        
-#>  3 CHMA~ M. M~ <NA>            NA           NA         NA <NA>        
-#>  4 CHMA~ Emir~ <NA>            NA           NA         NA <NA>        
-#>  5 CHMA~ Tom ~ <NA>            NA           NA         NA <NA>        
-#>  6 CHMA~ Aree~ <NA>            NA           NA         NA <NA>        
-#>  7 CHMA~ Lursa <NA>            NA           NA         NA <NA>        
-#>  8 CHMA~ Kons~ <NA>            NA           NA         NA <NA>        
-#>  9 CHMA~ Harr~ <NA>            NA           NA         NA <NA>        
-#> 10 CHMA~ Tezb~ <NA>            NA           NA         NA <NA>        
-#> # ... with 90 more rows, and 17 more variables: yearOfDeath <int>,
-#> #   monthOfDeath <lgl>, dayOfDeath <lgl>, placeOfDeath <chr>,
-#> #   height <int>, weight <int>, deceased <lgl>, bloodType <chr>,
-#> #   maritalStatus <chr>, serialNumber <lgl>, hologramActivationDate <chr>,
-#> #   hologramStatus <chr>, hologramDateStatus <chr>, hologram <lgl>,
-#> #   fictionalCharacter <lgl>, mirror <lgl>, alternateReality <lgl>
+stapi("character", page = 1) %>% select(uid, name)
+#> # A tibble: 100 x 2
+#>    uid            name            
+#>    <chr>          <chr>           
+#>  1 CHMA0000021696 Pechetti        
+#>  2 CHMA0000028502 Pomet           
+#>  3 CHMA0000134966 Eddie Newsom    
+#>  4 CHMA0000101321 T. Virts        
+#>  5 CHMA0000053158 Annabelle series
+#>  6 CHMA0000008975 Torias Dax      
+#>  7 CHMA0000232471 T. Peel         
+#>  8 CHMA0000087568 Grathon Tolar   
+#>  9 CHMA0000190805 C. Russell      
+#> 10 CHMA0000069617 Mike Vejar      
+#> # ... with 90 more rows
 
 Q <- "CHMA0000025118" #unique ID
 Q <- stapi("character", uid = Q)
@@ -147,7 +152,7 @@ x
 #> # A tibble: 1 x 4
 #>   title content    metadata          categories       
 #>   <chr> <list>     <list>            <list>           
-#> 1 Spock <xml_ndst> <tibble [1 x 18]> <tibble [15 x 2]>
+#> 1 Spock <xml_ndst> <tibble [1 x 18]> <tibble [14 x 2]>
 x$metadata[[1]]$Born
 #> [1] "January 6, 2230 (stardate 2230.06)|ShiKahr, Vulcan"
 ```
@@ -184,8 +189,86 @@ mb_timeline(2230)
 
 Live long and prosper.
 
+## Packges in the trekverse
+
+<div class="row">
+
+<div class="col-sm-2">
+
+<a href="https://github.com/leonawicz/rtrek"><img src="https://raw.githubusercontent.com/leonawicz/rtrek/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a>
+
+</div>
+
+<div class="col-sm-10">
+
+<h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+
+<a href="https://github.com/leonawicz/rtrek">rtrek</a>: The core Star
+Trek package
+
+</h4>
+
+Datasets related to Star Trek, API wrappers to external data sources,
+and more.
+
+</div>
+
+</div>
+
+<br/>
+
+<div class="row">
+
+<div class="col-sm-2">
+
+<a href="https://github.com/leonawicz/trekcolors"><img src="https://raw.githubusercontent.com/leonawicz/trekcolors/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a>
+
+</div>
+
+<div class="col-sm-10">
+
+<h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+
+<a href="https://github.com/leonawicz/trekcolors">trekcolors</a>: A
+color palette package
+
+</h4>
+
+Predefined and customizable Star Trek themed color palettes and related
+functions.
+
+</div>
+
+</div>
+
+<br/>
+
+<div class="row">
+
+<div class="col-sm-2">
+
+<a href="https://github.com/leonawicz/trekfont"><img src="https://raw.githubusercontent.com/leonawicz/trekfont/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a>
+
+</div>
+
+<div class="col-sm-10">
+
+<h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+
+<a href="https://github.com/leonawicz/trekfont">trekfont</a>: A fonts
+package
+
+</h4>
+
+True (Trek) type fonts to style your Star Trek themed graphics text.
+
+</div>
+
+</div>
+
 -----
 
 Please note that the `rtrek` project is released with a [Contributor
-Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
-you agree to abide by its terms.
+Code of
+Conduct](https://leonawicz.github.io/rtrek/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.

@@ -18,18 +18,22 @@ knitr::opts_chunk$set(
 <br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
-[![CRAN status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek)
-[![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek) 
-[![Rdoc](http://www.rdocumentation.org/badges/version/rtrek)](http://www.rdocumentation.org/packages/rtrek)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Travis-CI Build Status](https://travis-ci.org/leonawicz/rtrek.svg?branch=master)](https://travis-ci.org/leonawicz/rtrek)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/rtrek?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/rtrek)
 [![Coverage Status](https://img.shields.io/codecov/c/github/leonawicz/rtrek/master.svg)](https://codecov.io/github/leonawicz/rtrek?branch=master)
 
+[![CRAN status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek)
+[![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek) 
+[![Github Stars](https://img.shields.io/github/stars/leonawicz/rtrek.svg?style=social&label=Github)](https://github.com/leonawicz/rtrek)
+
 The `rtrek` package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. It interfaces with the [Star Trek API](http://stapi.co/) (STAPI), [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) to retrieve data, metadata and other information relating to Star Trek.
 
-The package also contains several local datasets covering a variety of topics such as Star Trek timeline data, universe species data and geopolitical data. Some of these are more information rich, while others are toy examples useful for simple demonstrations. The bulk of Star Trek data is accessed from external sources by API. A future version of `rtrek` will also include summary datasets resulting from text mining analyses of Star Trek novels.
+<hr>
+*If you enjoy my R community contributions, consider* ***[buying me a coffee in Ko-fi](https://ko-fi.com/leonawicz)*** *(or through PayPal <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DHMC76S85GJCY&source=url"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" /></a>) so I can keep developing and maintaining this and other packages :)*
+<hr>
 
-*Note: This package is in beta (and not just the quadrant). Breaking changes may occur.*
+The package also contains several local datasets covering a variety of topics such as Star Trek timeline data, universe species data and geopolitical data. Some of these are more information rich, while others are toy examples useful for simple demonstrations. The bulk of Star Trek data is accessed from external sources by API. A future version of `rtrek` will also include summary datasets resulting from text mining analyses of Star Trek novels.
 
 ```{r is_md, echo = FALSE}
 is_md <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "markdown_github-ascii_identifiers"
@@ -55,13 +59,13 @@ cat('## Installation')
 cat('## Installation<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width=320 style="float: right; padding-left: 10px; padding-bottom:5px;">')
 ```
 
-Install `rtrek` from CRAN with:
+Install the CRAN release of `rtrek` with
 
 ``` r
 install.packages("rtrek")
 ```
 
-Install the development version of `rtrek` from [GitHub](https://github.com/) with:
+Install the development version from GitHub with
 
 ``` r
 # install.packages("remotes")
@@ -87,7 +91,7 @@ library(rtrek)
 library(dplyr)
 stapi("character", page_count = TRUE)
 
-stapi("character", page = 2)
+stapi("character", page = 1) %>% select(uid, name)
 
 Q <- "CHMA0000025118" #unique ID
 Q <- stapi("character", uid = Q)
@@ -122,6 +126,35 @@ cat('See the [introduction vignette](https://leonawicz.github.io/rtrek/articles/
 cat('## Reference\n\n[Complete package reference and function documentation](https://leonawicz.github.io/rtrek/)')
 ```
 
+## Packges in the trekverse
+
+<div class="row">
+<div class="col-sm-2">
+<a href="https://github.com/leonawicz/rtrek"><img src="https://raw.githubusercontent.com/leonawicz/rtrek/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a>
+</div>
+<div class="col-sm-10">
+<h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;"><a href="https://github.com/leonawicz/rtrek">rtrek</a>: The core Star Trek package</h4>
+Datasets related to Star Trek, API wrappers to external data sources, and more.
+</div></div>
+<br/>
+<div class="row">
+<div class="col-sm-2">
+<a href="https://github.com/leonawicz/trekcolors"><img src="https://raw.githubusercontent.com/leonawicz/trekcolors/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a>
+</div>
+<div class="col-sm-10">
+<h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;"><a href="https://github.com/leonawicz/trekcolors">trekcolors</a>: A color palette package</h4>
+Predefined and customizable Star Trek themed color palettes and related functions.
+</div></div>
+<br/>
+<div class="row">
+<div class="col-sm-2">
+<a href="https://github.com/leonawicz/trekfont"><img src="https://raw.githubusercontent.com/leonawicz/trekfont/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a>
+</div>
+<div class="col-sm-10">
+<h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;"><a href="https://github.com/leonawicz/trekfont">trekfont</a>: A fonts package</h4>
+True (Trek) type fonts to style your Star Trek themed graphics text.
+</div></div>
+
 ---
 
-Please note that the `rtrek` project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Please note that the `rtrek` project is released with a [Contributor Code of Conduct](https://leonawicz.github.io/rtrek/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.

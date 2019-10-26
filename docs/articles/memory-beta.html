@@ -13,8 +13,9 @@
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Memory Beta">
 <meta property="og:description" content="">
@@ -118,6 +119,7 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -193,10 +195,10 @@
 <p>Again, there are <code>id</code> and <code>url</code> columns. Unlike with high-level <code>memory_alpha</code> results, there are no <code>group</code> or <code>subgroup</code> columns. These are not applicable given the simpler structure and more consistent content structure of category and article pages at Memory Beta.</p>
 <p>The above call does involve reaching out to Memory Beta. While the portals are stable, it is expected that content within is regularly updated. Remember that this is not a real API. Since one is not available, what is really going on behind the scenes is the use of <code>xml2</code> and <code>rvest</code> for web page harvesting.</p>
 <p>Some portals have terminal endpoints - in Memory Beta these are the written articles - at the top level, but typically the top level results for a portal are categories. You can always differentiate categories from articles by the URL, which will begin with <code>Category:</code> in the former case.</p>
-<p>Descending through subcategories is done by appending their <code>id</code> values, separated by a forward slash <code>/</code>. Notice that compared to Memory Alpha, classification and resulting hierarchical organization can be more detailed for similar content.</p>
+<p>Descending through subcategories is done by appending their <code>id</code> values, separated by a forward slash <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>. Notice that compared to Memory Alpha, classification and resulting hierarchical organization can be more detailed for similar content.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">x &lt;-<span class="st"> "characters/Characters by races and cultures/Klingonoids/Klingons"</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(x)</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; # A tibble: 1,080 x 2</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; # A tibble: 1,081 x 2</span></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;    Klingons                         url                               </span></a>
 <a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt;    &lt;chr&gt;                            &lt;chr&gt;                             </span></a>
 <a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt;  1 Klingon                          Klingon                           </span></a>
@@ -209,13 +211,13 @@
 <a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  8 Adon, son of Gorath              Adon,_son_of_Gorath               </span></a>
 <a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt;  9 Adrokos                          Adrokos                           </span></a>
 <a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; 10 Aek-Nor                          Aek-Nor                           </span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; # ... with 1,070 more rows</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; # ... with 1,071 more rows</span></a>
 <a class="sourceLine" id="cb3-17" title="17"></a>
-<a class="sourceLine" id="cb3-18" title="18"><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(x, <span class="st">"/Worf, son of Mogh"</span>))</a>
+<a class="sourceLine" id="cb3-18" title="18"><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(x, <span class="st">"/Worf, son of Mogh"</span>))</a>
 <a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
 <a class="sourceLine" id="cb3-20" title="20"><span class="co">#&gt;   title             content    metadata categories       </span></a>
 <a class="sourceLine" id="cb3-21" title="21"><span class="co">#&gt;   &lt;chr&gt;             &lt;list&gt;     &lt;list&gt;   &lt;list&gt;           </span></a>
-<a class="sourceLine" id="cb3-22" title="22"><span class="co">#&gt; 1 Worf, son of Mogh &lt;xml_ndst&gt; &lt;NULL&gt;   &lt;tibble [32 x 2]&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-22" title="22"><span class="co">#&gt; 1 Worf, son of Mogh &lt;xml_ndst&gt; &lt;NULL&gt;   &lt;tibble [33 x 2]&gt;</span></a></code></pre></div>
 <p>Note the change in the structure of the final output, which is an article. This is the end of this particular road The result is still a data frame, but now has only one row, the article.</p>
 <p>The columns include a text <code>title</code> and three nested datasets. <code>content</code> contains an <code>xml_nodeset</code> object left (mostly) unadulterated by <code>memory_beta</code>. This contains the article’s main content section, including ordered content from a default set of html tags. For more control over article content, see <code>mb_article</code> in the next section. <code>metadata</code> contains a nested data frame of content parsed from the summary card that appears in the top right corner of articles. If this fails to parse for a given article, <code>NULL</code> is returned. <code>categories</code> returns a data frame containing categories in which the article topic falls under and their respective URLs.</p>
 </div>
@@ -223,12 +225,12 @@
 <h2 class="hasAnchor">
 <a href="#articles" class="anchor"></a>Articles</h2>
 <p>If you already know the article <code>id</code>, You can obtain an article directly using <code>mb_article</code> instead of going through an endpoint with <code>memory_beta</code> that terminates in the same <code>id</code>. This also offers additional options to control what tags are included in the returned result and whether that result is the original <code>xml_nodeset</code> object or a character vector of only the extracted text. In either case, work is left to the user to do what they intend such as text analysis.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">worf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/mb_article.html">mb_article</a></span>(<span class="st">"Worf,_son_of_Mogh"</span>, <span class="dt">content_format =</span> <span class="st">"character"</span>, <span class="dt">content_nodes =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"h2"</span>, <span class="st">"h3"</span>))</a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">worf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/mb_article.html">mb_article</a></span>(<span class="st">"Worf,_son_of_Mogh"</span>, <span class="dt">content_format =</span> <span class="st">"character"</span>, <span class="dt">content_nodes =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"h2"</span>, <span class="st">"h3"</span>))</a>
 <a class="sourceLine" id="cb4-2" title="2">worf</a>
 <a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
 <a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt;   title             content    metadata categories       </span></a>
 <a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt;   &lt;chr&gt;             &lt;list&gt;     &lt;list&gt;   &lt;list&gt;           </span></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; 1 Worf, son of Mogh &lt;chr [15]&gt; &lt;NULL&gt;   &lt;tibble [32 x 2]&gt;</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; 1 Worf, son of Mogh &lt;chr [15]&gt; &lt;NULL&gt;   &lt;tibble [33 x 2]&gt;</span></a>
 <a class="sourceLine" id="cb4-7" title="7">worf<span class="op">$</span>content[[<span class="dv">1</span>]] <span class="co"># Worf article section headings</span></a>
 <a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt;  [1] "Biography"                           </span></a>
 <a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt;  [2] "Early life"                          </span></a>
@@ -253,11 +255,11 @@
 <p>Full resolution source images can be downloaded and imported into R using <code>mb_image</code> if you know the short URL. The easiest way to find URLs is by using a Memory Beta portal. In the example below, the Memory Beta images category under Klingons is selected.</p>
 <p>The same example used in the Memory Alpha vignette cannot be duplicated here. Memory Beta does not contain as many images from the television series or movies as Memory Alpha. This is because Memory Beta focuses on licensed works in general and does not need to duplicate everything that is already documented at Memory Alpha.</p>
 <p>This time, look for a picture that includes Worf but also Jadzia. Since the category column name is so long, use the <code>url</code> column; it’s almost the same.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb5-2" title="2">x &lt;-<span class="st"> "characters/Memory Beta images (characters)/Memory Beta images (Worf)"</span></a>
 <a class="sourceLine" id="cb5-3" title="3">worf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(x)</a>
 <a class="sourceLine" id="cb5-4" title="4">worf</a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt; # A tibble: 53 x 2</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt; # A tibble: 57 x 2</span></a>
 <a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;    `Memory Beta images (Worf)` url                       </span></a>
 <a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;    &lt;chr&gt;                       &lt;chr&gt;                     </span></a>
 <a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;  1 Akvoh.jpg                   File:Akvoh.jpg            </span></a>
@@ -270,9 +272,9 @@
 <a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  8 Conundrum.jpg               File:Conundrum.jpg        </span></a>
 <a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt;  9 Ds9finale crew.jpg          File:Ds9finale_crew.jpg   </span></a>
 <a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; 10 EaFcrew.jpg                 File:EaFcrew.jpg          </span></a>
-<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt; # ... with 43 more rows</span></a>
+<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt; # ... with 47 more rows</span></a>
 <a class="sourceLine" id="cb5-19" title="19"></a>
-<a class="sourceLine" id="cb5-20" title="20">worf_jadzia &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(worf, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">grepl</a></span>(<span class="st">"Jadzia"</span>, url))</a>
+<a class="sourceLine" id="cb5-20" title="20">worf_jadzia &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(worf, <span class="kw"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"Jadzia"</span>, url))</a>
 <a class="sourceLine" id="cb5-21" title="21">worf_jadzia</a>
 <a class="sourceLine" id="cb5-22" title="22"><span class="co">#&gt; # A tibble: 1 x 2</span></a>
 <a class="sourceLine" id="cb5-23" title="23"><span class="co">#&gt;   `Memory Beta images (Worf)` url                             </span></a>
@@ -280,7 +282,7 @@
 <a class="sourceLine" id="cb5-25" title="25"><span class="co">#&gt; 1 Jadzia and Worf on Risa.jpg File:Jadzia_and_Worf_on_Risa.jpg</span></a></code></pre></div>
 <p><em>Qapla’</em>! One result found.</p>
 <p>Note that you can use the full <code>memory_beta</code> API endpoint string on this terminal page, treating it like an article (i.e., not a category page). There is not much to return other than perhaps the category entries attached to the image. A simpler option is to use the short URL with <code>mb_article</code> to achieve the same result.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(x, <span class="st">"/Jadzia and Worf on Risa.jpg"</span>))</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(x, <span class="st">"/Jadzia and Worf on Risa.jpg"</span>))</a>
 <a class="sourceLine" id="cb6-2" title="2">x</a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt;   title                       content    metadata categories       </span></a>
@@ -407,7 +409,7 @@
 <a href="#details" class="anchor"></a>Details</h3>
 <p>As with <code>stapi</code>, <code>mb_timeline</code> enforces a minimum one-second wait between any page requests. It could be read much faster but this measure forces users to be good neighbors. It is also recommended to try the function on a single year to see if the the results are what you expect and need before wasting time pulling the complete timeline. Note that using <code>complete</code> (or <code>main</code>, which is almost the same since <code>past</code> and <code>future</code> are relatively small) can take over ten minutes due to the enforced wait time.</p>
 <p>This function is also memoized, meaning its results are cached in memory for each specific call. This prevents wastefully making an identical call twice in the same R session. If you do, the cached result is returned instantly. You will not see the progress printed to the console because the function is not actually called again.</p>
-<p>When passing integer years to <code>mb_timeline</code> this is the only case where the argument can be a vector. All other options are scalar, including decade. You cannot request multiple decades with <code><a href="https://www.rdocumentation.org/packages/base/topics/c">c("2360s", "2370s")</a></code>. If this is what you want, use <code><a href="../reference/mb_timeline.html">mb_timeline(2360:2379)</a></code>.</p>
+<p>When passing integer years to <code>mb_timeline</code> this is the only case where the argument can be a vector. All other options are scalar, including decade. You cannot request multiple decades with <code><a href="https://rdrr.io/r/base/c.html">c("2360s", "2370s")</a></code>. If this is what you want, use <code><a href="../reference/mb_timeline.html">mb_timeline(2360:2379)</a></code>.</p>
 <p>The year (or other period for <code>past</code> and <code>future</code>) is printed to the console as <code>mb_timeline</code> progresses through timeline data for each time step. Set <code>details = FALSE</code> to suppress this.</p>
 </div>
 </div>
@@ -418,18 +420,18 @@
 <p>It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with <code>mb_article</code>, setting <code>browse = TRUE</code> opens the page in the browser.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw"><a href="../reference/mb_search.html">mb_search</a></span>(<span class="st">"Guinan"</span>)</a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="co">#&gt; # A tibble: 25 x 3</span></a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="co">#&gt;    title               text                              url               </span></a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="co">#&gt;    &lt;chr&gt;               &lt;chr&gt;                             &lt;chr&gt;             </span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt;  1 Guinan              https://memory-beta.fandom.com/w~ Guinan            </span></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt;  2 Guinan (mirror)     https://memory-beta.wikia.com/wi~ Guinan_(mirror)   </span></a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt;  3 One of Forty-seven  https://memory-beta.wikia.com/wi~ One_of_Forty-seven</span></a>
-<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt;  4 Nova Kron           https://memory-beta.wikia.com/wi~ Nova_Kron         </span></a>
-<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt;  5 Together Again, fo~ https://memory-beta.wikia.com/wi~ Together_Again,_f~</span></a>
-<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;  6 Goblet              https://memory-beta.wikia.com/wi~ Goblet            </span></a>
-<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;  7 Jeparly Station     https://memory-beta.wikia.com/wi~ Jeparly_Station   </span></a>
-<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  8 Morgen (mirror)     https://memory-beta.wikia.com/wi~ Morgen_(mirror)   </span></a>
-<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  9 Devil's Brew        https://memory-beta.wikia.com/wi~ Devil%27s_Brew    </span></a>
-<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt; 10 Nectar              https://memory-beta.wikia.com/wi~ Nectar            </span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="co">#&gt;    title              text                                url              </span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;                               &lt;chr&gt;            </span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt;  1 Guinan             https://memory-beta.fandom.com/wik~ Guinan           </span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt;  2 Guinan (mirror)    https://memory-beta.fandom.com/wik~ Guinan_(mirror)  </span></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt;  3 James T. Kirk      https://memory-beta.fandom.com/wik~ James_T._Kirk    </span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt;  4 Jean-Luc Picard    https://memory-beta.fandom.com/wik~ Jean-Luc_Picard  </span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt;  5 USS Enterprise (N~ https://memory-beta.fandom.com/wik~ USS_Enterprise_(~</span></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;  6 Star Trek: The Ne~ https://memory-beta.fandom.com/wik~ Star_Trek:_The_N~</span></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;  7 Nog                https://memory-beta.fandom.com/wik~ Nog              </span></a>
+<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  8 Q &amp; A              https://memory-beta.fandom.com/wik~ Q_%26_A          </span></a>
+<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  9 Peaceable Kingdoms https://memory-beta.fandom.com/wik~ Peaceable_Kingdo~</span></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt; 10 Indistinguishable~ https://memory-beta.fandom.com/wik~ Indistinguishabl~</span></a>
 <a class="sourceLine" id="cb9-15" title="15"><span class="co">#&gt; # ... with 15 more rows</span></a></code></pre></div>
 </div>
 <div id="caveats" class="section level2">
@@ -442,6 +444,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -461,17 +464,20 @@
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by <a href="https://leonawicz.github.io/">Matthew Leonawicz</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
