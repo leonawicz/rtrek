@@ -25,7 +25,8 @@ Suggests:
     leaflet,
     showtext,
     sysfonts,
-    trekfont
+    trekfont,
+    png
 Imports: 
     magrittr,
     dplyr,

@@ -138,6 +138,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=trekfont"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "png",
+      "name": "png",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=png"
     }
   ],
   "softwareRequirements": [
@@ -303,5 +315,6 @@
   "contributor": {},
   "copyrightHolder": {},
   "funder": {},
-  "developmentStatus": "http://www.repostatus.org/#active"
+  "developmentStatus": "http://www.repostatus.org/#active",
+  "fileSize": "572.165KB"
 }
