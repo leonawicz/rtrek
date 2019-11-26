@@ -123,7 +123,7 @@
       </header><script src="rtrek_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="rtrek_files/jquery-1.12.4/jquery.min.js"></script><link href="rtrek_files/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="rtrek_files/leaflet-1.3.1/leaflet.js"></script><link href="rtrek_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="rtrek_files/Proj4Leaflet-1.0.1/proj4-compressed.js"></script><script src="rtrek_files/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="rtrek_files/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="rtrek_files/leaflet-binding-2.0.2/leaflet.js"></script><div class="row">
+<script src="rtrek_files/leaflet-binding-2.0.3/leaflet.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Introduction to rtrek</h1>
@@ -167,18 +167,18 @@
 <p>The <code>stBooksWiki</code> dataset provides a moderately curated data frame of over 719 Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent <code>rtrek</code> update. <code>stBooksWiki</code> is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">stBooksWiki</a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt; # A tibble: 719 x 6</span></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt;    series                       title    author   number timeframe released</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt;    &lt;chr&gt;                        &lt;chr&gt;    &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;   </span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt;  1 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Jan 1967</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt;  2 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1968</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;  3 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Apr 1969</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;  4 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Jul 1971</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt;  5 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1972</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;  6 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Apr 1972</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt;  7 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Jul 1972</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt;  8 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Nov 1972</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt;  9 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Aug 1973</span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt; 10 The_Original_Series - Banta~ Star Tr~ James B~     NA &lt;NA&gt;      Feb 1974</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt;    series                           title     author   number timeframe released</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt;    &lt;chr&gt;                            &lt;chr&gt;     &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;   </span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt;  1 The_Original_Series - Bantam_Ad~ Star Trek James B~     NA &lt;NA&gt;      Jan 1967</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt;  2 The_Original_Series - Bantam_Ad~ Star Tre~ James B~     NA &lt;NA&gt;      Feb 1968</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;  3 The_Original_Series - Bantam_Ad~ Star Tre~ James B~     NA &lt;NA&gt;      Apr 1969</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;  4 The_Original_Series - Bantam_Ad~ Star Tre~ James B~     NA &lt;NA&gt;      Jul 1971</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt;  5 The_Original_Series - Bantam_Ad~ Star Tre~ James B~     NA &lt;NA&gt;      Feb 1972</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;  6 The_Original_Series - Bantam_Ad~ Star Tre~ James B~     NA &lt;NA&gt;      Apr 1972</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt;  7 The_Original_Series - Bantam_Ad~ Star Tre~ James B~     NA &lt;NA&gt;      Jul 1972</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt;  8 The_Original_Series - Bantam_Ad~ Star Tre~ James B~     NA &lt;NA&gt;      Nov 1972</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt;  9 The_Original_Series - Bantam_Ad~ Star Tre~ James B~     NA &lt;NA&gt;      Aug 1973</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt; 10 The_Original_Series - Bantam_Ad~ Star Tre~ James B~     NA &lt;NA&gt;      Feb 1974</span></a>
 <a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt; # ... with 709 more rows</span></a></code></pre></div>
 <p>Some curation decisions were made in compiling the data frame for <code>rtrek</code> related to the inclusion of some metadata in addition to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, <code>rtrek</code> also offers a convenience function <code>st_books_wiki</code> to load the page in a browser tab auto-scrolled to a specific series of interest.</p>
 <p>In order to use this function effectively, first call it with no arguments. It returns a table of available series abbreviations.</p>
@@ -211,20 +211,19 @@
 <p>A potentially more detailed and comprehensive Star Trek book metadata table is <code>stBooks</code>, which is informed and curated from directly parsing Star Trek e-book metadata rather than parsing third party website content.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">stBooks</a>
 <a class="sourceLine" id="cb5-2" title="2"><span class="co">#&gt; # A tibble: 783 x 11</span></a>
-<a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt;    title author date  publisher identifier series subseries nchap  nword</span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;  1 Star~ Alan ~ 2009~ Simon an~ 1439163391 AV     &lt;NA&gt;         18  77035</span></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;  2 Star~ Rick ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    14  40129</span></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;  3 Star~ Rudy ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    31  52547</span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;  4 Star~ Rick ~ 2011~ Simon Sp~ 978144241~ AV     Starflee~    13  39495</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt;  5 Star~ Alan ~ 2012~ Simon Sp~ 978144242~ AV     Starflee~    30  62030</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt;  6 Star~ Alan ~ 2013~ Gallery ~ 978147671~ AV     &lt;NA&gt;         17  77438</span></a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;  7 Capt~ James~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         21  95110</span></a>
-<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  8 Capt~ Macke~ 1998~ Pocket B~ 978074345~ CT     &lt;NA&gt;         26  76392</span></a>
-<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  9 Capt~ Chris~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         34  78678</span></a>
-<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt; 10 The ~ John ~ 2000~ Pocket B~ 978074340~ CT     &lt;NA&gt;        176 436682</span></a>
-<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt; # ... with 773 more rows, and 2 more variables: nchar &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; #   dedication &lt;chr&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt;    title author date  publisher identifier series subseries nchap  nword  nchar</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;  &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;  1 Star~ Alan ~ 2009~ Simon an~ 1439163391 AV     &lt;NA&gt;         18  77035 4.60e5</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;  2 Star~ Rick ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    14  40129 2.39e5</span></a>
+<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;  3 Star~ Rudy ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    31  52547 2.96e5</span></a>
+<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;  4 Star~ Rick ~ 2011~ Simon Sp~ 978144241~ AV     Starflee~    13  39495 2.33e5</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt;  5 Star~ Alan ~ 2012~ Simon Sp~ 978144242~ AV     Starflee~    30  62030 3.50e5</span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt;  6 Star~ Alan ~ 2013~ Gallery ~ 978147671~ AV     &lt;NA&gt;         17  77438 5.37e5</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;  7 Capt~ James~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         21  95110 5.55e5</span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  8 Capt~ Macke~ 1998~ Pocket B~ 978074345~ CT     &lt;NA&gt;         26  76392 4.25e5</span></a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  9 Capt~ Chris~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         34  78678 4.43e5</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt; 10 The ~ John ~ 2000~ Pocket B~ 978074340~ CT     &lt;NA&gt;        176 436682 2.47e6</span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt; # ... with 773 more rows, and 1 more variable: dedication &lt;chr&gt;</span></a></code></pre></div>
 <p>This dataset is discussed further in the section below on e-book text mining.</p>
 <p>Before moving on, it is worth mentioning a helpful table for mapping between series names and their abbreviations used throughout this package (and in the Star Trek community in general).</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">stSeries</a>
@@ -249,10 +248,10 @@
 <p>The <code>stTiles</code> data frame shows all available Star Trek-themed map tile sets along with metadata and attribution information. These map tiles can be used with the <code>leaflet</code> and <code>shiny</code> packages to make interactive maps situated in the Star Trek universe.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">stTiles</a>
 <a class="sourceLine" id="cb7-2" title="2"><span class="co">#&gt; # A tibble: 2 x 8</span></a>
-<a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt;   id     url     description width height tile_creator map_creator map_url </span></a>
-<a class="sourceLine" id="cb7-4" title="4"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;   </span></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt; 1 galax~ https:~ Geopolitic~  8000   6445 Matthew Leo~ Rob Archer  https:/~</span></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt; 2 galax~ https:~ Geopolitic~  5000   4000 Matthew Leo~ &lt;NA&gt;        http://~</span></a></code></pre></div>
+<a class="sourceLine" id="cb7-3" title="3"><span class="co">#&gt;   id     url       description width height tile_creator map_creator map_url    </span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;      </span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt; 1 galax~ https://~ Geopolitic~  8000   6445 Matthew Leo~ Rob Archer  https://ar~</span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt; 2 galax~ https://~ Geopolitic~  5000   4000 Matthew Leo~ &lt;NA&gt;        http://stt~</span></a></code></pre></div>
 <p>The list is scant at the moment, but more will come. One thing to keep in mind is these tile sets use a simple/non-geographical coordinate reference system (CRS). Clearly, they are not Earth-based, though they are spatial in more ways than one!</p>
 <p>Similar to game maps, there is a sense of space, but it is a simple Cartesian coordinate system and does not use geographic projections like you may be used to working with when analyzing spatial data or making Leaflet maps. This system is much simpler, but simple does not necessarily mean easy!</p>
 <p>Inspect <code>stGeo</code>:</p>
@@ -284,30 +283,30 @@
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">id &lt;-<span class="st"> "galaxy1"</span></a>
 <a class="sourceLine" id="cb9-2" title="2">(d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_tiles_data.html">st_tiles_data</a></span>(id))</a>
 <a class="sourceLine" id="cb9-3" title="3"><span class="co">#&gt; # A tibble: 9 x 8</span></a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="co">#&gt;   id      loc        col   row body   category  zone               species </span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;              &lt;chr&gt;   </span></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt; 1 galaxy1 Earth     2196  2357 Planet Homeworld United Federation~ Human   </span></a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt; 2 galaxy1 Romulus   2615  1742 Planet Homeworld Romulan Star Empi~ Romulan </span></a>
-<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt; 3 galaxy1 Qo'noS    3310  3361 Planet Homeworld Klingon Empire     Klingon </span></a>
-<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt; 4 galaxy1 Breen     1004   939 Planet Homeworld Breen Confederacy  Breen   </span></a>
-<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt; 5 galaxy1 Ferengi~  1431  1996 Planet Homeworld Ferengi Alliance   Ferengi </span></a>
-<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt; 6 galaxy1 Cardass~  1342  2841 Planet Homeworld Cardassian Union   Cardass~</span></a>
-<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt; 7 galaxy1 Tholia     407  3866 Planet Homeworld Tholian Assembly   Tholian </span></a>
-<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt; 8 galaxy1 Tzenketh  1553  2557 Planet Homeworld Tzenkethi Coaliti~ Tzenket~</span></a>
-<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt; 9 galaxy1 Talar     1039  3489 Planet Homeworld Talarian Republic  Talarian</span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co">#&gt;   id      loc         col   row body   category zone                   species  </span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;                  &lt;chr&gt;    </span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt; 1 galaxy1 Earth      2196  2357 Planet Homewor~ United Federation of ~ Human    </span></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt; 2 galaxy1 Romulus    2615  1742 Planet Homewor~ Romulan Star Empire    Romulan  </span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt; 3 galaxy1 Qo'noS     3310  3361 Planet Homewor~ Klingon Empire         Klingon  </span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt; 4 galaxy1 Breen      1004   939 Planet Homewor~ Breen Confederacy      Breen    </span></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt; 5 galaxy1 Ferengin~  1431  1996 Planet Homewor~ Ferengi Alliance       Ferengi  </span></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt; 6 galaxy1 Cardassia  1342  2841 Planet Homewor~ Cardassian Union       Cardassi~</span></a>
+<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt; 7 galaxy1 Tholia      407  3866 Planet Homewor~ Tholian Assembly       Tholian  </span></a>
+<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt; 8 galaxy1 Tzenketh   1553  2557 Planet Homewor~ Tzenkethi Coalition    Tzenkethi</span></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt; 9 galaxy1 Talar      1039  3489 Planet Homewor~ Talarian Republic      Talarian</span></a>
 <a class="sourceLine" id="cb9-15" title="15">(d &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tile_coords.html">tile_coords</a></span>(d, id))</a>
 <a class="sourceLine" id="cb9-16" title="16"><span class="co">#&gt; # A tibble: 9 x 10</span></a>
-<a class="sourceLine" id="cb9-17" title="17"><span class="co">#&gt;   id     loc       col   row body  category zone       species     x      y</span></a>
-<a class="sourceLine" id="cb9-18" title="18"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb9-19" title="19"><span class="co">#&gt; 1 galax~ Earth    2196  2357 Plan~ Homewor~ United Fe~ Human    68.6  -73.7</span></a>
-<a class="sourceLine" id="cb9-20" title="20"><span class="co">#&gt; 2 galax~ Romulus  2615  1742 Plan~ Homewor~ Romulan S~ Romulan  81.7  -54.4</span></a>
-<a class="sourceLine" id="cb9-21" title="21"><span class="co">#&gt; 3 galax~ Qo'noS   3310  3361 Plan~ Homewor~ Klingon E~ Klingon 103.  -105. </span></a>
-<a class="sourceLine" id="cb9-22" title="22"><span class="co">#&gt; 4 galax~ Breen    1004   939 Plan~ Homewor~ Breen Con~ Breen    31.4  -29.3</span></a>
-<a class="sourceLine" id="cb9-23" title="23"><span class="co">#&gt; 5 galax~ Fereng~  1431  1996 Plan~ Homewor~ Ferengi A~ Ferengi  44.7  -62.4</span></a>
-<a class="sourceLine" id="cb9-24" title="24"><span class="co">#&gt; 6 galax~ Cardas~  1342  2841 Plan~ Homewor~ Cardassia~ Cardas~  41.9  -88.8</span></a>
-<a class="sourceLine" id="cb9-25" title="25"><span class="co">#&gt; 7 galax~ Tholia    407  3866 Plan~ Homewor~ Tholian A~ Tholian  12.7 -121. </span></a>
-<a class="sourceLine" id="cb9-26" title="26"><span class="co">#&gt; 8 galax~ Tzenke~  1553  2557 Plan~ Homewor~ Tzenkethi~ Tzenke~  48.5  -79.9</span></a>
-<a class="sourceLine" id="cb9-27" title="27"><span class="co">#&gt; 9 galax~ Talar    1039  3489 Plan~ Homewor~ Talarian ~ Talari~  32.5 -109.</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-17" title="17"><span class="co">#&gt;   id     loc       col   row body   category zone          species      x      y</span></a>
+<a class="sourceLine" id="cb9-18" title="18"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb9-19" title="19"><span class="co">#&gt; 1 galax~ Earth    2196  2357 Planet Homewor~ United Feder~ Human     68.6  -73.7</span></a>
+<a class="sourceLine" id="cb9-20" title="20"><span class="co">#&gt; 2 galax~ Romulus  2615  1742 Planet Homewor~ Romulan Star~ Romulan   81.7  -54.4</span></a>
+<a class="sourceLine" id="cb9-21" title="21"><span class="co">#&gt; 3 galax~ Qo'noS   3310  3361 Planet Homewor~ Klingon Empi~ Klingon  103.  -105. </span></a>
+<a class="sourceLine" id="cb9-22" title="22"><span class="co">#&gt; 4 galax~ Breen    1004   939 Planet Homewor~ Breen Confed~ Breen     31.4  -29.3</span></a>
+<a class="sourceLine" id="cb9-23" title="23"><span class="co">#&gt; 5 galax~ Fereng~  1431  1996 Planet Homewor~ Ferengi Alli~ Ferengi   44.7  -62.4</span></a>
+<a class="sourceLine" id="cb9-24" title="24"><span class="co">#&gt; 6 galax~ Cardas~  1342  2841 Planet Homewor~ Cardassian U~ Cardass~  41.9  -88.8</span></a>
+<a class="sourceLine" id="cb9-25" title="25"><span class="co">#&gt; 7 galax~ Tholia    407  3866 Planet Homewor~ Tholian Asse~ Tholian   12.7 -121. </span></a>
+<a class="sourceLine" id="cb9-26" title="26"><span class="co">#&gt; 8 galax~ Tzenke~  1553  2557 Planet Homewor~ Tzenkethi Co~ Tzenket~  48.5  -79.9</span></a>
+<a class="sourceLine" id="cb9-27" title="27"><span class="co">#&gt; 9 galax~ Talar    1039  3489 Planet Homewor~ Talarian Rep~ Talarian  32.5 -109.</span></a></code></pre></div>
 <p>Here is an example using the <code>galaxy1</code> map with <code>leaflet</code>. The <code>st_tiles</code> function is used to link to the tile provider.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(leaflet)</a>
 <a class="sourceLine" id="cb10-2" title="2">tiles &lt;-<span class="st"> </span><span class="kw"><a href="../reference/st_tiles.html">st_tiles</a></span>(<span class="st">"galaxy1"</span>)</a>
@@ -353,18 +352,18 @@
 <p>The other is an event-driven timeline that consists of textual entries referencing historically significant events, situated chronologically in the timeline.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">tlEvents</a>
 <a class="sourceLine" id="cb12-2" title="2"><span class="co">#&gt; # A tibble: 1,241 x 6</span></a>
-<a class="sourceLine" id="cb12-3" title="3"><span class="co">#&gt;        year setting  series source             info                footnote</span></a>
-<a class="sourceLine" id="cb12-4" title="4"><span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;              &lt;chr&gt;                  &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb12-5" title="5"><span class="co">#&gt;  1  -4.00e9 seconda~ SNW    Reciprocity - SNW~ ~4 billion years a~       NA</span></a>
-<a class="sourceLine" id="cb12-6" title="6"><span class="co">#&gt;  2  -4.00e9 primary  SNW    The Beginning - S~ ~4 billion years a~        1</span></a>
-<a class="sourceLine" id="cb12-7" title="7"><span class="co">#&gt;  3  -6.40e7 time tr~ TOS    First Frontier - ~ ~64 million years ~       NA</span></a>
-<a class="sourceLine" id="cb12-8" title="8"><span class="co">#&gt;  4  -2.78e4 seconda~ DS9    Horn And Ivory - ~ ~27800 BC. Backsto~       NA</span></a>
-<a class="sourceLine" id="cb12-9" title="9"><span class="co">#&gt;  5  -2.70e3 inferred TOS    Yesterday's Son -~ ~2700 BC. Birth of~       NA</span></a>
-<a class="sourceLine" id="cb12-10" title="10"><span class="co">#&gt;  6  -3.00e2 seconda~ &lt;NA&gt;   Spock's World - V~ ~300 BC. Early Vul~       NA</span></a>
-<a class="sourceLine" id="cb12-11" title="11"><span class="co">#&gt;  7  -7.90e1 seconda~ &lt;NA&gt;   Spock's World - V~ Birth of Surak, so~       NA</span></a>
-<a class="sourceLine" id="cb12-12" title="12"><span class="co">#&gt;  8  -7.00e1 seconda~ TNG    The Devil's Heart~ ~70 BC. Stef is cr~        2</span></a>
-<a class="sourceLine" id="cb12-13" title="13"><span class="co">#&gt;  9  -3.30e1 seconda~ &lt;NA&gt;   Spock's World - V~ Surak discovers hi~       NA</span></a>
-<a class="sourceLine" id="cb12-14" title="14"><span class="co">#&gt; 10  -2.20e1 seconda~ TOS    Rihannsu 2: The R~ Vulcans make first~       NA</span></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="co">#&gt;        year setting  series source               info                   footnote</span></a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="co">#&gt;       &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;                &lt;chr&gt;                     &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb12-5" title="5"><span class="co">#&gt;  1  -4.00e9 seconda~ SNW    Reciprocity - SNW 2  ~4 billion years ago.~       NA</span></a>
+<a class="sourceLine" id="cb12-6" title="6"><span class="co">#&gt;  2  -4.00e9 primary  SNW    The Beginning - SNW~ ~4 billion years ago.~        1</span></a>
+<a class="sourceLine" id="cb12-7" title="7"><span class="co">#&gt;  3  -6.40e7 time tr~ TOS    First Frontier - TO~ ~64 million years ago~       NA</span></a>
+<a class="sourceLine" id="cb12-8" title="8"><span class="co">#&gt;  4  -2.78e4 seconda~ DS9    Horn And Ivory - Ga~ ~27800 BC. Backstory         NA</span></a>
+<a class="sourceLine" id="cb12-9" title="9"><span class="co">#&gt;  5  -2.70e3 inferred TOS    Yesterday's Son - T~ ~2700 BC. Birth of Sp~       NA</span></a>
+<a class="sourceLine" id="cb12-10" title="10"><span class="co">#&gt;  6  -3.00e2 seconda~ &lt;NA&gt;   Spock's World - Vul~ ~300 BC. Early Vulcan~       NA</span></a>
+<a class="sourceLine" id="cb12-11" title="11"><span class="co">#&gt;  7  -7.90e1 seconda~ &lt;NA&gt;   Spock's World - Vul~ Birth of Surak, son o~       NA</span></a>
+<a class="sourceLine" id="cb12-12" title="12"><span class="co">#&gt;  8  -7.00e1 seconda~ TNG    The Devil's Heart -~ ~70 BC. Stef is criti~        2</span></a>
+<a class="sourceLine" id="cb12-13" title="13"><span class="co">#&gt;  9  -3.30e1 seconda~ &lt;NA&gt;   Spock's World - Vul~ Surak discovers his c~       NA</span></a>
+<a class="sourceLine" id="cb12-14" title="14"><span class="co">#&gt; 10  -2.20e1 seconda~ TOS    Rihannsu 2: The Rom~ Vulcans make first co~       NA</span></a>
 <a class="sourceLine" id="cb12-15" title="15"><span class="co">#&gt; # ... with 1,231 more rows</span></a></code></pre></div>
 <p>The two datasets are quite different in their focus and compliment one another.</p>
 </div>
@@ -374,18 +373,18 @@
 <p>One column these two timeline data frames share in common is the <code>footnote</code> column, which you can see only contains ID values for entries which have a footnote. The <code>tlFootnotes</code> dataset can be referenced or joined by <code>footnote</code> to one of the other tables. Footnotes tend to be long strings of text and not associated with most timeline entries, so they are kept in a separate table.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">tlFootnotes</a>
 <a class="sourceLine" id="cb13-2" title="2"><span class="co">#&gt; # A tibble: 605 x 3</span></a>
-<a class="sourceLine" id="cb13-3" title="3"><span class="co">#&gt;    id       id text                                                        </span></a>
-<a class="sourceLine" id="cb13-4" title="4"><span class="co">#&gt;    &lt;chr&gt; &lt;int&gt; &lt;chr&gt;                                                       </span></a>
-<a class="sourceLine" id="cb13-5" title="5"><span class="co">#&gt;  1 book      1 This chapter chronicles the period from the formation of th~</span></a>
-<a class="sourceLine" id="cb13-6" title="6"><span class="co">#&gt;  2 book      2 "The time and manner of Borg origins are entirely speculati~</span></a>
-<a class="sourceLine" id="cb13-7" title="7"><span class="co">#&gt;  3 book      3 This chapter chronicles the period from Surak's birth until~</span></a>
-<a class="sourceLine" id="cb13-8" title="8"><span class="co">#&gt;  4 book      4 As a vision, this may be historically unreliable. The event~</span></a>
-<a class="sourceLine" id="cb13-9" title="9"><span class="co">#&gt;  5 book      5 This chapter chronicles the period from the Ahkh War (again~</span></a>
-<a class="sourceLine" id="cb13-10" title="10"><span class="co">#&gt;  6 book      6 "The date of the Awakening is around 2000 years prior to \"~</span></a>
-<a class="sourceLine" id="cb13-11" title="11"><span class="co">#&gt;  7 book      7 This chapter chronicles the period from S'task's Declaratio~</span></a>
-<a class="sourceLine" id="cb13-12" title="12"><span class="co">#&gt;  8 book      8 This chapter chronicles the journey of the Rihannsu Travele~</span></a>
-<a class="sourceLine" id="cb13-13" title="13"><span class="co">#&gt;  9 book      9 These chapters chronicle the period beginning 25.86 real-ti~</span></a>
-<a class="sourceLine" id="cb13-14" title="14"><span class="co">#&gt; 10 book     10 This chapter chronicles the period from the Settlement unti~</span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="co">#&gt;    id       id text                                                             </span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="co">#&gt;    &lt;chr&gt; &lt;int&gt; &lt;chr&gt;                                                            </span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="co">#&gt;  1 book      1 This chapter chronicles the period from the formation of the 40-~</span></a>
+<a class="sourceLine" id="cb13-6" title="6"><span class="co">#&gt;  2 book      2 "The time and manner of Borg origins are entirely speculative. B~</span></a>
+<a class="sourceLine" id="cb13-7" title="7"><span class="co">#&gt;  3 book      3 This chapter chronicles the period from Surak's birth until his ~</span></a>
+<a class="sourceLine" id="cb13-8" title="8"><span class="co">#&gt;  4 book      4 As a vision, this may be historically unreliable. The events con~</span></a>
+<a class="sourceLine" id="cb13-9" title="9"><span class="co">#&gt;  5 book      5 This chapter chronicles the period from the Ahkh War (against th~</span></a>
+<a class="sourceLine" id="cb13-10" title="10"><span class="co">#&gt;  6 book      6 "The date of the Awakening is around 2000 years prior to \"The S~</span></a>
+<a class="sourceLine" id="cb13-11" title="11"><span class="co">#&gt;  7 book      7 This chapter chronicles the period from S'task's Declaration unt~</span></a>
+<a class="sourceLine" id="cb13-12" title="12"><span class="co">#&gt;  8 book      8 This chapter chronicles the journey of the Rihannsu Travelers un~</span></a>
+<a class="sourceLine" id="cb13-13" title="13"><span class="co">#&gt;  9 book      9 These chapters chronicle the period beginning 25.86 real-time ye~</span></a>
+<a class="sourceLine" id="cb13-14" title="14"><span class="co">#&gt; 10 book     10 This chapter chronicles the period from the Settlement until the~</span></a>
 <a class="sourceLine" id="cb13-15" title="15"><span class="co">#&gt; # ... with 595 more rows</span></a></code></pre></div>
 </div>
 <div id="timeline-data-details-and-caveats" class="section level3">
@@ -459,11 +458,11 @@
 <a class="sourceLine" id="cb16-13" title="13"><span class="co">#&gt;  9 CHMA~ Harr~ &lt;NA&gt;            NA           NA         NA &lt;NA&gt;        </span></a>
 <a class="sourceLine" id="cb16-14" title="14"><span class="co">#&gt; 10 CHMA~ Tezb~ &lt;NA&gt;            NA           NA         NA &lt;NA&gt;        </span></a>
 <a class="sourceLine" id="cb16-15" title="15"><span class="co">#&gt; # ... with 90 more rows, and 17 more variables: yearOfDeath &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb16-16" title="16"><span class="co">#&gt; #   monthOfDeath &lt;lgl&gt;, dayOfDeath &lt;lgl&gt;, placeOfDeath &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb16-17" title="17"><span class="co">#&gt; #   height &lt;int&gt;, weight &lt;int&gt;, deceased &lt;lgl&gt;, bloodType &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb16-18" title="18"><span class="co">#&gt; #   maritalStatus &lt;chr&gt;, serialNumber &lt;lgl&gt;, hologramActivationDate &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb16-19" title="19"><span class="co">#&gt; #   hologramStatus &lt;chr&gt;, hologramDateStatus &lt;chr&gt;, hologram &lt;lgl&gt;,</span></a>
-<a class="sourceLine" id="cb16-20" title="20"><span class="co">#&gt; #   fictionalCharacter &lt;lgl&gt;, mirror &lt;lgl&gt;, alternateReality &lt;lgl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb16-16" title="16"><span class="co">#&gt; #   monthOfDeath &lt;lgl&gt;, dayOfDeath &lt;lgl&gt;, placeOfDeath &lt;chr&gt;, height &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb16-17" title="17"><span class="co">#&gt; #   weight &lt;int&gt;, deceased &lt;lgl&gt;, bloodType &lt;chr&gt;, maritalStatus &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb16-18" title="18"><span class="co">#&gt; #   serialNumber &lt;lgl&gt;, hologramActivationDate &lt;chr&gt;, hologramStatus &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb16-19" title="19"><span class="co">#&gt; #   hologramDateStatus &lt;chr&gt;, hologram &lt;lgl&gt;, fictionalCharacter &lt;lgl&gt;,</span></a>
+<a class="sourceLine" id="cb16-20" title="20"><span class="co">#&gt; #   mirror &lt;lgl&gt;, alternateReality &lt;lgl&gt;</span></a></code></pre></div>
 <p>Character tables can be sparse. There are a lot of variables, many of which will contain missing data for rare, esoteric characters. Even for more popular characters about whom much more universe lore has been uncovered, it still takes dedicated nerds to enter all the data in a database.</p>
 <p>When a dataset contains a <code>uid</code> column, this can be used subsequently to extract a satellite dataset about that particular observation that was returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q’s <code>uid</code> to <code>stapi</code> and call the function one last time. When <code>uid</code> is no longer <code>NULL</code>, <code>stapi</code> knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">Q &lt;-<span class="st"> "CHMA0000025118"</span></a>
@@ -497,20 +496,19 @@
 <p>This dataset represents metadata parsed, imperfectly but painstakingly and thoroughly, from actual Star Trek books. Compared to <code>stBooksWiki</code>, which represents a scraping of Wikipedia information on Star Trek books, <code>stBooks</code> contains several different fields, including more useful fields for analysts such as the number of words and chapters in a book.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">stBooks</a>
 <a class="sourceLine" id="cb18-2" title="2"><span class="co">#&gt; # A tibble: 783 x 11</span></a>
-<a class="sourceLine" id="cb18-3" title="3"><span class="co">#&gt;    title author date  publisher identifier series subseries nchap  nword</span></a>
-<a class="sourceLine" id="cb18-4" title="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb18-5" title="5"><span class="co">#&gt;  1 Star~ Alan ~ 2009~ Simon an~ 1439163391 AV     &lt;NA&gt;         18  77035</span></a>
-<a class="sourceLine" id="cb18-6" title="6"><span class="co">#&gt;  2 Star~ Rick ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    14  40129</span></a>
-<a class="sourceLine" id="cb18-7" title="7"><span class="co">#&gt;  3 Star~ Rudy ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    31  52547</span></a>
-<a class="sourceLine" id="cb18-8" title="8"><span class="co">#&gt;  4 Star~ Rick ~ 2011~ Simon Sp~ 978144241~ AV     Starflee~    13  39495</span></a>
-<a class="sourceLine" id="cb18-9" title="9"><span class="co">#&gt;  5 Star~ Alan ~ 2012~ Simon Sp~ 978144242~ AV     Starflee~    30  62030</span></a>
-<a class="sourceLine" id="cb18-10" title="10"><span class="co">#&gt;  6 Star~ Alan ~ 2013~ Gallery ~ 978147671~ AV     &lt;NA&gt;         17  77438</span></a>
-<a class="sourceLine" id="cb18-11" title="11"><span class="co">#&gt;  7 Capt~ James~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         21  95110</span></a>
-<a class="sourceLine" id="cb18-12" title="12"><span class="co">#&gt;  8 Capt~ Macke~ 1998~ Pocket B~ 978074345~ CT     &lt;NA&gt;         26  76392</span></a>
-<a class="sourceLine" id="cb18-13" title="13"><span class="co">#&gt;  9 Capt~ Chris~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         34  78678</span></a>
-<a class="sourceLine" id="cb18-14" title="14"><span class="co">#&gt; 10 The ~ John ~ 2000~ Pocket B~ 978074340~ CT     &lt;NA&gt;        176 436682</span></a>
-<a class="sourceLine" id="cb18-15" title="15"><span class="co">#&gt; # ... with 773 more rows, and 2 more variables: nchar &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb18-16" title="16"><span class="co">#&gt; #   dedication &lt;chr&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb18-3" title="3"><span class="co">#&gt;    title author date  publisher identifier series subseries nchap  nword  nchar</span></a>
+<a class="sourceLine" id="cb18-4" title="4"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;int&gt;  &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb18-5" title="5"><span class="co">#&gt;  1 Star~ Alan ~ 2009~ Simon an~ 1439163391 AV     &lt;NA&gt;         18  77035 4.60e5</span></a>
+<a class="sourceLine" id="cb18-6" title="6"><span class="co">#&gt;  2 Star~ Rick ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    14  40129 2.39e5</span></a>
+<a class="sourceLine" id="cb18-7" title="7"><span class="co">#&gt;  3 Star~ Rudy ~ 2010~ Simon Sp~ 978144241~ AV     Starflee~    31  52547 2.96e5</span></a>
+<a class="sourceLine" id="cb18-8" title="8"><span class="co">#&gt;  4 Star~ Rick ~ 2011~ Simon Sp~ 978144241~ AV     Starflee~    13  39495 2.33e5</span></a>
+<a class="sourceLine" id="cb18-9" title="9"><span class="co">#&gt;  5 Star~ Alan ~ 2012~ Simon Sp~ 978144242~ AV     Starflee~    30  62030 3.50e5</span></a>
+<a class="sourceLine" id="cb18-10" title="10"><span class="co">#&gt;  6 Star~ Alan ~ 2013~ Gallery ~ 978147671~ AV     &lt;NA&gt;         17  77438 5.37e5</span></a>
+<a class="sourceLine" id="cb18-11" title="11"><span class="co">#&gt;  7 Capt~ James~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         21  95110 5.55e5</span></a>
+<a class="sourceLine" id="cb18-12" title="12"><span class="co">#&gt;  8 Capt~ Macke~ 1998~ Pocket B~ 978074345~ CT     &lt;NA&gt;         26  76392 4.25e5</span></a>
+<a class="sourceLine" id="cb18-13" title="13"><span class="co">#&gt;  9 Capt~ Chris~ 1998~ Pocket B~ 978143910~ CT     &lt;NA&gt;         34  78678 4.43e5</span></a>
+<a class="sourceLine" id="cb18-14" title="14"><span class="co">#&gt; 10 The ~ John ~ 2000~ Pocket B~ 978074340~ CT     &lt;NA&gt;        176 436682 2.47e6</span></a>
+<a class="sourceLine" id="cb18-15" title="15"><span class="co">#&gt; # ... with 773 more rows, and 1 more variable: dedication &lt;chr&gt;</span></a></code></pre></div>
 <p>Obviously, verbatim licensed book content itself cannot be shared, so it is not possible to provide capability in <code>rtrek</code> to enable analysts to perform their own unique text mining analyses on Star Trek novel corpora. However, future versions of <code>rtrek</code> will include more summary datasets that will aim to represent more interesting variables.</p>
 <p>A few examples could be:</p>
 <ul>

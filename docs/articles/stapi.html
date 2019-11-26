@@ -227,9 +227,8 @@
 <a class="sourceLine" id="cb5-8" title="8">agt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/stapi.html">stapi</a></span>(<span class="st">"episode"</span>, <span class="dt">uid =</span> q_eps<span class="op">$</span>uid[q_eps<span class="op">$</span>title <span class="op">==</span><span class="st"> </span>eps[<span class="dv">2</span>]])</a>
 <a class="sourceLine" id="cb5-9" title="9">characters &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/sets.html">intersect</a></span>(eaf<span class="op">$</span>characters<span class="op">$</span>name, agt<span class="op">$</span>characters<span class="op">$</span>name), <span class="st">"Q"</span>)</a>
 <a class="sourceLine" id="cb5-10" title="10">characters</a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt; [1] "Data"             "William T. Riker" "Geordi La Forge" </span></a>
-<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt; [4] "Deanna Troi"      "Jean-Luc Picard"  "Worf"            </span></a>
-<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt; [7] "Beverly Crusher"</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt; [1] "Data"             "William T. Riker" "Geordi La Forge"  "Deanna Troi"     </span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt; [5] "Jean-Luc Picard"  "Worf"             "Beverly Crusher"</span></a></code></pre></div>
 <p>This returns the main crew members who remained a part of the show from beginning to end. However, Dr. Beverly Crusher was away during season two. Below, inspect how many episodes each character, or actor, appeared in. <code>uid</code> is again needed, this time for each character.</p>
 <p>Note that this requires making seven API calls, one for each character ID. The anti-DOS measures in <code>rtrek</code> will force a one-second minimum wait between each call in the event that the individual calls actually return results faster than this, so the code below will take at least seven seconds to complete.</p>
 <p>Add a fun, gratuitous Star Trek-themed plot. Make it so.</p>

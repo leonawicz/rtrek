@@ -148,20 +148,19 @@
 <a class="sourceLine" id="cb2-4" title="4"></a>
 <a class="sourceLine" id="cb2-5" title="5"><span class="kw">arrange</span>(x, nword)</a>
 <a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt; # A tibble: 266 x 11</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;    title author  date publisher identifier series subseries nchap nword</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt;  1 Slin~ Terri~ 2008. Simon an~ 1416550240 TNG    &lt;NA&gt;          8  10.7</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;  2 Slin~ Keith~ 2008. Simon an~ 978141655~ TNG    &lt;NA&gt;         11  18.9</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt;  3 Firs~ John ~ 1997. Pocket B~ 978074345~ TNG    &lt;NA&gt;         13  23.6</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt;  4 Slin~ Willi~ 2008. Simon an~ 1416550224 TNG    &lt;NA&gt;          8  23.8</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt;  5 Typh~ Chris~ 2012. Gallery ~ 978145165~ TNG    Typhon P~    14  25.3</span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt;  6 Lust~ Paula~ 2015. Pocket B~ 978147677~ DS9    &lt;NA&gt;         16  25.5</span></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt;  7 Slin~ Rober~ 2008. Simon an~ 978141655~ TNG    &lt;NA&gt;          7  25.8</span></a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt;  8 Q ar~ Rudy ~ 2015. Pocket B~ 978147677~ TNG    &lt;NA&gt;         10  27.2</span></a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt;  9 Slin~ J. St~ 2008. Pocket B~ 978141655~ TNG    &lt;NA&gt;         12  27.6</span></a>
-<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; 10 The ~ James~ 2013. Pocket B~ 978145169~ TNG    &lt;NA&gt;          5  29.2</span></a>
-<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt; # ... with 256 more rows, and 2 more variables: nchar &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb2-20" title="20"><span class="co">#&gt; #   dedication &lt;chr&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt;    title author  date publisher identifier series subseries nchap nword  nchar</span></a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt;  &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt;  1 Slin~ Terri~ 2008. Simon an~ 1416550240 TNG    &lt;NA&gt;          8  10.7  63356</span></a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;  2 Slin~ Keith~ 2008. Simon an~ 978141655~ TNG    &lt;NA&gt;         11  18.9 112768</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt;  3 Firs~ John ~ 1997. Pocket B~ 978074345~ TNG    &lt;NA&gt;         13  23.6 137531</span></a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt;  4 Slin~ Willi~ 2008. Simon an~ 1416550224 TNG    &lt;NA&gt;          8  23.8 140719</span></a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt;  5 Typh~ Chris~ 2012. Gallery ~ 978145165~ TNG    Typhon P~    14  25.3 149530</span></a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt;  6 Lust~ Paula~ 2015. Pocket B~ 978147677~ DS9    &lt;NA&gt;         16  25.5 188622</span></a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt;  7 Slin~ Rober~ 2008. Simon an~ 978141655~ TNG    &lt;NA&gt;          7  25.8 153414</span></a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt;  8 Q ar~ Rudy ~ 2015. Pocket B~ 978147677~ TNG    &lt;NA&gt;         10  27.2 192705</span></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt;  9 Slin~ J. St~ 2008. Pocket B~ 978141655~ TNG    &lt;NA&gt;         12  27.6 159115</span></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; 10 The ~ James~ 2013. Pocket B~ 978145169~ TNG    &lt;NA&gt;          5  29.2 212328</span></a>
+<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt; # ... with 256 more rows, and 1 more variable: dedication &lt;chr&gt;</span></a></code></pre></div>
 <p>Create a plot, separating each series in a different panel rather than using color to differentiate them.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">clrs &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"cornflowerblue"</span>, <span class="st">"orange"</span>, <span class="st">"purple"</span>)</a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="kw">ggplot</span>(x, <span class="kw">aes</span>(date, nword, <span class="dt">color =</span> series, <span class="dt">fill =</span> series)) <span class="op">+</span><span class="st"> </span></a>
@@ -201,20 +200,20 @@
 <a class="sourceLine" id="cb5-5" title="5"></a>
 <a class="sourceLine" id="cb5-6" title="6">x</a>
 <a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt; # A tibble: 732 x 12</span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;    title author  date publisher identifier series subseries nchap  nword</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt;  1 Bant~ James~ 1967  Amereon ~ 978084880~ TOS    &lt;NA&gt;         NA 0.0411</span></a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;  2 Bant~ James~ 1968. Amereon ~ 978084880~ TOS    &lt;NA&gt;         NA 0.0405</span></a>
-<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  3 Bant~ James~ 1969. Bantam B~ 978055312~ TOS    &lt;NA&gt;         NA 0.0389</span></a>
-<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  4 Bant~ James~ 1970. Bantam B~ 978055310~ TOS    &lt;NA&gt;          9 0.0361</span></a>
-<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  5 Bant~ James~ 1971. Bantam B~ 978055312~ TOS    &lt;NA&gt;         NA 0.0416</span></a>
-<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  6 Bant~ James~ 1972. Bantam B~ 978055314~ TOS    &lt;NA&gt;         NA 0.0430</span></a>
-<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt;  7 Bant~ James~ 1972. Bantam B~ 978055313~ TOS    &lt;NA&gt;         NA 0.0428</span></a>
-<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt;  8 Bant~ James~ 1972. Bantam B~ 978055313~ TOS    &lt;NA&gt;         NA 0.0464</span></a>
-<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt;  9 Bant~ James~ 1973. Bantam B~ 978055312~ TOS    &lt;NA&gt;         NA 0.0533</span></a>
-<a class="sourceLine" id="cb5-19" title="19"><span class="co">#&gt; 10 Bant~ James~ 1974. Bantam B~ 978055312~ TOS    &lt;NA&gt;         NA 0.0533</span></a>
-<a class="sourceLine" id="cb5-20" title="20"><span class="co">#&gt; # ... with 722 more rows, and 3 more variables: nchar &lt;int&gt;,</span></a>
-<a class="sourceLine" id="cb5-21" title="21"><span class="co">#&gt; #   dedication &lt;chr&gt;, total_words &lt;dbl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;    title author  date publisher identifier series subseries nchap  nword  nchar</span></a>
+<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt;    &lt;chr&gt; &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;  &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt;  1 Bant~ James~ 1967  Amereon ~ 978084880~ TOS    &lt;NA&gt;         NA 0.0411 235524</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;  2 Bant~ James~ 1968. Amereon ~ 978084880~ TOS    &lt;NA&gt;         NA 0.0405 232094</span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  3 Bant~ James~ 1969. Bantam B~ 978055312~ TOS    &lt;NA&gt;         NA 0.0389 224369</span></a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  4 Bant~ James~ 1970. Bantam B~ 978055310~ TOS    &lt;NA&gt;          9 0.0361 207001</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  5 Bant~ James~ 1971. Bantam B~ 978055312~ TOS    &lt;NA&gt;         NA 0.0416 239859</span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  6 Bant~ James~ 1972. Bantam B~ 978055314~ TOS    &lt;NA&gt;         NA 0.0430 247985</span></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt;  7 Bant~ James~ 1972. Bantam B~ 978055313~ TOS    &lt;NA&gt;         NA 0.0428 248923</span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt;  8 Bant~ James~ 1972. Bantam B~ 978055313~ TOS    &lt;NA&gt;         NA 0.0464 268309</span></a>
+<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt;  9 Bant~ James~ 1973. Bantam B~ 978055312~ TOS    &lt;NA&gt;         NA 0.0533 307648</span></a>
+<a class="sourceLine" id="cb5-19" title="19"><span class="co">#&gt; 10 Bant~ James~ 1974. Bantam B~ 978055312~ TOS    &lt;NA&gt;         NA 0.0533 314575</span></a>
+<a class="sourceLine" id="cb5-20" title="20"><span class="co">#&gt; # ... with 722 more rows, and 2 more variables: dedication &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb5-21" title="21"><span class="co">#&gt; #   total_words &lt;dbl&gt;</span></a></code></pre></div>
 <p>The plot will be labeled with series abbreviations, so a key is needed for clarity. In order to label points on the plot marking the onset of a new novel series, take the first entry in the data frame for each series. A bit of theme customization is required for the table grid object that will display the key as an inset figure.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">tab_theme &lt;-<span class="st"> </span>gridExtra<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/gridExtra/man/tableGrob.html">ttheme_default</a></span>(</a>
 <a class="sourceLine" id="cb6-2" title="2">  <span class="dt">core =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">fg_params =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">cex =</span> <span class="fl">0.5</span>), <span class="dt">padding =</span> <span class="kw">unit</span>(<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="st">"mm"</span>)), </a>

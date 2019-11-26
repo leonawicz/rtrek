@@ -198,7 +198,7 @@
 <p>Descending through subcategories is done by appending their <code>id</code> values, separated by a forward slash <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>. Notice that compared to Memory Alpha, classification and resulting hierarchical organization can be more detailed for similar content.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">x &lt;-<span class="st"> "characters/Characters by races and cultures/Klingonoids/Klingons"</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(x)</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; # A tibble: 1,081 x 2</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; # A tibble: 1,091 x 2</span></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;    Klingons                         url                               </span></a>
 <a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt;    &lt;chr&gt;                            &lt;chr&gt;                             </span></a>
 <a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt;  1 Klingon                          Klingon                           </span></a>
@@ -211,7 +211,7 @@
 <a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  8 Adon, son of Gorath              Adon,_son_of_Gorath               </span></a>
 <a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt;  9 Adrokos                          Adrokos                           </span></a>
 <a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; 10 Aek-Nor                          Aek-Nor                           </span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; # ... with 1,071 more rows</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; # ... with 1,081 more rows</span></a>
 <a class="sourceLine" id="cb3-17" title="17"></a>
 <a class="sourceLine" id="cb3-18" title="18"><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(x, <span class="st">"/Worf, son of Mogh"</span>))</a>
 <a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
@@ -259,7 +259,7 @@
 <a class="sourceLine" id="cb5-2" title="2">x &lt;-<span class="st"> "characters/Memory Beta images (characters)/Memory Beta images (Worf)"</span></a>
 <a class="sourceLine" id="cb5-3" title="3">worf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(x)</a>
 <a class="sourceLine" id="cb5-4" title="4">worf</a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt; # A tibble: 57 x 2</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt; # A tibble: 58 x 2</span></a>
 <a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;    `Memory Beta images (Worf)` url                       </span></a>
 <a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;    &lt;chr&gt;                       &lt;chr&gt;                     </span></a>
 <a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;  1 Akvoh.jpg                   File:Akvoh.jpg            </span></a>
@@ -267,12 +267,12 @@
 <a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt;  3 Apocalypse Rising.jpg       File:Apocalypse_Rising.jpg</span></a>
 <a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;  4 Barassociation.jpg          File:Barassociation.jpg   </span></a>
 <a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  5 Bodai ShinC.jpg             File:Bodai_ShinC.jpg      </span></a>
-<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  6 Clues.jpg                   File:Clues.jpg            </span></a>
-<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  7 CogenV.jpg                  File:CogenV.jpg           </span></a>
-<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  8 Conundrum.jpg               File:Conundrum.jpg        </span></a>
-<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt;  9 Ds9finale crew.jpg          File:Ds9finale_crew.jpg   </span></a>
-<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; 10 EaFcrew.jpg                 File:EaFcrew.jpg          </span></a>
-<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt; # ... with 47 more rows</span></a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  6 Chancellor Martok.jpg       File:Chancellor_Martok.jpg</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  7 Clues.jpg                   File:Clues.jpg            </span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  8 CogenV.jpg                  File:CogenV.jpg           </span></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt;  9 Conundrum.jpg               File:Conundrum.jpg        </span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; 10 Ds9finale crew.jpg          File:Ds9finale_crew.jpg   </span></a>
+<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt; # ... with 48 more rows</span></a>
 <a class="sourceLine" id="cb5-19" title="19"></a>
 <a class="sourceLine" id="cb5-20" title="20">worf_jadzia &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(worf, <span class="kw"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"Jadzia"</span>, url))</a>
 <a class="sourceLine" id="cb5-21" title="21">worf_jadzia</a>
@@ -299,20 +299,20 @@
 <a class="sourceLine" id="cb6-15" title="15">x<span class="op">$</span>categories</a>
 <a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt; [[1]]</span></a>
 <a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt; # A tibble: 12 x 2</span></a>
-<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt;    categories                          url                                 </span></a>
-<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt;    &lt;chr&gt;                               &lt;chr&gt;                               </span></a>
-<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt;  1 Memory Beta images (episode images) Category:Memory_Beta_images_(episod~</span></a>
-<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt;  2 Memory Beta images (DS9 episode im~ Category:Memory_Beta_images_(DS9_ep~</span></a>
-<a class="sourceLine" id="cb6-22" title="22"><span class="co">#&gt;  3 Memory Beta images (DS9 season 5 i~ Category:Memory_Beta_images_(DS9_se~</span></a>
-<a class="sourceLine" id="cb6-23" title="23"><span class="co">#&gt;  4 Memory Beta images (Klingons)       Category:Memory_Beta_images_(Klingo~</span></a>
-<a class="sourceLine" id="cb6-24" title="24"><span class="co">#&gt;  5 Memory Beta images (Worf)           Category:Memory_Beta_images_(Worf)  </span></a>
-<a class="sourceLine" id="cb6-25" title="25"><span class="co">#&gt;  6 Memory Beta images (Trill)          Category:Memory_Beta_images_(Trill) </span></a>
-<a class="sourceLine" id="cb6-26" title="26"><span class="co">#&gt;  7 Memory Beta images (Jadzia)         Category:Memory_Beta_images_(Jadzia)</span></a>
-<a class="sourceLine" id="cb6-27" title="27"><span class="co">#&gt;  8 Memory Beta images (24th century S~ Category:Memory_Beta_images_(24th_c~</span></a>
-<a class="sourceLine" id="cb6-28" title="28"><span class="co">#&gt;  9 Memory Beta images (DS9 personnel)  Category:Memory_Beta_images_(DS9_pe~</span></a>
-<a class="sourceLine" id="cb6-29" title="29"><span class="co">#&gt; 10 Memory Beta images (Starfleet comm~ Category:Memory_Beta_images_(Starfl~</span></a>
-<a class="sourceLine" id="cb6-30" title="30"><span class="co">#&gt; 11 Memory Beta images (USS Defiant pr~ Category:Memory_Beta_images_(USS_De~</span></a>
-<a class="sourceLine" id="cb6-31" title="31"><span class="co">#&gt; 12 Memory Beta images (Paramount imag~ Category:Memory_Beta_images_(Paramo~</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt;    categories                            url                                    </span></a>
+<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt;    &lt;chr&gt;                                 &lt;chr&gt;                                  </span></a>
+<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt;  1 Memory Beta images (episode images)   Category:Memory_Beta_images_(episode_i~</span></a>
+<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt;  2 Memory Beta images (DS9 episode imag~ Category:Memory_Beta_images_(DS9_episo~</span></a>
+<a class="sourceLine" id="cb6-22" title="22"><span class="co">#&gt;  3 Memory Beta images (DS9 season 5 ima~ Category:Memory_Beta_images_(DS9_seaso~</span></a>
+<a class="sourceLine" id="cb6-23" title="23"><span class="co">#&gt;  4 Memory Beta images (Klingons)         Category:Memory_Beta_images_(Klingons) </span></a>
+<a class="sourceLine" id="cb6-24" title="24"><span class="co">#&gt;  5 Memory Beta images (Worf)             Category:Memory_Beta_images_(Worf)     </span></a>
+<a class="sourceLine" id="cb6-25" title="25"><span class="co">#&gt;  6 Memory Beta images (Trill)            Category:Memory_Beta_images_(Trill)    </span></a>
+<a class="sourceLine" id="cb6-26" title="26"><span class="co">#&gt;  7 Memory Beta images (Jadzia)           Category:Memory_Beta_images_(Jadzia)   </span></a>
+<a class="sourceLine" id="cb6-27" title="27"><span class="co">#&gt;  8 Memory Beta images (24th century Sta~ Category:Memory_Beta_images_(24th_cent~</span></a>
+<a class="sourceLine" id="cb6-28" title="28"><span class="co">#&gt;  9 Memory Beta images (DS9 personnel)    Category:Memory_Beta_images_(DS9_perso~</span></a>
+<a class="sourceLine" id="cb6-29" title="29"><span class="co">#&gt; 10 Memory Beta images (Starfleet comman~ Category:Memory_Beta_images_(Starfleet~</span></a>
+<a class="sourceLine" id="cb6-30" title="30"><span class="co">#&gt; 11 Memory Beta images (USS Defiant prot~ Category:Memory_Beta_images_(USS_Defia~</span></a>
+<a class="sourceLine" id="cb6-31" title="31"><span class="co">#&gt; 12 Memory Beta images (Paramount images) Category:Memory_Beta_images_(Paramount~</span></a></code></pre></div>
 <p>This provides quite a bit of metadata about the particular photo.</p>
 <p>Of course, the likely intent is to obtain the image file itself when working with image file “article” pages. Use <code>mb_image</code> for this. It returns a ggplot object of the downloaded image file.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="../reference/mb_image.html">mb_image</a></span>(worf_jadzia<span class="op">$</span>url[<span class="dv">1</span>])</a></code></pre></div>
@@ -332,30 +332,30 @@
 <a class="sourceLine" id="cb8-2" title="2"><span class="co">#&gt; 2360</span></a>
 <a class="sourceLine" id="cb8-3" title="3">x<span class="op">$</span>events</a>
 <a class="sourceLine" id="cb8-4" title="4"><span class="co">#&gt; # A tibble: 11 x 4</span></a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="co">#&gt;    period id               date  notes                                     </span></a>
-<a class="sourceLine" id="cb8-6" title="6"><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;                                     </span></a>
-<a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt;  1 2360   Events           &lt;NA&gt;  Quark opens a bar on Terok Nor. [1]       </span></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt;  2 2360   Conflicts        &lt;NA&gt;  Kalisi Reyar designs and completes a grid~</span></a>
-<a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt;  3 2360   Federation_poli~ &lt;NA&gt;  Pahkwa-thanh is admitted into the Federat~</span></a>
-<a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt;  4 2360   Cardassian_poli~ &lt;NA&gt;  Miras Vara has taken the leadership of th~</span></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt;  5 2360   Cardassian_poli~ &lt;NA&gt;  Natima Lang and Gaten Russol join the car~</span></a>
-<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt;  6 2360   Romulan_politics &lt;NA&gt;  Vreenak is elected.[2]                    </span></a>
-<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt;  7 2360   Promotions_and_~ &lt;NA&gt;  Data is promoted to Lieutenant Commander.~</span></a>
-<a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt;  8 2360   Promotions_and_~ &lt;NA&gt;  Joseph Carey graduates from Starfleet Aca~</span></a>
-<a class="sourceLine" id="cb8-15" title="15"><span class="co">#&gt;  9 2360   Births_and_deat~ &lt;NA&gt;  Skrain Dukat's son Mekor is born. [citati~</span></a>
-<a class="sourceLine" id="cb8-16" title="16"><span class="co">#&gt; 10 2360   Births_and_deat~ &lt;NA&gt;  Caylem's wife dies in a Mokra prison.[2]  </span></a>
-<a class="sourceLine" id="cb8-17" title="17"><span class="co">#&gt; 11 2360   Births_and_deat~ &lt;NA&gt;  Dekon Elig dies attempting to escape the ~</span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="co">#&gt;    period id                date  notes                                         </span></a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;             &lt;chr&gt; &lt;chr&gt;                                         </span></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt;  1 2360   Events            &lt;NA&gt;  Quark opens a bar on Terok Nor. [1]           </span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt;  2 2360   Conflicts         &lt;NA&gt;  Kalisi Reyar designs and completes a grid sys~</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt;  3 2360   Federation_polit~ &lt;NA&gt;  Pahkwa-thanh is admitted into the Federation.~</span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt;  4 2360   Cardassian_polit~ &lt;NA&gt;  Miras Vara has taken the leadership of the Or~</span></a>
+<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt;  5 2360   Cardassian_polit~ &lt;NA&gt;  Natima Lang and Gaten Russol join the cardass~</span></a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt;  6 2360   Romulan_politics  &lt;NA&gt;  Vreenak is elected.[2]                        </span></a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt;  7 2360   Promotions_and_t~ &lt;NA&gt;  Data is promoted to Lieutenant Commander. [ci~</span></a>
+<a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt;  8 2360   Promotions_and_t~ &lt;NA&gt;  Joseph Carey graduates from Starfleet Academy~</span></a>
+<a class="sourceLine" id="cb8-15" title="15"><span class="co">#&gt;  9 2360   Births_and_deaths &lt;NA&gt;  Skrain Dukat's son Mekor is born. [citation n~</span></a>
+<a class="sourceLine" id="cb8-16" title="16"><span class="co">#&gt; 10 2360   Births_and_deaths &lt;NA&gt;  Caylem's wife dies in a Mokra prison.[2]      </span></a>
+<a class="sourceLine" id="cb8-17" title="17"><span class="co">#&gt; 11 2360   Births_and_deaths &lt;NA&gt;  Dekon Elig dies attempting to escape the Velo~</span></a>
 <a class="sourceLine" id="cb8-18" title="18">x<span class="op">$</span>stories</a>
 <a class="sourceLine" id="cb8-19" title="19"><span class="co">#&gt; # A tibble: 6 x 11</span></a>
-<a class="sourceLine" id="cb8-20" title="20"><span class="co">#&gt;   title title_url colleciton collection_url section context series date </span></a>
-<a class="sourceLine" id="cb8-21" title="21"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb8-22" title="22"><span class="co">#&gt; 1 The ~ The_Buri~ &lt;NA&gt;       &lt;NA&gt;           Chapte~ &lt;NA&gt;    The N~ 2360 </span></a>
-<a class="sourceLine" id="cb8-23" title="23"><span class="co">#&gt; 2 The ~ The_Buri~ &lt;NA&gt;       &lt;NA&gt;           Chapte~ &lt;NA&gt;    The N~ 2360~</span></a>
-<a class="sourceLine" id="cb8-24" title="24"><span class="co">#&gt; 3 Cata~ Catalyst~ &lt;NA&gt;       &lt;NA&gt;           &lt;NA&gt;    &lt;NA&gt;    The L~ 2360 </span></a>
-<a class="sourceLine" id="cb8-25" title="25"><span class="co">#&gt; 4 Lefl~ Lefler%2~ No Limits  No_Limits      Twelft~ &lt;NA&gt;    New F~ 2360~</span></a>
-<a class="sourceLine" id="cb8-26" title="26"><span class="co">#&gt; 5 A St~ A_Stitch~ &lt;NA&gt;       &lt;NA&gt;           Part 2~ &lt;NA&gt;    Deep ~ 2360 </span></a>
-<a class="sourceLine" id="cb8-27" title="27"><span class="co">#&gt; 6 Dawn~ Dawn_of_~ Terok Nor  Star_Trek:_Te~ Prolog~ &lt;NA&gt;    Deep ~ 2360 </span></a>
-<a class="sourceLine" id="cb8-28" title="28"><span class="co">#&gt; # ... with 3 more variables: media &lt;chr&gt;, notes &lt;chr&gt;, image_url &lt;chr&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb8-20" title="20"><span class="co">#&gt;   title title_url colleciton collection_url section context series date  media</span></a>
+<a class="sourceLine" id="cb8-21" title="21"><span class="co">#&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb8-22" title="22"><span class="co">#&gt; 1 The ~ The_Buri~ &lt;NA&gt;       &lt;NA&gt;           Chapte~ &lt;NA&gt;    The N~ 2360  novel</span></a>
+<a class="sourceLine" id="cb8-23" title="23"><span class="co">#&gt; 2 The ~ The_Buri~ &lt;NA&gt;       &lt;NA&gt;           Chapte~ &lt;NA&gt;    The N~ 2360~ novel</span></a>
+<a class="sourceLine" id="cb8-24" title="24"><span class="co">#&gt; 3 Cata~ Catalyst~ &lt;NA&gt;       &lt;NA&gt;           &lt;NA&gt;    &lt;NA&gt;    The L~ 2360  novel</span></a>
+<a class="sourceLine" id="cb8-25" title="25"><span class="co">#&gt; 4 Lefl~ Lefler%2~ No Limits  No_Limits      Twelft~ &lt;NA&gt;    New F~ 2360~ shor~</span></a>
+<a class="sourceLine" id="cb8-26" title="26"><span class="co">#&gt; 5 A St~ A_Stitch~ &lt;NA&gt;       &lt;NA&gt;           Part 2~ &lt;NA&gt;    Deep ~ 2360  novel</span></a>
+<a class="sourceLine" id="cb8-27" title="27"><span class="co">#&gt; 6 Dawn~ Dawn_of_~ Terok Nor  Star_Trek:_Te~ Prolog~ &lt;NA&gt;    Deep ~ 2360  novel</span></a>
+<a class="sourceLine" id="cb8-28" title="28"><span class="co">#&gt; # ... with 2 more variables: notes &lt;chr&gt;, image_url &lt;chr&gt;</span></a></code></pre></div>
 <div id="timeline-of-historical-events" class="section level4">
 <h4 class="hasAnchor">
 <a href="#timeline-of-historical-events" class="anchor"></a>Timeline of historical events</h4>
@@ -420,18 +420,18 @@
 <p>It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with <code>mb_article</code>, setting <code>browse = TRUE</code> opens the page in the browser.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw"><a href="../reference/mb_search.html">mb_search</a></span>(<span class="st">"Guinan"</span>)</a>
 <a class="sourceLine" id="cb9-2" title="2"><span class="co">#&gt; # A tibble: 25 x 3</span></a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="co">#&gt;    title              text                                url              </span></a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;                               &lt;chr&gt;            </span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt;  1 Guinan             https://memory-beta.fandom.com/wik~ Guinan           </span></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt;  2 Guinan (mirror)    https://memory-beta.fandom.com/wik~ Guinan_(mirror)  </span></a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt;  3 James T. Kirk      https://memory-beta.fandom.com/wik~ James_T._Kirk    </span></a>
-<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt;  4 Jean-Luc Picard    https://memory-beta.fandom.com/wik~ Jean-Luc_Picard  </span></a>
-<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt;  5 USS Enterprise (N~ https://memory-beta.fandom.com/wik~ USS_Enterprise_(~</span></a>
-<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;  6 Star Trek: The Ne~ https://memory-beta.fandom.com/wik~ Star_Trek:_The_N~</span></a>
-<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;  7 Nog                https://memory-beta.fandom.com/wik~ Nog              </span></a>
-<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  8 Q &amp; A              https://memory-beta.fandom.com/wik~ Q_%26_A          </span></a>
-<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  9 Peaceable Kingdoms https://memory-beta.fandom.com/wik~ Peaceable_Kingdo~</span></a>
-<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt; 10 Indistinguishable~ https://memory-beta.fandom.com/wik~ Indistinguishabl~</span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="co">#&gt;    title               text                                   url               </span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co">#&gt;    &lt;chr&gt;               &lt;chr&gt;                                  &lt;chr&gt;             </span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt;  1 Guinan              https://memory-beta.fandom.com/wiki/G~ Guinan            </span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt;  2 Guinan (mirror)     https://memory-beta.fandom.com/wiki/G~ Guinan_(mirror)   </span></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt;  3 Jean-Luc Picard     https://memory-beta.fandom.com/wiki/J~ Jean-Luc_Picard   </span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt;  4 James T. Kirk       https://memory-beta.fandom.com/wiki/J~ James_T._Kirk     </span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt;  5 USS Enterprise (NC~ https://memory-beta.fandom.com/wiki/U~ USS_Enterprise_(N~</span></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;  6 Q                   https://memory-beta.fandom.com/wiki/Q  Q                 </span></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;  7 Q &amp; A               https://memory-beta.fandom.com/wiki/Q~ Q_%26_A           </span></a>
+<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  8 A Time for War, A ~ https://memory-beta.fandom.com/wiki/A~ A_Time_for_War,_A~</span></a>
+<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  9 Star Trek Nemesis   https://memory-beta.fandom.com/wiki/S~ Star_Trek_Nemesis </span></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt; 10 Watching the Clock  https://memory-beta.fandom.com/wiki/W~ Watching_the_Clock</span></a>
 <a class="sourceLine" id="cb9-15" title="15"><span class="co">#&gt; # ... with 15 more rows</span></a></code></pre></div>
 </div>
 <div id="caveats" class="section level2">

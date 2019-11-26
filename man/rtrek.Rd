@@ -3,7 +3,6 @@
 \docType{package}
 \name{rtrek}
 \alias{rtrek}
-\alias{rtrek-package}
 \title{rtrek: Star Trek datasets and related R functions.}
 \description{
 The \code{rtrek} package contains a collection of Star Trek-themed datasets and R functions to assist with their use.

@@ -4,8 +4,12 @@
 \alias{ma_article}
 \title{Read Memory Alpha article}
 \usage{
-ma_article(url, content_format = c("xml", "character"),
-  content_nodes = c("h2", "h3", "p", "b", "ul"), browse = FALSE)
+ma_article(
+  url,
+  content_format = c("xml", "character"),
+  content_nodes = c("h2", "h3", "p", "b", "ul"),
+  browse = FALSE
+)
 }
 \arguments{
 \item{url}{character, article URL. Expects package-style short URL. See examples.}
