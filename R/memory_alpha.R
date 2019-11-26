@@ -53,10 +53,10 @@
 #'
 #' @examples
 #' memory_alpha("portals") # show available portals
-#' if(has_internet()){
-#'   memory_alpha("people") # show portal categories for People portal
-#'   memory_alpha("people/Klingons") # show people in Klingons subcategory
-#'   memory_alpha("people/Klingons/Worf") # return terminal article content
+#' \donttest{
+#' memory_alpha("people") # show portal categories for People portal
+#' memory_alpha("people/Klingons") # show people in Klingons subcategory
+#' memory_alpha("people/Klingons/Worf") # return terminal article content
 #' }
 memory_alpha <- function(endpoint){
   x <- .ma_portals
@@ -153,7 +153,7 @@ ma_portal_technology <- function(nodes = c("h2, table", "span, b, a"), start_nod
 #' @export
 #'
 #' @examples
-#' \dontrun{ma_article("Azetbur")}
+#' \donttest{ma_article("Azetbur")}
 ma_article <- function(url, content_format = c("xml", "character"),
                        content_nodes = c("h2", "h3", "p", "b", "ul"), browse = FALSE){
   content_format <- match.arg(content_format)
@@ -188,7 +188,7 @@ ma_article <- function(url, content_format = c("xml", "character"),
 #' @export
 #'
 #' @examples
-#' if(has_internet()) ma_search("Worf")
+#' \donttest{ma_search("Worf")}
 ma_search <- function(text, browse = FALSE){
   url <- paste0(ma_base_add("Special:Search?query="), gsub("\\s+", "+", text))
   x <- xml2::read_html(url) %>% rvest::html_node(".Results")

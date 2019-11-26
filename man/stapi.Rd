@@ -36,11 +36,11 @@ Values less than one are ignored (defaulting back to one second) and a warning w
 Currently STAPI contains primarily real world data such as episode air dates, movie metadata, or production company information. Fictional world data is secondary and more limited.
 }
 \examples{
+\donttest{
 library(dplyr)
-if(has_internet()){
-  stapi("character", page_count = TRUE) # check first
-  stapi("character", page = 2) \%>\% select(1:2)
-  Q <- stapi("character", uid = "CHMA0000025118")
-  Q$episodes \%>\% select(uid, title, stardateFrom, stardateTo)
+stapi("character", page_count = TRUE) # check first
+stapi("character", page = 2) \%>\% select(1:2)
+Q <- stapi("character", uid = "CHMA0000025118")
+Q$episodes \%>\% select(uid, title, stardateFrom, stardateTo)
 }
 }

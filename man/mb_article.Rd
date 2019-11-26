@@ -30,5 +30,5 @@ Read Memory Beta article content and metadata.
 Article content is returned in a nested, tidy data frame.
 }
 \examples{
-\dontrun{mb_article("Azetbur")}
+\donttest{mb_article("Azetbur")}
 }

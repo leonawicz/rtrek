@@ -30,5 +30,5 @@ Read Memory Alpha article content and metadata.
 Article content is returned in a nested, tidy data frame.
 }
 \examples{
-\dontrun{ma_article("Azetbur")}
+\donttest{ma_article("Azetbur")}
 }

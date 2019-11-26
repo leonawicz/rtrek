@@ -24,5 +24,5 @@ There could be an unexpectedly high number of pages of results depending on the 
 Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview.
 }
 \examples{
-if(has_internet()) ma_search("Worf")
+\donttest{ma_search("Worf")}
 }

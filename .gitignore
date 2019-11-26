@@ -2,7 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-docs/clone_notes.html
 inst/doc
 data-raw/keys.R
 data-raw/support_files

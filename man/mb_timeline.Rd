@@ -35,7 +35,7 @@ This means that if you make the same call twice in your R session, you won't hav
 The call will appear to run instantaneously the second time around, but that's because nothing is happening other than returning the cached result from the initial call.
 }
 \examples{
-if(has_internet()) mb_timeline(2360)
+\donttest{mb_timeline(2360)}
 \dontrun{
 mb_timeline("2360s")
 mb_timeline("past")

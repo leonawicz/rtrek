@@ -242,14 +242,38 @@ in itself. Alternatively, <code>ma_article</code> is focused exclusively on pull
 #&gt; </span><span style='color: #555555;'>3</span><span> science    Portal:Science            
 #&gt; </span><span style='color: #555555;'>4</span><span> series     Portal:TV_and_films       
 #&gt; </span><span style='color: #555555;'>5</span><span> society    Portal:Society_and_Culture
-#&gt; </span><span style='color: #555555;'>6</span><span> technology Portal:Technology         </div><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='has_internet.html'>has_internet</a></span>()){
-  <span class='fu'>memory_alpha</span>(<span class='st'>"people"</span>) <span class='co'># show portal categories for People portal</span>
-  <span class='fu'>memory_alpha</span>(<span class='st'>"people/Klingons"</span>) <span class='co'># show people in Klingons subcategory</span>
-  <span class='fu'>memory_alpha</span>(<span class='st'>"people/Klingons/Worf"</span>) <span class='co'># return terminal article content</span>
-}</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 4</span><span>
+#&gt; </span><span style='color: #555555;'>6</span><span> technology Portal:Technology         </div><div class='input'><span class='co'># \donttest{</span>
+<span class='fu'>memory_alpha</span>(<span class='st'>"people"</span>) <span class='co'># show portal categories for People portal</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 101 x 3</span><span>
+#&gt;    id          url                  group     
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #555555;'> 1</span><span> Acamarians  Category:Acamarians  By species
+#&gt; </span><span style='color: #555555;'> 2</span><span> Akritirians Category:Akritirians By species
+#&gt; </span><span style='color: #555555;'> 3</span><span> Aldeans     Category:Aldeans     By species
+#&gt; </span><span style='color: #555555;'> 4</span><span> Andorians   Category:Andorians   By species
+#&gt; </span><span style='color: #555555;'> 5</span><span> Androids    Category:Androids    By species
+#&gt; </span><span style='color: #555555;'> 6</span><span> Aquans      Category:Aquans      By species
+#&gt; </span><span style='color: #555555;'> 7</span><span> Ardanans    Category:Ardanans    By species
+#&gt; </span><span style='color: #555555;'> 8</span><span> Augments    Category:Augments    By species
+#&gt; </span><span style='color: #555555;'> 9</span><span> Ba'ku       Category:Ba%27ku     By species
+#&gt; </span><span style='color: #555555;'>10</span><span> Bajorans    Category:Bajorans    By species
+#&gt; </span><span style='color: #555555;'># ... with 91 more rows</span><span></div><div class='input'><span class='fu'>memory_alpha</span>(<span class='st'>"people/Klingons"</span>) <span class='co'># show people in Klingons subcategory</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 221 x 2</span><span>
+#&gt;    Klingons                       url                                    
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                  
+#&gt; </span><span style='color: #555555;'> 1</span><span> Memory Alpha images (Klingons) Category:Memory_Alpha_images_(Klingons)
+#&gt; </span><span style='color: #555555;'> 2</span><span> Amar (Klingon)                 Amar_(Klingon)                         
+#&gt; </span><span style='color: #555555;'> 3</span><span> Antaak                         Antaak                                 
+#&gt; </span><span style='color: #555555;'> 4</span><span> A'trom                         A%27trom                               
+#&gt; </span><span style='color: #555555;'> 5</span><span> Atul                           Atul                                   
+#&gt; </span><span style='color: #555555;'> 6</span><span> Augments                       Category:Augments                      
+#&gt; </span><span style='color: #555555;'> 7</span><span> Azetbur                        Azetbur                                
+#&gt; </span><span style='color: #555555;'> 8</span><span> Ba'el                          Ba%27el                                
+#&gt; </span><span style='color: #555555;'> 9</span><span> Ba'ktor                        Ba%27ktor                              
+#&gt; </span><span style='color: #555555;'>10</span><span> Barak-Kadan                    Barak-Kadan                            
+#&gt; </span><span style='color: #555555;'># ... with 211 more rows</span><span></div><div class='input'><span class='fu'>memory_alpha</span>(<span class='st'>"people/Klingons/Worf"</span>) <span class='co'># return terminal article content</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 4</span><span>
 #&gt;   title content    metadata          categories       
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>           
-#&gt; </span><span style='color: #555555;'>1</span><span> Worf  </span><span style='color: #555555;'>&lt;xml_ndst&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [1 x 16]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [11 x 2]&gt;</span><span></div></span></pre>
+#&gt; </span><span style='color: #555555;'>1</span><span> Worf  </span><span style='color: #555555;'>&lt;xml_ndst&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [1 x 16]&gt;</span><span> </span><span style='color: #555555;'>&lt;tibble [11 x 2]&gt;</span><span></div><div class='input'># }
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
