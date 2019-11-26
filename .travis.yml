@@ -14,3 +14,7 @@ matrix:
    - r: oldrel
      r_build_args: --no-build-vignettes
      r_check_args: --ignore-vignettes --no-examples
+   - os: osx
+     r: release
+     before_install: ''
+     disable_homebrew: false

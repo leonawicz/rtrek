@@ -1,6 +1,9 @@
 ## Test environments
+
 * local Windows 10 install, R 3.6.1
-* ubuntu 16.04 (on travis-ci), release (R 3.6.1), devel, oldrel
+* Windows 10 (AppVeyor), R 3.6.1
+* Ubuntu 16.04 (Travis CI), R-devel, R-release (3.6.1), R-oldrel (3.5.3)
+* Mac OSX (Travis CI) R-release (3.6.1)
 * win-builder (devel and release)
 * R-hub (various)
 
