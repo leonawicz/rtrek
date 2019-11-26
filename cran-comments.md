@@ -1,8 +1,8 @@
 ## Test environments
 * local Windows 10 install, R 3.6.1
-* ubuntu 14.04 (on travis-ci), R 3.6.1
+* ubuntu 16.04 (on travis-ci), release (R 3.6.1), devel, oldrel
 * win-builder (devel and release)
-* R-hub (devtools::check_rhub())
+* R-hub (various)
 
 ## R CMD check results
 
