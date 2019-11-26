@@ -25,6 +25,8 @@ downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-p
 [![Github
 Stars](https://img.shields.io/github/stars/leonawicz/rtrek.svg?style=social&label=Github)](https://github.com/leonawicz/rtrek)
 
+[![Donate](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-yellowgreen.svg)](https://ko-fi.com/leonawicz)
+
 The `rtrek` package provides datasets related to the Star Trek fictional
 universe and functions for working with those datasets. It interfaces
 with the [Star Trek API](http://stapi.co/) (STAPI), [Memory
@@ -35,9 +37,8 @@ other information relating to Star Trek.
 <hr>
 
 *If you enjoy my R community contributions, consider* ***[buying me a
-coffee in Ko-fi](https://ko-fi.com/leonawicz)*** *(or through PayPal
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DHMC76S85GJCY&source=url"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" /></a>)
-so I can keep developing and maintaining this and other packages :)*
+coffee in Ko-fi](https://ko-fi.com/leonawicz)*** *so I can keep
+developing and maintaining this and other packages :)*
 
 <hr>
 
