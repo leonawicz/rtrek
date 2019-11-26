@@ -5,6 +5,7 @@ soc <- !has_internet("http://memory-beta.wikia.com/")
 
 test_that("memory_beta returns as expected", {
   if(soc) skip(unavail)
+  skip_on_cran()
   expect_identical(memory_beta("portals"), .mb_portals)
 
   for(id in .mb_portals$id){
@@ -34,6 +35,7 @@ test_that("memory_beta returns as expected", {
 
 test_that("mb_article returns as expected", {
   if(soc) skip(unavail)
+  skip_on_cran()
   expect_error(mb_article("x"), "Article not found.")
   closeAllConnections()
 
@@ -50,6 +52,7 @@ test_that("mb_article returns as expected", {
 
 test_that("mb_search returns as expected", {
   if(soc) skip(unavail)
+  skip_on_cran()
   d <- mb_search("Worf")
   expect_equal(ncol(d), 3)
   expect_equal(names(d), c("title", "text", "url"))
@@ -57,6 +60,7 @@ test_that("mb_search returns as expected", {
 
 test_that("mb_image and related calls all return as expected", {
   if(soc) skip(unavail)
+  skip_on_cran()
   file <- "File:DataBlaze.jpg"
   ep <- file.path("characters", "Memory Beta images (characters)",
                   "Memory Beta images (Data)", gsub("File:", "", file))

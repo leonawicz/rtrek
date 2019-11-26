@@ -19,6 +19,7 @@ test_that("mb_timeline errors as expected", {
 
 test_that("mb_timeline returns as expected (CRAN)", {
   if(soc) skip(unavail)
+  skip_on_cran()
   x <- mb_timeline(2360)
   expect_is(x, "list")
   expect_equal(length(x), 2)

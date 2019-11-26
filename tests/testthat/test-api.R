@@ -8,6 +8,7 @@ qid <- "CHMA0000025118"
 
 test_that("stapi returns as expected", {
   if(soc) skip(unavail)
+  skip_on_cran()
   expect_is(stapi("character", page_count = TRUE), "NULL")
 
   d <- stapi("character", page = 2)
@@ -30,6 +31,7 @@ test_that("stapi returns as expected", {
 
 test_that("rtrek_antidos option is set on load and checked", {
   if(soc) skip(unavail)
+  skip_on_cran()
   expect_equal(getOption("rtrek_antidos"), 1)
   options(rtrek_antidos = 0)
   wrn <- "`rtrek_antidos` setting in `options` is less than one and will be ignored.\n"

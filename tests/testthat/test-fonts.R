@@ -2,6 +2,7 @@ context("fonts")
 
 test_that("st_font returns as expected when optional packages are installed", {
   skip_on_appveyor()
+  skip_on_cran()
 
   x <- st_font()
   expect_is(x, "character")
