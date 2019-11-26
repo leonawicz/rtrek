@@ -34,14 +34,6 @@ Alpha](http://memory-alpha.wikia.com/) and [Memory
 Beta](http://memory-beta.wikia.com/) to retrieve data, metadata and
 other information relating to Star Trek.
 
-<hr>
-
-*If you enjoy my R community contributions, consider* ***[buying me a
-coffee in Ko-fi](https://ko-fi.com/leonawicz)*** *so I can keep
-developing and maintaining this and other packages :)*
-
-<hr>
-
 The package also contains several local datasets covering a variety of
 topics such as Star Trek timeline data, universe species data and
 geopolitical data. Some of these are more information rich, while others
@@ -188,7 +180,7 @@ mb_timeline(2230)
 
 Live long and prosper.
 
-## Packges in the trekverse
+## Packages in the trekverse
 
 <div class="row">
 
@@ -264,6 +256,12 @@ True (Trek) type fonts to style your Star Trek themed graphics text.
 </div>
 
 </div>
+
+-----
+
+*If you enjoy my R community contributions, consider* ***[buying me a
+coffee in Ko-fi](https://ko-fi.com/leonawicz)*** *so I can keep
+developing and maintaining this and other packages :)*
 
 -----
 

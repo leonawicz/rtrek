@@ -30,10 +30,6 @@ knitr::opts_chunk$set(
 
 The `rtrek` package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. It interfaces with the [Star Trek API](http://stapi.co/) (STAPI), [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) to retrieve data, metadata and other information relating to Star Trek.
 
-<hr>
-*If you enjoy my R community contributions, consider* ***[buying me a coffee in Ko-fi](https://ko-fi.com/leonawicz)*** *so I can keep developing and maintaining this and other packages :)*
-<hr>
-
 The package also contains several local datasets covering a variety of topics such as Star Trek timeline data, universe species data and geopolitical data. Some of these are more information rich, while others are toy examples useful for simple demonstrations. The bulk of Star Trek data is accessed from external sources by API. A future version of `rtrek` will also include summary datasets resulting from text mining analyses of Star Trek novels.
 
 ```{r is_md, echo = FALSE}
@@ -127,7 +123,7 @@ cat('See the [introduction vignette](https://leonawicz.github.io/rtrek/articles/
 cat('## Reference\n\n[Complete package reference and function documentation](https://leonawicz.github.io/rtrek/)')
 ```
 
-## Packges in the trekverse
+## Packages in the trekverse
 
 <div class="row">
 <div class="col-sm-2">
@@ -155,6 +151,10 @@ Predefined and customizable Star Trek themed color palettes and related function
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;"><a href="https://github.com/leonawicz/trekfont">trekfont</a>: A fonts package</h4>
 True (Trek) type fonts to style your Star Trek themed graphics text.
 </div></div>
+
+---
+
+*If you enjoy my R community contributions, consider* ***[buying me a coffee in Ko-fi](https://ko-fi.com/leonawicz)*** *so I can keep developing and maintaining this and other packages :)*
 
 ---
 
