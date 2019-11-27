@@ -267,5 +267,5 @@ developing and maintaining this and other packages :)*
 
 Please note that the `rtrek` project is released with a [Contributor
 Code of
-Conduct](https://leonawicz.github.io/rtrek/CODE_OF_CONDUCT.html). By
-contributing to this project, you agree to abide by its terms.
+Conduct](https://github.com/leonawicz/rtrek/blob/master/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.

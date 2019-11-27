@@ -1,12 +1,8 @@
 url: https://leonawicz.github.io/rtrek
 
-template:
-  params:
-    ganalytics: UA-46129458-3
-
 authors:
   Matthew Leonawicz:
-    href: https://leonawicz.github.io/
+    href: https://github.com/leonawicz
 
 reference:
 - title: Package
