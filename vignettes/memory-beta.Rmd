@@ -92,7 +92,7 @@ Full resolution source images can be downloaded and imported into R using `mb_im
 
 The same example used in the Memory Alpha vignette cannot be duplicated here. Memory Beta does not contain as many images from the television series or movies as Memory Alpha. This is because Memory Beta focuses on licensed works in general and does not need to duplicate everything that is already documented at Memory Alpha.
 
-This time, look for a picture that includes Worf but also Jadzia. Since the category column name is so long, use the `url` column; it's almost the same.
+This time, look for a picture that includes Worf but also K'Ehleyr.
 
 ```{r mb_image}
 library(dplyr)
@@ -100,31 +100,28 @@ x <- "characters/Memory Beta images (characters)/Memory Beta images (Worf)"
 worf <- memory_beta(x)
 worf
 
-worf_jadzia <- filter(worf, grepl("Jadzia", url))
-worf_jadzia
+worf_kehleyr <- filter(worf, grepl("Kehleyr", url))
+worf_kehleyr
 ```
 
 *Qapla'*! One result found.
 
-Note that you can use the full `memory_beta` API endpoint string on this terminal page, treating it like an article (i.e., not a category page). There is not much to return other than perhaps the category entries attached to the image.
-A simpler option is to use the short URL with `mb_article` to achieve the same result.
+Technically, this is not the url to an image file. It is a url that redirects you to some other seemingly random article on the website that happens to include the image in it. This is not necessarily a unique instance of the image, nor is there any consistency in what portal or type of article it takes you to. `memory_beta`, and `mb_article` using the short form url, provide the article content associated with the "file" url. See `mb_image` below for viewing the actual image.
 
 ```{r mb_image2}
-x <- memory_beta(paste0(x, "/Jadzia and Worf on Risa.jpg"))
+x <- memory_beta(paste0(x, "/WorfKehleyr.jpg"))
 x
 
-x <- mb_article("File:Jadzia_and_Worf_on_Risa.jpg")
+x <- mb_article("File:WorfKehleyr.jpg")
 x
 
 x$categories
 ```
 
-This provides quite a bit of metadata about the particular photo.
-
-Of course, the likely intent is to obtain the image file itself when working with image file "article" pages. Use `mb_image` for this. It returns a ggplot object of the downloaded image file.
+The likely intent is to obtain an image file after browsing the web pages that list images files. Even if you are interactively browsing the website, you have to click several times and scroll through additional articles before you can actually view the image file that was initially presented to you as a clickable link. This is a frustrating user experience and confusing design. If you have a file name you want to view, just use `ma_image` for this. It returns a ggplot object of the image file rather than an associated article.
 
 ```{r mb_image3}
-mb_image(worf_jadzia$url[1])
+mb_image(worf_kehleyr$url[1])
 ```
 
 `mb_image` can take the additional arguments, `keep = TRUE` to retain the downloaded image file, and `file` to specify the output filename if you do not want it to be derived from the short URL. If you need more control over the plot, set `keep = TRUE` and then load the image file into R directly to plot separately as needed.

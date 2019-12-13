@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -221,20 +221,20 @@
 <a class="sourceLine" id="cb5-8" title="8">agt &lt;-<span class="st"> </span><span class="kw"><a href="../reference/stapi.html">stapi</a></span>(<span class="st">"episode"</span>, <span class="dt">uid =</span> q_eps<span class="op">$</span>uid[q_eps<span class="op">$</span>title <span class="op">==</span><span class="st"> </span>eps[<span class="dv">2</span>]])</a>
 <a class="sourceLine" id="cb5-9" title="9">characters &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/sets.html">intersect</a></span>(eaf<span class="op">$</span>characters<span class="op">$</span>name, agt<span class="op">$</span>characters<span class="op">$</span>name), <span class="st">"Q"</span>)</a>
 <a class="sourceLine" id="cb5-10" title="10">characters</a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt; [1] "Data"             "William T. Riker" "Geordi La Forge"  "Deanna Troi"     </span></a>
-<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt; [5] "Jean-Luc Picard"  "Worf"             "Beverly Crusher"</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt; [1] "Deanna Troi"      "William T. Riker" "Geordi La Forge"  "Worf"            </span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt; [5] "Data"             "Jean-Luc Picard"  "Beverly Crusher"</span></a></code></pre></div>
 <p>This returns the main crew members who remained a part of the show from beginning to end. However, Dr. Beverly Crusher was away during season two. Below, inspect how many episodes each character, or actor, appeared in. <code>uid</code> is again needed, this time for each character.</p>
 <p>Note that this requires making seven API calls, one for each character ID. The anti-DOS measures in <code>rtrek</code> will force a one-second minimum wait between each call in the event that the individual calls actually return results faster than this, so the code below will take at least seven seconds to complete.</p>
 <p>Add a fun, gratuitous Star Trek-themed plot. Make it so.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">characters &lt;-<span class="st"> </span>eaf<span class="op">$</span>characters <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(uid, name) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(name <span class="op">%in%</span><span class="st"> </span>characters)</a>
 <a class="sourceLine" id="cb6-2" title="2">characters</a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt;              uid             name</span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt; 1 CHMA0000128858             Data</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt; 1 CHMA0000123101      Deanna Troi</span></a>
 <a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt; 2 CHMA0000123073 William T. Riker</span></a>
 <a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt; 3 CHMA0000132570  Geordi La Forge</span></a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; 4 CHMA0000123101      Deanna Troi</span></a>
-<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; 5 CHMA0000132571  Jean-Luc Picard</span></a>
-<a class="sourceLine" id="cb6-9" title="9"><span class="co">#&gt; 6 CHMA0000123141             Worf</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; 4 CHMA0000123141             Worf</span></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co">#&gt; 5 CHMA0000128858             Data</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="co">#&gt; 6 CHMA0000132571  Jean-Luc Picard</span></a>
 <a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt; 7 CHMA0000123143  Beverly Crusher</span></a>
 <a class="sourceLine" id="cb6-11" title="11">eps_count &lt;-<span class="st"> </span><span class="kw">rowwise</span>(characters) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb6-12" title="12"><span class="st">  </span><span class="kw">do</span>(<span class="kw"><a href="../reference/stapi.html">stapi</a></span>(<span class="st">"character"</span>, <span class="dt">uid =</span> .<span class="op">$</span>uid)<span class="op">$</span>episodes<span class="op">$</span>series <span class="op">%&gt;%</span><span class="st"> </span></a>

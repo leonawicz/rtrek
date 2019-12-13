@@ -45,8 +45,8 @@
   
 
 <meta property="og:title" content="Go to Wikipedia entry for a specific book series — st_books_wiki" />
-<meta property="og:description" content="This function opens a browser tab to the main Wikipedia entry for all Star Trek novels automatically scrolled to the section pertaining to id.
-To see the available IDs, call st_books_wiki with no arguments. The Wikipedia page is the one that serves as the source for the stBooksWiki dataset." />
+<meta property="og:description" content="This function opens a browser tab to the main Wikipedia entry for all Star Trek novels.
+For a more complete set of Star Trek series, miniseries and anthology names and acronyms, see the stSeries and stBooks datasets." />
 <meta property="og:image" content="https://leonawicz.github.io/rtrek/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -80,7 +80,7 @@ To see the available IDs, call st_books_wiki with no arguments. The Wikipedia pa
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -164,41 +164,27 @@ To see the available IDs, call st_books_wiki with no arguments. The Wikipedia pa
     </div>
 
     <div class="ref-description">
-    <p>This function opens a browser tab to the main Wikipedia entry for all Star Trek novels automatically scrolled to the section pertaining to <code>id</code>.
-To see the available IDs, call <code>st_books_wiki</code> with no arguments. The Wikipedia page is the one that serves as the source for the <code>stBooksWiki</code> dataset.</p>
+    <p>This function opens a browser tab to the main Wikipedia entry for all Star Trek novels.
+For a more complete set of Star Trek series, miniseries and anthology names and acronyms, see the <code><a href='stSeries.html'>stSeries</a></code> and <code><a href='stBooks.html'>stBooks</a></code> datasets.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>st_books_wiki</span>(<span class='no'>id</span>)</pre>
+    <pre class="usage"><span class='fu'>st_books_wiki</span>()</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>id</th>
-      <td><p>character, abbreviation for a series. See details.</p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>opens a browser tab, nothing is returned unless <code>id</code> is not provided, in which case a data frame is returned.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The search IDs available in <code>st_books_wiki</code> do not represent an exhaustive set of Star Trek series.
-For a more complete set of Star Trek series, miniseries and anthology names and acronyms, see the <code><a href='stSeries.html'>stSeries</a></code> dataset.</p>
+    <p>opens a browser tab, nothing is returned.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='stBooksWiki.html'>stBooksWiki</a></code> <code><a href='stSeries.html'>stSeries</a></code></p></div>
+    <div class='dont-index'><p><code><a href='stBooks.html'>stBooks</a></code> <code><a href='stSeries.html'>stSeries</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>st_books_wiki</span>(<span class='st'>"DS9"</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) <span class='fu'>st_books_wiki</span>()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>

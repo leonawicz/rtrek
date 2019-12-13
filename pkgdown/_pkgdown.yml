@@ -15,7 +15,6 @@ reference:
   - stTiles
   - stSeries
   - stBooks
-  - stBooksWiki
   - stapiEntities
   - stLogos
   - tlBooks
@@ -43,7 +42,6 @@ reference:
   - st_books_wiki
   - st_logo
   - st_font
-  - has_internet
   - "%>%"
 - title: Plots
   contents:

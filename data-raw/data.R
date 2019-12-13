@@ -89,9 +89,7 @@ usethis::use_data(stGeo, stSpecies, stTiles, stapiEntities)
 library(jpeg)
 .worf <- readJPEG("data-raw/images/worf.jpg")
 
-stBooksId <- readRDS("data-raw/internal/stBooksId.rds")
-
-usethis::use_data(stBooksId, .worf, .st_species, .st_zone, internal = TRUE)
+usethis::use_data(.worf, .st_species, .st_zone, internal = TRUE)
 
 series_abb <- c("AV", "CHA", "DS9", "DSC", "ENT", "KE", "MISC", "NF", "PRO", "SKR", "SV",
                 "SCE", "SGZ", "ST", "TAS", "TLE", "TNG", "TOS", "TTN","VAN", "VOY")

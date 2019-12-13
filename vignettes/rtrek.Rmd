@@ -33,29 +33,7 @@ Package datasets in `rtrek` are somewhat eclectic and currently limited. They wi
 
 ## Star Trek novels
 
-The `stBooksWiki` dataset provides a moderately curated data frame of over `r nrow(stBooksWiki)` Star Trek books published since the early days of the Original Series episode adaptations by James Blish up through the latest novels as of the most recent `rtrek` update. `stBooksWiki` is not an exhaustive account, but it is sufficiently comprehensive, containing most published books listed on Wikipedia. Those not listed were those more difficult to web scrape such as small anthologies listed in footnotes rather than in table form online.
-
-```{r stBooksWiki}
-stBooksWiki
-```
-
-Some curation decisions were made in compiling the data frame for `rtrek` related to the inclusion of some metadata in addition to not being a completely exhaustive list. However, the master Wikipedia page for Star Trek literature can be browsed at any time. As if that were not easy enough, `rtrek` also offers a convenience function `st_books_wiki` to load the page in a browser tab auto-scrolled to a specific series of interest.
-
-In order to use this function effectively, first call it with no arguments. It returns a table of available series abbreviations.
-
-```{r st_books_wiki}
-st_books_wiki()
-```
-
-Then call it with a specific acronym ID and the page will load at the desired table entry.
-
-```{r st_books_wiki2, eval = FALSE}
-st_books_wiki("DS9")
-```
-
-This package data only graces the surface of Star Trek novels. A later section provides a brief introduction to Star Trek novel data compiled from text mining analyses of the actual book content. Unlike `stBooksWiki`, which is limited to a metadata overview, these other datasets contain quantifiable variables much more suitable to interesting statistical analysis.
-
-A potentially more detailed and comprehensive Star Trek book metadata table is `stBooks`, which is informed and curated from directly parsing Star Trek e-book metadata rather than parsing third party website content.
+A largely comprehensive Star Trek book metadata table is available as `stBooks`, which is informed and curated from directly parsing Star Trek e-book metadata rather than parsing third party website content.
 
 ```{r stBooks}
 stBooks
@@ -232,9 +210,7 @@ Some functions in `rtrek` provide an API-*like* interface to online Star Trek-re
 
 ## Star Trek novel text mining
 
-This section will be continued in a future version of `rtrek`. For now what is available is a dataset `stBooks` that compliments the `stBooksWiki` dataset seen earlier. `stBooks` has a similar number of metadata entries for Star Trek books and there is considerable overlap between the two datasets. However, there are also considerable differences in entries as well as formatting.
-
-This dataset represents metadata parsed, imperfectly but painstakingly and thoroughly, from actual Star Trek books. Compared to `stBooksWiki`, which represents a scraping of Wikipedia information on Star Trek books, `stBooks` contains several different fields, including more useful fields for analysts such as the number of words and chapters in a book.
+This section will be continued in a future version of `rtrek`. For now what is available is a dataset `stBooks`. This dataset represents metadata parsed, imperfectly but painstakingly and thoroughly, from actual Star Trek books. `stBooks` contains several different fields, including useful fields for analysts such as the number of words and chapters in a book.
 
 ```{r stBooks2}
 stBooks

@@ -15,6 +15,7 @@
 ^appveyor\.yml$
 ^\.travis\.yml$
 ^codecov\.yml$
+^vignettes/rtrek.Rmd$
 ^vignettes/sc.Rmd$
 ^vignettes/fonts.Rmd$
 ^vignettes/rr.Rmd$

@@ -4,25 +4,18 @@
 \alias{st_books_wiki}
 \title{Go to Wikipedia entry for a specific book series}
 \usage{
-st_books_wiki(id)
-}
-\arguments{
-\item{id}{character, abbreviation for a series. See details.}
+st_books_wiki()
 }
 \value{
-opens a browser tab, nothing is returned unless \code{id} is not provided, in which case a data frame is returned.
+opens a browser tab, nothing is returned.
 }
 \description{
-This function opens a browser tab to the main Wikipedia entry for all Star Trek novels automatically scrolled to the section pertaining to \code{id}.
-To see the available IDs, call \code{st_books_wiki} with no arguments. The Wikipedia page is the one that serves as the source for the \code{stBooksWiki} dataset.
-}
-\details{
-The search IDs available in \code{st_books_wiki} do not represent an exhaustive set of Star Trek series.
-For a more complete set of Star Trek series, miniseries and anthology names and acronyms, see the \code{\link{stSeries}} dataset.
+This function opens a browser tab to the main Wikipedia entry for all Star Trek novels.
+For a more complete set of Star Trek series, miniseries and anthology names and acronyms, see the \code{\link{stSeries}} and \code{\link{stBooks}} datasets.
 }
 \examples{
-\dontrun{st_books_wiki("DS9")}
+\dontrun{st_books_wiki()}
 }
 \seealso{
-\code{\link{stBooksWiki}} \code{\link{stSeries}}
+\code{\link{stBooks}} \code{\link{stSeries}}
 }

@@ -218,11 +218,16 @@ ma_search <- function(text, browse = FALSE){
 #' @examples
 #' \dontrun{ma_image("File:Gowron_attempts_to_recruit_Worf.jpg")}
 ma_image <- function(url, file, keep = FALSE){
-  x <- xml2::read_html(ma_base_add(url)) %>% rvest::html_nodes(".fullMedia .internal")
-  idx <- which(ma_text(x) == "original file")
+  file0 <- gsub("^File:", "", url)
+  url2 <- xml2::read_html(ma_base_add(url)) %>%
+    rvest::html_nodes("a img") %>%
+    rvest::html_attr("src")
+  url2 <- url2[grepl("^http", url2)]
+  idx <- grep(file0, url2)
   if(!length(idx)) stop("Source file not accessible.", call. = FALSE)
-  url2 <- ma_href(x)[idx]
-  if(missing(file)) file <- gsub(" ", "_", gsub("^File:", "", url))
+  url2 <- url2[idx[1]]
+  url2 <- gsub("latest/scale-to-width-down/\\d+\\?", "latest?", url2)
+  if(missing(file)) file <- gsub(" ", "_", file0)
   file <- gsub("jpeg$", "jpg", file)
   downloader::download(url2, destfile = file, quiet = TRUE, mode = "wb")
   x <- jpeg::readJPEG(file)

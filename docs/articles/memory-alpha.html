@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -236,11 +236,11 @@
 <div id="images" class="section level2">
 <h2 class="hasAnchor">
 <a href="#images" class="anchor"></a>Images</h2>
-<p>Full resolution source images can be downloaded and imported into R using <code>ma_image</code> if you know the short URL. The easiest way to find URLs is by using a Memory Alpha portal. In the example below, the Memory Alpha images category under Klingons is selected. Look for a picture that includes Worf but also Data. Since the category column name is so long, use the <code>url</code> column; it’s almost the same.</p>
+<p>Full resolution source images can be downloaded and imported into R using <code>ma_image</code> if you know the short URL. The easiest way to find URLs is by using a Memory Alpha portal. In the example below, the Memory Alpha images category under Klingons is selected. Look for a picture that includes Worf but also Data.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb5-2" title="2">klingons &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons/Memory Alpha images (Klingons)"</span>)</a>
 <a class="sourceLine" id="cb5-3" title="3">klingons</a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; # A tibble: 1,209 x 2</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; # A tibble: 1,212 x 2</span></a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;    `Memory Alpha images (Klingons)`     url                                     </span></a>
 <a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;    &lt;chr&gt;                                &lt;chr&gt;                                   </span></a>
 <a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;  1 23rd century Klingons.jpg            File:23rd_century_Klingons.jpg          </span></a>
@@ -253,7 +253,7 @@
 <a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  8 Alexander Rozhenko, 2367.jpg         File:Alexander_Rozhenko,_2367.jpg       </span></a>
 <a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  9 Alexander Rozhenko, 2370.jpg         File:Alexander_Rozhenko,_2370.jpg       </span></a>
 <a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; 10 Alexander Rozhenko, 2374.jpg         File:Alexander_Rozhenko,_2374.jpg       </span></a>
-<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; # ... with 1,199 more rows</span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; # ... with 1,202 more rows</span></a>
 <a class="sourceLine" id="cb5-18" title="18"></a>
 <a class="sourceLine" id="cb5-19" title="19">worf_data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(klingons, <span class="kw"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"Worf"</span>, url) <span class="op">&amp;</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"Data"</span>, url))</a>
 <a class="sourceLine" id="cb5-20" title="20">worf_data</a>
@@ -266,31 +266,28 @@
 <a class="sourceLine" id="cb5-27" title="27"><span class="co">#&gt; 4 Picard Data and Worf on Iconia.jpg      File:Picard_Data_and_Worf_on_Iconia.j~</span></a>
 <a class="sourceLine" id="cb5-28" title="28"><span class="co">#&gt; 5 Worf carries Data through portal.jpg    File:Worf_carries_Data_through_portal~</span></a></code></pre></div>
 <p><em>Qapla’</em>! This provides several results.</p>
-<p>Note that you can use the full <code>memory_alpha</code> API endpoint string on this terminal page, treating it like an article (i.e., not a category page). There is not much to return other than perhaps the category entries attached to the image. A simpler option is to use the short URL with <code>ma_article</code> to achieve the same result.</p>
+<p>Technically, this is not the url to an image file. It is a url that redirects you to some other seemingly random article on the website that happens to include the image in it. This is not necessarily a unique instance of the image, nor is there any consistency in what portal or type of article it takes you to. <code>memory_alpha</code>, and <code>ma_article</code> using the short form url, provide the article content associated with the “file” url. See <code>ma_image</code> below for viewing the actual image.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons/Memory Alpha images (Klingons)/Data tries talking to Worf.jpg"</span>)</a>
 <a class="sourceLine" id="cb6-2" title="2">x</a>
 <a class="sourceLine" id="cb6-3" title="3"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
-<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt;   title                          content    metadata categories      </span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt;   &lt;chr&gt;                          &lt;list&gt;     &lt;list&gt;   &lt;list&gt;          </span></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt; 1 Data tries talking to Worf.jpg &lt;xml_ndst&gt; &lt;NULL&gt;   &lt;tibble [4 x 2]&gt;</span></a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt;   title                       content    metadata categories      </span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt;   &lt;chr&gt;                       &lt;list&gt;     &lt;list&gt;   &lt;list&gt;          </span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt; 1 The Icarus Factor (episode) &lt;xml_ndst&gt; &lt;NULL&gt;   &lt;tibble [1 x 2]&gt;</span></a>
 <a class="sourceLine" id="cb6-7" title="7"></a>
 <a class="sourceLine" id="cb6-8" title="8">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ma_article.html">ma_article</a></span>(<span class="st">"File:Data_tries_talking_to_Worf.jpg"</span>)</a>
 <a class="sourceLine" id="cb6-9" title="9">x</a>
 <a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
-<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt;   title                          content    metadata categories      </span></a>
-<a class="sourceLine" id="cb6-12" title="12"><span class="co">#&gt;   &lt;chr&gt;                          &lt;list&gt;     &lt;list&gt;   &lt;list&gt;          </span></a>
-<a class="sourceLine" id="cb6-13" title="13"><span class="co">#&gt; 1 Data tries talking to Worf.jpg &lt;xml_ndst&gt; &lt;NULL&gt;   &lt;tibble [4 x 2]&gt;</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt;   title                       content    metadata categories      </span></a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="co">#&gt;   &lt;chr&gt;                       &lt;list&gt;     &lt;list&gt;   &lt;list&gt;          </span></a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="co">#&gt; 1 The Icarus Factor (episode) &lt;xml_ndst&gt; &lt;NULL&gt;   &lt;tibble [1 x 2]&gt;</span></a>
 <a class="sourceLine" id="cb6-14" title="14"></a>
 <a class="sourceLine" id="cb6-15" title="15">x<span class="op">$</span>categories</a>
 <a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt; [[1]]</span></a>
-<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt; # A tibble: 4 x 2</span></a>
-<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt;   categories                             url                                    </span></a>
-<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt;   &lt;chr&gt;                                  &lt;chr&gt;                                  </span></a>
-<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt; 1 Memory Alpha remastered files by prod~ Category:Memory_Alpha_remastered_files~</span></a>
-<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt; 2 Memory Alpha fair use images           Category:Memory_Alpha_fair_use_images  </span></a>
-<a class="sourceLine" id="cb6-22" title="22"><span class="co">#&gt; 3 Memory Alpha images (Androids)         Category:Memory_Alpha_images_(Androids)</span></a>
-<a class="sourceLine" id="cb6-23" title="23"><span class="co">#&gt; 4 Memory Alpha images (Klingons)         Category:Memory_Alpha_images_(Klingons)</span></a></code></pre></div>
-<p>Of course, the likely intent is to obtain the image file itself when working with image file “article” pages. Use <code>ma_image</code> for this. It returns a ggplot object of the downloaded image file.</p>
+<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt; # A tibble: 1 x 2</span></a>
+<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt;   categories   url                  </span></a>
+<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;                </span></a>
+<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt; 1 TNG episodes Category:TNG_episodes</span></a></code></pre></div>
+<p>The likely intent is to obtain an image file after browsing the web pages that list images files. Even if you are interactively browsing the website, you have to click several times and scroll through additional articles before you can actually view the image file that was initially presented to you as a clickable link. This is a frustrating user experience and confusing design. If you have a file name you want to view, just use <code>ma_image</code> for this. It returns a ggplot object of the image file rather than an associated article.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="../reference/ma_image.html">ma_image</a></span>(worf_data<span class="op">$</span>url[<span class="dv">1</span>])</a></code></pre></div>
 <p><img src="memory-alpha_files/figure-html/ma_image3-1.png" width="700"></p>
 <p><code>ma_image</code> can take the additional arguments, <code>keep = TRUE</code> to retain the downloaded image file, and <code>file</code> to specify the output filename if you do not want it to be derived from the short URL. If you need more control over the plot, set <code>keep = TRUE</code> and then load the image file into R directly to plot separately as needed.</p>
@@ -308,12 +305,12 @@
 <a class="sourceLine" id="cb8-6" title="6"><span class="co">#&gt;  2 Francis Guinan      https://memory-alpha.fandom.com/wiki/~ Francis_Guinan    </span></a>
 <a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt;  3 Unnamed individual~ https://memory-alpha.fandom.com/wiki/~ Unnamed_individua~</span></a>
 <a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt;  4 Unnamed El-Aurians  https://memory-alpha.fandom.com/wiki/~ Unnamed_El-Aurians</span></a>
-<a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt;  5 Alexander Rozhenko  https://memory-alpha.fandom.com/wiki/~ Alexander_Rozhenko</span></a>
-<a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt;  6 Borg                https://memory-alpha.fandom.com/wiki/~ Borg              </span></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt;  7 Jean-Luc Picard     https://memory-alpha.fandom.com/wiki/~ Jean-Luc_Picard   </span></a>
-<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt;  8 Data                https://memory-alpha.fandom.com/wiki/~ Data              </span></a>
-<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt;  9 Worf                https://memory-alpha.fandom.com/wiki/~ Worf              </span></a>
-<a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt; 10 USS Enterprise (NC~ https://memory-alpha.fandom.com/wiki/~ USS_Enterprise_(N~</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt;  5 Borg                https://memory-alpha.fandom.com/wiki/~ Borg              </span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt;  6 Alexander Rozhenko  https://memory-alpha.fandom.com/wiki/~ Alexander_Rozhenko</span></a>
+<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt;  7 Q                   https://memory-alpha.fandom.com/wiki/Q Q                 </span></a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt;  8 Jean-Luc Picard     https://memory-alpha.fandom.com/wiki/~ Jean-Luc_Picard   </span></a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt;  9 Data                https://memory-alpha.fandom.com/wiki/~ Data              </span></a>
+<a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt; 10 Worf                https://memory-alpha.fandom.com/wiki/~ Worf              </span></a>
 <a class="sourceLine" id="cb8-15" title="15"><span class="co">#&gt; # ... with 15 more rows</span></a></code></pre></div>
 </div>
 <div id="caveats" class="section level2">

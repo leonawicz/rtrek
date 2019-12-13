@@ -14,14 +14,13 @@ The data frame contains most of the novels but is not comprehensive and may be o
 It is largely complete through the end of 2017, though some older entries are still missing.
 }
 \details{
-\code{stBooks} contains a number of additional columns providing metadata about each book that could only be parsed directly from books and not from the Wikipedia page that serves as the source for \code{stBooksWiki}.
-These columns include the number of characters, words and chapters in a book. There may be some irregularities or erroneous entries based on the imperfect methods use to compile the metadata,
+\code{stBooks}: There may be some irregularities or erroneous entries based on the imperfect methods use to compile the metadata,
 but it is overall an accurate dataset.
 
 The \code{nchap} column is largely accurate, but imperfect. Some entries suggest a book has an unusual number of chapters, but the parser is not perfect at determining what constitutes a chapter.
 However, many of the books with unusually high numbers of chapters are not erroneous but rather indicate a reference book, omnibus or anthology, as opposed to a standard novel.
 }
 \seealso{
-\code{\link{stSeries}}, \code{\link{stBooksWiki}}
+\code{\link{stSeries}}, \code{\link{st_books_wiki}}
 }
 \keyword{datasets}

@@ -81,7 +81,7 @@ If `browse = TRUE` the article page also launches in the browser.
 
 ## Images
 
-Full resolution source images can be downloaded and imported into R using `ma_image` if you know the short URL. The easiest way to find URLs is by using a Memory Alpha portal. In the example below, the Memory Alpha images category under Klingons is selected. Look for a picture that includes Worf but also Data. Since the category column name is so long, use the `url` column; it's almost the same.
+Full resolution source images can be downloaded and imported into R using `ma_image` if you know the short URL. The easiest way to find URLs is by using a Memory Alpha portal. In the example below, the Memory Alpha images category under Klingons is selected. Look for a picture that includes Worf but also Data.
 
 ```{r ma_image}
 library(dplyr)
@@ -94,8 +94,7 @@ worf_data
 
 *Qapla'*! This provides several results.
 
-Note that you can use the full `memory_alpha` API endpoint string on this terminal page, treating it like an article (i.e., not a category page). There is not much to return other than perhaps the category entries attached to the image.
-A simpler option is to use the short URL with `ma_article` to achieve the same result.
+Technically, this is not the url to an image file. It is a url that redirects you to some other seemingly random article on the website that happens to include the image in it. This is not necessarily a unique instance of the image, nor is there any consistency in what portal or type of article it takes you to. `memory_alpha`, and `ma_article` using the short form url, provide the article content associated with the "file" url. See `ma_image` below for viewing the actual image.
 
 ```{r ma_image2}
 x <- memory_alpha("people/Klingons/Memory Alpha images (Klingons)/Data tries talking to Worf.jpg")
@@ -107,7 +106,7 @@ x
 x$categories
 ```
 
-Of course, the likely intent is to obtain the image file itself when working with image file "article" pages. Use `ma_image` for this. It returns a ggplot object of the downloaded image file.
+The likely intent is to obtain an image file after browsing the web pages that list images files. Even if you are interactively browsing the website, you have to click several times and scroll through additional articles before you can actually view the image file that was initially presented to you as a clickable link. This is a frustrating user experience and confusing design. If you have a file name you want to view, just use `ma_image` for this. It returns a ggplot object of the image file rather than an associated article.
 
 ```{r ma_image3}
 ma_image(worf_data$url[1])

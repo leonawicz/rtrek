@@ -1,13 +1,11 @@
 context("api")
 
 unavail <- "Internet resources currently unavailable."
-soc <- !has_internet("http://stapi.co")
 
 library(dplyr)
 qid <- "CHMA0000025118"
 
 test_that("stapi returns as expected", {
-  if(soc) skip(unavail)
   skip_on_cran()
   expect_is(stapi("character", page_count = TRUE), "NULL")
 
@@ -30,7 +28,6 @@ test_that("stapi returns as expected", {
 })
 
 test_that("rtrek_antidos option is set on load and checked", {
-  if(soc) skip(unavail)
   skip_on_cran()
   expect_equal(getOption("rtrek_antidos"), 1)
   options(rtrek_antidos = 0)

@@ -1,7 +1,6 @@
 context("mb_timeline")
 
 unavail <- "Internet resources currently unavailable."
-soc <- !has_internet("http://memory-beta.wikia.com/")
 
 err1 <- paste("`x` must be numeric years, e.g., 2371:2374, or character decade,",
               "e.g. '2370s', or one of 'main', 'past', 'future' or 'complete'.")
@@ -18,7 +17,6 @@ test_that("mb_timeline errors as expected", {
 })
 
 test_that("mb_timeline returns as expected (CRAN)", {
-  if(soc) skip(unavail)
   skip_on_cran()
   x <- mb_timeline(2360)
   expect_is(x, "list")

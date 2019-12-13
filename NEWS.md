@@ -1,3 +1,10 @@
+# rtrek 0.3.0
+
+* Fix bugs related to Memory Alpha and Memory Beta breaking changes.
+* Simplify Wikipedia book list function to reduce package maintenance. Encourage use of `stBooks`.
+* Updated documentation and testing conditions.
+* only build vignette for website, no longer included in package.
+
 # rtrek 0.2.5
 
 * Added `st_transcripts` for importing datasets based on episode and movie transcripts containing metadata and variables for analysis of scenes, character presence, dialog, sentiment.

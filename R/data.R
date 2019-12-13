@@ -19,32 +19,20 @@
 #' @format A data frame
 "stTiles"
 
-#' Star Trek novel metadata from Wikipedia.
-#'
-#' A data frame with 719 rows and 6 columns containing metadata on Star Trek novels and other books taken from the primary Wikipedia page: \url{https://en.wikipedia.org/wiki/List_of_Star_Trek_novels}.
-#' The data frame contains most of the novels but is not comprehensive, containing only the most easily scraped HTML table data, and may be out of date temporarily whenever new novels are published.
-#'
-#' There is considerable overlap in titles between \code{stBooksWiki} and \code{stBooks}, but also unique entries and they offer some different fields.
-#'
-#' @format A data frame
-#' @seealso \code{\link{st_books_wiki}}, \code{\link{stBooks}}
-"stBooksWiki"
-
 #' Star Trek novel metadata.
 #'
 #' A data frame with 783 rows and 11 columns containing metadata on Star Trek novels and other books taken directly from original books.
 #' The data frame contains most of the novels but is not comprehensive and may be out of date temporarily whenever new novels are published.
 #' It is largely complete through the end of 2017, though some older entries are still missing.
 #'
-#' \code{stBooks} contains a number of additional columns providing metadata about each book that could only be parsed directly from books and not from the Wikipedia page that serves as the source for \code{stBooksWiki}.
-#' These columns include the number of characters, words and chapters in a book. There may be some irregularities or erroneous entries based on the imperfect methods use to compile the metadata,
+#' \code{stBooks}: There may be some irregularities or erroneous entries based on the imperfect methods use to compile the metadata,
 #' but it is overall an accurate dataset.
 #'
 #' The \code{nchap} column is largely accurate, but imperfect. Some entries suggest a book has an unusual number of chapters, but the parser is not perfect at determining what constitutes a chapter.
 #' However, many of the books with unusually high numbers of chapters are not erroneous but rather indicate a reference book, omnibus or anthology, as opposed to a standard novel.
 #'
 #' @format A data frame
-#' @seealso \code{\link{stSeries}}, \code{\link{stBooksWiki}}
+#' @seealso \code{\link{stSeries}}, \code{\link{st_books_wiki}}
 "stBooks"
 
 #' Star Trek series.
@@ -138,15 +126,13 @@
 #' st_datasets()
 st_datasets <- function(){
   dplyr::tibble(
-    dataset = c("stGeo", "stSpecies", "stTiles",
-                "stBooks", "stBooksWiki", "stSeries",
-                "stapiEntities", "stLogos",
-                "tlBooks", "tlEvents", "tlFootnotes"),
+    dataset = c("stGeo", "stSpecies", "stTiles", "stBooks", "stSeries",
+                "stapiEntities", "stLogos", "tlBooks", "tlEvents",
+                "tlFootnotes"),
     description = c("Map tile set locations of interest.",
                     "Basic intelligent species data.",
                     "Available map tile sets.",
                     "Star Trek novel metadata.",
-                    "Star Trek novel metadata from Wikipedia.",
                     "Names and acronyms of Star Trek series",
                     "Star Trek API (STAPI) categories",
                     "Metadata for various Star Trek logos",

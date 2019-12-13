@@ -1,10 +1,8 @@
 context("Memory Alpha")
 
 unavail <- "Internet resources currently unavailable."
-soc <- !has_internet("http://memory-alpha.wikia.com/")
 
 test_that("memory_alpha returns as expected", {
-  if(soc) skip(unavail)
   skip_on_cran()
   expect_identical(memory_alpha("portals"), .ma_portals)
 
@@ -33,8 +31,8 @@ test_that("memory_alpha returns as expected", {
   expect_equal(ncol(d), 3)
   expect_equal(names(d), grp[1:3])
 
-  expect_warning(d <- memory_alpha("series/Deep Space Nine"),
-                 "Summary card cannot be parsed. Metadata column will be NULL.")
+  d <- memory_alpha("series/Deep Space Nine")
+  expect_is(d$metadata[[1]], "NULL")
   expect_equal(dim(d), c(1, 4))
   expect_equal(names(d), c("title", "content", "metadata", "categories"))
   expect_equal(as.character(sapply(d, class)), c("character", rep("list", 3)))
@@ -57,7 +55,6 @@ test_that("memory_alpha returns as expected", {
 })
 
 test_that("ma_article returns as expected", {
-  if(soc) skip(unavail)
   skip_on_cran()
   expect_error(ma_article("x"), "Article not found.")
   closeAllConnections()
@@ -74,7 +71,6 @@ test_that("ma_article returns as expected", {
 })
 
 test_that("ma_search returns as expected", {
-  if(soc) skip(unavail)
   skip_on_cran()
   d <- ma_search("Worf")
   expect_equal(ncol(d), 3)
@@ -82,7 +78,6 @@ test_that("ma_search returns as expected", {
 })
 
 test_that("ma_image and related calls all return as expected", {
-  if(soc) skip(unavail)
   skip_on_cran()
   file <- "File:Ajilon_Prime_Klingon_1.jpg"
   ep <- gsub("File:", "", gsub("_", " ", file))
@@ -90,7 +85,6 @@ test_that("ma_image and related calls all return as expected", {
   x2 <- ma_article(file)
   expect_is(x1, "tbl_df")
   expect_identical(x1$categories, x2$categories)
-  expect_equal(dim(x1$categories[[1]]), c(4, 2))
 
   x1 <- ma_image(file)
   expect_is(x1, "ggplot")

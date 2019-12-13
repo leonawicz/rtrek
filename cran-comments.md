@@ -13,7 +13,7 @@
 
 ## This is an update release.
 
-* Minor updates.
+* Fixes bug and not longer requires internet resource-dependent vignette.
 
 ## Downstream dependencies
 

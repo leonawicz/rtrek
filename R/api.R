@@ -84,19 +84,3 @@ stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
   assign(x, Sys.time(), envir = rtrek_api_time)
   wait
 }
-
-#' Check for internet connection
-#'
-#' A basic check for internet connectivity.
-#'
-#' @param url character.
-#'
-#' @return logical
-#' @export
-#'
-#' @examples
-#' has_internet()
-has_internet <- function(url = "https://www.google.com"){
-  x <- try(suppressWarnings(readLines(url, n = 1)), silent = TRUE)
-  !inherits(x, "try-error")
-}

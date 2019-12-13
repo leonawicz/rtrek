@@ -1,10 +1,8 @@
 context("Memory Beta")
 
 unavail <- "Internet resources currently unavailable."
-soc <- !has_internet("http://memory-beta.wikia.com/")
 
 test_that("memory_beta returns as expected", {
-  if(soc) skip(unavail)
   skip_on_cran()
   expect_identical(memory_beta("portals"), .mb_portals)
 
@@ -34,7 +32,6 @@ test_that("memory_beta returns as expected", {
 })
 
 test_that("mb_article returns as expected", {
-  if(soc) skip(unavail)
   skip_on_cran()
   expect_error(mb_article("x"), "Article not found.")
   closeAllConnections()
@@ -51,7 +48,6 @@ test_that("mb_article returns as expected", {
 })
 
 test_that("mb_search returns as expected", {
-  if(soc) skip(unavail)
   skip_on_cran()
   d <- mb_search("Worf")
   expect_equal(ncol(d), 3)
@@ -59,7 +55,6 @@ test_that("mb_search returns as expected", {
 })
 
 test_that("mb_image and related calls all return as expected", {
-  if(soc) skip(unavail)
   skip_on_cran()
   file <- "File:DataBlaze.jpg"
   ep <- file.path("characters", "Memory Beta images (characters)",
@@ -68,7 +63,7 @@ test_that("mb_image and related calls all return as expected", {
   x2 <- mb_article(file)
   expect_is(x1, "tbl_df")
   expect_identical(x1$categories, x2$categories)
-  expect_equal(dim(x1$categories[[1]]), c(9, 2))
+  expect_is(x1$categories[[1]], "tbl_df")
 
   x1 <- mb_image(file)
   expect_is(x1, "ggplot")

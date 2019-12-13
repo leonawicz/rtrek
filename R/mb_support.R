@@ -77,10 +77,7 @@ mb_article_aside <- function(x){
   cols <- gsub(":$", "", cols)
   cols <- gsub("\\s", "_", cols)
   x <- rvest::html_nodes(x, ".pi-data-value")
-  if(length(x) != length(cols)){
-    warning("Summary card cannot be parsed. Metadata column will be NULL.")
-    return()
-  }
+  if(length(x) != length(cols)) return()
   vals <- purrr::map(x, ~{
     x <- xml2::xml_contents(.x) %>% mb_text(trim = FALSE)
     x[x %in% c("", " ")] <- "|"
