@@ -10,21 +10,21 @@
 |collate  |English_United States.1252   |
 |ctype    |English_United States.1252   |
 |tz       |America/Denver               |
-|date     |2019-11-26                   |
+|date     |2019-12-13                   |
 
 # Dependencies
 
 |package      |old      |new      |<U+0394>  |
 |:------------|:--------|:--------|:--|
-|rtrek        |0.2.0    |0.2.5    |*  |
+|rtrek        |0.2.5    |0.3.0    |*  |
 |askpass      |1.1      |1.1      |   |
 |assertthat   |0.2.1    |0.2.1    |   |
 |backports    |1.1.5    |1.1.5    |   |
 |BH           |1.69.0-1 |1.69.0-1 |   |
-|cli          |1.1.0    |1.1.0    |   |
+|cli          |2.0.0    |2.0.0    |   |
 |colorspace   |1.4-1    |1.4-1    |   |
 |crayon       |1.3.4    |1.3.4    |   |
-|curl         |4.2      |4.2      |   |
+|curl         |4.3      |4.3      |   |
 |digest       |0.6.23   |0.6.23   |   |
 |downloader   |0.4      |0.4      |   |
 |dplyr        |0.8.3    |0.8.3    |   |
@@ -48,13 +48,13 @@
 |pillar       |1.4.2    |1.4.2    |   |
 |pkgconfig    |2.0.3    |2.0.3    |   |
 |plogr        |0.2.0    |0.2.0    |   |
-|plyr         |1.8.4    |1.8.4    |   |
+|plyr         |1.8.5    |1.8.5    |   |
 |purrr        |0.3.3    |0.3.3    |   |
 |R6           |2.4.1    |2.4.1    |   |
 |RColorBrewer |1.1-2    |1.1-2    |   |
 |Rcpp         |1.0.3    |1.0.3    |   |
 |reshape2     |1.4.3    |1.4.3    |   |
-|rlang        |0.4.1    |0.4.1    |   |
+|rlang        |0.4.2    |0.4.2    |   |
 |rvest        |0.3.5    |0.3.5    |   |
 |scales       |1.1.0    |1.1.0    |   |
 |selectr      |0.4-2    |0.4-2    |   |
