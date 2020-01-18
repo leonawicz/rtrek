@@ -240,7 +240,7 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb5-2" title="2">klingons &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons/Memory Alpha images (Klingons)"</span>)</a>
 <a class="sourceLine" id="cb5-3" title="3">klingons</a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; # A tibble: 1,212 x 2</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; # A tibble: 1,213 x 2</span></a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;    `Memory Alpha images (Klingons)`     url                                     </span></a>
 <a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;    &lt;chr&gt;                                &lt;chr&gt;                                   </span></a>
 <a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;  1 23rd century Klingons.jpg            File:23rd_century_Klingons.jpg          </span></a>
@@ -253,7 +253,7 @@
 <a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  8 Alexander Rozhenko, 2367.jpg         File:Alexander_Rozhenko,_2367.jpg       </span></a>
 <a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  9 Alexander Rozhenko, 2370.jpg         File:Alexander_Rozhenko,_2370.jpg       </span></a>
 <a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; 10 Alexander Rozhenko, 2374.jpg         File:Alexander_Rozhenko,_2374.jpg       </span></a>
-<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; # ... with 1,202 more rows</span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; # ... with 1,203 more rows</span></a>
 <a class="sourceLine" id="cb5-18" title="18"></a>
 <a class="sourceLine" id="cb5-19" title="19">worf_data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(klingons, <span class="kw"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"Worf"</span>, url) <span class="op">&amp;</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"Data"</span>, url))</a>
 <a class="sourceLine" id="cb5-20" title="20">worf_data</a>
@@ -303,14 +303,14 @@
 <a class="sourceLine" id="cb8-4" title="4"><span class="co">#&gt;    &lt;chr&gt;               &lt;chr&gt;                                  &lt;chr&gt;             </span></a>
 <a class="sourceLine" id="cb8-5" title="5"><span class="co">#&gt;  1 Guinan              https://memory-alpha.fandom.com/wiki/~ Guinan            </span></a>
 <a class="sourceLine" id="cb8-6" title="6"><span class="co">#&gt;  2 Francis Guinan      https://memory-alpha.fandom.com/wiki/~ Francis_Guinan    </span></a>
-<a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt;  3 Unnamed individual~ https://memory-alpha.fandom.com/wiki/~ Unnamed_individua~</span></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt;  4 Unnamed El-Aurians  https://memory-alpha.fandom.com/wiki/~ Unnamed_El-Aurians</span></a>
-<a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt;  5 Borg                https://memory-alpha.fandom.com/wiki/~ Borg              </span></a>
-<a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt;  6 Alexander Rozhenko  https://memory-alpha.fandom.com/wiki/~ Alexander_Rozhenko</span></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt;  7 Q                   https://memory-alpha.fandom.com/wiki/Q Q                 </span></a>
-<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt;  8 Jean-Luc Picard     https://memory-alpha.fandom.com/wiki/~ Jean-Luc_Picard   </span></a>
-<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt;  9 Data                https://memory-alpha.fandom.com/wiki/~ Data              </span></a>
-<a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt; 10 Worf                https://memory-alpha.fandom.com/wiki/~ Worf              </span></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt;  3 Unnamed El-Aurians  https://memory-alpha.fandom.com/wiki/~ Unnamed_El-Aurians</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt;  4 Unnamed individual~ https://memory-alpha.fandom.com/wiki/~ Unnamed_individua~</span></a>
+<a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt;  5 Jean-Luc Picard     https://memory-alpha.fandom.com/wiki/~ Jean-Luc_Picard   </span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt;  6 Borg                https://memory-alpha.fandom.com/wiki/~ Borg              </span></a>
+<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt;  7 Starfleet           https://memory-alpha.fandom.com/wiki/~ Starfleet         </span></a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt;  8 Q                   https://memory-alpha.fandom.com/wiki/Q Q                 </span></a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt;  9 Wesley Crusher      https://memory-alpha.fandom.com/wiki/~ Wesley_Crusher    </span></a>
+<a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt; 10 Data                https://memory-alpha.fandom.com/wiki/~ Data              </span></a>
 <a class="sourceLine" id="cb8-15" title="15"><span class="co">#&gt; # ... with 15 more rows</span></a></code></pre></div>
 </div>
 <div id="caveats" class="section level2">

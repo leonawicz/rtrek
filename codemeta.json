@@ -14,10 +14,10 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.1",
+    "version": "3.6.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.1 (2019-07-05)",
+  "runtimePlatform": "R version 3.6.2 (2019-12-12)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -316,7 +316,7 @@
   "copyrightHolder": {},
   "funder": {},
   "developmentStatus": "http://www.repostatus.org/#active",
-  "fileSize": "546.151KB",
+  "fileSize": "546.305KB",
   "keywords": [
     "r-package",
     "star-trek",

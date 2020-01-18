@@ -180,6 +180,11 @@ mb_timeline(2230)
 
 Live long and prosper.
 
+## Reference
+
+[Complete package reference and function
+documentation](https://leonawicz.github.io/rtrek/)
+
 ## Packages in the trekverse
 
 <div class="row">
@@ -201,6 +206,32 @@ Trek package
 
 Datasets related to Star Trek, API wrappers to external data sources,
 and more.
+
+</div>
+
+</div>
+
+<br/>
+
+<div class="row">
+
+<div class="col-sm-2">
+
+<a href="https://github.com/leonawicz/lcars"><img src="https://raw.githubusercontent.com/leonawicz/lcars/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a>
+
+</div>
+
+<div class="col-sm-10">
+
+<h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+
+<a href="https://github.com/leonawicz/lcars">lcars</a>: LCARS aesthetic
+for Shiny
+
+</h4>
+
+Create Shiny apps based on the Library Computer Access/Retrieval System
+(LCARS).
 
 </div>
 
@@ -257,7 +288,7 @@ True (Trek) type fonts to style your Star Trek themed graphics text.
 
 </div>
 
------
+<br>
 
 *If you enjoy my R community contributions, consider* ***[buying me a
 coffee in Ko-fi](https://ko-fi.com/leonawicz)*** *so I can keep
