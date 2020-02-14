@@ -10,7 +10,7 @@
   "codeRepository": "https://github.com/leonawicz/rtrek",
   "issueTracker": "https://github.com/leonawicz/rtrek/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -316,7 +316,7 @@
   "copyrightHolder": {},
   "funder": {},
   "developmentStatus": "http://www.repostatus.org/#active",
-  "fileSize": "546.305KB",
+  "fileSize": "546.257KB",
   "keywords": [
     "r-package",
     "star-trek",

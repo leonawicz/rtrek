@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -192,7 +192,7 @@
 <p>Descending through subcategories is done by appending their <code>id</code> values, separated by a forward slash <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>. Notice that compared to Memory Alpha, classification and resulting hierarchical organization can be more detailed for similar content.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">x &lt;-<span class="st"> "characters/Characters by races and cultures/Klingonoids/Klingons"</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(x)</a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; # A tibble: 1,092 x 2</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; # A tibble: 1,094 x 2</span></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;    Klingons                         url                               </span></a>
 <a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt;    &lt;chr&gt;                            &lt;chr&gt;                             </span></a>
 <a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt;  1 Klingon                          Klingon                           </span></a>
@@ -205,7 +205,7 @@
 <a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  8 Adon, son of Gorath              Adon,_son_of_Gorath               </span></a>
 <a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt;  9 Adrokos                          Adrokos                           </span></a>
 <a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; 10 Aek-Nor                          Aek-Nor                           </span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; # ... with 1,082 more rows</span></a>
+<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; # ... with 1,084 more rows</span></a>
 <a class="sourceLine" id="cb3-17" title="17"></a>
 <a class="sourceLine" id="cb3-18" title="18"><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(x, <span class="st">"/Worf, son of Mogh"</span>))</a>
 <a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
@@ -253,7 +253,7 @@
 <a class="sourceLine" id="cb5-2" title="2">x &lt;-<span class="st"> "characters/Memory Beta images (characters)/Memory Beta images (Worf)"</span></a>
 <a class="sourceLine" id="cb5-3" title="3">worf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_beta.html">memory_beta</a></span>(x)</a>
 <a class="sourceLine" id="cb5-4" title="4">worf</a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt; # A tibble: 65 x 2</span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt; # A tibble: 66 x 2</span></a>
 <a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;    `Memory Beta images (Worf)` url                       </span></a>
 <a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;    &lt;chr&gt;                       &lt;chr&gt;                     </span></a>
 <a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;  1 Akvoh.jpg                   File:Akvoh.jpg            </span></a>
@@ -266,7 +266,7 @@
 <a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  8 CogenV.jpg                  File:CogenV.jpg           </span></a>
 <a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt;  9 Conundrum.jpg               File:Conundrum.jpg        </span></a>
 <a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; 10 Ds9finale crew.jpg          File:Ds9finale_crew.jpg   </span></a>
-<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt; # ... with 55 more rows</span></a>
+<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt; # ... with 56 more rows</span></a>
 <a class="sourceLine" id="cb5-19" title="19"></a>
 <a class="sourceLine" id="cb5-20" title="20">worf_kehleyr &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(worf, <span class="kw"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"Kehleyr"</span>, url))</a>
 <a class="sourceLine" id="cb5-21" title="21">worf_kehleyr</a>
@@ -418,12 +418,12 @@
 <a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt;  2 Guinan (mirror)     https://memory-beta.fandom.com/wiki/G~ Guinan_(mirror)   </span></a>
 <a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt;  3 Jean-Luc Picard     https://memory-beta.fandom.com/wiki/J~ Jean-Luc_Picard   </span></a>
 <a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt;  4 James T. Kirk       https://memory-beta.fandom.com/wiki/J~ James_T._Kirk     </span></a>
-<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt;  5 USS Enterprise (NC~ https://memory-beta.fandom.com/wiki/U~ USS_Enterprise_(N~</span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt;  5 Q                   https://memory-beta.fandom.com/wiki/Q  Q                 </span></a>
 <a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;  6 Star Trek: The Nex~ https://memory-beta.fandom.com/wiki/S~ Star_Trek:_The_Ne~</span></a>
-<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;  7 Doomsday machine    https://memory-beta.fandom.com/wiki/D~ Doomsday_machine  </span></a>
-<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  8 Guardian of Forever https://memory-beta.fandom.com/wiki/G~ Guardian_of_Forev~</span></a>
-<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  9 Plagues of Night    https://memory-beta.fandom.com/wiki/P~ Plagues_of_Night  </span></a>
-<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt; 10 Star Trek Nemesis   https://memory-beta.fandom.com/wiki/S~ Star_Trek_Nemesis </span></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;  7 Geordi La Forge     https://memory-beta.fandom.com/wiki/G~ Geordi_La_Forge   </span></a>
+<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  8 USS Enterprise (NC~ https://memory-beta.fandom.com/wiki/U~ USS_Enterprise_(N~</span></a>
+<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  9 Montgomery Scott    https://memory-beta.fandom.com/wiki/M~ Montgomery_Scott  </span></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt; 10 Doomsday machine    https://memory-beta.fandom.com/wiki/D~ Doomsday_machine  </span></a>
 <a class="sourceLine" id="cb9-15" title="15"><span class="co">#&gt; # ... with 15 more rows</span></a></code></pre></div>
 </div>
 <div id="caveats" class="section level2">

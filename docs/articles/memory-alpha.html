@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
       </span>
     </div>
 
@@ -159,7 +159,7 @@
 <a href="#using-a-portal" class="anchor"></a>Using a portal</h2>
 <p>When using a specific portal at the highest level (portal ID only), the returned data frame contains information about searchable categories available in the portal.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people"</span>)</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt; # A tibble: 101 x 3</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt; # A tibble: 102 x 3</span></a>
 <a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt;    id          url                  group     </span></a>
 <a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;                &lt;chr&gt;     </span></a>
 <a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt;  1 Acamarians  Category:Acamarians  By species</span></a>
@@ -172,13 +172,13 @@
 <a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt;  8 Augments    Category:Augments    By species</span></a>
 <a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt;  9 Ba'ku       Category:Ba%27ku     By species</span></a>
 <a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt; 10 Bajorans    Category:Bajorans    By species</span></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt; # ... with 91 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt; # ... with 92 more rows</span></a></code></pre></div>
 <p>Again, there are <code>id</code> and <code>url</code> columns. There is also a <code>group</code> (and potentially a <code>subgroup</code>) column. This is only to provide meaningful context for the values in the <code>id</code> column if relevant for a given portal; <code>group</code> is not used for anything and the user can ignore it.</p>
 <p>The above call does involve reaching out to Memory Alpha. While the portals are stable, it is expected that content within is regularly updated. Remember that this is not a real API. Since one is not available, what is really going on behind the scenes is the use of <code>xml2</code> and <code>rvest</code> for web page harvesting.</p>
 <p>Some portals have terminal endpoints - in Memory Alpha these are the written articles - at the top level, but typically the top level results for a portal are categories. You can always differentiate categories from articles by the URL, which will begin with <code>Category:</code> in the former case.</p>
 <p>Descending through subcategories is done by appending their <code>id</code> values, separated by a forward slash <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons"</span>)</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt; # A tibble: 221 x 2</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt; # A tibble: 220 x 2</span></a>
 <a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt;    Klingons                       url                                    </span></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt;    &lt;chr&gt;                          &lt;chr&gt;                                  </span></a>
 <a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt;  1 Memory Alpha images (Klingons) Category:Memory_Alpha_images_(Klingons)</span></a>
@@ -191,13 +191,13 @@
 <a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt;  8 Ba'el                          Ba%27el                                </span></a>
 <a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt;  9 Ba'ktor                        Ba%27ktor                              </span></a>
 <a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt; 10 Barak-Kadan                    Barak-Kadan                            </span></a>
-<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; # ... with 211 more rows</span></a>
+<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; # ... with 210 more rows</span></a>
 <a class="sourceLine" id="cb3-16" title="16"></a>
 <a class="sourceLine" id="cb3-17" title="17"><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons/Worf"</span>)</a>
 <a class="sourceLine" id="cb3-18" title="18"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
 <a class="sourceLine" id="cb3-19" title="19"><span class="co">#&gt;   title content    metadata          categories       </span></a>
 <a class="sourceLine" id="cb3-20" title="20"><span class="co">#&gt;   &lt;chr&gt; &lt;list&gt;     &lt;list&gt;            &lt;list&gt;           </span></a>
-<a class="sourceLine" id="cb3-21" title="21"><span class="co">#&gt; 1 Worf  &lt;xml_ndst&gt; &lt;tibble [1 x 16]&gt; &lt;tibble [11 x 2]&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-21" title="21"><span class="co">#&gt; 1 Worf  &lt;xml_ndst&gt; &lt;tibble [1 x 16]&gt; &lt;tibble [12 x 2]&gt;</span></a></code></pre></div>
 <p>Note the change in the structure of the final output, which is an article. This is the end of this particular road The result is still a data frame, but now has only one row, the article.</p>
 <p>The columns include a text <code>title</code> and three nested datasets. <code>content</code> contains an <code>xml_nodeset</code> object left (mostly) unadulterated by <code>memory_alpha</code>. This contains the article’s main content section, including ordered content from a default set of html tags. For more control over article content, see <code>ma_article</code> in the next section. <code>metadata</code> contains a nested data frame of content parsed from the summary card that appears in the top right corner of articles. If this fails to parse for a given article, <code>NULL</code> is returned. <code>categories</code> returns a data frame containing categories in which the article topic falls under and their respective URLs.</p>
 </div>
@@ -210,7 +210,7 @@
 <a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt; # A tibble: 1 x 4</span></a>
 <a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt;   title content    metadata          categories       </span></a>
 <a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt;   &lt;chr&gt; &lt;list&gt;     &lt;list&gt;            &lt;list&gt;           </span></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; 1 Worf  &lt;chr [38]&gt; &lt;tibble [1 x 16]&gt; &lt;tibble [11 x 2]&gt;</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt; 1 Worf  &lt;chr [40]&gt; &lt;tibble [1 x 16]&gt; &lt;tibble [12 x 2]&gt;</span></a>
 <a class="sourceLine" id="cb4-7" title="7">worf<span class="op">$</span>content[[<span class="dv">1</span>]] <span class="co"># Worf article section headings</span></a>
 <a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt;  [1] "Early life"                          "The Rozhenkos"                      </span></a>
 <a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt;  [3] "Coming of age"                       "Service aboard the USS Enterprise-D"</span></a>
@@ -218,19 +218,20 @@
 <a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt;  [7] "Klingon affairs"                     "Other notable missions"             </span></a>
 <a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt;  [9] "Service on Deep Space 9"             "USS Defiant missions"               </span></a>
 <a class="sourceLine" id="cb4-13" title="13"><span class="co">#&gt; [11] "The Dominion War"                    "Service aboard the USS Enterprise-E"</span></a>
-<a class="sourceLine" id="cb4-14" title="14"><span class="co">#&gt; [13] "Personality"                         "Physicality"                        </span></a>
-<a class="sourceLine" id="cb4-15" title="15"><span class="co">#&gt; [15] "As a warrior"                        "Ailments and injuries"              </span></a>
-<a class="sourceLine" id="cb4-16" title="16"><span class="co">#&gt; [17] "Family"                              "K'Ehleyr"                           </span></a>
-<a class="sourceLine" id="cb4-17" title="17"><span class="co">#&gt; [19] "Alexander"                           "Jeremy Aster"                       </span></a>
-<a class="sourceLine" id="cb4-18" title="18"><span class="co">#&gt; [21] "Jadzia Dax"                          "Kurn"                               </span></a>
-<a class="sourceLine" id="cb4-19" title="19"><span class="co">#&gt; [23] "Nikolai Rozhenko"                    "Martok"                             </span></a>
-<a class="sourceLine" id="cb4-20" title="20"><span class="co">#&gt; [25] "Friendships"                         "The crew of the Enterprise"         </span></a>
-<a class="sourceLine" id="cb4-21" title="21"><span class="co">#&gt; [27] "Deep Space 9 companions"             "Kor"                                </span></a>
-<a class="sourceLine" id="cb4-22" title="22"><span class="co">#&gt; [29] "Alternate realities and timelines"   "Holograms"                          </span></a>
-<a class="sourceLine" id="cb4-23" title="23"><span class="co">#&gt; [31] "Memorable quotes"                    "Chronology"                         </span></a>
-<a class="sourceLine" id="cb4-24" title="24"><span class="co">#&gt; [33] "Appendices"                          "Appearances"                        </span></a>
-<a class="sourceLine" id="cb4-25" title="25"><span class="co">#&gt; [35] "Background information"              "Apocrypha"                          </span></a>
-<a class="sourceLine" id="cb4-26" title="26"><span class="co">#&gt; [37] "See also"                            "External links"</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-14" title="14"><span class="co">#&gt; [13] "Later life"                          "Personality"                        </span></a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="co">#&gt; [15] "Physicality"                         "As a warrior"                       </span></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="co">#&gt; [17] "Ailments and injuries"               "Family"                             </span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="co">#&gt; [19] "K'Ehleyr"                            "Alexander"                          </span></a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="co">#&gt; [21] "Jeremy Aster"                        "Jadzia Dax"                         </span></a>
+<a class="sourceLine" id="cb4-19" title="19"><span class="co">#&gt; [23] "Kurn"                                "Nikolai Rozhenko"                   </span></a>
+<a class="sourceLine" id="cb4-20" title="20"><span class="co">#&gt; [25] "Martok"                              "Friendships"                        </span></a>
+<a class="sourceLine" id="cb4-21" title="21"><span class="co">#&gt; [27] "The crew of the Enterprise"          "Deep Space 9 companions"            </span></a>
+<a class="sourceLine" id="cb4-22" title="22"><span class="co">#&gt; [29] "Kor"                                 "Alternate realities and timelines"  </span></a>
+<a class="sourceLine" id="cb4-23" title="23"><span class="co">#&gt; [31] "Holograms"                           "Memorable quotes"                   </span></a>
+<a class="sourceLine" id="cb4-24" title="24"><span class="co">#&gt; [33] "Chronology"                          "Appendices"                         </span></a>
+<a class="sourceLine" id="cb4-25" title="25"><span class="co">#&gt; [35] "Appearances"                         "Reference"                          </span></a>
+<a class="sourceLine" id="cb4-26" title="26"><span class="co">#&gt; [37] "Background information"              "Apocrypha"                          </span></a>
+<a class="sourceLine" id="cb4-27" title="27"><span class="co">#&gt; [39] "See also"                            "External links"</span></a></code></pre></div>
 <p>If <code>browse = TRUE</code> the article page also launches in the browser.</p>
 </div>
 <div id="images" class="section level2">
@@ -240,7 +241,7 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
 <a class="sourceLine" id="cb5-2" title="2">klingons &lt;-<span class="st"> </span><span class="kw"><a href="../reference/memory_alpha.html">memory_alpha</a></span>(<span class="st">"people/Klingons/Memory Alpha images (Klingons)"</span>)</a>
 <a class="sourceLine" id="cb5-3" title="3">klingons</a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; # A tibble: 1,213 x 2</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt; # A tibble: 1,215 x 2</span></a>
 <a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;    `Memory Alpha images (Klingons)`     url                                     </span></a>
 <a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;    &lt;chr&gt;                                &lt;chr&gt;                                   </span></a>
 <a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;  1 23rd century Klingons.jpg            File:23rd_century_Klingons.jpg          </span></a>
@@ -253,7 +254,7 @@
 <a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  8 Alexander Rozhenko, 2367.jpg         File:Alexander_Rozhenko,_2367.jpg       </span></a>
 <a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  9 Alexander Rozhenko, 2370.jpg         File:Alexander_Rozhenko,_2370.jpg       </span></a>
 <a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; 10 Alexander Rozhenko, 2374.jpg         File:Alexander_Rozhenko,_2374.jpg       </span></a>
-<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; # ... with 1,203 more rows</span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; # ... with 1,205 more rows</span></a>
 <a class="sourceLine" id="cb5-18" title="18"></a>
 <a class="sourceLine" id="cb5-19" title="19">worf_data &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(klingons, <span class="kw"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"Worf"</span>, url) <span class="op">&amp;</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span>(<span class="st">"Data"</span>, url))</a>
 <a class="sourceLine" id="cb5-20" title="20">worf_data</a>
@@ -303,14 +304,14 @@
 <a class="sourceLine" id="cb8-4" title="4"><span class="co">#&gt;    &lt;chr&gt;               &lt;chr&gt;                                  &lt;chr&gt;             </span></a>
 <a class="sourceLine" id="cb8-5" title="5"><span class="co">#&gt;  1 Guinan              https://memory-alpha.fandom.com/wiki/~ Guinan            </span></a>
 <a class="sourceLine" id="cb8-6" title="6"><span class="co">#&gt;  2 Francis Guinan      https://memory-alpha.fandom.com/wiki/~ Francis_Guinan    </span></a>
-<a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt;  3 Unnamed El-Aurians  https://memory-alpha.fandom.com/wiki/~ Unnamed_El-Aurians</span></a>
-<a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt;  4 Unnamed individual~ https://memory-alpha.fandom.com/wiki/~ Unnamed_individua~</span></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt;  3 Unnamed individual~ https://memory-alpha.fandom.com/wiki/~ Unnamed_individua~</span></a>
+<a class="sourceLine" id="cb8-8" title="8"><span class="co">#&gt;  4 Unnamed El-Aurians  https://memory-alpha.fandom.com/wiki/~ Unnamed_El-Aurians</span></a>
 <a class="sourceLine" id="cb8-9" title="9"><span class="co">#&gt;  5 Jean-Luc Picard     https://memory-alpha.fandom.com/wiki/~ Jean-Luc_Picard   </span></a>
-<a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt;  6 Borg                https://memory-alpha.fandom.com/wiki/~ Borg              </span></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt;  7 Starfleet           https://memory-alpha.fandom.com/wiki/~ Starfleet         </span></a>
-<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt;  8 Q                   https://memory-alpha.fandom.com/wiki/Q Q                 </span></a>
-<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt;  9 Wesley Crusher      https://memory-alpha.fandom.com/wiki/~ Wesley_Crusher    </span></a>
-<a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt; 10 Data                https://memory-alpha.fandom.com/wiki/~ Data              </span></a>
+<a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt;  6 Hugh                https://memory-alpha.fandom.com/wiki/~ Hugh              </span></a>
+<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt;  7 Borg                https://memory-alpha.fandom.com/wiki/~ Borg              </span></a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt;  8 Data                https://memory-alpha.fandom.com/wiki/~ Data              </span></a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt;  9 USS Stargazer       https://memory-alpha.fandom.com/wiki/~ USS_Stargazer     </span></a>
+<a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt; 10 Lal                 https://memory-alpha.fandom.com/wiki/~ Lal               </span></a>
 <a class="sourceLine" id="cb8-15" title="15"><span class="co">#&gt; # ... with 15 more rows</span></a></code></pre></div>
 </div>
 <div id="caveats" class="section level2">

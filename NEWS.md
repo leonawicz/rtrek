@@ -1,3 +1,7 @@
+# rtrek 0.3.1
+
+* Tentative fix for bug related to galaxy map 2.
+
 # rtrek 0.3.0
 
 * Fix bugs related to Memory Alpha and Memory Beta breaking changes.

@@ -96,87 +96,68 @@ universal/unique ID `uid` to retrieve data on Q. Think of these three
 successive uses of `stapi` as safe mode, search mode and extraction
 mode.
 
-``` r
-library(rtrek)
-library(dplyr)
-stapi("character", page_count = TRUE)
-#> Total pages to retrieve all results: 66
-
-stapi("character", page = 1) %>% select(uid, name)
-#> # A tibble: 100 x 2
-#>    uid            name            
-#>    <chr>          <chr>           
-#>  1 CHMA0000021696 Pechetti        
-#>  2 CHMA0000028502 Pomet           
-#>  3 CHMA0000134966 Eddie Newsom    
-#>  4 CHMA0000101321 T. Virts        
-#>  5 CHMA0000053158 Annabelle series
-#>  6 CHMA0000008975 Torias Dax      
-#>  7 CHMA0000232471 T. Peel         
-#>  8 CHMA0000087568 Grathon Tolar   
-#>  9 CHMA0000190805 C. Russell      
-#> 10 CHMA0000069617 Mike Vejar      
-#> # ... with 90 more rows
-
-Q <- "CHMA0000025118" #unique ID
-Q <- stapi("character", uid = Q)
-Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
-#>              uid                 title stardateFrom stardateTo
-#> 1 EPMA0000001458    All Good Things...      47988.0    47988.0
-#> 2 EPMA0000000845                Q-Less      46531.2    46531.2
-#> 3 EPMA0000001329                 Q Who      42761.3    42761.3
-#> 4 EPMA0000000651              Tapestry           NA         NA
-#> 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7
-#> 6 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7
-#> 7 EPMA0000162588            Death Wish           NA         NA
-#> 8 EPMA0000001413                True Q      46192.3    46192.3
-#> 9 EPMA0000001377                  Qpid      44741.9    44741.9
-```
+    #> Total pages to retrieve all results: 66
+    #> # A tibble: 100 x 2
+    #>    uid            name            
+    #>    <chr>          <chr>           
+    #>  1 CHMA0000021696 Pechetti        
+    #>  2 CHMA0000028502 Pomet           
+    #>  3 CHMA0000134966 Eddie Newsom    
+    #>  4 CHMA0000101321 T. Virts        
+    #>  5 CHMA0000053158 Annabelle series
+    #>  6 CHMA0000008975 Torias Dax      
+    #>  7 CHMA0000232471 T. Peel         
+    #>  8 CHMA0000087568 Grathon Tolar   
+    #>  9 CHMA0000190805 C. Russell      
+    #> 10 CHMA0000069617 Mike Vejar      
+    #> # ... with 90 more rows
+    #>              uid                 title stardateFrom stardateTo
+    #> 1 EPMA0000001458    All Good Things...      47988.0    47988.0
+    #> 2 EPMA0000000845                Q-Less      46531.2    46531.2
+    #> 3 EPMA0000001329                 Q Who      42761.3    42761.3
+    #> 4 EPMA0000000651              Tapestry           NA         NA
+    #> 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7
+    #> 6 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7
+    #> 7 EPMA0000162588            Death Wish           NA         NA
+    #> 8 EPMA0000001413                True Q      46192.3    46192.3
+    #> 9 EPMA0000001377                  Qpid      44741.9    44741.9
 
 ### Memory Alpha
 
 Obtain content and metadata from the article about Spock on Memory
 Alpha:
 
-``` r
-x <- ma_article("Spock")
-x
-#> # A tibble: 1 x 4
-#>   title content    metadata          categories       
-#>   <chr> <list>     <list>            <list>           
-#> 1 Spock <xml_ndst> <tibble [1 x 18]> <tibble [14 x 2]>
-x$metadata[[1]]$Born
-#> [1] "January 6, 2230 (stardate 2230.06)|ShiKahr, Vulcan"
-```
+    #> # A tibble: 1 x 4
+    #>   title content    metadata          categories       
+    #>   <chr> <list>     <list>            <list>           
+    #> 1 Spock <xml_ndst> <tibble [1 x 18]> <tibble [14 x 2]>
+    #> [1] "January 6, 2230 (stardate 2230.06)|ShiKahr, Vulcan"
 
 ### Memory Beta
 
 Spock was born in 2230. Obtain a subset of the Star Trek universe
 historical timeline for that year:
 
-``` r
-mb_timeline(2230)
-#> 2230
-#> $events
-#> # A tibble: 5 x 4
-#>   period id                date  notes                                                              
-#>   <chr>  <chr>             <chr> <chr>                                                              
-#> 1 2230   Events            <NA>  Argelius II  and Betelgeuse become members of the Federation.[1][2]
-#> 2 2230   Births_and_Deaths <NA>  Spock is born deep within a cave in Vulcan's Forge on Vulcan.[3][4]
-#> 3 2230   Births_and_Deaths <NA>  George Samuel Kirk, Jr. is born.[5]                                
-#> 4 2230   Births_and_Deaths <NA>  David Rabin is born.[6]                                            
-#> 5 2230   Births_and_Deaths <NA>  Roy John Moss is born.[7]                                          
-#> 
-#> $stories
-#> # A tibble: 5 x 11
-#>   title           title_url         colleciton   collection_url  section       context series      date     media     notes                                  image_url       
-#>   <chr>           <chr>             <chr>        <chr>           <chr>         <chr>   <chr>       <chr>    <chr>     <chr>                                  <chr>           
-#> 1 Burning Dreams  Burning_Dreams    <NA>         <NA>            Chapters 4 &~ <NA>    The Origin~ 2230     novel     <NA>                                   File:BurningDre~
-#> 2 Star Trek V: T~ Star_Trek_V:_The~ <NA>         <NA>            Chapter 14    <NA>    The Origin~ 2230     movie no~ <NA>                                   File:TrekV.jpg  
-#> 3 IDW Star Trek,~ IDW_Star_Trek,_I~ Star Trek (~ Star_Trek_(IDW) 2230 flashba~ <NA>    The Origin~ 2230     comic     Flashback to USS Kelvin and Keenser's~ File:IDW_TOS_14~
-#> 4 Star Trek       Star_Trek_(2009)  <NA>         <NA>            Chapter 1 (s~ <NA>    The Origin~ 2230     movie no~ Depiction of Spock's birth, date take~ File:Star_Trek_~
-#> 5 Sarek           Sarek_(novel)     <NA>         <NA>            Chapter 5     <NA>    The Origin~ 12 Nove~ novel     <NA>                                   File:Sarek_nove~
-```
+    #> 2230
+    #> $events
+    #> # A tibble: 5 x 4
+    #>   period id                date  notes                                                              
+    #>   <chr>  <chr>             <chr> <chr>                                                              
+    #> 1 2230   Events            <NA>  Argelius II  and Betelgeuse become members of the Federation.[1][2]
+    #> 2 2230   Births_and_Deaths <NA>  Spock is born deep within a cave in Vulcan's Forge on Vulcan.[3][4]
+    #> 3 2230   Births_and_Deaths <NA>  George Samuel Kirk, Jr. is born.[5]                                
+    #> 4 2230   Births_and_Deaths <NA>  David Rabin is born.[6]                                            
+    #> 5 2230   Births_and_Deaths <NA>  Roy John Moss is born.[7]                                          
+    #> 
+    #> $stories
+    #> # A tibble: 5 x 11
+    #>   title           title_url         colleciton   collection_url  section       context series      date     media     notes                                  image_url       
+    #>   <chr>           <chr>             <chr>        <chr>           <chr>         <chr>   <chr>       <chr>    <chr>     <chr>                                  <chr>           
+    #> 1 Burning Dreams  Burning_Dreams    <NA>         <NA>            Chapters 4 &~ <NA>    The Origin~ 2230     novel     <NA>                                   File:BurningDre~
+    #> 2 Star Trek V: T~ Star_Trek_V:_The~ <NA>         <NA>            Chapter 14    <NA>    The Origin~ 2230     movie no~ <NA>                                   File:TrekV.jpg  
+    #> 3 IDW Star Trek,~ IDW_Star_Trek,_I~ Star Trek (~ Star_Trek_(IDW) 2230 flashba~ <NA>    The Origin~ 2230     comic     Flashback to USS Kelvin and Keenser's~ File:IDW_TOS_14~
+    #> 4 Star Trek       Star_Trek_(2009)  <NA>         <NA>            Chapter 1 (s~ <NA>    The Origin~ 2230     movie no~ Depiction of Spock's birth, date take~ File:Star_Trek_~
+    #> 5 Sarek           Sarek_(novel)     <NA>         <NA>            Chapter 5     <NA>    The Origin~ 12 Nove~ novel     <NA>                                   File:Sarek_nove~
 
 Live long and prosper.
 

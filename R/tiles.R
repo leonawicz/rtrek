@@ -26,6 +26,10 @@ tile_coords <- function(data, id){
   x <- dplyr::filter(rtrek::stTiles, .data[["id"]] == id0)
   w <- x$width
   h <- x$height
+  if(id == "galaxy2"){ # not sure what happened with map 2
+    w <- 8000
+    h <- 6445
+  }
   r <- h / w
   dplyr::mutate(data, x = 250 * col / w, y = -250 * r * row / h)
 }
