@@ -4,7 +4,9 @@
 \name{stLogos}
 \alias{stLogos}
 \title{Star Trek logos metadata.}
-\format{A data frame}
+\format{
+A data frame
+}
 \usage{
 stLogos
 }

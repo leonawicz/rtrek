@@ -4,7 +4,9 @@
 \name{tlFootnotes}
 \alias{tlFootnotes}
 \title{Star Trek timeline footnotes.}
-\format{A data frame}
+\format{
+A data frame
+}
 \usage{
 tlFootnotes
 }

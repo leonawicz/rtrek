@@ -10,14 +10,13 @@
   "codeRepository": "https://github.com/leonawicz/rtrek",
   "issueTracker": "https://github.com/leonawicz/rtrek/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.2 (2019-12-12)",
+  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -306,17 +305,13 @@
   ],
   "releaseNotes": "https://github.com/leonawicz/rtrek/blob/master/NEWS.md",
   "readme": "https://github.com/leonawicz/rtrek/blob/master/README.md",
-  "contIntegration": [
-    "https://travis-ci.org/leonawicz/rtrek",
-    "https://ci.appveyor.com/project/leonawicz/rtrek",
-    "https://codecov.io/github/leonawicz/rtrek?branch=master"
-  ],
+  "contIntegration": ["https://travis-ci.org/leonawicz/rtrek", "https://ci.appveyor.com/project/leonawicz/rtrek", "https://codecov.io/github/leonawicz/rtrek?branch=master"],
   "relatedLink": "https://CRAN.R-project.org/package=rtrek",
   "contributor": {},
   "copyrightHolder": {},
   "funder": {},
   "developmentStatus": "http://www.repostatus.org/#active",
-  "fileSize": "546.257KB",
+  "fileSize": "14665.294KB",
   "keywords": [
     "r-package",
     "star-trek",

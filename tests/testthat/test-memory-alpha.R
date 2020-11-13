@@ -68,12 +68,19 @@ test_that("ma_article returns as expected", {
 
   d <- ma_article("Azetbur", content_format = "character")
   expect_is(d$content[[1]], "character")
+  expect_true(length(d$content[[1]]) > 10)
+  expect_true(!any(grepl("\t", d$content[[1]])))
+  expect_is(d$metadata[[1]], "tbl_df")
+  expect_true(ncol(d$metadata[[1]]) >= 6)
+  expect_is(d$categories[[1]], "tbl_df")
+  expect_equal(names(d$categories[[1]]), c("categories", "url"))
 })
 
 test_that("ma_search returns as expected", {
   skip_on_cran()
   d <- ma_search("Worf")
   expect_equal(ncol(d), 3)
+  expect_true(nrow(d) > 20)
   expect_equal(names(d), c("title", "text", "url"))
 })
 
@@ -85,6 +92,8 @@ test_that("ma_image and related calls all return as expected", {
   x2 <- ma_article(file)
   expect_is(x1, "tbl_df")
   expect_identical(x1$categories, x2$categories)
+  expect_equal(x1$content, x2$content)
+  expect_true(length(x2$content[[1]]) > 10)
 
   x1 <- ma_image(file)
   expect_is(x1, "ggplot")

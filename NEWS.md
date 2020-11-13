@@ -1,3 +1,8 @@
+# rtrek 0.3.2
+
+* Bug fixes related to website HTML updates.
+* Updated unit tests.
+
 # rtrek 0.3.1
 
 * Tentative fix for bug related to galaxy map 2.

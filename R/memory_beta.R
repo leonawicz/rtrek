@@ -11,19 +11,16 @@
 #' A column of relative URLs is also included for reference, but can be ignored. Compared to Memory Alpha, Memory Beta does not technically offer "portals",
 #' but for consistency in \code{rtrek}, several high level categories on Memory Beta are treated as portal options.
 #' See \code{\link{memory_alpha}} for comparison.
-#' \cr\cr
-#' Also, Memory Beta has a very similar site structure to Memory Alpha. This makes the code that interfaces with both very similar.
-#' Memory Beta also offers a simpler, more consistent site structure than Memory Alpha, leading to fewer (handled and unhandled) content edge cases.
 #' }
 #'
-#' \subsection{Portal Categories}{
+#' \subsection{Portal categories}{
 #' In all other cases, the endpoint string must begin with one of the valid portal IDs.
 #' Passing only the ID returns a data frame with IDs and relative URLs associated with the available categories in the specific portal.
 #' Unlike \code{memory_alpha}, there are no \code{group} or \code{subgroup} columns.
 #' Memory Beta offers a more consistent reliance on the simple hierarchy of categories and articles.
 #' \cr\cr
 #' Selecting a specific category within a portal is done by appending the portal ID in \code{endpoint} with the category ID, separated by a forward slash.
-#' You can append nested subcategory IDs with forward slashes, provided they subcategories exist.
+#' You can append nested subcategory IDs with forward slashes, provided the subcategories exist.
 #' }
 #'
 #' \subsection{Articles}{
@@ -105,10 +102,10 @@ mb_article <- function(url, content_format = c("xml", "character"),
   )
   title <- rvest::html_node(x, ".page-header__title") %>% mb_text()
   cats <- mb_article_categories(x)
-  x <- rvest::html_nodes(x, ".WikiaArticle > #mw-content-text") %>% rvest::html_children()
+  x <- rvest::html_nodes(x, ".WikiaArticle > #mw-content-text > .mw-parser-output") %>% rvest::html_children()
   aside <- mb_article_aside(x)
-  content <- x[which(rvest::html_name(x) %in% content_nodes)]
-  if(content_format == "character") content <- gsub("(.*[ A-Za-z])(Edit$)", "\\1", mb_text(content))
+  content <- x[which(rvest::html_name(x) %in% content_nodes & !grepl("<aside.*aside>", x))]
+  if(content_format == "character") content <- gsub("\\[edit.*", "", mb_text(content))
   if(browse) utils::browseURL(url)
   dplyr::tibble(title = title, content = list(content), metadata = list(aside), categories = list(cats))
 }
@@ -132,14 +129,10 @@ mb_article <- function(url, content_format = c("xml", "character"),
 #' \donttest{mb_search("Worf")}
 mb_search <- function(text, browse = FALSE){
   url <- paste0(mb_base_add("Special:Search?query="), gsub("\\s+", "+", text))
-  x <- xml2::read_html(url) %>% rvest::html_node(".Results")
-  x2 <- x %>% rvest::html_nodes("h1 > a")
-  title <- mb_text(x2)
-  url2 <- mb_href(x2)
-  text <- rvest::html_nodes(x, "article") %>% mb_text() %>% strsplit("(\n|\t)+") %>%
-    sapply("[", 3)
+  x <- xml2::read_html(url) %>% rvest::html_node(".unified-search__results")
+  x <- rvest::html_nodes(x, "li article") %>% mb_text() %>% strsplit("(\n|\t)+")
   if(browse) utils::browseURL(url)
-  dplyr::tibble(title = title, text = text, url = url2)
+  dplyr::tibble(title = sapply(x, "[", 1), text = sapply(x, "[", 2), url = sapply(x, "[", 3))
 }
 
 #' Memory Beta images

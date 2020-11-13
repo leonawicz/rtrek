@@ -64,9 +64,8 @@ stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
     d <- json0
   }
   assign("stapi", Sys.time(), envir = rtrek_api_time)
-  idx <- match(attr(rtrek::stapiEntities, "ignored columns"), names(d))
-  if(length(idx)) d <- dplyr::select(d, -idx)
-  dplyr::tbl_df(d)
+  d <- dplyr::select(d, -dplyr::any_of(attr(rtrek::stapiEntities, "ignored columns")))
+  dplyr::as_tibble(d)
 }
 
 # nolint end

@@ -85,7 +85,8 @@ ma_article_categories <- function(x){
 }
 
 ma_article_aside <- function(x){
-  idx <- which(rvest::html_name(x) == "aside")
+  x <- rvest::html_children(x)
+  idx <- which(rvest::html_name(x)  == "aside")
   if(!length(idx)) return()
   x <- x[[idx[1]]] %>% rvest::html_children()
   img <- .ma_aside_image(x)

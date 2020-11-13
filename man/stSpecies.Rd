@@ -4,7 +4,9 @@
 \name{stSpecies}
 \alias{stSpecies}
 \title{Species names and avatars, linked primarily from Memory Alpha.}
-\format{A data frame}
+\format{
+A data frame
+}
 \usage{
 stSpecies
 }

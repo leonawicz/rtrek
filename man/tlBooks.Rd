@@ -4,7 +4,9 @@
 \name{tlBooks}
 \alias{tlBooks}
 \title{Star Trek novel-based timeline.}
-\format{A data frame}
+\format{
+A data frame
+}
 \usage{
 tlBooks
 }

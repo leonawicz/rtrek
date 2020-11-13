@@ -12,7 +12,7 @@ test_that("memory_beta returns as expected", {
     expect_equal(names(d), c(id, "url"))
   }
 
-  d <- memory_beta("books/All That's Left")
+  d <- memory_beta("books/TOS novels/All That's Left")
   expect_equal(dim(d), c(1, 4))
   expect_equal(names(d), c("title", "content", "metadata", "categories"))
   expect_equal(as.character(sapply(d, class)), c("character", rep("list", 3)))
@@ -45,25 +45,37 @@ test_that("mb_article returns as expected", {
 
   d <- mb_article("Azetbur,_daughter_of_Gorkon", content_format = "character")
   expect_is(d$content[[1]], "character")
+  expect_true(length(d$content[[1]]) > 10)
+  expect_true(!any(grepl("\t", d$content[[1]])))
+  expect_is(d$metadata[[1]], "tbl_df")
+  expect_true(ncol(d$metadata[[1]]) >= 6)
+  expect_is(d$categories[[1]], "tbl_df")
+  expect_equal(names(d$categories[[1]]), c("categories", "url"))
 })
 
 test_that("mb_search returns as expected", {
   skip_on_cran()
   d <- mb_search("Worf")
   expect_equal(ncol(d), 3)
+  expect_true(nrow(d) > 20)
   expect_equal(names(d), c("title", "text", "url"))
 })
 
 test_that("mb_image and related calls all return as expected", {
   skip_on_cran()
   file <- "File:DataBlaze.jpg"
-  ep <- file.path("characters", "Memory Beta images (characters)",
+  ep <- file.path("characters",
+                  "Memory Beta images (characters)",
+                  "Memory Beta images (regular and recurring characters)",
+                  "Memory Beta images (TNG regular and recurring characters)",
                   "Memory Beta images (Data)", gsub("File:", "", file))
   x1 <- memory_beta(ep)
   x2 <- mb_article(file)
   expect_is(x1, "tbl_df")
   expect_identical(x1$categories, x2$categories)
   expect_is(x1$categories[[1]], "tbl_df")
+  expect_equal(x1$content, x2$content)
+  expect_true(length(x2$content[[1]]) > 10)
 
   x1 <- mb_image(file)
   expect_is(x1, "ggplot")

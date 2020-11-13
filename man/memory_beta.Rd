@@ -24,19 +24,16 @@ At the highest level, passing \code{enpoind = "portals"} returns a data frame li
 A column of relative URLs is also included for reference, but can be ignored. Compared to Memory Alpha, Memory Beta does not technically offer "portals",
 but for consistency in \code{rtrek}, several high level categories on Memory Beta are treated as portal options.
 See \code{\link{memory_alpha}} for comparison.
-\cr\cr
-Also, Memory Beta has a very similar site structure to Memory Alpha. This makes the code that interfaces with both very similar.
-Memory Beta also offers a simpler, more consistent site structure than Memory Alpha, leading to fewer (handled and unhandled) content edge cases.
 }
 
-\subsection{Portal Categories}{
+\subsection{Portal categories}{
 In all other cases, the endpoint string must begin with one of the valid portal IDs.
 Passing only the ID returns a data frame with IDs and relative URLs associated with the available categories in the specific portal.
 Unlike \code{memory_alpha}, there are no \code{group} or \code{subgroup} columns.
 Memory Beta offers a more consistent reliance on the simple hierarchy of categories and articles.
 \cr\cr
 Selecting a specific category within a portal is done by appending the portal ID in \code{endpoint} with the category ID, separated by a forward slash.
-You can append nested subcategory IDs with forward slashes, provided they subcategories exist.
+You can append nested subcategory IDs with forward slashes, provided the subcategories exist.
 }
 
 \subsection{Articles}{

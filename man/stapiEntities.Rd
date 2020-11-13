@@ -4,7 +4,9 @@
 \name{stapiEntities}
 \alias{stapiEntities}
 \title{Star Trek API entities.}
-\format{A data frame}
+\format{
+A data frame
+}
 \usage{
 stapiEntities
 }

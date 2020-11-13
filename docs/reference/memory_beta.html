@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -47,7 +51,6 @@
 <meta property="og:title" content="Memory Beta API — memory_beta" />
 <meta property="og:description" content="Access Star Trek content from Memory Beta (http://memory-beta.wikia.com)." />
 <meta property="og:image" content="https://leonawicz.github.io/rtrek/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -65,7 +68,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -79,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
       </span>
     </div>
 
@@ -166,7 +169,7 @@
     <p>Access Star Trek content from Memory Beta (<a href='http://memory-beta.wikia.com'>http://memory-beta.wikia.com</a>).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>memory_beta</span>(<span class='no'>endpoint</span>)</pre>
+    <pre class="usage"><span class='fu'>memory_beta</span><span class='op'>(</span><span class='va'>endpoint</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -184,25 +187,22 @@
 
     <p>The content returned is always a data frame. The structure changes slightly depending on the nature of the endpoint,
 but results from different endpoints can be merged easily.</p>
-<h3>Portals</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Portals</h3>
 <p>At the highest level, passing <code>enpoind = "portals"</code> returns a data frame listing the available Memory Beta portals supported by <code>rtrek</code>.
 A column of relative URLs is also included for reference, but can be ignored. Compared to Memory Alpha, Memory Beta does not technically offer "portals",
 but for consistency in <code>rtrek</code>, several high level categories on Memory Beta are treated as portal options.
-See <code><a href='memory_alpha.html'>memory_alpha</a></code> for comparison.
-<br /><br />
-Also, Memory Beta has a very similar site structure to Memory Alpha. This makes the code that interfaces with both very similar.
-Memory Beta also offers a simpler, more consistent site structure than Memory Alpha, leading to fewer (handled and unhandled) content edge cases.</p>
+See <code><a href='memory_alpha.html'>memory_alpha</a></code> for comparison.</p>
 
-<h3>Portal Categories</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Portal categories</h3>
 <p>In all other cases, the endpoint string must begin with one of the valid portal IDs.
 Passing only the ID returns a data frame with IDs and relative URLs associated with the available categories in the specific portal.
 Unlike <code>memory_alpha</code>, there are no <code>group</code> or <code>subgroup</code> columns.
 Memory Beta offers a more consistent reliance on the simple hierarchy of categories and articles.
 <br /><br />
 Selecting a specific category within a portal is done by appending the portal ID in <code>endpoint</code> with the category ID, separated by a forward slash.
-You can append nested subcategory IDs with forward slashes, provided they subcategories exist.</p>
+You can append nested subcategory IDs with forward slashes, provided the subcategories exist.</p>
 
-<h3>Articles</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Articles</h3>
 <p>When the endpoint is neither a top-level portal or one of a portal's categories (or subcategories, if available), it is an article.
 An article is a terminal node, meaning you cannot nest further. An article will be any entry whose URL does not begin with <code>Category:</code>.
 In this case, the content returned is still a data frame for consistency, but differs substantially from the results of non-terminal endpoints.
@@ -212,7 +212,7 @@ They are not completely unstructured text, but are loosely structured.
 Some assumptions are made and <code>memory_beta</code> returns a data frame containing article text and links.
 It is up to the user what to do with this information, e.g., performing text analyses.</p>
 
-<h3>Additional notes</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Additional notes</h3>
 <p>The <code>url</code> column included in results for context uses relative paths to save space. The full URLs all begin the same.
 To visit a URL directly, prepend it with <code>http://memory-beta.wikia.com/wiki/</code>.
 <br /><br />
@@ -229,7 +229,8 @@ in itself. Alternatively, <code>mb_article</code> is focused exclusively on pull
     <div class='dont-index'><p><code><a href='mb_article.html'>mb_article</a></code>, <code><a href='memory_alpha.html'>memory_alpha</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>memory_beta</span>(<span class='st'>"portals"</span>) <span class='co'># show available portals</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 13 x 2</span><span>
+    <pre class="examples"><div class='input'><span class='fu'>memory_beta</span><span class='op'>(</span><span class='st'>"portals"</span><span class='op'>)</span> <span class='co'># show available portals</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 13 x 2</span><span>
 #&gt;    id         url                              
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                            
 #&gt; </span><span style='color: #555555;'> 1</span><span> books      Category:Books                   
@@ -244,34 +245,31 @@ in itself. Alternatively, <code>mb_article</code> is focused exclusively on pull
 #&gt; </span><span style='color: #555555;'>10</span><span> science    Category:Science                 
 #&gt; </span><span style='color: #555555;'>11</span><span> starships  Category:Starships               
 #&gt; </span><span style='color: #555555;'>12</span><span> technology Category:Technology              
-#&gt; </span><span style='color: #555555;'>13</span><span> timeline   Category:Timeline                </div><div class='input'><span class='no'>endpoint</span> <span class='kw'>&lt;-</span> <span class='st'>"characters/Characters by races and cultures/Klingonoids/Klingons"</span>
+#&gt; </span><span style='color: #555555;'>13</span><span> timeline   Category:Timeline                </div><div class='input'><span class='va'>endpoint</span> <span class='op'>&lt;-</span> <span class='st'>"characters/Characters by races and cultures/Klingonoids/Klingons"</span>
 <span class='co'># \donttest{</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>memory_beta</span>(<span class='no'>endpoint</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>[<span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grep</a></span>(<span class='st'>"Worf"</span>, <span class='no'>x</span>$<span class='no'>Klingons</span>), ]
-<span class='no'>x</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 2</span><span>
-#&gt;   Klingons             url                  
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                
-#&gt; </span><span style='color: #555555;'>1</span><span> K'Dhan, son of Worf  K%27Dhan,_son_of_Worf
-#&gt; </span><span style='color: #555555;'>2</span><span> Mogh, son of Worf    Mogh,_son_of_Worf    
-#&gt; </span><span style='color: #555555;'>3</span><span> Worf (mirror)        Worf_(mirror)        
-#&gt; </span><span style='color: #555555;'>4</span><span> Worf's family        Worf%27s_family      
-#&gt; </span><span style='color: #555555;'>5</span><span> Worf, father of Mogh Worf,_father_of_Mogh 
-#&gt; </span><span style='color: #555555;'>6</span><span> Worf, son of Mogh    Worf,_son_of_Mogh    </div><div class='input'><span class='fu'>memory_beta</span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(<span class='no'>endpoint</span>, <span class='st'>"/Worf, son of Mogh"</span>)) <span class='co'># return terminal article content</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 4</span><span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>memory_beta</span><span class='op'>(</span><span class='va'>endpoint</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='va'>x</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grep</a></span><span class='op'>(</span><span class='st'>"Worf"</span>, <span class='va'>x</span><span class='op'>$</span><span class='va'>Klingons</span><span class='op'>)</span>, <span class='op'>]</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7 x 2</span><span>
+#&gt;   Klingons                       url                           
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                         
+#&gt; </span><span style='color: #555555;'>1</span><span> K'Dhan, son of Worf            K%27Dhan,_son_of_Worf         
+#&gt; </span><span style='color: #555555;'>2</span><span> Mogh, son of Worf              Mogh,_son_of_Worf             
+#&gt; </span><span style='color: #555555;'>3</span><span> Worf (mirror)                  Worf_(mirror)                 
+#&gt; </span><span style='color: #555555;'>4</span><span> Worf's family                  Worf%27s_family               
+#&gt; </span><span style='color: #555555;'>5</span><span> Worf, father of Mogh           Worf,_father_of_Mogh          
+#&gt; </span><span style='color: #555555;'>6</span><span> Worf, son of Mogh              Worf,_son_of_Mogh             
+#&gt; </span><span style='color: #555555;'>7</span><span> Worf, son of Mogh (alternates) Worf,_son_of_Mogh_(alternates)</div><div class='input'><span class='fu'>memory_beta</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>endpoint</span>, <span class='st'>"/Worf, son of Mogh"</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># return terminal article content</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 4</span><span>
 #&gt;   title             content    metadata categories       
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>           
-#&gt; </span><span style='color: #555555;'>1</span><span> Worf, son of Mogh </span><span style='color: #555555;'>&lt;xml_ndst&gt;</span><span> </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>   </span><span style='color: #555555;'>&lt;tibble [33 x 2]&gt;</span><span></div><div class='input'># }
+#&gt; </span><span style='color: #555555;'>1</span><span> Worf, son of Mogh </span><span style='color: #555555;'>&lt;xml_ndst&gt;</span><span> </span><span style='color: #555555;'>&lt;NULL&gt;</span><span>   </span><span style='color: #555555;'>&lt;tibble [48 x 2]&gt;</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -282,7 +280,7 @@ in itself. Alternatively, <code>mb_article</code> is focused exclusively on pull
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

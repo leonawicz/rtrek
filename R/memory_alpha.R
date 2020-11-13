@@ -164,9 +164,9 @@ ma_article <- function(url, content_format = c("xml", "character"),
   )
   title <- rvest::html_node(x, ".page-header__title") %>% ma_text()
   cats <- ma_article_categories(x)
-  x <- rvest::html_nodes(x, ".WikiaArticle > #mw-content-text") %>% rvest::html_children()
+  x <- rvest::html_nodes(x, ".WikiaArticle > #mw-content-text > .mw-parser-output") %>% rvest::html_children()
   aside <- ma_article_aside(x)
-  content <- x[which(rvest::html_name(x) %in% content_nodes)]
+  content <- x[which(rvest::html_name(x) %in% content_nodes & !grepl("<aside.*aside>", x))]
   if(content_format == "character") content <- gsub(" Edit$", "", ma_text(content))
   if(browse) utils::browseURL(url)
   dplyr::tibble(title = title, content = list(content), metadata = list(aside), categories = list(cats))
@@ -191,14 +191,10 @@ ma_article <- function(url, content_format = c("xml", "character"),
 #' \donttest{ma_search("Worf")}
 ma_search <- function(text, browse = FALSE){
   url <- paste0(ma_base_add("Special:Search?query="), gsub("\\s+", "+", text))
-  x <- xml2::read_html(url) %>% rvest::html_node(".Results")
-  x2 <- x %>% rvest::html_nodes("h1 > a")
-  title <- ma_text(x2)
-  url2 <- ma_href(x2)
-  text <- rvest::html_nodes(x, "article") %>% ma_text() %>% strsplit("(\n|\t)+") %>%
-    sapply("[", 3)
+  x <- xml2::read_html(url) %>% rvest::html_node(".unified-search__results")
+  x <- rvest::html_nodes(x, "li article") %>% ma_text() %>% strsplit("(\n|\t)+")
   if(browse) utils::browseURL(url)
-  dplyr::tibble(title = title, text = text, url = url2)
+  dplyr::tibble(title = sapply(x, "[", 1), text = sapply(x, "[", 2), url = sapply(x, "[", 3))
 }
 
 #' Memory Alpha images

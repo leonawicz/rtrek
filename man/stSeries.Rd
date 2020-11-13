@@ -4,7 +4,9 @@
 \name{stSeries}
 \alias{stSeries}
 \title{Star Trek series.}
-\format{A data frame}
+\format{
+A data frame
+}
 \usage{
 stSeries
 }

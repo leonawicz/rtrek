@@ -4,7 +4,9 @@
 \name{stTiles}
 \alias{stTiles}
 \title{Available Star Trek map tile sets.}
-\format{A data frame}
+\format{
+A data frame
+}
 \usage{
 stTiles
 }

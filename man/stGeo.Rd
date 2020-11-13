@@ -4,7 +4,9 @@
 \name{stGeo}
 \alias{stGeo}
 \title{Raster grid location data for stellar cartographic map tile sets.}
-\format{A data frame}
+\format{
+A data frame
+}
 \usage{
 stGeo
 }

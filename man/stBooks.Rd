@@ -4,7 +4,9 @@
 \name{stBooks}
 \alias{stBooks}
 \title{Star Trek novel metadata.}
-\format{A data frame}
+\format{
+A data frame
+}
 \usage{
 stBooks
 }

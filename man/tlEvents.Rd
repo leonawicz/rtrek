@@ -4,7 +4,9 @@
 \name{tlEvents}
 \alias{tlEvents}
 \title{Star Trek event-based timeline.}
-\format{A data frame}
+\format{
+A data frame
+}
 \usage{
 tlEvents
 }
