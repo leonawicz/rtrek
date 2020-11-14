@@ -31,6 +31,7 @@ fi
 georeferenced
 ggplot
 homeworlds
+https
 lcars
 memoized
 preprocessed

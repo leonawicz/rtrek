@@ -156,7 +156,6 @@ historical timeline for that year:
 
 ``` r
 mb_timeline(2230)
-#> 2230
 #> $events
 #> # A tibble: 5 x 4
 #>   period id                date  notes                                                              
@@ -290,9 +289,24 @@ True (Trek) type fonts to style your Star Trek themed graphics text.
 
 <br>
 
-*If you enjoy my R community contributions, consider* ***[buying me a
-coffee in Ko-fi](https://ko-fi.com/leonawicz)*** *so I can keep
-developing and maintaining this and other packages :)*
+## Citation
+
+Matthew Leonawicz (2020). rtrek: Datasets and Functions Relating to Star
+Trek. R package version 0.3.2.
+<https://CRAN.R-project.org/package=rtrek>
+
+## Contribute
+
+Contributions are welcome. Contribute through GitHub via pull request.
+Please create an issue first if it is regarding any substantive feature
+add or change.
+
+If you enjoy my open source R community contributions, please consider a
+donation :).
+
+  - [Buy me a coffee in Ko-fi](https://ko-fi.com/leonawicz)
+  - `leonawicz.crypto`
+  - `mfl$payid.crypto.com`
 
 -----
 
