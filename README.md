@@ -3,7 +3,7 @@
 
 # rtrek <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 
-**Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/)
+**Author:** [Matthew Leonawicz](https://github.com/leonawicz)
 <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget">
 <image class="orcid" src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" height="16"></a>
 <br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
@@ -167,13 +167,13 @@ mb_timeline(2230)
 #> 
 #> $stories
 #> # A tibble: 5 x 11
-#>   title          title_url         colleciton   collection_url  section      context series     date     media     notes                                image_url      
-#>   <chr>          <chr>             <chr>        <chr>           <chr>        <chr>   <chr>      <chr>    <chr>     <chr>                                <chr>          
-#> 1 Burning Dreams Burning_Dreams    <NA>         <NA>            Chapters 4 ~ <NA>    The Origi~ 2230     novel     <NA>                                 File:BurningDr~
-#> 2 Star Trek V: ~ Star_Trek_V:_The~ <NA>         <NA>            Chapter 14   <NA>    The Origi~ 2230     movie no~ <NA>                                 File:TrekV.jpg 
-#> 3 IDW Star Trek~ IDW_Star_Trek,_I~ Star Trek (~ Star_Trek_(IDW) 2230 flashb~ <NA>    The Origi~ 2230     comic     Flashback to USS Kelvin and Keenser~ File:IDW_TOS_1~
-#> 4 Star Trek      Star_Trek_(2009)  <NA>         <NA>            Chapter 1 (~ <NA>    The Origi~ 2230     movie no~ Depiction of Spock's birth, date ta~ File:Star_Trek~
-#> 5 Sarek          Sarek_(novel)     <NA>         <NA>            Chapter 5    <NA>    The Origi~ 12 Nove~ novel     <NA>                                 File:Sarek_nov~
+#>   title           title_url          colleciton   collection_url  section       context series     date      media     notes                                   image_url       
+#>   <chr>           <chr>              <chr>        <chr>           <chr>         <chr>   <chr>      <chr>     <chr>     <chr>                                   <chr>           
+#> 1 Burning Dreams  Burning_Dreams     <NA>         <NA>            Chapters 4 &~ <NA>    The Origi~ 2230      novel     <NA>                                    File:BurningDre~
+#> 2 Star Trek V: T~ Star_Trek_V:_The_~ <NA>         <NA>            Chapter 14    <NA>    The Origi~ 2230      movie no~ <NA>                                    File:TrekV.jpg  
+#> 3 IDW Star Trek,~ IDW_Star_Trek,_Is~ Star Trek (~ Star_Trek_(IDW) 2230 flashba~ <NA>    The Origi~ 2230      comic     Flashback to USS Kelvin and Keenser's ~ File:IDW_TOS_14~
+#> 4 Star Trek       Star_Trek_(2009)   <NA>         <NA>            Chapter 1 (s~ <NA>    The Origi~ 2230      movie no~ Depiction of Spock's birth, date taken~ File:Star_Trek_~
+#> 5 Sarek           Sarek_(novel)      <NA>         <NA>            Chapter 5     <NA>    The Origi~ 12 Novem~ novel     <NA>                                    File:Sarek_nove~
 ```
 
 Live long and prosper.
