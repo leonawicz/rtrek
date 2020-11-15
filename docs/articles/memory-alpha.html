@@ -130,7 +130,7 @@
     
 <p>The <code>rtrek</code> package includes some Star Trek datasets, but much more data is available outside the package. You can access other Star Trek data through various APIs.</p>
 <p>Technically, there is only one formal API: the Star Trek API (STAPI). <code>rtrek</code> has functions to assist with making calls to this API in order to access specific data. See the STAPI <a href="https://leonawicz.github.io/rtrek/articles/stapi.html">vignette</a> for details.</p>
-<p>The focus of this vignette is on accessing data from Memory Alpha. <code>rtrek</code> interfaces with and extracts information from the <a href="http://memory-alpha.wikia.com/">Memory Alpha</a> and <a href="http://memory-beta.wikia.com/">Memory Beta</a> websites. Neither of these sites actually expose an API, but functions in <code>rtrek</code> with querying these websites in an API-like manner. For working with Memory Beta content, see the respective <a href="https://leonawicz.github.io/rtrek/articles/memory-beta.html">vignette</a>.</p>
+<p>The focus of this vignette is on accessing data from Memory Alpha. <code>rtrek</code> interfaces with and extracts information from the <a href="https://memory-alpha.fandom.com/wiki/Portal:Main">Memory Alpha</a> and <a href="https://memory-beta.fandom.com/wiki/Main_Page">Memory Beta</a> websites. Neither of these sites actually expose an API, but functions in <code>rtrek</code> with querying these websites in an API-like manner. For working with Memory Beta content, see the respective <a href="https://leonawicz.github.io/rtrek/articles/memory-beta.html">vignette</a>.</p>
 <div id="the-rtrek-memory-alpha-api" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-rtrek-memory-alpha-api" class="anchor"></a>The rtrek Memory Alpha API</h2>
@@ -153,7 +153,7 @@
 <span class="co">#&gt; 4 series     Portal:TV_and_films       </span>
 <span class="co">#&gt; 5 society    Portal:Society_and_Culture</span>
 <span class="co">#&gt; 6 technology Portal:Technology</span></pre></div>
-<p>The data frame returned provides each portal ID and respective “short URL”. These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with <code>http://memory-alpha.wikia.com/wiki/</code>.</p>
+<p>The data frame returned provides each portal ID and respective “short URL”. These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with <code>https://memory-alpha.fandom.com/wiki/</code>.</p>
 <p>In this special case where <code>endpoint = "portals"</code>, this table is returned from the package itself because it is already known. The available portals are fixed. There is no accessing of Memory Alpha yet. The URLs shown are also not needed by the user, but are provided alongside the IDs for context.</p>
 </div>
 <div id="using-a-portal" class="section level2">
@@ -316,11 +316,11 @@
 <span class="co">#&gt;  3 Unnamed individ~ "List of unnamed individuals o~ https://memory-alpha.fandom~</span>
 <span class="co">#&gt;  4 Unnamed El-Auri~ "The following is a list of un~ https://memory-alpha.fandom~</span>
 <span class="co">#&gt;  5 Starfleet        "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  6 Data             "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  7 Jean-Luc Picard  "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  8 Worf             "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  9 William T. Riker "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt; 10 Borg             "The Borg were a pseudo-specie~ https://memory-alpha.fandom~</span>
+<span class="co">#&gt;  6 Jean-Luc Picard  "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
+<span class="co">#&gt;  7 Alexander Rozhe~ "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
+<span class="co">#&gt;  8 Data             "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
+<span class="co">#&gt;  9 Worf             "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
+<span class="co">#&gt; 10 William T. Riker "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
 <span class="co">#&gt; # ... with 15 more rows</span></pre></div>
 </div>
 <div id="caveats" class="section level2">

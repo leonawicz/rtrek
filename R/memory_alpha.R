@@ -1,6 +1,6 @@
 #' Memory Alpha API
 #'
-#' Access Star Trek content from Memory Alpha (\url{http://memory-alpha.wikia.com}).
+#' Access Star Trek content from Memory Alpha (\url{https://memory-alpha.fandom.com/wiki/Portal:Main}).
 #'
 #' @details
 #' The content returned is always a data frame. The structure changes slightly depending on the nature of the endpoint,
@@ -34,7 +34,7 @@
 #'
 #' \subsection{Additional notes}{
 #' The \code{url} column included in results for context uses relative paths to save space. The full URLs all begin the same.
-#' To visit a URL directly, prepend it with \code{http://memory-alpha.wikia.com/wiki/}.
+#' To visit a URL directly, prepend it with \code{https://memory-alpha.fandom.com/wiki/}.
 #' \cr\cr
 #' Also note that once you know the relative URL for an article, e.g., \code{"Worf"},
 #' you do not need to traverse through one of the portals using an \code{endpoint} string to retrieve its content.

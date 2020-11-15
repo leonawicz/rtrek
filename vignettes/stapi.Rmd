@@ -19,7 +19,7 @@ The `rtrek` package includes some Star Trek datasets, but much more data is avai
 
 Technically, there is only one formal API: the Star Trek API (STAPI). `rtrek` has functions to assist with making calls to this API in order to access specific data. This is the focus of this vignette. 
 
-`rtrek` also interfaces with and extracts information from the [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) websites. Neither of these sites actually expose an API, but functions in `rtrek` with querying these websites in an API-like manner. See the respective vignettes for details.
+`rtrek` also interfaces with and extracts information from the [Memory Alpha](https://memory-alpha.fandom.com/wiki/Portal:Main) and [Memory Beta](https://memory-beta.fandom.com/wiki/Main_Page) websites. Neither of these sites actually expose an API, but functions in `rtrek` with querying these websites in an API-like manner. See the respective vignettes for details.
 
 Accessing information from STAPI is covered to some degree in the package [introduction vignette](https://leonawicz.github.io/rtrek/articles/rtrek.html). There is some duplication here, followed by additional examples. 
 

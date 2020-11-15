@@ -130,7 +130,7 @@
     
 <p>The <code>rtrek</code> package includes some Star Trek datasets, but much more data is available outside the package. You can access other Star Trek data through various APIs.</p>
 <p>Technically, there is only one formal API: the Star Trek API (STAPI). <code>rtrek</code> has functions to assist with making calls to this API in order to access specific data. See the STAPI <a href="https://leonawicz.github.io/rtrek/articles/stapi.html">vignette</a> for details.</p>
-<p>The focus of this vignette is on accessing data from Memory Beta. <code>rtrek</code> interfaces with and extracts information from the <a href="http://memory-alpha.wikia.com/">Memory Alpha</a> and <a href="http://memory-beta.wikia.com/">Memory Beta</a> websites. Neither of these sites actually expose an API, but functions in <code>rtrek</code> with querying these websites in an API-like manner. For working with Memory Alpha content, see the respective <a href="https://leonawicz.github.io/rtrek/articles/memory-alpha.html">vignette</a>.</p>
+<p>The focus of this vignette is on accessing data from Memory Beta. <code>rtrek</code> interfaces with and extracts information from the <a href="https://memory-alpha.fandom.com/wiki/Portal:Main">Memory Alpha</a> and <a href="https://memory-beta.fandom.com/wiki/Main_Page">Memory Beta</a> websites. Neither of these sites actually expose an API, but functions in <code>rtrek</code> with querying these websites in an API-like manner. For working with Memory Alpha content, see the respective <a href="https://leonawicz.github.io/rtrek/articles/memory-alpha.html">vignette</a>.</p>
 <div id="the-rtrek-memory-beta-api" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-rtrek-memory-beta-api" class="anchor"></a>The rtrek Memory Beta API</h2>
@@ -160,7 +160,7 @@
 <span class="co">#&gt; 11 starships  Category:Starships               </span>
 <span class="co">#&gt; 12 technology Category:Technology              </span>
 <span class="co">#&gt; 13 timeline   Category:Timeline</span></pre></div>
-<p>The data frame returned provides each portal ID and respective “short URL”. These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with <code>http://memory-beta.wikia.com/wiki/</code>.</p>
+<p>The data frame returned provides each portal ID and respective “short URL”. These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with <code>https://memory-beta.fandom.com/wiki/</code>.</p>
 <p>In this special case where <code>endpoint = "portals"</code>, this table is returned from the package itself because it is already known. The available portals are fixed. There is no accessing of Memory Beta yet. The URLs shown are also not needed by the user, but are provided alongside the IDs for context.</p>
 <div id="contrast-with-memory-alpha" class="section level3">
 <h3 class="hasAnchor">
@@ -315,7 +315,7 @@
 <h2 class="hasAnchor">
 <a href="#memory-beta-timeline" class="anchor"></a>Memory Beta timeline</h2>
 <p>In the examples above, you see the distinction between using <code>mb_image</code> to grab images and using <code>memory_beta</code> to navigate and parse image file page content more generally. Similarly, <code>mb_timeline</code> is a special function that specifically extracts and curates timeline data from Memory Beta, in contrast to using the <code><a href="../reference/memory_beta.html">memory_beta("timeline")</a></code> portal with various endpoints to parse site pages for general content. <code>mb_timeline</code> focuses specifically on the Memory Beta chronology/timeline tables on various Memory Beta pages. This is a helpful function to have because Memory Beta timeline data is not as uniformly arranged on Memory Beta as <code>mb_timeline</code> makes it appear.</p>
-<p><a href="http://memory-beta.wikia.com/wiki/Memory_Beta_Chronology">According to Memory Beta</a>, this timeline provides a <em>“chronological guide to all stories and established events that have taken place in the Star Trek universe. The timeline includes stories from episodes, comics, novels, and games. Note: The timeline is largely based on the Pocket Books Timeline but also includes stories from comic and games and break downs of multi-timeframed episodes which the Pocket Timeline does not include.”</em></p>
+<p><a href="https://memory-beta.fandom.com/wiki/Memory_Beta_Chronology">According to Memory Beta</a>, this timeline provides a <em>“chronological guide to all stories and established events that have taken place in the Star Trek universe. The timeline includes stories from episodes, comics, novels, and games. Note: The timeline is largely based on the Pocket Books Timeline but also includes stories from comic and games and break downs of multi-timeframed episodes which the Pocket Timeline does not include.”</em></p>
 <div id="import-timeline-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#import-timeline-data" class="anchor"></a>Import timeline data</h3>
@@ -414,18 +414,18 @@
 <div class="sourceCode" id="cb9"><pre class="downlit">
 <span class="fu"><a href="../reference/mb_search.html">mb_search</a></span><span class="op">(</span><span class="st">"Guinan"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 25 x 3</span>
-<span class="co">#&gt;    title          text                               url                        </span>
-<span class="co">#&gt;    &lt;chr&gt;          &lt;chr&gt;                              &lt;chr&gt;                      </span>
-<span class="co">#&gt;  1 Guinan         Guinan is a member of the El-Auri~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  2 Guinan (mirro~ universe, Guinan was a member of ~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  3 James T. Kirk  James Tiberius Kirk was a male Hu~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  4 Jean-Luc Pica~ Jean-Luc Picard was a 24th centur~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  5 Nog            Nog was a Ferengi man born on the~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  6 USS Enterpris~ The USS Enterprise (NCC-1701-D), ~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  7 Guardian of F~ The Guardian of Forever was a por~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  8 Starbase 80    Spoiler warning: Plot and/or endi~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  9 Q              Spoiler warning: Plot and/or endi~ https://memory-beta.fandom~</span>
-<span class="co">#&gt; 10 Leonard McCoy  Leonard Horatio McCoy (also known~ https://memory-beta.fandom~</span>
+<span class="co">#&gt;    title           text                             url                         </span>
+<span class="co">#&gt;    &lt;chr&gt;           &lt;chr&gt;                            &lt;chr&gt;                       </span>
+<span class="co">#&gt;  1 Guinan          Guinan is a member of the El-Au~ https://memory-beta.fandom.~</span>
+<span class="co">#&gt;  2 Guinan (mirror) universe, Guinan was a member o~ https://memory-beta.fandom.~</span>
+<span class="co">#&gt;  3 James T. Kirk   James Tiberius Kirk was a male ~ https://memory-beta.fandom.~</span>
+<span class="co">#&gt;  4 Jean-Luc Picard Jean-Luc Picard was a 24th cent~ https://memory-beta.fandom.~</span>
+<span class="co">#&gt;  5 Q               Spoiler warning: Plot and/or en~ https://memory-beta.fandom.~</span>
+<span class="co">#&gt;  6 Star Trek: The~ Star Trek: The Next Generation ~ https://memory-beta.fandom.~</span>
+<span class="co">#&gt;  7 Nog             Nog was a Ferengi man born on t~ https://memory-beta.fandom.~</span>
+<span class="co">#&gt;  8 Montgomery Sco~ Montgomery Christopher Jorgense~ https://memory-beta.fandom.~</span>
+<span class="co">#&gt;  9 USS Enterprise~ The USS Enterprise (NCC-1701-D)~ https://memory-beta.fandom.~</span>
+<span class="co">#&gt; 10 USS Challenger~ The USS Challenger (NCC-71099) ~ https://memory-beta.fandom.~</span>
 <span class="co">#&gt; # ... with 15 more rows</span></pre></div>
 </div>
 <div id="caveats" class="section level2">

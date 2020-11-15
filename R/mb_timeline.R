@@ -2,7 +2,7 @@
 #'
 #' Access curated data frames containing Star Trek timeline data.
 #'
-#' The timeline data is from the \href{http://memory-beta.wikia.com/wiki/Memory_Beta_Chronology}{Memory Beta Chronology}.
+#' The timeline data is from the \href{https://memory-beta.fandom.com/wiki/Memory_Beta_Chronology}{Memory Beta Chronology}.
 #'
 #' \code{x} can be a numeric vector of years, e.g. \code{x = 2371:2364}. This should only be used if you know (or can safely assume) a year exists as a page on Memory Beta. Check there first if unsure.
 #' \code{x} may otherwise be scalar character. This can be a specific decade in the form, e.g., \code{"2370s"}. If a decade, it must fall in the range from \code{"1900s"} through \code{"2490s"}.

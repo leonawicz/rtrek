@@ -19,7 +19,7 @@ The `rtrek` package includes some Star Trek datasets, but much more data is avai
 
 Technically, there is only one formal API: the Star Trek API (STAPI). `rtrek` has functions to assist with making calls to this API in order to access specific data. See the STAPI [vignette](https://leonawicz.github.io/rtrek/articles/stapi.html) for details. 
 
-The focus of this vignette is on accessing data from Memory Beta. `rtrek` interfaces with and extracts information from the [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) websites. Neither of these sites actually expose an API, but functions in `rtrek` with querying these websites in an API-like manner. For working with Memory Alpha content, see the respective [vignette](https://leonawicz.github.io/rtrek/articles/memory-alpha.html).
+The focus of this vignette is on accessing data from Memory Beta. `rtrek` interfaces with and extracts information from the [Memory Alpha](https://memory-alpha.fandom.com/wiki/Portal:Main) and [Memory Beta](https://memory-beta.fandom.com/wiki/Main_Page) websites. Neither of these sites actually expose an API, but functions in `rtrek` with querying these websites in an API-like manner. For working with Memory Alpha content, see the respective [vignette](https://leonawicz.github.io/rtrek/articles/memory-alpha.html).
 
 ## The rtrek Memory Beta API
 
@@ -37,7 +37,7 @@ To see the available Memory Beta portals, call the main function for Memory Beta
 memory_beta("portals")
 ```
 
-The data frame returned provides each portal ID and respective "short URL". These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with `http://memory-beta.wikia.com/wiki/`.
+The data frame returned provides each portal ID and respective "short URL". These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with `https://memory-beta.fandom.com/wiki/`.
 
 In this special case where `endpoint = "portals"`, this table is returned from the package itself because it is already known. The available portals are fixed. There is no accessing of Memory Beta yet. The URLs shown are also not needed by the user, but are provided alongside the IDs for context.
 
@@ -130,7 +130,7 @@ mb_image(worf_kehleyr$url[1])
 
 In the examples above, you see the distinction between using `mb_image` to grab images and using `memory_beta` to navigate and parse image file page content more generally. Similarly, `mb_timeline` is a special function that specifically extracts and curates timeline data from Memory Beta, in contrast to using the `memory_beta("timeline")` portal with various endpoints to parse site pages for general content. `mb_timeline` focuses specifically on the Memory Beta chronology/timeline tables on various Memory Beta pages. This is a helpful function to have because Memory Beta timeline data is not as uniformly arranged on Memory Beta as `mb_timeline` makes it appear.
 
-[According to Memory Beta](http://memory-beta.wikia.com/wiki/Memory_Beta_Chronology), this timeline provides a *"chronological guide to all stories and established events that have taken place in the Star Trek universe. The timeline includes stories from episodes, comics, novels, and games. Note: The timeline is largely based on the Pocket Books Timeline but also includes stories from comic and games and break downs of multi-timeframed episodes which the Pocket Timeline does not include."*
+[According to Memory Beta](https://memory-beta.fandom.com/wiki/Memory_Beta_Chronology), this timeline provides a *"chronological guide to all stories and established events that have taken place in the Star Trek universe. The timeline includes stories from episodes, comics, novels, and games. Note: The timeline is largely based on the Pocket Books Timeline but also includes stories from comic and games and break downs of multi-timeframed episodes which the Pocket Timeline does not include."*
 
 ### Import timeline data
 

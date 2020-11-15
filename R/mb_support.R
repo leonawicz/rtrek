@@ -5,7 +5,7 @@
                             "Materials_and_substances", "Politics", "Science", "Starships", "Technology", "Timeline"))
 )
 
-mb_base_url <- "http://memory-beta.wikia.com/wiki"
+mb_base_url <- "https://memory-beta.fandom.com/wiki"
 
 mb_base_add <- function(x) file.path(mb_base_url, x)
 

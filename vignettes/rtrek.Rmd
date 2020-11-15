@@ -18,7 +18,7 @@ This introductory vignette provides a brief, example-driven overview of `rtrek`.
 
 ## Local datasets
 
-The `rtrek` package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. It interfaces with the [Star Trek API](http://stapi.co/) (STAPI), [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) to retrieve data, metadata and other information relating to Star Trek.
+The `rtrek` package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. It interfaces with the [Star Trek API](http://stapi.co/) (STAPI), [Memory Alpha](https://memory-alpha.fandom.com/wiki/Portal:Main) and [Memory Beta](https://memory-beta.fandom.com/wiki/Main_Page) to retrieve data, metadata and other information relating to Star Trek.
 
 The package also contains several local datasets covering a variety of topics such as Star Trek timeline data, universe species data and geopolitical data. Some of these are more information rich, while others are toy examples useful for simple demonstrations. The bulk of Star Trek data is accessed from external sources by API. A future version of `rtrek` will also include summary datasets resulting from text mining analyses of Star Trek novels.
 
@@ -204,7 +204,7 @@ The data returned on Q is actually a large list, including multiple data frames.
 
 ## Pseudo-APIs
 
-Some functions in `rtrek` provide an API-*like* interface to online Star Trek-related data. Specifically, parsing data from the [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) websites. These sites do not provide APIs. Therefore the only option is to read pages into R and parse the html. Behind the scenes this is done using the `xml2` and `rvest` packages, but from the user perspective it is presented as passing an API endpoint string to a function.
+Some functions in `rtrek` provide an API-*like* interface to online Star Trek-related data. Specifically, parsing data from the [Memory Alpha](https://memory-alpha.fandom.com/wiki/Portal:Main) and [Memory Beta](https://memory-beta.fandom.com/wiki/Main_Page) websites. These sites do not provide APIs. Therefore the only option is to read pages into R and parse the html. Behind the scenes this is done using the `xml2` and `rvest` packages, but from the user perspective it is presented as passing an API endpoint string to a function.
 
 `memory_alpha` and `memory_beta`, as well as several other related functions, are available in `rtrek`. These functions access data from Memory Alpha and Memory Beta. For details and examples on these functions, see the Memory Alpha [vignette](https://leonawicz.github.io/rtrek/articles/memory-alpha.html) and the Memory Beta [vignette](https://leonawicz.github.io/rtrek/articles/memory-beta.html).
 

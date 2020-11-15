@@ -19,7 +19,7 @@ The `rtrek` package includes some Star Trek datasets, but much more data is avai
 
 Technically, there is only one formal API: the Star Trek API (STAPI). `rtrek` has functions to assist with making calls to this API in order to access specific data. See the STAPI [vignette](https://leonawicz.github.io/rtrek/articles/stapi.html) for details. 
 
-The focus of this vignette is on accessing data from Memory Alpha. `rtrek` interfaces with and extracts information from the [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) websites. Neither of these sites actually expose an API, but functions in `rtrek` with querying these websites in an API-like manner. For working with Memory Beta content, see the respective [vignette](https://leonawicz.github.io/rtrek/articles/memory-beta.html).
+The focus of this vignette is on accessing data from Memory Alpha. `rtrek` interfaces with and extracts information from the [Memory Alpha](https://memory-alpha.fandom.com/wiki/Portal:Main) and [Memory Beta](https://memory-beta.fandom.com/wiki/Main_Page) websites. Neither of these sites actually expose an API, but functions in `rtrek` with querying these websites in an API-like manner. For working with Memory Beta content, see the respective [vignette](https://leonawicz.github.io/rtrek/articles/memory-beta.html).
 
 ## The rtrek Memory Alpha API
 
@@ -37,7 +37,7 @@ There are six Memory Alpha web portals available. To see them, call the main fun
 memory_alpha("portals")
 ```
 
-The data frame returned provides each portal ID and respective "short URL". These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with `http://memory-alpha.wikia.com/wiki/`.
+The data frame returned provides each portal ID and respective "short URL". These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with `https://memory-alpha.fandom.com/wiki/`.
 
 In this special case where `endpoint = "portals"`, this table is returned from the package itself because it is already known. The available portals are fixed. There is no accessing of Memory Alpha yet. The URLs shown are also not needed by the user, but are provided alongside the IDs for context.
 

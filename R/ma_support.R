@@ -6,7 +6,7 @@
 
 ma_portal_url <- function(id) .ma_portals$url[.ma_portals$id == id]
 
-ma_base_url <- "http://memory-alpha.wikia.com/wiki"
+ma_base_url <- "https://memory-alpha.fandom.com/wiki"
 
 ma_base_add <- function(x) file.path(ma_base_url, x)
 

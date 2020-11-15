@@ -28,9 +28,9 @@ Stars](https://img.shields.io/github/stars/leonawicz/rtrek.svg?style=social&labe
 The `rtrek` package provides datasets related to the Star Trek fictional
 universe and functions for working with those datasets. It interfaces
 with the [Star Trek API](http://stapi.co/) (STAPI), [Memory
-Alpha](http://memory-alpha.wikia.com/) and [Memory
-Beta](http://memory-beta.wikia.com/) to retrieve data, metadata and
-other information relating to Star Trek.
+Alpha](https://memory-alpha.fandom.com/wiki/Portal:Main) and [Memory
+Beta](https://memory-beta.fandom.com/wiki/Main_Page) to retrieve data,
+metadata and other information relating to Star Trek.
 
 The package also contains several local datasets covering a variety of
 topics such as Star Trek timeline data, universe species data and

@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek) 
 [![Github Stars](https://img.shields.io/github/stars/leonawicz/rtrek.svg?style=social&label=Github)](https://github.com/leonawicz/rtrek)
 
-The `rtrek` package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. It interfaces with the [Star Trek API](http://stapi.co/) (STAPI), [Memory Alpha](http://memory-alpha.wikia.com/) and [Memory Beta](http://memory-beta.wikia.com/) to retrieve data, metadata and other information relating to Star Trek.
+The `rtrek` package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. It interfaces with the [Star Trek API](http://stapi.co/) (STAPI), [Memory Alpha](https://memory-alpha.fandom.com/wiki/Portal:Main) and [Memory Beta](https://memory-beta.fandom.com/wiki/Main_Page) to retrieve data, metadata and other information relating to Star Trek.
 
 The package also contains several local datasets covering a variety of topics such as Star Trek timeline data, universe species data and geopolitical data. Some of these are more information rich, while others are toy examples useful for simple demonstrations. The bulk of Star Trek data is accessed from external sources by API. A future version of `rtrek` will also include summary datasets resulting from text mining analyses of Star Trek novels.
 
