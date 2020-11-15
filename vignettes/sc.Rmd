@@ -27,7 +27,7 @@ ids <- c("galaxy1", "galaxy2")
 
 eq_popup <- function(x, y){
   logo <- y$avatar[match(y$species, x$species)]
-  logo <- paste0("<img src=\"", logo, "\" style=\"float:right;width:200px\"/>")
+  logo <- paste0("<img src=\"", logo, "\" style=\"float:right;max-height:250px\"/>")
   info <- paste0("<div style=\"width:500px;height:270px;\">", logo, strong("Identification: "), x$loc, "<br/>", 
                  strong("Geopolitical domain: "), x$zone, "<br/>", strong("Primary species: "), x$species,
          "<br/>", strong("Stellar body: "), x$body, "<br/>", strong("Classification: "), x$category, "</div>")

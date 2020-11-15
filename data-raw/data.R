@@ -31,8 +31,8 @@ stSpecies <- tibble(
     "2/28/Quark%2C_2375.jpg/revision/latest/scale-to-width-down/350?cb=20120329231622",
     "7/79/Dukat%2C_2375.jpg/revision/latest/scale-to-width-down/350?cb=20120418042102",
     "4/48/Tholian%2C_2155.jpg/revision/latest/scale-to-width-down/292?cb=20110905051618",
-    "b/bc/Endar.jpg/revision/latest/scale-to-width-down/292?cb=20140207112627",
-    "8/8a/Talarian_logo%2C_Suddenly_human.png/revision/latest/scale-to-width-down/292?cb=20060917115312"
+    "a/a4/Tzenkethi_ST_online.jpg/revision/latest/scale-to-width-down/250?cb=20190902225852",
+    "8/8a/Talarian_logo%2C_Suddenly_human.png/revision/latest/scale-to-width-down/250?cb=20060917115312"
   ), "&path-prefix=en")
 )
 
