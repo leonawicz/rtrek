@@ -13,7 +13,7 @@
 
 ## This is an update release.
 
-* Bug fixes.
+* Fixed URL in Readme and resubmitted.
 
 ## Downstream dependencies
 
