@@ -143,12 +143,12 @@
 <a href="#installation" class="anchor"></a>Installation<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width="320" style="float: right; padding-left: 10px; padding-bottom:5px;">
 </h2>
 <p>Install the CRAN release of <code>rtrek</code> with</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"rtrek"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"rtrek"</span><span class="op">)</span></code></pre></div>
 <p>Install the development version from GitHub with</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"leonawicz/rtrek"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"leonawicz/rtrek"</span><span class="op">)</span></code></pre></div>
 <h2 style="padding-bottom:0px;">
 </h2>
 <p>Examples</p>
@@ -162,8 +162,8 @@
 <h3 class="hasAnchor">
 <a href="#stapi" class="anchor"></a>STAPI</h3>
 <p>Use the Star Trek API (STAPI) to obtain information on the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up. The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters. The second call grabs only page two results. The third call uses the universal/unique ID <code>uid</code> to retrieve data on Q. Think of these three successive uses of <code>stapi</code> as safe mode, search mode and extraction mode.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/leonawicz/rtrek">rtrek</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/leonawicz/rtrek">rtrek</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="fu"><a href="reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, page_count <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; Total pages to retrieve all results: 66</span>
@@ -196,28 +196,28 @@
 <span class="co">#&gt; 6 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
 <span class="co">#&gt; 7 EPMA0000162588            Death Wish           NA         NA</span>
 <span class="co">#&gt; 8 EPMA0000001413                True Q      46192.3    46192.3</span>
-<span class="co">#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</span></pre></div>
+<span class="co">#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</span></code></pre></div>
 </div>
 <div id="memory-alpha" class="section level3">
 <h3 class="hasAnchor">
 <a href="#memory-alpha" class="anchor"></a>Memory Alpha</h3>
 <p>Obtain content and metadata from the article about Spock on Memory Alpha:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ma_article.html">ma_article</a></span><span class="op">(</span><span class="st">"Spock"</span><span class="op">)</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ma_article.html">ma_article</a></span><span class="op">(</span><span class="st">"Spock"</span><span class="op">)</span>
 <span class="va">x</span>
 <span class="co">#&gt; # A tibble: 1 x 4</span>
 <span class="co">#&gt;   title content    metadata          categories       </span>
 <span class="co">#&gt;   &lt;chr&gt; &lt;list&gt;     &lt;list&gt;            &lt;list&gt;           </span>
 <span class="co">#&gt; 1 Spock &lt;xml_ndst&gt; &lt;tibble [1 x 19]&gt; &lt;tibble [15 x 2]&gt;</span>
 <span class="va">x</span><span class="op">$</span><span class="va">metadata</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">Born</span>
-<span class="co">#&gt; [1] "January 6, 2230 (stardate 2230.06)|ShiKahr, Vulcan"</span></pre></div>
+<span class="co">#&gt; [1] "January 6, 2230 (stardate 2230.06)|ShiKahr, Vulcan"</span></code></pre></div>
 </div>
 <div id="memory-beta" class="section level3">
 <h3 class="hasAnchor">
 <a href="#memory-beta" class="anchor"></a>Memory Beta</h3>
 <p>Spock was born in 2230. Obtain a subset of the Star Trek universe historical timeline for that year:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="reference/mb_timeline.html">mb_timeline</a></span><span class="op">(</span><span class="fl">2230</span><span class="op">)</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/mb_timeline.html">mb_timeline</a></span><span class="op">(</span><span class="fl">2230</span><span class="op">)</span>
 <span class="co">#&gt; 2230</span>
 <span class="co">#&gt; $events</span>
 <span class="co">#&gt; # A tibble: 5 x 4</span>
@@ -237,7 +237,7 @@
 <span class="co">#&gt; 2 Star Trek V: T~ Star_Trek_V:_The_~ &lt;NA&gt;         &lt;NA&gt;            Chapter 14    &lt;NA&gt;    The Origi~ 2230      movie no~ &lt;NA&gt;                                    File:TrekV.jpg  </span>
 <span class="co">#&gt; 3 IDW Star Trek,~ IDW_Star_Trek,_Is~ Star Trek (~ Star_Trek_(IDW) 2230 flashba~ &lt;NA&gt;    The Origi~ 2230      comic     Flashback to USS Kelvin and Keenser's ~ File:IDW_TOS_14~</span>
 <span class="co">#&gt; 4 Star Trek       Star_Trek_(2009)   &lt;NA&gt;         &lt;NA&gt;            Chapter 1 (s~ &lt;NA&gt;    The Origi~ 2230      movie no~ Depiction of Spock's birth, date taken~ File:Star_Trek_~</span>
-<span class="co">#&gt; 5 Sarek           Sarek_(novel)      &lt;NA&gt;         &lt;NA&gt;            Chapter 5     &lt;NA&gt;    The Origi~ 12 Novem~ novel     &lt;NA&gt;                                    File:Sarek_nove~</span></pre></div>
+<span class="co">#&gt; 5 Sarek           Sarek_(novel)      &lt;NA&gt;         &lt;NA&gt;            Chapter 5     &lt;NA&gt;    The Origi~ 12 Novem~ novel     &lt;NA&gt;                                    File:Sarek_nove~</span></code></pre></div>
 <p>Live long and prosper.</p>
 </div>
 </div>
@@ -251,7 +251,7 @@
 <a href="#packages-in-the-trekverse" class="anchor"></a>Packages in the trekverse</h2>
 <div class="row">
 <div class="col-sm-2">
-<p><a href="https://github.com/leonawicz/rtrek"><img src="https://raw.githubusercontent.com/leonawicz/rtrek/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a></p>
+<p><a href="https://github.com/leonawicz/rtrek"><img src="https://raw.githubusercontent.com/leonawicz/rtrek/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
 </div>
 <div class="col-sm-10">
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
@@ -264,7 +264,7 @@
 <p><br></p>
 <div class="row">
 <div class="col-sm-2">
-<p><a href="https://github.com/leonawicz/lcars"><img src="https://raw.githubusercontent.com/leonawicz/lcars/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a></p>
+<p><a href="https://github.com/leonawicz/lcars"><img src="https://raw.githubusercontent.com/leonawicz/lcars/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
 </div>
 <div class="col-sm-10">
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
@@ -277,7 +277,7 @@
 <p><br></p>
 <div class="row">
 <div class="col-sm-2">
-<p><a href="https://github.com/leonawicz/trekcolors"><img src="https://raw.githubusercontent.com/leonawicz/trekcolors/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a></p>
+<p><a href="https://github.com/leonawicz/trekcolors"><img src="https://raw.githubusercontent.com/leonawicz/trekcolors/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
 </div>
 <div class="col-sm-10">
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
@@ -290,7 +290,7 @@
 <p><br></p>
 <div class="row">
 <div class="col-sm-2">
-<p><a href="https://github.com/leonawicz/trekfont"><img src="https://raw.githubusercontent.com/leonawicz/trekfont/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a></p>
+<p><a href="https://github.com/leonawicz/trekfont"><img src="https://raw.githubusercontent.com/leonawicz/trekfont/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
 </div>
 <div class="col-sm-10">
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
