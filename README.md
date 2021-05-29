@@ -5,7 +5,7 @@
 
 **Author:** [Matthew Leonawicz](https://github.com/leonawicz)
 <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget">
-<image class="orcid" src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" height="16"></a>
+<img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16" /></a>
 <br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
 [![Project Status: Active – The project has reached a stable, usable
@@ -140,9 +140,9 @@ Alpha:
 x <- ma_article("Spock")
 x
 #> # A tibble: 1 x 4
-#>   title content    metadata          categories       
-#>   <chr> <list>     <list>            <list>           
-#> 1 Spock <xml_ndst> <tibble [1 x 19]> <tibble [15 x 2]>
+#>   title content    metadata               categories           
+#>   <chr> <list>     <list>                 <list>               
+#> 1 Spock <xml_ndst> <tibble[,18] [1 x 18]> <tibble[,2] [14 x 2]>
 x$metadata[[1]]$Born
 #> [1] "January 6, 2230 (stardate 2230.06)|ShiKahr, Vulcan"
 ```
@@ -167,13 +167,13 @@ mb_timeline(2230)
 #> 
 #> $stories
 #> # A tibble: 5 x 11
-#>   title           title_url          colleciton   collection_url  section       context series     date      media     notes                                   image_url       
-#>   <chr>           <chr>              <chr>        <chr>           <chr>         <chr>   <chr>      <chr>     <chr>     <chr>                                   <chr>           
-#> 1 Burning Dreams  Burning_Dreams     <NA>         <NA>            Chapters 4 &~ <NA>    The Origi~ 2230      novel     <NA>                                    File:BurningDre~
-#> 2 Star Trek V: T~ Star_Trek_V:_The_~ <NA>         <NA>            Chapter 14    <NA>    The Origi~ 2230      movie no~ <NA>                                    File:TrekV.jpg  
-#> 3 IDW Star Trek,~ IDW_Star_Trek,_Is~ Star Trek (~ Star_Trek_(IDW) 2230 flashba~ <NA>    The Origi~ 2230      comic     Flashback to USS Kelvin and Keenser's ~ File:IDW_TOS_14~
-#> 4 Star Trek       Star_Trek_(2009)   <NA>         <NA>            Chapter 1 (s~ <NA>    The Origi~ 2230      movie no~ Depiction of Spock's birth, date taken~ File:Star_Trek_~
-#> 5 Sarek           Sarek_(novel)      <NA>         <NA>            Chapter 5     <NA>    The Origi~ 12 Novem~ novel     <NA>                                    File:Sarek_nove~
+#>   title            title_url           colleciton    collection_url  section      context series      date      media      notes                                       image_url        
+#>   <chr>            <chr>               <chr>         <chr>           <chr>        <chr>   <chr>       <chr>     <chr>      <chr>                                       <chr>            
+#> 1 Burning Dreams   Burning_Dreams      <NA>          <NA>            Chapters 4 ~ <NA>    The Origin~ 2230      novel      <NA>                                        File:BurningDrea~
+#> 2 Star Trek V: Th~ Star_Trek_V:_The_F~ <NA>          <NA>            Chapter 14   <NA>    The Origin~ 2230      movie nov~ <NA>                                        File:TrekV.jpg   
+#> 3 IDW Star Trek, ~ IDW_Star_Trek,_Iss~ Star Trek (I~ Star_Trek_(IDW) 2230 flashb~ <NA>    The Origin~ 2230      comic      Flashback to USS Kelvin and Keenser's join~ File:IDW_TOS_14_~
+#> 4 Star Trek        Star_Trek_(2009)    <NA>          <NA>            Chapter 1 (~ <NA>    The Origin~ 2230      movie nov~ Depiction of Spock's birth, date taken fro~ File:Star_Trek_f~
+#> 5 Sarek            Sarek_(novel)       <NA>          <NA>            Chapter 5    <NA>    The Origin~ 12 Novem~ novel      <NA>                                        File:Sarek_novel~
 ```
 
 Live long and prosper.
@@ -290,8 +290,8 @@ True (Trek) type fonts to style your Star Trek themed graphics text.
 
 ## Citation
 
-Matthew Leonawicz (2020). rtrek: Datasets and Functions Relating to Star
-Trek. R package version 0.3.2.
+Matthew Leonawicz (2021). rtrek: Datasets and Functions Relating to Star
+Trek. R package version 0.3.3.
 <https://CRAN.R-project.org/package=rtrek>
 
 ## Contribute
@@ -299,13 +299,6 @@ Trek. R package version 0.3.2.
 Contributions are welcome. Contribute through GitHub via pull request.
 Please create an issue first if it is regarding any substantive feature
 add or change.
-
-If you enjoy my open source R community contributions, please consider a
-donation :).
-
-  - [Buy me a coffee in Ko-fi](https://ko-fi.com/leonawicz)
-  - `leonawicz.crypto`
-  - `mfl$payid.crypto.com`
 
 -----
 

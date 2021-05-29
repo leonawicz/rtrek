@@ -10,13 +10,13 @@
   "codeRepository": "https://github.com/leonawicz/rtrek",
   "issueTracker": "https://github.com/leonawicz/rtrek/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
+  "runtimePlatform": "R version 4.0.5 (2021-03-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -28,7 +28,7 @@
       "@type": "Person",
       "givenName": "Matthew",
       "familyName": "Leonawicz",
-      "email": "matt_leonawicz@esource.com",
+      "email": "mfleonawicz@gmail.com",
       "@id": "https://orcid.org/0000-0001-9452-2771"
     }
   ],
@@ -37,7 +37,7 @@
       "@type": "Person",
       "givenName": "Matthew",
       "familyName": "Leonawicz",
-      "email": "matt_leonawicz@esource.com",
+      "email": "mfleonawicz@gmail.com",
       "@id": "https://orcid.org/0000-0001-9452-2771"
     }
   ],
@@ -311,7 +311,7 @@
   "copyrightHolder": {},
   "funder": {},
   "developmentStatus": "https://www.repostatus.org/",
-  "fileSize": "2246614.817KB",
+  "fileSize": "2246900.262KB",
   "keywords": [
     "r-package",
     "star-trek",

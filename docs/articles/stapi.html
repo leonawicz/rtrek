@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
       </span>
     </div>
 
@@ -47,7 +47,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
     Home
   </a>
@@ -100,7 +100,7 @@
 </li>
 <li>
   <a href="https://github.com/leonawicz/rtrek">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -114,8 +114,7 @@
 
       
 
-      </header><script src="stapi_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="stapi_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="stapi_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="stapi_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Star Trek API (STAPI)</h1>
@@ -144,8 +143,8 @@
 <h3 class="hasAnchor">
 <a href="#stapi-entities" class="anchor"></a>STAPI entities</h3>
 <p>There a many fields, or entities, available in the API. The available IDs can be found in this table:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="va">stapiEntities</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">stapiEntities</span>
 <span class="co">#&gt; # A tibble: 40 x 4</span>
 <span class="co">#&gt;    id                 class   ncol colnames    </span>
 <span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;  &lt;int&gt; &lt;named list&gt;</span>
@@ -159,7 +158,7 @@
 <span class="co">#&gt;  8 comics             tbl_df    15 &lt;chr [15]&gt;  </span>
 <span class="co">#&gt;  9 comicSeries        tbl_df    15 &lt;chr [15]&gt;  </span>
 <span class="co">#&gt; 10 comicStrip         tbl_df    12 &lt;chr [12]&gt;  </span>
-<span class="co">#&gt; # ... with 30 more rows</span></pre></div>
+<span class="co">#&gt; # ... with 30 more rows</span></code></pre></div>
 <p>These ID values are passed to <code>stapi</code> to perform a search using the API. The other columns provide some information about the object returned from a search. All entity searches return tibble data frames. You can inspect or unnest the column names of each table returned from every available entity search so you can see beforehand what variables are associated with each entity.</p>
 </div>
 <div id="accessing-the-api" class="section level3">
@@ -173,13 +172,13 @@
 </ul>
 <p>To determine how many pages of results exist for a given search, set <code>page_count = TRUE</code>. The impact on the API will be equivalent to only searching a single page of results. One page contains metadata including the total number of pages. Nothing is returned in this “safe mode”, but the total number of search results available is printed to the console.</p>
 <p>Searching movies only returns one page of results. However, there are a lot of characters in the Star Trek universe. Check the total pages available for character search.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="../reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, page_count <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; Total pages to retrieve all results: 66</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, page_count <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="co">#&gt; Total pages to retrieve all results: 66</span></code></pre></div>
 <p>And that is with 100 results per page!</p>
 <p>The default <code>page = 1</code> only returns the first page. <code>page</code> can be a vector, e.g. <code>page = 1:62</code>. Results from multi-page searches are automatically combined into a single, constant data frame output. For the second call to <code>stapi</code>, return only page two here, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example further below hard-codes his unique/universal ID.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="fu"><a href="../reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, page <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uid</span>, <span class="va">name</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 100 x 2</span>
 <span class="co">#&gt;    uid            name            </span>
@@ -194,11 +193,11 @@
 <span class="co">#&gt;  8 CHMA0000087568 Grathon Tolar   </span>
 <span class="co">#&gt;  9 CHMA0000190805 C. Russell      </span>
 <span class="co">#&gt; 10 CHMA0000069617 Mike Vejar      </span>
-<span class="co">#&gt; # ... with 90 more rows</span></pre></div>
+<span class="co">#&gt; # ... with 90 more rows</span></code></pre></div>
 <p>Character tables can be sparse. There are a lot of variables, many of which will contain missing data for rare, esoteric characters. Even for more popular characters about whom much more universe lore has been uncovered, it still takes dedicated nerds to enter all the data in a database.</p>
 <p>When a dataset contains a <code>uid</code> column, this can be used subsequently to extract a satellite dataset about that particular observation that was returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q’s <code>uid</code> to <code>stapi</code> and call the function one last time. When <code>uid</code> is no longer <code>NULL</code>, <code>stapi</code> knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="va">Q</span> <span class="op">&lt;-</span> <span class="st">"CHMA0000025118"</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">Q</span> <span class="op">&lt;-</span> <span class="st">"CHMA0000025118"</span>
 <span class="va">Q</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, uid <span class="op">=</span> <span class="va">Q</span><span class="op">)</span>
 
 <span class="va">q_eps</span> <span class="op">&lt;-</span> <span class="va">Q</span><span class="op">$</span><span class="va">episodes</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uid</span>, <span class="va">title</span>, <span class="va">stardateFrom</span>, <span class="va">stardateTo</span><span class="op">)</span>
@@ -212,12 +211,12 @@
 <span class="co">#&gt; 6 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
 <span class="co">#&gt; 7 EPMA0000162588            Death Wish           NA         NA</span>
 <span class="co">#&gt; 8 EPMA0000001413                True Q      46192.3    46192.3</span>
-<span class="co">#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</span></pre></div>
+<span class="co">#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</span></code></pre></div>
 <p>The data returned on Q is actually a large list, including multiple data frames. For simplicity only a piece of it is shown above.</p>
 <p>Find out which TNG characters other than Q appear in both the <em>Encounter at Farpoint</em> series premier and later in the <em>All Good Things…</em> series finale. To do this, use<code>stapi</code> to extract data from other endpoints by following a breadcrumb trail of <code>uid</code> values.</p>
 <p>Engage.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">eps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Encounter at Farpoint"</span>, <span class="st">"All Good Things..."</span><span class="op">)</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">eps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Encounter at Farpoint"</span>, <span class="st">"All Good Things..."</span><span class="op">)</span>
 <span class="va">q_eps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">q_eps</span>, <span class="va">title</span> <span class="op">%in%</span> <span class="va">eps</span><span class="op">)</span>
 <span class="va">q_eps</span>
 <span class="co">#&gt;              uid                 title stardateFrom stardateTo</span>
@@ -225,15 +224,15 @@
 <span class="co">#&gt; 2 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
 <span class="va">eaf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"episode"</span>, uid <span class="op">=</span> <span class="va">q_eps</span><span class="op">$</span><span class="va">uid</span><span class="op">[</span><span class="va">q_eps</span><span class="op">$</span><span class="va">title</span> <span class="op">==</span> <span class="va">eps</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
 <span class="va">agt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"episode"</span>, uid <span class="op">=</span> <span class="va">q_eps</span><span class="op">$</span><span class="va">uid</span><span class="op">[</span><span class="va">q_eps</span><span class="op">$</span><span class="va">title</span> <span class="op">==</span> <span class="va">eps</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
-<span class="va">characters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/setops.html">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/generics/man/setops.html">intersect</a></span><span class="op">(</span><span class="va">eaf</span><span class="op">$</span><span class="va">characters</span><span class="op">$</span><span class="va">name</span>, <span class="va">agt</span><span class="op">$</span><span class="va">characters</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>, <span class="st">"Q"</span><span class="op">)</span>
+<span class="va">characters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html">intersect</a></span><span class="op">(</span><span class="va">eaf</span><span class="op">$</span><span class="va">characters</span><span class="op">$</span><span class="va">name</span>, <span class="va">agt</span><span class="op">$</span><span class="va">characters</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>, <span class="st">"Q"</span><span class="op">)</span>
 <span class="va">characters</span>
 <span class="co">#&gt; [1] "Deanna Troi"      "William T. Riker" "Geordi La Forge"  "Worf"            </span>
-<span class="co">#&gt; [5] "Data"             "Jean-Luc Picard"  "Beverly Crusher"</span></pre></div>
+<span class="co">#&gt; [5] "Data"             "Jean-Luc Picard"  "Beverly Crusher"</span></code></pre></div>
 <p>This returns the main crew members who remained a part of the show from beginning to end. However, Dr. Beverly Crusher was away during season two. Below, inspect how many episodes each character, or actor, appeared in. <code>uid</code> is again needed, this time for each character.</p>
 <p>Note that this requires making seven API calls, one for each character ID. The anti-DOS measures in <code>rtrek</code> will force a one-second minimum wait between each call in the event that the individual calls actually return results faster than this, so the code below will take at least seven seconds to complete.</p>
 <p>Add a fun, gratuitous Star Trek-themed plot. Make it so.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="va">characters</span> <span class="op">&lt;-</span> <span class="va">eaf</span><span class="op">$</span><span class="va">characters</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uid</span>, <span class="va">name</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">%in%</span> <span class="va">characters</span><span class="op">)</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">characters</span> <span class="op">&lt;-</span> <span class="va">eaf</span><span class="op">$</span><span class="va">characters</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uid</span>, <span class="va">name</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">%in%</span> <span class="va">characters</span><span class="op">)</span>
 <span class="va">characters</span>
 <span class="co">#&gt;              uid             name</span>
 <span class="co">#&gt; 1 CHMA0000123101      Deanna Troi</span>
@@ -249,7 +248,7 @@
   <span class="op">)</span>
 <span class="va">eps_count</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">characters</span>, <span class="va">name</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_cols</a></span><span class="op">(</span><span class="va">eps_count</span><span class="op">)</span>
 
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yixuan/showtext">showtext</a></span><span class="op">)</span>
 <span class="fu">font_add</span><span class="op">(</span><span class="st">"StarNext"</span>, <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"fonts/StarNext.ttf"</span><span class="op">)</span>, package <span class="op">=</span> <span class="st">"trekfont"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html">showtext_auto</a></span><span class="op">(</span><span class="op">)</span>
@@ -263,7 +262,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>family <span class="op">=</span> <span class="st">"StarNext"</span><span class="op">)</span>, line <span class="op">=</span> <span class="va">eb</span>, axis.text.x <span class="op">=</span> <span class="va">eb</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Character"</span>, y <span class="op">=</span> <span class="st">"Number of episodes"</span>, title <span class="op">=</span> <span class="st">"TNG EPISODE APPEARANCES"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="fl">10</span>, hjust <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="fl">10</span>, hjust <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></code></pre></div>
 <p><img src="stapi_files/figure-html/stapi_extract3-1.png" width="100%"></p>
 <p>This looks as expected. Inspect the structure of the list objects returned by <code>stapi</code> to become more familiar with what kind of information is available.</p>
 </div>

@@ -109,7 +109,7 @@ x$categories
 The likely intent is to obtain an image file after browsing the web pages that list images files. Even if you are interactively browsing the website, you have to click several times and scroll through additional articles before you can actually view the image file that was initially presented to you as a clickable link. This is a frustrating user experience and confusing design. If you have a file name you want to view, just use `ma_image` for this. It returns a ggplot object of the image file rather than an associated article.
 
 ```{r ma_image3}
-ma_image(worf_data$url[1])
+ma_image("File:Data_tries_talking_to_Worf.jpg")
 ```
 
 `ma_image` can take the additional arguments, `keep = TRUE` to retain the downloaded image file, and `file` to specify the output filename if you do not want it to be derived from the short URL. If you need more control over the plot, set `keep = TRUE` and then load the image file into R directly to plot separately as needed.

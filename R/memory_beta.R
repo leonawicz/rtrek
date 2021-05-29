@@ -152,7 +152,8 @@ mb_search <- function(text, browse = FALSE){
 #' @examples
 #' \dontrun{mb_image("File:DataBlaze.jpg")}
 mb_image <- function(url, file, keep = FALSE){
-  file0 <- gsub("^File:", "", url)
+  url <- gsub(",", "%2C", url)
+  file0 <- gsub("^File:|,", "", url)
   url2 <- xml2::read_html(mb_base_add(url)) %>%
     rvest::html_nodes("a img") %>%
     rvest::html_attr("src")

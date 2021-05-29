@@ -214,7 +214,8 @@ ma_search <- function(text, browse = FALSE){
 #' @examples
 #' \dontrun{ma_image("File:Gowron_attempts_to_recruit_Worf.jpg")}
 ma_image <- function(url, file, keep = FALSE){
-  file0 <- gsub("^File:", "", url)
+  url <- gsub(",", "%2C", url)
+  file0 <- gsub("^File:|,", "", url)
   url2 <- xml2::read_html(ma_base_add(url)) %>%
     rvest::html_nodes("a img") %>%
     rvest::html_attr("src")

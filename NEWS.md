@@ -1,3 +1,7 @@
+# rtrek 0.3.3
+
+* Minor bug fix and documentation updates.
+
 # rtrek 0.3.2
 
 * Bug fixes related to website HTML updates.

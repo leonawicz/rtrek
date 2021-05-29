@@ -1,5 +1,5 @@
 Package: rtrek
-Version: 0.3.2
+Version: 0.3.3
 Title: Datasets and Functions Relating to Star Trek
 Description: Provides datasets related to the Star Trek fictional universe and functions for working with the data.
     The package also provides access to real world datasets based on the televised series and other related licensed media productions.
@@ -9,7 +9,7 @@ Description: Provides datasets related to the Star Trek fictional universe and f
     It also contains several local datasets covering a variety of topics. 
     The package also provides functions for working with data from other Star Trek-related 
     R data packages containing larger datasets not stored in 'rtrek'.
-Authors@R: person("Matthew", "Leonawicz", email = "matt_leonawicz@esource.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9452-2771"))
+Authors@R: person("Matthew", "Leonawicz", email = "mfleonawicz@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9452-2771"))
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
