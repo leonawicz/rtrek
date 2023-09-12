@@ -1,5 +1,3 @@
-context("other external data")
-
 test_that("st_transcripts imports successfully", {
   skip_on_cran()
   x <- st_transcripts()

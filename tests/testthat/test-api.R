@@ -1,5 +1,3 @@
-context("api")
-
 unavail <- "Internet resources currently unavailable."
 
 library(dplyr)

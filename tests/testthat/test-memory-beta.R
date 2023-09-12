@@ -1,5 +1,3 @@
-context("Memory Beta")
-
 unavail <- "Internet resources currently unavailable."
 
 test_that("memory_beta returns as expected", {
@@ -25,15 +23,15 @@ test_that("memory_beta returns as expected", {
   expect_equal(as.character(sapply(d, class)), c("character", rep("list", 3)))
   expect_is(d$content[[1]], "xml_nodeset")
 
-  expect_error(memory_beta("x"), "Invalid endpoint: portal ID.")
-  expect_error(memory_beta("characters/x"), "Invalid endpoint: x.")
+  expect_error(memory_beta("NOENDPOINT"), "Invalid endpoint: portal ID.")
+  expect_error(memory_beta("characters/NOCHARACTER"), "Invalid endpoint: NOCHARACTER.")
   expect_error(memory_beta(file.path(ep, "x")),
                "Azetbur, daughter of Gorkon is an article but `endpoint` does not terminate here.")
 })
 
 test_that("mb_article returns as expected", {
   skip_on_cran()
-  expect_error(mb_article("x"), "Article not found.")
+  expect_error(mb_article("NOARTICLE"), "Article not found.")
   closeAllConnections()
 
   expect_equal(ncol(memory_beta("books")), 2)

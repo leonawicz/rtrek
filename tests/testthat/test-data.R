@@ -1,5 +1,3 @@
-context("datasets")
-
 d <- st_datasets()
 
 test_that("dataset list returns as expected", {

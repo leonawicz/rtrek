@@ -1,12 +1,10 @@
-context("mb_timeline")
-
 unavail <- "Internet resources currently unavailable."
 
 err1 <- paste("`x` must be numeric years, e.g., 2371:2374, or character decade,",
               "e.g. '2370s', or one of 'main', 'past', 'future' or 'complete'.")
 err2 <- "`x` can only be a vector for numeric years. Charatcer options must be scalar."
 err3 <- "`x` must be in the range '1900s' - '2490s'. For distant past or future use x = 'past' or x = 'future'."
-events <- c("period", "id", "date", "notes")
+events <- c("period", "details")
 stories <- c("title", "title_url", "colleciton", "collection_url", "section",
              "context", "series", "date", "media", "notes", "image_url")
 

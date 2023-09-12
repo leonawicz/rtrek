@@ -1,5 +1,3 @@
-context("tiles")
-
 test_that("tile_coords returns as expected", {
   d <- data.frame(row = c(0, 3222, 6445), col = c(0, 4000, 8000))
   xy <- tile_coords(d, "galaxy1")

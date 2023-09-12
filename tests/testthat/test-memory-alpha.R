@@ -1,5 +1,3 @@
-context("Memory Alpha")
-
 unavail <- "Internet resources currently unavailable."
 
 test_that("memory_alpha returns as expected", {
@@ -48,15 +46,15 @@ test_that("memory_alpha returns as expected", {
   expect_equal(as.character(sapply(d, class)), c("character", rep("list", 3)))
   expect_is(d$content[[1]], "xml_nodeset")
 
-  expect_error(memory_alpha("x"), "Invalid endpoint: portal ID.")
-  expect_error(memory_alpha("people/Klingons/x"), "Invalid endpoint: x.")
+  expect_error(memory_alpha("NOENDPOINT"), "Invalid endpoint: portal ID.")
+  expect_error(memory_alpha("people/Klingons/NOCHARACTER"), "Invalid endpoint: NOCHARACTER.")
   expect_error(memory_alpha("people/Klingons/Azetbur/x"),
                "Azetbur is an article but `endpoint` does not terminate here.")
 })
 
 test_that("ma_article returns as expected", {
   skip_on_cran()
-  expect_error(ma_article("x"), "Article not found.")
+  expect_error(ma_article("NOARTICLE"), "Article not found.")
   closeAllConnections()
 
   expect_equal(ncol(memory_alpha("people/Acamarians")), 2)
