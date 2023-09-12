@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Datasets and Functions Relating to Star Trek • rtrek</title>
+<title>Data analysis relating to Star Trek • rtrek</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
-<meta property="og:title" content="Datasets and Functions Relating to Star Trek">
+<meta property="og:title" content="Data analysis relating to Star Trek">
 <meta property="og:description" content="Provides datasets related to the Star Trek fictional universe and functions for working with the data.
     The package also provides access to real world datasets based on the televised series and other related licensed media productions.
     It interfaces with the Star Trek API (STAPI) (&lt;http://stapi.co/&gt;), 
@@ -34,6 +34,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -46,7 +48,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -54,7 +56,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa-home"></span>
+    <span class="fa fa-home"></span>
      
     Home
   </a>
@@ -63,7 +65,7 @@
   <a href="articles/rtrek.html">Get Started</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -82,7 +84,8 @@
       <a href="articles/fonts.html">Star Trek fonts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Examples</li>
+    </li>
+<li class="dropdown-header">Examples</li>
     <li>
       <a href="articles/ex-word-count.html">Novels: word count</a>
     </li>
@@ -103,11 +106,8 @@
   <a href="articles/sc.html">Stellar Cartography</a>
 </li>
 <li>
-  <a href="articles/rr.html">R &amp; R... &amp; R</a>
-</li>
-<li>
-  <a href="https://github.com/leonawicz/rtrek">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/leonawicz/rtrek" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -123,243 +123,259 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="rtrek-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#rtrek-" class="anchor"></a>rtrek <img src="reference/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
+<div class="section level1">
+<div class="page-header"><h1 id="rtrek-">rtrek <img src="reference/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right"><a class="anchor" aria-label="anchor" href="#rtrek-"></a>
 </h1></div>
-<p><strong>Author:</strong> <a href="https://github.com/leonawicz">Matthew Leonawicz</a> <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget"> <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16"></a> <br><strong>License:</strong> <a href="https://opensource.org/licenses/MIT">MIT</a><br></p>
-<p><a href="https://www.repostatus.org/"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a> <a href="https://travis-ci.org/leonawicz/rtrek"><img src="https://travis-ci.org/leonawicz/rtrek.svg?branch=master" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/leonawicz/rtrek"><img src="https://ci.appveyor.com/api/projects/status/github/leonawicz/rtrek?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://codecov.io/github/leonawicz/rtrek?branch=master"><img src="https://img.shields.io/codecov/c/github/leonawicz/rtrek/master.svg" alt="Coverage Status"></a></p>
-<p><a href="https://cran.r-project.org/package=rtrek"><img src="http://www.r-pkg.org/badges/version/rtrek" alt="CRAN status"></a> <a href="https://cran.r-project.org/package=rtrek"><img src="http://cranlogs.r-pkg.org/badges/grand-total/rtrek" alt="CRAN downloads"></a> <a href="https://github.com/leonawicz/rtrek"><img src="https://img.shields.io/github/stars/leonawicz/rtrek.svg?style=social&amp;label=Github" alt="Github Stars"></a></p>
-<p>The <code>rtrek</code> package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. It interfaces with the <a href="http://stapi.co/">Star Trek API</a> (STAPI), <a href="https://memory-alpha.fandom.com/wiki/Portal:Main">Memory Alpha</a> and <a href="https://memory-beta.fandom.com/wiki/Main_Page">Memory Beta</a> to retrieve data, metadata and other information relating to Star Trek.</p>
+<p><a href="https://www.repostatus.org/" class="external-link"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a> <a href="https://cran.r-project.org/package=rtrek" class="external-link"><img src="http://www.r-pkg.org/badges/version/rtrek" alt="CRAN status"></a> <a href="https://cran.r-project.org/package=rtrek" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/rtrek" alt="CRAN downloads"></a> <a href="https://github.com/leonawicz/rtrek" class="external-link"><img src="https://img.shields.io/github/stars/leonawicz/rtrek.svg?style=social&amp;label=Github" alt="Github Stars"></a></p>
+<p>The <code>rtrek</code> package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. It interfaces with the <a href="http://stapi.co/" class="external-link">Star Trek API</a> (STAPI), <a href="https://memory-alpha.fandom.com/wiki/Portal:Main" class="external-link">Memory Alpha</a> and <a href="https://memory-beta.fandom.com/wiki/Main_Page" class="external-link">Memory Beta</a> to retrieve data, metadata and other information relating to Star Trek.</p>
 <p>The package also contains several local datasets covering a variety of topics such as Star Trek timeline data, universe species data and geopolitical data. Some of these are more information rich, while others are toy examples useful for simple demonstrations. The bulk of Star Trek data is accessed from external sources by API. A future version of <code>rtrek</code> will also include summary datasets resulting from text mining analyses of Star Trek novels.</p>
 <p style="text-align:center;">
-</p>
-<p><img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek_app1.png?raw=true" width="100%"></p>
-
+<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek_app1.png?raw=true" width="100%"></p>
 <p><em>Image: Example <a href="https://leonawicz.github.io/rtrek/articles/sc.html">Leaflet map</a> using non-geographic Star Trek map tiles.</em></p>
 <p><br></p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width="320" style="float: right; padding-left: 10px; padding-bottom:5px;">
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>Install the CRAN release of <code>rtrek</code> with</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"rtrek"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"rtrek"</span><span class="op">)</span></span></code></pre></div>
 <p>Install the development version from GitHub with</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"leonawicz/rtrek"</span><span class="op">)</span></code></pre></div>
-<h2 style="padding-bottom:0px;">
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"leonawicz/rtrek"</span><span class="op">)</span></span></code></pre></div>
+<h2 style="padding-bottom:0px;" id="installation-1">
+Examples
+<a class="anchor" aria-label="anchor" href="#installation-1"></a>
 </h2>
-<p>Examples</p>
-
-<h4 style="padding-top:50px;padding-bottom:0px;">
+<p><img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width="320" style="float: right; padding-left: 20px; padding-bottom:5px;"></p>
+<h4 style="padding-top:50px;padding-bottom:0px;" id="installation-2">
+Time to be good detectives. Good thing Data has R installed.
+<a class="anchor" aria-label="anchor" href="#installation-2"></a>
 </h4>
-<p>Time to be good detectives. Good thing Data has R installed.</p>
-
 <p>These are just a few examples to help you jump right in. See the package articles for more.</p>
-<div id="stapi" class="section level3">
-<h3 class="hasAnchor">
-<a href="#stapi" class="anchor"></a>STAPI</h3>
-<p>Use the Star Trek API (STAPI) to obtain information on the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up. The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters. The second call grabs only page two results. The third call uses the universal/unique ID <code>uid</code> to retrieve data on Q. Think of these three successive uses of <code>stapi</code> as safe mode, search mode and extraction mode.</p>
+<div class="section level3">
+<h3 id="stapi">STAPI<a class="anchor" aria-label="anchor" href="#stapi"></a>
+</h3>
+<p>Use the Star Trek API (STAPI) to obtain information on the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up.</p>
+<p>The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters.</p>
+<p>The second call grabs only page two results. The third call uses the universal/unique ID <code>uid</code> to retrieve data on Q. Think of these three successive uses of <code>stapi</code> as safe mode, search mode and extraction mode.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/leonawicz/rtrek">rtrek</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, page_count <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; Total pages to retrieve all results: 66</span>
-
-<span class="fu"><a href="reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, page <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uid</span>, <span class="va">name</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 100 x 2</span>
-<span class="co">#&gt;    uid            name            </span>
-<span class="co">#&gt;    &lt;chr&gt;          &lt;chr&gt;           </span>
-<span class="co">#&gt;  1 CHMA0000021696 Pechetti        </span>
-<span class="co">#&gt;  2 CHMA0000028502 Pomet           </span>
-<span class="co">#&gt;  3 CHMA0000134966 Eddie Newsom    </span>
-<span class="co">#&gt;  4 CHMA0000101321 T. Virts        </span>
-<span class="co">#&gt;  5 CHMA0000053158 Annabelle series</span>
-<span class="co">#&gt;  6 CHMA0000008975 Torias Dax      </span>
-<span class="co">#&gt;  7 CHMA0000232471 T. Peel         </span>
-<span class="co">#&gt;  8 CHMA0000087568 Grathon Tolar   </span>
-<span class="co">#&gt;  9 CHMA0000190805 C. Russell      </span>
-<span class="co">#&gt; 10 CHMA0000069617 Mike Vejar      </span>
-<span class="co">#&gt; # ... with 90 more rows</span>
-
-<span class="va">Q</span> <span class="op">&lt;-</span> <span class="st">"CHMA0000025118"</span> <span class="co">#unique ID</span>
-<span class="va">Q</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, uid <span class="op">=</span> <span class="va">Q</span><span class="op">)</span>
-<span class="va">Q</span><span class="op">$</span><span class="va">episodes</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uid</span>, <span class="va">title</span>, <span class="va">stardateFrom</span>, <span class="va">stardateTo</span><span class="op">)</span>
-<span class="co">#&gt;              uid                 title stardateFrom stardateTo</span>
-<span class="co">#&gt; 1 EPMA0000001458    All Good Things...      47988.0    47988.0</span>
-<span class="co">#&gt; 2 EPMA0000000845                Q-Less      46531.2    46531.2</span>
-<span class="co">#&gt; 3 EPMA0000001329                 Q Who      42761.3    42761.3</span>
-<span class="co">#&gt; 4 EPMA0000000651              Tapestry           NA         NA</span>
-<span class="co">#&gt; 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7</span>
-<span class="co">#&gt; 6 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span>
-<span class="co">#&gt; 7 EPMA0000162588            Death Wish           NA         NA</span>
-<span class="co">#&gt; 8 EPMA0000001413                True Q      46192.3    46192.3</span>
-<span class="co">#&gt; 9 EPMA0000001377                  Qpid      44741.9    44741.9</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/leonawicz/rtrek" class="external-link">rtrek</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, page_count <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Total pages to retrieve all results: 76</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, page <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">uid</span>, <span class="va">name</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 100 × 2</span></span>
+<span><span class="co">#&gt;    uid            name         </span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;          &lt;chr&gt;        </span></span>
+<span><span class="co">#&gt;  1 CHMA0000215045 0413 Theta   </span></span>
+<span><span class="co">#&gt;  2 CHMA0000174718 0718         </span></span>
+<span><span class="co">#&gt;  3 CHMA0000283851 10111        </span></span>
+<span><span class="co">#&gt;  4 CHMA0000278055 335          </span></span>
+<span><span class="co">#&gt;  5 CHMA0000282741 355          </span></span>
+<span><span class="co">#&gt;  6 CHMA0000026532 A'trom       </span></span>
+<span><span class="co">#&gt;  7 CHMA0000280385 A. Armaganian</span></span>
+<span><span class="co">#&gt;  8 CHMA0000226457 A. Baiers    </span></span>
+<span><span class="co">#&gt;  9 CHMA0000232390 A. Baiers    </span></span>
+<span><span class="co">#&gt; 10 CHMA0000068580 A. Banda     </span></span>
+<span><span class="co">#&gt; # ℹ 90 more rows</span></span>
+<span></span>
+<span><span class="va">Q</span> <span class="op">&lt;-</span> <span class="st">"CHMA0000025118"</span> <span class="co">#unique ID</span></span>
+<span><span class="va">Q</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, uid <span class="op">=</span> <span class="va">Q</span><span class="op">)</span></span>
+<span><span class="va">Q</span><span class="op">$</span><span class="va">episodes</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">uid</span>, <span class="va">title</span>, <span class="va">stardateFrom</span>, <span class="va">stardateTo</span><span class="op">)</span></span>
+<span><span class="co">#&gt;               uid                 title stardateFrom stardateTo</span></span>
+<span><span class="co">#&gt; 1  EPMA0000259941               Veritas           NA         NA</span></span>
+<span><span class="co">#&gt; 2  EPMA0000000651              Tapestry           NA         NA</span></span>
+<span><span class="co">#&gt; 3  EPMA0000000500            Hide And Q      41590.5    41590.5</span></span>
+<span><span class="co">#&gt; 4  EPMA0000277408        The Star Gazer           NA         NA</span></span>
+<span><span class="co">#&gt; 5  EPMA0000280052              Farewell           NA         NA</span></span>
+<span><span class="co">#&gt; 6  EPMA0000279099            Two of One           NA         NA</span></span>
+<span><span class="co">#&gt; 7  EPMA0000278606               Watcher           NA         NA</span></span>
+<span><span class="co">#&gt; 8  EPMA0000001510    The Q and the Grey      50384.2    50392.7</span></span>
+<span><span class="co">#&gt; 9  EPMA0000001413                True Q      46192.3    46192.3</span></span>
+<span><span class="co">#&gt; 10 EPMA0000000845                Q-Less      46531.2    46531.2</span></span>
+<span><span class="co">#&gt; 11 EPMA0000001329                 Q Who      42761.3    42761.3</span></span>
+<span><span class="co">#&gt; 12 EPMA0000278900    Fly Me to the Moon           NA         NA</span></span>
+<span><span class="co">#&gt; 13 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7</span></span>
+<span><span class="co">#&gt; 14 EPMA0000001458    All Good Things...      47988.0    47988.0</span></span>
+<span><span class="co">#&gt; 15 EPMA0000162588            Death Wish      49301.2    49301.2</span></span>
+<span><span class="co">#&gt; 16 EPMA0000289337   The Last Generation           NA         NA</span></span>
+<span><span class="co">#&gt; 17 EPMA0000001347                Deja Q      43539.1    43539.1</span></span>
+<span><span class="co">#&gt; 18 EPMA0000277535               Penance           NA         NA</span></span>
+<span><span class="co">#&gt; 19 EPMA0000278226          Assimilation           NA         NA</span></span>
+<span><span class="co">#&gt; 20 EPMA0000279450                 Mercy           NA         NA</span></span>
+<span><span class="co">#&gt; 21 EPMA0000001619                    Q2      54704.5    54704.5</span></span>
+<span><span class="co">#&gt; 22 EPMA0000001377                  Qpid      44741.9    44741.9</span></span></code></pre></div>
 </div>
-<div id="memory-alpha" class="section level3">
-<h3 class="hasAnchor">
-<a href="#memory-alpha" class="anchor"></a>Memory Alpha</h3>
+<div class="section level3">
+<h3 id="memory-alpha">Memory Alpha<a class="anchor" aria-label="anchor" href="#memory-alpha"></a>
+</h3>
 <p>Obtain content and metadata from the article about Spock on Memory Alpha:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ma_article.html">ma_article</a></span><span class="op">(</span><span class="st">"Spock"</span><span class="op">)</span>
-<span class="va">x</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title content    metadata               categories           </span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;list&gt;     &lt;list&gt;                 &lt;list&gt;               </span>
-<span class="co">#&gt; 1 Spock &lt;xml_ndst&gt; &lt;tibble[,18] [1 x 18]&gt; &lt;tibble[,2] [14 x 2]&gt;</span>
-<span class="va">x</span><span class="op">$</span><span class="va">metadata</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">Born</span>
-<span class="co">#&gt; [1] "January 6, 2230 (stardate 2230.06)|ShiKahr, Vulcan"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ma_article.html">ma_article</a></span><span class="op">(</span><span class="st">"Spock"</span><span class="op">)</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 4</span></span>
+<span><span class="co">#&gt;   title content    metadata          categories       </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt; &lt;list&gt;     &lt;list&gt;            &lt;list&gt;           </span></span>
+<span><span class="co">#&gt; 1 Spock &lt;xml_ndst&gt; &lt;tibble [1 × 18]&gt; &lt;tibble [15 × 2]&gt;</span></span>
+<span><span class="va">x</span><span class="op">$</span><span class="va">metadata</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">Born</span></span>
+<span><span class="co">#&gt; [1] "January 6, 2230 (stardate 2230.06)|ShiKahr, Vulcan"</span></span></code></pre></div>
 </div>
-<div id="memory-beta" class="section level3">
-<h3 class="hasAnchor">
-<a href="#memory-beta" class="anchor"></a>Memory Beta</h3>
+<div class="section level3">
+<h3 id="memory-beta">Memory Beta<a class="anchor" aria-label="anchor" href="#memory-beta"></a>
+</h3>
 <p>Spock was born in 2230. Obtain a subset of the Star Trek universe historical timeline for that year:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/mb_timeline.html">mb_timeline</a></span><span class="op">(</span><span class="fl">2230</span><span class="op">)</span>
-<span class="co">#&gt; 2230</span>
-<span class="co">#&gt; $events</span>
-<span class="co">#&gt; # A tibble: 5 x 4</span>
-<span class="co">#&gt;   period id                date  notes                                                              </span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;             &lt;chr&gt; &lt;chr&gt;                                                              </span>
-<span class="co">#&gt; 1 2230   Events            &lt;NA&gt;  Argelius II  and Betelgeuse become members of the Federation.[1][2]</span>
-<span class="co">#&gt; 2 2230   Births_and_Deaths &lt;NA&gt;  Spock is born deep within a cave in Vulcan's Forge on Vulcan.[3][4]</span>
-<span class="co">#&gt; 3 2230   Births_and_Deaths &lt;NA&gt;  George Samuel Kirk, Jr. is born.[5]                                </span>
-<span class="co">#&gt; 4 2230   Births_and_Deaths &lt;NA&gt;  David Rabin is born.[6]                                            </span>
-<span class="co">#&gt; 5 2230   Births_and_Deaths &lt;NA&gt;  Roy John Moss is born.[7]                                          </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $stories</span>
-<span class="co">#&gt; # A tibble: 5 x 11</span>
-<span class="co">#&gt;   title            title_url           colleciton    collection_url  section      context series      date      media      notes                                       image_url        </span>
-<span class="co">#&gt;   &lt;chr&gt;            &lt;chr&gt;               &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;                                       &lt;chr&gt;            </span>
-<span class="co">#&gt; 1 Burning Dreams   Burning_Dreams      &lt;NA&gt;          &lt;NA&gt;            Chapters 4 ~ &lt;NA&gt;    The Origin~ 2230      novel      &lt;NA&gt;                                        File:BurningDrea~</span>
-<span class="co">#&gt; 2 Star Trek V: Th~ Star_Trek_V:_The_F~ &lt;NA&gt;          &lt;NA&gt;            Chapter 14   &lt;NA&gt;    The Origin~ 2230      movie nov~ &lt;NA&gt;                                        File:TrekV.jpg   </span>
-<span class="co">#&gt; 3 IDW Star Trek, ~ IDW_Star_Trek,_Iss~ Star Trek (I~ Star_Trek_(IDW) 2230 flashb~ &lt;NA&gt;    The Origin~ 2230      comic      Flashback to USS Kelvin and Keenser's join~ File:IDW_TOS_14_~</span>
-<span class="co">#&gt; 4 Star Trek        Star_Trek_(2009)    &lt;NA&gt;          &lt;NA&gt;            Chapter 1 (~ &lt;NA&gt;    The Origin~ 2230      movie nov~ Depiction of Spock's birth, date taken fro~ File:Star_Trek_f~</span>
-<span class="co">#&gt; 5 Sarek            Sarek_(novel)       &lt;NA&gt;          &lt;NA&gt;            Chapter 5    &lt;NA&gt;    The Origin~ 12 Novem~ novel      &lt;NA&gt;                                        File:Sarek_novel~</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/mb_timeline.html">mb_timeline</a></span><span class="op">(</span><span class="fl">2230</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 2230</span></span>
+<span><span class="co">#&gt; $events</span></span>
+<span><span class="co">#&gt; # A tibble: 8 × 2</span></span>
+<span><span class="co">#&gt;   period details                                                      </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;                                                        </span></span>
+<span><span class="co">#&gt; 1 2230   Events                                                       </span></span>
+<span><span class="co">#&gt; 2 2230   Argelius II  and Betelgeuse become members of the Federation.</span></span>
+<span><span class="co">#&gt; 3 2230   Births and Deaths                                            </span></span>
+<span><span class="co">#&gt; 4 2230   Spock is born deep within a cave in Vulcan's Forge on Vulcan.</span></span>
+<span><span class="co">#&gt; 5 2230   T'Pring is born on Vulcan.                                   </span></span>
+<span><span class="co">#&gt; 6 2230   George Samuel Kirk, Jr. is born.                             </span></span>
+<span><span class="co">#&gt; 7 2230   David Rabin is born.                                         </span></span>
+<span><span class="co">#&gt; 8 2230   Roy John Moss is born.                                       </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $stories</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 11</span></span>
+<span><span class="co">#&gt;   title   title_url colleciton collection_url section context series date  media</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 Burnin… Burning_… &lt;NA&gt;       &lt;NA&gt;           Chapte… &lt;NA&gt;    The O… 2230  novel</span></span>
+<span><span class="co">#&gt; 2 Star T… Star_Tre… &lt;NA&gt;       &lt;NA&gt;           Chapte… &lt;NA&gt;    The O… 2230  movi…</span></span>
+<span><span class="co">#&gt; 3 IDW St… IDW_Star… Star Trek… Star_Trek_(ID… 2230 f… &lt;NA&gt;    The O… 2230  comic</span></span>
+<span><span class="co">#&gt; 4 Star T… Star_Tre… &lt;NA&gt;       &lt;NA&gt;           Chapte… &lt;NA&gt;    The O… 2230  movi…</span></span>
+<span><span class="co">#&gt; 5 Sarek   Sarek_(n… &lt;NA&gt;       &lt;NA&gt;           Chapte… &lt;NA&gt;    The O… 12 N… novel</span></span>
+<span><span class="co">#&gt; # ℹ 2 more variables: notes &lt;chr&gt;, image_url &lt;chr&gt;</span></span></code></pre></div>
 <p>Live long and prosper.</p>
 </div>
 </div>
-<div id="reference" class="section level2">
-<h2 class="hasAnchor">
-<a href="#reference" class="anchor"></a>Reference</h2>
-<p><a href="https://leonawicz.github.io/rtrek/">Complete package reference and function documentation</a></p>
-</div>
-<div id="packages-in-the-trekverse" class="section level2">
-<h2 class="hasAnchor">
-<a href="#packages-in-the-trekverse" class="anchor"></a>Packages in the trekverse</h2>
+<div class="section level2">
+<h2 id="packages-in-the-trekverse">Packages in the trekverse<a class="anchor" aria-label="anchor" href="#packages-in-the-trekverse"></a>
+</h2>
 <div class="row">
 <div class="col-sm-2">
-<p><a href="https://github.com/leonawicz/rtrek"><img src="https://raw.githubusercontent.com/leonawicz/rtrek/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
+<p><a href="https://github.com/leonawicz/rtrek" class="external-link"><img src="https://raw.githubusercontent.com/leonawicz/rtrek/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
 </div>
 <div class="col-sm-10">
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+<a href="https://github.com/leonawicz/rtrek" class="external-link">rtrek</a>: The core Star Trek package
 </h4>
-<p><a href="https://github.com/leonawicz/rtrek">rtrek</a>: The core Star Trek package</p>
-
 <p>Datasets related to Star Trek, API wrappers to external data sources, and more.</p>
 </div>
 </div>
 <p><br></p>
 <div class="row">
 <div class="col-sm-2">
-<p><a href="https://github.com/leonawicz/lcars"><img src="https://raw.githubusercontent.com/leonawicz/lcars/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
+<p><a href="https://github.com/leonawicz/lcars" class="external-link"><img src="https://raw.githubusercontent.com/leonawicz/lcars/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
 </div>
 <div class="col-sm-10">
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+<a href="https://github.com/leonawicz/lcars" class="external-link">lcars</a>: LCARS aesthetic for Shiny
 </h4>
-<p><a href="https://github.com/leonawicz/lcars">lcars</a>: LCARS aesthetic for Shiny</p>
-
 <p>Create Shiny apps based on the Library Computer Access/Retrieval System (LCARS).</p>
 </div>
 </div>
 <p><br></p>
 <div class="row">
 <div class="col-sm-2">
-<p><a href="https://github.com/leonawicz/trekcolors"><img src="https://raw.githubusercontent.com/leonawicz/trekcolors/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
+<p><a href="https://github.com/leonawicz/trekcolors" class="external-link"><img src="https://raw.githubusercontent.com/leonawicz/trekcolors/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
 </div>
 <div class="col-sm-10">
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+<a href="https://github.com/leonawicz/trekcolors" class="external-link">trekcolors</a>: A color palette package
 </h4>
-<p><a href="https://github.com/leonawicz/trekcolors">trekcolors</a>: A color palette package</p>
-
 <p>Predefined and customizable Star Trek themed color palettes and related functions.</p>
 </div>
 </div>
 <p><br></p>
 <div class="row">
 <div class="col-sm-2">
-<p><a href="https://github.com/leonawicz/trekfont"><img src="https://raw.githubusercontent.com/leonawicz/trekfont/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
+<p><a href="https://github.com/leonawicz/trekfont" class="external-link"><img src="https://raw.githubusercontent.com/leonawicz/trekfont/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a></p>
 </div>
 <div class="col-sm-10">
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+<a href="https://github.com/leonawicz/trekfont" class="external-link">trekfont</a>: A fonts package
 </h4>
-<p><a href="https://github.com/leonawicz/trekfont">trekfont</a>: A fonts package</p>
-
 <p>True (Trek) type fonts to style your Star Trek themed graphics text.</p>
 </div>
 </div>
 <p><br></p>
 </div>
-<div id="citation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h2>
-<p>Matthew Leonawicz (2021). rtrek: Datasets and Functions Relating to Star Trek. R package version 0.3.3. <a href="https://CRAN.R-project.org/package=rtrek" class="uri">https://CRAN.R-project.org/package=rtrek</a></p>
+<div class="section level2">
+<h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
+</h2>
+<p>Matthew Leonawicz (2023). rtrek: Data analysis relating to Star Trek. R package version 0.4.0. <a href="https://CRAN.R-project.org/package=rtrek" class="external-link uri">https://CRAN.R-project.org/package=rtrek</a></p>
 </div>
-<div id="contribute" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contribute" class="anchor"></a>Contribute</h2>
+<div class="section level2">
+<h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
+</h2>
 <p>Contributions are welcome. Contribute through GitHub via pull request. Please create an issue first if it is regarding any substantive feature add or change.</p>
 <hr>
-<p>Please note that the <code>rtrek</code> project is released with a <a href="https://github.com/leonawicz/rtrek/blob/master/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the <code>rtrek</code> project is released with a <a href="https://github.com/leonawicz/rtrek/blob/master/CODE_OF_CONDUCT.md" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=rtrek">https://​cloud.r-project.org/​package=rtrek</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/leonawicz/rtrek/">https://​github.com/​leonawicz/​rtrek/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/leonawicz/rtrek/issues">https://​github.com/​leonawicz/​rtrek/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=rtrek" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/leonawicz/rtrek/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/leonawicz/rtrek/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>
-<a href="https://github.com/leonawicz">Matthew Leonawicz</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing rtrek</a></li>
 </ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>
+<a href="https://github.com/leonawicz" class="external-link">Matthew Leonawicz</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+
 
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/leonawicz">Matthew Leonawicz</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/leonawicz" class="external-link">Matthew Leonawicz</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -367,6 +383,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -27,6 +27,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -47,7 +49,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home"></span>
+    <span class="fa fa-home"></span>
      
     Home
   </a>
@@ -56,7 +58,7 @@
   <a href="../articles/rtrek.html">Get Started</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -75,7 +77,8 @@
       <a href="../articles/fonts.html">Star Trek fonts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Examples</li>
+    </li>
+<li class="dropdown-header">Examples</li>
     <li>
       <a href="../articles/ex-word-count.html">Novels: word count</a>
     </li>
@@ -96,11 +99,8 @@
   <a href="../articles/sc.html">Stellar Cartography</a>
 </li>
 <li>
-  <a href="../articles/rr.html">R &amp; R... &amp; R</a>
-</li>
-<li>
-  <a href="https://github.com/leonawicz/rtrek">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/leonawicz/rtrek" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -114,223 +114,333 @@
 
       
 
-      </header><script src="memory-alpha_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Memory Alpha</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/leonawicz/rtrek/blob/master/vignettes/memory-alpha.Rmd"><code>vignettes/memory-alpha.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/leonawicz/rtrek/blob/HEAD/vignettes/memory-alpha.Rmd" class="external-link"><code>vignettes/memory-alpha.Rmd</code></a></small>
       <div class="hidden name"><code>memory-alpha.Rmd</code></div>
 
     </div>
 
     
     
-<p>The <code>rtrek</code> package includes some Star Trek datasets, but much more data is available outside the package. You can access other Star Trek data through various APIs.</p>
-<p>Technically, there is only one formal API: the Star Trek API (STAPI). <code>rtrek</code> has functions to assist with making calls to this API in order to access specific data. See the STAPI <a href="https://leonawicz.github.io/rtrek/articles/stapi.html">vignette</a> for details.</p>
-<p>The focus of this vignette is on accessing data from Memory Alpha. <code>rtrek</code> interfaces with and extracts information from the <a href="https://memory-alpha.fandom.com/wiki/Portal:Main">Memory Alpha</a> and <a href="https://memory-beta.fandom.com/wiki/Main_Page">Memory Beta</a> websites. Neither of these sites actually expose an API, but functions in <code>rtrek</code> with querying these websites in an API-like manner. For working with Memory Beta content, see the respective <a href="https://leonawicz.github.io/rtrek/articles/memory-beta.html">vignette</a>.</p>
-<div id="the-rtrek-memory-alpha-api" class="section level2">
-<h2 class="hasAnchor">
-<a href="#the-rtrek-memory-alpha-api" class="anchor"></a>The rtrek Memory Alpha API</h2>
-<p>Memory Alpha is a website that hosts information on all things relating to official canon Star Trek. This strictly pertains to the television series and movies. There are many other officially licensed Star Trek productions, e.g., the many hundreds of novels, but these are not technically canon even though they are often treated as much by many fans. For a broader, licensed works focus, see Memory Beta.</p>
-<p>When talking about using <code>rtrek</code> to access data from Memory Alpha, the term data is used loosely. It would be just as accurate to say information, content or text. While the site contains a vast amount of information, it is not structured in tidy tables like a data scientist would love to conveniently encounter. Memory Alpha is a wiki and can be thought of as similar to an encyclopedia. The bulk of its pages consist of articles. While some of these may have interesting html tables contained within, the site largely offers textual data.</p>
-<p>Since Memory Alpha does not offer an API, the API-like interfacing provided by <code>rtrek</code> is just a collection of wrappers around web page scraping. In terms of what the relevant functions bring back from Memory Alpha, there are real limitations on the level of generality and quality of formatting that can be achieved across such a massive and diverse collection of articles.</p>
+<p>The <code>rtrek</code> package includes some Star Trek datasets, but
+much more data is available outside the package. You can access other
+Star Trek data through various APIs.</p>
+<p>Technically, there is only one formal API: the Star Trek API (STAPI).
+<code>rtrek</code> has functions to assist with making calls to this API
+in order to access specific data. See the STAPI <a href="https://leonawicz.github.io/rtrek/articles/stapi.html">vignette</a>
+for details.</p>
+<p>The focus of this vignette is on accessing data from Memory Alpha.
+<code>rtrek</code> interfaces with and extracts information from the <a href="https://memory-alpha.fandom.com/wiki/Portal:Main" class="external-link">Memory Alpha</a>
+and <a href="https://memory-beta.fandom.com/wiki/Main_Page" class="external-link">Memory
+Beta</a> websites. Neither of these sites actually expose an API, but
+functions in <code>rtrek</code> with querying these websites in an
+API-like manner. For working with Memory Beta content, see the
+respective <a href="https://leonawicz.github.io/rtrek/articles/memory-beta.html">vignette</a>.</p>
+<div class="section level2">
+<h2 id="the-rtrek-memory-alpha-api">The rtrek Memory Alpha API<a class="anchor" aria-label="anchor" href="#the-rtrek-memory-alpha-api"></a>
+</h2>
+<p>Memory Alpha is a website that hosts information on all things
+relating to official canon Star Trek. This strictly pertains to the
+television series and movies. There are many other officially licensed
+Star Trek productions, e.g., the many hundreds of novels, but these are
+not technically canon even though they are often treated as much by many
+fans. For a broader, licensed works focus, see Memory Beta.</p>
+<p>When talking about using <code>rtrek</code> to access data from
+Memory Alpha, the term data is used loosely. It would be just as
+accurate to say information, content or text. While the site contains a
+vast amount of information, it is not structured in tidy tables like a
+data scientist would love to conveniently encounter. Memory Alpha is a
+wiki and can be thought of as similar to an encyclopedia. The bulk of
+its pages consist of articles. While some of these may have interesting
+html tables contained within, the site largely offers textual data.</p>
+<p>Since Memory Alpha does not offer an API, the API-like interfacing
+provided by <code>rtrek</code> is just a collection of wrappers around
+web page scraping. In terms of what the relevant functions bring back
+from Memory Alpha, there are real limitations on the level of generality
+and quality of formatting that can be achieved across such a massive and
+diverse collection of articles.</p>
 </div>
-<div id="memory-alpha-portals" class="section level2">
-<h2 class="hasAnchor">
-<a href="#memory-alpha-portals" class="anchor"></a>Memory Alpha portals</h2>
-<p>There are six Memory Alpha web portals available. To see them, call the main function for Memory Alpha access, <code>memory_alpha</code>, and pass it <code>portals</code> as the API endpoint.</p>
+<div class="section level2">
+<h2 id="memory-alpha-portals">Memory Alpha portals<a class="anchor" aria-label="anchor" href="#memory-alpha-portals"></a>
+</h2>
+<p>There are six Memory Alpha web portals available. To see them, call
+the main function for Memory Alpha access, <code>memory_alpha</code>,
+and pass it <code>portals</code> as the API endpoint.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"portals"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 2</span>
-<span class="co">#&gt;   id         url                       </span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                     </span>
-<span class="co">#&gt; 1 alternate  Portal:Alternate_Reality  </span>
-<span class="co">#&gt; 2 people     Portal:People             </span>
-<span class="co">#&gt; 3 science    Portal:Science            </span>
-<span class="co">#&gt; 4 series     Portal:TV_and_films       </span>
-<span class="co">#&gt; 5 society    Portal:Society_and_Culture</span>
-<span class="co">#&gt; 6 technology Portal:Technology</span></code></pre></div>
-<p>The data frame returned provides each portal ID and respective “short URL”. These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with <code>https://memory-alpha.fandom.com/wiki/</code>.</p>
-<p>In this special case where <code>endpoint = "portals"</code>, this table is returned from the package itself because it is already known. The available portals are fixed. There is no accessing of Memory Alpha yet. The URLs shown are also not needed by the user, but are provided alongside the IDs for context.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"portals"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 2</span></span></span>
+<span><span class="co">#&gt;   id         url                       </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> alternate  Portal:Alternate_Reality  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> people     Portal:People             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> science    Portal:Science            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> series     Portal:TV_and_films       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> society    Portal:Society_and_Culture</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> technology Portal:Technology</span></span></code></pre></div>
+<p>The data frame returned provides each portal ID and respective “short
+URL”. These relative URLs are given in order to reduce verbosity and
+redundancy. All absolute URLs begin with
+<code>https://memory-alpha.fandom.com/wiki/</code>.</p>
+<p>In this special case where <code>endpoint = "portals"</code>, this
+table is returned from the package itself because it is already known.
+The available portals are fixed. There is no accessing of Memory Alpha
+yet. The URLs shown are also not needed by the user, but are provided
+alongside the IDs for context.</p>
 </div>
-<div id="using-a-portal" class="section level2">
-<h2 class="hasAnchor">
-<a href="#using-a-portal" class="anchor"></a>Using a portal</h2>
-<p>When using a specific portal at the highest level (portal ID only), the returned data frame contains information about searchable categories available in the portal.</p>
+<div class="section level2">
+<h2 id="using-a-portal">Using a portal<a class="anchor" aria-label="anchor" href="#using-a-portal"></a>
+</h2>
+<p>When using a specific portal at the highest level (portal ID only),
+the returned data frame contains information about searchable categories
+available in the portal.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 103 x 3</span>
-<span class="co">#&gt;    id          url                  group     </span>
-<span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;                &lt;chr&gt;     </span>
-<span class="co">#&gt;  1 Acamarians  Category:Acamarians  By species</span>
-<span class="co">#&gt;  2 Akritirians Category:Akritirians By species</span>
-<span class="co">#&gt;  3 Aldeans     Category:Aldeans     By species</span>
-<span class="co">#&gt;  4 Andorians   Category:Andorians   By species</span>
-<span class="co">#&gt;  5 Androids    Category:Androids    By species</span>
-<span class="co">#&gt;  6 Aquans      Category:Aquans      By species</span>
-<span class="co">#&gt;  7 Ardanans    Category:Ardanans    By species</span>
-<span class="co">#&gt;  8 Augments    Category:Augments    By species</span>
-<span class="co">#&gt;  9 Ba'ku       Category:Ba%27ku     By species</span>
-<span class="co">#&gt; 10 Bajorans    Category:Bajorans    By species</span>
-<span class="co">#&gt; # ... with 93 more rows</span></code></pre></div>
-<p>Again, there are <code>id</code> and <code>url</code> columns. There is also a <code>group</code> (and potentially a <code>subgroup</code>) column. This is only to provide meaningful context for the values in the <code>id</code> column if relevant for a given portal; <code>group</code> is not used for anything and the user can ignore it.</p>
-<p>The above call does involve reaching out to Memory Alpha. While the portals are stable, it is expected that content within is regularly updated. Remember that this is not a real API. Since one is not available, what is really going on behind the scenes is the use of <code>xml2</code> and <code>rvest</code> for web page harvesting.</p>
-<p>Some portals have terminal endpoints - in Memory Alpha these are the written articles - at the top level, but typically the top level results for a portal are categories. You can always differentiate categories from articles by the URL, which will begin with <code>Category:</code> in the former case.</p>
-<p>Descending through subcategories is done by appending their <code>id</code> values, separated by a forward slash <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 103 × 3</span></span></span>
+<span><span class="co">#&gt;    id          url                  group     </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Acamarians  Category:Acamarians  By species</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Akritirians Category:Akritirians By species</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Aldeans     Category:Aldeans     By species</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Andorians   Category:Andorians   By species</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Androids    Category:Androids    By species</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Aquans      Category:Aquans      By species</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Ardanans    Category:Ardanans    By species</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Augments    Category:Augments    By species</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Ba'ku       Category:Ba%27ku     By species</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Bajorans    Category:Bajorans    By species</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 93 more rows</span></span></span></code></pre></div>
+<p>Again, there are <code>id</code> and <code>url</code> columns. There
+is also a <code>group</code> (and potentially a <code>subgroup</code>)
+column. This is only to provide meaningful context for the values in the
+<code>id</code> column if relevant for a given portal;
+<code>group</code> is not used for anything and the user can ignore
+it.</p>
+<p>The above call does involve reaching out to Memory Alpha. While the
+portals are stable, it is expected that content within is regularly
+updated. Remember that this is not a real API. Since one is not
+available, what is really going on behind the scenes is the use of
+<code>xml2</code> and <code>rvest</code> for web page harvesting.</p>
+<p>Some portals have terminal endpoints - in Memory Alpha these are the
+written articles - at the top level, but typically the top level results
+for a portal are categories. You can always differentiate categories
+from articles by the URL, which will begin with <code>Category:</code>
+in the former case.</p>
+<p>Descending through subcategories is done by appending their
+<code>id</code> values, separated by a forward slash <code>/</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people/Klingons"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 222 x 2</span>
-<span class="co">#&gt;    Klingons                       url                                    </span>
-<span class="co">#&gt;    &lt;chr&gt;                          &lt;chr&gt;                                  </span>
-<span class="co">#&gt;  1 Memory Alpha images (Klingons) Category:Memory_Alpha_images_(Klingons)</span>
-<span class="co">#&gt;  2 Amar (Klingon)                 Amar_(Klingon)                         </span>
-<span class="co">#&gt;  3 Antaak                         Antaak                                 </span>
-<span class="co">#&gt;  4 A'trom                         A%27trom                               </span>
-<span class="co">#&gt;  5 Atul                           Atul                                   </span>
-<span class="co">#&gt;  6 Augments                       Category:Augments                      </span>
-<span class="co">#&gt;  7 Azetbur                        Azetbur                                </span>
-<span class="co">#&gt;  8 Ba'el                          Ba%27el                                </span>
-<span class="co">#&gt;  9 Ba'ktor                        Ba%27ktor                              </span>
-<span class="co">#&gt; 10 Barak-Kadan                    Barak-Kadan                            </span>
-<span class="co">#&gt; # ... with 212 more rows</span>
-
-<span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people/Klingons/Worf"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title content    metadata               categories           </span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;list&gt;     &lt;list&gt;                 &lt;list&gt;               </span>
-<span class="co">#&gt; 1 Worf  &lt;xml_ndst&gt; &lt;tibble[,16] [1 x 16]&gt; &lt;tibble[,2] [12 x 2]&gt;</span></code></pre></div>
-<p>Note the change in the structure of the final output, which is an article. This is the end of this particular road The result is still a data frame, but now has only one row, the article.</p>
-<p>The columns include a text <code>title</code> and three nested datasets. <code>content</code> contains an <code>xml_nodeset</code> object left (mostly) unadulterated by <code>memory_alpha</code>. This contains the article’s main content section, including ordered content from a default set of html tags. For more control over article content, see <code>ma_article</code> in the next section. <code>metadata</code> contains a nested data frame of content parsed from the summary card that appears in the top right corner of articles. If this fails to parse for a given article, <code>NULL</code> is returned. <code>categories</code> returns a data frame containing categories in which the article topic falls under and their respective URLs.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people/Klingons"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 243 × 2</span></span></span>
+<span><span class="co">#&gt;    Klingons                       url                                    </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Memory Alpha images (Klingons) Category:Memory_Alpha_images_(Klingons)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Amar                           Amar                                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Antaak                         Antaak                                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> A'trom                         A%27trom                               </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Atul                           Atul                                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Augments                       Category:Augments                      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Azetbur                        Azetbur                                </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Ba'el                          Ba%27el                                </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Ba'ktor                        Ba%27ktor                              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Barak-Kadan                    Barak-Kadan                            </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 233 more rows</span></span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people/Klingons/Worf"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   title content    metadata          categories       </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Worf  <span style="color: #949494;">&lt;xml_ndst&gt;</span> <span style="color: #949494;">&lt;tibble [1 × 16]&gt;</span> <span style="color: #949494;">&lt;tibble [14 × 2]&gt;</span></span></span></code></pre></div>
+<p>Note the change in the structure of the final output, which is an
+article. This is the end of this particular road The result is still a
+data frame, but now has only one row, the article.</p>
+<p>The columns include a text <code>title</code> and three nested
+datasets. <code>content</code> contains an <code>xml_nodeset</code>
+object left (mostly) unadulterated by <code>memory_alpha</code>. This
+contains the article’s main content section, including ordered content
+from a default set of html tags. For more control over article content,
+see <code>ma_article</code> in the next section. <code>metadata</code>
+contains a nested data frame of content parsed from the summary card
+that appears in the top right corner of articles. If this fails to parse
+for a given article, <code>NULL</code> is returned.
+<code>categories</code> returns a data frame containing categories in
+which the article topic falls under and their respective URLs.</p>
 </div>
-<div id="articles" class="section level2">
-<h2 class="hasAnchor">
-<a href="#articles" class="anchor"></a>Articles</h2>
-<p>If you already know the article <code>id</code>, You can obtain an article directly using <code>ma_article</code> instead of going through an endpoint with <code>memory_alpha</code> that terminates in the same <code>id</code>. This also offers additional options to control what tags are included in the returned result and whether that result is the original <code>xml_nodeset</code> object or a character vector of only the extracted text. In either case, work is left to the user to do what they intend such as text analysis.</p>
+<div class="section level2">
+<h2 id="articles">Articles<a class="anchor" aria-label="anchor" href="#articles"></a>
+</h2>
+<p>If you already know the article <code>id</code>, You can obtain an
+article directly using <code>ma_article</code> instead of going through
+an endpoint with <code>memory_alpha</code> that terminates in the same
+<code>id</code>. This also offers additional options to control what
+tags are included in the returned result and whether that result is the
+original <code>xml_nodeset</code> object or a character vector of only
+the extracted text. In either case, work is left to the user to do what
+they intend such as text analysis.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">worf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ma_article.html">ma_article</a></span><span class="op">(</span><span class="st">"Worf"</span>, content_format <span class="op">=</span> <span class="st">"character"</span>, content_nodes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"h2"</span>, <span class="st">"h3"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">worf</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title content    metadata               categories           </span>
-<span class="co">#&gt;   &lt;chr&gt; &lt;list&gt;     &lt;list&gt;                 &lt;list&gt;               </span>
-<span class="co">#&gt; 1 Worf  &lt;chr [40]&gt; &lt;tibble[,16] [1 x 16]&gt; &lt;tibble[,2] [12 x 2]&gt;</span>
-<span class="va">worf</span><span class="op">$</span><span class="va">content</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="co"># Worf article section headings</span>
-<span class="co">#&gt;  [1] "Early life"                          "The Rozhenkos"                      </span>
-<span class="co">#&gt;  [3] "Coming of age"                       "Service aboard the USS Enterprise-D"</span>
-<span class="co">#&gt;  [5] "Borg encounters"                     "Q encounters"                       </span>
-<span class="co">#&gt;  [7] "Klingon affairs"                     "Other notable missions"             </span>
-<span class="co">#&gt;  [9] "Service on Deep Space 9"             "USS Defiant missions"               </span>
-<span class="co">#&gt; [11] "The Dominion War"                    "Service aboard the USS Enterprise-E"</span>
-<span class="co">#&gt; [13] "Later life"                          "Personality"                        </span>
-<span class="co">#&gt; [15] "Physicality"                         "As a warrior"                       </span>
-<span class="co">#&gt; [17] "Ailments and injuries"               "Family"                             </span>
-<span class="co">#&gt; [19] "K'Ehleyr"                            "Alexander"                          </span>
-<span class="co">#&gt; [21] "Jeremy Aster"                        "Jadzia Dax"                         </span>
-<span class="co">#&gt; [23] "Kurn"                                "Nikolai Rozhenko"                   </span>
-<span class="co">#&gt; [25] "Martok"                              "Friendships"                        </span>
-<span class="co">#&gt; [27] "The crew of the Enterprise"          "Deep Space 9 companions"            </span>
-<span class="co">#&gt; [29] "Kor"                                 "Alternate realities and timelines"  </span>
-<span class="co">#&gt; [31] "Holograms"                           "Memorable quotes"                   </span>
-<span class="co">#&gt; [33] "Chronology"                          "Appendices"                         </span>
-<span class="co">#&gt; [35] "Appearances"                         "References"                         </span>
-<span class="co">#&gt; [37] "Background information"              "Apocrypha"                          </span>
-<span class="co">#&gt; [39] "See also"                            "External links"</span></code></pre></div>
-<p>If <code>browse = TRUE</code> the article page also launches in the browser.</p>
+<code class="sourceCode R"><span><span class="va">worf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ma_article.html">ma_article</a></span><span class="op">(</span><span class="st">"Worf"</span>, content_format <span class="op">=</span> <span class="st">"character"</span>, content_nodes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"h2"</span>, <span class="st">"h3"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">worf</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   title content    metadata          categories       </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Worf  <span style="color: #949494;">&lt;chr [35]&gt;</span> <span style="color: #949494;">&lt;tibble [1 × 16]&gt;</span> <span style="color: #949494;">&lt;tibble [14 × 2]&gt;</span></span></span>
+<span><span class="va">worf</span><span class="op">$</span><span class="va">content</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="co"># Worf article section headings</span></span>
+<span><span class="co">#&gt;  [1] "Early life"                          "The Rozhenkos"                      </span></span>
+<span><span class="co">#&gt;  [3] "Coming of age"                       "Starfleet career"                   </span></span>
+<span><span class="co">#&gt;  [5] "Service aboard the USS Enterprise-D" "Service on Deep Space 9"            </span></span>
+<span><span class="co">#&gt;  [7] "Service aboard the USS Enterprise-E" "Other adventures"                   </span></span>
+<span><span class="co">#&gt;  [9] "Later career"                        "Personality"                        </span></span>
+<span><span class="co">#&gt; [11] "Physicality"                         "As a warrior"                       </span></span>
+<span><span class="co">#&gt; [13] "Ailments and injuries"               "Family"                             </span></span>
+<span><span class="co">#&gt; [15] "K'Ehleyr"                            "Alexander"                          </span></span>
+<span><span class="co">#&gt; [17] "Jeremy Aster"                        "Jadzia Dax"                         </span></span>
+<span><span class="co">#&gt; [19] "Kurn"                                "Nikolai Rozhenko"                   </span></span>
+<span><span class="co">#&gt; [21] "Martok"                              "Friendships"                        </span></span>
+<span><span class="co">#&gt; [23] "The crew of the Enterprise"          "Deep Space 9 companions"            </span></span>
+<span><span class="co">#&gt; [25] "Kor"                                 "Alternate realities and timelines"  </span></span>
+<span><span class="co">#&gt; [27] "Holograms"                           "Memorable quotes"                   </span></span>
+<span><span class="co">#&gt; [29] "Chronology"                          "Appendices"                         </span></span>
+<span><span class="co">#&gt; [31] "See also"                            "Appearances"                        </span></span>
+<span><span class="co">#&gt; [33] "Background information"              "Apocrypha"                          </span></span>
+<span><span class="co">#&gt; [35] "External links"</span></span></code></pre></div>
+<p>If <code>browse = TRUE</code> the article page also launches in the
+browser.</p>
 </div>
-<div id="images" class="section level2">
-<h2 class="hasAnchor">
-<a href="#images" class="anchor"></a>Images</h2>
-<p>Full resolution source images can be downloaded and imported into R using <code>ma_image</code> if you know the short URL. The easiest way to find URLs is by using a Memory Alpha portal. In the example below, the Memory Alpha images category under Klingons is selected. Look for a picture that includes Worf but also Data.</p>
+<div class="section level2">
+<h2 id="images">Images<a class="anchor" aria-label="anchor" href="#images"></a>
+</h2>
+<p>Full resolution source images can be downloaded and imported into R
+using <code>ma_image</code> if you know the short URL. The easiest way
+to find URLs is by using a Memory Alpha portal. In the example below,
+the Memory Alpha images category under Klingons is selected. Look for a
+picture that includes Worf but also Data.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="va">klingons</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people/Klingons/Memory Alpha images (Klingons)"</span><span class="op">)</span>
-<span class="va">klingons</span>
-<span class="co">#&gt; # A tibble: 1,298 x 2</span>
-<span class="co">#&gt;    `Memory Alpha images (Klingons)`     url                                     </span>
-<span class="co">#&gt;    &lt;chr&gt;                                &lt;chr&gt;                                   </span>
-<span class="co">#&gt;  1 Memory Alpha images (Klingon hologr~ Category:Memory_Alpha_images_(Klingon_h~</span>
-<span class="co">#&gt;  2 A good day to die, 2366.jpg          File:A_good_day_to_die,_2366.jpg        </span>
-<span class="co">#&gt;  3 Age of ascension pain sticks.jpg     File:Age_of_ascension_pain_sticks.jpg   </span>
-<span class="co">#&gt;  4 Ajilon Prime Klingon 1.jpg           File:Ajilon_Prime_Klingon_1.jpg         </span>
-<span class="co">#&gt;  5 Ajilon Prime Klingon 2.jpg           File:Ajilon_Prime_Klingon_2.jpg         </span>
-<span class="co">#&gt;  6 Ajilon Prime Klingons.jpg            File:Ajilon_Prime_Klingons.jpg          </span>
-<span class="co">#&gt;  7 Alexander and K'mtar.jpg             File:Alexander_and_K%27mtar.jpg         </span>
-<span class="co">#&gt;  8 Alexander at the kot'baval festival~ File:Alexander_at_the_kot%27baval_festi~</span>
-<span class="co">#&gt;  9 Alexander Rozhenko, 2367.jpg         File:Alexander_Rozhenko,_2367.jpg       </span>
-<span class="co">#&gt; 10 Alexander Rozhenko, 2370.jpg         File:Alexander_Rozhenko,_2370.jpg       </span>
-<span class="co">#&gt; # ... with 1,288 more rows</span>
-
-<span class="va">worf_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">klingons</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"Worf"</span>, <span class="va">url</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"Data"</span>, <span class="va">url</span><span class="op">)</span><span class="op">)</span>
-<span class="va">worf_data</span>
-<span class="co">#&gt; # A tibble: 9 x 2</span>
-<span class="co">#&gt;   `Memory Alpha images (Klingons)`         url                                  </span>
-<span class="co">#&gt;   &lt;chr&gt;                                    &lt;chr&gt;                                </span>
-<span class="co">#&gt; 1 Data and Worf, 2369.jpg                  File:Data_and_Worf,_2369.jpg         </span>
-<span class="co">#&gt; 2 Data tries talking to Worf.jpg           File:Data_tries_talking_to_Worf.jpg  </span>
-<span class="co">#&gt; 3 Data, Picard and Worf, 2375.jpg          File:Data,_Picard_and_Worf,_2375.jpg </span>
-<span class="co">#&gt; 4 Data, Worf, and Beverly Crusher find We~ File:Data,_Worf,_and_Beverly_Crusher~</span>
-<span class="co">#&gt; 5 La Forge, Data, Riker, Worf, and Picard~ File:La_Forge,_Data,_Riker,_Worf,_an~</span>
-<span class="co">#&gt; 6 Picard Data and Worf on Iconia.jpg       File:Picard_Data_and_Worf_on_Iconia.~</span>
-<span class="co">#&gt; 7 Thomas Riker and William Riker play pok~ File:Thomas_Riker_and_William_Riker_~</span>
-<span class="co">#&gt; 8 Wesley Crusher, Worf, and Data, quantum~ File:Wesley_Crusher,_Worf,_and_Data,~</span>
-<span class="co">#&gt; 9 Worf carries Data through portal.jpg     File:Worf_carries_Data_through_porta~</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">klingons</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people/Klingons/Memory Alpha images (Klingons)"</span><span class="op">)</span></span>
+<span><span class="va">klingons</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,354 × 2</span></span></span>
+<span><span class="co">#&gt;    `Memory Alpha images (Klingons)`        url                                  </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Memory Alpha images (Klingon holograms) Category:Memory_Alpha_images_(Klingo…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Age of ascension pain sticks.jpg        File:Age_of_ascension_pain_sticks.jpg</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Ajilon Prime Klingon 1.jpg              File:Ajilon_Prime_Klingon_1.jpg      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Ajilon Prime Klingon 2.jpg              File:Ajilon_Prime_Klingon_2.jpg      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Ajilon Prime Klingons.jpg               File:Ajilon_Prime_Klingons.jpg       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Alexander and K'mtar.jpg                File:Alexander_and_K%27mtar.jpg      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Alexander at the kot'baval festival.jpg File:Alexander_at_the_kot%27baval_fe…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Alexander Rozhenko, 2367.jpg            File:Alexander_Rozhenko,_2367.jpg    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Alexander Rozhenko, 2370.jpg            File:Alexander_Rozhenko,_2370.jpg    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Alexander Rozhenko, 2374.jpg            File:Alexander_Rozhenko,_2374.jpg    </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,344 more rows</span></span></span>
+<span></span>
+<span><span class="va">worf_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">klingons</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"Worf"</span>, <span class="va">url</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"Data"</span>, <span class="va">url</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">worf_data</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 2</span></span></span>
+<span><span class="co">#&gt;    `Memory Alpha images (Klingons)`                                 url         </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Data and Worf, 2369.jpg                                          File:Data_a…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Data tries talking to Worf.jpg                                   File:Data_t…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Data, Picard and Worf, 2375.jpg                                  File:Data,_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Data, Worf, and Beverly Crusher find Wesley Crusher.jpg          File:Data,_…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> La Forge, Data, Riker, Worf, and Picard, 2379.jpg                File:La_For…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Picard Data and Worf on Iconia.jpg                               File:Picard…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Picard, Data, and Worf away team.jpg                             File:Picard…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Thomas Riker and William Riker play poker with Data and Worf.jpg File:Thomas…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Wesley Crusher, Worf, and Data, quantum reality.jpg              File:Wesley…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Worf carries Data through portal.jpg                             File:Worf_c…</span></span></code></pre></div>
 <p><em>Qapla’</em>! This provides several results.</p>
-<p>Technically, this is not the url to an image file. It is a url that redirects you to some other seemingly random article on the website that happens to include the image in it. This is not necessarily a unique instance of the image, nor is there any consistency in what portal or type of article it takes you to. <code>memory_alpha</code>, and <code>ma_article</code> using the short form url, provide the article content associated with the “file” url. See <code>ma_image</code> below for viewing the actual image.</p>
+<p>Technically, this is not the url to an image file. It is a url that
+redirects you to some other seemingly random article on the website that
+happens to include the image in it. This is not necessarily a unique
+instance of the image, nor is there any consistency in what portal or
+type of article it takes you to. <code>memory_alpha</code>, and
+<code>ma_article</code> using the short form url, provide the article
+content associated with the “file” url. See <code>ma_image</code> below
+for viewing the actual image.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people/Klingons/Memory Alpha images (Klingons)/Data tries talking to Worf.jpg"</span><span class="op">)</span>
-<span class="va">x</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title                       content    metadata categories          </span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;list&gt;     &lt;list&gt;   &lt;list&gt;              </span>
-<span class="co">#&gt; 1 The Icarus Factor (episode) &lt;xml_ndst&gt; &lt;NULL&gt;   &lt;tibble[,2] [1 x 2]&gt;</span>
-
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ma_article.html">ma_article</a></span><span class="op">(</span><span class="st">"File:Data_tries_talking_to_Worf.jpg"</span><span class="op">)</span>
-<span class="va">x</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title                       content    metadata categories          </span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;list&gt;     &lt;list&gt;   &lt;list&gt;              </span>
-<span class="co">#&gt; 1 The Icarus Factor (episode) &lt;xml_ndst&gt; &lt;NULL&gt;   &lt;tibble[,2] [1 x 2]&gt;</span>
-
-<span class="va">x</span><span class="op">$</span><span class="va">categories</span>
-<span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; # A tibble: 1 x 2</span>
-<span class="co">#&gt;   categories   url                  </span>
-<span class="co">#&gt;   &lt;chr&gt;        &lt;chr&gt;                </span>
-<span class="co">#&gt; 1 TNG episodes Category:TNG_episodes</span></code></pre></div>
-<p>The likely intent is to obtain an image file after browsing the web pages that list images files. Even if you are interactively browsing the website, you have to click several times and scroll through additional articles before you can actually view the image file that was initially presented to you as a clickable link. This is a frustrating user experience and confusing design. If you have a file name you want to view, just use <code>ma_image</code> for this. It returns a ggplot object of the image file rather than an associated article.</p>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people/Klingons/Memory Alpha images (Klingons)/Data tries talking to Worf.jpg"</span><span class="op">)</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   title                       content    metadata categories      </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> The Icarus Factor (episode) <span style="color: #949494;">&lt;xml_ndst&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span>   <span style="color: #949494;">&lt;tibble [1 × 2]&gt;</span></span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ma_article.html">ma_article</a></span><span class="op">(</span><span class="st">"File:Data_tries_talking_to_Worf.jpg"</span><span class="op">)</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   title                       content    metadata categories      </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> The Icarus Factor (episode) <span style="color: #949494;">&lt;xml_ndst&gt;</span> <span style="color: #949494;">&lt;NULL&gt;</span>   <span style="color: #949494;">&lt;tibble [1 × 2]&gt;</span></span></span>
+<span></span>
+<span><span class="va">x</span><span class="op">$</span><span class="va">categories</span></span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 2</span></span></span>
+<span><span class="co">#&gt;   categories   url                  </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> TNG episodes Category:TNG_episodes</span></span></code></pre></div>
+<p>The likely intent is to obtain an image file after browsing the web
+pages that list images files. Even if you are interactively browsing the
+website, you have to click several times and scroll through additional
+articles before you can actually view the image file that was initially
+presented to you as a clickable link. This is a frustrating user
+experience and confusing design. If you have a file name you want to
+view, just use <code>ma_image</code> for this. It returns a ggplot
+object of the image file rather than an associated article.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/ma_image.html">ma_image</a></span><span class="op">(</span><span class="st">"File:Data_tries_talking_to_Worf.jpg"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/ma_image.html">ma_image</a></span><span class="op">(</span><span class="st">"File:Data_tries_talking_to_Worf.jpg"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="memory-alpha_files/figure-html/ma_image3-1.png" width="700"></p>
-<p><code>ma_image</code> can take the additional arguments, <code>keep = TRUE</code> to retain the downloaded image file, and <code>file</code> to specify the output filename if you do not want it to be derived from the short URL. If you need more control over the plot, set <code>keep = TRUE</code> and then load the image file into R directly to plot separately as needed.</p>
+<p><code>ma_image</code> can take the additional arguments,
+<code>keep = TRUE</code> to retain the downloaded image file, and
+<code>file</code> to specify the output filename if you do not want it
+to be derived from the short URL. If you need more control over the
+plot, set <code>keep = TRUE</code> and then load the image file into R
+directly to plot separately as needed.</p>
 </div>
-<div id="search" class="section level2">
-<h2 class="hasAnchor">
-<a href="#search" class="anchor"></a>Search</h2>
-<p>You can perform a Memory Alpha site search using <code>ma_search</code>. This returns a data frame of search results content, including title, truncated text preview, and short URL for the first page of search results.</p>
-<p>It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with <code>ma_article</code>, setting <code>browse = TRUE</code> opens the page in the browser.</p>
+<div class="section level2">
+<h2 id="search">Search<a class="anchor" aria-label="anchor" href="#search"></a>
+</h2>
+<p>You can perform a Memory Alpha site search using
+<code>ma_search</code>. This returns a data frame of search results
+content, including title, truncated text preview, and short URL for the
+first page of search results.</p>
+<p>It does not recursively collate search results through subsequent
+pages of results. There could be an unexpectedly high number of pages of
+results depending on the search query. Since the general nature of this
+search feature seems relatively casual anyway, it aims only to provide a
+first page preview. As with <code>ma_article</code>, setting
+<code>browse = TRUE</code> opens the page in the browser.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/ma_search.html">ma_search</a></span><span class="op">(</span><span class="st">"Guinan"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 25 x 3</span>
-<span class="co">#&gt;    title            text                            url                         </span>
-<span class="co">#&gt;    &lt;chr&gt;            &lt;chr&gt;                           &lt;chr&gt;                       </span>
-<span class="co">#&gt;  1 Guinan           "For the actor, please see Fra~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  2 Francis Guinan   "Real World article(written fr~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  3 Unnamed individ~ "List of unnamed individuals o~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  4 Unnamed El-Auri~ "The following is a list of un~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  5 Q                "For additional meanings of \"~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  6 Data             "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  7 Borg             "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  8 Jean-Luc Picard  "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt;  9 Worf             "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt; 10 William T. Riker "Multiple realities(covers inf~ https://memory-alpha.fandom~</span>
-<span class="co">#&gt; # ... with 15 more rows</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/ma_search.html">ma_search</a></span><span class="op">(</span><span class="st">"Guinan"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 25 × 3</span></span></span>
+<span><span class="co">#&gt;    title                             text                                  url  </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Guinan                            <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Francis Guinan                    <span style="color: #949494;">"</span>Real World article(written from a P… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Unnamed El-Aurians                <span style="color: #949494;">"</span>The following is a list of unnamed … http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Unnamed individuals (unknown era) <span style="color: #949494;">"</span>List of unnamed individuals who liv… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Borg                              <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Jean-Luc Picard                   <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Data                              <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Star Trek: Picard                 <span style="color: #949494;">"</span>Real World article(written from a P… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Wesley Crusher                    <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Worf                              <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more rows</span></span></span></code></pre></div>
 </div>
-<div id="caveats" class="section level2">
-<h2 class="hasAnchor">
-<a href="#caveats" class="anchor"></a>Caveats</h2>
-<p>Memory Alpha contains almost 50,000 pages at the time of this <code>rtrek</code> version. It is possible that some articles may have idiosyncratic structure that could make them inaccessible by these <code>rtrek</code> functions.</p>
-<p>Since this package version is also the first to offer this brand new functionality - and as mentioned, Memory Alpha does not offer an API, leading to a less reliable web-scraping approach, it is unknown what the likelihood is at this time of breaking changes occurring during updates to Memory Alpha by its maintainers.</p>
+<div class="section level2">
+<h2 id="caveats">Caveats<a class="anchor" aria-label="anchor" href="#caveats"></a>
+</h2>
+<p>Memory Alpha contains almost 50,000 pages at the time of this
+<code>rtrek</code> version. It is possible that some articles may have
+idiosyncratic structure that could make them inaccessible by these
+<code>rtrek</code> functions.</p>
+<p>Since this package version is also the first to offer this brand new
+functionality - and as mentioned, Memory Alpha does not offer an API,
+leading to a less reliable web-scraping approach, it is unknown what the
+likelihood is at this time of breaking changes occurring during updates
+to Memory Alpha by its maintainers.</p>
 <p><em>Jolan Tru</em>.</p>
 </div>
   </div>
@@ -346,11 +456,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/leonawicz">Matthew Leonawicz</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/leonawicz" class="external-link">Matthew Leonawicz</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -358,6 +470,8 @@
 
   
 
+
+  
 
   </body>
 </html>

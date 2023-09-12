@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://leonawicz.github.io/rtrek/404.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/articles/ex-episode-analysis.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/articles/ex-word-count.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/articles/fonts.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/articles/memory-alpha.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/articles/memory-beta.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/articles/rtrek.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/articles/sc.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/articles/stapi.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/authors.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
     <loc>https://leonawicz.github.io/rtrek/index.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://leonawicz.github.io/rtrek/reference/index.html</loc>
   </url>
   <url>
     <loc>https://leonawicz.github.io/rtrek/reference/ma_article.html</loc>
@@ -95,32 +143,5 @@
   </url>
   <url>
     <loc>https://leonawicz.github.io/rtrek/reference/tlFootnotes.html</loc>
-  </url>
-  <url>
-    <loc>https://leonawicz.github.io/rtrek/articles/ex-episode-analysis.html</loc>
-  </url>
-  <url>
-    <loc>https://leonawicz.github.io/rtrek/articles/ex-word-count.html</loc>
-  </url>
-  <url>
-    <loc>https://leonawicz.github.io/rtrek/articles/fonts.html</loc>
-  </url>
-  <url>
-    <loc>https://leonawicz.github.io/rtrek/articles/memory-alpha.html</loc>
-  </url>
-  <url>
-    <loc>https://leonawicz.github.io/rtrek/articles/memory-beta.html</loc>
-  </url>
-  <url>
-    <loc>https://leonawicz.github.io/rtrek/articles/rr.html</loc>
-  </url>
-  <url>
-    <loc>https://leonawicz.github.io/rtrek/articles/rtrek.html</loc>
-  </url>
-  <url>
-    <loc>https://leonawicz.github.io/rtrek/articles/sc.html</loc>
-  </url>
-  <url>
-    <loc>https://leonawicz.github.io/rtrek/articles/stapi.html</loc>
   </url>
 </urlset>

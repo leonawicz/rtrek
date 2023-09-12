@@ -27,6 +27,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -39,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -47,7 +49,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa-home"></span>
+    <span class="fa fa-home"></span>
      
     Home
   </a>
@@ -56,7 +58,7 @@
   <a href="../articles/rtrek.html">Get Started</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -75,7 +77,8 @@
       <a href="../articles/fonts.html">Star Trek fonts</a>
     </li>
     <li class="divider">
-    <li class="dropdown-header">Examples</li>
+    </li>
+<li class="dropdown-header">Examples</li>
     <li>
       <a href="../articles/ex-word-count.html">Novels: word count</a>
     </li>
@@ -96,11 +99,8 @@
   <a href="../articles/sc.html">Stellar Cartography</a>
 </li>
 <li>
-  <a href="../articles/rr.html">R &amp; R... &amp; R</a>
-</li>
-<li>
-  <a href="https://github.com/leonawicz/rtrek">
-    <span class="fas fa-github fa-lg"></span>
+  <a href="https://github.com/leonawicz/rtrek" class="external-link">
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -114,324 +114,509 @@
 
       
 
-      </header><script src="memory-beta_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Memory Beta</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/leonawicz/rtrek/blob/master/vignettes/memory-beta.Rmd"><code>vignettes/memory-beta.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/leonawicz/rtrek/blob/HEAD/vignettes/memory-beta.Rmd" class="external-link"><code>vignettes/memory-beta.Rmd</code></a></small>
       <div class="hidden name"><code>memory-beta.Rmd</code></div>
 
     </div>
 
     
     
-<p>The <code>rtrek</code> package includes some Star Trek datasets, but much more data is available outside the package. You can access other Star Trek data through various APIs.</p>
-<p>Technically, there is only one formal API: the Star Trek API (STAPI). <code>rtrek</code> has functions to assist with making calls to this API in order to access specific data. See the STAPI <a href="https://leonawicz.github.io/rtrek/articles/stapi.html">vignette</a> for details.</p>
-<p>The focus of this vignette is on accessing data from Memory Beta. <code>rtrek</code> interfaces with and extracts information from the <a href="https://memory-alpha.fandom.com/wiki/Portal:Main">Memory Alpha</a> and <a href="https://memory-beta.fandom.com/wiki/Main_Page">Memory Beta</a> websites. Neither of these sites actually expose an API, but functions in <code>rtrek</code> with querying these websites in an API-like manner. For working with Memory Alpha content, see the respective <a href="https://leonawicz.github.io/rtrek/articles/memory-alpha.html">vignette</a>.</p>
-<div id="the-rtrek-memory-beta-api" class="section level2">
-<h2 class="hasAnchor">
-<a href="#the-rtrek-memory-beta-api" class="anchor"></a>The rtrek Memory Beta API</h2>
-<p>Memory Beta is a website that hosts information on all things relating to officially licensed Star Trek productions, for example novels, comics, etc. These are official, but this is not the same and canon. For a canon-only focus, see Memory Alpha.</p>
-<p>When talking about using <code>rtrek</code> to access data from Memory Beta, the term data is used loosely. It would be just as accurate to say information, content or text. While the site contains a vast amount of information, it is not structured in tidy tables like a data scientist would love to conveniently encounter. Memory Beta is a wiki and can be thought of as similar to an encyclopedia. The bulk of its pages consist of articles. While some of these may have interesting html tables contained within, the site largely offers textual data.</p>
-<p>Since Memory Beta does not offer an API, the API-like interfacing provided by <code>rtrek</code> is just a collection of wrappers around web page scraping. In terms of what the relevant functions bring back from Memory Beta, there are real limitations on the level of generality and quality of formatting that can be achieved across such a massive and diverse collection of articles.</p>
+<p>The <code>rtrek</code> package includes some Star Trek datasets, but
+much more data is available outside the package. You can access other
+Star Trek data through various APIs.</p>
+<p>Technically, there is only one formal API: the Star Trek API (STAPI).
+<code>rtrek</code> has functions to assist with making calls to this API
+in order to access specific data. See the STAPI <a href="https://leonawicz.github.io/rtrek/articles/stapi.html">vignette</a>
+for details.</p>
+<p>The focus of this vignette is on accessing data from Memory Beta.
+<code>rtrek</code> interfaces with and extracts information from the <a href="https://memory-alpha.fandom.com/wiki/Portal:Main" class="external-link">Memory Alpha</a>
+and <a href="https://memory-beta.fandom.com/wiki/Main_Page" class="external-link">Memory
+Beta</a> websites. Neither of these sites actually expose an API, but
+functions in <code>rtrek</code> with querying these websites in an
+API-like manner. For working with Memory Alpha content, see the
+respective <a href="https://leonawicz.github.io/rtrek/articles/memory-alpha.html">vignette</a>.</p>
+<div class="section level2">
+<h2 id="the-rtrek-memory-beta-api">The rtrek Memory Beta API<a class="anchor" aria-label="anchor" href="#the-rtrek-memory-beta-api"></a>
+</h2>
+<p>Memory Beta is a website that hosts information on all things
+relating to officially licensed Star Trek productions, for example
+novels, comics, etc. These are official, but this is not the same and
+canon. For a canon-only focus, see Memory Alpha.</p>
+<p>When talking about using <code>rtrek</code> to access data from
+Memory Beta, the term data is used loosely. It would be just as accurate
+to say information, content or text. While the site contains a vast
+amount of information, it is not structured in tidy tables like a data
+scientist would love to conveniently encounter. Memory Beta is a wiki
+and can be thought of as similar to an encyclopedia. The bulk of its
+pages consist of articles. While some of these may have interesting html
+tables contained within, the site largely offers textual data.</p>
+<p>Since Memory Beta does not offer an API, the API-like interfacing
+provided by <code>rtrek</code> is just a collection of wrappers around
+web page scraping. In terms of what the relevant functions bring back
+from Memory Beta, there are real limitations on the level of generality
+and quality of formatting that can be achieved across such a massive and
+diverse collection of articles.</p>
 </div>
-<div id="memory-beta-portals" class="section level2">
-<h2 class="hasAnchor">
-<a href="#memory-beta-portals" class="anchor"></a>Memory Beta portals</h2>
-<p>To see the available Memory Beta portals, call the main function for Memory Beta access, <code>memory_beta</code>, and pass it <code>portals</code> as the API endpoint.</p>
+<div class="section level2">
+<h2 id="memory-beta-portals">Memory Beta portals<a class="anchor" aria-label="anchor" href="#memory-beta-portals"></a>
+</h2>
+<p>To see the available Memory Beta portals, call the main function for
+Memory Beta access, <code>memory_beta</code>, and pass it
+<code>portals</code> as the API endpoint.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="st">"portals"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 13 x 2</span>
-<span class="co">#&gt;    id         url                              </span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;                            </span>
-<span class="co">#&gt;  1 books      Category:Books                   </span>
-<span class="co">#&gt;  2 comics     Category:Comics                  </span>
-<span class="co">#&gt;  3 characters Category:Characters              </span>
-<span class="co">#&gt;  4 culture    Category:Culture                 </span>
-<span class="co">#&gt;  5 games      Category:Games                   </span>
-<span class="co">#&gt;  6 geography  Category:Geography               </span>
-<span class="co">#&gt;  7 locations  Category:Locations               </span>
-<span class="co">#&gt;  8 materials  Category:Materials_and_substances</span>
-<span class="co">#&gt;  9 politics   Category:Politics                </span>
-<span class="co">#&gt; 10 science    Category:Science                 </span>
-<span class="co">#&gt; 11 starships  Category:Starships               </span>
-<span class="co">#&gt; 12 technology Category:Technology              </span>
-<span class="co">#&gt; 13 timeline   Category:Timeline</span></code></pre></div>
-<p>The data frame returned provides each portal ID and respective “short URL”. These relative URLs are given in order to reduce verbosity and redundancy. All absolute URLs begin with <code>https://memory-beta.fandom.com/wiki/</code>.</p>
-<p>In this special case where <code>endpoint = "portals"</code>, this table is returned from the package itself because it is already known. The available portals are fixed. There is no accessing of Memory Beta yet. The URLs shown are also not needed by the user, but are provided alongside the IDs for context.</p>
-<div id="contrast-with-memory-alpha" class="section level3">
-<h3 class="hasAnchor">
-<a href="#contrast-with-memory-alpha" class="anchor"></a>Contrast with Memory Alpha</h3>
-<p>In contrast to the results of <code><a href="../reference/memory_alpha.html">memory_alpha("portals")</a></code>, notice that each <code>url</code> entry begins with <code>Category:</code> rather than <code>Portal</code>. The Memory Beta website does not explicitly offer “portals” like the Memory Alpha site. For consistency from the perspective of <code>rtrek</code>, several top-level categories at Memory Beta are treated as portals. The <code>timeline</code> portal is a special case. It is a shorthand for the <code>timeline</code> subcategory at <code>culture/history/timeline</code>.</p>
-<p>Memory Beta is structured very similarly to Memory alpha, but also more consistently. The structural differences in content returned across some portals accessed by <code>memory_alpha</code> are not seen when obtaining data with <code>memory_beta</code>. This can make working with Memory Beta data a smoother experience.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="st">"portals"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 13 × 2</span></span></span>
+<span><span class="co">#&gt;    id         url                              </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> books      Category:Books                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> comics     Category:Comics                  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> characters Category:Characters              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> culture    Category:Culture                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> games      Category:Games                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> geography  Category:Geography               </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> locations  Category:Locations               </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> materials  Category:Materials_and_substances</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> politics   Category:Politics                </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> science    Category:Science                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> starships  Category:Starships               </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> technology Category:Technology              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> timeline   Category:Timeline</span></span></code></pre></div>
+<p>The data frame returned provides each portal ID and respective “short
+URL”. These relative URLs are given in order to reduce verbosity and
+redundancy. All absolute URLs begin with
+<code>https://memory-beta.fandom.com/wiki/</code>.</p>
+<p>In this special case where <code>endpoint = "portals"</code>, this
+table is returned from the package itself because it is already known.
+The available portals are fixed. There is no accessing of Memory Beta
+yet. The URLs shown are also not needed by the user, but are provided
+alongside the IDs for context.</p>
+<div class="section level3">
+<h3 id="contrast-with-memory-alpha">Contrast with Memory Alpha<a class="anchor" aria-label="anchor" href="#contrast-with-memory-alpha"></a>
+</h3>
+<p>In contrast to the results of <code>memory_alpha("portals")</code>,
+notice that each <code>url</code> entry begins with
+<code>Category:</code> rather than <code>Portal</code>. The Memory Beta
+website does not explicitly offer “portals” like the Memory Alpha site.
+For consistency from the perspective of <code>rtrek</code>, several
+top-level categories at Memory Beta are treated as portals. The
+<code>timeline</code> portal is a special case. It is a shorthand for
+the <code>timeline</code> subcategory at
+<code>culture/history/timeline</code>.</p>
+<p>Memory Beta is structured very similarly to Memory alpha, but also
+more consistently. The structural differences in content returned across
+some portals accessed by <code>memory_alpha</code> are not seen when
+obtaining data with <code>memory_beta</code>. This can make working with
+Memory Beta data a smoother experience.</p>
 </div>
 </div>
-<div id="using-a-portal" class="section level2">
-<h2 class="hasAnchor">
-<a href="#using-a-portal" class="anchor"></a>Using a portal</h2>
-<p>When using a specific portal at the highest level (portal ID only), the returned data frame contains information about searchable categories available in the portal.</p>
+<div class="section level2">
+<h2 id="using-a-portal">Using a portal<a class="anchor" aria-label="anchor" href="#using-a-portal"></a>
+</h2>
+<p>When using a specific portal at the highest level (portal ID only),
+the returned data frame contains information about searchable categories
+available in the portal.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="st">"characters"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 33 x 2</span>
-<span class="co">#&gt;    characters                      url                                     </span>
-<span class="co">#&gt;    &lt;chr&gt;                           &lt;chr&gt;                                   </span>
-<span class="co">#&gt;  1 Biography                       Category:Biography                      </span>
-<span class="co">#&gt;  2 Memory Beta images (characters) Category:Memory_Beta_images_(characters)</span>
-<span class="co">#&gt;  3 Artificial beings               Category:Artificial_beings              </span>
-<span class="co">#&gt;  4 Characters (alternate reality)  Category:Characters_(alternate_reality) </span>
-<span class="co">#&gt;  5 Characters (alternates)         Category:Characters_(alternates)        </span>
-<span class="co">#&gt;  6 Characters by planet            Category:Characters_by_planet           </span>
-<span class="co">#&gt;  7 Charteris                       Charteris                               </span>
-<span class="co">#&gt;  8 Crossover characters            Category:Crossover_characters           </span>
-<span class="co">#&gt;  9 Deep Space 9 residents          Category:Deep_Space_9_residents         </span>
-<span class="co">#&gt; 10 Deep Space 9 (II) residents     Category:Deep_Space_9_(II)_residents    </span>
-<span class="co">#&gt; # ... with 23 more rows</span></code></pre></div>
-<p>Again, there are <code>id</code> and <code>url</code> columns. Unlike with high-level <code>memory_alpha</code> results, there are no <code>group</code> or <code>subgroup</code> columns. These are not applicable given the simpler structure and more consistent content structure of category and article pages at Memory Beta.</p>
-<p>The above call does involve reaching out to Memory Beta. While the portals are stable, it is expected that content within is regularly updated. Remember that this is not a real API. Since one is not available, what is really going on behind the scenes is the use of <code>xml2</code> and <code>rvest</code> for web page harvesting.</p>
-<p>Some portals have terminal endpoints - in Memory Beta these are the written articles - at the top level, but typically the top level results for a portal are categories. You can always differentiate categories from articles by the URL, which will begin with <code>Category:</code> in the former case.</p>
-<p>Descending through subcategories is done by appending their <code>id</code> values, separated by a forward slash <code><a href="https://rdrr.io/r/base/Arithmetic.html">/</a></code>. Notice that compared to Memory Alpha, classification and resulting hierarchical organization can be more detailed for similar content.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="st">"characters"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 40 × 2</span></span></span>
+<span><span class="co">#&gt;    characters                      url                                     </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Biography                       Category:Biography                      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Characters (alternate reality)  Category:Characters_(alternate_reality) </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Memory Beta images (characters) Category:Memory_Beta_images_(characters)</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Artificial beings               Category:Artificial_beings              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Characters (alternates)         Category:Characters_(alternates)        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Characters by affiliation       Category:Characters_by_affiliation      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Characters by planet            Category:Characters_by_planet           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Charteris                       Charteris                               </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Crossover characters            Category:Crossover_characters           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Deep Space 9 residents          Category:Deep_Space_9_residents         </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 30 more rows</span></span></span></code></pre></div>
+<p>Again, there are <code>id</code> and <code>url</code> columns. Unlike
+with high-level <code>memory_alpha</code> results, there are no
+<code>group</code> or <code>subgroup</code> columns. These are not
+applicable given the simpler structure and more consistent content
+structure of category and article pages at Memory Beta.</p>
+<p>The above call does involve reaching out to Memory Beta. While the
+portals are stable, it is expected that content within is regularly
+updated. Remember that this is not a real API. Since one is not
+available, what is really going on behind the scenes is the use of
+<code>xml2</code> and <code>rvest</code> for web page harvesting.</p>
+<p>Some portals have terminal endpoints - in Memory Beta these are the
+written articles - at the top level, but typically the top level results
+for a portal are categories. You can always differentiate categories
+from articles by the URL, which will begin with <code>Category:</code>
+in the former case.</p>
+<p>Descending through subcategories is done by appending their
+<code>id</code> values, separated by a forward slash <code>/</code>.
+Notice that compared to Memory Alpha, classification and resulting
+hierarchical organization can be more detailed for similar content.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"characters/Characters by races and cultures/Klingonoids/Klingons"</span>
-<span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1,133 x 2</span>
-<span class="co">#&gt;    Klingons                         url                               </span>
-<span class="co">#&gt;    &lt;chr&gt;                            &lt;chr&gt;                             </span>
-<span class="co">#&gt;  1 Klingon                          Klingon                           </span>
-<span class="co">#&gt;  2 Klingon (mirror)                 Klingon_(mirror)                  </span>
-<span class="co">#&gt;  3 Kring's battle cruiser personnel Kring%27s_battle_cruiser_personnel</span>
-<span class="co">#&gt;  4 Unnamed Klingons                 Unnamed_Klingons                  </span>
-<span class="co">#&gt;  5 Aakan                            Aakan                             </span>
-<span class="co">#&gt;  6 Aak'Torr                         Aak%27Torr                        </span>
-<span class="co">#&gt;  7 Abbakh                           Abbakh                            </span>
-<span class="co">#&gt;  8 Adon, son of Gorath              Adon,_son_of_Gorath               </span>
-<span class="co">#&gt;  9 Adrokos                          Adrokos                           </span>
-<span class="co">#&gt; 10 Aek-Nor                          Aek-Nor                           </span>
-<span class="co">#&gt; # ... with 1,123 more rows</span>
-
-<span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"/Worf, son of Mogh"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title             content    metadata categories           </span>
-<span class="co">#&gt;   &lt;chr&gt;             &lt;list&gt;     &lt;list&gt;   &lt;list&gt;               </span>
-<span class="co">#&gt; 1 Worf, son of Mogh &lt;xml_ndst&gt; &lt;NULL&gt;   &lt;tibble[,2] [48 x 2]&gt;</span></code></pre></div>
-<p>Note the change in the structure of the final output, which is an article. This is the end of this particular road The result is still a data frame, but now has only one row, the article.</p>
-<p>The columns include a text <code>title</code> and three nested datasets. <code>content</code> contains an <code>xml_nodeset</code> object left (mostly) unadulterated by <code>memory_beta</code>. This contains the article’s main content section, including ordered content from a default set of html tags. For more control over article content, see <code>mb_article</code> in the next section. <code>metadata</code> contains a nested data frame of content parsed from the summary card that appears in the top right corner of articles. If this fails to parse for a given article, <code>NULL</code> is returned. <code>categories</code> returns a data frame containing categories in which the article topic falls under and their respective URLs.</p>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"characters/Characters by races and cultures/Klingonoids/Klingons"</span></span>
+<span><span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,334 × 2</span></span></span>
+<span><span class="co">#&gt;    Klingons                         url                               </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Klingon                          Klingon                           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Klingon (mirror)                 Klingon_(mirror)                  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Kring's battle cruiser personnel Kring%27s_battle_cruiser_personnel</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Unnamed Klingons                 Unnamed_Klingons                  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Aakan                            Aakan                             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Aak'Torr                         Aak%27Torr                        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Abbakh                           Abbakh                            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Adon, son of Gorath              Adon,_son_of_Gorath               </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Adrokos                          Adrokos                           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Aek-Nor                          Aek-Nor                           </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,324 more rows</span></span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"/Worf"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   title content    metadata          categories       </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Worf  <span style="color: #949494;">&lt;xml_ndst&gt;</span> <span style="color: #949494;">&lt;tibble [1 × 17]&gt;</span> <span style="color: #949494;">&lt;tibble [49 × 2]&gt;</span></span></span></code></pre></div>
+<p>Note the change in the structure of the final output, which is an
+article. This is the end of this particular road The result is still a
+data frame, but now has only one row, the article.</p>
+<p>The columns include a text <code>title</code> and three nested
+datasets. <code>content</code> contains an <code>xml_nodeset</code>
+object left (mostly) unadulterated by <code>memory_beta</code>. This
+contains the article’s main content section, including ordered content
+from a default set of html tags. For more control over article content,
+see <code>mb_article</code> in the next section. <code>metadata</code>
+contains a nested data frame of content parsed from the summary card
+that appears in the top right corner of articles. If this fails to parse
+for a given article, <code>NULL</code> is returned.
+<code>categories</code> returns a data frame containing categories in
+which the article topic falls under and their respective URLs.</p>
 </div>
-<div id="articles" class="section level2">
-<h2 class="hasAnchor">
-<a href="#articles" class="anchor"></a>Articles</h2>
-<p>If you already know the article <code>id</code>, You can obtain an article directly using <code>mb_article</code> instead of going through an endpoint with <code>memory_beta</code> that terminates in the same <code>id</code>. This also offers additional options to control what tags are included in the returned result and whether that result is the original <code>xml_nodeset</code> object or a character vector of only the extracted text. In either case, work is left to the user to do what they intend such as text analysis.</p>
+<div class="section level2">
+<h2 id="articles">Articles<a class="anchor" aria-label="anchor" href="#articles"></a>
+</h2>
+<p>If you already know the article <code>id</code>, You can obtain an
+article directly using <code>mb_article</code> instead of going through
+an endpoint with <code>memory_beta</code> that terminates in the same
+<code>id</code>. This also offers additional options to control what
+tags are included in the returned result and whether that result is the
+original <code>xml_nodeset</code> object or a character vector of only
+the extracted text. In either case, work is left to the user to do what
+they intend such as text analysis.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">worf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mb_article.html">mb_article</a></span><span class="op">(</span><span class="st">"Worf,_son_of_Mogh"</span>, content_format <span class="op">=</span> <span class="st">"character"</span>, content_nodes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"h2"</span>, <span class="st">"h3"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">worf</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title             content    metadata categories           </span>
-<span class="co">#&gt;   &lt;chr&gt;             &lt;list&gt;     &lt;list&gt;   &lt;list&gt;               </span>
-<span class="co">#&gt; 1 Worf, son of Mogh &lt;chr [14]&gt; &lt;NULL&gt;   &lt;tibble[,2] [48 x 2]&gt;</span>
-<span class="va">worf</span><span class="op">$</span><span class="va">content</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="co"># Worf article section headings</span>
-<span class="co">#&gt;  [1] "Biography"                         "Early life"                       </span>
-<span class="co">#&gt;  [3] "Starfleet Academy"                 "Starfleet officer"                </span>
-<span class="co">#&gt;  [5] "Ambassador Worf"                   "Return to Starfleet"              </span>
-<span class="co">#&gt;  [7] "Promotion"                         "Path to the 25th century"         </span>
-<span class="co">#&gt;  [9] "Alternate timelines and realities" "Interests"                        </span>
-<span class="co">#&gt; [11] "Worf's service record"             "Appendices"                       </span>
-<span class="co">#&gt; [13] "Connections"                       "External links"</span></code></pre></div>
-<p>If <code>browse = TRUE</code> the article page also launches in the browser.</p>
+<code class="sourceCode R"><span><span class="va">worf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mb_article.html">mb_article</a></span><span class="op">(</span><span class="st">"Worf,_son_of_Mogh"</span>, content_format <span class="op">=</span> <span class="st">"character"</span>, content_nodes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"h2"</span>, <span class="st">"h3"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">worf</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   title content    metadata          categories       </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Worf  <span style="color: #949494;">&lt;chr [15]&gt;</span> <span style="color: #949494;">&lt;tibble [1 × 17]&gt;</span> <span style="color: #949494;">&lt;tibble [49 × 2]&gt;</span></span></span>
+<span><span class="va">worf</span><span class="op">$</span><span class="va">content</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="co"># Worf article section headings</span></span>
+<span><span class="co">#&gt;  [1] "Biography"                 "Early life"               </span></span>
+<span><span class="co">#&gt;  [3] "Starfleet Academy"         "Starfleet officer"        </span></span>
+<span><span class="co">#&gt;  [5] "Ambassador Worf"           "Back with Starfleet"      </span></span>
+<span><span class="co">#&gt;  [7] "Promotion"                 "Path to the 25th century" </span></span>
+<span><span class="co">#&gt;  [9] "Alternate realities"       "Other alternate realities"</span></span>
+<span><span class="co">#&gt; [11] "Interests"                 "Worf's service record"    </span></span>
+<span><span class="co">#&gt; [13] "Appendices"                "Connections"              </span></span>
+<span><span class="co">#&gt; [15] "External links"</span></span></code></pre></div>
+<p>If <code>browse = TRUE</code> the article page also launches in the
+browser.</p>
 </div>
-<div id="images" class="section level2">
-<h2 class="hasAnchor">
-<a href="#images" class="anchor"></a>Images</h2>
-<p>Full resolution source images can be downloaded and imported into R using <code>mb_image</code> if you know the short URL. The easiest way to find URLs is by using a Memory Beta portal. In the example below, the Memory Beta images category under Klingons is selected.</p>
-<p>The same example used in the Memory Alpha vignette cannot be duplicated here. Memory Beta does not contain as many images from the television series or movies as Memory Alpha. This is because Memory Beta focuses on licensed works in general and does not need to duplicate everything that is already documented at Memory Alpha.</p>
-<p>This time, look for a picture that includes Worf but also K’Ehleyr.</p>
+<div class="section level2">
+<h2 id="images">Images<a class="anchor" aria-label="anchor" href="#images"></a>
+</h2>
+<p>Full resolution source images can be downloaded and imported into R
+using <code>mb_image</code> if you know the short URL. The easiest way
+to find URLs is by using a Memory Beta portal. In the example below, the
+Memory Beta images category under Klingons is selected.</p>
+<p>The same example used in the Memory Alpha vignette cannot be
+duplicated here. Memory Beta does not contain as many images from the
+television series or movies as Memory Alpha. This is because Memory Beta
+focuses on licensed works in general and does not need to duplicate
+everything that is already documented at Memory Alpha.</p>
+<p>This time, look for a picture that includes Worf but also
+K’Ehleyr.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"characters/Memory Beta images (characters)/Memory Beta images (Worf)"</span>
-<span class="va">worf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="va">worf</span>
-<span class="co">#&gt; # A tibble: 82 x 2</span>
-<span class="co">#&gt;    `Memory Beta images (Worf)` url                           </span>
-<span class="co">#&gt;    &lt;chr&gt;                       &lt;chr&gt;                         </span>
-<span class="co">#&gt;  1 Akvoh.jpg                   File:Akvoh.jpg                </span>
-<span class="co">#&gt;  2 Allanor.jpg                 File:Allanor.jpg              </span>
-<span class="co">#&gt;  3 Apocalypse Rising.jpg       File:Apocalypse_Rising.jpg    </span>
-<span class="co">#&gt;  4 Areen and Worf.jpg          File:Areen_and_Worf.jpg       </span>
-<span class="co">#&gt;  5 Barassociation.jpg          File:Barassociation.jpg       </span>
-<span class="co">#&gt;  6 Bodai ShinC.jpg             File:Bodai_ShinC.jpg          </span>
-<span class="co">#&gt;  7 Chancellor Martok.jpg       File:Chancellor_Martok.jpg    </span>
-<span class="co">#&gt;  8 Clues.jpg                   File:Clues.jpg                </span>
-<span class="co">#&gt;  9 CogenV.jpg                  File:CogenV.jpg               </span>
-<span class="co">#&gt; 10 Commander worf Marvel.jpg   File:Commander_worf_Marvel.jpg</span>
-<span class="co">#&gt; # ... with 72 more rows</span>
-
-<span class="va">worf_kehleyr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">worf</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"Kehleyr"</span>, <span class="va">url</span><span class="op">)</span><span class="op">)</span>
-<span class="va">worf_kehleyr</span>
-<span class="co">#&gt; # A tibble: 1 x 2</span>
-<span class="co">#&gt;   `Memory Beta images (Worf)` url                 </span>
-<span class="co">#&gt;   &lt;chr&gt;                       &lt;chr&gt;               </span>
-<span class="co">#&gt; 1 WorfKehleyr.jpg             File:WorfKehleyr.jpg</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"characters/Memory Beta images (characters)/Memory Beta images (Worf)"</span></span>
+<span><span class="va">worf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="va">worf</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 127 × 2</span></span></span>
+<span><span class="co">#&gt;    `Memory Beta images (Worf)` url                         </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Akvoh.jpg                   File:Akvoh.jpg              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Allanor.jpg                 File:Allanor.jpg            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Apocalypse Rising.jpg       File:Apocalypse_Rising.jpg  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Areen and Worf.jpg          File:Areen_and_Worf.jpg     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Bajoran riot Marvel.jpg     File:Bajoran_riot_Marvel.jpg</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Barassociation.jpg          File:Barassociation.jpg     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Bodai ShinC.jpg             File:Bodai_ShinC.jpg        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Bridge1701D.jpg             File:Bridge1701D.jpg        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Chancellor Martok.jpg       File:Chancellor_Martok.jpg  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ChancellorWorf.jpg          File:ChancellorWorf.jpg     </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 117 more rows</span></span></span>
+<span></span>
+<span><span class="va">worf_kehleyr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">worf</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"Kehleyr"</span>, <span class="va">url</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">worf_kehleyr</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 2</span></span></span>
+<span><span class="co">#&gt;   `Memory Beta images (Worf)` url                 </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> WorfKehleyr.jpg             File:WorfKehleyr.jpg</span></span></code></pre></div>
 <p><em>Qapla’</em>! One result found.</p>
-<p>Technically, this is not the url to an image file. It is a url that redirects you to some other seemingly random article on the website that happens to include the image in it. This is not necessarily a unique instance of the image, nor is there any consistency in what portal or type of article it takes you to. <code>memory_beta</code>, and <code>mb_article</code> using the short form url, provide the article content associated with the “file” url. See <code>mb_image</code> below for viewing the actual image.</p>
+<p>Technically, this is not the url to an image file. It is a url that
+redirects you to some other seemingly random article on the website that
+happens to include the image in it. This is not necessarily a unique
+instance of the image, nor is there any consistency in what portal or
+type of article it takes you to. <code>memory_beta</code>, and
+<code>mb_article</code> using the short form url, provide the article
+content associated with the “file” url. See <code>mb_image</code> below
+for viewing the actual image.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"/WorfKehleyr.jpg"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">x</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title             content    metadata categories           </span>
-<span class="co">#&gt;   &lt;chr&gt;             &lt;list&gt;     &lt;list&gt;   &lt;list&gt;               </span>
-<span class="co">#&gt; 1 Worf, son of Mogh &lt;xml_ndst&gt; &lt;NULL&gt;   &lt;tibble[,2] [48 x 2]&gt;</span>
-
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mb_article.html">mb_article</a></span><span class="op">(</span><span class="st">"File:WorfKehleyr.jpg"</span><span class="op">)</span>
-<span class="va">x</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title             content    metadata categories           </span>
-<span class="co">#&gt;   &lt;chr&gt;             &lt;list&gt;     &lt;list&gt;   &lt;list&gt;               </span>
-<span class="co">#&gt; 1 Worf, son of Mogh &lt;xml_ndst&gt; &lt;NULL&gt;   &lt;tibble[,2] [48 x 2]&gt;</span>
-
-<span class="va">x</span><span class="op">$</span><span class="va">categories</span>
-<span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; # A tibble: 48 x 2</span>
-<span class="co">#&gt;    categories                            url                                    </span>
-<span class="co">#&gt;    &lt;chr&gt;                                 &lt;chr&gt;                                  </span>
-<span class="co">#&gt;  1 Memory Beta good articles             Category:Memory_Beta_good_articles     </span>
-<span class="co">#&gt;  2 Memory Beta articles sourced from no~ Category:Memory_Beta_articles_sourced_~</span>
-<span class="co">#&gt;  3 Memory Beta articles sourced from co~ Category:Memory_Beta_articles_sourced_~</span>
-<span class="co">#&gt;  4 Memory Beta articles sourced from ep~ Category:Memory_Beta_articles_sourced_~</span>
-<span class="co">#&gt;  5 Memory Beta articles sourced from vi~ Category:Memory_Beta_articles_sourced_~</span>
-<span class="co">#&gt;  6 Memory Beta articles sourced from ga~ Category:Memory_Beta_articles_sourced_~</span>
-<span class="co">#&gt;  7 Memory Beta articles sourced from sh~ Category:Memory_Beta_articles_sourced_~</span>
-<span class="co">#&gt;  8 Memory Beta articles sourced from RP~ Category:Memory_Beta_articles_sourced_~</span>
-<span class="co">#&gt;  9 Memory Beta articles sourced from no~ Category:Memory_Beta_articles_sourced_~</span>
-<span class="co">#&gt; 10 Memory Beta articles sourced from re~ Category:Memory_Beta_articles_sourced_~</span>
-<span class="co">#&gt; # ... with 38 more rows</span></code></pre></div>
-<p>The likely intent is to obtain an image file after browsing the web pages that list images files. Even if you are interactively browsing the website, you have to click several times and scroll through additional articles before you can actually view the image file that was initially presented to you as a clickable link. This is a frustrating user experience and confusing design. If you have a file name you want to view, just use <code>ma_image</code> for this. It returns a ggplot object of the image file rather than an associated article.</p>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/memory_beta.html">memory_beta</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"/WorfKehleyr.jpg"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   title content    metadata          categories       </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Worf  <span style="color: #949494;">&lt;xml_ndst&gt;</span> <span style="color: #949494;">&lt;tibble [1 × 17]&gt;</span> <span style="color: #949494;">&lt;tibble [49 × 2]&gt;</span></span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mb_article.html">mb_article</a></span><span class="op">(</span><span class="st">"File:WorfKehleyr.jpg"</span><span class="op">)</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   title content    metadata          categories       </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Worf  <span style="color: #949494;">&lt;xml_ndst&gt;</span> <span style="color: #949494;">&lt;tibble [1 × 17]&gt;</span> <span style="color: #949494;">&lt;tibble [49 × 2]&gt;</span></span></span>
+<span></span>
+<span><span class="va">x</span><span class="op">$</span><span class="va">categories</span></span>
+<span><span class="co">#&gt; [[1]]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 49 × 2</span></span></span>
+<span><span class="co">#&gt;    categories                                            url                    </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Memory Beta good articles                             Category:Memory_Beta_g…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Articles with spoilers                                Category:Articles_with…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Articles with major spoilers                          Category:Articles_with…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Memory Beta articles sourced from novels              Category:Memory_Beta_a…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Memory Beta articles sourced from comics              Category:Memory_Beta_a…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Memory Beta articles sourced from episodes and movies Category:Memory_Beta_a…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Memory Beta articles sourced from video games         Category:Memory_Beta_a…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Memory Beta articles sourced from games               Category:Memory_Beta_a…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Memory Beta articles sourced from short stories       Category:Memory_Beta_a…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Memory Beta articles sourced from RPGs                Category:Memory_Beta_a…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 39 more rows</span></span></span></code></pre></div>
+<p>The likely intent is to obtain an image file after browsing the web
+pages that list images files. Even if you are interactively browsing the
+website, you have to click several times and scroll through additional
+articles before you can actually view the image file that was initially
+presented to you as a clickable link. This is a frustrating user
+experience and confusing design. If you have a file name you want to
+view, just use <code>ma_image</code> for this. It returns a ggplot
+object of the image file rather than an associated article.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/mb_image.html">mb_image</a></span><span class="op">(</span><span class="st">"File:WorfKehleyr.jpg"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/mb_image.html">mb_image</a></span><span class="op">(</span><span class="st">"File:WorfKehleyr.jpg"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="memory-beta_files/figure-html/mb_image3-1.png" width="700"></p>
-<p><code>mb_image</code> can take the additional arguments, <code>keep = TRUE</code> to retain the downloaded image file, and <code>file</code> to specify the output filename if you do not want it to be derived from the short URL. If you need more control over the plot, set <code>keep = TRUE</code> and then load the image file into R directly to plot separately as needed.</p>
+<p><code>mb_image</code> can take the additional arguments,
+<code>keep = TRUE</code> to retain the downloaded image file, and
+<code>file</code> to specify the output filename if you do not want it
+to be derived from the short URL. If you need more control over the
+plot, set <code>keep = TRUE</code> and then load the image file into R
+directly to plot separately as needed.</p>
 </div>
-<div id="memory-beta-timeline" class="section level2">
-<h2 class="hasAnchor">
-<a href="#memory-beta-timeline" class="anchor"></a>Memory Beta timeline</h2>
-<p>In the examples above, you see the distinction between using <code>mb_image</code> to grab images and using <code>memory_beta</code> to navigate and parse image file page content more generally. Similarly, <code>mb_timeline</code> is a special function that specifically extracts and curates timeline data from Memory Beta, in contrast to using the <code><a href="../reference/memory_beta.html">memory_beta("timeline")</a></code> portal with various endpoints to parse site pages for general content. <code>mb_timeline</code> focuses specifically on the Memory Beta chronology/timeline tables on various Memory Beta pages. This is a helpful function to have because Memory Beta timeline data is not as uniformly arranged on Memory Beta as <code>mb_timeline</code> makes it appear.</p>
-<p><a href="https://memory-beta.fandom.com/wiki/Memory_Beta_Chronology">According to Memory Beta</a>, this timeline provides a <em>“chronological guide to all stories and established events that have taken place in the Star Trek universe. The timeline includes stories from episodes, comics, novels, and games. Note: The timeline is largely based on the Pocket Books Timeline but also includes stories from comic and games and break downs of multi-timeframed episodes which the Pocket Timeline does not include.”</em></p>
-<div id="import-timeline-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#import-timeline-data" class="anchor"></a>Import timeline data</h3>
+<div class="section level2">
+<h2 id="memory-beta-timeline">Memory Beta timeline<a class="anchor" aria-label="anchor" href="#memory-beta-timeline"></a>
+</h2>
+<p>In the examples above, you see the distinction between using
+<code>mb_image</code> to grab images and using <code>memory_beta</code>
+to navigate and parse image file page content more generally. Similarly,
+<code>mb_timeline</code> is a special function that specifically
+extracts and curates timeline data from Memory Beta, in contrast to
+using the <code>memory_beta("timeline")</code> portal with various
+endpoints to parse site pages for general content.
+<code>mb_timeline</code> focuses specifically on the Memory Beta
+chronology/timeline tables on various Memory Beta pages. This is a
+helpful function to have because Memory Beta timeline data is not as
+uniformly arranged on Memory Beta as <code>mb_timeline</code> makes it
+appear.</p>
+<p><a href="https://memory-beta.fandom.com/wiki/Memory_Beta_Chronology" class="external-link">According
+to Memory Beta</a>, this timeline provides a <em>“chronological guide to
+all stories and established events that have taken place in the Star
+Trek universe. The timeline includes stories from episodes, comics,
+novels, and games. Note: The timeline is largely based on the Pocket
+Books Timeline but also includes stories from comic and games and break
+downs of multi-timeframed episodes which the Pocket Timeline does not
+include.”</em></p>
+<div class="section level3">
+<h3 id="import-timeline-data">Import timeline data<a class="anchor" aria-label="anchor" href="#import-timeline-data"></a>
+</h3>
 <p>Obtaining timeline data is straightforward:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mb_timeline.html">mb_timeline</a></span><span class="op">(</span><span class="fl">2360</span><span class="op">)</span>
-<span class="co">#&gt; 2360</span>
-<span class="va">x</span><span class="op">$</span><span class="va">events</span>
-<span class="co">#&gt; # A tibble: 11 x 4</span>
-<span class="co">#&gt;    period id                date  notes                                         </span>
-<span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;             &lt;chr&gt; &lt;chr&gt;                                         </span>
-<span class="co">#&gt;  1 2360   Events            &lt;NA&gt;  Quark opens a bar on Terok Nor. [1]           </span>
-<span class="co">#&gt;  2 2360   Conflicts         &lt;NA&gt;  Kalisi Reyar designs and completes a grid sys~</span>
-<span class="co">#&gt;  3 2360   Federation_polit~ &lt;NA&gt;  Pahkwa-thanh is admitted into the Federation.~</span>
-<span class="co">#&gt;  4 2360   Cardassian_polit~ &lt;NA&gt;  Miras Vara has taken the leadership of the Or~</span>
-<span class="co">#&gt;  5 2360   Cardassian_polit~ &lt;NA&gt;  Natima Lang and Gaten Russol join the cardass~</span>
-<span class="co">#&gt;  6 2360   Romulan_politics  &lt;NA&gt;  Vreenak is elected.[2]                        </span>
-<span class="co">#&gt;  7 2360   Promotions_and_t~ &lt;NA&gt;  Data is promoted to Lieutenant Commander. [ci~</span>
-<span class="co">#&gt;  8 2360   Promotions_and_t~ &lt;NA&gt;  Joseph Carey graduates from Starfleet Academy~</span>
-<span class="co">#&gt;  9 2360   Births_and_deaths &lt;NA&gt;  Skrain Dukat's son Mekor is born. [citation n~</span>
-<span class="co">#&gt; 10 2360   Births_and_deaths &lt;NA&gt;  Caylem's wife dies in a Mokra prison.[3]      </span>
-<span class="co">#&gt; 11 2360   Births_and_deaths &lt;NA&gt;  Dekon Elig dies attempting to escape the Velo~</span>
-<span class="va">x</span><span class="op">$</span><span class="va">stories</span>
-<span class="co">#&gt; # A tibble: 6 x 11</span>
-<span class="co">#&gt;   title  title_url  colleciton collection_url section context series date  media</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 The B~ The_Burie~ &lt;NA&gt;       &lt;NA&gt;           Chapte~ &lt;NA&gt;    The N~ 2360  novel</span>
-<span class="co">#&gt; 2 The B~ The_Burie~ &lt;NA&gt;       &lt;NA&gt;           Chapte~ &lt;NA&gt;    The N~ 2360~ novel</span>
-<span class="co">#&gt; 3 Catal~ Catalyst_~ &lt;NA&gt;       &lt;NA&gt;           &lt;NA&gt;    &lt;NA&gt;    The L~ 2360  novel</span>
-<span class="co">#&gt; 4 Lefle~ Lefler%27~ No Limits  No_Limits      Twelft~ &lt;NA&gt;    New F~ 2360~ shor~</span>
-<span class="co">#&gt; 5 A Sti~ A_Stitch_~ &lt;NA&gt;       &lt;NA&gt;           Part 2~ &lt;NA&gt;    Deep ~ 2360  novel</span>
-<span class="co">#&gt; 6 Dawn ~ Dawn_of_t~ Terok Nor  Star_Trek:_Te~ Prolog~ &lt;NA&gt;    Deep ~ 2360  novel</span>
-<span class="co">#&gt; # ... with 2 more variables: notes &lt;chr&gt;, image_url &lt;chr&gt;</span></code></pre></div>
-<div id="timeline-of-historical-events" class="section level4">
-<h4 class="hasAnchor">
-<a href="#timeline-of-historical-events" class="anchor"></a>Timeline of historical events</h4>
-<p><code>mb_timeline</code> returns a list of two data frames. The first contains notable historical events and has the following columns:</p>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/mb_timeline.html">mb_timeline</a></span><span class="op">(</span><span class="fl">2360</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 2360</span></span>
+<span><span class="va">x</span><span class="op">$</span><span class="va">events</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 21 × 2</span></span></span>
+<span><span class="co">#&gt;    period details                                                               </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                                 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2360   Events                                                                </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2360   Quark opens a bar on Terok Nor.                                       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2360   Politics                                                              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2360   Conflicts                                                             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2360   Kalisi Reyar designs and completes a grid system that watches out for…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2360   Federation politics                                                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2360   Pahkwa-thanh is admitted into the Federation. [citation needed]       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2360   Cardassian politics                                                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2360   Miras Vara has taken the leadership of the Oralian Way as Astraea; in…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2360   Natima Lang and Gaten Russol join the cardassian dissident movement   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11 more rows</span></span></span>
+<span><span class="va">x</span><span class="op">$</span><span class="va">stories</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 11</span></span></span>
+<span><span class="co">#&gt;   title   title_url colleciton collection_url section context series date  media</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> The Bu… The_Buri… <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>             Chapte… <span style="color: #BB0000;">NA</span>      The N… 2360  novel</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Fearfu… Fearful_… <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>             Side 2… <span style="color: #BB0000;">NA</span>      Deep … 2360  novel</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> The Bu… The_Buri… <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>             Chapte… <span style="color: #BB0000;">NA</span>      The N… 2360… novel</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Cataly… Catalyst… <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>             <span style="color: #BB0000;">NA</span>      <span style="color: #BB0000;">NA</span>      The L… 2360  novel</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Lefler… Lefler%2… No Limits  No_Limits      Twelft… <span style="color: #BB0000;">NA</span>      New F… 2360… shor…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> A Stit… A_Stitch… <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span>             Part 2… <span style="color: #BB0000;">NA</span>      Deep … 2360  novel</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span> Dawn o… Dawn_of_… Terok Nor  Star_Trek:_Te… Prolog… <span style="color: #BB0000;">NA</span>      Deep … 2360  novel</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: notes &lt;chr&gt;, image_url &lt;chr&gt;</span></span></span></code></pre></div>
+<div class="section level4">
+<h4 id="timeline-of-historical-events">Timeline of historical events<a class="anchor" aria-label="anchor" href="#timeline-of-historical-events"></a>
+</h4>
+<p><code>mb_timeline</code> returns a list of two data frames. The first
+contains notable historical events and has the following columns:</p>
 <ul>
 <li>
 <code>period</code> is the year or other time period.</li>
-<li>Events may have different <code>id</code> values if the entries fall under different section headings on Memory Beta.</li>
 <li>
-<code>date</code> may be filled in with more specific dates, provided they exist.</li>
-<li>The <code>notes</code> entries typically have citations, but these are not included in the output currently.</li>
+<code>details</code> is a character column that contains text lines
+describing events (or section headings above events in following lines).
+Set <code>html = TRUE</code> to obtain this text column in a format that
+includes HTML tags for a more verbose but clear section hierarchy.</li>
 </ul>
 </div>
-<div id="published-stories-chronology" class="section level4">
-<h4 class="hasAnchor">
-<a href="#published-stories-chronology" class="anchor"></a>Published stories chronology</h4>
-<p>The stories data frame represents a timeline of published stories. Since this is timeline data, stories are in chronological order, not publication date order. The stories data frame includes:</p>
+<div class="section level4">
+<h4 id="published-stories-chronology">Published stories chronology<a class="anchor" aria-label="anchor" href="#published-stories-chronology"></a>
+</h4>
+<p>The stories data frame represents a timeline of published stories.
+Since this is timeline data, stories are in chronological order, not
+publication date order. The stories data frame includes:</p>
 <ul>
 <li>Story title and article page short URL.</li>
-<li>The collection (miniseries or anthology) a story occurs in if applicable and URL.</li>
-<li>The relevant section, e.g., chapters of a book, a story occurs in.</li>
-<li>The context. Often missing but sometimes available. This indicates something about the setting such as time travel or alternate timeline.</li>
+<li>The collection (miniseries or anthology) a story occurs in if
+applicable and URL.</li>
+<li>The relevant section, e.g., chapters of a book, a story occurs
+in.</li>
+<li>The context. Often missing but sometimes available. This indicates
+something about the setting such as time travel, alternate timeline, or
+a flashback.</li>
 <li>The series a story belongs to.</li>
 <li>A specific date.</li>
 <li>The type of media such, e.g., a novel or short story.</li>
 <li>Any available notes about a story.</li>
-<li>The short URL to the full size original image that is the source for a story image thumbnail (if available).</li>
+<li>The short URL to the full size original image that is the source for
+a story image thumbnail (if available).</li>
 </ul>
-<p>Either events or stories may be <code>NULL</code> if for a given year no entries exist, respectively.</p>
+<p>Either events or stories may be <code>NULL</code> if for a given year
+no entries exist, respectively.</p>
 </div>
 </div>
-<div id="different-ways-to-import-timeline-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#different-ways-to-import-timeline-data" class="anchor"></a>Different ways to import timeline data</h3>
-<p>There are several ways to use <code>mb_timeline</code>, based around how the timeline data is organized on Memory Beta. You saw one way above, requesting data for the year 2360. Data can be requested for:</p>
+<div class="section level3">
+<h3 id="different-ways-to-import-timeline-data">Different ways to import timeline data<a class="anchor" aria-label="anchor" href="#different-ways-to-import-timeline-data"></a>
+</h3>
+<p>There are several ways to use <code>mb_timeline</code>, based around
+how the timeline data is organized on Memory Beta. You saw one way
+above, requesting data for the year 2360. Data can be requested for:</p>
 <ul>
-<li>specific year(s), e.g., <code><a href="../reference/mb_timeline.html">mb_timeline(2360)</a></code> or <code><a href="../reference/mb_timeline.html">mb_timeline(2360:2364)</a></code>. Note these are integers. All other options are character.</li>
-<li>a specific decade, appending an <code>s</code> to the decade, e.g., <code><a href="../reference/mb_timeline.html">mb_timeline("2360s")</a></code>.</li>
+<li>specific year(s), e.g., <code>mb_timeline(2360)</code> or
+<code>mb_timeline(2360:2364)</code>. Note these are integers. All other
+options are character.</li>
+<li>a specific decade, appending an <code>s</code> to the decade, e.g.,
+<code>mb_timeline("2360s")</code>.</li>
 <li>
-<code><a href="../reference/mb_timeline.html">mb_timeline("past")</a></code> returns timeline data only for the “distant past” section of the timeline.</li>
+<code>mb_timeline("past")</code> returns timeline data only for the
+“distant past” section of the timeline.</li>
 <li>
-<code><a href="../reference/mb_timeline.html">mb_timeline("future")</a></code> returns timeline data only for the “distant future” section of the timeline.</li>
+<code>mb_timeline("future")</code> returns timeline data only for
+the “distant future” section of the timeline.</li>
 <li>
-<code><a href="../reference/mb_timeline.html">mb_timeline("main")</a></code> returns timeline data only for the main section of the timeline. This is everything except for the distant past and future sections.</li>
+<code>mb_timeline("main")</code> returns timeline data only for the
+main section of the timeline. This is everything except for the distant
+past and future sections.</li>
 <li>
-<code><a href="../reference/mb_timeline.html">mb_timeline("complete")</a></code> returns the complete timeline, including past, main and future sections.</li>
+<code>mb_timeline("complete")</code> returns the complete timeline,
+including past, main and future sections.</li>
 </ul>
 </div>
-<div id="details" class="section level3">
-<h3 class="hasAnchor">
-<a href="#details" class="anchor"></a>Details</h3>
-<p>As with <code>stapi</code>, <code>mb_timeline</code> enforces a minimum one-second wait between any page requests. It could be read much faster but this measure forces users to be good neighbors. It is also recommended to try the function on a single year to see if the the results are what you expect and need before wasting time pulling the complete timeline. Note that using <code>complete</code> (or <code>main</code>, which is almost the same since <code>past</code> and <code>future</code> are relatively small) can take over ten minutes due to the enforced wait time.</p>
-<p>This function is also memoized, meaning its results are cached in memory for each specific call. This prevents wastefully making an identical call twice in the same R session. If you do, the cached result is returned instantly. You will not see the progress printed to the console because the function is not actually called again.</p>
-<p>When passing integer years to <code>mb_timeline</code> this is the only case where the argument can be a vector. All other options are scalar, including decade. You cannot request multiple decades with <code><a href="https://rdrr.io/r/base/c.html">c("2360s", "2370s")</a></code>. If this is what you want, use <code><a href="../reference/mb_timeline.html">mb_timeline(2360:2379)</a></code>.</p>
-<p>The year (or other period for <code>past</code> and <code>future</code>) is printed to the console as <code>mb_timeline</code> progresses through timeline data for each time step. Set <code>details = FALSE</code> to suppress this.</p>
+<div class="section level3">
+<h3 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a>
+</h3>
+<p>As with <code>stapi</code>, <code>mb_timeline</code> enforces a
+minimum one-second wait between any page requests. It could be read much
+faster but this measure forces users to be good neighbors. It is also
+recommended to try the function on a single year to see if the the
+results are what you expect and need before wasting time pulling the
+complete timeline. Note that using <code>complete</code> (or
+<code>main</code>, which is almost the same since <code>past</code> and
+<code>future</code> are relatively small) can take over ten minutes due
+to the enforced wait time.</p>
+<p>This function is also memoized, meaning its results are cached in
+memory for each specific call. This prevents wastefully making an
+identical call twice in the same R session. If you do, the cached result
+is returned instantly. You will not see the progress printed to the
+console because the function is not actually called again.</p>
+<p>When passing integer years to <code>mb_timeline</code> this is the
+only case where the argument can be a vector. All other options are
+scalar, including decade. You cannot request multiple decades with
+<code>c("2360s", "2370s")</code>. If this is what you want, use
+<code>mb_timeline(2360:2379)</code>.</p>
+<p>The year (or other period for <code>past</code> and
+<code>future</code>) is printed to the console as
+<code>mb_timeline</code> progresses through timeline data for each time
+step. Set <code>details = FALSE</code> to suppress this.</p>
 </div>
 </div>
-<div id="search" class="section level2">
-<h2 class="hasAnchor">
-<a href="#search" class="anchor"></a>Search</h2>
-<p>You can perform a Memory Beta site search using <code>mb_search</code>. This returns a data frame of search results content, including title, truncated text preview, and short URL for the first page of search results.</p>
-<p>It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with <code>mb_article</code>, setting <code>browse = TRUE</code> opens the page in the browser.</p>
+<div class="section level2">
+<h2 id="search">Search<a class="anchor" aria-label="anchor" href="#search"></a>
+</h2>
+<p>You can perform a Memory Beta site search using
+<code>mb_search</code>. This returns a data frame of search results
+content, including title, truncated text preview, and short URL for the
+first page of search results.</p>
+<p>It does not recursively collate search results through subsequent
+pages of results. There could be an unexpectedly high number of pages of
+results depending on the search query. Since the general nature of this
+search feature seems relatively casual anyway, it aims only to provide a
+first page preview. As with <code>mb_article</code>, setting
+<code>browse = TRUE</code> opens the page in the browser.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/mb_search.html">mb_search</a></span><span class="op">(</span><span class="st">"Guinan"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 25 x 3</span>
-<span class="co">#&gt;    title          text                               url                        </span>
-<span class="co">#&gt;    &lt;chr&gt;          &lt;chr&gt;                              &lt;chr&gt;                      </span>
-<span class="co">#&gt;  1 Guinan         Guinan is a member of the El-Auri~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  2 Guinan (mirro~ universe, Guinan was a member of ~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  3 Jean-Luc Pica~ Jean-Luc Picard was a 24th centur~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  4 Doomsday mach~ Doomsday machines or planet kille~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  5 James T. Kirk  James Tiberius Kirk was a male Hu~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  6 USS Enterpris~ The USS Enterprise (NCC-1701-D), ~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  7 Q              Spoiler warning: Plot and/or endi~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  8 Guardian of F~ Spoiler warning: Plot and/or endi~ https://memory-beta.fandom~</span>
-<span class="co">#&gt;  9 Starbase 80    Spoiler warning: Plot and/or endi~ https://memory-beta.fandom~</span>
-<span class="co">#&gt; 10 Protectors     Protectors is a Star Trek: Voyage~ https://memory-beta.fandom~</span>
-<span class="co">#&gt; # ... with 15 more rows</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/mb_search.html">mb_search</a></span><span class="op">(</span><span class="st">"Guinan"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 25 × 3</span></span></span>
+<span><span class="co">#&gt;    title                            text                                   url  </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Guinan                           <span style="color: #949494;">"</span>Guinan is a member of the El-Aurian … http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Guinan (mirror)                  <span style="color: #949494;">"</span>universe, Guinan was a member of the… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> James T. Kirk                    <span style="color: #949494;">"</span>Spoiler warning: Plot and/or ending … http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> USS Enterprise (NCC-1701-D)      <span style="color: #949494;">"</span>The USS Enterprise (NCC-1701-D), som… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> A Time to Love                   <span style="color: #949494;">"</span>A Time to Love is a Star Trek novel,… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Alternate reality                <span style="color: #949494;">"</span>An alternate reality (which may also… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Protectors                       <span style="color: #949494;">"</span>Protectors is a Star Trek: Voyager n… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Peaceable Kingdoms               <span style="color: #949494;">"</span>Peaceable Kingdoms is a novel from a… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> A Time for War, A Time for Peace <span style="color: #949494;">"</span>A Time for War, A Time for Peace is … http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Reginald Barclay                 <span style="color: #949494;">"</span>Reginald Endicott Barclay III was a … http…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more rows</span></span></span></code></pre></div>
 </div>
-<div id="caveats" class="section level2">
-<h2 class="hasAnchor">
-<a href="#caveats" class="anchor"></a>Caveats</h2>
-<p>Memory Beta contains over 50,000 pages at the time of this <code>rtrek</code> version. It is possible that some articles may have idiosyncratic structure that could make them inaccessible by these <code>rtrek</code> functions.</p>
-<p>Since this package version is also the first to offer this brand new functionality - and as mentioned, Memory Beta does not offer an API, leading to a less reliable web-scraping approach, it is unknown what the likelihood is at this time of breaking changes occurring during updates to Memory Beta by its maintainers.</p>
+<div class="section level2">
+<h2 id="caveats">Caveats<a class="anchor" aria-label="anchor" href="#caveats"></a>
+</h2>
+<p>Memory Beta contains over 50,000 pages at the time of this
+<code>rtrek</code> version. It is possible that some articles may have
+idiosyncratic structure that could make them inaccessible by these
+<code>rtrek</code> functions.</p>
+<p>Since this package version is also the first to offer this brand new
+functionality - and as mentioned, Memory Beta does not offer an API,
+leading to a less reliable web-scraping approach, it is unknown what the
+likelihood is at this time of breaking changes occurring during updates
+to Memory Beta by its maintainers.</p>
 <p><em>Jolan Tru</em>.</p>
 </div>
   </div>
@@ -447,11 +632,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/leonawicz">Matthew Leonawicz</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/leonawicz" class="external-link">Matthew Leonawicz</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -459,6 +646,8 @@
 
   
 
+
+  
 
   </body>
 </html>
