@@ -13,7 +13,6 @@ body, p, h1, h2, h3, h4, h5, h6{
 
 /* syntaxt highlighting */
 .fl      {color: #63B8FF;}
-.va      {color: #00F5FF;}
 .va a    {color: #00F5FF;}
 .fu      {color: #00F5FF;} /* function */
 .fu a    {color: #00F5FF;}
@@ -22,6 +21,7 @@ code.sourceCode.r a    {color: #00FFFF;}
 .kw      {color: #00FFFF;} /* keyword */
 .kw a    {color: #00CFFF;}
 .co      {color: #D0F8FF;} /* comment */
+.co span {color: #D0F8FF !important;}
 
 .message { color: orange;   font-weight: bolder;}
 .error   { color: red;  font-weight: bolder;}
@@ -37,84 +37,3 @@ code.sourceCode.r a    {color: #00FFFF;}
 .leaflet-container { background: #000000 !important; }
 .leaflet-popup-content-wrapper { border-radius: 4px !important; color: #ffffff !important; background-color: rgba(45, 45, 45, 0.9) !important; width: 540px; font-size: 16px; }
 .leaflet-popup { border-color: #888888 !important; }
-
-/* Stellar Cartography and R&R */
-.main-container {
-  max-width: 100% !important;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.parallax {
-  width: 100%;
-  height: 600px;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-top: -20px;
-}
-
-.parallax-image{
-  width: 150px;
-  position: absolute;
-  top: 70px;
-  left: 20px;
-  -webkit-animation: fadein 2s;
-  -moz-animation: fadein 2s;
-  -ms-animation: fadein 2s;
-  -o-animation: fadein 2s;
-  animation: fadein 2s;
-}
-
-@keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-/* Firefox < 16 */
-@-moz-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-/* Internet Explorer */
-@-ms-keyframes fadein {
-    from { opacity: 0; color: #D0F8FF; }
-    to   { opacity: 1; color: #FFFFFF; }
-}
-
-/* Opera < 12.1 */
-@-o-keyframes fadein {
-    from { opacity: 0; color: #D0F8FF; }
-    to   { opacity: 1; color: #FFFFFF; }
-}
-
-.st-tweets, .st-tweets2 {
-  background-color: rgba(223, 0, 0, 0.3);
-  color: #FFFFFF;
-  padding: 10px;
-  border-color: #FFFFFF;
-  border-radius: 4px;
-  font-size: 16pt;
-  height:280px;
-  width:100%;
-}
-
-.st-tweets h2, .st-tweets2 h2 {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin: 0px;
-}
-
-.st-tweets p, .st-tweets2 p {
-  margin: 0px;
-  padding-left: 6px;
-  font-size: 0.8em;
-}

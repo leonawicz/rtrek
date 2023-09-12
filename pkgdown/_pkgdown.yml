@@ -42,7 +42,6 @@ reference:
   - st_books_wiki
   - st_logo
   - st_font
-  - "%>%"
 - title: Plots
   contents:
   - theme_rtrek
@@ -78,7 +77,5 @@ navbar:
   right:
     - text: "Stellar Cartography"
       href: "articles/sc.html"
-    - text: "R & R... & R"
-      href: "articles/rr.html"
     - icon: fa-github fa-lg
       href: https://github.com/leonawicz/rtrek
