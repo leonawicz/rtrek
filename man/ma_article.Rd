@@ -7,16 +7,19 @@
 ma_article(
   url,
   content_format = c("xml", "character"),
-  content_nodes = c("h2", "h3", "p", "b", "ul"),
+  content_nodes = c("h1", "h2", "h3", "h4", "h5", "h6", "p", "b", "ul"),
   browse = FALSE
 )
 }
 \arguments{
-\item{url}{character, article URL. Expects package-style short URL. See examples.}
+\item{url}{character, article URL. Expects package-style short URL. See
+examples.}
 
-\item{content_format}{character, the format of the article main text, \code{"xml"} or \code{"character"}.}
+\item{content_format}{character, the format of the article main text,
+\code{"xml"} or \code{"character"}.}
 
-\item{content_nodes}{character, which top-level nodes in the article main text to retain.}
+\item{content_nodes}{character, which top-level nodes in the article main
+text to retain.}
 
 \item{browse}{logical, also open \code{url} in browser.}
 }

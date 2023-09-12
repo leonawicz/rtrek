@@ -1,22 +1,19 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "rtrek",
-  "description": "Provides datasets related to the Star Trek fictional universe and functions for working with the data.\n    The package also provides access to real world datasets based on the televised series and other related licensed media productions.\n    It interfaces with the Star Trek API (STAPI) (<http://stapi.co/>), \n    Memory Alpha (<https://memory-alpha.fandom.com/wiki/Portal:Main>), and Memory Beta (<https://memory-beta.fandom.com/wiki/Main_Page>) \n    to retrieve data, metadata and other information relating to Star Trek.\n    It also contains several local datasets covering a variety of topics. \n    The package also provides functions for working with data from other Star Trek-related \n    R data packages containing larger datasets not stored in 'rtrek'.",
-  "name": "rtrek: Datasets and Functions Relating to Star Trek",
+  "description": "Provides datasets related to the Star Trek fictional universe and functions for working with the data. The package also provides access to real world datasets based on the televised series and other related licensed media productions. It interfaces with the Star Trek API (STAPI) (<http://stapi.co/>), Memory Alpha (<https://memory-alpha.fandom.com/wiki/Portal:Main>), and Memory Beta (<https://memory-beta.fandom.com/wiki/Main_Page>) to retrieve data, metadata and other information relating to Star Trek. It also contains several local datasets covering a variety of topics. The package also provides functions for working with data from other Star Trek-related R data packages containing larger datasets not stored in 'rtrek'.",
+  "name": "rtrek: Data analysis relating to Star Trek",
   "codeRepository": "https://github.com/leonawicz/rtrek",
   "issueTracker": "https://github.com/leonawicz/rtrek/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.5 (2021-03-31)",
+  "runtimePlatform": "R version 4.3.1 (2023-06-16 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -42,6 +39,18 @@
     }
   ],
   "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "lubridate",
+      "name": "lubridate",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lubridate"
+    },
     {
       "@type": "SoftwareApplication",
       "identifier": "testthat",
@@ -77,18 +86,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "covr",
-      "name": "covr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=covr"
     },
     {
       "@type": "SoftwareApplication",
@@ -151,26 +148,14 @@
       "sameAs": "https://CRAN.R-project.org/package=png"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
       "version": ">= 2.10"
     },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "magrittr",
-      "name": "magrittr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=magrittr"
-    },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
@@ -182,7 +167,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "jsonlite",
       "name": "jsonlite",
@@ -194,7 +179,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jsonlite"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
@@ -206,7 +191,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=xml2"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "rvest",
       "name": "rvest",
@@ -218,7 +203,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rvest"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "jpeg",
       "name": "jpeg",
@@ -230,7 +215,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=jpeg"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "purrr",
       "name": "purrr",
@@ -242,7 +227,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=purrr"
     },
-    {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
@@ -254,7 +239,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=ggplot2"
     },
-    {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "memoise",
       "name": "memoise",
@@ -266,7 +251,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=memoise"
     },
-    {
+    "10": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -278,7 +263,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    {
+    "11": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -290,7 +275,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     },
-    {
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "downloader",
       "name": "downloader",
@@ -301,21 +286,8 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=downloader"
-    }
-  ],
-  "releaseNotes": "https://github.com/leonawicz/rtrek/blob/master/NEWS.md",
-  "readme": "https://github.com/leonawicz/rtrek/blob/master/README.md",
-  "contIntegration": ["https://travis-ci.org/leonawicz/rtrek", "https://ci.appveyor.com/project/leonawicz/rtrek", "https://codecov.io/github/leonawicz/rtrek?branch=master"],
-  "relatedLink": "https://CRAN.R-project.org/package=rtrek",
-  "contributor": {},
-  "copyrightHolder": {},
-  "funder": {},
-  "developmentStatus": "https://www.repostatus.org/",
-  "fileSize": "2246900.262KB",
-  "keywords": [
-    "r-package",
-    "star-trek",
-    "stapi",
-    "data"
-  ]
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "635.129KB"
 }

@@ -1,3 +1,11 @@
+# rtrek 0.4.0
+
+* API updates and bug fixes.
+* Added required package alias in documentation.
+* Removed package website content that is no longer maintained/references external content that is no longer available.
+* Reduced data dependencies in `data-raw`.
+* General documentation updates.
+
 # rtrek 0.3.3
 
 * Minor bug fix and documentation updates.

@@ -11,9 +11,11 @@ A data frame
 tlFootnotes
 }
 \description{
-A data frame with 605 rows and 3 columns containing footnotes associated by ID with various entries in package timeline datasets, \code{tlBooks} and \code{tlEvents}.
+A data frame with 605 rows and 3 columns containing footnotes associated by
+ID with various entries in package timeline datasets, \code{tlBooks} and
+\code{tlEvents}.
 }
 \seealso{
-\code{\link{tlBooks}} \code{\link{tlEvents}}
+\code{\link[=tlBooks]{tlBooks()}} \code{\link[=tlEvents]{tlEvents()}}
 }
 \keyword{datasets}

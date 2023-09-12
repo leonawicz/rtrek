@@ -11,18 +11,24 @@ A data frame
 stBooks
 }
 \description{
-A data frame with 783 rows and 11 columns containing metadata on Star Trek novels and other books taken directly from original books.
-The data frame contains most of the novels but is not comprehensive and may be out of date temporarily whenever new novels are published.
-It is largely complete through the end of 2017, though some older entries are still missing.
+A data frame with 783 rows and 11 columns containing metadata on Star Trek
+novels and other books taken directly from original books. The data frame
+contains most of the novels but is not comprehensive and may be out of date
+temporarily whenever new novels are published. It is largely complete through
+the end of 2017, though some older entries are still missing.
 }
 \details{
-\code{stBooks}: There may be some irregularities or erroneous entries based on the imperfect methods use to compile the metadata,
-but it is overall an accurate dataset.
+\code{stBooks}: There may be some irregularities or erroneous entries based on the
+imperfect methods use to compile the metadata, but it is overall an accurate
+dataset.
 
-The \code{nchap} column is largely accurate, but imperfect. Some entries suggest a book has an unusual number of chapters, but the parser is not perfect at determining what constitutes a chapter.
-However, many of the books with unusually high numbers of chapters are not erroneous but rather indicate a reference book, omnibus or anthology, as opposed to a standard novel.
+The \code{nchap} column is largely accurate, but imperfect. Some entries suggest a
+book has an unusual number of chapters, but the parser is not perfect at
+determining what constitutes a chapter. However, many of the books with
+unusually high numbers of chapters are not erroneous but rather indicate a
+reference book, omnibus or anthology, as opposed to a standard novel.
 }
 \seealso{
-\code{\link{stSeries}}, \code{\link{st_books_wiki}}
+\code{\link[=stSeries]{stSeries()}}, \code{\link[=st_books_wiki]{st_books_wiki()}}
 }
 \keyword{datasets}

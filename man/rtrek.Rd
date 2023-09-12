@@ -3,13 +3,19 @@
 \docType{package}
 \name{rtrek}
 \alias{rtrek}
-\title{rtrek: Star Trek datasets and related R functions.}
+\alias{rtrek-package}
+\title{rtrek: Data analysis relating to Star Trek.}
 \description{
-The \code{rtrek} package contains a collection of Star Trek-themed datasets and R functions to assist with their use.
-The package interfaces with the Star Trek API (STAPI), Memory Alpha and Memory Beta to retrieve data, metadata and other information relating to the Star Trek fictional universe.
+The \code{rtrek} package contains a collection of Star Trek-themed datasets and R
+functions to assist with their use. The package interfaces with the Star Trek
+API (STAPI), Memory Alpha and Memory Beta to retrieve data, metadata and
+other information relating to the Star Trek fictional universe.
 }
 \details{
-The package also contains several local datasets covering a variety of topics such as Star Trek timeline data, universe species data and geopolitical data.
-Some of these are more information rich, while others are toy examples useful for simple demonstrations. The bulk of Star Trek data is accessed from external sources by API.
-A future version of \code{rtrek} will also include summary datasets resulting from text mining analyses of Star Trek novels.
+The package also contains several local datasets covering a variety of topics
+such as Star Trek timeline data, universe species data and geopolitical data.
+Some of these are more information rich, while others are toy examples useful
+for simple demonstrations. The bulk of Star Trek data is accessed from
+external sources by API. A future version of \code{rtrek} will also include
+summary datasets resulting from text mining analyses of Star Trek novels.
 }

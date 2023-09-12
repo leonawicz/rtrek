@@ -11,10 +11,11 @@ A data frame
 stLogos
 }
 \description{
-A data frame with 236 rows and 3 columns containing Star Trek logo metadata: category, description and URL. Logo artwork credited to Kris Trigwell.
-The logo images are served by st-minutiae.com for personal and fair use.
+A data frame with 236 rows and 3 columns containing Star Trek logo metadata:
+category, description and URL. Logo artwork credited to Kris Trigwell. The
+logo images are served by st-minutiae.com for personal and fair use.
 }
 \seealso{
-\code{\link{st_logo}}
+\code{\link[=st_logo]{st_logo()}}
 }
 \keyword{datasets}

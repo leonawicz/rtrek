@@ -11,21 +11,31 @@ A data frame
 tlBooks
 }
 \description{
-A data frame with 2122 rows and 14 columns containing Star Trek timeline data. This dataset is novel-driven,
-meaning that the timeline entries (rows) provide a chronologically ordered list of licensed Star Trek novels.
+A data frame with 2122 rows and 14 columns containing Star Trek timeline
+data. This dataset is novel-driven, meaning that the timeline entries (rows)
+provide a chronologically ordered list of licensed Star Trek novels.
 }
 \details{
-Specifically, this curated dataset includes data derived from historical timeline information in the appendix of the Star Trek reference manual, Voyages of the Imagination,
-which provides information on the large collection of licensed Star Trek literature.
-The authors note that the original timeline includes "novels, short stories, eBooks, novelizations, Simon & Schuster Audio original audio books, Minstrel Books young adult books, and classic novels from Bantam and Ballantine Books, published through October 2006."
+Specifically, this curated dataset includes data derived from historical
+timeline information in the appendix of the Star Trek reference manual,
+Voyages of the Imagination, which provides information on the large
+collection of licensed Star Trek literature. The authors note that the
+original timeline includes "novels, short stories, eBooks, novelizations,
+Simon & Schuster Audio original audio books, Minstrel Books young adult
+books, and classic novels from Bantam and Ballantine Books, published through
+October 2006."
 
-While this data is very informative, it is clearly many years out of date. It is also necessarily speculative.
-Settings are determined based in part on what is interpreted to be the intention of a given author for a given production.
-Nevertheless, it still represents possibly the highest quality representation of the chronological ordering of Star Trek fiction that combines episodes and movies with written works.
-The concurrent timeline of Star Trek TV episodes and movies are interleaved with the novels and other written fiction for fuller context resulting in a much richer timeline.
+While this data is very informative, it is clearly many years out of date. It
+is also necessarily speculative. Settings are determined based in part on
+what is interpreted to be the intention of a given author for a given
+production. Nevertheless, it still represents possibly the highest quality
+representation of the chronological ordering of Star Trek fiction that
+combines episodes and movies with written works. The concurrent timeline of
+Star Trek TV episodes and movies are interleaved with the novels and other
+written fiction for fuller context resulting in a much richer timeline.
 See the \code{tlEvents} dataset for an event-driven timeline.
 }
 \seealso{
-\code{\link{tlEvents}} \code{\link{tlFootnotes}}
+\code{\link[=tlEvents]{tlEvents()}} \code{\link[=tlFootnotes]{tlFootnotes()}}
 }
 \keyword{datasets}

@@ -7,28 +7,43 @@
 st_transcripts(type = c("clean", "raw"))
 }
 \arguments{
-\item{type}{character, \code{"clean"} for curated nested data frame or \code{"raw"} for unprocessed text. See details.}
+\item{type}{character, \code{"clean"} for curated nested data frame or \code{"raw"} for
+unprocessed text. See details.}
 }
 \value{
 a tibble data frame
 }
 \description{
-Download a curated data frame based on episode and movie transcripts containing metadata and variables for analysis of scenes, character presence, dialog, sentiment, etc.
+Download a curated data frame based on episode and movie transcripts
+containing metadata and variables for analysis of scenes, character presence,
+dialog, sentiment, etc.
 }
 \details{
-The data frame contains metadata associated with each transcript, one row per episode.
-It also contains a list column. By default (\code{type = "clean"}), this is a nested data frame of preprocessed text split into several variables including the speaking character, line spoken, scene descriptions, etc.
-For the raw text version, the list column contains vectors of unprocessed plain text.
+The data frame contains metadata associated with each transcript, one row per
+episode. It also contains a list column. By default (\code{type = "clean"}), this
+is a nested data frame of preprocessed text split into several variables
+including the speaking character, line spoken, scene descriptions, etc. For
+the raw text version, the list column contains vectors of unprocessed plain
+text.
 
-Metadata includes the format (episode or movie), series, season, overall episode number, title, production order and original airdate if available and applicable.
-The two columns \code{url} and \code{url2} show where source material can be browsed online, though not in a useful format for data analysis.
-The first set is used if possible because it contains more complete, higher quality data. When necessary, the derived data is based on text from the alternate source.
+Metadata includes the format (episode or movie), series, season, overall
+episode number, title, production order and original airdate if available and
+applicable. The two columns \code{url} and \code{url2} show where source material can
+be browsed online, though not in a useful format for data analysis. The first
+set is used if possible because it contains more complete, higher quality
+data. When necessary, the derived data is based on text from the alternate
+source.
 
-The dataset is nicely curated, but imperfect. There are text-parsing edge cases that are difficult to handle generally.
-The quality varies substantially across series. Datasets assembled based on original transcripts are more informative, but not universally available.
-Other episodes are based on transcripts derived from closed captioning, in which case more fields will contain \code{NA} values.
+The dataset is nicely curated, but imperfect. There are text-parsing edge
+cases that are difficult to handle generally. The quality varies
+substantially across series. Datasets assembled based on original transcripts
+are more informative, but not universally available. Other episodes are based
+on transcripts derived from closed captioning, in which case more fields will
+contain \code{NA} values.
 
-This function downloads and returns a sizable tibble data frame. Each version is about 13-15 MB compressed. The returned tibble contains 726 rows (716 episodes and 10 movies), but each row has nested data.
+This function downloads and returns a sizable tibble data frame. Each version
+is about 13-15 MB compressed. The returned tibble contains 726 rows (716
+episodes and 10 movies), but each row has nested data.
 }
 \examples{
 \dontrun{stTranscripts <- st_transcripts()}

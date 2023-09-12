@@ -2,25 +2,25 @@
 % Please edit documentation in R/tiles.R
 \name{st_tiles}
 \alias{st_tiles}
-\title{Return the url associated with a tile set}
+\title{Return the URL associated with a tile set}
 \usage{
 st_tiles(id)
 }
 \arguments{
-\item{id}{character, name of map tile set ID. See \code{\link{stTiles}}.}
+\item{id}{character, name of map tile set ID. See \code{\link[=stTiles]{stTiles()}}.}
 }
 \value{
 a character string.
 }
 \description{
-This function returns the url associated with a tile set matching \code{id}.
+This function returns the URL associated with a tile set matching \code{id}.
 }
 \details{
-Tile set data are stored in the \code{\link{stTiles}} dataset. See for available IDs.
+Tile set data are stored in the \code{\link[=stTiles]{stTiles()}} dataset. See for available IDs.
 }
 \examples{
 st_tiles("galaxy1")
 }
 \seealso{
-\code{\link{stTiles}}, \code{\link{st_tiles_data}}
+\code{\link[=stTiles]{stTiles()}}, \code{\link[=st_tiles_data]{st_tiles_data()}}
 }

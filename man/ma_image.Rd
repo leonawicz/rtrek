@@ -7,7 +7,8 @@
 ma_image(url, file, keep = FALSE)
 }
 \arguments{
-\item{url}{character, the short url of the image, for example as returned by \code{memory_alpha}. See example.}
+\item{url}{character, the short URL of the image, for example as returned by
+\code{memory_alpha()}. See example.}
 
 \item{file}{character, output file name. Optional. See details.}
 
@@ -20,8 +21,9 @@ a ggplot object
 Download a Memory Alpha image and return a ggplot object.
 }
 \details{
-By default the downloaded file is not retained (\code{keep = FALSE}). The filename is derived from \code{url} if \code{file} is not provided.
-Whether or not the output file is kept, a ggplot object of the image is returned.
+By default the downloaded file is not retained (\code{keep = FALSE}). The filename
+is derived from \code{url} if \code{file} is not provided. Whether or not the output
+file is kept, a ggplot object of the image is returned.
 }
 \examples{
 \dontrun{ma_image("File:Gowron_attempts_to_recruit_Worf.jpg")}

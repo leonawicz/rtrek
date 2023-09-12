@@ -11,18 +11,22 @@ A data frame
 stSeries
 }
 \description{
-A data frame with 35 rows and 3 columns containing names and abbreviations of Star Trek series and anthologies.
-There are so many because the table pertains to written works, which is inclusive of the more limited televised series.
+A data frame with 35 rows and 3 columns containing names and abbreviations of
+Star Trek series and anthologies. There are so many because the table
+pertains to written works, which is inclusive of the more limited televised
+series.
 }
 \details{
-Some entries listed as series can be interpreted as miniseries, but that distinction is not made here.
-The official line between the two is not always clear and can also change as more novels are released.
+Some entries listed as series can be interpreted as miniseries, but that
+distinction is not made here. The official line between the two is not always
+clear and can also change as more novels are released.
 
-Anthologies are listed as such, rather than as series. Reference manuals have a distinct entry.
-The Miscellaneous category can be considered synonymous with All-Series/Crossover,
-abbreviated elsewhere as simply \code{ST} for Star Trek in general, rather than as \code{MISC}.
+Anthologies are listed as such, rather than as series. Reference manuals have
+a distinct entry. The Miscellaneous category can be considered synonymous
+with All-Series/Crossover, abbreviated elsewhere as simply \code{ST} for Star Trek
+in general, rather than as \code{MISC}.
 }
 \seealso{
-\code{\link{st_books_wiki}}
+\code{\link[=st_books_wiki]{st_books_wiki()}}
 }
 \keyword{datasets}

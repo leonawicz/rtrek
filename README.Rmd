@@ -12,16 +12,8 @@ knitr::opts_chunk$set(
 ```
 
 # rtrek <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
-**Author:** [Matthew Leonawicz](https://github.com/leonawicz) <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget">
-<img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16" /></a>
-<br/>
-**License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
-[![Travis-CI Build Status](https://travis-ci.org/leonawicz/rtrek.svg?branch=master)](https://travis-ci.org/leonawicz/rtrek)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/rtrek?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/rtrek)
-[![Coverage Status](https://img.shields.io/codecov/c/github/leonawicz/rtrek/master.svg)](https://codecov.io/github/leonawicz/rtrek?branch=master)
-
 [![CRAN status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek)
 [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek) 
 [![Github Stars](https://img.shields.io/github/stars/leonawicz/rtrek.svg?style=social&label=Github)](https://github.com/leonawicz/rtrek)
@@ -36,7 +28,7 @@ The package also contains several local datasets covering a variety of topics su
 
 <br/>
 
-## Installation<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width=320 style="float: right; padding-left: 10px; padding-bottom:5px;">
+## Installation
 
 Install the CRAN release of `rtrek` with
 
@@ -51,24 +43,30 @@ Install the development version from GitHub with
 remotes::install_github("leonawicz/rtrek")
 ```
 
-<h2 style="padding-bottom:0px;">Examples</h2><h4 style="padding-top:50px;padding-bottom:0px;">Time to be good detectives. Good thing Data has R installed.</h4>
+<h2 style="padding-bottom:0px;">Examples</h2><img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width=320 style="float: right; padding-left: 20px; padding-bottom:5px;">
+
+<h4 style="padding-top:50px;padding-bottom:0px;">Time to be good detectives. Good thing Data has R installed.</h4>
 
 These are just a few examples to help you jump right in. See the package articles for more.
 
 ### STAPI
 
-Use the Star Trek API (STAPI) to obtain information on the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up. The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters. The second call grabs only page two results. The third call uses the universal/unique ID `uid` to retrieve data on Q. Think of these three successive uses of `stapi` as safe mode, search mode and extraction mode.
+Use the Star Trek API (STAPI) to obtain information on the infamous character, Q. Specifically, retrieve data on his appearances and the stardates when he shows up.
+
+The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters.
+
+The second call grabs only page two results. The third call uses the universal/unique ID `uid` to retrieve data on Q. Think of these three successive uses of `stapi` as safe mode, search mode and extraction mode.
 
 ```{r ex, thm = knitr::knit_theme$get("molokai")}
 library(rtrek)
 library(dplyr)
 stapi("character", page_count = TRUE)
 
-stapi("character", page = 1) %>% select(uid, name)
+stapi("character", page = 1) |> select(uid, name)
 
 Q <- "CHMA0000025118" #unique ID
 Q <- stapi("character", uid = Q)
-Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
+Q$episodes |> select(uid, title, stardateFrom, stardateTo)
 ```
 
 ### Memory Alpha
@@ -90,10 +88,6 @@ mb_timeline(2230)
 ```
 
 Live long and prosper.
-
-## Reference
-
-[Complete package reference and function documentation](https://leonawicz.github.io/rtrek/)
 
 ## Packages in the trekverse
 
@@ -137,7 +131,7 @@ True (Trek) type fonts to style your Star Trek themed graphics text.
 
 ## Citation
 
-Matthew Leonawicz (2021). rtrek: Datasets and Functions Relating to Star Trek. R package version 0.3.3. https://CRAN.R-project.org/package=rtrek
+Matthew Leonawicz (`r substr(Sys.Date(), 1, 4)`). rtrek: Data analysis relating to Star Trek. R package version 0.4.0. https://CRAN.R-project.org/package=rtrek
 
 ## Contribute
 

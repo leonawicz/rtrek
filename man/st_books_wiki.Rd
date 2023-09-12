@@ -11,11 +11,11 @@ opens a browser tab, nothing is returned.
 }
 \description{
 This function opens a browser tab to the main Wikipedia entry for all Star Trek novels.
-For a more complete set of Star Trek series, miniseries and anthology names and acronyms, see the \code{\link{stSeries}} and \code{\link{stBooks}} datasets.
+For a more complete set of Star Trek series, miniseries and anthology names and acronyms, see the \code{\link[=stSeries]{stSeries()}} and \code{\link[=stBooks]{stBooks()}} datasets.
 }
 \examples{
 \dontrun{st_books_wiki()}
 }
 \seealso{
-\code{\link{stBooks}} \code{\link{stSeries}}
+\code{\link[=stBooks]{stBooks()}} \code{\link[=stSeries]{stSeries()}}
 }

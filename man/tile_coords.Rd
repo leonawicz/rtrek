@@ -7,24 +7,33 @@
 tile_coords(data, id)
 }
 \arguments{
-\item{data}{a data frame containing columns named \code{col} and \code{row}. These contain column-row number pairs defining matrix cells in tile set \code{id}. See details.}
+\item{data}{a data frame containing columns named \code{col} and \code{row}. These
+contain column-row number pairs defining matrix cells in tile set \code{id}. See
+details.}
 
-\item{id}{character, name of map tile set ID. See \code{\link{stTiles}}.}
+\item{id}{character, name of map tile set ID. See \code{\link[=stTiles]{stTiles()}}.}
 }
 \value{
 a data frame.
 }
 \description{
-Convert \code{(column, row)} numbers to \code{(x, y)} coordinates for a given tile set.
+Convert \verb{(column, row)} numbers to \verb{(x, y)} coordinates for a given tile set.
 }
 \details{
-This function converts column and row indices for an available map tile set matrix to coordinates that can be used in a Leaflet map. See \code{\link{stTiles}} for available tile sets.
+This function converts column and row indices for an available map tile set
+matrix to coordinates that can be used in a Leaflet map. See \code{\link[=stTiles]{stTiles()}} for
+available tile sets.
 
-\code{data} cannot contain columns named \code{x} or \code{y}, which are reserved for the column-appended output data frame.
+\code{data} cannot contain columns named \code{x} or \code{y}, which are reserved for the
+column-appended output data frame.
 
-Each tile set has a simple/non-geographical coordinate reference system (CRS). Respective coordinates are based on the dimensions of the source image used to generate each tile set.
-The same column and row pair will yield different map coordinates for different tile sets. Typical for matrices, columns are numbered increasing from left to right and rows increasing from top to bottom.
-The output of \code{tile_coords} is a typical Cartesian coordinate system, increasing from left to right and bottom to top.
+Each tile set has a simple/non-geographical coordinate reference system
+(CRS). Respective coordinates are based on the dimensions of the source image
+used to generate each tile set. The same column and row pair will yield
+different map coordinates for different tile sets. Typical for matrices,
+columns are numbered increasing from left to right and rows increasing from
+top to bottom. The output of \code{tile_coords()} is a typical Cartesian coordinate
+system, increasing from left to right and bottom to top.
 }
 \examples{
 d <- data.frame(row = c(0, 3222, 6445), col = c(0, 4000, 8000))

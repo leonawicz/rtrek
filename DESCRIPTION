@@ -1,6 +1,7 @@
 Package: rtrek
-Version: 0.3.3
-Title: Datasets and Functions Relating to Star Trek
+Title: Data analysis relating to Star Trek
+Version: 0.4.0
+Authors@R: person("Matthew", "Leonawicz", email = "mfleonawicz@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9452-2771"))
 Description: Provides datasets related to the Star Trek fictional universe and functions for working with the data.
     The package also provides access to real world datasets based on the televised series and other related licensed media productions.
     It interfaces with the Star Trek API (STAPI) (<http://stapi.co/>), 
@@ -9,26 +10,11 @@ Description: Provides datasets related to the Star Trek fictional universe and f
     It also contains several local datasets covering a variety of topics. 
     The package also provides functions for working with data from other Star Trek-related 
     R data packages containing larger datasets not stored in 'rtrek'.
-Authors@R: person("Matthew", "Leonawicz", email = "mfleonawicz@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9452-2771"))
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-ByteCompile: true
 URL: https://github.com/leonawicz/rtrek
 BugReports: https://github.com/leonawicz/rtrek/issues
 Depends: R (>= 2.10)
-Suggests:
-    testthat,
-    knitr,
-    rmarkdown,
-    covr,
-    leaflet,
-    showtext,
-    sysfonts,
-    trekfont,
-    png
 Imports: 
-    magrittr,
     dplyr,
     jsonlite,
     xml2,
@@ -40,4 +26,18 @@ Imports:
     tibble,
     tidyr,
     downloader
-RoxygenNote: 7.1.1
+Suggests:
+    lubridate,
+    testthat,
+    knitr,
+    rmarkdown,
+    leaflet,
+    showtext,
+    sysfonts,
+    trekfont,
+    png
+ByteCompile: true
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3

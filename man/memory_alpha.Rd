@@ -13,51 +13,72 @@ memory_alpha(endpoint)
 a data frame
 }
 \description{
-Access Star Trek content from Memory Alpha (\url{https://memory-alpha.fandom.com/wiki/Portal:Main}).
+Access Star Trek content from
+\href{https://memory-alpha.fandom.com/wiki/Portal:Main}{Memory Alpha}.
 }
 \details{
-The content returned is always a data frame. The structure changes slightly depending on the nature of the endpoint,
-but results from different endpoints can be merged easily.
+The content returned is always a data frame. The structure changes slightly
+depending on the nature of the endpoint, but results from different endpoints
+can be merged easily.
+}
+\section{Portals}{
 
-\subsection{Portals}{
-At the highest level, passing \code{enpoind = "portals"} returns a data frame listing the available Memory Alpha portals supported by \code{rtrek}.
-A column of relative URLs is also included for reference, but can be ignored.
+
+At the highest level, passing \code{endpoint = "portals"} returns a data frame
+listing the available Memory Alpha portals supported by \code{rtrek}. A column of
+relative URLs is also included for reference, but can be ignored.
 }
 
-\subsection{Portal Categories}{
-In all other cases, the endpoint string must begin with one of the valid portal IDs.
-Passing only the ID returns a data frame with IDs and relative URLs associated with the available categories in the specific portal.
-There are two additional columns, \code{group} and \code{subgroup}, that may provide additional grouping context for the entry IDs in larger tables.
-As with the relative URLs, you do not have to make explicit use of these variables.
-\cr\cr
-Selecting a specific category within a portal is done by appending the portal ID in \code{endpoint} with the category ID, separated by a forward slash.
-You can append nested subcategory IDs with forward slashes, provided they subcategories exist.
+\section{Portal Categories}{
+
+In all other cases, the endpoint string must begin with one of the valid
+portal IDs. Passing only the ID returns a data frame with IDs and relative
+URLs associated with the available categories in the specific portal. There
+are two additional columns, \code{group} and \code{subgroup}, that may provide
+additional grouping context for the entry IDs in larger tables. As with the
+relative URLs, you do not have to make explicit use of these variables.
+
+Selecting a specific category within a portal is done by appending the portal
+ID in \code{endpoint} with the category ID, separated by a forward slash. You can
+append nested subcategory IDs with forward slashes, provided the
+subcategories exist.
 }
 
-\subsection{Articles}{
-When the endpoint is neither a top-level portal or one of a portal's categories (or subcategories, if available), it is an article.
-An article is a terminal node, meaning you cannot nest further. An article will be any entry whose URL does not begin with \code{Category:}.
-In this case, the content returned is still a data frame for consistency, but differs substantially from the results of non-terminal endpoints.
-\cr\cr
-Memory Alpha is not a database containing convenient tables. Articles comprise the bulk of what Memory Alpha has to offer.
-They are not completely unstructured text, but are loosely structured.
-Some assumptions are made and \code{memory_alpha} returns a data frame containing article text and links.
-It is up to the user what to do with this information, e.g., performing text analyses.
+\section{Articles}{
+
+When the endpoint is neither a top-level portal or one of a portal's
+categories (or subcategories, if available), it is an article. An article is
+a terminal node, meaning you cannot nest further. An article will be any
+entry whose URL does not begin with \verb{Category:}. In this case, the content
+returned is still a data frame for consistency, but differs substantially
+from the results of non-terminal endpoints.
+
+Memory Alpha is not a database containing convenient tables. Articles
+comprise the bulk of what Memory Alpha has to offer. They are not completely
+unstructured text, but are loosely structured. Some assumptions are made and
+\code{memory_alpha} returns a data frame containing article text and links. It is
+up to the user what to do with this information, e.g., performing text
+analyses.
 }
 
-\subsection{Additional notes}{
-The \code{url} column included in results for context uses relative paths to save space. The full URLs all begin the same.
-To visit a URL directly, prepend it with \code{https://memory-alpha.fandom.com/wiki/}.
-\cr\cr
+\section{Additional Notes}{
+
+The \code{url} column included in results for context uses relative paths to save
+space. The full URLs all begin the same. To visit a URL directly, prepend it
+with \verb{https://memory-alpha.fandom.com/wiki/}.
+
 Also note that once you know the relative URL for an article, e.g., \code{"Worf"},
-you do not need to traverse through one of the portals using an \code{endpoint} string to retrieve its content.
-You can instead use \code{ma_article("Worf")}.
-\cr\cr
-\code{memory_alpha} provides an overview perspective on how content available at Memory Alpha is organized and can be searched for through
-a variety of hierarchical layouts. And in some cases this structure that can be obtained in table form can be useful as data or metadata
-in itself. Alternatively, \code{ma_article} is focused exclusively on pulling back content from known articles.
+you do not need to traverse through one of the portals using an \code{endpoint}
+string to retrieve its content. You can instead use \code{ma_article("Worf")}.
+
+\code{memory_alpha()} provides an overview perspective on how content available at
+Memory Alpha is organized and can be searched for through a variety of
+hierarchical layouts. And in some cases this structure that can be obtained
+in table form can be useful as data or metadata in itself. Alternatively,
+\code{ma_article()} is focused exclusively on pulling back content from known
+articles.
 }
-}
+
 \examples{
 memory_alpha("portals") # show available portals
 \donttest{
@@ -67,5 +88,5 @@ memory_alpha("people/Klingons/Worf") # return terminal article content
 }
 }
 \seealso{
-\code{\link{ma_article}}, \code{\link{memory_beta}}
+\code{\link[=ma_article]{ma_article()}}, \code{\link[=memory_beta]{memory_beta()}}
 }

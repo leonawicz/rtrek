@@ -3,21 +3,9 @@
 
 # rtrek <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 
-**Author:** [Matthew Leonawicz](https://github.com/leonawicz)
-<a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget">
-<img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_16x16.png" width="16" height="16" /></a>
-<br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
-
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
-[![Travis-CI Build
-Status](https://travis-ci.org/leonawicz/rtrek.svg?branch=master)](https://travis-ci.org/leonawicz/rtrek)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/rtrek?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/rtrek)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/leonawicz/rtrek/master.svg)](https://codecov.io/github/leonawicz/rtrek?branch=master)
-
 [![CRAN
 status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek)
 [![CRAN
@@ -41,9 +29,7 @@ data is accessed from external sources by API. A future version of
 analyses of Star Trek novels.
 
 <p style="text-align:center;">
-
 <img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek_app1.png?raw=true" width="100%">
-
 </p>
 
 *Image: Example [Leaflet
@@ -52,7 +38,7 @@ non-geographic Star Trek map tiles.*
 
 <br/>
 
-## Installation<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width=320 style="float: right; padding-left: 10px; padding-bottom:5px;">
+## Installation
 
 Install the CRAN release of `rtrek` with
 
@@ -68,15 +54,13 @@ remotes::install_github("leonawicz/rtrek")
 ```
 
 <h2 style="padding-bottom:0px;">
-
 Examples
-
 </h2>
 
+<img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width=320 style="float: right; padding-left: 20px; padding-bottom:5px;">
+
 <h4 style="padding-top:50px;padding-bottom:0px;">
-
 Time to be good detectives. Good thing Data has R installed.
-
 </h4>
 
 These are just a few examples to help you jump right in. See the package
@@ -86,10 +70,13 @@ articles for more.
 
 Use the Star Trek API (STAPI) to obtain information on the infamous
 character, Q. Specifically, retrieve data on his appearances and the
-stardates when he shows up. The first API call does a lightweight,
-unobtrusive check to see how many pages of potential search results
-exist for characters in the database. There are a lot of characters. The
-second call grabs only page two results. The third call uses the
+stardates when he shows up.
+
+The first API call does a lightweight, unobtrusive check to see how many
+pages of potential search results exist for characters in the database.
+There are a lot of characters.
+
+The second call grabs only page two results. The third call uses the
 universal/unique ID `uid` to retrieve data on Q. Think of these three
 successive uses of `stapi` as safe mode, search mode and extraction
 mode.
@@ -98,37 +85,50 @@ mode.
 library(rtrek)
 library(dplyr)
 stapi("character", page_count = TRUE)
-#> Total pages to retrieve all results: 66
+#> Total pages to retrieve all results: 76
 
-stapi("character", page = 1) %>% select(uid, name)
-#> # A tibble: 100 x 2
-#>    uid            name            
-#>    <chr>          <chr>           
-#>  1 CHMA0000021696 Pechetti        
-#>  2 CHMA0000028502 Pomet           
-#>  3 CHMA0000134966 Eddie Newsom    
-#>  4 CHMA0000101321 T. Virts        
-#>  5 CHMA0000053158 Annabelle series
-#>  6 CHMA0000008975 Torias Dax      
-#>  7 CHMA0000232471 T. Peel         
-#>  8 CHMA0000087568 Grathon Tolar   
-#>  9 CHMA0000190805 C. Russell      
-#> 10 CHMA0000069617 Mike Vejar      
-#> # ... with 90 more rows
+stapi("character", page = 1) |> select(uid, name)
+#> # A tibble: 100 × 2
+#>    uid            name         
+#>    <chr>          <chr>        
+#>  1 CHMA0000215045 0413 Theta   
+#>  2 CHMA0000174718 0718         
+#>  3 CHMA0000283851 10111        
+#>  4 CHMA0000278055 335          
+#>  5 CHMA0000282741 355          
+#>  6 CHMA0000026532 A'trom       
+#>  7 CHMA0000280385 A. Armaganian
+#>  8 CHMA0000226457 A. Baiers    
+#>  9 CHMA0000232390 A. Baiers    
+#> 10 CHMA0000068580 A. Banda     
+#> # ℹ 90 more rows
 
 Q <- "CHMA0000025118" #unique ID
 Q <- stapi("character", uid = Q)
-Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
-#>              uid                 title stardateFrom stardateTo
-#> 1 EPMA0000001458    All Good Things...      47988.0    47988.0
-#> 2 EPMA0000000845                Q-Less      46531.2    46531.2
-#> 3 EPMA0000001329                 Q Who      42761.3    42761.3
-#> 4 EPMA0000000651              Tapestry           NA         NA
-#> 5 EPMA0000001510    The Q and the Grey      50384.2    50392.7
-#> 6 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7
-#> 7 EPMA0000162588            Death Wish           NA         NA
-#> 8 EPMA0000001413                True Q      46192.3    46192.3
-#> 9 EPMA0000001377                  Qpid      44741.9    44741.9
+Q$episodes |> select(uid, title, stardateFrom, stardateTo)
+#>               uid                 title stardateFrom stardateTo
+#> 1  EPMA0000259941               Veritas           NA         NA
+#> 2  EPMA0000000651              Tapestry           NA         NA
+#> 3  EPMA0000000500            Hide And Q      41590.5    41590.5
+#> 4  EPMA0000277408        The Star Gazer           NA         NA
+#> 5  EPMA0000280052              Farewell           NA         NA
+#> 6  EPMA0000279099            Two of One           NA         NA
+#> 7  EPMA0000278606               Watcher           NA         NA
+#> 8  EPMA0000001510    The Q and the Grey      50384.2    50392.7
+#> 9  EPMA0000001413                True Q      46192.3    46192.3
+#> 10 EPMA0000000845                Q-Less      46531.2    46531.2
+#> 11 EPMA0000001329                 Q Who      42761.3    42761.3
+#> 12 EPMA0000278900    Fly Me to the Moon           NA         NA
+#> 13 EPMA0000000483 Encounter at Farpoint      41153.7    41153.7
+#> 14 EPMA0000001458    All Good Things...      47988.0    47988.0
+#> 15 EPMA0000162588            Death Wish      49301.2    49301.2
+#> 16 EPMA0000289337   The Last Generation           NA         NA
+#> 17 EPMA0000001347                Deja Q      43539.1    43539.1
+#> 18 EPMA0000277535               Penance           NA         NA
+#> 19 EPMA0000278226          Assimilation           NA         NA
+#> 20 EPMA0000279450                 Mercy           NA         NA
+#> 21 EPMA0000001619                    Q2      54704.5    54704.5
+#> 22 EPMA0000001377                  Qpid      44741.9    44741.9
 ```
 
 ### Memory Alpha
@@ -139,10 +139,10 @@ Alpha:
 ``` r
 x <- ma_article("Spock")
 x
-#> # A tibble: 1 x 4
-#>   title content    metadata               categories           
-#>   <chr> <list>     <list>                 <list>               
-#> 1 Spock <xml_ndst> <tibble[,18] [1 x 18]> <tibble[,2] [14 x 2]>
+#> # A tibble: 1 × 4
+#>   title content    metadata          categories       
+#>   <chr> <list>     <list>            <list>           
+#> 1 Spock <xml_ndst> <tibble [1 × 18]> <tibble [15 × 2]>
 x$metadata[[1]]$Born
 #> [1] "January 6, 2230 (stardate 2230.06)|ShiKahr, Vulcan"
 ```
@@ -156,32 +156,31 @@ historical timeline for that year:
 mb_timeline(2230)
 #> 2230
 #> $events
-#> # A tibble: 5 x 4
-#>   period id                date  notes                                                              
-#>   <chr>  <chr>             <chr> <chr>                                                              
-#> 1 2230   Events            <NA>  Argelius II  and Betelgeuse become members of the Federation.[1][2]
-#> 2 2230   Births_and_Deaths <NA>  Spock is born deep within a cave in Vulcan's Forge on Vulcan.[3][4]
-#> 3 2230   Births_and_Deaths <NA>  George Samuel Kirk, Jr. is born.[5]                                
-#> 4 2230   Births_and_Deaths <NA>  David Rabin is born.[6]                                            
-#> 5 2230   Births_and_Deaths <NA>  Roy John Moss is born.[7]                                          
+#> # A tibble: 8 × 2
+#>   period details                                                      
+#>   <chr>  <chr>                                                        
+#> 1 2230   Events                                                       
+#> 2 2230   Argelius II  and Betelgeuse become members of the Federation.
+#> 3 2230   Births and Deaths                                            
+#> 4 2230   Spock is born deep within a cave in Vulcan's Forge on Vulcan.
+#> 5 2230   T'Pring is born on Vulcan.                                   
+#> 6 2230   George Samuel Kirk, Jr. is born.                             
+#> 7 2230   David Rabin is born.                                         
+#> 8 2230   Roy John Moss is born.                                       
 #> 
 #> $stories
-#> # A tibble: 5 x 11
-#>   title            title_url           colleciton    collection_url  section      context series      date      media      notes                                       image_url        
-#>   <chr>            <chr>               <chr>         <chr>           <chr>        <chr>   <chr>       <chr>     <chr>      <chr>                                       <chr>            
-#> 1 Burning Dreams   Burning_Dreams      <NA>          <NA>            Chapters 4 ~ <NA>    The Origin~ 2230      novel      <NA>                                        File:BurningDrea~
-#> 2 Star Trek V: Th~ Star_Trek_V:_The_F~ <NA>          <NA>            Chapter 14   <NA>    The Origin~ 2230      movie nov~ <NA>                                        File:TrekV.jpg   
-#> 3 IDW Star Trek, ~ IDW_Star_Trek,_Iss~ Star Trek (I~ Star_Trek_(IDW) 2230 flashb~ <NA>    The Origin~ 2230      comic      Flashback to USS Kelvin and Keenser's join~ File:IDW_TOS_14_~
-#> 4 Star Trek        Star_Trek_(2009)    <NA>          <NA>            Chapter 1 (~ <NA>    The Origin~ 2230      movie nov~ Depiction of Spock's birth, date taken fro~ File:Star_Trek_f~
-#> 5 Sarek            Sarek_(novel)       <NA>          <NA>            Chapter 5    <NA>    The Origin~ 12 Novem~ novel      <NA>                                        File:Sarek_novel~
+#> # A tibble: 5 × 11
+#>   title   title_url colleciton collection_url section context series date  media
+#>   <chr>   <chr>     <chr>      <chr>          <chr>   <chr>   <chr>  <chr> <chr>
+#> 1 Burnin… Burning_… <NA>       <NA>           Chapte… <NA>    The O… 2230  novel
+#> 2 Star T… Star_Tre… <NA>       <NA>           Chapte… <NA>    The O… 2230  movi…
+#> 3 IDW St… IDW_Star… Star Trek… Star_Trek_(ID… 2230 f… <NA>    The O… 2230  comic
+#> 4 Star T… Star_Tre… <NA>       <NA>           Chapte… <NA>    The O… 2230  movi…
+#> 5 Sarek   Sarek_(n… <NA>       <NA>           Chapte… <NA>    The O… 12 N… novel
+#> # ℹ 2 more variables: notes <chr>, image_url <chr>
 ```
 
 Live long and prosper.
-
-## Reference
-
-[Complete package reference and function
-documentation](https://leonawicz.github.io/rtrek/)
 
 ## Packages in the trekverse
 
@@ -189,17 +188,15 @@ documentation](https://leonawicz.github.io/rtrek/)
 
 <div class="col-sm-2">
 
-<a href="https://github.com/leonawicz/rtrek"><img src="https://raw.githubusercontent.com/leonawicz/rtrek/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a>
+<a href="https://github.com/leonawicz/rtrek"><img src="https://raw.githubusercontent.com/leonawicz/rtrek/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a>
 
 </div>
 
 <div class="col-sm-10">
 
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
-
 <a href="https://github.com/leonawicz/rtrek">rtrek</a>: The core Star
 Trek package
-
 </h4>
 
 Datasets related to Star Trek, API wrappers to external data sources,
@@ -215,17 +212,15 @@ and more.
 
 <div class="col-sm-2">
 
-<a href="https://github.com/leonawicz/lcars"><img src="https://raw.githubusercontent.com/leonawicz/lcars/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a>
+<a href="https://github.com/leonawicz/lcars"><img src="https://raw.githubusercontent.com/leonawicz/lcars/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a>
 
 </div>
 
 <div class="col-sm-10">
 
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
-
 <a href="https://github.com/leonawicz/lcars">lcars</a>: LCARS aesthetic
 for Shiny
-
 </h4>
 
 Create Shiny apps based on the Library Computer Access/Retrieval System
@@ -241,17 +236,15 @@ Create Shiny apps based on the Library Computer Access/Retrieval System
 
 <div class="col-sm-2">
 
-<a href="https://github.com/leonawicz/trekcolors"><img src="https://raw.githubusercontent.com/leonawicz/trekcolors/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a>
+<a href="https://github.com/leonawicz/trekcolors"><img src="https://raw.githubusercontent.com/leonawicz/trekcolors/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a>
 
 </div>
 
 <div class="col-sm-10">
 
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
-
 <a href="https://github.com/leonawicz/trekcolors">trekcolors</a>: A
 color palette package
-
 </h4>
 
 Predefined and customizable Star Trek themed color palettes and related
@@ -267,17 +260,15 @@ functions.
 
 <div class="col-sm-2">
 
-<a href="https://github.com/leonawicz/trekfont"><img src="https://raw.githubusercontent.com/leonawicz/trekfont/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="60" align="left"></a>
+<a href="https://github.com/leonawicz/trekfont"><img src="https://raw.githubusercontent.com/leonawicz/trekfont/master/man/figures/logo.png" style="margin-right:20px;margin-bottom:0;" width="120" align="left"></a>
 
 </div>
 
 <div class="col-sm-10">
 
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
-
 <a href="https://github.com/leonawicz/trekfont">trekfont</a>: A fonts
 package
-
 </h4>
 
 True (Trek) type fonts to style your Star Trek themed graphics text.
@@ -290,9 +281,8 @@ True (Trek) type fonts to style your Star Trek themed graphics text.
 
 ## Citation
 
-Matthew Leonawicz (2021). rtrek: Datasets and Functions Relating to Star
-Trek. R package version 0.3.3.
-<https://CRAN.R-project.org/package=rtrek>
+Matthew Leonawicz (2023). rtrek: Data analysis relating to Star Trek. R
+package version 0.4.0. <https://CRAN.R-project.org/package=rtrek>
 
 ## Contribute
 
@@ -300,7 +290,7 @@ Contributions are welcome. Contribute through GitHub via pull request.
 Please create an issue first if it is regarding any substantive feature
 add or change.
 
------
+------------------------------------------------------------------------
 
 Please note that the `rtrek` project is released with a [Contributor
 Code of

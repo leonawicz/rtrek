@@ -18,10 +18,12 @@ a data frame
 Perform a Memory Alpha site search.
 }
 \details{
-This function returns a data frame containing the title, truncated text preview, and relative URL for the first page of search results.
-It does not recursively collate search results through subsequent pages of results.
-There could be an unexpectedly high number of pages of results depending on the search query.
-Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview.
+This function returns a data frame containing the title, truncated text
+preview, and relative URL for the first page of search results. It does not
+recursively collate search results through subsequent pages of results.
+There could be an unexpectedly high number of pages of results depending on
+the search query. Since the general nature of this search feature seems
+relatively casual anyway, it aims only to provide a first page preview.
 }
 \examples{
 \donttest{ma_search("Worf")}

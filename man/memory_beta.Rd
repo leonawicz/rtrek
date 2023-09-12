@@ -13,53 +13,75 @@ memory_beta(endpoint)
 a data frame
 }
 \description{
-Access Star Trek content from Memory Beta (\url{https://memory-beta.fandom.com/wiki/Main_Page}).
+Access Star Trek content from
+\href{https://memory-beta.fandom.com/wiki/Main_Page}{Memory Alpha}.
 }
 \details{
-The content returned is always a data frame. The structure changes slightly depending on the nature of the endpoint,
-but results from different endpoints can be merged easily.
-
-\subsection{Portals}{
-At the highest level, passing \code{enpoind = "portals"} returns a data frame listing the available Memory Beta portals supported by \code{rtrek}.
-A column of relative URLs is also included for reference, but can be ignored. Compared to Memory Alpha, Memory Beta does not technically offer "portals",
-but for consistency in \code{rtrek}, several high level categories on Memory Beta are treated as portal options.
-See \code{\link{memory_alpha}} for comparison.
+The content returned is always a data frame. The structure changes slightly
+depending on the nature of the endpoint, but results from different endpoints
+can be merged easily.
 }
+\section{Portals}{
 
-\subsection{Portal categories}{
-In all other cases, the endpoint string must begin with one of the valid portal IDs.
-Passing only the ID returns a data frame with IDs and relative URLs associated with the available categories in the specific portal.
-Unlike \code{memory_alpha}, there are no \code{group} or \code{subgroup} columns.
-Memory Beta offers a more consistent reliance on the simple hierarchy of categories and articles.
-\cr\cr
-Selecting a specific category within a portal is done by appending the portal ID in \code{endpoint} with the category ID, separated by a forward slash.
-You can append nested subcategory IDs with forward slashes, provided the subcategories exist.
+At the highest level, passing \code{endpoint = "portals"} returns a data frame
+listing the available Memory Beta portals supported by \code{rtrek}. A column of
+relative URLs is also included for reference, but can be ignored. Compared to
+Memory Alpha, Memory Beta does not technically offer "portals", but for
+consistency in \code{rtrek}, several high level categories on Memory Beta are
+treated as portal options. See \code{\link[=memory_alpha]{memory_alpha()}} for comparison.
 }
 
-\subsection{Articles}{
-When the endpoint is neither a top-level portal or one of a portal's categories (or subcategories, if available), it is an article.
-An article is a terminal node, meaning you cannot nest further. An article will be any entry whose URL does not begin with \code{Category:}.
-In this case, the content returned is still a data frame for consistency, but differs substantially from the results of non-terminal endpoints.
-\cr\cr
-Memory Beta is not a database containing convenient tables. Articles comprise the bulk of what Memory Beta has to offer.
-They are not completely unstructured text, but are loosely structured.
-Some assumptions are made and \code{memory_beta} returns a data frame containing article text and links.
-It is up to the user what to do with this information, e.g., performing text analyses.
+\section{Portal Categories}{
+
+In all other cases, the endpoint string must begin with one of the valid
+portal IDs. Passing only the ID returns a data frame with IDs and relative
+URLs associated with the available categories in the specific portal. Unlike
+\code{memory_alpha}, there are no \code{group} or \code{subgroup} columns. Memory Beta
+offers a more consistent reliance on the simple hierarchy of categories and
+articles.
+
+Selecting a specific category within a portal is done by appending the portal
+ID in \code{endpoint} with the category ID, separated by a forward slash. You can
+append nested subcategory IDs with forward slashes, provided the
+subcategories exist.
 }
 
-\subsection{Additional notes}{
-The \code{url} column included in results for context uses relative paths to save space. The full URLs all begin the same.
-To visit a URL directly, prepend it with \code{https://memory-beta.fandom.com/wiki/}.
-\cr\cr
-Also note that once you know the relative URL for an article, e.g., \code{"Worf,_son_of_Mogh"},
-you do not need to traverse through one of the portals using an \code{endpoint} string to retrieve its content.
-You can instead use \code{mb_article("Worf,_son_of_Mogh")}.
-\cr\cr
-\code{memory_beta} provides an overview perspective on how content available at Memory Beta is organized and can be searched for through
-a variety of hierarchical layouts. And in some cases this structure that can be obtained in table form can be useful as data or metadata
-in itself. Alternatively, \code{mb_article} is focused exclusively on pulling back content from known articles.
+\section{Articles}{
+
+When the endpoint is neither a top-level portal or one of a portal's
+categories (or subcategories, if available), it is an article. An article is
+a terminal node, meaning you cannot nest further. An article will be any
+entry whose URL does not begin with \verb{Category:}. In this case, the content
+returned is still a data frame for consistency, but differs substantially
+from the results of non-terminal endpoints.
+
+Memory Beta is not a database containing convenient tables. Articles comprise
+the bulk of what Memory Beta has to offer. They are not completely
+unstructured text, but are loosely structured. Some assumptions are made and
+\code{memory_beta} returns a data frame containing article text and links. It is
+up to the user what to do with this information, e.g., performing text
+analyses.
 }
+
+\section{Additional Notes}{
+
+The \code{url} column included in results for context uses relative paths to save
+space. The full URLs all begin the same. To visit a URL directly, prepend it
+with \verb{https://memory-beta.fandom.com/wiki/}.
+
+Also note that once you know the relative URL for an article, e.g.,
+\code{"Worf"}, you do not need to traverse through one of the portals using an
+\code{endpoint} string to retrieve its content. You can instead use
+\code{mb_article("Worf")}.
+
+\code{memory_beta} provides an overview perspective on how content available at
+Memory Beta is organized and can be searched for through a variety of
+hierarchical layouts. And in some cases this structure that can be obtained
+in table form can be useful as data or metadata in itself. Alternatively,
+\code{mb_article()} is focused exclusively on pulling back content from known
+articles.
 }
+
 \examples{
 memory_beta("portals") # show available portals
 endpoint <- "characters/Characters by races and cultures/Klingonoids/Klingons"
@@ -67,9 +89,9 @@ endpoint <- "characters/Characters by races and cultures/Klingonoids/Klingons"
 x <- memory_beta(endpoint)
 x <- x[grep("Worf", x$Klingons), ]
 x
-memory_beta(paste0(endpoint, "/Worf, son of Mogh")) # return terminal article content
+memory_beta(paste0(endpoint, "/Worf")) # return terminal article content
 }
 }
 \seealso{
-\code{\link{mb_article}}, \code{\link{memory_alpha}}
+\code{\link[=mb_article]{mb_article()}}, \code{\link[=memory_alpha]{memory_alpha()}}
 }

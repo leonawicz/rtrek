@@ -15,12 +15,14 @@ st_font(family, size = 11)
 a character vector, or a plot side effect. See details.
 }
 \description{
-This function produces a plot showing a preview of a Star Trek font from the \code{trekfont} package.
-It will return a message if any of \code{trekfont}, \code{showtext} or \code{ggplot2} are not installed.
-If \code{family} is missing, it will return a vector of all available font families.
+This function produces a plot showing a preview of a Star Trek font from the
+\code{trekfont} package. It will return a message if any of \code{trekfont}, \code{showtext}
+or \code{ggplot2} are not installed. If \code{family} is missing, it will return a
+vector of all available font families.
 }
 \details{
-In RStudio on Windows the font may not show in the RStudio graphics device. Try using the regular R GUI.
+In RStudio on Windows the font may not show in the RStudio graphics device.
+Try using the regular R GUI.
 }
 \examples{
 if(all(c("trekfont", "showtext", "ggplot2") \%in\% installed.packages())){

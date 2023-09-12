@@ -13,14 +13,17 @@ st_tiles_data(id)
 a data frame
 }
 \description{
-Obtain a table of ancillary data associated with various locations of interest, given a specific map tile set ID.
+Obtain a table of ancillary data associated with various locations of
+interest, given a specific map tile set ID.
 }
 \details{
-This function returns a small example data frame of location-specific data along with grid cell coordinates that are specific to the requested map tile set ID.
+This function returns a small example data frame of location-specific data
+along with grid cell coordinates that are specific to the requested map tile
+set ID.
 }
 \examples{
 st_tiles_data("galaxy2")
 }
 \seealso{
-\code{\link{stTiles}}, \code{\link{st_tiles}}
+\code{\link[=stTiles]{stTiles()}}, \code{\link[=st_tiles]{st_tiles()}}
 }

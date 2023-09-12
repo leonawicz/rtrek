@@ -7,7 +7,8 @@
 st_logo(url, file, keep = FALSE)
 }
 \arguments{
-\item{url}{character, the url of the image, must be one from the dataset \code{\link{stLogos}}. See example.}
+\item{url}{character, the url of the image, must be one from the dataset
+\code{\link[=stLogos]{stLogos()}}. See example.}
 
 \item{file}{character, output file name. Optional. See details.}
 
@@ -20,13 +21,14 @@ a ggplot object
 Download an image of a Star Trek logo and return a ggplot object.
 }
 \details{
-By default the downloaded file is not retained (\code{keep = FALSE}). The filename is derived from \code{url} if \code{file} is not provided. These files are all .gif.
+By default the downloaded file is not retained (\code{keep = FALSE}). The filename
+is derived from \code{url} if \code{file} is not provided. These files are all .gif.
 Whether or not the output file is kept, a ggplot object of the image is returned.
-For more information on attribution, see \code{\link{stLogos}}.
+For more information on attribution, see \code{\link[=stLogos]{stLogos()}}.
 }
 \examples{
 \dontrun{st_logo(stLogos$url[1])}
 }
 \seealso{
-\code{\link{stLogos}}
+\code{\link[=stLogos]{stLogos()}}
 }

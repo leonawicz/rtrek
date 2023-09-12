@@ -11,12 +11,17 @@ A data frame
 stapiEntities
 }
 \description{
-A data frame with 40 rows and 4 columns listing the available STAPI entity IDs that can be passed to \code{\link{stapi}}, along with additional metadata regarding the content returned form an API call to each entity.
-This data frame helps you see what you will obtain from API calls beforehand.
-Every entity search returns a tibble data frame, with varying numbers of columns and different names depending on the entity content.
-There is also one nested column containing the column names of the data frame returned for each entity. This can be inspected directly for specific entities or \code{stapiEntities} can be unnested with a function like \code{tidyr::unnest}.
+A data frame with 40 rows and 4 columns listing the available STAPI entity
+IDs that can be passed to \code{\link[=stapi]{stapi()}}, along with additional metadata regarding
+the content returned form an API call to each entity. This data frame helps
+you see what you will obtain from API calls beforehand. Every entity search
+returns a tibble data frame, with varying numbers of columns and different
+names depending on the entity content. There is also one nested column
+containing the column names of the data frame returned for each entity. This
+can be inspected directly for specific entities or \code{stapiEntities} can be
+unnested with a function like \code{tidyr::unnest()}.
 }
 \seealso{
-\code{\link{stapi}}
+\code{\link[=stapi]{stapi()}}
 }
 \keyword{datasets}

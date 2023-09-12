@@ -1,4 +1,3 @@
-AppVeyor
 Ballantine
 CRS
 DDOS
@@ -9,7 +8,6 @@ Homeworlds
 Jolan
 K'Ehleyr
 Klingons
-Ko
 LCARS
 Picard
 Q's
@@ -27,12 +25,9 @@ curation
 customizable
 dplyr
 eBooks
-fi
 georeferenced
 ggplot
 homeworlds
-https
-lcars
 memoized
 preprocessed
 readme
@@ -40,8 +35,6 @@ rect
 stardates
 tibble
 timeframed
-trekcolors
-trekfont
 trekverse
 unnest
 unnested
