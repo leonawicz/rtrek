@@ -3,8 +3,6 @@
 .RData
 .Ruserdata
 inst/doc
-data-raw/keys.R
 data-raw/support_files
 data-raw/*.rds
-data-raw/internal
 README.html
