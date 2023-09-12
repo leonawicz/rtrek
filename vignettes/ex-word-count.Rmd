@@ -108,5 +108,5 @@ ggplot(x, aes(date, total_words)) +
   annotation_custom(key, xmin = 2007, ymax = 35)
 ```
 
-The golden age of licensed Star Trek novel publishing is clear. The 1990s and 2000s saw the creation of many new series as well of regular publication of new novels from existing ones. The current trajectory appears similar to the early 1990s, at least in terms of total words written.
+The golden age of licensed Star Trek novel publishing is clear. The 1990s and 2000s saw the creation of many new series as well of regular publication of new novels from existing ones. The current trajectory appears similar to the early 1990s, at least in terms of total words written. Data up to date only through 2017.
 

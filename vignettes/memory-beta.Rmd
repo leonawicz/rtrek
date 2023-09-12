@@ -67,7 +67,7 @@ Descending through subcategories is done by appending their `id` values, separat
 x <- "characters/Characters by races and cultures/Klingonoids/Klingons"
 memory_beta(x)
 
-memory_beta(paste0(x, "/Worf, son of Mogh"))
+memory_beta(paste0(x, "/Worf"))
 ```
 
 Note the change in the structure of the final output, which is an article. This is the end of this particular road The result is still a data frame, but now has only one row, the article.
@@ -147,9 +147,7 @@ x$stories
 `mb_timeline` returns a list of two data frames. The first contains notable historical events and has the following columns:
 
 * `period` is the year or other time period.
-* Events may have different `id` values if the entries fall under different section headings on Memory Beta. 
-* `date` may be filled in with more specific dates, provided they exist.
-* The `notes` entries typically have citations, but these are not included in the output currently.
+* `details` is a character column that contains text lines describing events (or section headings above events in following lines). Set `html = TRUE` to obtain this text column in a format that includes HTML tags for a more verbose but clear section hierarchy.
 
 #### Published stories chronology
 
@@ -158,7 +156,7 @@ The stories data frame represents a timeline of published stories. Since this is
 * Story title and article page short URL.
 * The collection (miniseries or anthology) a story occurs in if applicable and URL.
 * The relevant section, e.g., chapters of a book, a story occurs in.
-* The context. Often missing but sometimes available. This indicates something about the setting such as time travel or alternate timeline.
+* The context. Often missing but sometimes available. This indicates something about the setting such as time travel, alternate timeline, or a flashback.
 * The series a story belongs to.
 * A specific date.
 * The type of media such, e.g., a novel or short story.

@@ -90,5 +90,3 @@ div(style = "position: relative;", img(src = knitr::image_uri(sf_logo), alt = "l
 ```
 
 <p><em>Base map tiles generated from source map <a href="http://sttff.net/AST_MAP.html">AST MAP</a>.</em></p>
-
-## More soon...
