@@ -1,10 +1,12 @@
 #' Preview Star Trek fonts
 #'
-#' This function produces a plot showing a preview of a Star Trek font from the \code{trekfont} package.
-#' It will return a message if any of \code{trekfont}, \code{showtext} or \code{ggplot2} are not installed.
-#' If \code{family} is missing, it will return a vector of all available font families.
+#' This function produces a plot showing a preview of a Star Trek font from the
+#' `trekfont` package. It will return a message if any of `trekfont`, `showtext`
+#' or `ggplot2` are not installed. If `family` is missing, it will return a
+#' vector of all available font families.
 #'
-#' In RStudio on Windows the font may not show in the RStudio graphics device. Try using the regular R GUI.
+#' In RStudio on Windows the font may not show in the RStudio graphics device.
+#' Try using the regular R GUI.
 #'
 #' @param family character, font family.
 #' @param size, numeric, font size passed to ggplot.

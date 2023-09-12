@@ -25,7 +25,7 @@ mb_select <- function(d, ep, .id){
   if(grepl("^Category:", url)){
     d <- mb_category_pages(ep[1], url, c(".category-page__members", ".category-page__pagination"))
   } else {
-    if(length(ep) > 1) stop(paste0("Invalid enpoint: ", ep[1],
+    if(length(ep) > 1) stop(paste0("Invalid endpoint: ", ep[1],
                                    " is an article but `endpoint` does not terminate here."), call. = FALSE)
     d <- mb_article(url, browse = FALSE)
   }
@@ -39,14 +39,14 @@ mb_select <- memoise::memoise(mb_select)
 # Recursively collate all subcategories or articles for a given category's page(s)
 mb_category_pages <- function(id, url, nodes, d0 = NULL){
   x <- xml2::read_html(mb_base_add(url))
-  x1 <- rvest::html_nodes(x, nodes[1]) %>% rvest::html_nodes("ul a")
+  x1 <- rvest::html_nodes(x, nodes[1]) |> rvest::html_nodes("ul a")
   x1 <- x1[grepl("class=\"category-page__member-link\"", x1)]
-  txt <- mb_text(x1) %>% mb_strip_prefix()
+  txt <- mb_text(x1) |> mb_strip_prefix()
   url <- mb_href(x1)
-  d <- dplyr::tibble(txt, url) %>% stats::setNames(c(id, "url"))
+  d <- dplyr::tibble(txt, url) |> stats::setNames(c(id, "url"))
   if(!is.null(d0)) d <- dplyr::bind_rows(d0, d)
 
-  x <- rvest::html_nodes(x, nodes[2]) %>% rvest::html_nodes("a")
+  x <- rvest::html_nodes(x, nodes[2]) |> rvest::html_nodes("a")
   if(!length(x)) return(d)
   txt <- mb_text(x)
   url <- mb_href(x)
@@ -61,7 +61,7 @@ mb_category_pages <- function(id, url, nodes, d0 = NULL){
 mb_category_pages <- memoise::memoise(mb_category_pages)
 
 mb_article_categories <- function(x){
-  x <- rvest::html_node(x, "#articleCategories") %>% rvest::html_nodes("li span a")
+  x <- rvest::html_node(x, "#articleCategories") |> rvest::html_nodes("li span a")
   x <- x[!grepl(".*Category:Memory_Beta_pages_with.*", x)]
   url <- mb_href(x)
   x <- mb_text(x)
@@ -72,15 +72,15 @@ mb_article_aside <- function(x){
   x <- rvest::html_children(x)
   idx <- which(rvest::html_name(x) == "aside")
   if(!length(idx)) return()
-  x <- x[[idx[1]]] %>% rvest::html_children()
+  x <- x[[idx[1]]] |> rvest::html_children()
   img <- .mb_aside_image(x)
-  cols <- rvest::html_nodes(x, ".pi-data-label") %>% mb_text()
+  cols <- rvest::html_nodes(x, ".pi-data-label") |> mb_text()
   cols <- gsub(":$", "", cols)
   cols <- gsub("\\s", "_", cols)
   x <- rvest::html_nodes(x, ".pi-data-value")
   if(length(x) != length(cols)) return()
   vals <- purrr::map(x, ~{
-    x <- xml2::xml_contents(.x) %>% mb_text(trim = FALSE)
+    x <- xml2::xml_contents(.x) |> mb_text(trim = FALSE)
     x[x %in% c("", " ")] <- "|"
     x <- gsub("\\)", "\\)|", x)
     x <- gsub("[|]+$", "", paste0(x, collapse = ""))
@@ -90,7 +90,7 @@ mb_article_aside <- function(x){
     x <- gsub("[ ]+", " ", x)
     x <- gsub("^[|]", "", x)
     trimws(x)
-  }) %>% stats::setNames(cols)
+  }) |> stats::setNames(cols)
   d <- tibble::as_tibble(vals)
   dplyr::mutate(d, Image = img)
 }
@@ -98,7 +98,7 @@ mb_article_aside <- function(x){
 .mb_aside_image <- function(x){
   idx <- which(rvest::html_name(x) == "figure")[1]
   if(!length(idx)) return(as.character(NA))
-  x <- rvest::html_nodes(x[idx], ".image-thumbnail") %>% mb_href()
+  x <- rvest::html_nodes(x[idx], ".image-thumbnail") |> mb_href()
   x <- strsplit(x, "/")[[1]]
   idx <- grep("\\.jpg", x, ignore.case = TRUE)
   if(!length(idx)) return(as.character(NA))

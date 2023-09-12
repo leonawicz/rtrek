@@ -2,17 +2,19 @@
 #'
 #' Download an image of a Star Trek logo and return a ggplot object.
 #'
-#' By default the downloaded file is not retained (\code{keep = FALSE}). The filename is derived from \code{url} if \code{file} is not provided. These files are all .gif.
+#' By default the downloaded file is not retained (`keep = FALSE`). The filename
+#' is derived from `url` if `file` is not provided. These files are all .gif.
 #' Whether or not the output file is kept, a ggplot object of the image is returned.
-#' For more information on attribution, see \code{\link{stLogos}}.
+#' For more information on attribution, see [stLogos()].
 #'
-#' @param url character, the url of the image, must be one from the dataset \code{\link{stLogos}}. See example.
+#' @param url character, the url of the image, must be one from the dataset
+#' [stLogos()]. See example.
 #' @param file character, output file name. Optional. See details.
-#' @param keep logical, if \code{FALSE} (default) then \code{file} is only temporary.
+#' @param keep logical, if `FALSE` (default) then `file` is only temporary.
 #'
 #' @return a ggplot object
 #' @export
-#' @seealso \code{\link{stLogos}}
+#' @seealso [stLogos()]
 #'
 #' @examples
 #' \dontrun{st_logo(stLogos$url[1])}

@@ -1,37 +1,47 @@
-# nolint start
-
 #' Retrieve Star Trek data from STAPI
 #'
 #' Retrieve Star Trek data from the Star Trek API (STAPI).
 #'
-#' See \code{\link{stapiEntities}} for all the currently available API entities. These are the IDs for dataset collections or categories passed to \code{id}.
+#' See [stapiEntities()] for all the currently available API entities. These are
+#' the IDs for dataset collections or categories passed to `id`.
 #'
-#' The universal ID \code{uid} can be supplied to retrieve a more specific subset of data. By default, \code{uid = NULL} and \code{stapi} operates in search mode.
-#' As part of a stepwise process, you can first use search mode.
-#' Then if the resulting data frame includes a \code{uid} column, you can make a second call to the function providing a specific \code{uid}.
-#' This puts \code{stapi} into extraction mode and will return satellite data associated with the unique entry from the original general sweep of the entity \code{id}.
+#' The universal ID `uid` can be supplied to retrieve a more specific subset of
+#' data. By default, `uid = NULL` and `stapi()` operates in search mode. As part
+#' of a stepwise process, you can first use search mode. Then if the resulting
+#' data frame includes a `uid` column, you can make a second call to the
+#' function providing a specific `uid`. This puts `stapi()` into extraction mode
+#' and will return satellite data associated with the unique entry from the
+#' original general sweep of the entity `id`.
 #'
-#' \code{rtrek} employs anti-DOS measures. It will not perform an API call to STAPI more than once per second.
-#' To be an even better neighbor, you can increase this wait time using \code{options}, e.g. \code{options(rtrek_antidos = 10)} to increase the minimum time between API calls to ten seconds.
-#' Values less than one are ignored (defaulting back to one second) and a warning will be thrown when making any API call if this is the case.
+#' `rtrek` employs anti-DOS measures. It will not perform an API call to STAPI
+#' more than once per second. To be an even better neighbor, you can increase
+#' this wait time using `options`, e.g. `options(rtrek_antidos = 10)` to
+#' increase the minimum time between API calls to ten seconds. Values less than
+#' one are ignored (defaulting back to one second) and a warning will be thrown
+#' when making any API call if this is the case.
 #'
-#' Currently STAPI contains primarily real world data such as episode air dates, movie metadata, or production company information. Fictional world data is secondary and more limited.
+#' Currently STAPI contains primarily real world data such as episode air dates,
+#' movie metadata, or production company information. Fictional world data is
+#' secondary and more limited.
 #'
 #' @param id character, name of STAPI entity. See details.
 #' @param page integer vector, defaults to first page.
-#' @param uid \code{NULL} for search mode, character for extraction mode. See details.
-#' @param page_count logical, set to \code{TRUE} to do a preliminary check of the total number a pages of results available for a potential entity search. This will only have the impact of searching the first page.
+#' @param uid `NULL` for search mode, character for extraction mode. See details.
+#' @param page_count logical, set to `TRUE` to do a preliminary check of the
+#' total number a pages of results available for a potential entity search.
+#' This will only have the impact of searching the first page.
 #'
-#' @return a data frame in search mode, a list in extraction mode, and nothing is returned in page count check mode but the result is printed to the console.
+#' @return a data frame in search mode, a list in extraction mode, and nothing
+#' is returned in page count check mode but the result is printed to the console.
 #' @export
 #'
 #' @examples
 #' \donttest{
 #' library(dplyr)
 #' stapi("character", page_count = TRUE) # check first
-#' stapi("character", page = 2) %>% select(1:2)
+#' stapi("character", page = 2) |> select(1:2)
 #' Q <- stapi("character", uid = "CHMA0000025118")
-#' Q$episodes %>% select(uid, title, stardateFrom, stardateTo)
+#' Q$episodes |> select(uid, title, stardateFrom, stardateTo)
 #' }
 stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
   if(!id %in% rtrek::stapiEntities$id) stop("Invalid `id`.", call. = FALSE)
@@ -67,8 +77,6 @@ stapi <- function(id, page = 1, uid = NULL, page_count = FALSE){
   d <- dplyr::select(d, -dplyr::any_of(attr(rtrek::stapiEntities, "ignored columns")))
   dplyr::as_tibble(d)
 }
-
-# nolint end
 
 .antidos <- function(x, sec = getOption("rtrek_antidos", 1)){
   if(sec < 1){
