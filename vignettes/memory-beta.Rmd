@@ -79,7 +79,7 @@ The columns include a text `title` and three nested datasets. `content` contains
 If you already know the article `id`, You can obtain an article directly using `mb_article` instead of going through an endpoint with `memory_beta` that terminates in the same `id`. This also offers additional options to control what tags are included in the returned result and whether that result is the original `xml_nodeset` object or a character vector of only the extracted text. In either case, work is left to the user to do what they intend such as text analysis.
 
 ```{r mb_article}
-worf <- mb_article("Worf,_son_of_Mogh", content_format = "character", content_nodes = c("h2", "h3"))
+worf <- mb_article("Worf", content_format = "character", content_nodes = c("h2", "h3"))
 worf
 worf$content[[1]] # Worf article section headings
 ```
