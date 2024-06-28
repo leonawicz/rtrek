@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
       </span>
     </div>
 
@@ -169,7 +169,7 @@ diverse collection of articles.</p>
 <h2 id="memory-alpha-portals">Memory Alpha portals<a class="anchor" aria-label="anchor" href="#memory-alpha-portals"></a>
 </h2>
 <p>There are six Memory Alpha web portals available. To see them, call
-the main function for Memory Alpha access, <code>memory_alpha</code>,
+the main function for Memory Alpha access, <code><a href="../reference/memory_alpha.html">memory_alpha()</a></code>,
 and pass it <code>portals</code> as the API endpoint.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"portals"</span><span class="op">)</span></span>
@@ -259,10 +259,10 @@ article. This is the end of this particular road The result is still a
 data frame, but now has only one row, the article.</p>
 <p>The columns include a text <code>title</code> and three nested
 datasets. <code>content</code> contains an <code>xml_nodeset</code>
-object left (mostly) unadulterated by <code>memory_alpha</code>. This
+object left (mostly) unadulterated by <code><a href="../reference/memory_alpha.html">memory_alpha()</a></code>. This
 contains the article’s main content section, including ordered content
 from a default set of html tags. For more control over article content,
-see <code>ma_article</code> in the next section. <code>metadata</code>
+see <code><a href="../reference/ma_article.html">ma_article()</a></code> in the next section. <code>metadata</code>
 contains a nested data frame of content parsed from the summary card
 that appears in the top right corner of articles. If this fails to parse
 for a given article, <code>NULL</code> is returned.
@@ -273,13 +273,13 @@ which the article topic falls under and their respective URLs.</p>
 <h2 id="articles">Articles<a class="anchor" aria-label="anchor" href="#articles"></a>
 </h2>
 <p>If you already know the article <code>id</code>, You can obtain an
-article directly using <code>ma_article</code> instead of going through
-an endpoint with <code>memory_alpha</code> that terminates in the same
-<code>id</code>. This also offers additional options to control what
-tags are included in the returned result and whether that result is the
-original <code>xml_nodeset</code> object or a character vector of only
-the extracted text. In either case, work is left to the user to do what
-they intend such as text analysis.</p>
+article directly using <code><a href="../reference/ma_article.html">ma_article()</a></code> instead of going
+through an endpoint with <code><a href="../reference/memory_alpha.html">memory_alpha()</a></code> that terminates in
+the same <code>id</code>. This also offers additional options to control
+what tags are included in the returned result and whether that result is
+the original <code>xml_nodeset</code> object or a character vector of
+only the extracted text. In either case, work is left to the user to do
+what they intend such as text analysis.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">worf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/ma_article.html">ma_article</a></span><span class="op">(</span><span class="st">"Worf"</span>, content_format <span class="op">=</span> <span class="st">"character"</span>, content_nodes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"h2"</span>, <span class="st">"h3"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">worf</span></span>
@@ -313,7 +313,7 @@ browser.</p>
 <h2 id="images">Images<a class="anchor" aria-label="anchor" href="#images"></a>
 </h2>
 <p>Full resolution source images can be downloaded and imported into R
-using <code>ma_image</code> if you know the short URL. The easiest way
+using <code><a href="../reference/ma_image.html">ma_image()</a></code> if you know the short URL. The easiest way
 to find URLs is by using a Memory Alpha portal. In the example below,
 the Memory Alpha images category under Klingons is selected. Look for a
 picture that includes Worf but also Data.</p>
@@ -321,20 +321,20 @@ picture that includes Worf but also Data.</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="va">klingons</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people/Klingons/Memory Alpha images (Klingons)"</span><span class="op">)</span></span>
 <span><span class="va">klingons</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,354 × 2</span></span></span>
-<span><span class="co">#&gt;    `Memory Alpha images (Klingons)`        url                                  </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Memory Alpha images (Klingon holograms) Category:Memory_Alpha_images_(Klingo…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Age of ascension pain sticks.jpg        File:Age_of_ascension_pain_sticks.jpg</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Ajilon Prime Klingon 1.jpg              File:Ajilon_Prime_Klingon_1.jpg      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Ajilon Prime Klingon 2.jpg              File:Ajilon_Prime_Klingon_2.jpg      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Ajilon Prime Klingons.jpg               File:Ajilon_Prime_Klingons.jpg       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Alexander and K'mtar.jpg                File:Alexander_and_K%27mtar.jpg      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Alexander at the kot'baval festival.jpg File:Alexander_at_the_kot%27baval_fe…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Alexander Rozhenko, 2367.jpg            File:Alexander_Rozhenko,_2367.jpg    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Alexander Rozhenko, 2370.jpg            File:Alexander_Rozhenko,_2370.jpg    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Alexander Rozhenko, 2374.jpg            File:Alexander_Rozhenko,_2374.jpg    </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,344 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,358 × 2</span></span></span>
+<span><span class="co">#&gt;    `Memory Alpha images (Klingons)`             url                             </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Memory Alpha images (Klingon holograms)      Category:Memory_Alpha_images_(K…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Age of ascension pain sticks.jpg             File:Age_of_ascension_pain_stic…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Ajilon Prime Klingon 1.jpg                   File:Ajilon_Prime_Klingon_1.jpg </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Ajilon Prime Klingon 2.jpg                   File:Ajilon_Prime_Klingon_2.jpg </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Ajilon Prime Klingons.jpg                    File:Ajilon_Prime_Klingons.jpg  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Alexander Rozhenko as a deputy.jpg           File:Alexander_Rozhenko_as_a_de…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Alexander Rozhenko at Kot'baval Festival.jpg File:Alexander_Rozhenko_at_Kot%…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Alexander Rozhenko, 2367.jpg                 File:Alexander_Rozhenko,_2367.j…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Alexander Rozhenko, 2370.jpg                 File:Alexander_Rozhenko,_2370.j…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Alexander Rozhenko, 2374.jpg                 File:Alexander_Rozhenko,_2374.j…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1,348 more rows</span></span></span>
 <span></span>
 <span><span class="va">worf_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">klingons</span>, <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"Worf"</span>, <span class="va">url</span><span class="op">)</span> <span class="op">&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"Data"</span>, <span class="va">url</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">worf_data</span></span>
@@ -356,10 +356,10 @@ picture that includes Worf but also Data.</p>
 redirects you to some other seemingly random article on the website that
 happens to include the image in it. This is not necessarily a unique
 instance of the image, nor is there any consistency in what portal or
-type of article it takes you to. <code>memory_alpha</code>, and
-<code>ma_article</code> using the short form url, provide the article
-content associated with the “file” url. See <code>ma_image</code> below
-for viewing the actual image.</p>
+type of article it takes you to. <code><a href="../reference/memory_alpha.html">memory_alpha()</a></code>, and
+<code><a href="../reference/ma_article.html">ma_article()</a></code> using the short form url, provide the article
+content associated with the “file” url. See <code><a href="../reference/ma_image.html">ma_image()</a></code>
+below for viewing the actual image.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/memory_alpha.html">memory_alpha</a></span><span class="op">(</span><span class="st">"people/Klingons/Memory Alpha images (Klingons)/Data tries talking to Worf.jpg"</span><span class="op">)</span></span>
 <span><span class="va">x</span></span>
@@ -387,12 +387,12 @@ website, you have to click several times and scroll through additional
 articles before you can actually view the image file that was initially
 presented to you as a clickable link. This is a frustrating user
 experience and confusing design. If you have a file name you want to
-view, just use <code>ma_image</code> for this. It returns a ggplot
+view, just use <code><a href="../reference/ma_image.html">ma_image()</a></code> for this. It returns a ggplot
 object of the image file rather than an associated article.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/ma_image.html">ma_image</a></span><span class="op">(</span><span class="st">"File:Data_tries_talking_to_Worf.jpg"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="memory-alpha_files/figure-html/ma_image3-1.png" width="700"></p>
-<p><code>ma_image</code> can take the additional arguments,
+<p><code><a href="../reference/ma_image.html">ma_image()</a></code> can take the additional arguments,
 <code>keep = TRUE</code> to retain the downloaded image file, and
 <code>file</code> to specify the output filename if you do not want it
 to be derived from the short URL. If you need more control over the
@@ -403,14 +403,14 @@ directly to plot separately as needed.</p>
 <h2 id="search">Search<a class="anchor" aria-label="anchor" href="#search"></a>
 </h2>
 <p>You can perform a Memory Alpha site search using
-<code>ma_search</code>. This returns a data frame of search results
+<code><a href="../reference/ma_search.html">ma_search()</a></code>. This returns a data frame of search results
 content, including title, truncated text preview, and short URL for the
 first page of search results.</p>
 <p>It does not recursively collate search results through subsequent
 pages of results. There could be an unexpectedly high number of pages of
 results depending on the search query. Since the general nature of this
 search feature seems relatively casual anyway, it aims only to provide a
-first page preview. As with <code>ma_article</code>, setting
+first page preview. As with <code><a href="../reference/ma_article.html">ma_article()</a></code>, setting
 <code>browse = TRUE</code> opens the page in the browser.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/ma_search.html">ma_search</a></span><span class="op">(</span><span class="st">"Guinan"</span><span class="op">)</span></span>
@@ -418,15 +418,15 @@ first page preview. As with <code>ma_article</code>, setting
 <span><span class="co">#&gt;    title                             text                                  url  </span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Guinan                            <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Francis Guinan                    <span style="color: #949494;">"</span>Real World article(written from a P… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Francis Guinan                    <span style="color: #949494;">"</span>Real world article(written from a P… http…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Unnamed El-Aurians                <span style="color: #949494;">"</span>The following is a list of unnamed … http…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Unnamed individuals (unknown era) <span style="color: #949494;">"</span>List of unnamed individuals who liv… http…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Borg                              <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Jean-Luc Picard                   <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Data                              <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Star Trek: Picard                 <span style="color: #949494;">"</span>Real World article(written from a P… http…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Wesley Crusher                    <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Worf                              <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Jean-Luc Picard                   <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Borg                              <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Q                                 <span style="color: #949494;">"</span>For additional meanings of \"Q\", p… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Worf                              <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> USS Enterprise (NCC-1701-D)       <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Alexander Rozhenko                <span style="color: #949494;">"</span>Multiple realities(covers informati… http…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -462,7 +462,7 @@ to Memory Alpha by its maintainers.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>

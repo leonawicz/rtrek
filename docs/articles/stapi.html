@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
       </span>
     </div>
 
@@ -161,8 +161,8 @@ constant requests. Their pages suggest no more than one request per
 second, but I would suggest ten seconds between successive requests. The
 default anti-DDOS measures in <code>rtrek</code> limit requests to one
 per second. You can update this global <code>rtrek</code> setting with
-<code>options</code>, e.g. <code>options(rtrek_antidos = 10)</code> for
-a minimum ten second wait between API calls to be an even better
+<code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code>, e.g. <code>options(rtrek_antidos = 10)</code>
+for a minimum ten second wait between API calls to be an even better
 neighbor. <code>rtrek</code> will not permit faster requests. If set
 below one second, the option is ignored and a warning thrown when making
 any API call.</p>
@@ -187,10 +187,10 @@ IDs can be found in this table:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> comicSeries        tbl_df    15 <span style="color: #949494;">&lt;chr [15]&gt;</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> comicStrip         tbl_df    12 <span style="color: #949494;">&lt;chr [12]&gt;</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 30 more rows</span></span></span></code></pre></div>
-<p>These ID values are passed to <code>stapi</code> to perform a search
-using the API. The other columns provide some information about the
-object returned from a search. All entity searches return tibble data
-frames. You can inspect or unnest the column names of each table
+<p>These ID values are passed to <code><a href="../reference/stapi.html">stapi()</a></code> to perform a
+search using the API. The other columns provide some information about
+the object returned from a search. All entity searches return tibble
+data frames. You can inspect or unnest the column names of each table
 returned from every available entity search so you can see beforehand
 what variables are associated with each entity.</p>
 </div>
@@ -205,8 +205,8 @@ search.</li>
 <li>Only after taking care to do the previous step, perform the search
 to return search results.</li>
 <li>If satellite data is needed on a unique observation in the search
-results, call <code>stapi</code> one more time referencing the specific
-observation.</li>
+results, call <code><a href="../reference/stapi.html">stapi()</a></code> one more time referencing the
+specific observation.</li>
 </ul>
 <p>To determine how many pages of results exist for a given search, set
 <code>page_count = TRUE</code>. The impact on the API will be equivalent
@@ -225,7 +225,7 @@ available for character search.</p>
 <code>page</code> can be a vector, e.g. <code>page = 1:62</code>.
 Results from multi-page searches are automatically combined into a
 single, constant data frame output. For the second call to
-<code>stapi</code>, return only page two here, which contains the
+<code><a href="../reference/stapi.html">stapi()</a></code>, return only page two here, which contains the
 character, Q (currently, pending future character database updates that
 may shift the indexing). In case that does change and Q is not always
 near the top of page two of the search results, the example further
@@ -257,11 +257,11 @@ subsequently to extract a satellite dataset about that particular
 observation that was returned in the original search. First you used
 safe mode, then search mode, and now switch from search mode to
 extraction mode to obtain data about Q, specifically. All that is
-required to do this is pass Q’s <code>uid</code> to <code>stapi</code>
+required to do this is pass Q’s <code>uid</code> to <code><a href="../reference/stapi.html">stapi()</a></code>
 and call the function one last time. When <code>uid</code> is no longer
-<code>NULL</code>, <code>stapi</code> knows not to bother with a search
-and makes a different type of API call requesting information about the
-uniquely identified entry.</p>
+<code>NULL</code>, <code><a href="../reference/stapi.html">stapi()</a></code> knows not to bother with a
+search and makes a different type of API call requesting information
+about the uniquely identified entry.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Q</span> <span class="op">&lt;-</span> <span class="st">"CHMA0000025118"</span></span>
 <span><span class="va">Q</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, uid <span class="op">=</span> <span class="va">Q</span><span class="op">)</span></span>
@@ -295,7 +295,7 @@ uniquely identified entry.</p>
 data frames. For simplicity only a piece of it is shown above.</p>
 <p>Find out which TNG characters other than Q appear in both the
 <em>Encounter at Farpoint</em> series premier and later in the <em>All
-Good Things…</em> series finale. To do this, use<code>stapi</code> to
+Good Things…</em> series finale. To do this, use<code><a href="../reference/stapi.html">stapi()</a></code> to
 extract data from other endpoints by following a breadcrumb trail of
 <code>uid</code> values.</p>
 <p>Engage.</p>
@@ -360,8 +360,8 @@ seven seconds to complete.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="fl">8</span>, hjust <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span></code></pre></div>
 <p><img src="stapi_files/figure-html/stapi_extract3-1.png" width="100%"></p>
 <p>This looks as expected. Inspect the structure of the list objects
-returned by <code>stapi</code> to become more familiar with what kind of
-information is available.</p>
+returned by <code><a href="../reference/stapi.html">stapi()</a></code> to become more familiar with what kind
+of information is available.</p>
 </div>
 <div class="section level3">
 <h3 id="minor-weirdness">Minor weirdness<a class="anchor" aria-label="anchor" href="#minor-weirdness"></a>
@@ -370,11 +370,11 @@ information is available.</p>
 the data frames while certain problematic columns are still selected.
 This is likely because the data frame contains a nested data frame, but
 one which is not nested in the typical way (e.g.,
-<code><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">tidyr::unnest</a></code> will also fail to resolve the issue).</p>
+<code><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">tidyr::unnest()</a></code> will also fail to resolve the issue).</p>
 <p>In the code immediately above, this occurs with the
 <code>series</code> data frame, which is why the <code>episodes</code>
 parent data frame is subset using <code>$series</code> before calling
-<code>summarize</code>.</p>
+<code><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">dplyr::summarise()</a></code>.</p>
 </div>
 </div>
   </div>
@@ -396,7 +396,7 @@ parent data frame is subset using <code>$series</code> before calling
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>

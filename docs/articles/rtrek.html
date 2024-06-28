@@ -12,7 +12,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.0</span>
       </span>
     </div>
 
@@ -114,10 +114,11 @@
 
       
 
-      </header><script src="rtrek_files/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="rtrek_files/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+      </header><link href="rtrek_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="rtrek_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="rtrek_files/leaflet-1.3.1/leaflet.css" rel="stylesheet">
 <script src="rtrek_files/leaflet-1.3.1/leaflet.js"></script><link href="rtrek_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
 <script src="rtrek_files/proj4-2.6.2/proj4.min.js"></script><script src="rtrek_files/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="rtrek_files/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="rtrek_files/leaflet-binding-2.1.2/leaflet.js"></script><div class="row">
+<script src="rtrek_files/leaflet-binding-2.2.2/leaflet.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to rtrek</h1>
@@ -175,7 +176,7 @@ timelines.</p>
 <p>Package datasets in <code>rtrek</code> are somewhat eclectic and
 currently limited. They will expand with further package development. To
 list all available package datasets with a short description, call
-<code>st_datasets</code>.</p>
+<code><a href="../reference/st_datasets.html">st_datasets()</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="star-trek-novels">Star Trek novels<a class="anchor" aria-label="anchor" href="#star-trek-novels"></a>
@@ -288,8 +289,8 @@ coordinates defined that map onto a particular tile set, the
 <code>leaflet</code> package does not work in these row and column
 grids. The <code>(col, row)</code> pairs need to be transformed or
 projected into Leaflet space. Fortunately, <code>rtrek</code> does this
-part for you with <code>tile_coords</code>. It takes a data frame like
-one returned by <code>st_tiles_data</code> with columns named
+part for you with <code><a href="../reference/tile_coords.html">tile_coords()</a></code>. It takes a data frame like
+one returned by <code><a href="../reference/st_tiles_data.html">st_tiles_data()</a></code> with columns named
 <code>col</code> and <code>row</code>, as well as the name of an
 available Star Trek map tile set. It returns a data frame with new
 columns <code>x</code> and <code>y</code> that will map properly in a
@@ -323,16 +324,16 @@ columns <code>x</code> and <code>y</code> that will map properly in a
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">8</span> galaxy1 Tzenketh    <span style="text-decoration: underline;">1</span>553  <span style="text-decoration: underline;">2</span>557 Planet Homeworld Tzenketh… Tzenke…  48.5  -<span style="color: #BB0000;">79.9</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">9</span> galaxy1 Talar       <span style="text-decoration: underline;">1</span>039  <span style="text-decoration: underline;">3</span>489 Planet Homeworld Talarian… Talari…  32.5 -<span style="color: #BB0000;">109.</span></span></span></code></pre></div>
 <p>Here is an example using the <code>galaxy1</code> map with
-<code>leaflet</code>. The <code>st_tiles</code> function is used to link
-to the tile provider.</p>
+<code>leaflet</code>. The <code><a href="../reference/st_tiles.html">st_tiles()</a></code> function is used to
+link to the tile provider.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a></span><span class="op">)</span></span>
 <span><span class="va">tiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/st_tiles.html">st_tiles</a></span><span class="op">(</span><span class="st">"galaxy1"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="va">d</span>, options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leafletOptions</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leafletCRS</a></span><span class="op">(</span><span class="st">"L.CRS.Simple"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html" class="external-link">addTiles</a></span><span class="op">(</span><span class="va">tiles</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-methods.html" class="external-link">setView</a></span><span class="op">(</span><span class="fl">108</span>, <span class="op">-</span><span class="fl">75</span>, <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html" class="external-link">addCircleMarkers</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">~</span><span class="va">x</span>, lat <span class="op">=</span> <span class="op">~</span><span class="va">y</span>, label <span class="op">=</span> <span class="op">~</span><span class="va">loc</span>, color <span class="op">=</span> <span class="st">"white"</span>, radius <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f843a680a1fcd62a0dd1" style="width:846.72px;height:528px;"></div>
-<script type="application/json" data-for="htmlwidget-f843a680a1fcd62a0dd1">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/st1/tiles/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.65625,-54.4375,-105.03125,-29.34375,-62.375,-88.78125,-120.8125,-79.90625,-109.03125],[68.625,81.71875,103.4375,31.375,44.71875,41.9375,12.71875,48.53125,32.46875],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia","Tzenketh","Talar"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-120.8125,-29.34375],"lng":[12.71875,103.4375]}},"evals":[],"jsHooks":[]}</script><p><br></p>
+<span><span class="fu"><a href="https://rstudio.github.io/leaflet/reference/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="va">d</span>, options <span class="op">=</span> <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/leaflet.html" class="external-link">leafletOptions</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/leaflet.html" class="external-link">leafletCRS</a></span><span class="op">(</span><span class="st">"L.CRS.Simple"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-layers.html" class="external-link">addTiles</a></span><span class="op">(</span><span class="va">tiles</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-methods.html" class="external-link">setView</a></span><span class="op">(</span><span class="fl">108</span>, <span class="op">-</span><span class="fl">75</span>, <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rstudio.github.io/leaflet/reference/map-layers.html" class="external-link">addCircleMarkers</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">~</span><span class="va">x</span>, lat <span class="op">=</span> <span class="op">~</span><span class="va">y</span>, label <span class="op">=</span> <span class="op">~</span><span class="va">loc</span>, color <span class="op">=</span> <span class="st">"white"</span>, radius <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code></pre></div>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:846.72px;height:528px;"></div>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"options":{"crs":{"crsClass":"L.CRS.Simple","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://leonawicz.github.io/tiles/st1/tiles/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false}]},{"method":"addCircleMarkers","args":[[-73.65625,-54.4375,-105.03125,-29.34375,-62.375,-88.78125,-120.8125,-79.90625,-109.03125],[68.625,81.71875,103.4375,31.375,44.71875,41.9375,12.71875,48.53125,32.46875],20,null,null,{"interactive":true,"className":"","stroke":true,"color":"white","weight":5,"opacity":0.5,"fill":true,"fillColor":"white","fillOpacity":0.2},null,null,null,null,["Earth","Romulus","Qo'noS","Breen","Ferenginar","Cardassia","Tholia","Tzenketh","Talar"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"setView":[[-75,108],2,[]],"limits":{"lat":[-120.8125,-29.34375],"lng":[12.71875,103.4375]}},"evals":[],"jsHooks":[]}</script><p><br></p>
 <p>The <code>stSpecies</code> dataset is just a small table that pairs
 species named with representative thumbnail avatars, mostly pulled from
 the Memory Alpha website. There is nothing map-related here, but these
@@ -341,15 +342,15 @@ Cartography</a> example. It is similar to the Leaflet example above, but
 a bit more interesting, with markers to click on and information
 displays.</p>
 <p>In the course of the above map-related examples, a few functions have
-also been introduced. <code>st_tiles</code> takes an <code>id</code>
+also been introduced. <code><a href="../reference/st_tiles.html">st_tiles()</a></code> takes an <code>id</code>
 argument that is mapped to the available tile sets in
 <code>stTiles</code> and returns the relevant URL.
-<code>st_tiles_data</code> takes the same <code>id</code> argument and
+<code><a href="../reference/st_tiles_data.html">st_tiles_data()</a></code> takes the same <code>id</code> argument and
 returns a simple example data frame containing ancillary data related to
 the available locations from <code>stGeo</code>. The result is always
 the same except that the grid cells for locations change with respect to
-the chosen tile set. Finally, <code>tile_coords</code> can be applied to
-one of these data frames to add <code>x</code> and <code>y</code>
+the chosen tile set. Finally, <code><a href="../reference/tile_coords.html">tile_coords()</a></code> can be applied
+to one of these data frames to add <code>x</code> and <code>y</code>
 columns for a CRS that Leaflet will understand.</p>
 </div>
 <div class="section level2">
@@ -509,8 +510,8 @@ constant requests. Their pages suggest no more than one request per
 second, but I would suggest ten seconds between successive requests. The
 default anti-DOS measures in <code>rtrek</code> limit requests to one
 per second. You can update this global <code>rtrek</code> setting with
-<code>options</code>, e.g. <code>options(rtrek_antidos = 10)</code> for
-a minimum ten second wait between API calls to be an even better
+<code><a href="https://rdrr.io/r/base/options.html" class="external-link">options()</a></code>, e.g. <code>options(rtrek_antidos = 10)</code>
+for a minimum ten second wait between API calls to be an even better
 neighbor. <code>rtrek</code> will not permit faster requests. If set
 below one second, the option is ignored and a warning thrown when making
 any API call.</p>
@@ -535,17 +536,17 @@ IDs can be found in this table:</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> comicSeries        tbl_df    15 <span style="color: #949494;">&lt;chr [15]&gt;</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> comicStrip         tbl_df    12 <span style="color: #949494;">&lt;chr [12]&gt;</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 30 more rows</span></span></span></code></pre></div>
-<p>These ID values are passed to <code>stapi</code> to perform a search
-using the API. The other columns provide some information about the
-object returned from a search. All entity searches return tibble data
-frames. You can inspect or unnest the column names of each table
+<p>These ID values are passed to <code><a href="../reference/stapi.html">stapi()</a></code> to perform a
+search using the API. The other columns provide some information about
+the object returned from a search. All entity searches return tibble
+data frames. You can inspect or unnest the column names of each table
 returned from every available entity search so you can see beforehand
 what variables are associated with each entity.</p>
 </div>
 <div class="section level3">
 <h3 id="accessing-the-api">Accessing the API<a class="anchor" aria-label="anchor" href="#accessing-the-api"></a>
 </h3>
-<p>Using <code>stapi</code> should be thought of as a three part
+<p>Using <code><a href="../reference/stapi.html">stapi()</a></code> should be thought of as a three part
 process:</p>
 <ul>
 <li>Determine how many pages of results exist for a particular entity
@@ -553,8 +554,8 @@ search.</li>
 <li>Only after taking care to do the previous step, perform the search
 to return search results.</li>
 <li>If satellite data is needed on a unique observation in the search
-results, call <code>stapi</code> one more time referencing the specific
-observation.</li>
+results, call <code><a href="../reference/stapi.html">stapi()</a></code> one more time referencing the
+specific observation.</li>
 </ul>
 <p>To determine how many pages of results exist for a given search, set
 <code>page_count = TRUE</code>. The impact on the API will be equivalent
@@ -573,7 +574,7 @@ available for character search.</p>
 <code>page</code> can be a vector, e.g. <code>page = 1:62</code>.
 Results from multi-page searches are automatically combined into a
 single, constant data frame output. For the second call to
-<code>stapi</code>, return only page two here, which contains the
+<code><a href="../reference/stapi.html">stapi()</a></code>, return only page two here, which contains the
 character, Q (currently, pending future character database updates that
 may shift the indexing). In case that does change and Q is not always
 near the top of page two of the search results, the example further
@@ -610,11 +611,11 @@ subsequently to extract a satellite dataset about that particular
 observation that was returned in the original search. First you used
 safe mode, then search mode, and now switch from search mode to
 extraction mode to obtain data about Q, specifically. All that is
-required to do this is pass Q’s <code>uid</code> to <code>stapi</code>
+required to do this is pass Q’s <code>uid</code> to <code><a href="../reference/stapi.html">stapi()</a></code>
 and call the function one last time. When <code>uid</code> is no longer
-<code>NULL</code>, <code>stapi</code> knows not to bother with a search
-and makes a different type of API call requesting information about the
-uniquely identified entry.</p>
+<code>NULL</code>, <code><a href="../reference/stapi.html">stapi()</a></code> knows not to bother with a
+search and makes a different type of API call requesting information
+about the uniquely identified entry.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Q</span> <span class="op">&lt;-</span> <span class="st">"CHMA0000025118"</span></span>
 <span><span class="va">Q</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, uid <span class="op">=</span> <span class="va">Q</span><span class="op">)</span></span>
@@ -730,7 +731,7 @@ by particular authors with a favored style or focus.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
       </footer>
