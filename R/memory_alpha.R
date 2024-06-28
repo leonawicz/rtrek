@@ -224,7 +224,7 @@ ma_search <- function(text, browse = FALSE){
 #' file is kept, a ggplot object of the image is returned.
 #'
 #' @param url character, the short URL of the image, for example as returned by
-#' `memory_alpha()`. Must be JGP or PNG. See example.
+#' `memory_alpha()`. Must be JPG or PNG. See example.
 #' @param file character, output file name. Optional. See details.
 #' @param keep logical, if `FALSE` (default) then `file` is only temporary.
 #'

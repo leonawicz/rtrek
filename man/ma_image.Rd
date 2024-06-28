@@ -8,7 +8,7 @@ ma_image(url, file, keep = FALSE)
 }
 \arguments{
 \item{url}{character, the short URL of the image, for example as returned by
-\code{memory_alpha()}. Must be JGP or PNG. See example.}
+\code{memory_alpha()}. Must be JPG or PNG. See example.}
 
 \item{file}{character, output file name. Optional. See details.}
 
