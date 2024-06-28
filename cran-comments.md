@@ -1,13 +1,13 @@
 ## Test environments
 
-* Local Windows 10 install: R 4.3.1
+* Local Windows 10 install: R 4.4.0
 * Win Builder: R-devel, R-release
-* Fedora: R-devel
-* Ubuntu 20.04.1: R-release
+* Ubuntu latest: R-devel, R-release, R-oldrel
+* MacOS latest: R-release
 
 ## Update release
 
-* Added required package alias per CRAN request.
+* Bug fixes.
 * Other general package maintenance.
 
 ## R CMD check results
