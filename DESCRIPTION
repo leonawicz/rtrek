@@ -15,26 +15,29 @@ URL: https://github.com/leonawicz/rtrek
 BugReports: https://github.com/leonawicz/rtrek/issues
 Depends: R (>= 2.10)
 Imports: 
+    downloader,
     dplyr,
-    jsonlite,
-    xml2,
-    rvest,
-    jpeg,
-    purrr,
     ggplot2,
+    jpeg,
+    jsonlite,
     memoise,
     png,
+    purrr,
+    rvest,
     tibble,
     tidyr,
-    downloader
+    xml2
 Suggests:
-    lubridate,
-    testthat,
+    ggrepel,
+    gridExtra,
     knitr,
-    rmarkdown,
     leaflet,
+    leaflet.extras,
+    lubridate,
+    rmarkdown,
     showtext,
     sysfonts,
+    testthat,
     trekfont
 ByteCompile: true
 Encoding: UTF-8
