@@ -20,7 +20,7 @@
 #' In all other cases, the endpoint string must begin with one of the valid
 #' portal IDs. Passing only the ID returns a data frame with IDs and relative
 #' URLs associated with the available categories in the specific portal. Unlike
-#' `memory_alpha`, there are no `group` or `subgroup` columns. Memory Beta
+#' `memory_alpha()`, there are no `group` or `subgroup` columns. Memory Beta
 #' offers a more consistent reliance on the simple hierarchy of categories and
 #' articles.
 #'
@@ -40,7 +40,7 @@
 #' Memory Beta is not a database containing convenient tables. Articles comprise
 #' the bulk of what Memory Beta has to offer. They are not completely
 #' unstructured text, but are loosely structured. Some assumptions are made and
-#' `memory_beta` returns a data frame containing article text and links. It is
+#' `memory_beta()` returns a data frame containing article text and links. It is
 #' up to the user what to do with this information, e.g., performing text
 #' analyses.
 #'
@@ -54,7 +54,7 @@
 #' `endpoint` string to retrieve its content. You can instead use
 #' `mb_article("Worf")`.
 #'
-#' `memory_beta` provides an overview perspective on how content available at
+#' `memory_beta()` provides an overview perspective on how content available at
 #' Memory Beta is organized and can be searched for through a variety of
 #' hierarchical layouts. And in some cases this structure that can be obtained
 #' in table form can be useful as data or metadata in itself. Alternatively,
@@ -163,7 +163,7 @@ mb_search <- function(text, browse = FALSE){
 #' file is kept, a ggplot object of the image is returned.
 #'
 #' @param url character, the short URL of the image, for example as returned by
-#' `memory_beta()`. See example.
+#' `memory_beta()`. Must be JGP or PNG. See example.
 #' @param file character, output file name. Optional. See details.
 #' @param keep logical, if `FALSE` (default) then `file` is only temporary.
 #'
@@ -186,7 +186,8 @@ mb_image <- function(url, file, keep = FALSE){
   if(missing(file)) file <- gsub(" ", "_", file0)
   file <- gsub("jpeg$", "jpg", file)
   downloader::download(url2, destfile = file, quiet = TRUE, mode = "wb")
-  x <- jpeg::readJPEG(file)
+  is_jpg <- grepl("\\.jpg$", file)
+  x <- if(is_jpg) jpeg::readJPEG(file) else png::readPNG(file)
   if(!keep) unlink(file, recursive = TRUE, force = TRUE)
 
   asp <- dim(x)[1] / dim(x)[2]

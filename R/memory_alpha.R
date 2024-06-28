@@ -38,7 +38,7 @@
 #' Memory Alpha is not a database containing convenient tables. Articles
 #' comprise the bulk of what Memory Alpha has to offer. They are not completely
 #' unstructured text, but are loosely structured. Some assumptions are made and
-#' `memory_alpha` returns a data frame containing article text and links. It is
+#' `memory_alpha()` returns a data frame containing article text and links. It is
 #' up to the user what to do with this information, e.g., performing text
 #' analyses.
 #'
@@ -106,12 +106,12 @@ ma_portal_df <- function(portal, nodes = c("table", "span, a"), start_node_index
   if(subgroups){
     d <- purrr::map2(x1, x2, ~dplyr::tibble(
       id = .x[-1], url = .y[-1], group = trimws(.x[1]), subgroup = .f(.x, .y)[-1]) |>
-        tidyr::fill(.data[["subgroup"]]) |> dplyr::filter(!is.na(.data[["url"]]))
+        tidyr::fill("subgroup") |> dplyr::filter(!is.na(.data[["url"]]))
     ) |> dplyr::bind_rows()
   } else {
     d <- purrr::map2(x1, x2, ~dplyr::tibble(
       id = .x, url = .y, group = .f(.x, .y)) |>
-        tidyr::fill(.data[["group"]]) |> dplyr::filter(!is.na(.data[["url"]]))
+        tidyr::fill("group") |> dplyr::filter(!is.na(.data[["url"]]))
     ) |> dplyr::bind_rows()
   }
   if(portal == "technology") d <- ma_portal_technology_cleanup(d)
@@ -224,7 +224,7 @@ ma_search <- function(text, browse = FALSE){
 #' file is kept, a ggplot object of the image is returned.
 #'
 #' @param url character, the short URL of the image, for example as returned by
-#' `memory_alpha()`. See example.
+#' `memory_alpha()`. Must be JGP or PNG. See example.
 #' @param file character, output file name. Optional. See details.
 #' @param keep logical, if `FALSE` (default) then `file` is only temporary.
 #'
@@ -247,7 +247,8 @@ ma_image <- function(url, file, keep = FALSE){
   if(missing(file)) file <- gsub(" ", "_", file0)
   file <- gsub("jpeg$", "jpg", file)
   downloader::download(url2, destfile = file, quiet = TRUE, mode = "wb")
-  x <- jpeg::readJPEG(file)
+  is_jpg <- grepl("\\.jpg$", file)
+  x <- if(is_jpg) jpeg::readJPEG(file) else png::readPNG(file)
   if(!keep) unlink(file, recursive = TRUE, force = TRUE)
 
   asp <- dim(x)[1] / dim(x)[2]

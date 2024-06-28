@@ -94,7 +94,7 @@ ma_article_aside <- function(x){
   cols <- rvest::html_nodes(x, ".pi-data-label") |> ma_text()
   cols <- gsub(":$", "", cols)
   cols <- gsub("\\s", "_", cols)
-  x <- rvest::html_nodes(x, ".pi-data-value")
+  x <- rvest::html_nodes(x, "div.pi-data-value")
   if(length(x) != length(cols)) return()
   vals <- purrr::map(x, ~{
     x <- xml2::xml_contents(.x) |> ma_text(trim = FALSE)
@@ -114,10 +114,11 @@ ma_article_aside <- function(x){
 
 .ma_aside_image <- function(x){
   idx <- which(rvest::html_name(x) == "figure")[1]
-  if(!length(idx)) return(as.character(NA))
+  if(is.na(idx)) idx <- which(rvest::html_name(x) == "section")[1]
+  if(!length(idx) || is.na(idx)) return(as.character(NA))
   x <- rvest::html_nodes(x[idx], ".image-thumbnail") |> mb_href()
   x <- strsplit(x, "/")[[1]]
-  idx <- grep("\\.jpg", x, ignore.case = TRUE)
+  idx <- grep("\\.(jpg|png)$", x, ignore.case = TRUE)
   if(!length(idx)) return(as.character(NA))
   paste0("File:", x[idx])
 }
