@@ -30,7 +30,7 @@ test_that("memory_alpha returns as expected", {
   expect_equal(names(d), grp[1:3])
 
   d <- memory_alpha("series/Deep Space Nine")
-  expect_is(d$metadata[[1]], "NULL")
+  expect_is(d$metadata[[1]], "data.frame")
   expect_equal(dim(d), c(1, 4))
   expect_equal(names(d), c("title", "content", "metadata", "categories"))
   expect_equal(as.character(sapply(d, class)), c("character", rep("list", 3)))

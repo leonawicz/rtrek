@@ -7,6 +7,6 @@ test_that("dataset list returns as expected", {
 
 test_that("st_books_wiki returns as expected", {
   skip_on_cran()
-  skip_on_travis()
+  skip_on_os(c("linux", "mac"))
   expect_is(st_books_wiki(), "NULL")
 })
