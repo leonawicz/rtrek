@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 [![CRAN status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek)
+[![R-CMD-check](https://github.com/leonawicz/rtrek/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/leonawicz/rtrek/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/leonawicz/rtrek/branch/master/graph/badge.svg)](https://app.codecov.io/gh/leonawicz/rtrek?branch=master)
 [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek) 
 [![Github Stars](https://img.shields.io/github/stars/leonawicz/rtrek.svg?style=social&label=Github)](https://github.com/leonawicz/rtrek)
 
@@ -55,7 +57,7 @@ Use the Star Trek API (STAPI) to obtain information on the infamous character, Q
 
 The first API call does a lightweight, unobtrusive check to see how many pages of potential search results exist for characters in the database. There are a lot of characters.
 
-The second call grabs only page two results. The third call uses the universal/unique ID `uid` to retrieve data on Q. Think of these three successive uses of `stapi` as safe mode, search mode and extraction mode.
+The second call grabs only page two results. The third call uses the universal/unique ID `uid` to retrieve data on Q. Think of these three successive uses of `stapi()` as safe mode, search mode and extraction mode.
 
 ```{r ex, thm = knitr::knit_theme$get("molokai")}
 library(rtrek)

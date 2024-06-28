@@ -7,7 +7,7 @@
 st_tiles(id)
 }
 \arguments{
-\item{id}{character, name of map tile set ID. See \code{\link[=stTiles]{stTiles()}}.}
+\item{id}{character, name of map tile set ID. See \link{stTiles}.}
 }
 \value{
 a character string.
@@ -16,11 +16,11 @@ a character string.
 This function returns the URL associated with a tile set matching \code{id}.
 }
 \details{
-Tile set data are stored in the \code{\link[=stTiles]{stTiles()}} dataset. See for available IDs.
+Tile set data are stored in the \link{stTiles} dataset. See for available IDs.
 }
 \examples{
 st_tiles("galaxy1")
 }
 \seealso{
-\code{\link[=stTiles]{stTiles()}}, \code{\link[=st_tiles_data]{st_tiles_data()}}
+\link{stTiles}, \code{\link[=st_tiles_data]{st_tiles_data()}}
 }

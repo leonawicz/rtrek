@@ -8,6 +8,9 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 [![CRAN
 status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek)
+[![R-CMD-check](https://github.com/leonawicz/rtrek/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/leonawicz/rtrek/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/leonawicz/rtrek/branch/master/graph/badge.svg)](https://app.codecov.io/gh/leonawicz/rtrek?branch=master)
 [![CRAN
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek)
 [![Github
@@ -78,7 +81,7 @@ There are a lot of characters.
 
 The second call grabs only page two results. The third call uses the
 universal/unique ID `uid` to retrieve data on Q. Think of these three
-successive uses of `stapi` as safe mode, search mode and extraction
+successive uses of `stapi()` as safe mode, search mode and extraction
 mode.
 
 ``` r
@@ -281,7 +284,7 @@ True (Trek) type fonts to style your Star Trek themed graphics text.
 
 ## Citation
 
-Matthew Leonawicz (2023). rtrek: Data analysis relating to Star Trek. R
+Matthew Leonawicz (2024). rtrek: Data analysis relating to Star Trek. R
 package version 0.4.0. <https://CRAN.R-project.org/package=rtrek>
 
 ## Contribute

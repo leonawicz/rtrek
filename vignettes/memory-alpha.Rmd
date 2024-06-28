@@ -31,7 +31,7 @@ Since Memory Alpha does not offer an API, the API-like interfacing provided by `
 
 ## Memory Alpha portals
 
-There are six Memory Alpha web portals available. To see them, call the main function for Memory Alpha access, `memory_alpha`, and pass it `portals` as the API endpoint.
+There are six Memory Alpha web portals available. To see them, call the main function for Memory Alpha access, `memory_alpha()`, and pass it `portals` as the API endpoint.
 
 ```{r ma_portals}
 memory_alpha("portals")
@@ -65,11 +65,11 @@ memory_alpha("people/Klingons/Worf")
 
 Note the change in the structure of the final output, which is an article. This is the end of this particular road The result is still a data frame, but now has only one row, the article.
 
-The columns include a text `title` and three nested datasets. `content` contains an `xml_nodeset` object left (mostly) unadulterated by `memory_alpha`. This contains the article's main content section, including ordered content from a default set of html tags. For more control over article content, see `ma_article` in the next section. `metadata` contains a nested data frame of content parsed from the summary card that appears in the top right corner of articles. If this fails to parse for a given article, `NULL` is returned. `categories` returns a data frame containing categories in which the article topic falls under and their respective URLs.
+The columns include a text `title` and three nested datasets. `content` contains an `xml_nodeset` object left (mostly) unadulterated by `memory_alpha()`. This contains the article's main content section, including ordered content from a default set of html tags. For more control over article content, see `ma_article()` in the next section. `metadata` contains a nested data frame of content parsed from the summary card that appears in the top right corner of articles. If this fails to parse for a given article, `NULL` is returned. `categories` returns a data frame containing categories in which the article topic falls under and their respective URLs.
 
 ## Articles
 
-If you already know the article `id`, You can obtain an article directly using `ma_article` instead of going through an endpoint with `memory_alpha` that terminates in the same `id`. This also offers additional options to control what tags are included in the returned result and whether that result is the original `xml_nodeset` object or a character vector of only the extracted text. In either case, work is left to the user to do what they intend such as text analysis.
+If you already know the article `id`, You can obtain an article directly using `ma_article()` instead of going through an endpoint with `memory_alpha()` that terminates in the same `id`. This also offers additional options to control what tags are included in the returned result and whether that result is the original `xml_nodeset` object or a character vector of only the extracted text. In either case, work is left to the user to do what they intend such as text analysis.
 
 ```{r ma_article}
 worf <- ma_article("Worf", content_format = "character", content_nodes = c("h2", "h3"))
@@ -81,7 +81,7 @@ If `browse = TRUE` the article page also launches in the browser.
 
 ## Images
 
-Full resolution source images can be downloaded and imported into R using `ma_image` if you know the short URL. The easiest way to find URLs is by using a Memory Alpha portal. In the example below, the Memory Alpha images category under Klingons is selected. Look for a picture that includes Worf but also Data.
+Full resolution source images can be downloaded and imported into R using `ma_image()` if you know the short URL. The easiest way to find URLs is by using a Memory Alpha portal. In the example below, the Memory Alpha images category under Klingons is selected. Look for a picture that includes Worf but also Data.
 
 ```{r ma_image}
 library(dplyr)
@@ -94,7 +94,7 @@ worf_data
 
 *Qapla'*! This provides several results.
 
-Technically, this is not the url to an image file. It is a url that redirects you to some other seemingly random article on the website that happens to include the image in it. This is not necessarily a unique instance of the image, nor is there any consistency in what portal or type of article it takes you to. `memory_alpha`, and `ma_article` using the short form url, provide the article content associated with the "file" url. See `ma_image` below for viewing the actual image.
+Technically, this is not the url to an image file. It is a url that redirects you to some other seemingly random article on the website that happens to include the image in it. This is not necessarily a unique instance of the image, nor is there any consistency in what portal or type of article it takes you to. `memory_alpha()`, and `ma_article()` using the short form url, provide the article content associated with the "file" url. See `ma_image()` below for viewing the actual image.
 
 ```{r ma_image2}
 x <- memory_alpha("people/Klingons/Memory Alpha images (Klingons)/Data tries talking to Worf.jpg")
@@ -106,19 +106,19 @@ x
 x$categories
 ```
 
-The likely intent is to obtain an image file after browsing the web pages that list images files. Even if you are interactively browsing the website, you have to click several times and scroll through additional articles before you can actually view the image file that was initially presented to you as a clickable link. This is a frustrating user experience and confusing design. If you have a file name you want to view, just use `ma_image` for this. It returns a ggplot object of the image file rather than an associated article.
+The likely intent is to obtain an image file after browsing the web pages that list images files. Even if you are interactively browsing the website, you have to click several times and scroll through additional articles before you can actually view the image file that was initially presented to you as a clickable link. This is a frustrating user experience and confusing design. If you have a file name you want to view, just use `ma_image()` for this. It returns a ggplot object of the image file rather than an associated article.
 
 ```{r ma_image3}
 ma_image("File:Data_tries_talking_to_Worf.jpg")
 ```
 
-`ma_image` can take the additional arguments, `keep = TRUE` to retain the downloaded image file, and `file` to specify the output filename if you do not want it to be derived from the short URL. If you need more control over the plot, set `keep = TRUE` and then load the image file into R directly to plot separately as needed.
+`ma_image()` can take the additional arguments, `keep = TRUE` to retain the downloaded image file, and `file` to specify the output filename if you do not want it to be derived from the short URL. If you need more control over the plot, set `keep = TRUE` and then load the image file into R directly to plot separately as needed.
 
 ## Search
 
-You can perform a Memory Alpha site search using `ma_search`. This returns a data frame of search results content, including title, truncated text preview, and short URL for the first page of search results. 
+You can perform a Memory Alpha site search using `ma_search()`. This returns a data frame of search results content, including title, truncated text preview, and short URL for the first page of search results. 
 
-It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with `ma_article`, setting `browse = TRUE` opens the page in the browser.
+It does not recursively collate search results through subsequent pages of results. There could be an unexpectedly high number of pages of results depending on the search query. Since the general nature of this search feature seems relatively casual anyway, it aims only to provide a first page preview. As with `ma_article()`, setting `browse = TRUE` opens the page in the browser.
 
 ```{r ma_search}
 ma_search("Guinan")

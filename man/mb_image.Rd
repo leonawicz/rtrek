@@ -8,7 +8,7 @@ mb_image(url, file, keep = FALSE)
 }
 \arguments{
 \item{url}{character, the short URL of the image, for example as returned by
-\code{memory_beta()}. See example.}
+\code{memory_beta()}. Must be JGP or PNG. See example.}
 
 \item{file}{character, output file name. Optional. See details.}
 

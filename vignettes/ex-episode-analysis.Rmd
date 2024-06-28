@@ -18,7 +18,7 @@ library(rtrek)
 
 ## Importing transcript data
 
-A curated data frame of metadata and text variables derived from episode and movie transcripts can be downloaded with `st_transcripts`. The format is one episode per row. There are metadata columns and a list column of nested text variables.
+A curated data frame of metadata and text variables derived from episode and movie transcripts can be downloaded with `st_transcripts()`. The format is one episode per row. There are metadata columns and a list column of nested text variables.
 
 ```{r ep1}
 library(dplyr)

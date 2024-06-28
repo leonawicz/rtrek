@@ -15,7 +15,7 @@
 #'
 #' `rtrek` employs anti-DOS measures. It will not perform an API call to STAPI
 #' more than once per second. To be an even better neighbor, you can increase
-#' this wait time using `options`, e.g. `options(rtrek_antidos = 10)` to
+#' this wait time using `options()`, e.g. `options(rtrek_antidos = 10)` to
 #' increase the minimum time between API calls to ten seconds. Values less than
 #' one are ignored (defaulting back to one second) and a warning will be thrown
 #' when making any API call if this is the case.

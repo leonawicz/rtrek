@@ -11,7 +11,7 @@ tile_coords(data, id)
 contain column-row number pairs defining matrix cells in tile set \code{id}. See
 details.}
 
-\item{id}{character, name of map tile set ID. See \code{\link[=stTiles]{stTiles()}}.}
+\item{id}{character, name of map tile set ID. See \link{stTiles}.}
 }
 \value{
 a data frame.
@@ -21,7 +21,7 @@ Convert \verb{(column, row)} numbers to \verb{(x, y)} coordinates for a given ti
 }
 \details{
 This function converts column and row indices for an available map tile set
-matrix to coordinates that can be used in a Leaflet map. See \code{\link[=stTiles]{stTiles()}} for
+matrix to coordinates that can be used in a Leaflet map. See \link{stTiles} for
 available tile sets.
 
 \code{data} cannot contain columns named \code{x} or \code{y}, which are reserved for the

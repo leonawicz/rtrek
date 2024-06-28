@@ -11,12 +11,12 @@ vignette: >
 knitr::opts_chunk$set(message = FALSE, warning = FALSE, error = FALSE)
 ```
 
-The `trekfont` package contains 107 Star Trek fonts. These are not part of `rtrek` but `rtrek` offers a convenient function `st_font` for previewing them.
+The `trekfont` package contains 107 Star Trek fonts. These are not part of `rtrek` but `rtrek` offers a convenient function `st_font()` for previewing them.
 
 Since accessing these fonts can easily be done directly and doing so is also not a significant purpose of `rtrek`, this function is only useful if you choose to install optional packages not otherwise required for `rtrek`.
-These include `showtext`, `ggplot2`, and of course `trekfont`. As long as you have these packages installed, you do not need to load them explicitly in order to use `st_font`.
+These include `showtext`, `ggplot2`, and of course `trekfont`. As long as you have these packages installed, you do not need to load them explicitly in order to use `st_font()`.
 
-If you call `st_font` without passing the `family` argument, it will return a vector of all available font families.It does so with the font file extensions removed, in contrast to `trekfont::trekfonts`.
+If you call `st_font()` without passing the `family` argument, it will return a vector of all available font families.It does so with the font file extensions removed, in contrast to `trekfont::trekfonts`.
 This function is only for previewing fonts.
 
 Brought to you by Worf, who has intercepted many messages in his time as security chief.

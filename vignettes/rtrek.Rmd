@@ -29,7 +29,7 @@ st_datasets()
 
 At this time, several of the datasets are very small and are only included in the package in order to demonstrate some very basic examples and they are not particularly useful or interesting beyond this purpose. However, `rtek` now includes more sizable curated datasets relating the compendium of licensed, published Star Trek literature and multiple versions of Star Trek fictional universe historical timelines.
 
-Package datasets in `rtrek` are somewhat eclectic and currently limited. They will expand with further package development. To list all available package datasets with a short description, call `st_datasets`.
+Package datasets in `rtrek` are somewhat eclectic and currently limited. They will expand with further package development. To list all available package datasets with a short description, call `st_datasets()`.
 
 ## Star Trek novels
 
@@ -69,7 +69,7 @@ This is another small dataset containing locations of key planets in the Star Tr
 
 The coordinates are also not consistent. Source maps differ significantly. Even if they had identical pixel dimensions, which they do not, each artist's visual rendering of the fictional universe will place locations differently in space. In this sense, every tile set has a unique coordinate reference system. For each new tile set produced, all locations of interest must be georeferenced again.
 
-This is not ideal, but it gets worse. Once you have locations' coordinates defined that map onto a particular tile set, the `leaflet` package does not work in these row and column grids. The `(col, row)` pairs need to be transformed or projected into Leaflet space. Fortunately, `rtrek` does this part for you with `tile_coords`. It takes a data frame like one returned by `st_tiles_data` with columns named `col` and `row`, as well as the name of an available Star Trek map tile set. It returns a data frame with new columns `x` and `y` that will map properly in a `leaflet` map built on that tile set.
+This is not ideal, but it gets worse. Once you have locations' coordinates defined that map onto a particular tile set, the `leaflet` package does not work in these row and column grids. The `(col, row)` pairs need to be transformed or projected into Leaflet space. Fortunately, `rtrek` does this part for you with `tile_coords()`. It takes a data frame like one returned by `st_tiles_data()` with columns named `col` and `row`, as well as the name of an available Star Trek map tile set. It returns a data frame with new columns `x` and `y` that will map properly in a `leaflet` map built on that tile set.
 
 ```{r tile_coords}
 id <- "galaxy1"
@@ -77,7 +77,7 @@ id <- "galaxy1"
 (d <- tile_coords(d, id))
 ```
 
-Here is an example using the `galaxy1` map with `leaflet`. The `st_tiles` function is used to link to the tile provider.
+Here is an example using the `galaxy1` map with `leaflet`. The `st_tiles()` function is used to link to the tile provider.
 
 ```{r leaflet, fig.width=8.82, fig.height=5.5, tidy=FALSE}
 library(leaflet)
@@ -91,7 +91,7 @@ leaflet(d, options = leafletOptions(crs = leafletCRS("L.CRS.Simple"))) %>%
 
 The `stSpecies` dataset is just a small table that pairs species named with representative thumbnail avatars, mostly pulled from the Memory Alpha website. There is nothing map-related here, but these are used in this [Stellar Cartography](https://leonawicz.github.io/rtrek/articles/sc.html) example. It is similar to the Leaflet example above, but a bit more interesting, with markers to click on and information displays.
 
-In the course of the above map-related examples, a few functions have also been introduced. `st_tiles` takes an `id` argument that is mapped to the available tile sets in `stTiles` and returns the relevant URL. `st_tiles_data` takes the same `id` argument and returns a simple example data frame containing ancillary data related to the available locations from `stGeo`. The result is always the same except that the grid cells for locations change with respect to the chosen tile set. Finally, `tile_coords` can be applied to one of these data frames to add `x` and `y` columns for a CRS that Leaflet will understand.
+In the course of the above map-related examples, a few functions have also been introduced. `st_tiles()` takes an `id` argument that is mapped to the available tile sets in `stTiles` and returns the relevant URL. `st_tiles_data()` takes the same `id` argument and returns a simple example data frame containing ancillary data related to the available locations from `stGeo`. The result is always the same except that the grid cells for locations change with respect to the chosen tile set. Finally, `tile_coords()` can be applied to one of these data frames to add `x` and `y` columns for a CRS that Leaflet will understand.
 
 ## Historical timeline
 
@@ -153,7 +153,7 @@ To use the words of the developers, the STAPI is
 
 *the first public Star Trek API, accessible via REST and SOAP. It's an open source project, that anyone can contribute to.*
 
-The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DOS measures in `rtrek` limit requests to one per second. You can update this global `rtrek` setting with `options`, e.g. `options(rtrek_antidos = 10)` for a minimum ten second wait between API calls to be an even better neighbor. `rtrek` will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.
+The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DOS measures in `rtrek` limit requests to one per second. You can update this global `rtrek` setting with `options()`, e.g. `options(rtrek_antidos = 10)` for a minimum ten second wait between API calls to be an even better neighbor. `rtrek` will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.
 
 ### STAPI entities
 
@@ -163,15 +163,15 @@ There a many fields, or entities, available in the API. The available IDs can be
 stapiEntities
 ```
 
-These ID values are passed to `stapi` to perform a search using the API. The other columns provide some information about the object returned from a search. All entity searches return tibble data frames. You can inspect or unnest the column names of each table returned from every available entity search so you can see beforehand what variables are associated with each entity.
+These ID values are passed to `stapi()` to perform a search using the API. The other columns provide some information about the object returned from a search. All entity searches return tibble data frames. You can inspect or unnest the column names of each table returned from every available entity search so you can see beforehand what variables are associated with each entity.
 
 ### Accessing the API
 
-Using `stapi` should be thought of as a three part process:
+Using `stapi()` should be thought of as a three part process:
 
 *    Determine how many pages of results exist for a particular entity search.
 *    Only after taking care to do the previous step, perform the search to return search results.
-*    If satellite data is needed on a unique observation in the search results, call `stapi` one more time referencing the specific observation.
+*    If satellite data is needed on a unique observation in the search results, call `stapi()` one more time referencing the specific observation.
 
 To determine how many pages of results exist for a given search, set `page_count = TRUE`. The impact on the API will be equivalent to only searching a single page of results. One page contains metadata including the total number of pages. Nothing is returned in this "safe mode", but the total number of search results available is printed to the console.
 
@@ -183,7 +183,7 @@ stapi("character", page_count = TRUE)
 
 And that is with 100 results per page!
 
-The default `page = 1` only returns the first page. `page` can be a vector, e.g. `page = 1:62`. Results from multi-page searches are automatically combined into a single, constant data frame output. For the second call to `stapi`, return only page two here, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example further below hard-codes his unique/universal ID.
+The default `page = 1` only returns the first page. `page` can be a vector, e.g. `page = 1:62`. Results from multi-page searches are automatically combined into a single, constant data frame output. For the second call to `stapi()`, return only page two here, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example further below hard-codes his unique/universal ID.
 
 ```{r stapi_search}
 stapi("character", page = 2)
@@ -191,7 +191,7 @@ stapi("character", page = 2)
 
 Character tables can be sparse. There are a lot of variables, many of which will contain missing data for rare, esoteric characters. Even for more popular characters about whom much more universe lore has been uncovered, it still takes dedicated nerds to enter all the data in a database.
 
-When a dataset contains a `uid` column, this can be used subsequently to extract a satellite dataset about that particular observation that was returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q's `uid` to `stapi` and call the function one last time. When `uid` is no longer `NULL`, `stapi` knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.
+When a dataset contains a `uid` column, this can be used subsequently to extract a satellite dataset about that particular observation that was returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q's `uid` to `stapi()` and call the function one last time. When `uid` is no longer `NULL`, `stapi()` knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.
 
 ```{r stapi_extract}
 Q <- "CHMA0000025118"

@@ -29,7 +29,7 @@
 #' it takes is spent waiting patiently.
 #'
 #' Also, like other functions that work with Memory Alpha and Memory Beta data,
-#' `mb_timeline` wraps around internal functions that are sensibly memoized.
+#' `mb_timeline()` wraps around internal functions that are sensibly memoized.
 #' This means that if you make the same call twice in your R session, you won't
 #' have to wait at all, because the result is cached in memory. The call will
 #' appear to run instantaneously the second time around, but that's because

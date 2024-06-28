@@ -56,7 +56,7 @@ from the results of non-terminal endpoints.
 Memory Alpha is not a database containing convenient tables. Articles
 comprise the bulk of what Memory Alpha has to offer. They are not completely
 unstructured text, but are loosely structured. Some assumptions are made and
-\code{memory_alpha} returns a data frame containing article text and links. It is
+\code{memory_alpha()} returns a data frame containing article text and links. It is
 up to the user what to do with this information, e.g., performing text
 analyses.
 }

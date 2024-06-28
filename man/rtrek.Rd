@@ -2,20 +2,23 @@
 % Please edit documentation in R/rtrek.R
 \docType{package}
 \name{rtrek}
-\alias{rtrek}
 \alias{rtrek-package}
-\title{rtrek: Data analysis relating to Star Trek.}
+\alias{rtrek}
+\title{rtrek: Data Analysis Relating to Star Trek}
 \description{
-The \code{rtrek} package contains a collection of Star Trek-themed datasets and R
-functions to assist with their use. The package interfaces with the Star Trek
-API (STAPI), Memory Alpha and Memory Beta to retrieve data, metadata and
-other information relating to the Star Trek fictional universe.
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
+Provides datasets related to the Star Trek fictional universe and functions for working with the data. The package also provides access to real world datasets based on the televised series and other related licensed media productions. It interfaces with the Star Trek API (STAPI) (\url{http://stapi.co/}), Memory Alpha (\url{https://memory-alpha.fandom.com/wiki/Portal:Main}), and Memory Beta (\url{https://memory-beta.fandom.com/wiki/Main_Page}) to retrieve data, metadata and other information relating to Star Trek. It also contains several local datasets covering a variety of topics. The package also provides functions for working with data from other Star Trek-related R data packages containing larger datasets not stored in 'rtrek'.
 }
-\details{
-The package also contains several local datasets covering a variety of topics
-such as Star Trek timeline data, universe species data and geopolitical data.
-Some of these are more information rich, while others are toy examples useful
-for simple demonstrations. The bulk of Star Trek data is accessed from
-external sources by API. A future version of \code{rtrek} will also include
-summary datasets resulting from text mining analyses of Star Trek novels.
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/leonawicz/rtrek}
+  \item Report bugs at \url{https://github.com/leonawicz/rtrek/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Matthew Leonawicz \email{mfleonawicz@gmail.com} (\href{https://orcid.org/0000-0001-9452-2771}{ORCID})
+
 }

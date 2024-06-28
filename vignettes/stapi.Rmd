@@ -33,7 +33,7 @@ To use the words of the developers, the STAPI is
 
 *the first public Star Trek API, accessible via REST and SOAP. It's an open source project, that anyone can contribute to.*
 
-The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DDOS measures in `rtrek` limit requests to one per second. You can update this global `rtrek` setting with `options`, e.g. `options(rtrek_antidos = 10)` for a minimum ten second wait between API calls to be an even better neighbor. `rtrek` will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.
+The API is highly functional. Please do not abuse the API with constant requests. Their pages suggest no more than one request per second, but I would suggest ten seconds between successive requests. The default anti-DDOS measures in `rtrek` limit requests to one per second. You can update this global `rtrek` setting with `options()`, e.g. `options(rtrek_antidos = 10)` for a minimum ten second wait between API calls to be an even better neighbor. `rtrek` will not permit faster requests. If set below one second, the option is ignored and a warning thrown when making any API call.
 
 ### STAPI entities
 
@@ -43,7 +43,7 @@ There a many fields, or entities, available in the API. The available IDs can be
 stapiEntities
 ```
 
-These ID values are passed to `stapi` to perform a search using the API. The other columns provide some information about the object returned from a search. All entity searches return tibble data frames. You can inspect or unnest the column names of each table returned from every available entity search so you can see beforehand what variables are associated with each entity.
+These ID values are passed to `stapi()` to perform a search using the API. The other columns provide some information about the object returned from a search. All entity searches return tibble data frames. You can inspect or unnest the column names of each table returned from every available entity search so you can see beforehand what variables are associated with each entity.
 
 ### Accessing the API
 
@@ -51,7 +51,7 @@ Using `stapi` should be thought of as a three part process:
 
 *    Determine how many pages of results exist for a particular entity search.
 *    Only after taking care to do the previous step, perform the search to return search results.
-*    If satellite data is needed on a unique observation in the search results, call `stapi` one more time referencing the specific observation.
+*    If satellite data is needed on a unique observation in the search results, call `stapi()` one more time referencing the specific observation.
 
 To determine how many pages of results exist for a given search, set `page_count = TRUE`. The impact on the API will be equivalent to only searching a single page of results. One page contains metadata including the total number of pages. Nothing is returned in this "safe mode", but the total number of search results available is printed to the console.
 
@@ -63,7 +63,7 @@ stapi("character", page_count = TRUE)
 
 And that is with 100 results per page!
 
-The default `page = 1` only returns the first page. `page` can be a vector, e.g. `page = 1:62`. Results from multi-page searches are automatically combined into a single, constant data frame output. For the second call to `stapi`, return only page two here, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example further below hard-codes his unique/universal ID.
+The default `page = 1` only returns the first page. `page` can be a vector, e.g. `page = 1:62`. Results from multi-page searches are automatically combined into a single, constant data frame output. For the second call to `stapi()`, return only page two here, which contains the character, Q (currently, pending future character database updates that may shift the indexing). In case that does change and Q is not always near the top of page two of the search results, the example further below hard-codes his unique/universal ID.
 
 ```{r stapi_search}
 library(dplyr)
@@ -72,7 +72,7 @@ stapi("character", page = 1) %>% select(uid, name)
 
 Character tables can be sparse. There are a lot of variables, many of which will contain missing data for rare, esoteric characters. Even for more popular characters about whom much more universe lore has been uncovered, it still takes dedicated nerds to enter all the data in a database.
 
-When a dataset contains a `uid` column, this can be used subsequently to extract a satellite dataset about that particular observation that was returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q's `uid` to `stapi` and call the function one last time. When `uid` is no longer `NULL`, `stapi` knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.
+When a dataset contains a `uid` column, this can be used subsequently to extract a satellite dataset about that particular observation that was returned in the original search. First you used safe mode, then search mode, and now switch from search mode to extraction mode to obtain data about Q, specifically. All that is required to do this is pass Q's `uid` to `stapi()` and call the function one last time. When `uid` is no longer `NULL`, `stapi()` knows not to bother with a search and makes a different type of API call requesting information about the uniquely identified entry.
 
 ```{r stapi_extract}
 Q <- "CHMA0000025118"
@@ -83,7 +83,7 @@ q_eps
 ```
 The data returned on Q is actually a large list, including multiple data frames. For simplicity only a piece of it is shown above.
 
-Find out which TNG characters other than Q appear in both the *Encounter at Farpoint* series premier and later in the *All Good Things...* series finale. To do this, use`stapi` to extract data from other endpoints by following a breadcrumb trail of `uid` values.
+Find out which TNG characters other than Q appear in both the *Encounter at Farpoint* series premier and later in the *All Good Things...* series finale. To do this, use`stapi()` to extract data from other endpoints by following a breadcrumb trail of `uid` values.
 
 Engage.
 
@@ -130,10 +130,10 @@ ggplot(eps_count, aes(factor(name, levels = name[order(n)]), n)) +
   geom_text(aes(label = n), color = "white", size = 8, hjust = 1.5)
 ```
 
-This looks as expected. Inspect the structure of the list objects returned by `stapi` to become more familiar with what kind of information is available.
+This looks as expected. Inspect the structure of the list objects returned by `stapi()` to become more familiar with what kind of information is available.
 
 ### Minor weirdness
 
-Sometimes you may receive errors when trying filter rows for one of the data frames while certain problematic columns are still selected. This is likely because the data frame contains a nested data frame, but one which is not nested in the typical way (e.g., `tidyr::unnest` will also fail to resolve the issue).
+Sometimes you may receive errors when trying filter rows for one of the data frames while certain problematic columns are still selected. This is likely because the data frame contains a nested data frame, but one which is not nested in the typical way (e.g., `tidyr::unnest()` will also fail to resolve the issue).
 
-In the code immediately above, this occurs with the `series` data frame, which is why the `episodes` parent data frame is subset using `$series` before calling `summarize`.
+In the code immediately above, this occurs with the `series` data frame, which is why the `episodes` parent data frame is subset using `$series` before calling `dplyr::summarise()`.

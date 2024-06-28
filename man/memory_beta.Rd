@@ -36,7 +36,7 @@ treated as portal options. See \code{\link[=memory_alpha]{memory_alpha()}} for c
 In all other cases, the endpoint string must begin with one of the valid
 portal IDs. Passing only the ID returns a data frame with IDs and relative
 URLs associated with the available categories in the specific portal. Unlike
-\code{memory_alpha}, there are no \code{group} or \code{subgroup} columns. Memory Beta
+\code{memory_alpha()}, there are no \code{group} or \code{subgroup} columns. Memory Beta
 offers a more consistent reliance on the simple hierarchy of categories and
 articles.
 
@@ -58,7 +58,7 @@ from the results of non-terminal endpoints.
 Memory Beta is not a database containing convenient tables. Articles comprise
 the bulk of what Memory Beta has to offer. They are not completely
 unstructured text, but are loosely structured. Some assumptions are made and
-\code{memory_beta} returns a data frame containing article text and links. It is
+\code{memory_beta()} returns a data frame containing article text and links. It is
 up to the user what to do with this information, e.g., performing text
 analyses.
 }
@@ -74,7 +74,7 @@ Also note that once you know the relative URL for an article, e.g.,
 \code{endpoint} string to retrieve its content. You can instead use
 \code{mb_article("Worf")}.
 
-\code{memory_beta} provides an overview perspective on how content available at
+\code{memory_beta()} provides an overview perspective on how content available at
 Memory Beta is organized and can be searched for through a variety of
 hierarchical layouts. And in some cases this structure that can be obtained
 in table form can be useful as data or metadata in itself. Alternatively,

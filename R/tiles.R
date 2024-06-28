@@ -3,7 +3,7 @@
 #' Convert `(column, row)` numbers to `(x, y)` coordinates for a given tile set.
 #'
 #' This function converts column and row indices for an available map tile set
-#' matrix to coordinates that can be used in a Leaflet map. See [stTiles()] for
+#' matrix to coordinates that can be used in a Leaflet map. See [stTiles] for
 #' available tile sets.
 #'
 #' `data` cannot contain columns named `x` or `y`, which are reserved for the
@@ -20,7 +20,7 @@
 #' @param data a data frame containing columns named `col` and `row`. These
 #' contain column-row number pairs defining matrix cells in tile set `id`. See
 #' details.
-#' @param id character, name of map tile set ID. See [stTiles()].
+#' @param id character, name of map tile set ID. See [stTiles].
 #'
 #' @return a data frame.
 #' @export
@@ -47,13 +47,13 @@ tile_coords <- function(data, id){
 #'
 #' This function returns the URL associated with a tile set matching `id`.
 #'
-#' Tile set data are stored in the [stTiles()] dataset. See for available IDs.
+#' Tile set data are stored in the [stTiles] dataset. See for available IDs.
 #'
-#' @param id character, name of map tile set ID. See [stTiles()].
+#' @param id character, name of map tile set ID. See [stTiles].
 #'
 #' @return a character string.
 #' @export
-#' @seealso [stTiles()], [st_tiles_data()]
+#' @seealso [stTiles], [st_tiles_data()]
 #'
 #' @examples
 #' st_tiles("galaxy1")
@@ -75,7 +75,7 @@ st_tiles <- function(id){
 #'
 #' @return a data frame
 #' @export
-#' @seealso [stTiles()], [st_tiles()]
+#' @seealso [stTiles], [st_tiles()]
 #'
 #' @examples
 #' st_tiles_data("galaxy2")

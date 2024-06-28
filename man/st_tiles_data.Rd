@@ -25,5 +25,5 @@ set ID.
 st_tiles_data("galaxy2")
 }
 \seealso{
-\code{\link[=stTiles]{stTiles()}}, \code{\link[=st_tiles]{st_tiles()}}
+\link{stTiles}, \code{\link[=st_tiles]{st_tiles()}}
 }
