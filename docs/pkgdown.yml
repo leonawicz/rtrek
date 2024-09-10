@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   ex-episode-analysis: ex-episode-analysis.html
@@ -10,8 +10,7 @@ articles:
   rtrek: rtrek.html
   sc: sc.html
   stapi: stapi.html
-last_built: 2024-06-28T21:41Z
+last_built: 2024-09-10T20:52Z
 urls:
   reference: https://leonawicz.github.io/rtrek/reference
   article: https://leonawicz.github.io/rtrek/articles
-

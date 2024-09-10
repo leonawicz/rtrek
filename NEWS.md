@@ -1,3 +1,7 @@
+# rtrek 0.5.1
+
+* Documentation and other minor updates.
+
 # rtrek 0.5.0
 
 * Parser improvements.

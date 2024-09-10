@@ -1,7 +1,7 @@
 Package: rtrek
 Title: Data Analysis Relating to Star Trek
-Version: 0.5.0
-Authors@R: person("Matthew", "Leonawicz", email = "mfleonawicz@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9452-2771"))
+Version: 0.5.1
+Authors@R: person("Matthew", "Leonawicz", email = "rpkgs@pm.me", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9452-2771"))
 Description: Provides datasets related to the Star Trek fictional universe and functions for working with the data.
     The package also provides access to real world datasets based on the televised series and other related licensed media productions.
     It interfaces with the Star Trek API (STAPI) (<http://stapi.co/>), 

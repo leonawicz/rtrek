@@ -3,18 +3,21 @@
 
 # rtrek <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 
+<!-- badges: start -->
+
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
-[![CRAN
-status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek)
 [![R-CMD-check](https://github.com/leonawicz/rtrek/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/leonawicz/rtrek/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/leonawicz/rtrek/branch/master/graph/badge.svg)](https://app.codecov.io/gh/leonawicz/rtrek?branch=master)
+coverage](https://codecov.io/gh/leonawicz/rtrek/graph/badge.svg)](https://app.codecov.io/gh/leonawicz/rtrek)
 [![CRAN
-downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek)
+status](https://www.r-pkg.org/badges/version/rtrek)](https://CRAN.R-project.org/package=rtrek)
+[![CRAN
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek)
 [![Github
 Stars](https://img.shields.io/github/stars/leonawicz/rtrek.svg?style=social&label=Github)](https://github.com/leonawicz/rtrek)
+<!-- badges: end -->
 
 The `rtrek` package provides datasets related to the Star Trek fictional
 universe and functions for working with those datasets. It interfaces
@@ -285,7 +288,7 @@ True (Trek) type fonts to style your Star Trek themed graphics text.
 ## Citation
 
 Matthew Leonawicz (2024). rtrek: Data analysis relating to Star Trek. R
-package version 0.4.0. <https://CRAN.R-project.org/package=rtrek>
+package version 0.5.1. <https://CRAN.R-project.org/package=rtrek>
 
 ## Contribute
 

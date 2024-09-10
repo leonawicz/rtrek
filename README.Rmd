@@ -13,12 +13,14 @@ knitr::opts_chunk$set(
 
 # rtrek <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 
+<!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
-[![CRAN status](http://www.r-pkg.org/badges/version/rtrek)](https://cran.r-project.org/package=rtrek)
 [![R-CMD-check](https://github.com/leonawicz/rtrek/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/leonawicz/rtrek/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/leonawicz/rtrek/branch/master/graph/badge.svg)](https://app.codecov.io/gh/leonawicz/rtrek?branch=master)
-[![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek) 
+[![Codecov test coverage](https://codecov.io/gh/leonawicz/rtrek/graph/badge.svg)](https://app.codecov.io/gh/leonawicz/rtrek)
+[![CRAN status](https://www.r-pkg.org/badges/version/rtrek)](https://CRAN.R-project.org/package=rtrek)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/rtrek)](https://cran.r-project.org/package=rtrek) 
 [![Github Stars](https://img.shields.io/github/stars/leonawicz/rtrek.svg?style=social&label=Github)](https://github.com/leonawicz/rtrek)
+<!-- badges: end -->
 
 The `rtrek` package provides datasets related to the Star Trek fictional universe and functions for working with those datasets. It interfaces with the [Star Trek API](http://stapi.co/) (STAPI), [Memory Alpha](https://memory-alpha.fandom.com/wiki/Portal:Main) and [Memory Beta](https://memory-beta.fandom.com/wiki/Main_Page) to retrieve data, metadata and other information relating to Star Trek.
 
@@ -133,7 +135,7 @@ True (Trek) type fonts to style your Star Trek themed graphics text.
 
 ## Citation
 
-Matthew Leonawicz (`r substr(Sys.Date(), 1, 4)`). rtrek: Data analysis relating to Star Trek. R package version 0.4.0. https://CRAN.R-project.org/package=rtrek
+Matthew Leonawicz (`r substr(Sys.Date(), 1, 4)`). rtrek: Data analysis relating to Star Trek. R package version 0.5.1. https://CRAN.R-project.org/package=rtrek
 
 ## Contribute
 
