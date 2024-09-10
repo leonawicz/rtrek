@@ -2,7 +2,7 @@
 
 |field    |value                                    |
 |:--------|:----------------------------------------|
-|version  |R version 4.4.0 (2024-04-24 ucrt)        |
+|version  |R version 4.4.1 (2024-06-14 ucrt)        |
 |os       |Windows 10 x64 (build 19045)             |
 |system   |x86_64, mingw32                          |
 |ui       |RStudio                                  |
@@ -10,7 +10,7 @@
 |collate  |English_United States.utf8               |
 |ctype    |English_United States.utf8               |
 |tz       |America/Denver                           |
-|date     |2024-06-28                               |
+|date     |2024-09-10                               |
 |rstudio  |2024.04.2+764 Chocolate Cosmos (desktop) |
 |pandoc   |NA                                       |
 
@@ -18,14 +18,14 @@
 
 |package      |old    |new    |Δ  |
 |:------------|:------|:------|:--|
-|rtrek        |0.4.0  |0.5.0  |*  |
+|rtrek        |0.5.0  |0.5.1  |*  |
 |askpass      |1.2.0  |1.2.0  |   |
 |cachem       |1.1.0  |1.1.0  |   |
 |cli          |3.6.3  |3.6.3  |   |
-|colorspace   |2.1-0  |2.1-0  |   |
-|cpp11        |0.4.7  |0.4.7  |   |
-|curl         |5.2.1  |5.2.1  |   |
-|digest       |0.6.36 |0.6.36 |   |
+|colorspace   |2.1-1  |2.1-1  |   |
+|cpp11        |0.5.0  |0.5.0  |   |
+|curl         |5.2.2  |5.2.2  |   |
+|digest       |0.6.37 |0.6.37 |   |
 |downloader   |0.4    |0.4    |   |
 |dplyr        |1.1.4  |1.1.4  |   |
 |fansi        |1.0.6  |1.0.6  |   |
@@ -45,9 +45,10 @@
 |memoise      |2.0.1  |2.0.1  |   |
 |mime         |0.12   |0.12   |   |
 |munsell      |0.5.1  |0.5.1  |   |
-|openssl      |2.2.0  |2.2.0  |   |
+|openssl      |2.2.1  |2.2.1  |   |
 |pillar       |1.9.0  |1.9.0  |   |
 |pkgconfig    |2.0.3  |2.0.3  |   |
+|png          |0.1-8  |0.1-8  |   |
 |purrr        |1.0.2  |1.0.2  |   |
 |R6           |2.5.1  |2.5.1  |   |
 |RColorBrewer |1.1-3  |1.1-3  |   |
@@ -64,7 +65,7 @@
 |utf8         |1.2.4  |1.2.4  |   |
 |vctrs        |0.6.5  |0.6.5  |   |
 |viridisLite  |0.4.2  |0.4.2  |   |
-|withr        |3.0.0  |3.0.0  |   |
+|withr        |3.0.1  |3.0.1  |   |
 |xml2         |1.3.6  |1.3.6  |   |
 
 # Revdeps
