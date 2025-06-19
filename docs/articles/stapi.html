@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Star Trek API (STAPI) • rtrek</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -39,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rtrek</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.2</span>
       </span>
     </div>
 
@@ -308,9 +307,9 @@ extract data from other endpoints by following a breadcrumb trail of
 <span><span class="va">agt</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"episode"</span>, uid <span class="op">=</span> <span class="va">q_eps</span><span class="op">$</span><span class="va">uid</span><span class="op">[</span><span class="va">q_eps</span><span class="op">$</span><span class="va">title</span> <span class="op">==</span> <span class="va">eps</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="va">characters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">setdiff</a></span><span class="op">(</span><span class="fu"><a href="https://generics.r-lib.org/reference/setops.html" class="external-link">intersect</a></span><span class="op">(</span><span class="va">eaf</span><span class="op">$</span><span class="va">characters</span><span class="op">$</span><span class="va">name</span>, <span class="va">agt</span><span class="op">$</span><span class="va">characters</span><span class="op">$</span><span class="va">name</span><span class="op">)</span>, <span class="st">"Q"</span><span class="op">)</span></span>
 <span><span class="va">characters</span></span>
-<span><span class="co">#&gt; [1] "Deanna Troi"      "William T. Riker" "Miles O'Brien"    "Natasha Yar"     </span></span>
-<span><span class="co">#&gt; [5] "Worf"             "Geordi La Forge"  "Data"             "Jean-Luc Picard" </span></span>
-<span><span class="co">#&gt; [9] "Beverly Crusher"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "Data"             "Worf"             "Geordi La Forge"  "Deanna Troi"     </span></span>
+<span><span class="co">#&gt; [5] "William T. Riker" "Natasha Yar"      "Beverly Crusher"  "Jean-Luc Picard" </span></span>
+<span><span class="co">#&gt; [9] "Miles O'Brien"</span></span></code></pre></div>
 <p>This returns key crew members who remained a part of the show from
 beginning to end, disregarding any interim absences. Below, inspect how
 many episodes each character appeared in. <code>uid</code> is again
@@ -325,15 +324,15 @@ seven seconds to complete.</p>
 <code class="sourceCode R"><span><span class="va">characters</span> <span class="op">&lt;-</span> <span class="va">eaf</span><span class="op">$</span><span class="va">characters</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">uid</span>, <span class="va">name</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">characters</span><span class="op">)</span></span>
 <span><span class="va">characters</span></span>
 <span><span class="co">#&gt;              uid             name</span></span>
-<span><span class="co">#&gt; 1 CHMA0000123101      Deanna Troi</span></span>
-<span><span class="co">#&gt; 2 CHMA0000123073 William T. Riker</span></span>
-<span><span class="co">#&gt; 3 CHMA0000278225    Miles O'Brien</span></span>
-<span><span class="co">#&gt; 4 CHMA0000278224      Natasha Yar</span></span>
-<span><span class="co">#&gt; 5 CHMA0000123141             Worf</span></span>
-<span><span class="co">#&gt; 6 CHMA0000132570  Geordi La Forge</span></span>
-<span><span class="co">#&gt; 7 CHMA0000261620             Data</span></span>
+<span><span class="co">#&gt; 1 CHMA0000261620             Data</span></span>
+<span><span class="co">#&gt; 2 CHMA0000123141             Worf</span></span>
+<span><span class="co">#&gt; 3 CHMA0000132570  Geordi La Forge</span></span>
+<span><span class="co">#&gt; 4 CHMA0000123101      Deanna Troi</span></span>
+<span><span class="co">#&gt; 5 CHMA0000123073 William T. Riker</span></span>
+<span><span class="co">#&gt; 6 CHMA0000278224      Natasha Yar</span></span>
+<span><span class="co">#&gt; 7 CHMA0000123143  Beverly Crusher</span></span>
 <span><span class="co">#&gt; 8 CHMA0000289509  Jean-Luc Picard</span></span>
-<span><span class="co">#&gt; 9 CHMA0000123143  Beverly Crusher</span></span>
+<span><span class="co">#&gt; 9 CHMA0000278225    Miles O'Brien</span></span>
 <span><span class="va">eps_count</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">characters</span><span class="op">$</span><span class="va">uid</span>, <span class="kw">function</span><span class="op">(</span><span class="va">i</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/stapi.html">stapi</a></span><span class="op">(</span><span class="st">"character"</span>, uid <span class="op">=</span> <span class="va">i</span><span class="op">)</span><span class="op">$</span><span class="va">episodes</span><span class="op">$</span><span class="va">series</span> <span class="op">|&gt;</span></span>
 <span>     <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">title</span> <span class="op">==</span> <span class="st">"Star Trek: The Next Generation"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -392,7 +391,7 @@ parent data frame is subset using <code>$series</code> before calling
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
 </div>
 
       </footer>
