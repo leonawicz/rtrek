@@ -1,6 +1,6 @@
 Package: rtrek
 Title: Data Analysis Relating to Star Trek
-Version: 0.5.1
+Version: 0.5.2
 Authors@R: person("Matthew", "Leonawicz", email = "rpkgs@pm.me", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9452-2771"))
 Description: Provides datasets related to the Star Trek fictional universe and functions for working with the data.
     The package also provides access to real world datasets based on the televised series and other related licensed media productions.
@@ -13,7 +13,7 @@ Description: Provides datasets related to the Star Trek fictional universe and f
 License: MIT + file LICENSE
 URL: https://github.com/leonawicz/rtrek
 BugReports: https://github.com/leonawicz/rtrek/issues
-Depends: R (>= 2.10)
+Depends: R (>= 4.1)
 Imports: 
     downloader,
     dplyr,
@@ -43,4 +43,4 @@ ByteCompile: true
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2

@@ -136,7 +136,7 @@ ma_portal_science <- function(nodes = c("table", "span, a"), start_node_index = 
   ma_portal_df("science", nodes, start_node_index, end_node_index, subgroups, slice)
 }
 
-ma_portal_series <- function(nodes = c("h2, td p i b a, td b a", ""), start_node_index = 1,
+ma_portal_series <- function(nodes = c("h2 .mw-headline, .media-tile .media-tile--text .bold i a, .media-tile .media-tile--text .bold a", ""), start_node_index = 1,
                               end_node_index = NULL, subgroups = FALSE, slice = NULL){
   ma_portal_df("series", nodes, start_node_index, end_node_index, subgroups, slice)
 }

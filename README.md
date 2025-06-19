@@ -35,6 +35,7 @@ data is accessed from external sources by API. A future version of
 analyses of Star Trek novels.
 
 <p style="text-align:center;">
+
 <img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/rtrek_app1.png?raw=true" width="100%">
 </p>
 
@@ -60,12 +61,14 @@ remotes::install_github("leonawicz/rtrek")
 ```
 
 <h2 style="padding-bottom:0px;">
+
 Examples
 </h2>
 
 <img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/dixon_hill.jpg?raw=true" width=320 style="float: right; padding-left: 20px; padding-bottom:5px;">
 
 <h4 style="padding-top:50px;padding-bottom:0px;">
+
 Time to be good detectives. Good thing Data has R installed.
 </h4>
 
@@ -201,6 +204,7 @@ Live long and prosper.
 <div class="col-sm-10">
 
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+
 <a href="https://github.com/leonawicz/rtrek">rtrek</a>: The core Star
 Trek package
 </h4>
@@ -225,6 +229,7 @@ and more.
 <div class="col-sm-10">
 
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+
 <a href="https://github.com/leonawicz/lcars">lcars</a>: LCARS aesthetic
 for Shiny
 </h4>
@@ -249,6 +254,7 @@ Create Shiny apps based on the Library Computer Access/Retrieval System
 <div class="col-sm-10">
 
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+
 <a href="https://github.com/leonawicz/trekcolors">trekcolors</a>: A
 color palette package
 </h4>
@@ -273,6 +279,7 @@ functions.
 <div class="col-sm-10">
 
 <h4 style="padding:30px 0 0 0;margin-top:5px;margin-bottom:5px;">
+
 <a href="https://github.com/leonawicz/trekfont">trekfont</a>: A fonts
 package
 </h4>
@@ -287,8 +294,8 @@ True (Trek) type fonts to style your Star Trek themed graphics text.
 
 ## Citation
 
-Matthew Leonawicz (2024). rtrek: Data analysis relating to Star Trek. R
-package version 0.5.1. <https://CRAN.R-project.org/package=rtrek>
+Matthew Leonawicz (2025). rtrek: Data analysis relating to Star Trek. R
+package version 0.5.2. <https://CRAN.R-project.org/package=rtrek>
 
 ## Contribute
 

@@ -19,6 +19,6 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Matthew Leonawicz \email{mfleonawicz@gmail.com} (\href{https://orcid.org/0000-0001-9452-2771}{ORCID})
+\strong{Maintainer}: Matthew Leonawicz \email{rpkgs@pm.me} (\href{https://orcid.org/0000-0001-9452-2771}{ORCID})
 
 }

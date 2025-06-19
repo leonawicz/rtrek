@@ -1,3 +1,8 @@
+# rtrek 0.5.2
+
+* Fixed bug in to MA series portal retrieval.
+* Updated documentation.
+
 # rtrek 0.5.1
 
 * Documentation and other minor updates.
